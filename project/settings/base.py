@@ -95,11 +95,15 @@ STATIC_ROOT = BASE_DIR / 'assets'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist' / 'css' / 'bootstrap.min.css',
-    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist' / 'js' / 'bootstrap.bundle.min.js',
-    BASE_DIR / 'node_modules' / '@fortawesome' / 'css' / 'all.min.css',
-    BASE_DIR / 'node_modules' / 'jquery' / 'dist' / 'jquery.min.js',
 ]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'apps.core.static_app.NodeModulesFinder'
+]
+
+NODE_MODULES_ROOT = BASE_DIR / 'node_modules'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
