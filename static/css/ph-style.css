@@ -1,7 +1,13 @@
-body {
-    background-color: #ff0003;
+body{
+    background: #f3f3f3;
+    direction: rtl;
+    text-align: right;
+    font-size: 15px;
+    line-height: 15px;
+    color: #333333;
 }
 
+
 .ph-main-wrapper{
-    margin: 20px 0;
+    margin: 40px 0;
 }
