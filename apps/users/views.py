@@ -6,4 +6,4 @@ from apps.users.forms import UserLoginForm
 class LoginView(BaseLoginView):
 
     form_class = UserLoginForm
-    template_name = ''
+    template_name = 'base.html'

@@ -93,7 +93,12 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / 'assets'
 
-STATICFILES_DIRS = [BASE_DIR / 'static', ]
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist',
+    BASE_DIR / 'node_modules' / '@fortawesome' / 'fontawesome-free',
+    BASE_DIR / 'node_modules' / 'jquery' / 'dist',
+]
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
