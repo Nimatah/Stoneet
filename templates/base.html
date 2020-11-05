@@ -9,24 +9,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'users/css/ph-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ph-style.css' %}">
 </head>
 <body>
 <div class="ph-main" id="main">
     <div class="ph-main-wrapper">
         <div class="ph-page">
             <div class="ph-login-wrapper">
-                <form>
-                    <div class="form-group">
-                        <label for="ph_login_email">پست الکترونیک</label>
-                        <input type="email" class="form-control" id="ph_login_email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_login_password">رمز عبور</label>
-                        <input type="password" class="form-control" id="ph_login_password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">ورود</button>
-                </form>
+                <div class="container">
+                    <form>
+                        <div class="form-group">
+                            <label for="ph_login_email">پست الکترونیک</label>
+                            <input type="email" class="form-control" id="ph_login_email" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="ph_login_password">رمز عبور</label>
+                            <input type="password" class="form-control" id="ph_login_password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">ورود</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

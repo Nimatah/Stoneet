@@ -95,9 +95,10 @@ STATIC_ROOT = BASE_DIR / 'assets'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist',
-    BASE_DIR / 'node_modules' / '@fortawesome' / 'fontawesome-free',
-    BASE_DIR / 'node_modules' / 'jquery' / 'dist',
+    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist' / 'css' / 'bootstrap.min.css',
+    BASE_DIR / 'node_modules' / 'bootstrap' / 'dist' / 'js' / 'bootstrap.bundle.min.js',
+    BASE_DIR / 'node_modules' / '@fortawesome' / 'css' / 'all.min.css',
+    BASE_DIR / 'node_modules' / 'jquery' / 'dist' / 'jquery.min.js',
 ]
 
 MEDIA_ROOT = BASE_DIR / 'media'
