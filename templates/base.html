@@ -1,12 +1,31 @@
-{% load static %}
-
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-{% block content %}
-{% endblock %}
+<div class="ph-main" id="main">
+    <div class="ph-main-wrapper">
+        <div class="ph-page">
+            <div class="ph-login-wrapper">
+                <form>
+                    <div class="form-group">
+                        <label for="ph_login_email">پست الکترونیک</label>
+                        <input type="email" class="form-control" id="ph_login_email" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_login_password">رمز عبور</label>
+                        <input type="password" class="form-control" id="ph_login_password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">ورود</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

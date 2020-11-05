@@ -9,8 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bootstrap": "^4.5.3",
     "browserify": "^17.0.0",
     "glob": "^7.1.6",
+    "jquery": "^3.5.1",
     "sass": "^1.27.1"
   }
 }
