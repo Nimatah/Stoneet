@@ -29,7 +29,7 @@ class UserCreationForm(forms.ModelForm):
         return password2
 
     def save(self, commit=True):
-        user = super(UserCreationForm, self).save(commit=False)
+        user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
@@ -63,3 +63,58 @@ class UserLoginForm(AuthenticationForm):
     def clean_username(self):
         username = self.cleaned_data['username'].lower().strip()
         return username
+
+
+class UserRegisterForm(forms.ModelForm):
+    TYPE_CHOICES = (
+        (User.TYPE_BUYER, 'خریدار',),
+        (User.TYPE_SELLER, 'فروشنده',),
+        (User.TYPE_LOGISTIC, 'باربری',),
+    )
+
+    LEGAL_CHOICES = (
+        (User.LEGAL_INDIVIDUAL, 'حقیقی',),
+        (User.LEGAL_LEGAL, 'حقوقی',),
+    )
+
+    LOCATION_CHOICES = (
+        ('tehran', 'تهران',),
+        ('not-tehran', 'شهرستان',),
+    )
+
+    type = forms.ChoiceField(label="User Type", choices=TYPE_CHOICES, required=True)
+    legal_type = forms.ChoiceField(label="Legal Type", choices=LEGAL_CHOICES, required=True)
+    username = forms.CharField(min_length=4, max_length=255, required=True)
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=True)
+    password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput, required=True)
+    name = forms.CharField(label="Full Name", required=True)
+    id_code = forms.CharField(label="ID Code", required=True)
+    phone_number = forms.CharField(label="Phone Number", required=True)
+    mobile_number = forms.CharField(label="Mobile Number", required=False)
+    fax_number = forms.CharField(label="Fax Number", required=False)
+    email = forms.EmailField(label="Email", required=False)
+    region = forms.ChoiceField(label="Region", choices=LOCATION_CHOICES, required=True)
+    address = forms.CharField(label="Address", required=True)
+    postal_code = forms.CharField(label="Postal Code", required=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'name', 'id_code', 'phone_number', 'mobile_number',
+                  'fax_number', 'email', 'region', 'address', 'postal_code',)
+
+    def clean_password2(self):
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(
+                self.error_messages['password_mismatch'],
+                code='password_mismatch',
+            )
+        return password2
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user

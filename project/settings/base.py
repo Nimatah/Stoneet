@@ -14,10 +14,12 @@ PREREQUISITE_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'apps.core.static_app.MadanStaticfilesConfig',
+    'django_extensions',
+    'widget_tweaks',
 ]
 
 PROJECT_APPS = [
+    'apps.core.static_app.MadanStaticfilesConfig',
     'apps.users.apps.UsersConfig',
 ]
 

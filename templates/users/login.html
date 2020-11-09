@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
+
 {% block title %}
     ورود به صفحه
 {% endblock %}
@@ -7,17 +9,18 @@
  <div class="ph-page">
             <div class="ph-login-wrapper">
                 <div class="container">
-                    <form>
+                    <form method="post" action="{% url 'users:login' %}">
+                        {% csrf_token %}
                         <div class="form-group">
                             <label for="ph_login_email">نام کاربری</label>
-                            <input type="email" class="form-control" id="ph_login_email" aria-describedby="emailHelp">
+                            {% render_field form.username type="text" class="form-control" id="ph_login_username"%}
                         </div>
                         <div class="form-group">
                             <label for="ph_login_password">رمز عبور</label>
-                            <input type="password" class="form-control" id="ph_login_password">
+                            {% render_field form.username type="password" class="form-control" id="ph_login_password"%}
                         </div>
                         <button type="submit" class="btn btn-primary">ورود</button>
-                        <button type="submit" class="btn btn-danger">ثبت نام</button>
+                        <a href="{% url "users:register" %}"><button type="submit" class="btn btn-danger">ثبت نام</button></a>
                     </form>
                 </div>
             </div>

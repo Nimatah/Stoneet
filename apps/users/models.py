@@ -78,7 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     postal_code = models.CharField(max_length=15, default="1231231231")
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="buyer")
     legal_type = models.CharField(max_length=20, choices=LEGAL_CHOICES, default="individual")
-    state = models.CharField(max_length=20, choices=STATE_CHOICES)
+    state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
