@@ -1,0 +1,18 @@
+kind: pipeline
+type: docker
+name: "Madan Deployment"
+
+clone:
+  depth: 1
+
+steps:
+  - name: deploy
+    image: python:3.8
+    pull: never
+    commands:
+      - echo "it works!"
+    when:
+      branch: master
+      event:
+        - push
+        - pull_request
