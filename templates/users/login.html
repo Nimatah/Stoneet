@@ -9,6 +9,9 @@
     <div class="ph-page">
         <div class="ph-login-wrapper">
             <div class="container">
+                <div class="ph-page-title">
+                    <h2>ورود کاربران</h2>
+                </div>
                 <form method="post" action="{% url 'users:login' %}">
                     {% csrf_token %}
                     <div class="form-group">

@@ -1,7 +1,77 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form>
-    {{ form.as_p }}
-</form>
+    <div class="ph-page">
+        <div class="ph-register-wrapper">
+            <div class="container">
+                <div class="ph-page-title">
+                    <h2>ثبت نام کاربران</h2>
+                </div>
+                <form method="post" action="{% url 'users:register' %}">
+                    <div class="form-group">
+                        <label for="ph_user_type">نوع کاربر</label>
+                        <select class="form-control" id="ph_user_type">
+                            <option>خریدار</option>
+                            <option>فروشنده</option>
+                            <option>باربری</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_legal_type">ثبت نام به عنوان</label>
+                        <select class="form-control" id="ph_legal_type">
+                            <option>شخص حقیقی</option>
+                            <option>شخص حقوقی</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_password">رمز عبور</label>
+                        <input type="password" class="form-control" id="ph_user_password">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_password_repeat">تکرار رمز عبور</label>
+                        <input type="password" class="form-control" id="ph_user_password_repeat">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_full_name">نام کامل</label>
+                        <input type="text" class="form-control" id="ph_user_full_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_id_code">کد ملی / کد اقتصادی</label>
+                        <input type="text" class="form-control" id="ph_user_id_code">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_phone">تلفن ثابت</label>
+                        <input type="text" class="form-control" id="ph_user_phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_mobile">تلفن همراه</label>
+                        <input type="text" class="form-control" id="ph_user_mobile">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_fax">فکس</label>
+                        <input type="text" class="form-control" id="ph_user_fax">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_email">ایمیل</label>
+                        <input type="email" class="form-control" id="ph_user_email">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_legal_region">استان</label>
+                        <select class="form-control" id="ph_legal_region">
+                            <option>تهران</option>
+                            <option>شهرستان</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_address">آدرس کامل پستی</label>
+                        <input type="text" class="form-control" id="ph_user_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_postal_code">کد پستی</label>
+                        <input type="text" class="form-control" id="ph_user_postal_code">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
