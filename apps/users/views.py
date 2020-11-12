@@ -11,6 +11,11 @@ class LoginView(BaseLoginView):
     form_class = UserLoginForm
     template_name = 'users/login.html'
 
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(reverse_lazy('home:index'))
+        return super().get(request, *args, **kwargs)
+
 
 class RegisterView(FormView):
     form_class = UserRegisterForm
@@ -20,6 +25,7 @@ class RegisterView(FormView):
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
             return HttpResponseRedirect(reverse_lazy('home:index'))
+        return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         user = form.save()
