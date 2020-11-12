@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import forms as auth_forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from apps.users.models import User
 
 
@@ -66,6 +66,10 @@ class UserLoginForm(AuthenticationForm):
 
 
 class UserRegisterForm(forms.ModelForm):
+    ERROR_MESSAGES = {
+        'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
+    }
+
     TYPE_CHOICES = (
         (User.TYPE_BUYER, 'خریدار',),
         (User.TYPE_SELLER, 'فروشنده',),
@@ -82,12 +86,12 @@ class UserRegisterForm(forms.ModelForm):
         ('not-tehran', 'شهرستان',),
     )
 
-    type = forms.ChoiceField(label="User Type", choices=TYPE_CHOICES, required=True)
+    use_type = forms.ChoiceField(label="User Type", choices=TYPE_CHOICES, required=True)
     legal_type = forms.ChoiceField(label="Legal Type", choices=LEGAL_CHOICES, required=True)
     username = forms.CharField(min_length=4, max_length=255, required=False)
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput, required=True)
-    name = forms.CharField(label="Full Name", required=True)
+    full_name = forms.CharField(label="Full Name", required=True)
     id_code = forms.CharField(label="ID Code", required=True)
     phone_number = forms.CharField(label="Phone Number", required=True)
     mobile_number = forms.CharField(label="Mobile Number", required=False)
@@ -99,8 +103,8 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('type', 'legal_type', 'username', 'name', 'id_code', 'phone_number',
-                  'mobile_number', 'fax_number', 'email', 'region', 'address', 'postal_code',)
+        fields = ('use_type', 'legal_type', 'username', 'full_name', 'id_code', 'phone_number', 'password1',
+                  'password2', 'mobile_number', 'fax_number', 'email', 'region', 'address', 'postal_code',)
 
     def clean_email(self):
         email = self.cleaned_data.get('email').lower().strip()
@@ -111,7 +115,7 @@ class UserRegisterForm(forms.ModelForm):
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
             raise forms.ValidationError(
-                self.error_messages['password_mismatch'],
+                self.ERROR_MESSAGES['password_mismatch'],
                 code='password_mismatch',
             )
         return password2

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
     <div class="ph-page">
@@ -8,72 +9,74 @@
                     <h2>ثبت نام کاربران</h2>
                 </div>
                 <form method="post" action="{% url 'users:register' %}">
+                    {% csrf_token %}
                     <div class="form-group">
                         <label for="ph_user_type">نوع کاربر</label>
-                        <select class="form-control" id="ph_user_type">
-                            <option>خریدار</option>
-                            <option>فروشنده</option>
-                            <option>باربری</option>
-                        </select>
+                        {% render_field form.use_type class="form-control" id="ph_user_type" %}
+                        <small class="text-danger">{{ form.use_type.errors }}</small>
                     </div>
                     <div class="form-group">
                         <label for="ph_legal_type">ثبت نام به عنوان</label>
-                        <select class="form-control" id="ph_legal_type">
-                            <option>شخص حقیقی</option>
-                            <option>شخص حقوقی</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_password">رمز عبور</label>
-                        <input type="password" class="form-control" id="ph_user_password">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_password_repeat">تکرار رمز عبور</label>
-                        <input type="password" class="form-control" id="ph_user_password_repeat">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_full_name">نام کامل</label>
-                        <input type="text" class="form-control" id="ph_user_full_name">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_id_code">کد ملی / کد اقتصادی</label>
-                        <input type="text" class="form-control" id="ph_user_id_code">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_phone">تلفن ثابت</label>
-                        <input type="text" class="form-control" id="ph_user_phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_mobile">تلفن همراه</label>
-                        <input type="text" class="form-control" id="ph_user_mobile">
-                    </div>
-                    <div class="form-group">
-                        <label for="ph_user_fax">فکس</label>
-                        <input type="text" class="form-control" id="ph_user_fax">
+                        {% render_field form.legal_type class="form-control" id="ph_legal_type" %}
+                        <small class="text-danger">{{ form.legal_type.errors }}</small>
                     </div>
                     <div class="form-group">
                         <label for="ph_user_email">ایمیل</label>
-                        <input type="email" class="form-control" id="ph_user_email">
+                        {% render_field form.email type="email" class="form-control" id="ph_user_email" %}
+                        <small class="text-danger">{{ form.email.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_password">رمز عبور</label>
+                        {% render_field form.password1 type="password" class="form-control" id="ph_user_password" %}
+                        <small class="text-danger">{{ form.password1.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_password_repeat">تکرار رمز عبور</label>
+                        {% render_field form.password2 type="password" class="form-control" id="ph_user_password_repeat"> %}
+                        <small class="text-danger">{{ form.password2.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_full_name">نام کامل</label>
+                        {% render_field form.full_name type="text" class="form-control" id="ph_user_full_name" %}
+                        <small class="text-danger">{{ form.name.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_id_code">کد ملی / کد اقتصادی</label>
+                        {% render_field form.id_code type="text" class="form-control" id="ph_user_id_code"> %}
+                        <small class="text-danger">{{ form.id_code.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_phone">تلفن ثابت</label>
+                        {% render_field form.phone_number type="text" class="form-control" id="ph_user_phone" %}
+                        <small class="text-danger">{{ form.phone_number.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_mobile">تلفن همراه</label>
+                        {% render_field form.mobile_number type="text" class="form-control" id="ph_user_mobile" %}
+                        <small class="text-danger">{{ form.mobile_number.errors }}</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ph_user_fax">فکس</label>
+                        {% render_field form.fax_number type="text" class="form-control" id="ph_user_fax" %}
+                        <small class="text-danger">{{ form.fax_number.errors }}</small>
                     </div>
                     <div class="form-group">
                         <label for="ph_legal_region">استان</label>
-                        <select class="form-control" id="ph_legal_region">
-                            <option>تهران</option>
-                            <option>شهرستان</option>
-                        </select>
+                        {% render_field form.region class="form-control" id="ph_legal_region" %}
+                        <small class="text-danger">{{ form.region.errors }}</small>
                     </div>
                     <div class="form-group">
                         <label for="ph_user_address">آدرس کامل پستی</label>
-                        <input type="text" class="form-control" id="ph_user_address">
+                        {% render_field form.address type="text" class="form-control" id="ph_user_address" %}
+                        <small class="text-danger">{{ form.address.errors }}</small>
                     </div>
                     <div class="form-group">
                         <label for="ph_user_postal_code">کد پستی</label>
-                        <input type="text" class="form-control" id="ph_user_postal_code">
+                        {% render_field form.postal_code type="text" class="form-control" id="ph_user_postal_code"> %}
+                        <small class="text-danger">{{ form.postal_code.errors }}</small>
                     </div>
                     <button type="submit" class="btn btn-primary">ثبت نام</button>
-                    <a href="{% url "users:login" %}">
-                        <button type="submit" class="btn btn-danger">ورود</button>
-                    </a>
+                    <a href="{% url 'users:login' %}" class="btn btn-danger">ورود</a>
                 </form>
             </div>
         </div>

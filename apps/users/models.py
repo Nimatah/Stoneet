@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     )
 
     username = models.CharField(db_index=True, max_length=255, unique=True)
-    name = models.CharField(max_length=255, default="Admin")
+    full_name = models.CharField(max_length=255, default="Admin")
     phone_number = models.CharField(db_index=True, max_length=20, default="0999xxxxxxx")
     mobile_number = models.CharField(db_index=True, max_length=20, default="021xxxxxxxx")
     fax_number = models.CharField(max_length=20, null=True, blank=True)
@@ -76,7 +76,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     region = models.CharField(max_length=255, default="tehran")
     address = models.TextField(default="tehran")
     postal_code = models.CharField(max_length=15, default="1231231231")
-    type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="buyer")
+    use_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="buyer")
     legal_type = models.CharField(max_length=20, choices=LEGAL_CHOICES, default="individual")
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
     is_active = models.BooleanField(default=True)
@@ -95,13 +95,13 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         return self.name
 
     def is_buyer(self) -> bool:
-        return self.type == self.TYPE_BUYER
+        return self.use_type == self.TYPE_BUYER
 
     def is_seller(self) -> bool:
-        return self.type == self.TYPE_SELLER
+        return self.use_type == self.TYPE_SELLER
 
     def is_logistic(self) -> bool:
-        return self.type == self.TYPE_LOGISTIC
+        return self.use_type == self.TYPE_LOGISTIC
 
     def is_individual(self) -> bool:
         return self.legal_type == self.LEGAL_INDIVIDUAL

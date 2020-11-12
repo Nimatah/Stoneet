@@ -26,6 +26,5 @@ class UserAdmin(auth_admin.UserAdmin):
     readonly_fields = ('last_login', 'created_at',)
 
 
-
 admin.site.register(User, UserAdmin)
 

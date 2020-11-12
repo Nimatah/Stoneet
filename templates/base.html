@@ -15,12 +15,18 @@
 <body>
 <div class="ph-main" id="main">
     <div class="ph-main-wrapper">
+        {% if user.is_authenticated %}
+            خوش آمدید
+            {{ user.full_name }}
+            عزیز
+        {% endif %}
+        <br>
         {% block content %}
         {% endblock %}
     </div>
 </div>
-    <footer>
-        <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
-    </footer>
+<footer>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+</footer>
 </body>
 </html>
