@@ -82,7 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'username'
     objects = UserManager()
 
     def __str__(self) -> str:

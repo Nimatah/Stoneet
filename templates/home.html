@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+به معدن خوش آمدید
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'users:login' %}">Login</a>
+    <a href="{% url 'users:logout' %}">Logout</a>
+    <a href="{% url 'users:register' %}">Register</a>
+{% endblock %}

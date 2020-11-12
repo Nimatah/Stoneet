@@ -84,7 +84,7 @@ class UserRegisterForm(forms.ModelForm):
 
     type = forms.ChoiceField(label="User Type", choices=TYPE_CHOICES, required=True)
     legal_type = forms.ChoiceField(label="Legal Type", choices=LEGAL_CHOICES, required=True)
-    username = forms.CharField(min_length=4, max_length=255, required=True)
+    username = forms.CharField(min_length=4, max_length=255, required=False)
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput, required=True)
     name = forms.CharField(label="Full Name", required=True)
@@ -99,8 +99,12 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'name', 'id_code', 'phone_number', 'mobile_number',
-                  'fax_number', 'email', 'region', 'address', 'postal_code',)
+        fields = ('type', 'legal_type', 'username', 'name', 'id_code', 'phone_number',
+                  'mobile_number', 'fax_number', 'email', 'region', 'address', 'postal_code',)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email').lower().strip()
+        return email
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -114,6 +118,7 @@ class UserRegisterForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
+        user.username = self.cleaned_data["email"]
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
