@@ -4,6 +4,7 @@ from apps.users.models import User
 from apps.users.forms import UserChangeForm, UserCreationForm
 
 
+@admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
@@ -24,7 +25,3 @@ class UserAdmin(auth_admin.UserAdmin):
     search_fields = ('username',)
     ordering = ('username',)
     readonly_fields = ('last_login', 'created_at',)
-
-
-admin.site.register(User, UserAdmin)
-

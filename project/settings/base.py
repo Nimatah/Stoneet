@@ -14,6 +14,7 @@ PREREQUISITE_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'mptt',
     'django_extensions',
     'widget_tweaks',
 ]
@@ -22,6 +23,7 @@ PROJECT_APPS = [
     'apps.core.static_app.MadanStaticfilesConfig',
     'apps.home.apps.HomeConfig',
     'apps.users.apps.UsersConfig',
+    'apps.products.apps.ProductsConfig',
 ]
 
 INSTALLED_APPS = PREREQUISITE_APPS + PROJECT_APPS

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-from apps.core.models import TimestampedModel
+from apps.core.models import TimestampedModel, BaseMedia
 
 
 class UserManager(BaseUserManager):
@@ -36,13 +36,16 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
+class MediaManager(models.Manager):
+    pass
 
+
+class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     TYPE_SELLER = "seller"
     TYPE_LOGISTIC = "logistic"
     TYPE_BUYER = "buyer"
 
-    TYPE_CHOICES = (
+    _TYPE_CHOICES = (
         (TYPE_SELLER, "Seller",),
         (TYPE_LOGISTIC, "Logistic",),
         (TYPE_BUYER, "Buyer",),
@@ -51,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     LEGAL_INDIVIDUAL = "individual"
     LEGAL_LEGAL = "legal"
 
-    LEGAL_CHOICES = (
+    _LEGAL_CHOICES = (
         (LEGAL_INDIVIDUAL, "Individual",),
         (LEGAL_LEGAL, "Legal",),
     )
@@ -60,7 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     STATE_ACCEPTED = "accepted"
     STATE_REJECTED = "rejected"
 
-    STATE_CHOICES = (
+    _STATE_CHOICES = (
         (STATE_PENDING, "Pending",),
         (STATE_ACCEPTED, "Accepted",),
         (STATE_REJECTED, "Rejected",),
@@ -76,9 +79,9 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     region = models.CharField(max_length=255, default="tehran")
     address = models.TextField(default="tehran")
     postal_code = models.CharField(max_length=15, default="1231231231")
-    use_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="buyer")
-    legal_type = models.CharField(max_length=20, choices=LEGAL_CHOICES, default="individual")
-    state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
+    use_type = models.CharField(max_length=20, choices=_TYPE_CHOICES, default="buyer")
+    legal_type = models.CharField(max_length=20, choices=_LEGAL_CHOICES, default="individual")
+    state = models.CharField(max_length=20, choices=_STATE_CHOICES, default=STATE_PENDING)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -89,10 +92,10 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         return self.username
 
     def get_full_name(self) -> str:
-        return self.name
+        return self.full_name
 
     def get_short_name(self) -> str:
-        return self.name
+        return self.full_name
 
     def is_buyer(self) -> bool:
         return self.use_type == self.TYPE_BUYER
@@ -117,3 +120,11 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
 
     def is_rejected(self) -> bool:
         return self.state == self.STATE_REJECTED
+
+
+class UserMedia(BaseMedia):
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='media')
+    file = models.FileField(upload_to='users')
+
+    def __str__(self) -> str:
+        return f'{self.user} -> {self.type} | {self.file}'
