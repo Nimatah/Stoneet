@@ -26,9 +26,3 @@ steps:
       - docker-compose up -d
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    when:
-      branch: master
-      event:
-        - push
-        - pull_request
-
