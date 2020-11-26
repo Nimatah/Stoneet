@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    build: .
+    image: madan:1.0.0
     container_name: "madan_web"
     restart: always
     depends_on:
