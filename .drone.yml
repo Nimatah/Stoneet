@@ -1,18 +1,34 @@
 kind: pipeline
 type: docker
-name: "Madan Deployment"
+name: "Madan"
 
 clone:
   depth: 1
 
 steps:
-  - name: deploy
-    image: python:3.8
+  - name: build
+    image: docker
     pull: never
     commands:
-      - echo "it works!"
+      - docker build -t madan:1.0.0 .
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
     when:
       branch: master
       event:
         - push
         - pull_request
+
+  - name: deploy
+    image: docker/compose
+    pull: never
+    commands: :
+      - docker-compose up -d
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    when:
+      branch: master
+      event:
+        - push
+        - pull_request
+
