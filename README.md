@@ -1,6 +1,6 @@
 # Madan
 
-[![Drone](https://img.shields.io/drone/build/PlanHUB/madan?server=https%3A%2F%2Fphbuild.planhub.ir&style=for-the-badge)](https://phbuild.planhub.ir/PlanHUB/madan)
+[![Build Status](https://phbuild.planhub.ir/api/badges/PlanHUB/madan/status.svg)](https://phbuild.planhub.ir/PlanHUB/madan)
 
 ## Development
 
