@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: "Madan"
+name: "Madan Deployment"
 
 clone:
   depth: 1
@@ -13,7 +13,7 @@ steps:
       - docker build -t madan:1.0.0 .
     volumes:
       - name: dockersock
-        path: /var/run/docker.sock:/var/run/docker.sock
+        path: /var/run/docker.sock
     when:
       branch: master
       event:
@@ -27,7 +27,7 @@ steps:
       - docker-compose up -d
     volumes:
       - name: dockersock
-        path: /var/run/docker.sock:/var/run/docker.sock
+        path: /var/run/docker.sock
     when:
       branch: master
       event:
