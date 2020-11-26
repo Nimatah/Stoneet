@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     volumes:
-    - .:/project
+    - /opt/madan/logs:/project/logs
     ports:
     - 127.0.0.1:8000:8000
 
@@ -16,6 +16,7 @@ services:
     container_name: "madan_db"
     restart: always
     volumes:
-    - ./data:/var/lib/postgresql/data
+    - /opt/madan/data:/var/lib/postgresql/data
     environment:
-      TZ: "Asia/Tehran"
+      - TZ=Asia/Tehran
+      - POSTGRES_PASSWORD=Planhub@123
