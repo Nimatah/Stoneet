@@ -34,3 +34,7 @@ steps:
         - push
         - pull_request
 
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
