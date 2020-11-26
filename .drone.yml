@@ -22,7 +22,13 @@ steps:
   - name: deploy
     image: docker/compose
     pull: never
-    commands: :
+    commands:
       - docker-compose up -d
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    when:
+      branch: master
+      event:
+        - push
+        - pull_request
+
