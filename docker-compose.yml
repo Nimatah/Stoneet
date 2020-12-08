@@ -9,7 +9,7 @@ services:
     volumes:
     - /opt/madan/logs:/project/logs
     ports:
-    - 127.0.0.1:7000:8000
+    - 7000:8000
 
   db:
     image: postgres:alpine
