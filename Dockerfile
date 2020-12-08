@@ -12,6 +12,6 @@ ADD . .
 
 RUN pip install -r requirements.txt
 RUN npm install
-RUN python manage.py collectstatic
+RUN python manage.py collectstatic --noinput
 
 ENTRYPOINT ["sh", "start_service.sh"]
