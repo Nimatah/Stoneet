@@ -59,14 +59,16 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         (LEGAL_LEGAL, "Legal",),
     )
 
+    STATE_DRAFT = "draft"
     STATE_PENDING = "pending"
     STATE_ACCEPTED = "accepted"
     STATE_REJECTED = "rejected"
 
     _STATE_CHOICES = (
-        (STATE_PENDING, "Pending",),
-        (STATE_ACCEPTED, "Accepted",),
-        (STATE_REJECTED, "Rejected",),
+        (STATE_DRAFT, "Draft",),  # Can edit
+        (STATE_PENDING, "Waiting For Confirm",),  # Can't edit
+        (STATE_ACCEPTED, "Confirmed",),
+        (STATE_REJECTED, "Rejected",),  # Rejection details box
     )
 
     username = models.CharField(db_index=True, max_length=255, unique=True)

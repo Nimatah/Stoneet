@@ -41,6 +41,14 @@ class Attribute(TimestampedModel):
         (TYPE_DROPDOWN, 'Dropdown',),
     )
 
+    PRODUCT_TYPE_CONSTANT = "Product"
+    PRODUCT_TYPE_VARIANT = "Variant"
+
+    _PRODUCT_TYPE = (
+        (PRODUCT_TYPE_CONSTANT, "Product",),
+        (PRODUCT_TYPE_VARIANT, "Variant",),
+    )
+
     title = models.CharField(max_length=255)
     value_type = models.CharField(max_length=255, choices=_TYPE_CHOICES)
     options = models.TextField(null=True, blank=True)
