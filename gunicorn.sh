@@ -10,7 +10,7 @@ DJANGO_WSGI_MODULE=project.wsgi
 exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name ${NAME} \
   --workers ${WORKERS_COUNT} \
-  --user=${USER}
-  --group=${GROUP} \
-  --log-level=debug \
-  --bind=${BIND}:${PORT}
+  --user ${USER}
+  --group ${GROUP} \
+  --log-level debug \
+  --bind ${BIND}:${PORT}
