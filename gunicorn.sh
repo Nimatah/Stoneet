@@ -6,8 +6,8 @@ GROUP=$USER
 WORKERS_COUNT=3
 DJANGO_WSGI_MODULE=project.wsgi
 
-exec python manage.py migrate
-exec gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec python manage.py migrate &&
+  gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name ${NAME} \
   --workers ${WORKERS_COUNT} \
   --user=${USER}
