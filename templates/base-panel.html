@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="ph-seller-panel">
+        <aside>
+            <nav class="ph-sp-navbar navbar navbar-expand-lg">
+                <a class="ph-navbar-logo" href="#">
+                    <img class="ph-sp-logo" src="{% static 'images/logo.png' %}" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="ph-sp-collapse collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="ph-sp-navbar-nav navbar-nav sidenav" id="navAccordion">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'users:user_panel' %}">پیشخوان <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'users:add_product' %}">ساخت محصول</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">مشاهده محصولات</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse"
+                               data-target="#collapseSubItems2" aria-controls="collapseSubItems2" aria-expanded="false">Item
+                                2</a>
+                            <ul class="nav-second-level collapse" id="collapseSubItems2" data-parent="#navAccordion">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-link-text">Item 2.1</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-link-text">Item 2.2</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item 3</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse"
+                               data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false">Item
+                                4</a>
+                            <ul class="nav-second-level collapse" id="collapseSubItems4" data-parent="#navAccordion">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-link-text">Item 4.1</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-link-text">Item 4.2</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="nav-link-text">Item 4.2</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Item 5</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        {% block panel_content %}
+        {% endblock %}
+    </div>
+
+{% endblock %}

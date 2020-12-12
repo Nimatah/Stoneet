@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.products.models import Attribute, Category, Product, ProductAttribute
+from apps.products.models import Attribute, Category, Product, ProductAttribute, Variant
 
 
 @admin.register(Attribute)
@@ -24,5 +24,10 @@ class ProductAttributeAdminInline(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'category',)
     search_fields = ('title',)
+
+
+@admin.register(Variant)
+class VariantAdmin(admin.ModelAdmin):
+    list_display = ()
 
     inlines = (ProductAttributeAdminInline,)

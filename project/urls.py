@@ -8,6 +8,7 @@ urlpatterns = [
     path('phadmin/', admin.site.urls),
     path('', include('apps.home.urls', namespace='home')),
     path('users/', include('apps.users.urls', namespace='users')),
+    path('products/', include('apps.products.urls', namespace='products'))
 ]
 
 if settings.DEBUG:

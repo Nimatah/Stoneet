@@ -1,5 +1,5 @@
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth import login
 from django.http.response import HttpResponseRedirect
@@ -31,3 +31,13 @@ class RegisterView(FormView):
         user = form.save()
         login(self.request, user)
         return super().form_valid(form)
+
+
+class UserPanelView(TemplateView):
+
+    template_name = 'base-panel.html'
+
+
+class AddProductView(TemplateView):
+
+    template_name = 'users/add-product.html'

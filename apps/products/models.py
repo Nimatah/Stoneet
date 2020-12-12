@@ -24,6 +24,9 @@ class ProductManager(models.Manager):
     pass
 
 
+class VariantManager(models.Manager):
+    pass
+
 class Attribute(TimestampedModel):
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -129,7 +132,7 @@ class Category(MPTTModel):
 
 class ProductAttribute(models.Model):
     attribute = models.ForeignKey('Attribute', on_delete=models.CASCADE)
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='attributes')
+    product_variant = models.ForeignKey('Variant', on_delete=models.CASCADE, related_name='attributes')
     value_bool = models.BooleanField(null=True, blank=True)
     value_string = models.CharField(max_length=255, null=True, blank=True)
     value_int = models.IntegerField(null=True, blank=True)
@@ -188,6 +191,16 @@ class Product(TimestampedModel):
 
     def __str__(self) -> str:
         return self.title
+
+
+class Variant(TimestampedModel):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="variant")
+    sku = models.IntegerField(default=0)
+
+    objects = VariantManager()
+
+    def __str__(self):
+        return f"Variant: {self.product.title}"
 
 
 class ProductMedia(BaseMedia):

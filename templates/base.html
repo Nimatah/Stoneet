@@ -15,12 +15,6 @@
 <body>
 <div class="ph-main" id="main">
     <div class="ph-main-wrapper">
-        {% if user.is_authenticated %}
-            خوش آمدید
-            {{ user.full_name }}
-            عزیز
-        {% endif %}
-        <br>
         {% block content %}
         {% endblock %}
     </div>
