@@ -5,9 +5,19 @@
 {% endblock %}
 
 {% block content %}
+    <div style="text-align: center;">
     <a href="{% url 'users:login' %}">Login</a>
+    <span>|</span>
     <a href="{% url 'users:logout' %}">Logout</a>
-    <a href="{% url 'users:register' %}">Register</a>
-    <a href="{% url 'users:user_panel' %}">User Panel</a>
+    <span>|</span>
+    <a href="{% url 'users:register' %}">Seller Registration</a>
+    <span>|</span>
     <a href="{% url 'users:user_panel' %}">Admin Panel</a>
+    <span>|</span>
+    <a href="{% url 'users:user_panel' %}">Seller Panel</a>
+    <span>|</span>
+    <a href="{% url 'users:user_panel' %}">Logistic Panel</a>
+    <span>|</span>
+    <a href="{% url 'users:user_panel' %}">Customer Panel</a>
+    </div>
 {% endblock %}
