@@ -10,13 +10,12 @@
     <title>{% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static '@fortawesome/fontawesome-free/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/ph-style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ph-master-style.css' %}">
     {% block header_static %}
     {% endblock %}
 </head>
 <body>
-<div class="ph-main" id="main">
-    <div class="ph-main-wrapper">
+   <div class="page-holder scroll-bar" id="ph_myscroll">
         {% block content %}
         {% endblock %}
     </div>

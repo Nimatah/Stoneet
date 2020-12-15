@@ -35,9 +35,9 @@ class RegisterView(FormView):
 
 class UserPanelView(TemplateView):
 
-    template_name = 'base-panel.html'
+    template_name = 'base_admin.html'
 
 
 class AddProductView(TemplateView):
 
-    template_name = 'users/add-product.html'
+    template_name = 'users/add_product.html'
