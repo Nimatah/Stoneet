@@ -27,6 +27,7 @@ class ProductManager(models.Manager):
 class VariantManager(models.Manager):
     pass
 
+
 class Attribute(TimestampedModel):
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -57,11 +58,17 @@ class Attribute(TimestampedModel):
     options = models.TextField(null=True, blank=True)
     unit = models.CharField(max_length=255, blank=True)
     is_required = models.BooleanField(default=False)
+    view_in_product_page = models.BooleanField(default=False)
+    is_special = models.BooleanField(default=False)
 
     objects = AttributeManager()
 
     def __str__(self) -> str:
         return self.title
+
+    @property
+    def dropdown(self):
+        return self.options.split("|")
 
     def is_valid(self, value) -> bool:
         if self.value_type == Attribute.TYPE_BOOL:
@@ -96,7 +103,7 @@ class Attribute(TimestampedModel):
             return False
 
     def __validate_dropdown(self, value) -> bool:
-        return value in self.options
+        return value in self.options.split('|')
 
 
 class AttributeMedia(BaseMedia):
@@ -121,7 +128,6 @@ class Category(MPTTModel):
 
     class MPTTMeta:
         level_attr = 'mptt_level'
-        order_insertion_by = ['title', ]
 
     class Meta:
         verbose_name_plural = 'Categories'
@@ -129,10 +135,17 @@ class Category(MPTTModel):
     def __str__(self) -> str:
         return self.title
 
+    def to_dict_hierarchy(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'children': [c.to_dict_hierarchy() for c in self.children.all()]
+        }
+
 
 class ProductAttribute(models.Model):
-    attribute = models.ForeignKey('Attribute', on_delete=models.CASCADE)
-    product_variant = models.ForeignKey('Variant', on_delete=models.CASCADE, related_name='attributes')
+    attribute = models.ForeignKey('Attribute', on_delete=models.CASCADE, related_name='product_attributes')
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='attributes')
     value_bool = models.BooleanField(null=True, blank=True)
     value_string = models.CharField(max_length=255, null=True, blank=True)
     value_int = models.IntegerField(null=True, blank=True)
@@ -191,16 +204,6 @@ class Product(TimestampedModel):
 
     def __str__(self) -> str:
         return self.title
-
-
-class Variant(TimestampedModel):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="variant")
-    sku = models.IntegerField(default=0)
-
-    objects = VariantManager()
-
-    def __str__(self):
-        return f"Variant: {self.product.title}"
 
 
 class ProductMedia(BaseMedia):

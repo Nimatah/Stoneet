@@ -1,0 +1,167 @@
+[
+  {
+    "model": "products.attribute",
+    "pk": 1,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:25.917",
+      "title": "قیمت",
+      "value_type": "int",
+      "options": "",
+      "unit": "تومان",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 2,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:21.426",
+      "title": "آنالیز محصول",
+      "value_type": "image",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": false,
+      "is_special": true
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 3,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:16.043",
+      "title": "عیار",
+      "value_type": "int",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 4,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:11.842",
+      "title": "ظرفیت تامین ماهانه",
+      "value_type": "int",
+      "options": "",
+      "unit": "کیلوگرم",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 5,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:07.050",
+      "title": "امکان ارسال نمونه",
+      "value_type": "bool",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 6,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:38:03.054",
+      "title": "وجود جاده مناسب و قابل عبور جهت ماشین های باربری",
+      "value_type": "bool",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 7,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:37:59.373",
+      "title": "خام/فراوری شده",
+      "value_type": "dropdown",
+      "options": "خام|فراوری شده",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 8,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:37:53.720",
+      "title": "گواهی ارزش افزوده",
+      "value_type": "image",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 9,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:36:43.036",
+      "title": "شرایط پرداخت وجه",
+      "value_type": "dropdown",
+      "options": "نقدی|اقساطی",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 10,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:36:38.328",
+      "title": "وجود تجهیزات بارگیری در محل دپو",
+      "value_type": "bool",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 11,
+    "fields": {
+      "created_at": "2020-12-16T00:00:00",
+      "updated_at": "2020-12-15T21:36:30.746",
+      "title": "قرارداد ضروری",
+      "value_type": "bool",
+      "options": "",
+      "unit": "",
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  }
+]

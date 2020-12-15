@@ -1,8 +1,11 @@
 {% extends 'base_admin.html' %}
+{% load static %}
 
+{% block meta_content %}
+  {{ categories|json_script:"categories" }}
+{% endblock %}
 
 {% block admin_content %}
-
          <main class="ph-create-product-main">
 
             <div class="container">
@@ -30,27 +33,22 @@
                         </div>
                         <div class="form-row mb-5 align-items-center">
                            <div class="col-5 col-offset-2 my-1">
-                              <label class="mr-sm-2" for="inlineFormCustomSelect">گروه مادر</label>
-                              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                 <option selected>انتخاب...</option>
-                                 <option value="1">گروه اول</option>
-                                 <option value="2">گروه دوم</option>
-                                 <option value="3">گروه سوم</option>
+                              <label class="mr-sm-2" for="t-1-c">گروه مادر</label>
+                              <select class="custom-select mr-sm-2" id="t-1-c">
+                                 <option selected value="default">انتخاب...</option>
                               </select>
                            </div>
                            <div class="col-5 my-1">
-                              <label class="mr-sm-2" for="inlineFormCustomSelect">زیر گروه‌ها</label>
-                              <select class="form-control" id="inlineFormCustomSelect">
-                                 <option selected>انتخاب...</option>
-                                 <option value="1">زیر گروه اول</option>
-                                 <option value="2">زیر گروه دوم</option>
-                                 <option value="3">زیر گروه سوم</option>
+                              <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
+                              <select class="form-control" id="t-2-c">
+                                 <option selected value="">گروه مادر را انتخاب کنید...</option>
                               </select>
                            </div>
+                            <small class="form-text text-danger" id="t-2-c-e" hidden>لطفا گروه مورد نظر را انتخاب کنید</small>
                         </div>
-                        <div class="ph-cpp-btn" role="group" aria-label="...">
+                         <div class="ph-cpp-btn" role="group" aria-label="...">
                            <label for='step2' id="next-step2" class="ph-cpp-btn-next">
-                              <div class="ph-cpp-btn-n">بعدی</div>
+                              <div class="ph-cpp-btn-n" id="s-1-btn">بعدی</div>
                            </label>
                         </div>
                      </div>
@@ -74,9 +72,10 @@
                            <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
                         </div>
                         <div class="form-group mb-5">
-                           <label for="formGroupExampleInput">عنوان مورد نظر را وارد کنید</label>
-                           <input type="text" class="form-control" id="formGroupExampleInput"
+                           <label for="p-t">عنوان مورد نظر را وارد کنید</label>
+                           <input type="text" class="form-control" id="p-t"
                               placeholder="نام محصول را با حروف فارسی وارد کنید...">
+                           <small class="form-text text-danger" id="t-e" hidden>لطفا نام محصول را وارد نمایید</small>
                         </div>
 
                         <div class="ph-cpp-btn" role="group" aria-label="...">
@@ -85,7 +84,7 @@
                            </label>
 
                            <label for='step3' id="next-step3" class="ph-cpp-btn-next">
-                              <div class="ph-cpp-btn-n">بعدی</div>
+                              <div class="ph-cpp-btn-n" id="s-2-btn">بعدی</div>
                            </label>
 
                         </div>
@@ -112,77 +111,87 @@
                            <h6 class="ph-cp-panel-title">گام سوم: درج ویژگی‌های کالا:</h6>
                         </div>
 
-                        <div class="form-row mb-5 align-items-center mb-4">
-                           <div class="col-5 col-offset-2 my-1">
-                              <label id="" for="">قیمت</label>
-                              <input type="text" class="form-control" id="" placeholder="قیمت را وارد کنید..." value=""
-                                 required>
-                           </div>
-                           <div class="col-5 my-1">
-                              <label id="" for="">قیمت‌گذلری</label>
-                              <select id="" class="mdb-select md-form form-control">
-                                 <option value="" disabled selected>قیمت به ازای هر کیلو</option>
-                                 <option value="1">دلار به ازای هر تن</option>
-                                 <option value="2">یورو به ازای هر تن</option>
-                                 <option value="3">تومان به ازای هر عدد</option>
-                              </select>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
+                         {% for attribute in attributes_field %}
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_state">استان</label>
-                           <select id="ph_spm_create_produc_state" class="mdb-select md-form form-control">
-                              <option value="" disabled selected>استان خود را انتخاب کنید:</option>
-                              <option value="1">تهران</option>
-                              <option value="2">چهارمحال بختیاری</option>
-                              <option value="3">کهگیلویه و بویراحمد</option>
-                           </select>
-                           <!-- ph_spm_create_produc_category -->
-                        </p>
-                        <div class="clearfix"></div>
+                             {% if not forloop.counter|divisibleby:2 %}
+                                 <div class="form-row mb-5 align-items-center mb-4">
+                                {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                             {% endif %}
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_city">شهر</label>
-                           <select id="ph_spm_create_produc_city" class="mdb-select md-form form-control">
-                              <option value="" disabled selected>شهر خود را انتخاب کنید:</option>
-                              <option value="1">تهران</option>
-                              <option value="2">یاسوج</option>
-                              <option value="3">شهرکرد</option>
-                           </select>
-                           <!-- ph_spm_create_produc_category -->
-                        </p>
-                        <div class="clearfix"></div>
+                             {% if forloop.counter|divisibleby:2%}
+                                 {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                                 </div>
+                             {% endif %}
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_email">ایمیل</label>
-                           <input type="text" class="form-control" id="ph_spm_create_produc_email"
-                              placeholder="abcd@gmail.com" value="" required>
-                        <div class="valid-feedback">
-                           لطفا از حروف انگلیسی استفاده کنید
-                        </div>
-                        </p>
-                        <div class="clearfix"></div>
+                             {% if forloop.last %}
+                                 </div>
+                             {% endif %}
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_mobile">شماره موبایل</label>
-                           <input type="text" class="form-control" id="ph_spm_create_produc_mobile"
-                              placeholder="09XX XXXXXXX" value="" required>
-                        <div class="valid-feedback">
-                           لطفا از اعداد انگلیسی استفاده کنید
-                        </div>
-                        </p>
-                        <div class="clearfix"></div>
+                         {% endfor %}
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_tel">تلفن ثابت</label>
-                           <input type="tel" class="form-control" id="ph_spm_create_produc_tel"
-                              placeholder="0xx xxxxxxxx" value="" required>
-                        <div class="valid-feedback">
-                           لطفا از اعداد انگلیسی استفاده کنید
-                        </div>
-                        </p>
-                        <div class="clearfix"></div>
+
+                     <div class="mb-4">
+                         <div class="ph-checkbox-form-group">
+                             {% for attribute in attributes_bool %}
+                                 {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                             {% endfor %}
+                         </div>
+                     </div>
+                         <div class="clearfix"></div>
+
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_state">استان</label>#}
+{#                           <select id="ph_spm_create_produc_state" class="mdb-select md-form form-control">#}
+{#                              <option value="" disabled selected>استان خود را انتخاب کنید:</option>#}
+{#                              <option value="1">تهران</option>#}
+{#                              <option value="2">چهارمحال بختیاری</option>#}
+{#                              <option value="3">کهگیلویه و بویراحمد</option>#}
+{#                           </select>#}
+{#                           <!-- ph_spm_create_produc_category -->#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
+{##}
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_city">شهر</label>#}
+{#                           <select id="ph_spm_create_produc_city" class="mdb-select md-form form-control">#}
+{#                              <option value="" disabled selected>شهر خود را انتخاب کنید:</option>#}
+{#                              <option value="1">تهران</option>#}
+{#                              <option value="2">یاسوج</option>#}
+{#                              <option value="3">شهرکرد</option>#}
+{#                           </select>#}
+{#                           <!-- ph_spm_create_produc_category -->#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
+{##}
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_email">ایمیل</label>#}
+{#                           <input type="text" class="form-control" id="ph_spm_create_produc_email"#}
+{#                              placeholder="abcd@gmail.com" value="" required>#}
+{#                        <div class="valid-feedback">#}
+{#                           لطفا از حروف انگلیسی استفاده کنید#}
+{#                        </div>#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
+{##}
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_mobile">شماره موبایل</label>#}
+{#                           <input type="text" class="form-control" id="ph_spm_create_produc_mobile"#}
+{#                              placeholder="09XX XXXXXXX" value="" required>#}
+{#                        <div class="valid-feedback">#}
+{#                           لطفا از اعداد انگلیسی استفاده کنید#}
+{#                        </div>#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
+{##}
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_tel">تلفن ثابت</label>#}
+{#                           <input type="tel" class="form-control" id="ph_spm_create_produc_tel"#}
+{#                              placeholder="0xx xxxxxxxx" value="" required>#}
+{#                        <div class="valid-feedback">#}
+{#                           لطفا از اعداد انگلیسی استفاده کنید#}
+{#                        </div>#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
 
                         <p class="mb-4">
                            <label for="ph_spm_create_produc_description">توضیحات:</label>
@@ -191,47 +200,22 @@
                         </p>
                         <div class="clearfix"></div>
 
-                        <p class="mb-4">
-                           <label for="ph_spm_create_produc_description">انتخاب کنید:</label>
-                           <span class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                 id="ph_spm_create_produc_radio1" value="option1">
-                              <label class="form-check-label" for="ph_spm_create_produc_radio1">گزینه‌ی
-                                 اول</label>
-                           </span>
-                           <span class="form-check form-check-inline">
-                              <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                 id="ph_spm_create_produc_radio2" value="option2">
-                              <label class="form-check-label" for="ph_spm_create_produc_radio2">گزینه‌ی
-                                 دوم</label>
-                           </span>
-                        </p>
-                        <div class="clearfix"></div>
-
-                        <div class="mb-4">
-                           <label for="ph_spm_create_produc_description">انتخاب کنید:</label>
-                           <div class="ph-checkbox-form-group">
-                              <span class="form-check">
-                                 <label class="form-check-label" for="check1">
-                                    <input type="checkbox" class="form-check-input" id="check1" name="option1"
-                                       value="something" checked>گزینه‌ی اول
-                                 </label>
-                              </span>
-                              <span class="form-check">
-                                 <label class="form-check-label" for="check2">
-                                    <input type="checkbox" class="form-check-input" id="check2" name="option2"
-                                       value="something">گزینه‌ی دوم
-                                 </label>
-                              </span>
-                              <span class="form-check">
-                                 <label class="form-check-label" for="check3">
-                                    <input type="checkbox" class="form-check-input" id="check3" name="option3"
-                                       value="something">گزینه‌ی سوم
-                                 </label>
-                              </span>
-                           </div>
-                        </div>
-                        <div class="clearfix"></div>
+{#                        <p class="mb-4">#}
+{#                           <label for="ph_spm_create_produc_description">انتخاب کنید:</label>#}
+{#                           <span class="form-check form-check-inline">#}
+{#                              <input class="form-check-input" type="radio" name="inlineRadioOptions"#}
+{#                                 id="ph_spm_create_produc_radio1" value="option1">#}
+{#                              <label class="form-check-label" for="ph_spm_create_produc_radio1">گزینه‌ی#}
+{#                                 اول</label>#}
+{#                           </span>#}
+{#                           <span class="form-check form-check-inline">#}
+{#                              <input class="form-check-input" type="radio" name="inlineRadioOptions"#}
+{#                                 id="ph_spm_create_produc_radio2" value="option2">#}
+{#                              <label class="form-check-label" for="ph_spm_create_produc_radio2">گزینه‌ی#}
+{#                                 دوم</label>#}
+{#                           </span>#}
+{#                        </p>#}
+{#                        <div class="clearfix"></div>#}
 
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                            <label for='step3' id="back-step3" class="back">
@@ -334,4 +318,9 @@
          </main>
          <!-- ph-seller-panel-main -->
 
+{% endblock %}
+
+{% block footer_static %}
+        <script src="{% static 'js/admin.js' %}"></script>
+        <script src="{% static 'js/add-product.js' %}"></script>
 {% endblock %}

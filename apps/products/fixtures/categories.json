@@ -1,0 +1,145 @@
+[
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "title": "سنگ",
+      "parent": null,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:36:49.784",
+      "updated_at": "2020-12-15T21:23:49.909",
+      "lft": 1,
+      "rght": 8,
+      "tree_id": 1,
+      "mptt_level": 0,
+      "attributes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+      "title": "فلز",
+      "parent": null,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:36:55.827",
+      "updated_at": "2020-12-15T21:23:57.002",
+      "lft": 1,
+      "rght": 6,
+      "tree_id": 2,
+      "mptt_level": 0,
+      "attributes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+      "title": "مرمر",
+      "parent": 1,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:37:01.594",
+      "updated_at": "2020-12-15T17:37:01.594",
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 1,
+      "mptt_level": 1,
+      "attributes": []
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 4,
+    "fields": {
+      "title": "گرانیت",
+      "parent": 1,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:37:13.989",
+      "updated_at": "2020-12-15T17:37:13.989",
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 1,
+      "mptt_level": 1,
+      "attributes": []
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 5,
+    "fields": {
+      "title": "آهن",
+      "parent": 2,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:37:26.662",
+      "updated_at": "2020-12-15T17:37:26.662",
+      "lft": 2,
+      "rght": 3,
+      "tree_id": 2,
+      "mptt_level": 1,
+      "attributes": []
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 6,
+    "fields": {
+      "title": "فولاد",
+      "parent": 2,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:37:35.234",
+      "updated_at": "2020-12-15T17:37:35.234",
+      "lft": 4,
+      "rght": 5,
+      "tree_id": 2,
+      "mptt_level": 1,
+      "attributes": []
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 7,
+    "fields": {
+      "title": "آذرین",
+      "parent": 1,
+      "is_active": true,
+      "commission": 0.0,
+      "created_at": "2020-12-15T17:44:31.297",
+      "updated_at": "2020-12-15T17:44:31.297",
+      "lft": 6,
+      "rght": 7,
+      "tree_id": 1,
+      "mptt_level": 1,
+      "attributes": []
+    }
+  }
+]

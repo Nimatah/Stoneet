@@ -1,0 +1,8 @@
+<div class="col-5 my-1">
+    <label id="{{ attribute.id }}" for="">{{ attribute.title }}</label>
+    <select class="mdb-select md-form form-control" id="{{ attribute.id }}">
+        {% for dropdown in attribute.dropdown %}
+            <option value="{{ dropdown }}" disabled selected>{{ dropdown }}</option>
+        {% endfor %}
+    </select>
+</div>
