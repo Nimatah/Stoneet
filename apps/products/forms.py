@@ -8,10 +8,6 @@ class AddProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-    ERROR_MESSAGES = {
-        'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
-    }
-
     category = forms.CharField(label="Category", required=True)
     title = forms.CharField(label="Title", required=True)
     location = forms.CharField(label="Location", required=False)
@@ -24,9 +20,7 @@ class AddProductForm(forms.ModelForm):
         exclude = ('user',)
 
     def save(self, commit=True):
-        user = super().save(commit=False)
-        user.username = self.cleaned_data["email"]
-        user.set_password(self.cleaned_data["password1"])
+        product = super().save(commit=False)
         if commit:
-            user.save()
-        return user
+            product.save()
+        return product
