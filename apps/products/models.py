@@ -139,6 +139,7 @@ class Category(MPTTModel):
         return {
             'id': self.id,
             'title': self.title,
+            'commission': f'{self.commission:.2f}%',
             'children': [c.to_dict_hierarchy() for c in self.children.all()]
         }
 

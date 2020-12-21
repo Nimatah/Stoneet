@@ -1,4 +1,6 @@
 const categories = JSON.parse($('#categories').text());
+const commission = "کمیسیون";
+
 categories.forEach(function (category) {
     $('#t-1-c').append(`<option value="${category.id}">${category.title}</option>`);
 });
@@ -12,7 +14,7 @@ $('#t-1-c').change(function () {
         return category.id.toString() === categoryId;
     });
     category.children.forEach(function (child) {
-        $('#t-2-c').append(`<option value="${child.id}">${child.title}</option>`)
+        $('#t-2-c').append(`<option value="${child.id}">${child.title} (${child.commission} ${commission})</option>`)
     })
 });
 
