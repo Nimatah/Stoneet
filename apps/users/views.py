@@ -76,3 +76,8 @@ class ListProductView(TemplateView):
 class EditProductView(TemplateView):
 
     template_name = 'users/edit_product.html'
+
+
+class ViewProductView(TemplateView):
+
+    template_name = 'users/view_product.html'

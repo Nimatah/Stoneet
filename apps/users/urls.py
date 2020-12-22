@@ -7,7 +7,8 @@ from apps.users.views import (
     UserPanelView,
     AddProductView,
     ListProductView,
-    EditProductView
+    EditProductView,
+    ViewProductView,
 )
 
 app_name = 'users'
@@ -20,4 +21,5 @@ urlpatterns = [
     path('panel/add-product/', AddProductView.as_view(), name="add_product"),
     path('panel/list-product/', ListProductView.as_view(), name="list_product"),
     path('panel/edit-product/', EditProductView.as_view(), name='edit_product'),
+    path('panel/view-product/<int:pk>', ViewProductView.as_view(), name='view_product'),
 ]
