@@ -48,11 +48,12 @@ class UserDashboardView(TemplateView):
 class AddProductView(FormView):
     form_class = AddProductForm
     template_name = 'users/add_product.html'
+    success_url = reverse_lazy('users:list_product')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = [c.to_dict_hierarchy() for c in Category.objects.get_root().prefetch_related('children')]
-        context['attributes_field'] = Attribute.objects.filter(value_type__in=['int', 'dropdown', 'string', 'float'])
+        context['attributes_field'] = Attribute.objects.filter(value_type__in=['int', 'dropdown', 'str', 'float'])
         context['attributes_image'] = Attribute.objects.filter(value_type='image')
         context['attributes_bool'] = Attribute.objects.filter(value_type='bool')
         return context
@@ -61,6 +62,10 @@ class AddProductView(FormView):
         form.user = self.request.user
         form.save()
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
 
 
 class ListProductView(TemplateView):

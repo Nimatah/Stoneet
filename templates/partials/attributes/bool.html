@@ -1,6 +1,7 @@
 <span class="form-check">
 <label class="form-check-label" for="attr-{{ attribute.id }}">
-<input type="checkbox" class="form-check-input" id="attr-{{ attribute.id }}" name="{{ attribute.id }}">
+<input type="hidden" name="attribute-{{ attribute.id }}" value="false">
+<input data-attr type="checkbox" value="true" class="form-check-input" id="attr-{{ attribute.id }}" name="attribute-{{ attribute.id }}">
     {{ attribute.title }}
 </label>
 </span>

@@ -176,6 +176,8 @@ class ProductAttribute(models.Model):
     def value(self, value):
         if self.attribute.is_valid(value):
             if self.attribute.value_type == self.attribute.TYPE_BOOL:
+                if isinstance(value, str):
+                    value = True if value == 'true' else False
                 self.value_bool = value
             elif self.attribute.value_type == self.attribute.TYPE_STR:
                 self.value_string = value

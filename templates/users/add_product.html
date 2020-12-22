@@ -1,5 +1,6 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block meta_content %}
   {{ categories|json_script:"categories" }}
@@ -10,7 +11,8 @@
 
             <div class="container">
 
-               <form action="" id="ph_create_product_form" role="form">
+               <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
+               {% csrf_token %}
 
                   <input class="ph-cp-input-check" id='step2' type='checkbox'>
                   <input class="ph-cp-input-check" id='step3' type='checkbox'>
@@ -39,7 +41,7 @@
                            </div>
                            <div class="col-5 my-1">
                               <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
-                              <select class="form-control" id="t-2-c">
+                              <select name="category" class="form-control" id="t-2-c">
                                  <option selected value="">گروه مادر را انتخاب کنید...</option>
                               </select>
                            </div>
@@ -72,7 +74,7 @@
                         </div>
                         <div class="form-group mb-5">
                            <label for="p-t">عنوان مورد نظر را وارد کنید</label>
-                           <input type="text" class="form-control" id="p-t"
+                           <input type="text" name="title" class="form-control" id="p-t"
                               placeholder="نام محصول را با حروف فارسی وارد کنید...">
                            <small class="form-text text-danger" id="t-e" hidden>لطفا نام محصول را وارد نمایید</small>
                         </div>
@@ -109,7 +111,6 @@
                         <div class="ph-cp-panel-heading">
                            <h6 class="ph-cp-panel-title">گام سوم: درج ویژگی‌های کالا:</h6>
                         </div>
-
                          {% for attribute in attributes_field %}
                              {% if not forloop.counter|divisibleby:2 %}
                                  <div class="form-row mb-5 align-items-center mb-4">
@@ -137,9 +138,8 @@
                          <div class="clearfix"></div>
 
                         <p class="mb-4">
-                           <label for="ph_spm_create_produc_description">توضیحات:</label>
-                           <textarea class="form-control" id="ph_spm_create_produc_description" rows="3"
-                              placeholder="توضیحات خود را مختصر ینویسید"></textarea>
+                           <label for="ph_spm_create_product_description">توضیحات:</label>
+                            {% render_field form.description class="form-control" id="ph_spm_create_product_description" rows="3" placeholder="توضیحات خود را مختصر ینویسید" %}
                         </p>
                         <div class="clearfix"></div>
 
@@ -149,14 +149,13 @@
                            </label>
 
                            <label for='step4' id="next-step4" class="ph-cpp-btn-next">
-                              <div class="ph-cpp-btn-n">بعدی</div>
+                              <div id="s-3-btn" class="ph-cpp-btn-n">بعدی</div>
                            </label>
 
                         </div>
                         <!-- ph-cpp-btn -->
                      </div>
                      <!-- ph-cp-panel -->
-
                   </div>
                   <!-- part3 ph-general-attributes -->
 
@@ -175,20 +174,16 @@
 
                      <div class="ph-cp-panel">
                         <div class="ph-cp-panel-heading">
-                           <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
+                           <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
                         </div>
                         <div class="form-group mb-5">
-
-
-
                            <div class="container">
-
                               <div class="row">
                                   <div class="col-lg-6 mx-auto">
 
                                       <!-- Upload image input-->
                                       <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                                          <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
+                                          <input name="image" id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
                                           <label id="upload-label" for="upload" class="font-weight-light text-muted">انتخاب کنید</label>
                                           <div class="input-group-append">
                                               <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
@@ -198,16 +193,13 @@
                                       <!-- Uploaded image area-->
                                       <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box below.</p>
                                       <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-
+                                      <button type="submit" class="btn btn-default btn-success">ثبت محصول</button>
                                   </div>
                               </div>
                           </div>
 
-
-
-
-
                         </div>
+
 
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                            <label for='step4' id="back-step4" class="back">

@@ -33,3 +33,12 @@ $('#s-2-btn').on('click', function (e) {
         $('#t-e').hide();
     }
 })
+
+$('#s-3-btn').on('click', function (e) {
+    for (let attr of $('[data-attr]')) {
+        console.log($(attr).val())
+        if (!$(attr).val()) {
+            e.preventDefault();
+        }
+    }
+});
