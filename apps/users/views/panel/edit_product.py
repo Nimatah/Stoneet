@@ -1,11 +1,12 @@
 from django.views.generic import UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.products.forms import EditProductForm
 from apps.products.models import Product
 
 
-class EditProductView(UpdateView):
+class EditProductView(UserPassesTestMixin, UpdateView):
 
     template_name = 'users/seller/edit_product.html'
     form_class = EditProductForm
@@ -25,3 +26,6 @@ class EditProductView(UpdateView):
     def form_invalid(self, form):
         print(form.errors)
         return super().form_invalid(form)
+
+    def test_func(self):
+        return self.request.user.is_authenticated

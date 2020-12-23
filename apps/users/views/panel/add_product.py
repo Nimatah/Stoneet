@@ -1,11 +1,12 @@
 from django.views.generic import FormView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.products.forms import CreateProductForm
 from apps.products.models import Attribute, Category
 
 
-class AddProductView(FormView):
+class AddProductView(UserPassesTestMixin, FormView):
     form_class = CreateProductForm
     template_name = 'users/seller/add_product.html'
     success_url = reverse_lazy('users:list_product')
@@ -26,3 +27,6 @@ class AddProductView(FormView):
     def form_invalid(self, form):
         print(form.errors)
         return super().form_invalid(form)
+
+    def test_func(self):
+        return self.request.user.is_authenticated
