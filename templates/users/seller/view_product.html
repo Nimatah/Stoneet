@@ -1,0 +1,50 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% get_media_prefix %}
+
+{% block admin_content %}
+    <main class="ph-create-product-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 offset-6">
+                    <span>کد محصول: </span>
+                    <span>{{ product.id }}</span>
+                </div>
+
+                <div class="col-6 offset-6">
+                    <span>نام محصول: </span>
+                    <span>{{ product.title }}</span>
+                </div>
+
+                <div class="col-6 offset-6">
+                    <span>توضیحات محصول: </span>
+                    <span>{{ product.description }}</span>
+                </div>
+
+                <div class="col-6 offset-6">
+                    <span>عکس محصول: </span>
+                    {% for image in product.media.all %}
+                        <img src="{% get_media_prefix %}{{ image.file }}" width="400" height="400"/>
+                    {% endfor %}
+                </div>
+                <span style="margin: 20px"></span>
+                <div class="col-4 offset-8">
+                    <span>مشخصات محصول: </span>
+                </div>
+
+                {% for product_attribute in product.attributes.all %}
+                    <div class="col-6 offset-6">
+                        <span>{{ product_attribute.attribute.title }}: </span>
+                        {% if product_attribute.attribute.value_type == "bool" %}
+                            <span>{{ product_attribute.value|yesno:"دارد,ندارد" }}</span>
+                        {% else %}
+                            <span>{{ product_attribute.value }}</span>
+                        {% endif %}
+                        <span>{{ product_attribute.attribute.unit }}</span>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

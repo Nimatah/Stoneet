@@ -1,9 +1,10 @@
 from django import forms
+from django.db import transaction
 
 from apps.products.models import Product, Category, Attribute, ProductMedia, ProductAttribute
 
 
-class AddProductForm(forms.ModelForm):
+class CreateProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -12,7 +13,7 @@ class AddProductForm(forms.ModelForm):
     title = forms.CharField(label="Title", required=True)
     attributes = forms.Field(required=False)
     description = forms.CharField(label="Description", required=True, widget=forms.Textarea)
-    image = forms.ImageField()
+    image = forms.ImageField(required=False)
     user = forms.CharField(label="User", required=False)
 
     class Meta:
@@ -55,13 +56,13 @@ class AddProductForm(forms.ModelForm):
         media.product = product
 
         if commit:
-            product.save()
-            media.save()
-            for i in self.cleaned_data['attributes']:
-                product_attribute = ProductAttribute()
-                product_attribute.product = product
-                product_attribute.attribute = i['attr']
-                product_attribute.value = i['value']
-                print(product_attribute.__dict__)
-                product_attribute.save()
+            with transaction.atomic():
+                product.save()
+                media.save()
+                for i in self.cleaned_data['attributes']:
+                    product_attribute = ProductAttribute()
+                    product_attribute.product = product
+                    product_attribute.attribute = i['attr']
+                    product_attribute.value = i['value']
+                    product_attribute.save()
         return product

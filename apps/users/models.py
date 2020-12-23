@@ -44,11 +44,15 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     TYPE_SELLER = "seller"
     TYPE_LOGISTIC = "logistic"
     TYPE_BUYER = "buyer"
+    TYPE_ADMIN = "admin"
+    TYPE_SUPER_USER = "superuser"
 
     _TYPE_CHOICES = (
         (TYPE_SELLER, "Seller",),
         (TYPE_LOGISTIC, "Logistic",),
         (TYPE_BUYER, "Buyer",),
+        (TYPE_ADMIN, "Admin",),
+        (TYPE_SUPER_USER, "Super User"),
     )
 
     LEGAL_INDIVIDUAL = "individual"

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
 
-from apps.products.models import Attribute, Category, Product, ProductAttribute
+from apps.products.models import Attribute, Category, Product, ProductAttribute, ProductMedia
 
 
 @admin.register(Attribute)
@@ -22,10 +22,14 @@ class ProductAttributeAdminInline(admin.TabularInline):
     model = ProductAttribute
 
 
+class ProductMediaAdminInline(admin.TabularInline):
+    model = ProductMedia
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'category',)
     search_fields = ('title',)
 
-    inlines = (ProductAttributeAdminInline,)
+    inlines = (ProductAttributeAdminInline, ProductMediaAdminInline)
 

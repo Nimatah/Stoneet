@@ -1,4 +1,8 @@
 <div class="col-5 col-offset-2 my-1">
     <label for="{{ attribute.id }}">{{ attribute.title }}</label>
-    <input data-attr type="text" class="form-control" id="attribute-{{ attribute.id }}" name="attribute-{{ attribute.id }}">
+    <div data-attr>
+    <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
+           name="attribute-{{ attribute.id }}" value="{{ product_attribute }}">
+    <small class="form-text text-danger" style="display: none">لطفا مقدار را وارد نمایید</small>
+    </div>
 </div>

@@ -1,0 +1,26 @@
+{% extends 'base_admin.html' %}
+
+{% block admin_content %}
+    <main class="ph-create-product-main">
+        <div class="container">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">کد</th>
+                    <th scope="col">گروه</th>
+                    <th scope="col">نام محصول</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.category.title }}</td>
+                        <td><a href="{% url 'users:edit_product' pk=product.id %}">{{ product.title }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

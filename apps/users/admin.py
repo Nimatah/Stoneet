@@ -8,6 +8,7 @@ from apps.users.forms import UserChangeForm, UserCreationForm
 class UserAdmin(auth_admin.UserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
+        ('Info', {'fields': ('use_type', 'legal_type', 'state')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'created_at')}),
     )

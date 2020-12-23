@@ -212,6 +212,7 @@ class Product(TimestampedModel):
 class ProductMedia(BaseMedia):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='media')
     file = models.FileField(upload_to='products')
+    # is_primary = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return f'{self.product} -> {self.type} | {self.file}'
