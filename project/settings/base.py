@@ -17,11 +17,11 @@ PREREQUISITE_APPS = [
     'mptt',
     'django_extensions',
     'widget_tweaks',
+    'django_filters',
 ]
 
 PROJECT_APPS = [
     'apps.core.static_app.MadanStaticfilesConfig',
-    'debug_toolbar',
     'apps.home.apps.HomeConfig',
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
@@ -118,11 +118,3 @@ NODE_MODULES_ROOT = BASE_DIR / 'node_modules'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = '/media/'
-
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_COLLAPSED': True,
-    'SHOW_TOOLBAR_CALLBACK': lambda x: True
-}

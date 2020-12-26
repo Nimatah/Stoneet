@@ -8,6 +8,7 @@ services:
       - db
     volumes:
     - /opt/madan/logs:/project/logs
+    - /opt/madan/db.sqlite3:/project/db.sqlite3
     ports:
     - 0.0.0.0:7000:8000
 

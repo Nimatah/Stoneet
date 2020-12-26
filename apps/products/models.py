@@ -24,8 +24,11 @@ class ProductManager(models.Manager):
     pass
 
 
-class VariantManager(models.Manager):
-    pass
+class ProductMediaManager(models.Manager):
+
+    # TODO: find by is_primary
+    def get_primary(self):
+        return self.first()
 
 
 class Attribute(TimestampedModel):
@@ -197,6 +200,16 @@ class ProductAttribute(models.Model):
 
 
 class Product(TimestampedModel):
+
+    STATE_PENDING = 'pending'
+    STATE_ACCEPTED = 'accepted'
+    STATE_REJECTED = 'rejected'
+    _STATE_CHOICES = (
+        (STATE_PENDING, 'Pending',),
+        (STATE_ACCEPTED, 'Accepted',),
+        (STATE_REJECTED, 'Rejected',),
+    )
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -213,6 +226,8 @@ class ProductMedia(BaseMedia):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='media')
     file = models.FileField(upload_to='products')
     # is_primary = models.BooleanField(default=False)
+
+    objects = ProductMediaManager()
 
     def __str__(self) -> str:
         return f'{self.product} -> {self.type} | {self.file}'
