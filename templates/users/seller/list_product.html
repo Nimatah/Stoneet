@@ -133,21 +133,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {%  for product in products %}
                             <tr>
                                 <td style="width: 5%">
-                                    <div class="ph-admin-table-cell">1</div>
+                                    <div class="ph-admin-table-cell">{{ forloop.counter }}</div>
                                 </td>
                                 <td style="width: 12%">
                                     <div class="ph-admin-table-cell"><img src="https://planhub.ir/wp-content/uploads/2020/05/LOGO-Alone-Space-60.png" alt=""></div>
                                 </td>
                                 <td style="width: 30%">
                                     <div class="ph-admin-table-cell">
-                                        ماده معدنی تست
-                                        <span class="ph-amdin-table-product-id">DKP-12345</span>
+                                        {{ product.id }}
+                                        <span class="ph-amdin-table-product-id">PH-{{ product.id }}</span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="ph-admin-table-cell">مواد معدنی</div>
+                                    <div class="ph-admin-table-cell">{{ product.category.title}}</div>
                                 </td>
                                 <td>
                                     <div class="ph-admin-table-cell">125,000</div>
@@ -156,17 +157,18 @@
                                     <div class="ph-admin-table-cell">1 تن در هفته</div>
                                 </td>
                                 <td>
-                                    <div class="ph-admin-table-cell"><span class="ph-admin-table-product-status">منتشر شده</span></div>
+                                    <div class="ph-admin-table-cell"><span class="ph-admin-table-product-status">{{ product.state }}</span></div>
                                 </td>
                                 <td>
                                     <div class="ph-admin-table-cell">
                                         <div class="ph-admin-table-action-btns">
-                                            <a href="#" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
+                                            <a href="{% url 'users:edit_product' pk=product.id %}" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
                                             <a href="#" class="ph-admin-table-action-btn-publish"><i class="fas fa-check"></i></a>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
