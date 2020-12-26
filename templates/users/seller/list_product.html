@@ -3,24 +3,232 @@
 {% block admin_content %}
     <main class="ph-create-product-main">
         <div class="container">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">کد</th>
-                    <th scope="col">گروه</th>
-                    <th scope="col">نام محصول</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for product in products %}
-                    <tr>
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.category.title }}</td>
-                        <td><a href="{% url 'users:edit_product' pk=product.id %}">{{ product.title }}</a></td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            <div class="ph-admin-page-container ">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                مدیریت محصولات  |   برای ویرایش و مدیریت مشخصات، گروه، تصویر محصولات و درج تنوع(گارانتی، به همراه رنگ یا سایز) از این قسمت استفاده کنید.
+            </div>
+            <div class="ph-admin-page-search-wrapper ph-white-block ph-box-shadow my-4">
+                <div class="ph-admin-page-block-header">
+                    <h3>جستجو و فیلتر</h3>
+                </div>
+                <div class="ph-admin-page-block-content">
+                    <p>جستجو در:</p>
+                    <div class="ph-admin-page-search-form">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="ph_admin_search_text" aria-describedby="Search_Text" placeholder="عبارت مورد نظرتان را وارد کنید">
+                            </div>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="ph_admin_product_group">گروه کالایی:</label>
+                                    <select class="form-control" id="ph_admin_product_group">
+                                        <option>انتخاب کنید</option>
+                                        <option>مورد اول</option>
+                                        <option>مورد دوم</option>
+                                        <option>مورد سوم</option>
+                                        <option>مورد چهارم</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="ph_admin_product_brand"> برند کالا:</label>
+                                    <select class="form-control" id="ph_admin_product_brand">
+                                        <option>انتخاب کنید</option>
+                                        <option>مورد اول</option>
+                                        <option>مورد دوم</option>
+                                        <option>مورد سوم</option>
+                                        <option>مورد چهارم</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="ph_admin_product_brand"> وضعیت تایید کالا:</label>
+                                    <select class="form-control" id="ph_admin_product_brand">
+                                        <option>انتخاب کنید</option>
+                                        <option>مورد اول</option>
+                                        <option>مورد دوم</option>
+                                        <option>مورد سوم</option>
+                                        <option>مورد چهارم</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary my-3">جستجو</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ph-admin-page-alert ph-box-shadow my-4">
+                <div class="alert alert-warning" role="alert">
+                    <i class="fas fa-info-circle"></i>
+                    محصول با وضعیت پیش نویس فقط برای شما قابل نمایش است و توسط کاربران سایت رویت نمی شود.
+                </div>
+            </div>
+            <div class="ph-admin-page-list-container ph-white-block ph-box-shadow my-4">
+                <div class="ph-admin-page-list-header">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="ph-admin-page-list-add-btn">
+                                <a href="#" class="btn btn-success">
+                                    ایجاد کالای جدید
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5">
+                            <div class="ph-admin-page-list-sort">
+                                <p>تعداد نتایج : <span>170 مورد</span></p>
+                                <div class="form-group row no-gutters">
+                                    <label for="ph_admin_page_page_no" class="col-sm-6 col-form-label col-form-label-sm">تعداد نمایش</label>
+                                    <div class="col-sm-6">
+                                        <select id="ph_admin_page_page_no" class="form-control">
+                                            <option selected>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                            <option>50</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="ph-admin-page-list-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                      <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                          <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                        </a>
+                                      </li>
+                                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                      <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                          <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="ph-admin-page-list-table">
+                    <table class="table table-bordered text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عکس</th>
+                                <th>عنوان و کد کالا</th>
+                                <th>گروه کالا</th>
+                                <th>قیمت</th>
+                                <th>ظرفیت تولید</th>
+                                <th>وضعیت</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 5%">
+                                    <div class="ph-admin-table-cell">1</div>
+                                </td>
+                                <td style="width: 12%">
+                                    <div class="ph-admin-table-cell"><img src="https://planhub.ir/wp-content/uploads/2020/05/LOGO-Alone-Space-60.png" alt=""></div>
+                                </td>
+                                <td style="width: 30%">
+                                    <div class="ph-admin-table-cell">
+                                        ماده معدنی تست
+                                        <span class="ph-amdin-table-product-id">DKP-12345</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="ph-admin-table-cell">مواد معدنی</div>
+                                </td>
+                                <td>
+                                    <div class="ph-admin-table-cell">125,000</div>
+                                </td>
+                                <td>
+                                    <div class="ph-admin-table-cell">1 تن در هفته</div>
+                                </td>
+                                <td>
+                                    <div class="ph-admin-table-cell"><span class="ph-admin-table-product-status">منتشر شده</span></div>
+                                </td>
+                                <td>
+                                    <div class="ph-admin-table-cell">
+                                        <div class="ph-admin-table-action-btns">
+                                            <a href="#" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
+                                            <a href="#" class="ph-admin-table-action-btn-publish"><i class="fas fa-check"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="ph-admin-page-list-header">
+                    <div class="row">
+                        <div class="col-6 col-md-3">
+                            <div class="ph-admin-page-list-add-btn">
+                                <a href="#" class="btn btn-success">
+                                    ایجاد کالای جدید
+                                    <i class="fas fa-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-5">
+                            <div class="ph-admin-page-list-sort">
+                                <p>تعداد نتایج : <span>170 مورد</span></p>
+                                <div class="form-group row no-gutters">
+                                    <label for="ph_admin_page_page_no" class="col-sm-6 col-form-label col-form-label-sm">تعداد نمایش</label>
+                                    <div class="col-sm-6">
+                                        <select id="ph_admin_page_page_no" class="form-control">
+                                            <option selected>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                            <option>50</option>
+                                        </select>
+                                    </div>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="ph-admin-page-list-pagination">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-end">
+                                      <li class="page-item disabled">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                          <span aria-hidden="true"><i class="fas fa-angle-right"></i></span>
+                                        </a>
+                                      </li>
+                                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">6</a></li>
+                                      <li class="page-item"><a class="page-link" href="#">7</a></li>
+                                      <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                          <span aria-hidden="true"><i class="fas fa-angle-left"></i></span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
     </main>
+
 {% endblock %}

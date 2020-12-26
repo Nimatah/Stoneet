@@ -869,6 +869,109 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 }
 
 
+/*
+=======================================================
+    PRODUCTS LIST - ADMIN PANEL
+=======================================================
+*/
 
+.ph-admin-page-container{
+    width: 100%;
+}
 
+.ph-admin-page-block-header{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
 
+.ph-admin-page-block-header h3{
+    margin: 0;
+    font-size: 18px;
+}
+
+.ph-admin-page-alert{
+    border-radius: 10px;
+}
+
+.ph-admin-page-list-sort{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 13px;
+}
+
+.ph-admin-page-list-sort p{
+    margin-bottom: 0;
+}
+
+.ph-admin-page-list-sort .form-group {
+    margin-bottom: 0;
+    align-items: center;
+    width: 50%;
+    margin-right: 20px;
+    border-right: 1px solid #333;
+    padding-right: 20px;
+}
+
+.ph-admin-page-list-sort .form-group label{
+    font-size: 13px;
+}
+
+.ph-admin-page-list-sort .form-group select{
+    width: 70px;
+}
+
+.ph-admin-page-list-table table td{
+    vertical-align: middle;
+}
+
+.ph-admin-page-list-table table td .ph-admin-table-cell{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ph-admin-page-list-table table td img{
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    background-position: 50% 50%;
+}
+
+.ph-amdin-table-product-id{
+    display: inline-flex;
+    font-size: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px auto 0;
+    padding: 5px 10px;
+    line-height: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.ph-admin-table-action-btn-edit{
+    background: #e4e4e4;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #7b7b7b;
+}
+
+.ph-admin-table-action-btn-publish{
+    background:green;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #fff;
+}
