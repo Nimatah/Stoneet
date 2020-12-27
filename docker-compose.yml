@@ -10,6 +10,9 @@ services:
     - /opt/madan/logs:/project/logs
     ports:
     - 0.0.0.0:7000:8000
+    environment:
+      - "DJANGO_DEBUG=true"
+      - "DJANGO_DATABASE_PASSWORD=Planhub@123"
 
   db:
     image: postgres:alpine
@@ -19,4 +22,6 @@ services:
     - /opt/madan/data:/var/lib/postgresql/data
     environment:
       - TZ=Asia/Tehran
+      - POSTGRES_USER=planhub
       - POSTGRES_PASSWORD=Planhub@123
+      - POSTGRES_DB=madan
