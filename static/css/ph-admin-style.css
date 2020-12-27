@@ -10,7 +10,7 @@
 @import "fonts.css";
 
 #ph_myscroll::-webkit-scrollbar{
-  width:12px;
+  width:10px;
 }
 #ph_myscroll::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0px 0px 6px rgba(13, 158, 25, 0.5);
@@ -642,11 +642,12 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
     height: auto;
     opacity: 1;
   }
-  
+
   /* Hidden Parts */
   #part2,
   #part3,
-  #part4 {
+  #part4,
+  #part5 {
     opacity: 0;
     height: 0;
     overflow: hidden;
@@ -674,6 +675,7 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
     opacity: 0;
     width: 0;
     height: 0;
+    display: none;
   }
   /* Show Step 4  & Hide Step 3 */
   #step4:checked ~ #part4 {
@@ -685,6 +687,19 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
     opacity: 0;
     width: 0;
     height: 0;
+    display: none;
+  }
+  /* Show Step 4  & Hide Step 3 */
+  #step5:checked ~ #part5 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #step5:checked ~ #part4 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
   }
   
 
@@ -727,7 +742,11 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
   top: 50%;
 }
 
-.ph-create-product-main .ph-cp-header-parts.part-1 ul.ph-cp-step-1 li, .ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li, .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li {
+.ph-create-product-main .ph-cp-header-parts.part-1 ul.ph-cp-step-1 li,
+.ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li,
+.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li{
   position: relative;
   padding: 1rem;
   background: #d4d4d4;
@@ -759,8 +778,38 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li:nth-child(2),
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(1),
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(2),
-.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3){
+.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3),
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(1),
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2),
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3),
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4),
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(1),
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2),
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3),
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4),
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(5){
   background: #198273;
+}
+
+.ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li:nth-child(2):before,
+.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(2):before,
+.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):before,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2):before,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3):before,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4):before,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2):before,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3):before,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4):before,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(5):before{
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 16px;
+  height: 4px;
+  width: 120px;
+  background: #198273;
+  margin: auto;
+  z-index: 0;
 }
 
 .ph-create-product-main .ph-cp-header-parts.part-1 ul.ph-cp-step-1 li:nth-child(1):after,
@@ -768,27 +817,21 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li:nth-child(2):after,
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(1):after,
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(2):after,
-.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):after{
+.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):after,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(1):after,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2):after,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3):after,
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4):after,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(1):after,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2):after,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3):after,
+.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4):after{
   content: "";
   position: absolute;
   right: 10px;
   top: 16px;
   height: 4px;
   width: 135px;
-  background: #198273;
-  margin: auto;
-  z-index: 0;
-}
-
-.ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li:nth-child(2):before,
-.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(2):before,
-.ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):before{
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 16px;
-  height: 4px;
-  width: 120px;
   background: #198273;
   margin: auto;
   z-index: 0;
@@ -812,6 +855,7 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 }
 
 .ph-create-product-main .ph-cpp-btn {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -845,9 +889,13 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 }
 
 .image-area {
-  border: 2px dashed rgba(255, 255, 255, 0.7);
-  padding: 1rem;
-  position: relative;
+    border: 2px dashed rgba(255, 255, 255, 0.7);
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border-radius: 1.25rem!important;
 }
 
 .image-area::before {
@@ -866,6 +914,152 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .image-area img {
   z-index: 2;
   position: relative;
+}
+
+
+
+
+
+
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.box {
+    display: block;
+    max-width: 21%;
+    width: 20%;
+    height: 150px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+    overflow: hidden;
+}
+
+.upload-options {
+  position: relative;
+  height: 30%;
+  background-color: cadetblue;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: center;
+  transition: background-color ease-in-out 150ms;
+}
+.upload-options:hover {
+  background-color: #7fb1b3;
+}
+.upload-options input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload-options label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+}
+.upload-options label::after {
+  content: "add";
+  font-family: "Material Icons";
+  position: absolute;
+  font-size: 2.5rem;
+  color: #e6e6e6;
+  top: calc(50% - 2.5rem);
+  left: calc(50% - 1.25rem);
+  z-index: 0;
+}
+.upload-options label span {
+  display: inline-block;
+  width: 50%;
+  height: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: center;
+}
+.upload-options label span:hover i.material-icons {
+  color: lightgray;
+}
+
+.js--image-preview {
+  height: 70%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-image: url("");
+  background-color: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.js--image-preview::after {
+  content: "photo_size_select_actual";
+  font-family: "Material Icons";
+  position: relative;
+  font-size: 4.5em;
+  color: #e6e6e6;
+  top: calc(50% - 3rem);
+  left: calc(50% - 2.25rem);
+  z-index: 0;
+}
+.js--image-preview.js--no-default::after {
+  display: none;
+}
+.js--image-preview:nth-child(2) {
+  background-image: url("http://bastianandre.at/giphy.gif");
+}
+
+i.material-icons {
+  transition: color 100ms ease-in-out;
+  font-size: 2.25em;
+  line-height: 55px;
+  color: white;
+  display: block;
+}
+
+.drop {
+  display: block;
+  position: absolute;
+  background: rgba(95, 158, 160, 0.2);
+  border-radius: 100%;
+  transform: scale(0);
+}
+
+.animate {
+  -webkit-animation: ripple 0.4s linear;
+          animation: ripple 0.4s linear;
+}
+
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
 }
 
 
