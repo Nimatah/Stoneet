@@ -49,28 +49,6 @@
                      <small class="form-text text-danger" id="t-2-c-e" style="display: none">لطفا گروه مورد نظر را
                         انتخاب کنید</small>
                   </div>
-                  <div class="ph-cpp-btn" role="group" aria-label="...">
-                     <label for='step2' id="next-step2" class="ph-cpp-btn-next">
-                        <div class="ph-cpp-btn-n" id="s-1-btn">بعدی</div>
-                     </label>
-                  </div>
-               </div>
-            </div>
-            <!-- #part1 ph-choose-category -->
-
-            <div id="part2" class="ph-insert-title form-group">
-               <div class="ph-cp-header-parts part-2">
-                  <ul class="ph-cp-step-2 ph-cp-progressbar">
-                     <li><span>گام اول</span><i class="fas fa-check"></i></li>
-                     <li><span>گام دوم</span><i class="fas fa-sync-alt"></i></li>
-                     <li><span>گام سوم</span><i class="fas fa-times"></i></li>
-                     <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
-                     <li><span>گام پنجم</span><i class="fas fa-times"></i></li>
-                  </ul>
-               </div>
-               <!-- ph-cp-header-parts part-2 -->
-
-               <div class="ph-cp-panel">
                   <div class="ph-cp-panel-heading">
                      <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
                   </div>
@@ -81,38 +59,8 @@
                      <small class="form-text text-danger" id="t-e" style="display: none">لطفا نام محصول را وارد
                         نمایید</small>
                   </div>
-
-                  <div class="ph-cpp-btn" role="group" aria-label="...">
-                     <label for='step2' id="back-step2" class="back">
-                        <div class="ph-cpp-btn-n" role="button">قبلی</div>
-                     </label>
-
-                     <label for='step3' id="next-step3" class="ph-cpp-btn-next">
-                        <div class="ph-cpp-btn-n" id="s-2-btn">بعدی</div>
-                     </label>
-
-                  </div>
-               </div>
-               <!-- ph-cp-panel -->
-            </div>
-            <!-- #part2 ph-insert-title -->
-
-
-            <div id="part3" class="ph-general-attributes form-group">
-               <div class="ph-cp-header-parts part-3">
-                  <ul class="ph-cp-step-3 ph-cp-progressbar">
-                     <li><span>گام اول</span><i class="fas fa-check"></i></li>
-                     <li><span>گام دوم</span><i class="fas fa-check"></i></li>
-                     <li><span>گام سوم</span><i class="fas fa-sync-alt"></i></li>
-                     <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
-                     <li><span>گام پنجم</span><i class="fas fa-times"></i></li>
-                  </ul>
-               </div>
-               <!-- ph-cp-header-parts part-3 -->
-
-               <div class="ph-cp-panel">
                   <div class="ph-cp-panel-heading">
-                     <h6 class="ph-cp-panel-title">گام سوم: درج ویژگی‌های کالا:</h6>
+                     <h6 class="ph-cp-panel-title">درج ویژگی‌های کالا:</h6>
                   </div>
                   {% for attribute in attributes_field %}
                   {% if not forloop.counter|divisibleby:2 %}
@@ -145,6 +93,112 @@
                    {% render_field form.description class="form-control" id="ph_spm_create_product_description" rows="3" placeholder="توضیحات خود را مختصر ینویسید" %}
                </div>
                <div class="clearfix"></div>
+                  <div class="ph-cpp-btn" role="group" aria-label="...">
+                     <label for='step2' id="next-step2" class="ph-cpp-btn-next">
+                        <div class="ph-cpp-btn-n" id="s-1-btn">بعدی</div>
+                     </label>
+                  </div>
+               </div>
+            </div>
+            <!-- #part1 ph-choose-category -->
+
+            <div id="part2" class="ph-insert-title form-group">
+               <div class="ph-cp-header-parts part-2">
+                  <ul class="ph-cp-step-2 ph-cp-progressbar">
+                     <li><span>گام اول</span><i class="fas fa-check"></i></li>
+                     <li><span>گام دوم</span><i class="fas fa-sync-alt"></i></li>
+                     <li><span>گام سوم</span><i class="fas fa-times"></i></li>
+                     <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
+                     <li><span>گام پنجم</span><i class="fas fa-times"></i></li>
+                  </ul>
+               </div>
+               <!-- ph-cp-header-parts part-2 -->
+
+               <div class="ph-cp-panel">
+
+            <div class="ph-cp-panel-heading">
+               <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
+            </div>
+            <div class="form-group mb-5">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-6 mx-auto">
+
+                        <!-- Upload image input-->
+                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                           <input name="image" id="upload" type="file" onchange="readURL(this);"
+                              class="form-control border-0">
+                           <label id="upload-label" for="upload" class="font-weight-light text-muted">انتخاب
+                              کنید</label>
+                           <div class="input-group-append">
+                              <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
+                                    class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                    class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                           </div>
+                        </div>
+
+                        <!-- Uploaded image area-->
+                        <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
+                           below.</p>
+                        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
+                              class="img-fluid shadow-sm mx-auto d-block"></div>
+                     </div>
+
+
+                        <div class="col-12 col-md-6 col-lg-6 mb-3">
+                           <div class="ph-spm-create-produc-img-up">
+                              <h3 class="ph-spm-create-produc-img-up-yitle">عکس محصول</h3>
+                              <div class="row">
+                                 <div class="col-6 col-md-4 imgUp">
+                                    <div class="imagePreview"></div>
+                                    <label class="btn ph-spm-create-produc-img-up-btn">
+                                       آپلود<input type="file" class="uploadFile img" value="Upload Photo"
+                                          style="width: 0px;height: 0px;overflow: hidden;">
+                                    </label>
+                                 </div>
+                                 <!-- col-6 col-md-4 -->
+                                 <i class="fa fa-plus imgAdd"></i>
+                              </div>
+                              <!-- row -->
+                           </div>
+
+
+
+                        </div>
+                        <!-- col-12 col-md-4 col-lg-3 -->
+                  </div>
+               </div>
+
+            </div>
+                  <div class="ph-cpp-btn" role="group" aria-label="...">
+                     <label for='step2' id="back-step2" class="back">
+                        <div class="ph-cpp-btn-n" role="button">قبلی</div>
+                     </label>
+
+                     <label for='step3' id="next-step3" class="ph-cpp-btn-next">
+                        <div class="ph-cpp-btn-n" id="s-2-btn">بعدی</div>
+                     </label>
+
+                  </div>
+               </div>
+               <!-- ph-cp-panel -->
+            </div>
+            <!-- #part2 ph-insert-title -->
+
+
+            <div id="part3" class="ph-general-attributes form-group">
+               <div class="ph-cp-header-parts part-3">
+                  <ul class="ph-cp-step-3 ph-cp-progressbar">
+                     <li><span>گام اول</span><i class="fas fa-check"></i></li>
+                     <li><span>گام دوم</span><i class="fas fa-check"></i></li>
+                     <li><span>گام سوم</span><i class="fas fa-sync-alt"></i></li>
+                     <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
+                     <li><span>گام پنجم</span><i class="fas fa-times"></i></li>
+                  </ul>
+               </div>
+               <!-- ph-cp-header-parts part-3 -->
+
+               <div class="ph-cp-panel">
 
                <div class="ph-cpp-btn" role="group" aria-label="...">
                   <label for='step3' id="back-step3" class="back">
@@ -176,81 +230,6 @@
          <!-- ph-cp-header-parts part-4 -->
 
          <div class="ph-cp-panel">
-            <div class="ph-cp-panel-heading">
-               <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
-            </div>
-            <div class="form-group mb-5">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-lg-6 mx-auto">
-
-                        <!-- Upload image input-->
-                        <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                           <input name="image" id="upload" type="file" onchange="readURL(this);"
-                              class="form-control border-0">
-                           <label id="upload-label" for="upload" class="font-weight-light text-muted">انتخاب
-                              کنید</label>
-                           <div class="input-group-append">
-                              <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i
-                                    class="fa fa-cloud-upload mr-2 text-muted"></i><small
-                                    class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
-                           </div>
-                        </div>
-
-                        <!-- Uploaded image area-->
-                        <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
-                           below.</p>
-                        <div class="image-area mt-4"><img id="imageResult" src="#" alt=""
-                              class="img-fluid shadow-sm mx-auto d-block"></div>
-                     </div>
-                      <div class="clearfix"></div>
-                     <div class="col-lg-12">
-
-<h1>Image-upload with preview</h1>
-<div class="wrapper">
-  <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
-      <label>
-        <input type="file" class="image-upload" accept="image/*" />
-      </label>
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
-      <label>
-        <input type="file" class="image-upload" accept="image/*" />
-      </label>
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
-      <label>
-        <input type="file" class="image-upload" accept="image/*" />
-      </label>
-    </div>
-  </div>
-
-  <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
-      <label>
-        <input type="file" class="image-upload" accept="image/*" />
-      </label>
-    </div>
-  </div>
-</div>
-
-
-                     </div>
-                  </div>
-               </div>
-
-            </div>
 
 
             <div class="ph-cpp-btn" role="group" aria-label="...">

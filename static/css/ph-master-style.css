@@ -266,10 +266,3 @@ input.form-control:focus{
 .ph-checkbox-form-group{
     display: flex;
 }
-.form-check-label{
-    margin-right: 2.25rem;
-}
-.form-check-input {
-    margin-right: -1.25rem;
-    margin-left: auto;
-}
