@@ -737,17 +737,16 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 }
 
 .ph-create-product-main .ph-cp-header-parts ul:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  height: 4px;
-  width: 95%;
-  background: #d4d4d4;
-  z-index: -1;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 50%;
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 10px;
+    width: 95%;
+    background: #d4d4d4;
+    z-index: -1;
+    margin: auto;
+    left: 0;
+    top: 44%;
 }
 
 .ph-create-product-main .ph-cp-header-parts.part-1 ul.ph-cp-step-1 li,
@@ -760,8 +759,8 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
   background: #d4d4d4;
   border-radius: 50%;
   color: #fff;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -790,13 +789,8 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(1),
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2),
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3),
-.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4),
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(1),
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2),
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3),
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4),
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(5){
-  background: #198273;
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4){
+  background: #28a745;
 }
 
 .ph-create-product-main .ph-cp-header-parts.part-2 ul.ph-cp-step-2 li:nth-child(2):before,
@@ -804,20 +798,16 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):before,
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2):before,
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3):before,
-.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4):before,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2):before,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3):before,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4):before,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(5):before{
-  content: "";
-  position: absolute;
-  left: 10px;
-  top: 16px;
-  height: 4px;
-  width: 120px;
-  background: #198273;
-  margin: auto;
-  z-index: 0;
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4):before{
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    height: 10px;
+    width: 430%;
+    background: #28a745;
+    margin: auto;
+    z-index: 0;
 }
 
 .ph-create-product-main .ph-cp-header-parts.part-1 ul.ph-cp-step-1 li:nth-child(1):after,
@@ -828,29 +818,24 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cp-header-parts.part-3 ul.ph-cp-step-3 li:nth-child(3):after,
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(1):after,
 .ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(2):after,
-.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3):after,
-.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(4):after,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(1):after,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(2):after,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(3):after,
-.ph-create-product-main .ph-cp-header-parts.part-5 ul.ph-cp-step-5 li:nth-child(4):after{
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: 16px;
-  height: 4px;
-  width: 135px;
-  background: #198273;
-  margin: auto;
-  z-index: 0;
+.ph-create-product-main .ph-cp-header-parts.part-4 ul.ph-cp-step-4 li:nth-child(3):after{
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    height: 10px;
+    width: 440%;
+    background: #28a745;
+    margin: auto;
+    z-index: 0;
 }
 
 .ph-create-product-main .ph-cp-panel {
-  padding: 2rem 3rem;
+    padding: 1rem 2rem;
 }
 
 .ph-create-product-main .ph-cp-panel-heading {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #777;
 }
 
@@ -871,12 +856,87 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
 .ph-create-product-main .ph-cpp-btn .ph-cpp-btn-n {
   padding: .5rem 2rem;
   color: #fff;
-  background: #198273;
-  border-radius: 10px;
+  background: #28a745;
+  border-radius: .25rem;
   cursor: pointer;
   margin: 0 2rem;
 }
 
+.ph-create-product-main .part-4-item-detail{
+  display: flex;
+  justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.ph-create-product-main .part-4-item-detail span{
+  padding: .2rem;
+}
+
+.ph-create-product-main .part-4-item-detail span:nth-last-child(1){
+    padding: .2rem .4rem;
+    background: #28a745;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.ph-create-product-main .part-4-item-detail-desc{
+    margin-bottom: 1rem;
+}
+
+.ph-create-product-main .part-4-item-detail-desc span:nth-last-child(1){
+    color: #28a745;
+}
+
+.ph-create-product-main .part-4-item-detail-check {
+  display: flex;
+  flex-direction: column;
+    margin-bottom: 1rem;
+}
+.ph-create-product-main .part-4-item-detail-check i{
+    color: #28a745;
+}
+
+.ph-create-product-main .part-4-rules{
+    margin-right: 1.195rem;
+    margin-bottom: 1rem;
+    font-size: .89rem;
+    margin-top: 2rem;
+}
+
+.ph-create-product-main .part-4-item-detail-images span{
+  margin-bottom: .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.ph-create-product-main .part-4-item-detail-images .p4idi-thumb,
+.ph-create-product-main .part-4-item-detail-images .p4idi-attr{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.ph-create-product-main .part-4-item-detail-images .p4idi-thumb img,
+.ph-create-product-main .part-4-item-detail-images .p4idi-attr img{
+    min-height: 150px;
+    height: auto;
+    border-radius: 10px;
+    background: #28a745;
+}
+
+.ph-create-product-main .part-4-item-detail-images .p4idi-gallery .p4idi-g-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ph-create-product-main .part-4-item-detail-images .p4idi-gallery .p4idi-g-wrapper img{
+    margin: 0 .2rem;
+    min-height: 100px;
+    height: auto;
+    border-radius: 7px;
+    background: #28a745;
+}
 
 
 /*
@@ -884,122 +944,182 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
         SELLER PANEL   .ph-upload-detail-product
 =============================================================
 */
-
-#upload {
-  opacity: 0;
+.ph-spm-create-produc-img-up-yitle{
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #777;
+}
+.file-upload {
+    background-color: #ffffff;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
 }
 
-#upload-label {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-}
-
-.image-area {
-    border: 2px dashed rgba(255, 255, 255, 0.7);
-    position: relative;
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    margin-bottom: 3rem;
-    border-radius: 1.25rem!important;
-}
-
-.image-area::before {
-  content: 'Uploaded image result';
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
   color: #fff;
-  font-weight: bold;
+  background: #1FB264;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
   text-transform: uppercase;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8rem;
-  z-index: 1;
+  font-weight: 700;
 }
 
-.image-area img {
-  z-index: 2;
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  border-radius: 10px;
+  border: 4px dashed #1FB264;
+}
+.file-upload-content.show{
+  display: flex;
 }
 
-
-
-
-.ph-spm-create-produc-img-up {
-    min-height: 475px;
-    padding: 2rem 1rem;
-    position: sticky;
-    top: 10%;
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
 }
 
-.imagePreview {
+.image-upload-wrap {
+    border: 4px dashed #1FB264;
+    position: relative;
+    border-radius: 10px;
     width: 100%;
-    height: 130px;
-    background-position: center center;
-    background: url(images/upload-img.png);
-    background-color: #fff;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: inline-block;
-    border: 6px solid #efefef;
-    border-radius: 50%;
-    margin: 1rem 0 0;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: inset 0 0 11px -1px #000000;
-}
-
-.ph-spm-create-produc-img-up-btn {
+    height: 100%;
     display: flex;
     justify-content: center;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
-    background: #62a3bb;
-    border-color: #62a3bb;
-    color: #fff;
-    margin-top: .69rem;
+    align-items: center;
 }
 
-.imgUp {
-    margin-bottom: 15px;
+.image-dropping,
+.image-upload-wrap:hover {
+  background-color: #1FB264;
+  border: 4px dashed #ffffff;
 }
 
-.del {
+.image-title-wrap {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    top: 15px;
-    right: 15px;
+    bottom: -5%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-radius: 0 6px 0 20px;
-    background-color: #ef4b4b;
-    color: #fff;
-    box-shadow: inset 0 0 10px -1px #000000, -5px 6px 8px -5px #797979;
-    text-align: center;
-    margin-top: 0px;
-    cursor: pointer;
-    font-size: 15px;
+    align-items: center;
 }
 
-.imgAdd {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #28a745;
+.drag-text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: #15824B;
+}
+
+.drag-text i{
+    font-size: 6rem;
+    color: #28a745;
+    margin-top: 2rem;
+}
+.file-upload-image {
+    width: 90%;
+    height: 90%;
+    margin: 5% auto;
+    box-shadow: -1px 1px 6px 1px #333;
+    border-radius: 10px;
+}
+
+.remove-image {
+    width: 35px;
+    height: 35px;
     color: #fff;
-    margin: 2.5rem;
-    box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    line-height: 30px;
-    cursor: pointer;
-    font-size: 2rem;
+    background: #cd4535;
+    border: none;
+    border-radius: 50%;
+    transition: all .2s ease;
+    text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.25rem;
+    box-shadow: 0 0 6px 1px #333;
+}
+
+.remove-image:hover {
+  background: #c13b2a;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all .2s ease;
+}
+
+
+
+
+
+
+.file-upload.fu-g1,
+.file-upload.fu-g2,
+.file-upload.fu-g3,
+.file-upload.fu-g4{
+    width: 45%;
+    height: 188px;
+    float: right;
+    margin: .5rem;
+}
+
+.file-upload.fu-g1 .drag-text h3,
+.file-upload.fu-g2 .drag-text h3,
+.file-upload.fu-g3 .drag-text h3,
+.file-upload.fu-g4 .drag-text h3{
+    font-size: .75rem;
+}
+
+.file-upload.fu-g1 .drag-text i,
+.file-upload.fu-g2 .drag-text i,
+.file-upload.fu-g3 .drag-text i,
+.file-upload.fu-g4 .drag-text i{
+    font-size: 3rem;
 }
 
 

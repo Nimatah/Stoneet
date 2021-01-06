@@ -47,27 +47,45 @@ $('#s-3-btn').on('click', function (e) {
 
 
 
-$(".imgAdd").click(function () {
-    $(this).closest(".row").find('.imgAdd').before('<div class="col-6 col-md-4 imgUp"><div class="imagePreview"></div><label class="btn ph-spm-create-produc-img-up-btn">آپلود<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
-});
-$(document).on("click", "i.del", function () {
-    $(this).parent().remove();
-});
-$(function () {
-    $(document).on("change", ".uploadFile", function () {
-        var uploadFile = $(this);
-        var files = !!this.files ? this.files : [];
-        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
 
-        if (/^image/.test(files[0].type)) { // only image file
-           var reader = new FileReader(); // instance of the FileReader
-           reader.readAsDataURL(files[0]); // read the local file
 
-           reader.onloadend = function () { // set image data as background of div
-              //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-              uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-           }
-        }
 
-    });
+
+
+
+
+
+
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
 });

@@ -259,9 +259,9 @@ input::placeholder { /* Most modern browsers support this now. */
 input.form-control:focus{
     color: #495057;
     background-color: #fff;
-    border-color: #4cff72;
+    border-color: #80bdff;
     outline: 0;
-    box-shadow: 0 0 6px -1px rgb(0,255,90,25%);
+    box-shadow: 0 0 6px -1px rgba(0,123,255,.25);
 }
 .ph-checkbox-form-group{
     display: flex;
