@@ -1,13 +1,13 @@
 import os
 import sys
 
-_local: str = os.getenv("DJANGO_LOCAL", True)
-_debug: str = os.getenv("DJANGO_DEBUG", True)
+_debug: bool = os.getenv("DJANGO_DEBUG", True)
+_staging: bool = os.getenv("DJANGO_STAGING", False)
 
-if _local:
-    from .base import *
-elif _debug:
+if _staging:
     from .staging import *
+elif _debug:
+    from .base import *
 else:
     from .production import *
 
