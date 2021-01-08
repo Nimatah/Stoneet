@@ -103,27 +103,39 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     def get_short_name(self) -> str:
         return self.full_name
 
+    @property
     def is_buyer(self) -> bool:
         return self.use_type == self.TYPE_BUYER
 
+    @property
     def is_seller(self) -> bool:
         return self.use_type == self.TYPE_SELLER
 
+    @property
     def is_logistic(self) -> bool:
         return self.use_type == self.TYPE_LOGISTIC
 
+    @property
+    def is_admin(self) -> bool:
+        return self.use_type == self.TYPE_ADMIN
+
+    @property
     def is_individual(self) -> bool:
         return self.legal_type == self.LEGAL_INDIVIDUAL
 
+    @property
     def is_legal(self) -> bool:
         return self.legal_type == self.LEGAL_LEGAL
 
+    @property
     def is_pending(self) -> bool:
         return self.state == self.STATE_PENDING
 
+    @property
     def is_accepted(self) -> bool:
         return self.state == self.STATE_ACCEPTED
 
+    @property
     def is_rejected(self) -> bool:
         return self.state == self.STATE_REJECTED
 

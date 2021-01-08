@@ -16,4 +16,4 @@ class ViewProductView(UserPassesTestMixin, DetailView):
         return queryset.filter(user=self.request.user)
 
     def test_func(self):
-        return self.request.user.is_authenticated
+        return (self.request.user.is_authenticated and self.request.user.is_seller) or self.request.user.is_superuser

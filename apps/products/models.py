@@ -1,5 +1,6 @@
-from django.db import models
+from typing import Union
 
+from django.db import models
 from mptt.models import MPTTModel, TreeManager, TreeForeignKey
 
 from apps.core.models import TimestampedModel, BaseMedia
@@ -31,7 +32,14 @@ class ProductMediaManager(models.Manager):
         return self.first()
 
 
+class ProductHistoryManager(models.Manager):
+    pass
+
+
 class Attribute(TimestampedModel):
+
+    ID_PRICE = 1
+
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
     TYPE_INT = 'int'
@@ -221,6 +229,12 @@ class Product(TimestampedModel):
     def __str__(self) -> str:
         return self.title
 
+    def get_price(self) -> Union[ProductAttribute, None]:
+        try:
+            return self.attributes.get(attribute_id=Attribute.ID_PRICE)
+        except ProductAttribute.DoesNotExist:
+            return None
+
 
 class ProductMedia(BaseMedia):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='media')
@@ -231,3 +245,19 @@ class ProductMedia(BaseMedia):
 
     def __str__(self) -> str:
         return f'{self.product} -> {self.type} | {self.file}'
+
+
+class ProductHistory(models.Model):
+
+    MESSAGE_CREATE = 'محصول با شماره %s توسط کاربر ایجاد شد.'
+    MESSAGE_UPDATE_STATE = 'وضعیت محصول از %s به %s تغییر پیدا کرد'
+    MESSAGE_UPDATE = 'ا %s از %s به %s تغییر پیدا کرد'
+
+    timestamp = models.DateTimeField(auto_now_add=True)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+    message = models.TextField()
+
+    objects = ProductHistoryManager()
+
+    def __str__(self) -> str:
+        return f'{self.product.title}'

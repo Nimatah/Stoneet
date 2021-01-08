@@ -17,10 +17,10 @@ class ListProductView(UserPassesTestMixin, ListView):
         queryset = ProductFilter(self.request.GET, queryset=queryset).qs
         return queryset
 
-    def test_func(self):
-        return self.request.user.is_authenticated
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = [c.to_dict_hierarchy() for c in Category.objects.get_root().prefetch_related('children')]
         return context
+
+    def test_func(self):
+        return (self.request.user.is_authenticated and self.request.user.is_seller) or self.request.user.is_superuser

@@ -5,7 +5,7 @@
 {% block admin_content %}
     <main class="ph-create-product-main">
         <div class="container">
-        <form action="{% url 'users:edit_product' pk=product.id %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'users:seller_edit_product' pk=product.id %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
                 <div class="col-6 offset-6">

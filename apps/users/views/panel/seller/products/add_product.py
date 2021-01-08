@@ -9,7 +9,7 @@ from apps.products.models import Attribute, Category
 class AddProductView(UserPassesTestMixin, FormView):
     form_class = CreateProductForm
     template_name = 'users/seller/add_product.html'
-    success_url = reverse_lazy('users:list_product')
+    success_url = reverse_lazy('users:seller_list_product')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -29,4 +29,4 @@ class AddProductView(UserPassesTestMixin, FormView):
         return super().form_invalid(form)
 
     def test_func(self):
-        return self.request.user.is_authenticated
+        return (self.request.user.is_authenticated and self.request.user.is_seller) or self.request.user.is_superuser

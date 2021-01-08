@@ -13,7 +13,7 @@ class EditProductView(UserPassesTestMixin, UpdateView):
     pk_url_kwarg = 'pk'
     context_object_name = 'product'
     model = Product
-    success_url = reverse_lazy('users:list_product')
+    success_url = reverse_lazy('users:seller_list_product')
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -28,4 +28,4 @@ class EditProductView(UserPassesTestMixin, UpdateView):
         return super().form_invalid(form)
 
     def test_func(self):
-        return self.request.user.is_authenticated
+        return (self.request.user.is_authenticated and self.request.user.is_seller) or self.request.user.is_superuser
