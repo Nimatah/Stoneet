@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-5 my-1">
                             <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
-                            <select name="category" class="form-control" id="t-2-c">
+                            <select name="category" class="form-control custom-select" id="t-2-c">
                                 <option selected value="">گروه مادر را انتخاب کنید...</option>
                             </select>
                         </div>
@@ -63,7 +63,7 @@
                     </div>
                     {% for attribute in attributes_field %}
                     {% if not forloop.counter|divisibleby:2 %}
-                    <div class="form-row mb-2 align-items-center">
+                    <div class="form-row align-items-center">
                         {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
                         {% endif %}
 
@@ -78,7 +78,7 @@
                 {% endfor %}
 
 
-                <div class="mb-4">
+                <div class="mb-3 mt-4">
                     <div class="ph-checkbox-form-group">
                         {% for attribute in attributes_bool %}
                         {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
@@ -89,8 +89,7 @@
 
                 <div class="mb-4">
                     <label for="ph_spm_create_product_description">توضیحات:</label>
-                    {% render_field form.description class="form-control" id="ph_spm_create_product_description"
-                    rows="3" placeholder="توضیحات خود را مختصر ینویسید" %}
+                    <textarea class="form-control" id="ph_spm_create_product_description" placeholder="توضیحات خود را مختصر ینویسید" rows="3"></textarea>
                 </div>
                 <div class="clearfix"></div>
                 <div class="ph-cpp-btn" role="group" aria-label="...">
@@ -129,7 +128,7 @@
                                             <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                 accept="image/*" />
                                             <div class="drag-text">
-                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
@@ -192,7 +191,7 @@
                                             <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                 accept="image/*" />
                                             <div class="drag-text">
-                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
@@ -214,7 +213,7 @@
                                                 <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                     accept="image/*" />
                                                 <div class="drag-text">
-                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                     <i class="fas fa-cloud-upload-alt"></i>
                                                 </div>
                                             </div>
@@ -231,7 +230,7 @@
                                                 <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                     accept="image/*" />
                                                 <div class="drag-text">
-                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                     <i class="fas fa-cloud-upload-alt"></i>
                                                 </div>
                                             </div>
@@ -248,7 +247,7 @@
                                                 <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                     accept="image/*" />
                                                 <div class="drag-text">
-                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                     <i class="fas fa-cloud-upload-alt"></i>
                                                 </div>
                                             </div>
@@ -265,7 +264,7 @@
                                             <input class="file-upload-input" type='file' onchange="readURL(this);"
                                                 accept="image/*" />
                                             <div class="drag-text">
-                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
@@ -360,19 +359,19 @@
                                         </div>
                                         <div class="col-12 part-4-item-detail-check">
                                             <div class="p4idc">
-                                            <i class="fas fa-check-square"></i>
-                                            <span>امکان ارسال نمونه</span>
+                                                <i class="fas fa-check"></i>
+                                                <span>امکان ارسال نمونه</span>
                                             </div>
                                             <div class="p4idc">
-                                                <i class="fas fa-check-square"></i>
+                                                <i class="fas fa-check"></i>
                                                 <span>وجود جاده مناسب و قابل عبور جهت ماشین های باربری</span>
                                             </div>
                                             <div class="p4idc">
-                                                <i class="fas fa-check-square"></i>
+                                                <i class="fas fa-times"></i>
                                                 <span>وجود تجهیزات بارگیری در محل دپو</span>
                                             </div>
                                             <div class="p4idc">
-                                                <i class="fas fa-check-square"></i>
+                                                <i class="fas fa-times"></i>
                                                 <span>قرارداد ضروری</span>
                                             </div>
                                         </div>
@@ -404,7 +403,7 @@
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="rules_check">
                                         <label class="form-check-label" style="margin-right: .25rem;" for="rules_check">با
-                                            قوانین و مقررات موافقم.</label>
+                                            <a class="rules-link" href="#">قوانین و مقررات</a> موافقم</label>
                                     </div>
                                 </div>
 

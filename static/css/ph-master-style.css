@@ -247,6 +247,22 @@ input::placeholder { /* Most modern browsers support this now. */
     padding-bottom: 9rem;
 }
 
+.ph-fs-_5{
+    font-size: .5rem;
+}
+
+.ph-fs-_85{
+    font-size: .85rem;
+}
+
+.ph-fs-1_25{
+    font-size: 1.25rem;
+}
+
+.ph-fs-1_5{
+    font-size: 1.5rem;
+}
+
 .background-image {
     background-position: center center;
     background-size: cover;
