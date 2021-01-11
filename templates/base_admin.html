@@ -3,6 +3,7 @@
 {% load static %}
 
 {% block header_static %}
+    <link rel="stylesheet" href="{% static 'magnific-popup/dist/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'css/ph-admin-style.css' %}">
 {% endblock %}
 
@@ -61,12 +62,11 @@
             </nav>
             <!-- ph-sp-navbar -->
          </aside>
+      </div>
         {% block admin_content %}
         {% endblock %}
 {% endblock %}
 
 {% block footer_static %}
-
-    <script src="{% static 'js/admin.js' %}"></script>
 
 {% endblock %}
