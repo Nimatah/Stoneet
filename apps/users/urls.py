@@ -18,6 +18,8 @@ urlpatterns = [
     path('panel/seller/products/<int:pk>', seller.ViewProductView.as_view(), name='seller_view_product'),
     path('panel/seller/orders/', seller.ListOrderView.as_view(), name='seller_list_order'),
     path('panel/seller/orders/<int:pk>', seller.ViewOrderView.as_view(), name='seller_view_order'),
+    path('panel/seller/invoices/', seller.ListInvoiceView.as_view(), name='seller_list_invoice'),
+    path('panel/seller/invoices/1', seller.ViewInvoiceView.as_view(), name='seller_view_invoice'),
 
     path('panel/buyer/dashboard/', buyer.BuyerDashboardView.as_view(), name='buyer_dashboard'),
     path('panel/buyer/orders/', buyer.ListOrderView.as_view(), name='buyer_list_order'),
