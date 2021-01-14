@@ -5,40 +5,44 @@
     <link rel="stylesheet" href="{% static 'css/ph-admin-style.css' %}">
 {% endblock %}
 {% block content %}
+    <body>
+    <div class="page-holder scroll-bar" id="ph_myscroll">
+        <div class="ph-new-login">
+            <aside class="ph-registration-panel-sidebar">
+                <div class="ph-new-login-sidebar">
+                    <header class="ph-nls-header">
+                        <a href="" class="ph-nls-logo">
+                            <img src="{% static 'images/logo.png' %}" alt="header-Logo">
+                        </a>
+                        <h1 class="ph-nls-header-title">ثبت نام</h1>
+                    </header>
+                    <ul id="progressbar">
+                        <li class="progressbar-item step active" id="progressbar_item_info">
+                            <h6 class="ph-reg-steps-title">۱. ثبت نام</h6>
+                            <p class="ph-reg-steps-description">اطلاعات شخصی فروشنده، اطلاعات تجاری، اطلاعات تماس</p>
+                        </li>
+                        <li class="progressbar-item step" id="progressbar_item_info">
+                            <h6 class="ph-reg-steps-title">۲. اطلاعات فروشنده</h6>
+                            <p class="ph-reg-steps-description">اطلاعات شخصی فروشنده، اطلاعات تجاری، اطلاعات تماس</p>
+                        </li>
+                        <li class="progressbar-item step" id="progressbar_item_upload">
+                            <h6 class="ph-reg-steps-title">۳. بارگذاری مدارک</h6>
+                            <p class="ph-reg-steps-description">اطلاعات مربوط به مالیات بر ارزش افزوده، تصویر مدارک شخصی
+                                و
+                                تجاری</p>
+                        </li>
+                        <li class="progressbar-item step" id="progressbar_item_end">
+                            <h6 class="ph-reg-steps-title">۴. اتمام ثبت نام</h6>
+                            <p class="ph-reg-steps-description">به جمع فروشندگان دیجی‌کالا خوش آمدید.</p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
 
-      <div class="ph-new-login">
-         <aside class="ph-registration-panel-sidebar">
-            <div class="ph-new-login-sidebar">
-               <header class="ph-nls-header">
-                  <a href="" class="ph-nls-logo">
-                     <img src="{% static 'images/logo.png' %}" alt="header-Logo">
-                  </a>
-                  <h1 class="ph-nls-header-title">ثبت نام</h1>
-               </header>
-               <ul id="progressbar">
-                  <li class="progressbar-item step active" id="progressbar_item_info">
-                     <h6 class="ph-reg-steps-title">۱. ثبت نام</h6>
-                     <p class="ph-reg-steps-description">اطلاعات شخصی فروشنده، اطلاعات تجاری، اطلاعات تماس</p>
-                  </li>
-                  <li class="progressbar-item step" id="progressbar_item_info">
-                     <h6 class="ph-reg-steps-title">۲. اطلاعات فروشنده</h6>
-                     <p class="ph-reg-steps-description">اطلاعات شخصی فروشنده، اطلاعات تجاری، اطلاعات تماس</p>
-                  </li>
-                  <li class="progressbar-item step" id="progressbar_item_upload">
-                     <h6 class="ph-reg-steps-title">۳. بارگذاری مدارک</h6>
-                     <p class="ph-reg-steps-description">اطلاعات مربوط به مالیات بر ارزش افزوده، تصویر مدارک شخصی و
-                        تجاری</p>
-                  </li>
-                  <li class="progressbar-item step" id="progressbar_item_end">
-                     <h6 class="ph-reg-steps-title">۴. اتمام ثبت نام</h6>
-                     <p class="ph-reg-steps-description">به جمع فروشندگان دیجی‌کالا خوش آمدید.</p>
-                  </li>
-               </ul>
-            </div>
-         </aside>
-
-    {% block auth_content %}
-    {% endblock %}
+            {% block auth_content %}
+            {% endblock %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer_static %}

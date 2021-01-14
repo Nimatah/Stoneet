@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block header_static %}
@@ -8,63 +7,69 @@
 {% endblock %}
 
 {% block content %}
+    <body>
+    <div class="page-holder scroll-bar" id="ph_myscroll">
+        <div class="ph-seller-panel">
+            <aside class="ph-seller-panel-sidebar">
+                <nav class="ph-sp-navbar navbar navbar-expand-lg">
+                    <a class="ph-navbar-logo" href="{% url 'home:index' %}">
+                        <img class="ph-sp-logo" src="{% static 'images/logo.png' %}" alt="header-Logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="ph-sp-collapse collapse navbar-collapse" id="navbarCollapse">
 
-      <div class="ph-seller-panel">
-         <aside class="ph-seller-panel-sidebar">
-            <nav class="ph-sp-navbar navbar navbar-expand-lg">
-               <a class="ph-navbar-logo" href="{% url 'home:index' %}">
-                     <img class="ph-sp-logo" src="{% static 'images/logo.png' %}" alt="header-Logo">
-               </a>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="fas fa-bars"></i>
-               </button>
-               <div class="ph-sp-collapse collapse navbar-collapse" id="navbarCollapse">
-
-                  <ul class="ph-sp-navbar-nav navbar-nav sidenav" id="navAccordion">
-                     <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users:seller_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:seller_add_product' %}">ساخت محصول</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:seller_list_product' %}">مشاهده محصولات</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'users:seller_list_order' %}">مشاهده سفارشات</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse"
-                           data-target="#collapseSubItems4" aria-controls="collapseSubItems4" aria-expanded="false">صورتحساب ها</a>
-                        <ul class="nav-second-level collapse" id="collapseSubItems4" data-parent="#navAccordion">
-                           <li class="nav-item">
-                              <a class="nav-link" href="{% url 'users:seller_list_invoice' %}">
-                                 <span class="nav-link-text">لیست صورتحساب ها</span>
-                              </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="{% url 'users:seller_view_invoice' %}">
-                                 <span class="nav-link-text">مشاهده جزئیات صورتحساب(تست)</span>
-                              </a>
-                           </li>
-                           <li class="nav-item">
-                              <a class="nav-link" href="#">
-                                 <span class="nav-link-text">Item 4.2</span>
-                              </a>
-                           </li>
+                        <ul class="ph-sp-navbar-nav navbar-nav sidenav" id="navAccordion">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'users:seller_dashboard' %}">داشبورد<span
+                                        class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:seller_add_product' %}">ساخت محصول</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:seller_list_product' %}">مشاهده محصولات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:seller_list_order' %}">مشاهده سفارشات</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-collapse" href="#" id="hasSubItems" data-toggle="collapse"
+                                   data-target="#collapseSubItems4" aria-controls="collapseSubItems4"
+                                   aria-expanded="false">صورتحساب ها</a>
+                                <ul class="nav-second-level collapse" id="collapseSubItems4"
+                                    data-parent="#navAccordion">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'users:seller_list_invoice' %}">
+                                            <span class="nav-link-text">لیست صورتحساب ها</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'users:seller_view_invoice' %}">
+                                            <span class="nav-link-text">مشاهده جزئیات صورتحساب(تست)</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">
+                                            <span class="nav-link-text">Item 4.2</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
-                     </li>
-                  </ul>
-                  <!-- ph-sp-navbar-nav -->
-               </div>
-               <!-- ph-sp-collapse -->
-            </nav>
-            <!-- ph-sp-navbar -->
-         </aside>
-      </div>
+                        <!-- ph-sp-navbar-nav -->
+                    </div>
+                    <!-- ph-sp-collapse -->
+                </nav>
+                <!-- ph-sp-navbar -->
+            </aside>
+        </div>
         {% block admin_content %}
         {% endblock %}
+    </div>
+    </body>
 {% endblock %}
 
 {% block footer_static %}

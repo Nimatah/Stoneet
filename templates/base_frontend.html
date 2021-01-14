@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header_static %}
+    <link rel="stylesheet" href="{% static 'owl.carousel/dist/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'owl.carousel/dist/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ph-frontend-style.css' %}">
+{% endblock %}
+{% block content %}
+    <header class="ph-main-header">
+        <div class="container">
+            <div class="ph-main-menu">
+                <nav class="navbar navbar-expand-lg">
+                    <a class="navbar-brand" href="#">Stoneet</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                            aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="main_nav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">خانه</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="products_nav" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    محصولات
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="products_nav">
+                                    <a class="dropdown-item" href="#">خام</a>
+                                    <a class="dropdown-item" href="#">فراوری شده</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">درباره ما</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">تماس با ما</a>
+                            </li>
+                        </ul>
+                    </div><!-- .collapse -->
+                    <div class="ph-header-login">
+                        <a href="{% url '' %}" class="ph-seller-panel-btn"><i class="fas fa-industry"></i> پنل فروشندگان</a>
+                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل لجستیک</a>
+                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل خریدار</a>
+                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل ادمین</a>
+                    </div><!-- .ph-header-login -->
+                </nav><!-- .navbar -->
+            </div><!-- .ph-main-menu -->
+        </div><!-- .container -->
+    </header>
+    {% block frontend_content %}
+
+    {% endblock %}
+{% endblock %}
+{% block footer %}
+    <div class="ph-footer">
+        <div class="ph-top-footer-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="ph-footer-widget">
+                            <div class="ph-footer-widget-heading">
+                                <h5>دسترسی سریع</h5>
+                            </div><!-- .ph-footer-widget-heading -->
+                            <div class="ph-footer-menu">
+                                <ul>
+                                    <li><a href="#">خانه</a></li>
+                                    <li><a href="#">محصولات</a></li>
+                                    <li><a href="#">درباره ما</a></li>
+                                    <li><a href="#">تماس با ما</a></li>
+                                </ul>
+                            </div><!-- .ph-footer-menu -->
+                        </div><!-- .ph-footer-widget -->
+                    </div><!-- .col-md-3 -->
+                    <div class="col-12 col-md-3">
+                        <div class="ph-footer-widget">
+                            <div class="ph-footer-widget-heading">
+                                <h5>دسترسی کاربران</h5>
+                            </div><!-- .ph-footer-widget-heading -->
+                            <div class="ph-footer-menu">
+                                <ul>
+                                    <li><a href="#">پنل فروشندگان</a></li>
+                                    <li><a href="#">پنل لجستیک</a></li>
+                                    <li><a href="#">پنل خریدار</a></li>
+                                    <li><a href="#">تماس با ما</a></li>
+                                </ul>
+                            </div><!-- .ph-footer-menu -->
+                        </div><!-- .ph-footer-widget -->
+                    </div><!-- .col-md-3 -->
+                    <div class="col-12 col-md-3">
+                        <div class="ph-footer-widget">
+                            <div class="ph-footer-widget-heading">
+                                <h5>شرایط استفاده از سایت</h5>
+                            </div><!-- .ph-footer-widget-heading -->
+                            <div class="ph-footer-menu">
+                                <ul>
+                                    <li><a href="#">قوانین و مقررات</a></li>
+                                    <li><a href="#">قوانین ثبت نام فروشنده</a></li>
+                                    <li><a href="#">قوانین ثبت نام حمل و نقل</a></li>
+                                    <li><a href="#">حریم خصوصی</a></li>
+                                </ul>
+                            </div><!-- .ph-footer-menu -->
+                        </div><!-- .ph-footer-widget -->
+                    </div><!-- .col-md-3 -->
+                    <div class="col-12 col-md-3">
+                        <div class="ph-footer-widget">
+                            <div class="ph-footer-widget-heading">
+                                <h5>با ما در ارتباط باشید</h5>
+                            </div><!-- .ph-footer-widget-heading -->
+                            <div class="ph-footer-contact">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-phone"></i> تلفن: 09123456789</a></li>
+                                    <li><a href="#"><i class="fas fa-phone"></i> پشتیبانی فنی: 09128764354</a></li>
+                                    <li><a href="#"><i class="fas fa-envelope"></i> پست الکترونیک: info@stoneet.ir</a>
+                                    </li>
+                                    <li><a href="#"><i class="fab fa-whatsapp"></i> واتساپ: 09124567899</a></li>
+                                </ul>
+                            </div><!-- .ph-footer-contact -->
+                        </div><!-- .ph-footer-widget -->
+                    </div><!-- .col-md-3 -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div><!-- .ph-top-footer-wrapper -->
+        <div class="ph-bottom-footer-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="ph-footer-copyright">
+                            <p>تمامی حقوق مادی و معنوی این سایت برای استونیت محفوظ است.</p>
+                        </div><!-- .ph-footer-copyright -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="ph-footer-design">
+                            <p>طراحی و توسعه : <a href="https://planhub.ir">PlanHUB</a></p>
+                        </div><!-- .ph-footer-design -->
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+            </div><!-- .container -->
+        </div><!-- .ph-bottom-footer-wrapper -->
+    </div><!-- .ph-footer -->
+{% endblock %}
+{% block footer_static %}
+    <script src="{% static 'owl.carousel/dist/owl.carousel.min.js' %}"></script>
+{% endblock %}

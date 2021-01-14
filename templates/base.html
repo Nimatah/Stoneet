@@ -17,14 +17,17 @@
     {% endblock %}
 </head>
 <body>
-   <div class="page-holder scroll-bar" id="ph_myscroll">
-        {% block content %}
-        {% endblock %}
-    </div>
-</div>
+{% block content %}
+
+{% endblock %}
+
 <footer>
+    {% block footer %}
+    {% endblock %}
+
     <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
     {% block footer_static %}
     {% endblock %}
 </footer>
