@@ -1,0 +1,33 @@
+<li class="nav-item active">
+    <a class="nav-link" href="{% url 'users:buyer_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:buyer_list_order' %}">سفارش ها</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:buyer_view_order' %}">جزئیات سفارش‌(تست)</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link nav-link-collapse" href="#" id="buyer-invoice" data-toggle="collapse"
+       data-target="#collapse-buyer-invoice" aria-controls="collapseSubItems4" aria-expanded="false">فاکتور ها</a>
+    <ul class="nav-second-level collapse" id="collapse-buyer-invoice" data-parent="#buyer-invoice">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:buyer_list_invoice' %}">
+                <span class="nav-link-text">صورتحساب</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:buyer_view_invoice' %}">
+                <span class="nav-link-text">جزئیات صورتحساب(تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:buyer_list_receipt' %}">
+                <span class="nav-link-text">سررسید پرداخت</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:seller_list_order' %}">پروفایل</a>
+</li>

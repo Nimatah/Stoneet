@@ -27,6 +27,7 @@ PROJECT_APPS = [
     'apps.products.apps.ProductsConfig',
     'apps.orders.apps.OrdersConfig',
     'apps.invoices.apps.InvoicesConfig',
+    'apps.auction.apps.AuctionConfig',
 ]
 
 INSTALLED_APPS = PREREQUISITE_APPS + PROJECT_APPS

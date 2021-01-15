@@ -39,6 +39,7 @@ class ProductHistoryManager(models.Manager):
 class Attribute(TimestampedModel):
 
     ID_PRICE = 1
+    ID_ANALYZE = 2
 
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -54,14 +55,6 @@ class Attribute(TimestampedModel):
         (TYPE_FLOAT, 'Float',),
         (TYPE_IMAGE, 'Image',),
         (TYPE_DROPDOWN, 'Dropdown',),
-    )
-
-    PRODUCT_TYPE_CONSTANT = "Product"
-    PRODUCT_TYPE_VARIANT = "Variant"
-
-    _PRODUCT_TYPE = (
-        (PRODUCT_TYPE_CONSTANT, "Product",),
-        (PRODUCT_TYPE_VARIANT, "Variant",),
     )
 
     title = models.CharField(max_length=255)
@@ -150,7 +143,7 @@ class Category(MPTTModel):
         return {
             'id': self.id,
             'title': self.title,
-            'commission': f'{self.commission:.2f}%',
+            'commission': f'{self.commission:.2f}%' if self.parent is None else f'{self.parent.commission:.2f}%',
             'children': [c.to_dict_hierarchy() for c in self.children.all()]
         }
 
@@ -239,7 +232,7 @@ class Product(TimestampedModel):
 class ProductMedia(BaseMedia):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='media')
     file = models.FileField(upload_to='products')
-    # is_primary = models.BooleanField(default=False)
+    is_primary = models.BooleanField(default=False)
 
     objects = ProductMediaManager()
 

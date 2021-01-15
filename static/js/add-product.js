@@ -1,6 +1,7 @@
 const categories = JSON.parse($('#categories').text());
 const commission = "کمیسیون";
 
+
 categories.forEach(function (category) {
     $('#t-1-c').append(`<option value="${category.id}">${category.title}</option>`);
 });
@@ -23,18 +24,14 @@ $('#s-1-btn').on('click', function (e) {
         e.preventDefault();
         $('#t-2-c-e').show();
     }
-})
 
-$('#s-2-btn').on('click', function (e) {
     if (!$('#p-t').val()) {
         e.preventDefault();
         $('#t-e').show();
     } else {
         $('#t-e').hide();
     }
-})
 
-$('#s-3-btn').on('click', function (e) {
     for (let attr of $('[data-attr]')) {
         if (!$(attr).find('[data-attr-value]').val()) {
             e.preventDefault();
@@ -43,37 +40,46 @@ $('#s-3-btn').on('click', function (e) {
             $(attr).find('small').hide();
         }
     }
+})
+
+$('#s-2-btn').on('click', function (e) {
+
+})
+
+$('#s-3-btn').on('click', function (e) {
+
 });
 
 
 function readURL(input, id) {
-  if (input.files && input.files[0]) {
+    if (input.files && input.files[0]) {
 
-    var reader = new FileReader();
+        var reader = new FileReader();
 
-    reader.onload = function(e) {
-      $(`#image-upload-wrap-${id}`).hide();
+        reader.onload = function (e) {
+            $(`#image-upload-wrap-${id}`).hide();
 
-      $(`#file-upload-image-${id}`).attr('src', e.target.result);
-      $(`#file-upload-content-${id}`).show();
+            $(`#file-upload-image-${id}`).attr('src', e.target.result);
+            $(`#file-upload-content-${id}`).show();
 
-    };
+        };
 
-    reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(input.files[0]);
 
-  } else {
-    removeUpload();
-  }
+    } else {
+        removeUpload();
+    }
 }
 
 function removeUpload(id) {
-  $(`#file-upload-input-${id}`).replaceWith($(`#file-upload-input-${id}`).clone());
-  $(`#file-upload-content-${id}`).hide();
-  $(`#image-upload-wrap-${id}`).show();
+    $(`#file-upload-input-${id}`).replaceWith($(`#file-upload-input-${id}`).clone());
+    $(`#file-upload-content-${id}`).hide();
+    $(`#image-upload-wrap-${id}`).show();
 }
+
 $(`#image-upload-wrap-${id}`).bind('dragover', function () {
-		$(`#image-upload-wrap-${id}`).addClass('image-dropping');
-	});
-	$(`#image-upload-wrap-${id}`).bind('dragleave', function () {
-		$('#image-upload-wrap').removeClass('image-dropping');
+    $(`#image-upload-wrap-${id}`).addClass('image-dropping');
+});
+$(`#image-upload-wrap-${id}`).bind('dragleave', function () {
+    $('#image-upload-wrap').removeClass('image-dropping');
 });

@@ -7,4 +7,4 @@ class AdminDashboardView(UserPassesTestMixin, TemplateView):
     template_name = 'users/admin/dashboard.html'
 
     def test_func(self):
-        return (self.request.user.is_authenticated and self.request.user.is_admin) or self.request.user.is_superuser
+        return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)

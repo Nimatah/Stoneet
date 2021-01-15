@@ -40,10 +40,17 @@
                         </ul>
                     </div><!-- .collapse -->
                     <div class="ph-header-login">
-                        <a href="{% url '' %}" class="ph-seller-panel-btn"><i class="fas fa-industry"></i> پنل فروشندگان</a>
-                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل لجستیک</a>
-                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل خریدار</a>
-                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i> پنل ادمین</a>
+                        <a href="{% url 'users:seller_dashboard' %}" class="ph-seller-panel-btn"><i class="fas fa-industry"></i>پنل فروشندگان</a>
+                        <a href="{% url 'users:logistic_dashboard' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل لجستیک</a>
+                        <a href="{% url 'users:buyer_dashboard' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل خریدار</a>
+                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل ادمین</a>
+                        {% if not user.is_authenticated %}
+                            <a href="{% url 'users:login' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>ورود</a>
+                        {% else %}
+                            <a href="{% url 'users:logout' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>خروج</a>
+                            <span class="text-light">{{ user.username }}</span>
+                        {% endif %}
+
                     </div><!-- .ph-header-login -->
                 </nav><!-- .navbar -->
             </div><!-- .ph-main-menu -->

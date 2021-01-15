@@ -16,4 +16,4 @@ class ViewInvoiceView(UserPassesTestMixin, TemplateView):
     #     return queryset.filter(user=self.request.user)
 
     def test_func(self):
-        return (self.request.user.is_authenticated and self.request.user.is_seller) or self.request.user.is_superuser
+        return self.request.user.is_authenticated and (self.request.user.is_seller or self.request.user.is_superuser)

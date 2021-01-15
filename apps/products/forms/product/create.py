@@ -1,7 +1,16 @@
+from typing import List
+
 from django import forms
 from django.db import transaction
 
-from apps.products.models import Product, Category, Attribute, ProductMedia, ProductAttribute
+from apps.products.models import (
+    Product,
+    Category,
+    Attribute,
+    ProductMedia,
+    ProductAttribute,
+    AttributeMedia,
+)
 
 
 class CreateProductForm(forms.ModelForm):
@@ -11,14 +20,20 @@ class CreateProductForm(forms.ModelForm):
 
     category = forms.CharField(label="Category", required=True)
     title = forms.CharField(label="Title", required=True)
+    description = forms.CharField(label="Description", required=False, widget=forms.Textarea)
     attributes = forms.Field(required=False)
-    description = forms.CharField(label="Description", required=True, widget=forms.Textarea)
-    image = forms.ImageField(required=False)
+    analyze = forms.ImageField(required=True)
+    primary_image = forms.ImageField(required=True)
+    image1 = forms.ImageField(required=False)
+    image2 = forms.ImageField(required=False)
+    image3 = forms.ImageField(required=False)
+    image4 = forms.ImageField(required=False)
     user = forms.CharField(label="User", required=False)
 
     class Meta:
         model = Product
-        fields = ('category', 'title', 'attributes', 'description', 'image',)
+        fields = ('category', 'title', 'attributes', 'description',
+                  'primary_image', 'image1', 'image2', 'image3', 'image4',)
         exclude = ('user', 'attributes',)
 
     def clean(self):
@@ -43,22 +58,22 @@ class CreateProductForm(forms.ModelForm):
             raise forms.ValidationError("گروه پیدا نشد")
 
     def save(self, commit=True):
-        print(self.cleaned_data)
+
+        analyze = Attribute.objects.get(pk=Attribute.ID_ANALYZE)
+
         product = Product()
         product.category = self.cleaned_data['category']
         product.title = self.cleaned_data['title']
         product.description = self.cleaned_data['description']
         product.user = self.user
 
-        media = ProductMedia()
-        media.type = ProductMedia.TYPE_IMAGE
-        media.file = self.cleaned_data['image']
-        media.product = product
+        images = self.handle_product_images(product)
 
         if commit:
             with transaction.atomic():
                 product.save()
-                media.save()
+                for image in images:
+                    image.save()
                 for i in self.cleaned_data['attributes']:
                     product_attribute = ProductAttribute()
                     product_attribute.product = product
@@ -66,3 +81,17 @@ class CreateProductForm(forms.ModelForm):
                     product_attribute.value = i['value']
                     product_attribute.save()
         return product
+
+    def handle_product_images(self, product: Product) -> List[ProductMedia]:
+        images: List[ProductMedia] = []
+        for k, v in self.cleaned_data.items():
+            if not k.startswith('image'):
+                continue
+            image = ProductMedia()
+            image.type = ProductMedia.TYPE_IMAGE
+            image.file = self.cleaned_data['']
+            image.product = product
+            if k == 'primary_image':
+                image.is_primary = True
+            images.append(image)
+        return images
