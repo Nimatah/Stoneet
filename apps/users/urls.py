@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('panel/dashboard/', auth.LoginRedirectView.as_view(), name='redirect'),
 
-    path('panel/superuser-dashboard/', seller.SellerDashboardView.as_view(), name="seller_dashboard"),
+    path('panel/superuser-dashboard/', seller.SellerDashboardView.as_view(), name="superuser_dashboard"),
 
     path('panel/seller-dashboard/', seller.SellerDashboardView.as_view(), name="seller_dashboard"),
     path('panel/new-product/', seller.AddProductView.as_view(), name="seller_add_product"),

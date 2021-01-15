@@ -22,4 +22,4 @@ class LoginView(BaseLoginView):
 class LoginRedirectView(View):
 
     def get(self, request, *args, **kwargs):
-        return HttpResponseRedirect(f'{reverse("home:index")}users/panel/{self.request.user.use_type}/dashboard/')
+        return HttpResponseRedirect(f'{reverse("home:index")}users/panel/{self.request.user.use_type}-dashboard/')
