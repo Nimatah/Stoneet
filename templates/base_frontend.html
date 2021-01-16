@@ -11,13 +11,14 @@
         <div class="container">
             <div class="ph-main-menu">
                 <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="#">Stoneet</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                    <div class="row w-100">
+                        <div class="col-8">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                             aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="main_nav">
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav">
                             <li class="nav-item active">
                                 <a class="nav-link" href="#">خانه</a>
                             </li>
@@ -39,19 +40,37 @@
                             </li>
                         </ul>
                     </div><!-- .collapse -->
-                    <div class="ph-header-login">
-                        <a href="{% url 'users:seller_dashboard' %}" class="ph-seller-panel-btn"><i class="fas fa-industry"></i>پنل فروشندگان</a>
-                        <a href="{% url 'users:logistic_dashboard' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل لجستیک</a>
-                        <a href="{% url 'users:buyer_dashboard' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل خریدار</a>
-                        <a href="#" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>پنل ادمین</a>
-                        {% if not user.is_authenticated %}
-                            <a href="{% url 'users:login' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>ورود</a>
-                        {% else %}
-                            <a href="{% url 'users:logout' %}" class="ph-logestic-panel-btn"><i class="fas fa-shipping-fast"></i>خروج</a>
-                            <span class="text-light">{{ user.username }}</span>
-                        {% endif %}
-
-                    </div><!-- .ph-header-login -->
+                        </div>
+                        <div class="col-2">
+                            <div class="ph-header-login">
+                                {% if not user.is_authenticated %}
+                                    <a href="{% url 'users:login' %}" class="ph-logestic-panel-btn">ورود</a>
+                                {% else %}
+                                    <div class="ph-header-docs ml-3">
+                                        <a href="" data-toggle="tooltip" data-placement="bottom" title="قرارداهای فعال">
+                                            <span class="ph-user-docs-no">3</span>
+                                            <i class="far fa-file-alt"></i>
+                                        </a>
+                                    </div>
+                                    <div class="ph-header-user-logged-in">
+                                        <i class="fas fa-user"></i>
+                                        <span class="text-light mr-1">{{ user.username }}</span>
+                                        <div class="ph-header-user-drop-down-menu">
+                                            <ul>
+                                                <li><a href="#">پنل کاربری</a></li>
+                                                <li><a href="{% url 'users:logout' %}">خروج</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </div><!-- .ph-header-login -->
+                        </div>
+                        <div class="col-2">
+                            <div class="ph-header-logo">
+                                <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
                 </nav><!-- .navbar -->
             </div><!-- .ph-main-menu -->
         </div><!-- .container -->
@@ -87,10 +106,10 @@
                             </div><!-- .ph-footer-widget-heading -->
                             <div class="ph-footer-menu">
                                 <ul>
-                                    <li><a href="#">پنل فروشندگان</a></li>
-                                    <li><a href="#">پنل لجستیک</a></li>
-                                    <li><a href="#">پنل خریدار</a></li>
-                                    <li><a href="#">تماس با ما</a></li>
+                                    <li><a href="{% url 'users:seller_dashboard' %}">پنل فروشندگان</a></li>
+                                    <li><a href="{% url 'users:logistic_dashboard' %}">پنل لجستیک</a></li>
+                                    <li><a href="{% url 'users:buyer_dashboard' %}">پنل خریدار</a></li>
+                                    <li><a href="{% url 'users:login' %}">پنل ادمین</a></li>
                                 </ul>
                             </div><!-- .ph-footer-menu -->
                         </div><!-- .ph-footer-widget -->
@@ -149,4 +168,5 @@
 {% endblock %}
 {% block footer_static %}
     <script src="{% static 'owl.carousel/dist/owl.carousel.min.js' %}"></script>
+
 {% endblock %}

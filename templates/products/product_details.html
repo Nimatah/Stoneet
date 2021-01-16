@@ -1,0 +1,227 @@
+{% extends 'base_frontend.html' %}
+{% load static %}
+
+{% block title %}
+به معدن خوش آمدید
+{% endblock %}
+
+{% block frontend_content %}
+    <div class="ph-page-wrapper ph-single-product">
+        <main class="ph-main-content">
+            <div class="ph-content-entry">
+                <div class="ph-single-product-container">
+                    <div class="container">
+                        <div class="ph-single-product-top-wrapper">
+                            <div class="row">
+                                <div class="col-12 col-md-5">
+                                    <div class="ph-single-product-image-wrapper">
+                                        <div class="ph-single-product-main-image">
+                                            <a class="image-popup-vertical-fit" href="{% static 'images/products/1.jpg' %}" title="نام محصول">
+                                                <img class="ph-border-radius" src="{% static 'images/products/1.jpg' %}">
+                                            </a>
+                                        </div><!-- .ph-single-product-main-image -->
+                                        <div class="ph-single-product-gallery popup-gallery">
+                                            <a href="{% static 'images/products/1.jpg' %}" title="نام محصول 1">
+                                                <img class="ph-border-radius-small" src="{% static 'images/products/1.jpg' %}">
+                                            </a>
+                                            <a href="{% static 'images/products/2.jpg' %}" title="نام محصول 2">
+                                                <img class="ph-border-radius-small" src="{% static 'images/products/2.jpg' %}">
+                                            </a>
+                                            <a href="{% static 'images/products/3.jpg' %}" title="نام محصول 3">
+                                                <img class="ph-border-radius-small" src="{% static 'images/products/3.jpg' %}">
+                                            </a>
+                                            <a href="{% static 'images/products/4.jpg' %}" title="نام محصول 4">
+                                                <img class="ph-border-radius-small" src="{% static 'images/products/4.jpg' %}">
+                                            </a>
+                                        </div><!-- .ph-single-product-gallery -->
+                                    </div><!-- .ph-single-product-image-wrapper -->
+                                </div><!-- .col-md-5 -->
+                                <div class="col-12 col-md-7">
+                                    <div class="ph-single-product-details-wrapper">
+                                        <h1 class="ph-single-product-title">اکسید آهن</h1>
+                                        <hr>
+                                        <div class="ph-single-product-base-price my-3">
+                                            <label class="ph-single-product-label" for="product_base_price">قیمت: </label>
+                                            <h3 id="product_base_price" class="ph-single-product-price"><span>140.000</span> <span>تومان</span> <span class="ph-product-small-text">به ازای هر</span><span class="ph-product-small-text">تن</span></h3>
+                                        </div><!-- .ph-single-product-base-price -->
+                                        <!--
+                                        <div class="ph-single-product-excerpt my-3">
+                                            <p>
+                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+                                            </p>
+                                        </div> -->
+                                        <div class="ph-single-product-atts-summary">
+                                            <ul>
+                                                <li>
+                                                    <label>نوع:</label>
+                                                    <span>فراوری شده</span>
+                                                </li>
+                                                <li>
+                                                    <label>دسته بندی:</label>
+                                                    <a href="#">آهک</a>
+                                                </li>
+                                                <li>
+                                                    <label>استان :</label>
+                                                    <a href="#">خراسان</a>
+                                                </li>
+                                                <li>
+                                                    <label>نوع بسته بندی :</label>
+                                                    <span>کیسه 25 کیلو گرمی</span>
+                                                </li>
+                                                <li>
+                                                    <label>خلوص عیار :</label>
+                                                    <span>%92-90</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="ph-single-product-details-bottom">
+                                            <div class="ph-single-product-calculator my-3">
+                                                <p>برای محاسبه قیمت نهایی، مقدار مورد نیاز را وارد نمایید:</p>
+                                                <div class="ph-single-product-quantity mb-3">
+                                                    <input type="number" value="1">
+                                                    <span>تن</span>
+                                                </div><!-- .ph-single-product-quantity -->
+                                                <div class="ph-single-product-final-price">
+                                                    <label class="ph-single-product-label" for="product_final_price">قیمت نهایی: </label>
+                                                    <h3 id="product_final_price"><span>760.000</span> <span>تومان</span></h3>
+                                                </div><!-- .ph-single-product-final-price -->
+                                            </div><!-- .ph-single-product-calculator -->
+                                            <div class="ph-single-product-cta my-3">
+                                                <a href="#" class="ph-submit-order-btn ph-border-radius"><i class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
+                                                <a href="#" class="ph-need-sample-btn ph-border-radius"><i class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                            </div><!-- .ph-single-product-cta -->
+                                        </div><!-- .ph-single-product-details-bottom -->
+                                    </div><!-- .ph-single-product-details-wrapper -->
+                                </div><!-- .col-md-7 -->
+                            </div><!-- .row -->
+                        </div><!-- .ph-single-product-top-wrapper -->
+                        <div class="ph-single-product-specification ph-border-radius my-4">
+                            <div class="row">
+                                <div class="col-12 col-md-5">
+                                    <div class="ph-single-product-specification-table">
+                                        <h3>مشخصات محصول</h3>
+                                        <ul>
+                                            <li>
+                                                <label>نوع:</label>
+                                                <span>فراوری شده</span>
+                                            </li>
+                                            <li>
+                                                <label>دسته بندی:</label>
+                                                <a href="#">آهک</a>
+                                            </li>
+                                            <li>
+                                                <label>استان :</label>
+                                                <a href="#">خراسان</a>
+                                            </li>
+                                            <li>
+                                                <label>نوع بسته بندی :</label>
+                                                <span>کیسه 25 کیلو گرمی</span>
+                                            </li>
+                                            <li>
+                                                <label>خلوص عیار :</label>
+                                                <span>%92-90</span>
+                                            </li>
+                                            <li>
+                                                <label>نام صنعتی :</label>
+                                                <span>آهک | Lime</span>
+                                            </li>
+                                            <li>
+                                                <label>فرمول شیمیایی :</label>
+                                                <span>Ca(OH)2</span>
+                                            </li>
+                                            <li>
+                                                <label>گرید :</label>
+                                                <span>زنده | هیدراته | صنعتی | ساختمانی | پخته | کوبشی</span>
+                                            </li>
+                                            <li>
+                                                <label>نام های دیگر :</label>
+                                                <span>Calcium hydroxide | کلسیم هیدروکسید</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="ph-single-product-analyze-image">
+                                        <a class="image-popup-fit-width" href="{% static 'images/product_spec/analyz.jpeg' %}" title="نام محصول">
+                                            <img src="{% static 'images/product_spec/analyz.jpeg' %}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ph-single-product-process-container my-4">
+                            <img src="{% static 'images/process.jpg' %}" class="ph-border-radius" alt="">
+                        </div>
+                    </div><!-- .container -->
+                </div><!-- .ph-single-product-container -->
+            </div><!-- .ph-content-entry -->
+        </main><!-- .ph-main-content -->
+    </div><!-- .ph-page-wrapper -->
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script>
+    $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+
+            $('.image-popup-vertical-fit').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                mainClass: 'mfp-img-mobile',
+                image: {
+                    verticalFit: true
+                }
+
+            });
+
+            $('.image-popup-fit-width').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                image: {
+                    verticalFit: false
+                }
+            });
+
+            $('.image-popup-no-margins').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                closeBtnInside: false,
+                fixedContentPos: true,
+                mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                image: {
+                    verticalFit: true
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300 // don't foget to change the duration also in CSS
+                }
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.popup-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                tLoading: 'در حال بارگداری #%curr%...',
+                mainClass: 'mfp-img-mobile',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+
+                }
+            });
+        });
+    </script>
+{% endblock %}

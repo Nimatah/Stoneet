@@ -1,9 +1,23 @@
 /*
 =======================================================
-    HomePage
+    Generic
 =======================================================
 */
 @import "fonts.css";
+
+.ph-border-radius{
+    border-radius: 0 25px 0 25px;
+}
+
+.ph-border-radius-small{
+    border-radius: 0 10px 0 10px;
+}
+
+/*
+=======================================================
+    Header
+=======================================================
+*/
 
 .ph-main-header{
     position: fixed;
@@ -21,6 +35,73 @@ body.home .ph-main-header{
 
 body.home .ph-main-header.sticky{
     background: rgba(0,0,0,1);
+}
+
+.ph-header-login{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ph-header-login i{
+    color: #fff;
+    font-size: 20px;
+}
+
+.ph-header-docs a{
+    position: relative;
+}
+
+.ph-user-docs-no{
+    position: absolute;
+    color: #fff;
+    background: red;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    right: -10px;
+    top: -10px;
+    font-size: 11px;
+}
+
+.ph-header-user-logged-in{
+    cursor: pointer;
+    position: relative;
+}
+
+.ph-header-user-drop-down-menu{
+    display: none;
+    position: absolute;
+    width: 130px;
+    background: #000;
+    transition: all 300ms ease-in-out;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+}
+
+.ph-header-user-logged-in:hover .ph-header-user-drop-down-menu{
+    display: block;
+}
+
+.ph-header-user-drop-down-menu ul{
+    margin: 0;
+}
+
+.ph-header-user-drop-down-menu li a{
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-bottom: 1px solid;
+    width: 100%;
+    display: block;
+}
+
+.ph-header-user-drop-down-menu li:last-child a{
+    border-bottom: none;
 }
 
 .navbar-brand{
@@ -81,6 +162,11 @@ body.home .ph-main-header.sticky{
     margin: 0 3px;
     background: #fff;
     color: #333 !important;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
 }
 
 
@@ -129,17 +215,25 @@ body.home .ph-main-header.sticky{
     display: flex;
 }
 
-.ph-home-search-box form input[type=text]{
-    width: 80%;
-    padding: 10px 20px;
+.ph-home-search-box form input.ph-search-location-field{
+    width: 30%;
+    padding: 15px 20px;
+    border-radius: 0 25px 0 0;
+}
+
+.ph-home-search-box form input.ph-search-query-field{
+    width: 50%;
+    padding: 15px 20px;
+    border-radius: 0;
 }
 
 .ph-home-search-box form button{
     width: 20%;
-    padding: 10px 20px;
-    background: #377DBF;
+    padding: 15px 20px;
+    background: #00A693;
     border: 0;
     color: #fff;
+    border-radius: 0 0 0 25px;
 }
 
 .ph-home-category-box-wrapper{
@@ -210,13 +304,15 @@ body.home .ph-main-header.sticky{
 .ph-home-heading h3{
     display: inline-flex;
     position: relative;
+    background: #F2D428;
+    padding: 10px 30px;
 }
 
 .ph-home-heading h3:before{
     content: '';
     width: 50px;
     height: 2px;
-    background: #333;
+    background: #F2D428;
     position: absolute;
     right: -60px;
     top: 48%;
@@ -226,10 +322,15 @@ body.home .ph-main-header.sticky{
     content: '';
     width: 50px;
     height: 2px;
-    background: #333;
+    background: #F2D428;
     position: absolute;
     left: -60px;
     top: 48%;
+}
+
+.ph-home-latest-slider{
+    background: #EEEEEE;
+    padding: 40px 0;
 }
 
 .ph-home-product-title{
@@ -266,12 +367,135 @@ body.home .ph-main-header.sticky{
 
 /*
 =======================================================
+    Product Single Page
+=======================================================
+*/
+
+.ph-page-wrapper{
+    padding: 100px 0 40px;
+    position: relative;
+}
+
+.ph-page-wrapper.ph-home-page{
+    padding: 0 0 40px;
+}
+
+.ph-single-product-gallery{
+    display: flex;
+    margin: 20px 0;
+}
+
+.ph-single-product-gallery a{
+    display: inline-flex;
+    margin: 0 5px;
+    width: 103px;
+    height: 103px;
+}
+
+.ph-single-product-gallery a:first-child{
+    margin-right: 0;
+}
+
+.ph-single-product-gallery a:last-child{
+    margin-left: 0;
+}
+
+.ph-single-product-base-price,
+.ph-single-product-final-price{
+    display: flex;
+    align-items: center;
+}
+
+.ph-single-product-details-wrapper{
+    height: 100%;
+    position: relative;
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 0 25px 0 25px;
+}
+
+.ph-single-product-details-bottom{
+    position: absolute;
+    bottom: 0;
+}
+
+.ph-single-product-label{
+    font-size: 20px;
+    margin-left: 10px;
+    color: #618BB4;
+    font-weight: 600;
+}
+
+.ph-single-product-atts-summary label{
+    font-weight: 600;
+}
+
+.ph-product-small-text{
+    font-size: 14px;
+}
+
+.ph-single-product-calculator p{
+    font-weight: 600;
+}
+
+.ph-single-product-quantity input{
+    width: 100px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.ph-single-product-quantity span{
+    font-size: 16px;
+}
+
+.ph-submit-order-btn{
+    background: #00A693;
+    color: #fff;
+    padding: 15px 30px;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.ph-submit-order-btn:hover{
+    background: #618BB4;
+    color: #fff;
+}
+
+.ph-need-sample-btn{
+    background: #F1BF7D;
+    color: #fff;
+    padding: 15px 30px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.ph-need-sample-btn:hover{
+    background: #F2D428;
+    color: #fff;
+}
+
+.ph-single-product-specification{
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #ccc;
+}
+
+.ph-single-product-specification-table label{
+    font-weight: 600;
+}
+
+/*
+=======================================================
     Footer
 =======================================================
 */
 
 .ph-top-footer-wrapper{
-    background: #6D97CD;
+    background: #618BB4;
     padding: 40px 0;
 }
 

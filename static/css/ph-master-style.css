@@ -35,7 +35,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 * {
     margin: 0;
     padding: 0;
-    border: 0;
     box-sizing: border-box;
 }
 
@@ -45,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     line-height: 1;
-    font: 13px/24px IRANSans;
+    font: 14px/28px IRANSans;
     direction: rtl;
     background: #ffffff;
     text-align: right;
