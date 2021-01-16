@@ -848,10 +848,15 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-create-product-main .ph-cp-panel {
-    padding: 1rem 2rem;
+    padding: 2rem;
     background: #F0E2A8;
     border-radius: 10px;
     box-shadow: 0 0 7px -1px rgba(0,0,0,.5);
+}
+.form-text.text-danger{
+    padding-right: 1rem;
+    font-size: 0.65rem;
+    width: 100%;
 }
 
 .ph-create-product-main .ph-cp-panel-heading {
@@ -1177,6 +1182,10 @@ a.nav-link[aria-expanded="true"]:after {
     width: 100%;
 }
 
+.ph-admin-page-intro-text{
+    font-size: .75rem;
+}
+
 .ph-admin-page-block-header{
     border-bottom: 1px solid #ccc;
     margin-bottom: 20px;
@@ -1185,7 +1194,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-admin-page-block-header h3{
     margin: 0;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .ph-admin-page-container button, .ph-admin-page-container a.btn{
@@ -1194,6 +1203,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-admin-page-alert{
     border-radius: 10px;
+    font-size: .75rem;
 }
 
 .ph-admin-page-list-sort{
@@ -1277,6 +1287,61 @@ a.nav-link[aria-expanded="true"]:after {
     margin: 0 3px;
     color: #fff;
 }
+
+
+/*
+=============================================================
+        SELLER PANEL   MAIN .ph-invoice
+=============================================================
+*/
+
+.ph-invoice {
+    width: 85%;
+    position: relative;
+    margin-right: auto;
+    padding: 2rem 3rem 2rem;
+    min-height: 100vh;
+}
+.ph-ip-w-heading{}
+.ph-ip-w-heading .ph-ip-w-title{
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #E8CA93;
+    border-radius: 10px;
+}
+.ph-ip-w-heading .ph-ip-w-title span{
+    font-size: 1.01rem;
+    color: #00A693;
+    padding-left: .5rem;
+}
+.ph-ip-w-list .ph-ip-wl-header{
+    display: flex;
+    justify-content: space-between;
+  align-items: center;
+}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right{
+    display: flex;
+    justify-content: center;
+}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .ph-ip-wlr-pagination{
+    display: flex;
+    align-items: center;
+}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .ph-ip-wlr-pagination ul{
+  margin: 0;
+}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .ph-ip-wlr-views{
+    display: flex;
+  align-items: center;
+}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .ph-ip-wlr-views select{}
+.ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .ph-ip-wlr-views span{
+    display: flex;
+    min-width: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /*=======================================================================================================================
 /*=======================================================================================================================
