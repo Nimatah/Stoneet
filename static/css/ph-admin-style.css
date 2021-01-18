@@ -501,6 +501,10 @@ body{
   box-shadow: -2px 0 12px 3px #999;
   z-index: 99999;
 }
+aside.pos-rel{
+  height: 100vh;
+  overflow-y: auto;
+}
 
 .ph-sp-navbar {
   display: flex;
@@ -1394,6 +1398,76 @@ a.nav-link[aria-expanded="true"]:after {
     border: 1px solid #00A693;
 }
 
+/*
+=============================================================
+        SELLER PANEL   MAIN .ph-invoice-details
+=============================================================
+*/
+
+.ph-invoice-details{
+    width: 85%;
+    position: relative;
+    margin-right: auto;
+    padding: 2rem 3rem 2rem;
+    min-height: 100vh;
+}
+.ph-idp-w-heading .ph-idp-w-title{
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #E8CA93;
+    border-radius: 10px;
+}
+.ph-idp-w-heading .ph-idp-w-title span{
+    font-size: 1.01rem;
+    color: #00A693;
+    padding-left: .5rem;
+}
+
+.ph-idp-w-list {
+    background: #E8CA93;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.ph-idp-wlh-date{
+    display: flex;
+    padding: 1rem;
+}
+.ph-idp-wlh-date .title{
+    color: #00A693;
+    margin-left: 1rem;
+}
+.ph-idp-wlh-date .date{
+    padding: 0 1.5rem;
+    border-radius: 7px;
+    background: #F0E2A8;
+    color: #3B5686;
+}
+.ph-idp-wl-table{
+    padding: .5rem;
+    background: #E8CA93;
+    border-radius: 10px;
+}
+.ph-idp-wl-table .table{
+    margin: 0 auto;
+    background: #F0E2A8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px #00A693;
+    margin-bottom: 1rem;
+}
+.ph-idp-wl-table .table .thead-dark th {
+    background-color: #00A693;
+    border-color: #F0E2A8;
+    font-size: .7rem;
+}
+.ph-idp-wl-table .table-bordered td,
+.ph-idp-wl-table .table-bordered th {
+    border: 1px solid #00A693;
+    padding: .25rem;
+}
+.ph-idp-wl-table .table.factor{
+  width: 75%;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
