@@ -253,6 +253,26 @@ input::placeholder { /* Most modern browsers support this now. */
     font-size: 1.5rem;
 }
 
+.ph-border-radius{
+    border-radius: 0 25px 0 25px;
+}
+
+.ph-border-radius-small{
+    border-radius: 0 10px 0 10px;
+}
+.bg-color-green{
+    background-color: #00A693;
+}
+.bg-color-blue{
+    background-color: #618BB4;
+}
+.bg-color-crayola{
+    background-color: #F1BF7D;
+}
+.bg-color-yellow{
+    background-color: #F2D428;
+}
+
 .background-image {
     background-position: center center;
     background-size: cover;

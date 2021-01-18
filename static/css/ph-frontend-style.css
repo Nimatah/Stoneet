@@ -5,14 +5,6 @@
 */
 @import "fonts.css";
 
-.ph-border-radius{
-    border-radius: 0 25px 0 25px;
-}
-
-.ph-border-radius-small{
-    border-radius: 0 10px 0 10px;
-}
-
 /*
 =======================================================
     Header

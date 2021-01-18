@@ -1,2 +1,139 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+
+{% block admin_content %}
+         <main class="ph-orders">
+
+            <div class="container">
+
+               <form action="" id="ph_orders_form" role="form">
+
+
+                  <div id="orders_page" class="ph-orders-page form-group">
+                     <div class="ph-orders-panel">
+                     	<div class="ph-op-filters-bar">
+	                        <div class="ph-op-fb-heading ph-border-radius bg-color-blue ph-box-shadow">
+	                           <h6 class="ph-op-fb-title">جستجو در:</h6>
+	                        <div class="form-row align-items-center">
+	                           <div class="col-2 col-offset-2 my-1">
+	                              <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+	                                 <option selected>دسته‌بندی:</option>
+	                                 <option value="1">گروه اول</option>
+	                                 <option value="2">گروه دوم</option>
+	                                 <option value="3">گروه سوم</option>
+	                              </select>
+	                           </div>
+	                           <div class="col-2 my-1">
+	                              <select class="form-control" id="inlineFormCustomSelect">
+	                                 <option selected>انتخاب...</option>
+	                                 <option value="1">زیر گروه اول</option>
+	                                 <option value="2">زیر گروه دوم</option>
+	                                 <option value="3">زیر گروه سوم</option>
+	                              </select>
+	                           </div>
+
+	                           <div class="col-8 my-1">
+									<div class="input-group">
+										<input type="search" class="form-control rounded" placeholder="عنوان را بنویسید..." aria-label="Search"
+										aria-describedby="search-addon" />
+										<span class="input-group-text border-0" id="search-addon">
+											<i class="fas fa-search"></i>
+										</span>
+									</div>
+	                           </div>
+	                        </div>
+	                        <!-- form-row -->
+	                        </div>
+	                        <div class="ph-op-fb-list ph-border-radius bg-color-crayola ph-box-shadow">
+	                        	<div class="ph-op-fbl-btn-res">
+	                        		<div class="ph-op-fbl-btn">
+	                        			<a class="btn-details ph-border-radius-small bg-color-green" href="#">مشاهده جزییات همه سفارشات</a>
+	                        			<a class="btn-download ph-border-radius-small bg-color-green" href="#">دریافت خروجی اکسل</a>
+	                        		</div>
+	                        		<div class="ph-op-fbl-res">
+	                        			نتیجه:
+	                        			<span>۱۱۲ مورد</span>
+	                        		</div>
+	                        	</div>
+	                        	<!-- ph-op-fbl-btn-res -->
+	                        	<div class="ph-op-fbl-table ph-border-radius">
+	                        		<table class="table table-bordered text-center">
+									  <thead class="thead-dark">
+									    <tr>
+									      <th scope="col">#</th>
+									      <th scope="col">عنوان</th>
+									      <th scope="col">کد محصول</th>
+									      <th scope="col">ماهیت کالا</th>
+									      <th scope="col">کد فروشنده</th>
+									      <th scope="col">تعداد سفارش</th>
+									      <th scope="col">موجودی</th>
+									    </tr>
+									  </thead>
+									  <tbody>
+									    <tr>
+									      <th scope="row">۱</th>
+									      <td>نمونه</td>
+									      <td>ml-555</td>
+									      <td>عالی</td>
+									      <td>۲۳۴۵۶۷</td>
+									      <td>۲۵</td>
+									      <td>۲۱۰</td>
+									    </tr>
+									    <tr>
+									      <th scope="row">۲</th>
+									      <td>نمونه</td>
+									      <td>ml-555</td>
+									      <td>عالی</td>
+									      <td>۲۳۴۵۶۷</td>
+									      <td>۲۵</td>
+									      <td>۲۱۰</td>
+									    </tr>
+									    <tr>
+									      <th scope="row">۳</th>
+									      <td>نمونه</td>
+									      <td>ml-555</td>
+									      <td>عالی</td>
+									      <td>۲۳۴۵۶۷</td>
+									      <td>۲۵</td>
+									      <td>۲۱۰</td>
+									    </tr>
+									    <tr>
+									      <th scope="row">۴</th>
+									      <td>نمونه</td>
+									      <td>ml-555</td>
+									      <td>عالی</td>
+									      <td>۲۳۴۵۶۷</td>
+									      <td>۲۵</td>
+									      <td>۲۱۰</td>
+									    </tr>
+									    <tr>
+									      <th scope="row">۵</th>
+									      <td>نمونه</td>
+									      <td>ml-555</td>
+									      <td>عالی</td>
+									      <td>۲۳۴۵۶۷</td>
+									      <td>۲۵</td>
+									      <td>۲۱۰</td>
+									    </tr>
+									  </tbody>
+									</table>
+	                        	</div>
+	                        	<!-- ph-op-fbl-table -->
+	                        </div>
+	                        <!-- ph-op-fb-list -->
+	                    </div>
+                     </div>
+                  </div>
+                  <!-- ph-orders-page -->
+
+               </form>
+               <!-- ph_orders_form -->
+
+            </div>
+            <!-- container -->
+
+         </main>
+         <!-- ph-orders -->
+{% endblock %}
