@@ -58,22 +58,12 @@
                         <div class="ph-cp-panel-heading">
                             <h6 class="ph-cp-panel-title">درج ویژگی‌های کالا:</h6>
                         </div>
-
+                        <div class="form-row align-items-center">
                         {% for attribute in attributes_field %}
-                            {% if not forloop.counter|divisibleby:2 %}
-                                <div class="form-row align-items-center">
-                                {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
-                            {% endif %}
-
-                        {% if forloop.counter|divisibleby:2 %}
                             {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
-                            </div>
-                        {% endif %}
-
-                            {% if forloop.last %}
-                                </div>
-                            {% endif %}
                         {% endfor %}
+                        </div>
+
 
                     <div class="mb-3 mt-4">
                         <div class="ph-checkbox-form-group">
