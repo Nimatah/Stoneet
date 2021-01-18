@@ -3,402 +3,415 @@
 {% load widget_tweaks %}
 
 {% block meta_content %}
-{{ categories|json_script:"categories" }}
+    {{ categories|json_script:"categories" }}
 {% endblock %}
 
 {% block admin_content %}
-<main class="ph-create-product-main">
-    <div class="container">
-        <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input class="ph-cp-input-check" id='step2' type='checkbox'>
-            <input class="ph-cp-input-check" id='step3' type='checkbox'>
-            <input class="ph-cp-input-check" id='step4' type='checkbox'>
-            <input class="ph-cp-input-check" id='step5' type='checkbox'>
-            <div id="part1" class="ph-choose-category form-group">
-                <div class="ph-cp-header-parts part-1">
-                    <ul class="ph-cp-step-1 ph-cp-progressbar">
-                        <li><span>گام اول</span><i class="fas fas fa-sync-alt"></i></li>
-                        <li><span>گام دوم</span><i class="fas fa-times"></i></li>
-                        <li><span>گام سوم</span><i class="fas fa-times"></i></li>
-                        <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
-                    </ul>
-                </div>
-                <div class="ph-cp-panel">
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">برای درج کالای جدید ابتدا گروه کالای خود را انتخاب کنید:</h6>
+    <main class="ph-create-product-main">
+        <div class="container">
+            <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input class="ph-cp-input-check" id='step2' type='checkbox'>
+                <input class="ph-cp-input-check" id='step3' type='checkbox'>
+                <input class="ph-cp-input-check" id='step4' type='checkbox'>
+                <input class="ph-cp-input-check" id='step5' type='checkbox'>
+                <div id="part1" class="ph-choose-category form-group">
+                    <div class="ph-cp-header-parts part-1">
+                        <ul class="ph-cp-step-1 ph-cp-progressbar">
+                            <li><span>گام اول</span><i class="fas fas fa-sync-alt"></i></li>
+                            <li><span>گام دوم</span><i class="fas fa-times"></i></li>
+                            <li><span>گام سوم</span><i class="fas fa-times"></i></li>
+                            <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
+                        </ul>
                     </div>
-                    <div class="form-row mb-4 align-items-center">
-                        <div class="col-5 col-offset-2 my-1">
-                            <label class="mr-sm-2" for="t-1-c">گروه مادر</label>
-                            <select class="custom-select mr-sm-2" id="t-1-c">
-                                <option selected value="default">انتخاب...</option>
-                            </select>
+                    <div class="ph-cp-panel">
+                        <div class="ph-cp-panel-heading">
+                            <h6 class="ph-cp-panel-title">برای درج کالای جدید ابتدا گروه کالای خود را انتخاب کنید:</h6>
                         </div>
-                        <div class="col-5 my-1">
-                            <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
-                            <select name="category" class="form-control custom-select" id="t-2-c">
-                                <option selected value="">گروه مادر را انتخاب کنید...</option>
-                            </select>
+                        <div class="form-row mb-4 align-items-center">
+                            <div class="col-5 col-offset-2 my-1">
+                                <label class="mr-sm-2" for="t-1-c">گروه مادر</label>
+                                <select class="custom-select mr-sm-2" id="t-1-c">
+                                    <option selected value="default">انتخاب...</option>
+                                </select>
+                            </div>
+                            <div class="col-5 my-1">
+                                <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
+                                <select name="category" class="form-control custom-select" id="t-2-c">
+                                    <option selected value="">گروه مادر را انتخاب کنید...</option>
+                                </select>
+                            </div>
+                            <small class="form-text text-danger" id="t-2-c-e" style="display: none">لطفا گروه مورد نظر
+                                را
+                                انتخاب کنید</small>
                         </div>
-                        <small class="form-text text-danger" id="t-2-c-e" style="display: none">لطفا گروه مورد نظر را
-                            انتخاب کنید</small>
-                    </div>
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
-                    </div>
-                    <div class="form-group mb-4">
-                        <label for="p-t">عنوان مورد نظر را وارد کنید</label>
-                        <input type="text" name="title" class="form-control" id="p-t"
-                            placeholder="نام محصول را با حروف فارسی وارد کنید...">
-                        <small class="form-text text-danger" id="t-e" style="display: none">لطفا نام محصول را وارد
-                            نمایید</small>
-                    </div>
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">درج ویژگی‌های کالا:</h6>
-                    </div>
+                        <div class="ph-cp-panel-heading">
+                            <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="p-t">عنوان مورد نظر را وارد کنید</label>
+                            <input type="text" name="title" class="form-control" id="p-t"
+                                   placeholder="نام محصول را با حروف فارسی وارد کنید...">
+                            <small class="form-text text-danger" id="t-e" style="display: none">لطفا نام محصول را وارد
+                                نمایید</small>
+                        </div>
+                        <div class="ph-cp-panel-heading">
+                            <h6 class="ph-cp-panel-title">درج ویژگی‌های کالا:</h6>
+                        </div>
 
-                    {% for attribute in attributes_field %}
-                    {% if not forloop.counter|divisibleby:2 %}
-                    <div class="form-row align-items-center">
-                        {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                        {% for attribute in attributes_field %}
+                            {% if not forloop.counter|divisibleby:2 %}
+                                <div class="form-row align-items-center">
+                                {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                            {% endif %}
+
+                        {% if forloop.counter|divisibleby:2 %}
+                            {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                            </div>
                         {% endif %}
 
-                        {% if forloop.counter|divisibleby:2%}
-                        {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
-                    </div>
-                    {% endif %}
-
-                    {% if forloop.last %}
-                </div>
-                {% endif %}
-                {% endfor %}
-
-                <div class="mb-3 mt-4">
-                    <div class="ph-checkbox-form-group">
-                        {% for attribute in attributes_bool %}
-                        {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                            {% if forloop.last %}
+                                </div>
+                            {% endif %}
                         {% endfor %}
+
+                    <div class="mb-3 mt-4">
+                        <div class="ph-checkbox-form-group">
+                            {% for attribute in attributes_bool %}
+                                {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="mb-4">
+                        <label for="ph_spm_create_product_description">توضیحات:</label>
+                        <textarea class="form-control" id="ph_spm_create_product_description"
+                                  placeholder="توضیحات خود را مختصر ینویسید" rows="3"></textarea>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="ph-cpp-btn" role="group" aria-label="...">
+                        <label for='step2' id="next-step2" class="ph-cpp-btn-next">
+                            <div class="ph-cpp-btn-n" id="s-1-btn">بعدی</div>
+                        </label>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="mb-4">
-                    <label for="ph_spm_create_product_description">توضیحات:</label>
-                    <textarea class="form-control" id="ph_spm_create_product_description" placeholder="توضیحات خود را مختصر ینویسید" rows="3"></textarea>
-                </div>
-                <div class="clearfix"></div>
-                <div class="ph-cpp-btn" role="group" aria-label="...">
-                    <label for='step2' id="next-step2" class="ph-cpp-btn-next">
-                        <div class="ph-cpp-btn-n" id="s-1-btn">بعدی</div>
-                    </label>
-                </div>
+        </div>
+        <!-- #part1 ph-choose-category -->
+        <div id="part2" class="ph-insert-title form-group">
+            <div class="ph-cp-header-parts part-2">
+                <ul class="ph-cp-step-2 ph-cp-progressbar">
+                    <li><span>گام اول</span><i class="fas fa-check"></i></li>
+                    <li><span>گام دوم</span><i class="fas fa-sync-alt"></i></li>
+                    <li><span>گام سوم</span><i class="fas fa-times"></i></li>
+                    <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
+                </ul>
             </div>
-            </div>
-            <!-- #part1 ph-choose-category -->
-            <div id="part2" class="ph-insert-title form-group">
-                <div class="ph-cp-header-parts part-2">
-                    <ul class="ph-cp-step-2 ph-cp-progressbar">
-                        <li><span>گام اول</span><i class="fas fa-check"></i></li>
-                        <li><span>گام دوم</span><i class="fas fa-sync-alt"></i></li>
-                        <li><span>گام سوم</span><i class="fas fa-times"></i></li>
-                        <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
-                    </ul>
+            <!-- ph-cp-header-parts part-2 -->
+            <div class="ph-cp-panel">
+                <div class="ph-cp-panel-heading">
+                    <h6 class="ph-cp-panel-title">عکس آنالیز محصول را وارد نمایید:</h6>
                 </div>
-                <!-- ph-cp-header-parts part-2 -->
-                <div class="ph-cp-panel">
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">عکس آنالیز محصول را وارد نمایید:</h6>
-                    </div>
-                    <div class="form-group mb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 mx-auto">
-                                    <div class="file-upload">
-                                        <div id="image-upload-wrap-attr-0" class="image-upload-wrap">
-                                            <input id="file-upload-input-attr-0" class="file-upload-input" type='file'
-                                                   name="attribute-2" onchange="readURL(this, 'attr-0');"
-                                                accept="image/*" />
-                                            <div class="drag-text">
-                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                <i class="fas fa-cloud-upload-alt"></i>
-                                            </div>
+                <div class="form-group mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 mx-auto">
+                                <div class="file-upload">
+                                    <div id="image-upload-wrap-attr-0" class="image-upload-wrap">
+                                        <input id="file-upload-input-attr-0" class="file-upload-input" type='file'
+                                               name="attribute-2" onchange="readURL(this, 'attr-0');"
+                                               accept="image/*"/>
+                                        <div class="drag-text">
+                                            <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                            <i class="fas fa-cloud-upload-alt"></i>
                                         </div>
-                                        <div id="file-upload-content-attr-0" class="file-upload-content">
-                                            <img id="file-upload-image-attr-0" class="file-upload-image" src="#" alt="your image" />
-                                            <div id="image-title-wrap-attr-0" class="image-title-wrap">
-                                                <button type="button" onclick="removeUpload()" class="remove-image"><i
-                                                        class="fas fa-times"></i></button>
-                                            </div>
+                                    </div>
+                                    <div id="file-upload-content-attr-0" class="file-upload-content">
+                                        <img id="file-upload-image-attr-0" class="file-upload-image" src="#"
+                                             alt="your image"/>
+                                        <div id="image-title-wrap-attr-0" class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="remove-image"><i
+                                                    class="fas fa-times"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ph-cpp-btn" role="group" aria-label="...">
-                        <label for='step2' id="back-step2" class="back">
-                            <div class="ph-cpp-btn-n" role="button">قبلی</div>
-                        </label>
-                        <label for='step3' id="next-step3" class="ph-cpp-btn-next">
-                            <div class="ph-cpp-btn-n" id="s-2-btn">بعدی</div>
-                        </label>
-                    </div>
                 </div>
-                <!-- ph-cp-panel -->
+                <div class="ph-cpp-btn" role="group" aria-label="...">
+                    <label for='step2' id="back-step2" class="back">
+                        <div class="ph-cpp-btn-n" role="button">قبلی</div>
+                    </label>
+                    <label for='step3' id="next-step3" class="ph-cpp-btn-next">
+                        <div class="ph-cpp-btn-n" id="s-2-btn">بعدی</div>
+                    </label>
+                </div>
             </div>
-            <!-- #part2 ph-insert-title -->
-            <div id="part3" class="ph-general-attributes form-group">
-                <div class="ph-cp-header-parts part-3">
-                    <ul class="ph-cp-step-3 ph-cp-progressbar">
-                        <li><span>گام اول</span><i class="fas fa-check"></i></li>
-                        <li><span>گام دوم</span><i class="fas fa-check"></i></li>
-                        <li><span>گام سوم</span><i class="fas fa-sync-alt"></i></li>
-                        <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
-                    </ul>
+            <!-- ph-cp-panel -->
+        </div>
+        <!-- #part2 ph-insert-title -->
+        <div id="part3" class="ph-general-attributes form-group">
+            <div class="ph-cp-header-parts part-3">
+                <ul class="ph-cp-step-3 ph-cp-progressbar">
+                    <li><span>گام اول</span><i class="fas fa-check"></i></li>
+                    <li><span>گام دوم</span><i class="fas fa-check"></i></li>
+                    <li><span>گام سوم</span><i class="fas fa-sync-alt"></i></li>
+                    <li><span>گام چهارم</span><i class="fas fa-times"></i></li>
+                </ul>
+            </div>
+            <!-- ph-cp-header-parts part-3 -->
+            <div class="ph-cp-panel">
+                <div class="ph-cp-panel-heading">
+                    <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
                 </div>
-                <!-- ph-cp-header-parts part-3 -->
-                <div class="ph-cp-panel">
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
-                    </div>
-                    <div class="form-group mb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6 mx-auto">
-                                    <h4 class="ph-spm-create-produc-img-up-yitle">تصویر شاخص</h4>
-                                    <div class="file-upload">
-                                        <div id="image-upload-wrap-0" class="image-upload-wrap">
-                                            <input id="file-upload-input-0" class="file-upload-input" type='file' onchange="readURL(this, 0);"
-                                                accept="image/*" />
+                <div class="form-group mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6 mx-auto">
+                                <h4 class="ph-spm-create-produc-img-up-yitle">تصویر شاخص</h4>
+                                <div class="file-upload">
+                                    <div id="image-upload-wrap-0" class="image-upload-wrap">
+                                        <input id="file-upload-input-0" class="file-upload-input" type='file'
+                                               onchange="readURL(this, 0);"
+                                               accept="image/*"/>
+                                        <div class="drag-text">
+                                            <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div id="file-upload-content-0" class="file-upload-content">
+                                        <img id="file-upload-image-0" class="file-upload-image" src="#"
+                                             alt="your image"/>
+                                        <div id="image-title-wrap-0" class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="remove-image"><i
+                                                    class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="ph-spm-create-produc-img-up">
+                                    <h4 class="ph-spm-create-produc-img-up-yitle">گالری عکس محصولات</h4>
+                                    <div class="file-upload fu-g1">
+                                        <div id="image-upload-wrap-1" class="image-upload-wrap">
+                                            <input id="file-upload-input-1" class="file-upload-input" type='file'
+                                                   onchange="readURL(this, 1);"
+                                                   accept="image/*"/>
                                             <div class="drag-text">
                                                 <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
-                                        <div id="file-upload-content-0" class="file-upload-content">
-                                            <img id="file-upload-image-0" class="file-upload-image" src="#" alt="your image" />
-                                            <div id="image-title-wrap-0" class="image-title-wrap">
+                                        <div id="file-upload-content-1" class="file-upload-content">
+                                            <img id="file-upload-image-1" class="file-upload-image" src="#"
+                                                 alt="your image"/>
+                                            <div id="image-title-wrap-1" class="image-title-wrap">
                                                 <button type="button" onclick="removeUpload()" class="remove-image"><i
                                                         class="fas fa-times"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <div class="ph-spm-create-produc-img-up">
-                                        <h4 class="ph-spm-create-produc-img-up-yitle">گالری عکس محصولات</h4>
-                                        <div class="file-upload fu-g1">
-                                            <div id="image-upload-wrap-1" class="image-upload-wrap">
-                                                <input id="file-upload-input-1" class="file-upload-input" type='file' onchange="readURL(this, 1);"
-                                                    accept="image/*" />
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
-                                                </div>
-                                            </div>
-                                            <div id="file-upload-content-1" class="file-upload-content">
-                                                <img id="file-upload-image-1" class="file-upload-image" src="#" alt="your image" />
-                                                <div id="image-title-wrap-1" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image"><i
-                                                            class="fas fa-times"></i></button>
-                                                </div>
+                                    <div class="file-upload fu-g2">
+                                        <div id="image-upload-wrap-2" class="image-upload-wrap">
+                                            <input id="file-upload-input-2" class="file-upload-input" type='file'
+                                                   onchange="readURL(this, 2);"
+                                                   accept="image/*"/>
+                                            <div class="drag-text">
+                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
-                                        <div class="file-upload fu-g2">
-                                            <div id="image-upload-wrap-2" class="image-upload-wrap">
-                                                <input id="file-upload-input-2" class="file-upload-input" type='file' onchange="readURL(this, 2);"
-                                                    accept="image/*" />
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
-                                                </div>
-                                            </div>
-                                            <div id="file-upload-content-2" class="file-upload-content">
-                                                <img id="file-upload-image-2" class="file-upload-image" src="#" alt="your image" />
-                                                <div id="image-title-wrap-2" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image"><i
-                                                            class="fas fa-times"></i></button>
-                                                </div>
+                                        <div id="file-upload-content-2" class="file-upload-content">
+                                            <img id="file-upload-image-2" class="file-upload-image" src="#"
+                                                 alt="your image"/>
+                                            <div id="image-title-wrap-2" class="image-title-wrap">
+                                                <button type="button" onclick="removeUpload()" class="remove-image"><i
+                                                        class="fas fa-times"></i></button>
                                             </div>
                                         </div>
-                                        <div class="file-upload fu-g3">
-                                            <div id="image-upload-wrap-3" class="image-upload-wrap">
-                                                <input id="file-upload-input-3" class="file-upload-input" type='file' onchange="readURL(this, 3);"
-                                                    accept="image/*" />
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
-                                                </div>
-                                            </div>
-                                            <div id="file-upload-content-3" class="file-upload-content">
-                                                <img id="file-upload-image-3" class="file-upload-image" src="#" alt="your image" />
-                                                <div id="image-title-wrap-3" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image"><i
-                                                            class="fas fa-times"></i></button>
-                                                </div>
+                                    </div>
+                                    <div class="file-upload fu-g3">
+                                        <div id="image-upload-wrap-3" class="image-upload-wrap">
+                                            <input id="file-upload-input-3" class="file-upload-input" type='file'
+                                                   onchange="readURL(this, 3);"
+                                                   accept="image/*"/>
+                                            <div class="drag-text">
+                                                <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
-                                        <div class="file-upload fu-g4">
+                                        <div id="file-upload-content-3" class="file-upload-content">
+                                            <img id="file-upload-image-3" class="file-upload-image" src="#"
+                                                 alt="your image"/>
+                                            <div id="image-title-wrap-3" class="image-title-wrap">
+                                                <button type="button" onclick="removeUpload()" class="remove-image"><i
+                                                        class="fas fa-times"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload fu-g4">
                                         <div id="image-upload-wrap-4" class="image-upload-wrap">
-                                            <input id="file-upload-input-4" class="file-upload-input" type='file' onchange="readURL(this, 4);"
-                                                accept="image/*" />
+                                            <input id="file-upload-input-4" class="file-upload-input" type='file'
+                                                   onchange="readURL(this, 4);"
+                                                   accept="image/*"/>
                                             <div class="drag-text">
                                                 <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                 <i class="fas fa-cloud-upload-alt"></i>
                                             </div>
                                         </div>
                                         <div id="file-upload-content-4" class="file-upload-content">
-                                            <img id="file-upload-image-4" class="file-upload-image" src="#" alt="your image" />
+                                            <img id="file-upload-image-4" class="file-upload-image" src="#"
+                                                 alt="your image"/>
                                             <div id="image-title-wrap-4" class="image-title-wrap">
                                                 <button type="button" onclick="removeUpload()" class="remove-image"><i
                                                         class="fas fa-times"></i></button>
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
-                                </div>
-                                <!-- col-12 -->
-                            </div>
-                        </div>
-                        <div class="ph-cpp-btn" role="group" aria-label="...">
-                            <label for='step3' id="back-step3" class="back">
-                                <div class="ph-cpp-btn-n" role="button">قبلی</div>
-                            </label>
-                            <label for='step4' id="next-step4" class="ph-cpp-btn-next">
-                                <div id="s-3-btn" class="ph-cpp-btn-n">بعدی</div>
-                            </label>
-                        </div>
-                        <!-- ph-cpp-btn -->
-                    </div>
-                    <!-- ph-cp-panel -->
-                </div>
-                <!-- part3 ph-general-attributes -->
-            </div>
-            <div id="part4" class="ph-upload-detail-product form-group">
-                <div class="ph-cp-header-parts part-4">
-                    <ul class="ph-cp-step-4 ph-cp-progressbar">
-                        <li><span>گام اول</span><i class="fas fa-check"></i></li>
-                        <li><span>گام دوم</span><i class="fas fa-check"></i></li>
-                        <li><span>گام سوم</span><i class="fas fa-check"></i></li>
-                        <li><span>گام چهارم</span><i class="fas fa-sync-alt"></i></li>
-                    </ul>
-                </div>
-                <!-- ph-cp-header-parts part-4 -->
-                <div class="ph-cp-panel">
-                    <div class="ph-cp-panel-heading">
-                        <h6 class="ph-cp-panel-title">بعد از تایید اطلاعات دکمه ثبت را بزنید:</h6>
-                    </div>
-                    <div class="form-group mb-5">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="row">
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>کد محصول: </span>
-                                            <span>M-121</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>نام محصول: </span>
-                                            <span>سنگ خارا</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>قیمت: </span>
-                                            <span>۱۴۵هزار تومان</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>عیار: </span>
-                                            <span>۱۲۳</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>ظرفیت تامین ماهانه: </span>
-                                            <span>۳ تن</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>خام/فرآوری شده: </span>
-                                            <span>خام</span>
-                                        </div>
-                                        <div class="col-6 part-4-item-detail">
-                                            <span>شرایط پرداخت: </span>
-                                            <span>نقدی</span>
-                                        </div>
-                                        <div class="col-12 part-4-item-detail-desc">
-                                            <span>توضیحات: </span>
-                                            <span> توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالاتوضیحات مختصر در مورد کالا</span>
-                                        </div>
-                                        <div class="col-12 part-4-item-detail-check">
-                                            <div class="p4idc">
-                                                <i class="fas fa-check"></i>
-                                                <span>امکان ارسال نمونه</span>
-                                            </div>
-                                            <div class="p4idc">
-                                                <i class="fas fa-check"></i>
-                                                <span>وجود جاده مناسب و قابل عبور جهت ماشین های باربری</span>
-                                            </div>
-                                            <div class="p4idc">
-                                                <i class="fas fa-times"></i>
-                                                <span>وجود تجهیزات بارگیری در محل دپو</span>
-                                            </div>
-                                            <div class="p4idc">
-                                                <i class="fas fa-times"></i>
-                                                <span>قرارداد ضروری</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 part-4-item-detail-images">
-                                    <div class="row">
-                                        <div class="col-6 p4idi-thumb">
-                                            <span>عکس محصول</span>
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="col-6 p4idi-attr">
-                                            <span>عکس مشخصات محصول</span>
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="col-12 p4idi-gallery">
-                                            <span>گالری عکس محصول</span>
-                                            <div class="p4idi-g-wrapper">
-                                                <img src="" alt="">
-                                                <img src="" alt="">
-                                                <img src="" alt="">
-                                                <img src="" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 part-4-rules">
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="rules_check">
-                                        <label class="form-check-label" style="margin-right: .25rem;" for="rules_check">با
-                                            <a class="rules-link" href="#">قوانین و مقررات</a> موافقم</label>
-                                    </div>
                                 </div>
                             </div>
-                            <!-- row -->
+                            <!-- col-12 -->
                         </div>
-                        <!-- container -->
                     </div>
-                    <!-- form-group mb-5 -->
                     <div class="ph-cpp-btn" role="group" aria-label="...">
-                        <label for='step4' id="back-step4" class="back">
+                        <label for='step3' id="back-step3" class="back">
                             <div class="ph-cpp-btn-n" role="button">قبلی</div>
                         </label>
-                        <button type="submit" class="btn btn-default btn-success">ثبت محصول</button>
+                        <label for='step4' id="next-step4" class="ph-cpp-btn-next">
+                            <div id="s-3-btn" class="ph-cpp-btn-n">بعدی</div>
+                        </label>
                     </div>
+                    <!-- ph-cpp-btn -->
                 </div>
                 <!-- ph-cp-panel -->
             </div>
-            <!-- #part4 ph-upload-detail-product -->
+            <!-- part3 ph-general-attributes -->
+        </div>
+        <div id="part4" class="ph-upload-detail-product form-group">
+            <div class="ph-cp-header-parts part-4">
+                <ul class="ph-cp-step-4 ph-cp-progressbar">
+                    <li><span>گام اول</span><i class="fas fa-check"></i></li>
+                    <li><span>گام دوم</span><i class="fas fa-check"></i></li>
+                    <li><span>گام سوم</span><i class="fas fa-check"></i></li>
+                    <li><span>گام چهارم</span><i class="fas fa-sync-alt"></i></li>
+                </ul>
+            </div>
+            <!-- ph-cp-header-parts part-4 -->
+            <div class="ph-cp-panel">
+                <div class="ph-cp-panel-heading">
+                    <h6 class="ph-cp-panel-title">بعد از تایید اطلاعات دکمه ثبت را بزنید:</h6>
+                </div>
+                <div class="form-group mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>کد محصول: </span>
+                                        <span>M-121</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>نام محصول: </span>
+                                        <span>سنگ خارا</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>قیمت: </span>
+                                        <span>۱۴۵هزار تومان</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>عیار: </span>
+                                        <span>۱۲۳</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>ظرفیت تامین ماهانه: </span>
+                                        <span>۳ تن</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>خام/فرآوری شده: </span>
+                                        <span>خام</span>
+                                    </div>
+                                    <div class="col-6 part-4-item-detail">
+                                        <span>شرایط پرداخت: </span>
+                                        <span>نقدی</span>
+                                    </div>
+                                    <div class="col-12 part-4-item-detail-desc">
+                                        <span>توضیحات: </span>
+                                        <span> توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالا توضیحات مختصر در مورد کالاتوضیحات مختصر در مورد کالا</span>
+                                    </div>
+                                    <div class="col-12 part-4-item-detail-check">
+                                        <div class="p4idc">
+                                            <i class="fas fa-check"></i>
+                                            <span>امکان ارسال نمونه</span>
+                                        </div>
+                                        <div class="p4idc">
+                                            <i class="fas fa-check"></i>
+                                            <span>وجود جاده مناسب و قابل عبور جهت ماشین های باربری</span>
+                                        </div>
+                                        <div class="p4idc">
+                                            <i class="fas fa-times"></i>
+                                            <span>وجود تجهیزات بارگیری در محل دپو</span>
+                                        </div>
+                                        <div class="p4idc">
+                                            <i class="fas fa-times"></i>
+                                            <span>قرارداد ضروری</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 part-4-item-detail-images">
+                                <div class="row">
+                                    <div class="col-6 p4idi-thumb">
+                                        <span>عکس محصول</span>
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="col-6 p4idi-attr">
+                                        <span>عکس مشخصات محصول</span>
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="col-12 p4idi-gallery">
+                                        <span>گالری عکس محصول</span>
+                                        <div class="p4idi-g-wrapper">
+                                            <img src="" alt="">
+                                            <img src="" alt="">
+                                            <img src="" alt="">
+                                            <img src="" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 part-4-rules">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="rules_check">
+                                    <label class="form-check-label" style="margin-right: .25rem;" for="rules_check">با
+                                        <a class="rules-link" href="#">قوانین و مقررات</a> موافقم</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- container -->
+                </div>
+                <!-- form-group mb-5 -->
+                <div class="ph-cpp-btn" role="group" aria-label="...">
+                    <label for='step4' id="back-step4" class="back">
+                        <div class="ph-cpp-btn-n" role="button">قبلی</div>
+                    </label>
+                    <button type="submit" class="btn btn-default btn-success">ثبت محصول</button>
+                </div>
+            </div>
+            <!-- ph-cp-panel -->
+        </div>
+        <!-- #part4 ph-upload-detail-product -->
         </form>
         <!-- ph_seller_panel_form -->
-    </div>
-    <!-- container -->
-</main>
-<!-- ph-seller-panel-main -->
+        </div>
+        <!-- container -->
+    </main>
+    <!-- ph-seller-panel-main -->
 
 {% endblock %}
 
 {% block footer_static %}
-<script src="{% static 'js/add-product.js' %}"></script>
-<script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 {% endblock %}
