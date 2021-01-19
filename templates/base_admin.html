@@ -9,7 +9,7 @@
 {% block content %}
     <div class="page-holder scroll-bar" id="ph_myscroll">
         <div class="ph-seller-panel">
-            <aside class="ph-seller-panel-sidebar">
+            <aside class="ph-seller-panel-sidebar {% if user.is_superuser %}pos-rel{% endif %} {% if user.is_superuser %}bg-color-blue{% endif %}">
                 <nav class="ph-sp-navbar navbar navbar-expand-lg">
                     <a class="ph-navbar-logo" href="{% url 'home:index' %}">
                         <img class="ph-sp-logo" src="{% static 'images/logo.png' %}" alt="header-Logo">

@@ -1,2 +1,111 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+
+
+{% block admin_content %}
+<main class="ph-invoice-details">
+    <div class="container">
+        <form action="" id="ph_invoice_details_form" role="form">
+            <div id="invoice_details_page" class="ph-invoice-details-page form-group">
+                <div class="ph-invoice-details-panel">
+                    <div class="ph-idp-wrapper">
+                        <div class="ph-idp-w-heading">
+                            <div class="ph-idp-w-title">
+                                <span>صورتحساب‌ها |</span>
+                                مشاهده جزییات صورتحساب
+                            </div>
+                        </div>
+                        <div class="ph-idp-w-list">
+                            <div class="ph-idp-wl-header">
+                                <div class="ph-idp-wlh-date">
+                                    <div class="title">تاریخ صورتحساب</div>
+                                    <div class="date">۱۳۹۹/۱۱/۲۸</div>
+                                </div>
+                            </div>
+                            <!-- ph-idp-wl-header -->
+                            <div class="ph-idp-wl-table">
+                                <table class="table table-bordered text-center">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" rowspan="2">نوع</th>
+                                            <th scope="col" rowspan="2">عنوان</th>
+                                            <th scope="col" rowspan="2">توضیحات</th>
+                                            <th scope="col" rowspan="2">تعداد</th>
+                                            <th scope="col" colspan="2">مبلغ محاسبه شده</th>
+                                            <th scope="col" colspan="2">تخفیف محاسبه شده</th>
+                                            <th scope="col" rowspan="2">تخفیف درصدی</th>
+                                            <th scope="col" colspan="2">مبلغ نهایی</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>هزینه</td>
+                                            <td>هزینه ماندگاری در انبار</td>
+                                            <td>هزینه ماندگاری در انبار</td>
+                                            <td>۴۹</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-bordered text-center factor">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" rowspan="2">نوع</th>
+                                            <th scope="col" colspan="2">مبلغ نهایی</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>هزینه</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ارزش افزوده 9 %</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        <tr>
+                                            <td>مبلغ قابل پرداخت</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- ph-idp-wl-table -->
+                        </div>
+                        <!-- ph-idp-w-list -->
+                    </div>
+                    <!-- ph-idp-wrapper -->
+                </div>
+                <!-- ph-invoice-details-panel -->
+            </div>
+            <!-- ph-invoice-details-page -->
+        </form>
+        <!-- ph_invoice_details_form -->
+    </div>
+    <!-- container -->
+</main>
+<!-- ph-invoice-details -->
+{% endblock %}
