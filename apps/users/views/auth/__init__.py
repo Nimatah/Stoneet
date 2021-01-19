@@ -1,2 +1,2 @@
 from .login import LoginView, LoginRedirectView
-from .register import RegisterView
+from .register import SellerRegisterView, BuyerRegisterView, LogisticRegisterView

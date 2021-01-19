@@ -8,14 +8,15 @@ from apps.users.views.panel import seller, buyer, logistic
 app_name = 'users'
 
 urlpatterns = [
-    path('register/', auth.RegisterView.as_view(), name='register'),
+    path('seller-register/', auth.SellerRegisterView.as_view(), name='register_seller'),
+    path('buyer-register/', auth.BuyerRegisterView.as_view(), name='register_buyer'),
+    path('logistic-register/', auth.LogisticRegisterView.as_view(), name='register_logistic'),
     path('login/', auth.LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
     path('panel/dashboard/', auth.LoginRedirectView.as_view(), name='redirect'),
 
     path('panel/superuser-dashboard/', seller.SellerDashboardView.as_view(), name="superuser_dashboard"),
-
     path('panel/seller-dashboard/', seller.SellerDashboardView.as_view(), name="seller_dashboard"),
     path('panel/new-product/', seller.AddProductView.as_view(), name="seller_add_product"),
     path('panel/list-product/', seller.ListProductView.as_view(), name="seller_list_product"),
