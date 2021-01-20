@@ -23,7 +23,7 @@ class CreateProductForm(forms.ModelForm):
     description = forms.CharField(label="Description", required=False, widget=forms.Textarea)
     attributes = forms.Field(required=False)
     analyze = forms.ImageField(required=True)
-    primary_image = forms.ImageField(required=True)
+    image_primary = forms.ImageField(required=True)
     image1 = forms.ImageField(required=False)
     image2 = forms.ImageField(required=False)
     image3 = forms.ImageField(required=False)
@@ -32,8 +32,8 @@ class CreateProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('category', 'title', 'attributes', 'description',
-                  'primary_image', 'image1', 'image2', 'image3', 'image4',)
+        fields = ('category', 'title', 'attributes', 'description', 'analyze',
+                  'image_primary', 'image1', 'image2', 'image3', 'image4',)
         exclude = ('user', 'attributes',)
 
     def clean(self):
@@ -58,9 +58,6 @@ class CreateProductForm(forms.ModelForm):
             raise forms.ValidationError("گروه پیدا نشد")
 
     def save(self, commit=True):
-
-        analyze = Attribute.objects.get(pk=Attribute.ID_ANALYZE)
-
         product = Product()
         product.category = self.cleaned_data['category']
         product.title = self.cleaned_data['title']
@@ -74,6 +71,7 @@ class CreateProductForm(forms.ModelForm):
                 product.save()
                 for image in images:
                     image.save()
+                self.handle_analyze(product)
                 for i in self.cleaned_data['attributes']:
                     product_attribute = ProductAttribute()
                     product_attribute.product = product
@@ -89,9 +87,17 @@ class CreateProductForm(forms.ModelForm):
                 continue
             image = ProductMedia()
             image.type = ProductMedia.TYPE_IMAGE
-            image.file = self.cleaned_data['']
+            image.file = v
             image.product = product
-            if k == 'primary_image':
+            if k == 'image_primary':
                 image.is_primary = True
             images.append(image)
         return images
+
+    def handle_analyze(self, product: Product) -> None:
+        product_attribute = ProductAttribute.objects.create(attribute_id=Attribute.ID_ANALYZE, product=product)
+        AttributeMedia.objects.create(
+            type=AttributeMedia.TYPE_IMAGE,
+            product_attribute=product_attribute,
+            file=self.cleaned_data['analyze'],
+        )

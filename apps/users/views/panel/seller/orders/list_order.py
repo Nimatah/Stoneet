@@ -6,7 +6,7 @@ from apps.orders.models import Order
 
 class ListOrderView(UserPassesTestMixin, ListView):
 
-    template_name = 'users/seller/list_order.html'
+    template_name = 'users/seller/orders/list_order.html'
     paginate_by = 10
     context_object_name = 'orders'
     page_kwarg = 'p'

@@ -8,7 +8,7 @@ from apps.products.models import Product
 
 class EditProductView(UserPassesTestMixin, UpdateView):
 
-    template_name = 'users/seller/edit_product.html'
+    template_name = 'users/seller/products/edit_product.html'
     form_class = EditProductForm
     pk_url_kwarg = 'pk'
     context_object_name = 'product'

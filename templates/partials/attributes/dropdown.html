@@ -6,9 +6,9 @@
 
 
 <div class="col-5 my-1">
-    <label id="{{ attribute.id }}" for="">{{ attribute.title }}</label>
+    <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
     <div data-attr>
-        <select data-attr-value class="mdb-select md-form form-control" id="{{ attribute.id }}"
+        <select data-attr-value class="mdb-select md-form form-control" id="attribute-{{ attribute.id }}"
                 name="attribute-{{ attribute.id }}">
             {% for dropdown in attribute.dropdown %}
                 {% if attribute_value == dropdown %}

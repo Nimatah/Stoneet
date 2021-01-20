@@ -6,7 +6,7 @@ from apps.invoices.models import Invoice
 
 class ViewInvoiceView(UserPassesTestMixin, TemplateView):
 
-    template_name = 'users/seller/view_invoice.html'
+    template_name = 'users/seller/invoices/view_invoice.html'
     pk_url_kwarg = 'pk'
     context_object_name = 'invoice'
     model = Invoice

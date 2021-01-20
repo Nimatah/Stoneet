@@ -6,7 +6,7 @@ from apps.invoices.models import Invoice
 
 class ListInvoiceView(UserPassesTestMixin, ListView):
 
-    template_name = 'users/seller/list_invoice.html'
+    template_name = 'users/seller/invoices/list_invoice.html'
     paginate_by = 10
     context_object_name = 'invoices'
     page_kwarg = 'p'

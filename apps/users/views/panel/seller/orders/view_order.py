@@ -6,7 +6,7 @@ from apps.orders.models import Order
 
 class ViewOrderView(UserPassesTestMixin, DetailView):
 
-    template_name = 'users/seller/view_order.html'
+    template_name = 'users/seller/orders/view_order.html'
     pk_url_kwarg = 'pk'
     context_object_name = 'order'
     model = Order

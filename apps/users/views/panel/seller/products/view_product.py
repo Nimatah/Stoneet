@@ -6,7 +6,7 @@ from apps.products.models import Product
 
 class ViewProductView(UserPassesTestMixin, DetailView):
 
-    template_name = 'users/seller/view_product.html'
+    template_name = 'users/seller/products/view_product.html'
     pk_url_kwarg = 'pk'
     context_object_name = 'product'
     model = Product

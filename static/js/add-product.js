@@ -47,7 +47,16 @@ $('#s-2-btn').on('click', function (e) {
 })
 
 $('#s-3-btn').on('click', function (e) {
+    $('#preview-product-title').text($('#product-title').val())
+    $('#preview-product-description').text($('#product-description').val())
 
+    const attributes = $('[id^="attribute-"]')
+    for (let i = 0; i < attributes.length; i++) {
+        let attr = $(attributes[i])
+        console.log(attr)
+        $(`#preview-${attr.id}`).text(attr.val())
+        console.log(`preview-${attr.id}`)
+    }
 });
 
 
@@ -77,9 +86,9 @@ function removeUpload(id) {
     $(`#image-upload-wrap-${id}`).show();
 }
 
-$(`#image-upload-wrap-${id}`).bind('dragover', function () {
-    $(`#image-upload-wrap-${id}`).addClass('image-dropping');
+$('[id^="image-upload-wrap-"]').bind('dragover', function () {
+    $('[id^="image-upload-wrap-"]').addClass('image-dropping');
 });
-$(`#image-upload-wrap-${id}`).bind('dragleave', function () {
-    $('#image-upload-wrap').removeClass('image-dropping');
+$('[id^="image-upload-wrap-"]').bind('dragleave', function () {
+    $('[id^="image-upload-wrap-"]').removeClass('image-dropping');
 });

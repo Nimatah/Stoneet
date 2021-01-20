@@ -9,7 +9,14 @@ from apps.users.models import User
 
 class AttributeManager(models.Manager):
 
-    pass
+    def get_by_input_field(self):
+        return self.filter(value_type__in=['int', 'dropdown', 'str', 'float'])
+
+    def get_by_image_field(self):
+        return self.filter(value_type='image')
+
+    def get_by_bool_field(self):
+        return self.filter(value_type='bool')
 
 
 class CategoryManager(TreeManager):
@@ -21,15 +28,21 @@ class CategoryManager(TreeManager):
         return self.filter(children__isnull=True)
 
 
+class ProductAttributeManager(models.Manager):
+    pass
+
+
 class ProductManager(models.Manager):
     pass
 
 
 class ProductMediaManager(models.Manager):
 
-    # TODO: find by is_primary
     def get_primary(self):
-        return self.first()
+        return self.filter(is_primary=True)
+
+    def get_additional(self):
+        return self.filter(is_primary=False)
 
 
 class ProductHistoryManager(models.Manager):
@@ -111,7 +124,6 @@ class Attribute(TimestampedModel):
 
 
 class AttributeMedia(BaseMedia):
-
     product_attribute = models.ForeignKey('ProductAttribute', on_delete=models.CASCADE, related_name='media')
     file = models.FileField(upload_to='attributes')
 
@@ -155,6 +167,8 @@ class ProductAttribute(models.Model):
     value_string = models.CharField(max_length=255, null=True, blank=True)
     value_int = models.IntegerField(null=True, blank=True)
     value_float = models.FloatField(null=True, blank=True)
+
+    objects = ProductAttributeManager()
 
     def __str__(self):
         return f'{self.attribute} -> {self.value}'

@@ -7,7 +7,7 @@ from apps.products.filters import ProductFilter
 
 class ListProductView(UserPassesTestMixin, ListView):
 
-    template_name = 'users/seller/list_product.html'
+    template_name = 'users/seller/products/list_product.html'
     paginate_by = 10
     context_object_name = 'products'
     page_kwarg = 'p'
