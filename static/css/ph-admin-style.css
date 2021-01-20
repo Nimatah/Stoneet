@@ -1326,12 +1326,13 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-ip-w-heading .ph-ip-w-title{
     margin: 1rem 0;
     padding: 1rem;
-    background: #E8CA93;
+    background: #618BB4;
     border-radius: 10px;
+    color: #fff;
 }
 .ph-ip-w-heading .ph-ip-w-title span{
     font-size: 1.01rem;
-    color: #00A693;
+    color: #F2D428;
     padding-left: .5rem;
 }
 
@@ -1399,7 +1400,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-ip-w-list .ph-ip-wl-table .table{
     margin: 0;
-    background: #F0E2A8;
+    background: #f5f5f5;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: inset 0 0 0 1px #00A693;
@@ -1430,12 +1431,13 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-idp-w-heading .ph-idp-w-title{
     margin: 1rem 0;
     padding: 1rem;
-    background: #E8CA93;
-    border-radius: 10px;
+    background: #618BB4;
+    border-radius: 0px 25px;
+    color: #fff;
 }
 .ph-idp-w-heading .ph-idp-w-title span{
     font-size: 1.01rem;
-    color: #00A693;
+    color: #F2D428;
     padding-left: .5rem;
 }
 
@@ -1455,7 +1457,7 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-idp-wlh-date .date{
     padding: 0 1.5rem;
     border-radius: 7px;
-    background: #F0E2A8;
+    background: #f5f5f5;
     color: #3B5686;
 }
 .ph-idp-wl-table{
@@ -1465,7 +1467,7 @@ a.nav-link[aria-expanded="true"]:after {
 }
 .ph-idp-wl-table .table{
     margin: 0 auto;
-    background: #F0E2A8;
+    background: #f5f5f5;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: inset 0 0 0 1px #00A693;
@@ -1531,7 +1533,7 @@ a.nav-link[aria-expanded="true"]:after {
 }
 .ph-op-fb-list .ph-op-fbl-table .table{
     margin: 0;
-    background: #F2D428;
+    background: #f5f5f5;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: inset 0 0 0 1px #00A693;
@@ -1545,6 +1547,97 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-op-fb-list .ph-op-fbl-table .table-bordered th {
     border: 1px solid #00A693;
 }
+
+
+/*
+=============================================================
+        SELLER PANEL   MAIN .ph-seller-profile
+=============================================================
+*/
+
+.ph-seller-profile{
+    width: 85%;
+    position: relative;
+    margin-right: auto;
+    padding: 2rem 3rem 2rem;
+    min-height: 100vh;
+}
+.ph-spp-tab-navs{
+  overflow: hidden;
+}
+.ph-spp-tab-navs .nav-pills .nav-link{
+    color: #fff;
+}
+.ph-spp-tab-navs .nav-pills .nav-link.active{
+  background: #F2D428;
+  color: #333;
+  border-radius: 0;
+}
+.ph-spp-tab-contents{
+  padding: 1rem;
+}
+.ph-spp-tab-contents .ph-spp-t-header{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+}
+.ph-spp-tab-contents .ph-spp-t-header .title{
+    display: flex;
+    width: 100%;
+    padding: .5rem;
+    border-radius: 0 10px;
+    color: #333;
+    border-bottom: 2px solid rgb(51,51,51,31%);
+}
+.ph-spp-tab-contents .ph-spp-t-header .edit-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    background: #F2D428;
+    border-radius: 0 10px;
+    margin-bottom: 1rem;
+    position: absolute;
+    height: 100%;
+    right: auto;
+    left: 0;
+    box-shadow: 0 0 2px -1px #333;
+}
+.ph-spp-tab-contents .ph-spp-t-header .edit-info i{
+  margin-left: 1rem;
+}
+
+.ph-spp-tab-contents .form-row>.col, .ph-spp-tab-contents .form-row>[class*=col-]{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.ph-spp-tab-contents .custom-select,
+.ph-spp-tab-contents .form-control,
+.ph-spp-tab-contents input::placeholder{
+    color: #6c757d !important;
+}
+.ph-spp-t-content .table{
+    margin: 0 auto;
+    background: #f5f5f5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px #00A693;
+    margin-bottom: 1rem;
+}
+.ph-spp-t-content .table-bordered td,
+.ph-spp-t-content .table th {
+    border: 1px solid #00A693;
+    padding: .5rem;
+}
+.ph-spp-t-content .table .thead-dark th {
+    background-color: #00A693;
+    border-color: #F0E2A8;
+    font-size: .7rem;
+}
+
+
+
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
