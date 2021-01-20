@@ -14,6 +14,10 @@ urlpatterns = [
     path('login/', auth.LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 
+    path('seller-profile', seller.SellerProfileView.as_view(), name='profile_seller'),
+    path('buyer-profile', buyer.BuyerProfileView.as_view(), name='profile_buyer'),
+    path('logistic-profile', logistic.LogisticProfileView.as_view(), name='profile_logistic'),
+
     path('panel/dashboard/', auth.LoginRedirectView.as_view(), name='redirect'),
 
     path('panel/superuser-dashboard/', seller.SellerDashboardView.as_view(), name="superuser_dashboard"),
