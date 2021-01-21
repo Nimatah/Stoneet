@@ -375,6 +375,11 @@ body.home .ph-main-header.sticky{
     justify-content: center;
 }
 
+.ph-home-product-img img {
+    width: 100%;
+    height: 250px;
+}
+
 /*
 =======================================================
     Product Single Page
@@ -580,6 +585,11 @@ body.home .ph-main-header.sticky{
 
 .ph-list-product-loop-item-img{
     position: relative;
+}
+
+.ph-list-product-loop-item-img a img{
+    height: 280px;
+    width: 100%;
 }
 
 .ph-list-product-loop-item-city{
