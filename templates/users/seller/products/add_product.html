@@ -316,22 +316,9 @@
                                                 {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}
                                             {% endfor %}
                                             <div class="col-12 part-4-item-detail-check">
-                                                <div class="p4idc">
-                                                    <i class="fas fa-check"></i>
-                                                    <span>امکان ارسال نمونه</span>
-                                                </div>
-                                                <div class="p4idc">
-                                                    <i class="fas fa-check"></i>
-                                                    <span>وجود جاده مناسب و قابل عبور جهت ماشین های باربری</span>
-                                                </div>
-                                                <div class="p4idc">
-                                                    <i class="fas fa-times"></i>
-                                                    <span>وجود تجهیزات بارگیری در محل دپو</span>
-                                                </div>
-                                                <div class="p4idc">
-                                                    <i class="fas fa-times"></i>
-                                                    <span>قرارداد ضروری</span>
-                                                </div>
+                                                {% for attribute in attributes_bool %}
+                                                    {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}
+                                                {% endfor %}
                                             </div>
                                         </div>
                                     </div>
@@ -339,19 +326,19 @@
                                         <div class="row">
                                             <div class="col-6 p4idi-thumb">
                                                 <span>عکس محصول</span>
-                                                <img src="" alt="">
+                                                <img id="preview-image-0" src="" alt="">
                                             </div>
                                             <div class="col-6 p4idi-attr">
                                                 <span>عکس مشخصات محصول</span>
-                                                <img src="" alt="">
+                                                <img id="preview-image-analyze" src="" alt="">
                                             </div>
                                             <div class="col-12 p4idi-gallery">
                                                 <span>گالری عکس محصول</span>
                                                 <div class="p4idi-g-wrapper">
-                                                    <img src="" alt="">
-                                                    <img src="" alt="">
-                                                    <img src="" alt="">
-                                                    <img src="" alt="">
+                                                    <img id="preview-image-1" src="" alt="">
+                                                    <img id="preview-image-2" src="" alt="">
+                                                    <img id="preview-image-3" src="" alt="">
+                                                    <img id="preview-image-4" src="" alt="">
                                                 </div>
                                             </div>
                                         </div>

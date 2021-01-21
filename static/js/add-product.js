@@ -47,16 +47,32 @@ $('#s-2-btn').on('click', function (e) {
 })
 
 $('#s-3-btn').on('click', function (e) {
-    $('#preview-product-title').text($('#product-title').val())
-    $('#preview-product-description').text($('#product-description').val())
+    $('#preview-product-title').text($('#p-t').val())
+    $('#preview-product-description').text($('#ph_spm_create_product_description').val())
 
     const attributes = $('[id^="attribute-"]')
     for (let i = 0; i < attributes.length; i++) {
         let attr = $(attributes[i])
-        console.log(attr)
-        $(`#preview-${attr.id}`).text(attr.val())
-        console.log(`preview-${attr.id}`)
+        $(`#preview-${attr.prop('id')}`).text(attr.val())
     }
+    const boolAttributes = $('[id^="attributebool-"]')
+    for (let i = 0; i < boolAttributes.length; i++) {
+        let attr = $(boolAttributes[i])
+        let preview = $(`#preview-${attr.prop('id')}`)
+        if (attr.prop('checked')) {
+            preview.attr('class', 'fas fa-check')
+        } else {
+            preview.attr('class', 'fas fa-times')
+        }
+    }
+
+    $('#preview-image-0').attr('src', $('#file-upload-image-0').prop('src'))
+    $('#preview-image-analyze').attr('src', $('#file-upload-image-attr-0').prop('src'))
+    $('#preview-image-1').attr('src', $('#file-upload-image-1').prop('src'))
+    $('#preview-image-2').attr('src', $('#file-upload-image-2').prop('src'))
+    $('#preview-image-3').attr('src', $('#file-upload-image-3').prop('src'))
+    $('#preview-image-4').attr('src', $('#file-upload-image-4').prop('src'))
+
 });
 
 
