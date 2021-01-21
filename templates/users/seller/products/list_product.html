@@ -1,6 +1,7 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 {% load utils %}
+{% load humanize %}
 
 {% block meta_content %}
   {{ categories|json_script:"categories" }}
@@ -69,7 +70,7 @@
                             <div class="row">
                                 <div class="col-6 col-md-3">
                                     <div class="ph-admin-page-list-add-btn">
-                                        <a href="#" class="btn btn-success ph-border-radius-small">
+                                        <a href="{% url 'users:seller_add_product' %}" class="btn btn-success ph-border-radius-small">
                                             ایجاد کالای جدید
                                             <i class="fas fa-plus"></i>
                                         </a>
@@ -172,14 +173,14 @@
                                             <div class="ph-admin-table-cell">{{ product.category.title }}</div>
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">125,000</div>
+                                            <div class="ph-admin-table-cell">{{ product.get_price.value|intcomma }}</div>
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">1 تن در هفته</div>
+                                            <div class="ph-admin-table-cell">{{ product.get_sku.value|intcomma }} تن در ماه</div>
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell"><span
-                                                    class="ph-admin-table-product-status">{{ product.state }}</span>
+                                                    class="ph-admin-table-product-status">تایید شده</span>
                                             </div>
                                         </td>
                                         <td>
@@ -202,7 +203,7 @@
                             <div class="row">
                                 <div class="col-6 col-md-3">
                                     <div class="ph-admin-page-list-add-btn">
-                                        <a href="#" class="btn btn-success ph-border-radius-small">
+                                        <a href="{% url 'users:seller_add_product' %}" class="btn btn-success ph-border-radius-small">
                                             ایجاد کالای جدید
                                             <i class="fas fa-plus"></i>
                                         </a>

@@ -14,6 +14,7 @@ PREREQUISITE_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize',
     'mptt',
     'django_extensions',
     'widget_tweaks',

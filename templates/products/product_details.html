@@ -1,8 +1,10 @@
 {% extends 'base_frontend.html' %}
 {% load static %}
+{% load humanize %}
+
 
 {% block title %}
-به معدن خوش آمدید
+    {{ product.title }}
 {% endblock %}
 
 {% block frontend_content %}
@@ -16,53 +18,52 @@
                                 <div class="col-12 col-md-5">
                                     <div class="ph-single-product-image-wrapper">
                                         <div class="ph-single-product-main-image">
-                                            <a class="image-popup-vertical-fit" href="{% static 'images/products/1.jpg' %}" title="نام محصول">
-                                                <img class="ph-border-radius" src="{% static 'images/products/1.jpg' %}">
+                                            <a class="image-popup-vertical-fit"
+                                               href="{% get_media_prefix %}{{ product.media.get_primary.file }}"
+                                               title="{{ product.title }}">
+                                                <img class="ph-border-radius"
+                                                     src="{% get_media_prefix %}{{ product.media.get_primary.file }}">
                                             </a>
                                         </div><!-- .ph-single-product-main-image -->
                                         <div class="ph-single-product-gallery popup-gallery">
-                                            <a href="{% static 'images/products/1.jpg' %}" title="نام محصول 1">
-                                                <img class="ph-border-radius-small" src="{% static 'images/products/1.jpg' %}">
-                                            </a>
-                                            <a href="{% static 'images/products/2.jpg' %}" title="نام محصول 2">
-                                                <img class="ph-border-radius-small" src="{% static 'images/products/2.jpg' %}">
-                                            </a>
-                                            <a href="{% static 'images/products/3.jpg' %}" title="نام محصول 3">
-                                                <img class="ph-border-radius-small" src="{% static 'images/products/3.jpg' %}">
-                                            </a>
-                                            <a href="{% static 'images/products/4.jpg' %}" title="نام محصول 4">
-                                                <img class="ph-border-radius-small" src="{% static 'images/products/4.jpg' %}">
-                                            </a>
+                                            {% for image in product.media.get_additional %}
+                                                <a href="{% get_media_prefix %}{{ image.file }}"
+                                                   title="{{ product.title }}">
+                                                    <img class="ph-border-radius-small"
+                                                         src="{% get_media_prefix %}{{ image.file }}">
+                                                </a>
+                                            {% endfor %}
                                         </div><!-- .ph-single-product-gallery -->
                                     </div><!-- .ph-single-product-image-wrapper -->
                                 </div><!-- .col-md-5 -->
                                 <div class="col-12 col-md-7">
                                     <div class="ph-single-product-details-wrapper">
-                                        <h1 class="ph-single-product-title">اکسید آهن</h1>
+                                        <h1 class="ph-single-product-title">{{ product.title }}</h1>
                                         <hr>
                                         <div class="ph-single-product-base-price my-3">
-                                            <label class="ph-single-product-label" for="product_base_price">قیمت: </label>
-                                            <h3 id="product_base_price" class="ph-single-product-price"><span>140.000</span> <span>تومان</span> <span class="ph-product-small-text">به ازای هر</span><span class="ph-product-small-text">تن</span></h3>
+                                            <label class="ph-single-product-label"
+                                                   for="product_base_price">قیمت: </label>
+                                            {% with product.get_price as price %}
+                                                <h3 id="product_base_price" class="ph-single-product-price">
+                                                    <span>{{ price.value }}</span>
+                                                    <span>{{ price.attribute.unit }}</span> <span
+                                                        class="ph-product-small-text">به ازای هر</span><span
+                                                        class="ph-product-small-text">تن</span></h3>
+                                            {% endwith %}
                                         </div><!-- .ph-single-product-base-price -->
-                                        <!--
-                                        <div class="ph-single-product-excerpt my-3">
-                                            <p>
-                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                            </p>
-                                        </div> -->
                                         <div class="ph-single-product-atts-summary">
                                             <ul>
                                                 <li>
                                                     <label>نوع:</label>
-                                                    <span>فراوری شده</span>
+                                                    <span>{{ product.category.parent.title }}</span>
                                                 </li>
                                                 <li>
                                                     <label>دسته بندی:</label>
-                                                    <a href="#">آهک</a>
+                                                    <a href="#">{{ product.category.title }}</a>
                                                 </li>
                                                 <li>
                                                     <label>استان :</label>
-                                                    <a href="#">خراسان</a>
+                                                    <a href="#">{{ product.user.region }}</a>
                                                 </li>
                                                 <li>
                                                     <label>نوع بسته بندی :</label>
@@ -82,13 +83,17 @@
                                                     <span>تن</span>
                                                 </div><!-- .ph-single-product-quantity -->
                                                 <div class="ph-single-product-final-price">
-                                                    <label class="ph-single-product-label" for="product_final_price">قیمت نهایی: </label>
-                                                    <h3 id="product_final_price"><span>760.000</span> <span>تومان</span></h3>
+                                                    <label class="ph-single-product-label" for="product_final_price">قیمت
+                                                        نهایی: </label>
+                                                    <h3 id="product_final_price"><span>760.000</span> <span>تومان</span>
+                                                    </h3>
                                                 </div><!-- .ph-single-product-final-price -->
                                             </div><!-- .ph-single-product-calculator -->
                                             <div class="ph-single-product-cta my-3">
-                                                <a href="#" class="ph-submit-order-btn ph-border-radius"><i class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
-                                                <a href="#" class="ph-need-sample-btn ph-border-radius"><i class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                <a href="#" class="ph-submit-order-btn ph-border-radius"><i
+                                                        class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
+                                                <a href="#" class="ph-need-sample-btn ph-border-radius"><i
+                                                        class="fas fa-vial ml-2"></i> درخواست نمونه </a>
                                             </div><!-- .ph-single-product-cta -->
                                         </div><!-- .ph-single-product-details-bottom -->
                                     </div><!-- .ph-single-product-details-wrapper -->
@@ -101,49 +106,28 @@
                                     <div class="ph-single-product-specification-table">
                                         <h3>مشخصات محصول</h3>
                                         <ul>
-                                            <li>
-                                                <label>نوع:</label>
-                                                <span>فراوری شده</span>
-                                            </li>
-                                            <li>
-                                                <label>دسته بندی:</label>
-                                                <a href="#">آهک</a>
-                                            </li>
-                                            <li>
-                                                <label>استان :</label>
-                                                <a href="#">خراسان</a>
-                                            </li>
-                                            <li>
-                                                <label>نوع بسته بندی :</label>
-                                                <span>کیسه 25 کیلو گرمی</span>
-                                            </li>
-                                            <li>
-                                                <label>خلوص عیار :</label>
-                                                <span>%92-90</span>
-                                            </li>
-                                            <li>
-                                                <label>نام صنعتی :</label>
-                                                <span>آهک | Lime</span>
-                                            </li>
-                                            <li>
-                                                <label>فرمول شیمیایی :</label>
-                                                <span>Ca(OH)2</span>
-                                            </li>
-                                            <li>
-                                                <label>گرید :</label>
-                                                <span>زنده | هیدراته | صنعتی | ساختمانی | پخته | کوبشی</span>
-                                            </li>
-                                            <li>
-                                                <label>نام های دیگر :</label>
-                                                <span>Calcium hydroxide | کلسیم هیدروکسید</span>
-                                            </li>
+                                            {% for product_attribute in product.attributes.get_ordinary %}
+                                                <li>
+                                                    {% with product_attribute.attribute as attribute_definition %}
+                                                        <label>{{ attribute_definition.title }}: </label>
+                                                        {% if attribute_definition.value_type == 'bool' %}
+                                                            <span>{{ product_attribute.value|yesno:'دارد,ندارد' }}</span>
+                                                        {% elif attribute_definition.value_type == 'int' %}
+                                                            <span>{{ product_attribute.value|intcomma }}</span>
+                                                        {% else %}
+                                                            <span>{{ product_attribute.value }} {{ attribute_definition.unit }}</span>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                </li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-7">
                                     <div class="ph-single-product-analyze-image">
-                                        <a class="image-popup-fit-width" href="{% static 'images/product_spec/analyz.jpeg' %}" title="نام محصول">
-                                            <img src="{% static 'images/product_spec/analyz.jpeg' %}" alt="">
+                                        <a class="image-popup-fit-width"
+                                           href="{% get_media_prefix %}{{ product.get_analyze.value }}" title="{{ product.title }}">
+                                            <img src="{% get_media_prefix %}{{ product.get_analyze.value }}" alt="">
                                         </a>
                                     </div>
                                 </div>

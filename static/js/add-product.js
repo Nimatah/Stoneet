@@ -1,6 +1,60 @@
 const categories = JSON.parse($('#categories').text());
 const commission = "کمیسیون";
 
+$(document).ready(function() {
+
+    $('.image-popup-vertical-fit').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        mainClass: 'mfp-img-mobile',
+        image: {
+            verticalFit: true
+        }
+
+    });
+
+    $('.image-popup-fit-width').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        image: {
+            verticalFit: false
+        }
+    });
+
+    $('.image-popup-no-margins').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        fixedContentPos: true,
+        mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+        image: {
+            verticalFit: true
+        },
+        zoom: {
+            enabled: true,
+            duration: 300 // don't foget to change the duration also in CSS
+        }
+    });
+
+});
+
+$(document).ready(function() {
+    $('.popup-gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        tLoading: 'در حال بارگداری #%curr%...',
+        mainClass: 'mfp-img-mobile',
+        gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+        },
+        image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+
+        }
+    });
+});
 
 categories.forEach(function (category) {
     $('#t-1-c').append(`<option value="${category.id}">${category.title}</option>`);
@@ -66,13 +120,18 @@ $('#s-3-btn').on('click', function (e) {
         }
     }
 
-    $('#preview-image-0').attr('src', $('#file-upload-image-0').prop('src'))
+    for (let i = 0; i < 5; i++) {
+        if (!$(`#file-upload-image-${i}`).prop('src').endsWith("#")) {
+            $(`#preview-image-${i}`).attr('src', $(`#file-upload-image-${i}`).prop('src'))
+            $(`#preview-image-${i}-link`).attr('href', $(`#file-upload-image-${i}`).prop('src'))
+        } else {
+            $(`#preview-image-${i}`).attr('src', '#').prop('src')
+            $(`#preview-image-${i}`).hide()
+            $(`#preview-image-${i}-link`).attr('class', 'ph-preview-placeholder')
+        }
+    }
     $('#preview-image-analyze').attr('src', $('#file-upload-image-attr-0').prop('src'))
-    $('#preview-image-1').attr('src', $('#file-upload-image-1').prop('src'))
-    $('#preview-image-2').attr('src', $('#file-upload-image-2').prop('src'))
-    $('#preview-image-3').attr('src', $('#file-upload-image-3').prop('src'))
-    $('#preview-image-4').attr('src', $('#file-upload-image-4').prop('src'))
-
+    $('#preview-image-analyze-link').attr('href', $('#file-upload-image-attr-0').prop('src'))
 });
 
 

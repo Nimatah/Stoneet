@@ -76,36 +76,14 @@
                                 <h3 class="ph-border-radius">آخرین محصولات</h3>
                             </div><!-- .ph-home-heading -->
                             <div class="ph-default-products-slider owl-carousel owl-theme">
-                                <div class="ph-home-products-slide">
-                                    <a href="#" class="ph-home-product-img">
-                                        <img class="ph-border-radius" src="{% static 'images/products/1.jpg' %}" alt="">
-                                    </a>
-                                    <a href="#" class="ph-home-product-title">اکسید آهن</a>
-                                </div><!-- .ph-home-products-slide -->
-                                <div class="ph-home-products-slide">
-                                    <a href="#" class="ph-home-product-img">
-                                        <img class="ph-border-radius" src="{% static 'images/products/2.jpg' %}" alt="">
-                                    </a>
-                                    <a href="#" class="ph-home-product-title">اکسید روی</a>
-                                </div><!-- .ph-home-products-slide -->
-                                <div class="ph-home-products-slide">
-                                    <a href="#" class="ph-home-product-img">
-                                        <img class="ph-border-radius" src="{% static 'images/products/3.jpg' %}" alt="">
-                                    </a>
-                                    <a href="#" class="ph-home-product-title">باریت حفاری</a>
-                                </div><!-- .ph-home-products-slide -->
-                                <div class="ph-home-products-slide">
-                                    <a href="#" class="ph-home-product-img">
-                                        <img class="ph-border-radius" src="{% static 'images/products/4.jpg' %}" alt="">
-                                    </a>
-                                    <a href="#" class="ph-home-product-title">بتونیت حفاری</a>
-                                </div><!-- .ph-home-products-slide -->
-                                <div class="ph-home-products-slide">
-                                    <a href="#" class="ph-home-product-img">
-                                        <img class="ph-border-radius" src="{% static 'images/products/5.jpg' %}" alt="">
-                                    </a>
-                                    <a href="#" class="ph-home-product-title">پرلیت</a>
-                                </div><!-- .ph-home-products-slide -->
+                                {% for product in products %}
+                                    <div class="ph-home-products-slide">
+                                        <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-img">
+                                            <img class="ph-border-radius" src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="{{ product.title }}">
+                                        </a>
+                                        <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-title">{{ product.title }}</a>
+                                    </div><!-- .ph-home-products-slide -->
+                                {% endfor %}
                             </div><!-- .ph-default-products-slider -->
                         </div><!-- .ph-home-products-slider -->
                     </div><!-- .container -->

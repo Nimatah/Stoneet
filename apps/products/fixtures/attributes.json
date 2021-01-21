@@ -36,9 +36,9 @@
       "created_at": "2020-12-16T00:00:00",
       "updated_at": "2020-12-15T21:38:16.043",
       "title": "عیار",
-      "value_type": "int",
+      "value_type": "string",
       "options": "",
-      "unit": "",
+      "unit": "%",
       "is_required": true,
       "view_in_product_page": true,
       "is_special": false

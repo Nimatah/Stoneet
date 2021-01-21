@@ -1,8 +1,9 @@
 {% extends 'base_frontend.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
-به معدن خوش آمدید
+لیست محصولات
 {% endblock %}
 
 {% block frontend_content %}
@@ -97,342 +98,34 @@
                         </div><!-- .ph-list-product-header -->
                         <div class="ph-list-product-loop">
                             <div class="row">
+                                {% for product in products %}
                                 <div class="col-12 col-md-3">
                                     <div class="ph-list-product-loop-item ph-border-radius">
                                         <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
+                                            <a href="{% url 'products:product_details' pk=product.id %}"><img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt=""></a>
+                                            <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
                                         </div><!-- .ph-list-product-loop-item-img -->
                                         <div class="ph-list-product-loop-item-content">
                                             <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
+                                                <a href="{% url 'products:product_details' pk=product.id %}">{{ product.title }}</a>
                                             </div><!-- .ph-list-product-loop-item-title -->
                                             <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
                                                 <div class="ph-list-product-loop-item-meta">
                                                     <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
+                                                    {% with product.get_sku as sku %}
+                                                    <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                    {% endwith %}
                                                 </div><!-- .ph-list-product-loop-item-meta -->
                                             </div><!-- .ph-list-product-loop-item-meta-wrapper -->
                                             <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
+                                                {% with product.get_price as price %}
+                                                <span>{{ price.value|intcomma }}</span> {{ price.attribute.unit }} به ازای هر تن
+                                                {% endwith %}
                                             </div><!-- .ph-list-product-item-price -->
                                         </div><!-- .ph-list-product-loop-item-content -->
                                     </div><!-- .ph-list-product-loop-item -->
                                 </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
-                                <div class="col-12 col-md-3">
-                                    <div class="ph-list-product-loop-item ph-border-radius">
-                                        <div class="ph-list-product-loop-item-img">
-                                            <a href="#"><img src="{% static 'images/products/1.jpg' %}" alt=""></a>
-                                            <span class="ph-list-product-loop-item-city">تهران</span>
-                                        </div><!-- .ph-list-product-loop-item-img -->
-                                        <div class="ph-list-product-loop-item-content">
-                                            <div class="ph-list-product-loop-item-title">
-                                                <a href="#">نام محصول</a>
-                                            </div><!-- .ph-list-product-loop-item-title -->
-                                            <div class="ph-list-product-loop-item-meta-wrapper">
-                                                <!--
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label>شهر:</label>
-                                                    <span>خراسان</span>
-                                                </div>
-                                                -->
-                                                <div class="ph-list-product-loop-item-meta">
-                                                    <label for="">ظرفیت تولید:</label>
-                                                    <span>20 تن در هفته</span>
-                                                </div><!-- .ph-list-product-loop-item-meta -->
-                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                            <div class="ph-list-product-item-price ph-border-radius-small">
-                                                <span>2500000</span> تومان به ازای هر تن
-                                            </div><!-- .ph-list-product-item-price -->
-                                        </div><!-- .ph-list-product-loop-item-content -->
-                                    </div><!-- .ph-list-product-loop-item -->
-                                </div><!-- .col-md-3 -->
+                                {% endfor %}
                             </div><!-- .row -->
                         </div><!-- .ph-list-product-loop -->
                         <div class="ph-list-product-pagination">

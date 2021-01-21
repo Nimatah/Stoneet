@@ -29,7 +29,12 @@ class CategoryManager(TreeManager):
 
 
 class ProductAttributeManager(models.Manager):
-    pass
+
+    def get_ordinary(self):
+        return self.filter(attribute__is_special=False)
+
+    def get_special(self):
+        return self.filter(attribute__is_special=True)
 
 
 class ProductManager(models.Manager):
@@ -39,7 +44,7 @@ class ProductManager(models.Manager):
 class ProductMediaManager(models.Manager):
 
     def get_primary(self):
-        return self.filter(is_primary=True)
+        return self.get(is_primary=True)
 
     def get_additional(self):
         return self.filter(is_primary=False)
@@ -53,6 +58,7 @@ class Attribute(TimestampedModel):
 
     ID_PRICE = 1
     ID_ANALYZE = 2
+    ID_SKU = 4
 
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -186,7 +192,10 @@ class ProductAttribute(models.Model):
         elif self.attribute.value_type == self.attribute.TYPE_DROPDOWN:
             return self.value_string
         elif self.attribute.value_type == self.attribute.TYPE_IMAGE:
-            return self.media
+            try:
+                return self.media.first().file
+            except AttributeMedia.DoesNotExist:
+                return None
         else:
             raise ValueError("could not find a value type")
 
@@ -239,6 +248,18 @@ class Product(TimestampedModel):
     def get_price(self) -> Union[ProductAttribute, None]:
         try:
             return self.attributes.get(attribute_id=Attribute.ID_PRICE)
+        except ProductAttribute.DoesNotExist:
+            return None
+
+    def get_sku(self) -> Union[ProductAttribute, None]:
+        try:
+            return self.attributes.get(attribute_id=Attribute.ID_SKU)
+        except ProductAttribute.DoesNotExist:
+            return None
+
+    def get_analyze(self) -> Union[ProductAttribute, None]:
+        try:
+            return self.attributes.get(attribute_id=Attribute.ID_ANALYZE)
         except ProductAttribute.DoesNotExist:
             return None
 
