@@ -267,10 +267,24 @@ input::placeholder { /* Most modern browsers support this now. */
     background-color: #618BB4;
 }
 .bg-color-crayola{
-    background-color: #F1BF7D;
+    background-color: #F0E2A8;
 }
 .bg-color-yellow{
     background-color: #F2D428;
+}
+
+.custom-control-label{
+    padding-right: 1.5rem;
+}
+
+.custom-control-label::before{
+    right: 0;
+    left: auto;
+}
+
+.custom-control-label::after{
+    right: 0;
+    left: auto;
 }
 
 .background-image {

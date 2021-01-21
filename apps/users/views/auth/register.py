@@ -8,7 +8,7 @@ from apps.users.forms import UserRegisterForm
 
 class SellerRegisterView(FormView):
     form_class = UserRegisterForm
-    template_name = 'users/auth/register/seller_register.html'
+    template_name = 'users/auth/register/register_seller.html'
     success_url = reverse_lazy("home:index")
 
     def get(self, request, *args, **kwargs):

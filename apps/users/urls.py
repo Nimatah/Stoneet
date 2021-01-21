@@ -1,8 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
-
-from apps.users.views import auth
+from apps.users.views import auth, ProfileView
 from apps.users.views.panel import seller, buyer, logistic
 
 app_name = 'users'
@@ -13,6 +12,7 @@ urlpatterns = [
     path('logistic-register/', auth.LogisticRegisterView.as_view(), name='register_logistic'),
     path('login/', auth.LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('profile', ProfileView.as_view(), name='profile'),
 
     path('seller-profile', seller.SellerProfileView.as_view(), name='profile_seller'),
     path('buyer-profile', buyer.BuyerProfileView.as_view(), name='profile_buyer'),
