@@ -80,27 +80,6 @@
   min-height: 60px;
   color: #fff;
 }
-/*
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item::after{
-  content: "";
-  height: 95px;
-  width: 10px;
-  position: absolute;
-  top: 0;
-  right: 21px;
-  background-color: #5fb62d;
-  z-index: -1;
-}
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item:nth-child(1)::after{
-  height: 95px;
-  top: 0;
-}
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item:nth-last-child(1)::after{
-  height: 100%;
-  top: auto;
-  bottom: 29px;
-}
-*/
 
 input.invalid {
   background-color: #ffdddd;
@@ -276,11 +255,6 @@ input.invalid {
   border-color: #618BB4;
 }
 
-.ph-signup-submit-btn button:focus {
-  outline: 0;
-  box-shadow: 0 0 7px -0.1rem #4cff72;
-}
-
 #ph_sign_in_to_sign_up {
   display: flex;
   justify-content: center;
@@ -314,7 +288,7 @@ input.invalid {
 /* 
           #ph_new_login_seller_info
   ===============================================
-   */
+*/
 
 #ph_new_login_seller_info .ph-new-login-seller-info-wrapper {
   width: 85%;
@@ -425,15 +399,6 @@ input.invalid {
   border-color: #618BB4;
 }
 
-
-
-
-
-
-
-
-
-
 /* ph-business-uploadimg
 ===================================================== */
 
@@ -489,6 +454,7 @@ input.invalid {
   border: 3px solid #618BB4;
   box-shadow: 0px 2px 4px 0px #618BB4;
 }
+
 .avatar-upload .avatar-preview > div {
   width: 100%;
   height: 100%;
@@ -505,6 +471,83 @@ input.invalid {
     margin: 20px 0;
 }
 
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                            BUYER PANEL REGISTRATION
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+.ph-new-login.buyer-register aside.ph-registration-panel-sidebar {
+  background: #00A693;
+}
+
+.ph-new-login.buyer-register .ph-signup-submit-btn button {
+  background: #00A693;
+}
+
+.ph-new-login.buyer-register .ph-signup-submit-btn button:hover{
+  background: #fff;
+  color: #00A693;
+  border-color: #00A693;
+}
+
+.buyer-register .ph-new-login-seller-info-btn button {
+  background: #00A693;
+}
+
+.buyer-register .ph-new-login-seller-info-btn button:hover {
+  background: #fff;
+  color: #00A693;
+  border-color: #00A693;
+}
+
+.buyer-register .avatar-upload .avatar-preview {
+  box-shadow: 0px 2px 4px 0px #00A693;
+  border: 3px solid #00A693;
+}
+
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                            LOGISTIC PANEL REGISTRATION
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar {
+  background: #F1BF7D;
+}
+
+.ph-new-login.logistic-register .ph-signup-submit-btn button {
+  background: #F1BF7D;
+}
+
+.ph-new-login.logistic-register .ph-signup-submit-btn button:hover{
+  background: #fff;
+  color: #F1BF7D;
+  border-color: #F1BF7D;
+}
+
+.logistic-register .ph-new-login-seller-info-btn button {
+  background: #F1BF7D;
+}
+
+.logistic-register .ph-new-login-seller-info-btn button:hover {
+  background: #fff;
+  color: #F1BF7D;
+  border-color: #F1BF7D;
+}
+
+.logistic-register .avatar-upload .avatar-preview {
+  box-shadow: 0px 2px 4px 0px #F1BF7D;
+  border: 3px solid #F1BF7D;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
@@ -1451,7 +1494,7 @@ a.nav-link[aria-expanded="true"]:after {
 }
 .ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .page-item .page-link{
     color: #00A693;
-    border: 1px solid rgba(0,166,147,40%);
+    border: 1px solid rgba(0,166,147,.4);
 }
 
 .ph-ip-w-list .ph-ip-wl-header .ph-ip-wl-right .page-item.active .page-link{
@@ -1680,7 +1723,7 @@ a.nav-link[aria-expanded="true"]:after {
     padding: .5rem;
     border-radius: 0 10px;
     color: #333;
-    border-bottom: 2px solid rgb(51,51,51,31%);
+    border-bottom: 2px solid rgba(51,51,51,.31);
 }
 .ph-spp-tab-contents .ph-spp-t-header .edit-info{
     display: flex;
