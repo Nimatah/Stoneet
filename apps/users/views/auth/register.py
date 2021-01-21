@@ -24,9 +24,9 @@ class SellerRegisterView(FormView):
 
 class BuyerRegisterView(TemplateView):
 
-    template_name = 'users/auth/register/buyer_register.html'
+    template_name = 'users/auth/register/register_buyer.html'
 
 
 class LogisticRegisterView(TemplateView):
 
-    template_name = 'users/auth/register/logistic_register.html'
+    template_name = 'users/auth/register/register_logistic.html'
