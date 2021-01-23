@@ -316,6 +316,12 @@ input::placeholder { /* Most modern browsers support this now. */
 .page-holder{
     text-align: right;
 }
+
+.ph-create-product-main .ph-panel-title{
+    margin-bottom: 0;
+    border-bottom: 1px solid #F2D428;
+}
+
 input.form-control:focus{
     color: #495057;
     background-color: #fff;

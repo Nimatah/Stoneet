@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block admin_content %}
-    <main class="ph-create-product-main">
+    <main class="ph-create-product-main ph-dashboard-main">
         <div class="container">
             <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
                 {% csrf_token %}
@@ -25,8 +25,8 @@
                         </ul>
                     </div>
                     <div class="ph-cp-panel">
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">برای درج کالای جدید ابتدا گروه کالای خود را انتخاب کنید:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">برای درج کالای جدید ابتدا گروه کالای خود را انتخاب کنید:</span>
                         </div>
                         <div class="form-row mb-4 align-items-center">
                             <div class="col-5 col-offset-2 my-1">
@@ -45,8 +45,8 @@
                                 را
                                 انتخاب کنید</small>
                         </div>
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">برای محصول خود یک عنوان انتخاب کنید:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">برای محصول خود یک عنوان انتخاب کنید:</span>
                         </div>
                         <div class="form-group mb-4">
                             <label for="p-t">عنوان مورد نظر را وارد کنید</label>
@@ -55,8 +55,8 @@
                             <small class="form-text text-danger" id="t-e" style="display: none">لطفا نام محصول را وارد
                                 نمایید</small>
                         </div>
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">ظرفیت و قیمت‌گذاری:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">ظرفیت و قیمت‌گذاری:</span>
                         </div>
                         <div class="form-row align-items-center">
 
@@ -143,8 +143,10 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
+                        <div class="ph-panel-title">
+                            <span class="title">توضیحاتی مختصر در مورد محصول:</span>
+                        </div>
                         <div class="mb-4">
-                            <label for="ph_spm_create_product_description">توضیحات:</label>
                             <textarea class="form-control" id="ph_spm_create_product_description"
                                       placeholder="توضیحات خود را مختصر ینویسید" rows="3"></textarea>
                         </div>
@@ -168,8 +170,8 @@
                     </div>
                     <!-- ph-cp-header-parts part-2 -->
                     <div class="ph-cp-panel">
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">عکس آنالیز محصول را وارد نمایید:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">عکس آنالیز محصول را وارد نمایید:</span>
                         </div>
                         <div class="form-group mb-5">
                             <div class="container">
@@ -223,8 +225,8 @@
                     </div>
                     <!-- ph-cp-header-parts part-3 -->
                     <div class="ph-cp-panel">
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">برای محصول خود یک عکس انتخاب کنید:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">برای محصول خود یک عکس انتخاب کنید:</span>
                         </div>
                         <div class="form-group mb-5">
                             <div class="container">
@@ -370,8 +372,8 @@
                     </div>
                     <!-- ph-cp-header-parts part-4 -->
                     <div class="ph-cp-panel">
-                        <div class="ph-cp-panel-heading">
-                            <h6 class="ph-cp-panel-title">بعد از تایید اطلاعات دکمه ثبت را بزنید:</h6>
+                        <div class="ph-panel-title">
+                            <span class="title">بعد از تایید اطلاعات دکمه ثبت را بزنید:</span>
                         </div>
                         <div class="form-group mb-5 mt-3">
                             <div class="container">
@@ -458,7 +460,7 @@
         </div>
         <!-- container -->
     </main>
-    <!-- ph-seller-panel-main -->
+    <!-- ph-seller-panel-main ph-dashboard-main-->
 
 {% endblock %}
 

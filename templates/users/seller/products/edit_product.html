@@ -3,7 +3,7 @@
 {% load utils %}
 
 {% block admin_content %}
-    <main class="ph-create-product-main">
+    <main class="ph-edit-product-main ph-dashboard-main">
         <div class="container">
             <form action="{% url 'users:seller_edit_product' pk=product.id %}" method="post"
                   enctype="multipart/form-data">

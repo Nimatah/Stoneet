@@ -669,6 +669,23 @@ a.nav-link[aria-expanded="true"]:after {
     min-height: 100vh;
 }
 
+.ph-dashboard-main .ph-panel-title {
+    margin-bottom: 0;
+    border-bottom: 1px solid #F2D428;
+}
+
+.ph-dashboard-main .ph-panel-title span {
+    margin: 0;
+    font-size: 13px;
+    background: #F2D428;
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: 0 25px;
+    color: #666;
+    font-family: IRANSans-Bd;
+}
+
+
 /*
 =============================================================
         SELLER PANEL   MAIN .ph-create-product-main
@@ -683,7 +700,7 @@ a.nav-link[aria-expanded="true"]:after {
     margin-left: auto;
 }
 
-  /* Multi-Part CSS */
+
   input.ph-cp-input-check[type=checkbox] {
     position: absolute;
     opacity: 0;
@@ -760,18 +777,7 @@ a.nav-link[aria-expanded="true"]:after {
     height: 0;
     display: none;
   }
-  
 
-  
-.ph-create-product-main {
-  width: 85%;
-  position: relative;
-  margin-right: auto;
-  padding: 2rem 3rem 2rem;
-  min-height: 100vh;
-}
-
-#ph_create_product_form {}
 
 .ph-create-product-main .ph-cp-header-parts {
   display: flex;
@@ -1421,14 +1427,6 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-invoice {
-    width: 85%;
-    position: relative;
-    margin-right: auto;
-    padding: 2rem 3rem 2rem;
-    min-height: 100vh;
-}
-.ph-ip-w-heading{}
 .ph-ip-w-heading .ph-ip-w-title{
     margin: 1rem 0;
     padding: 1rem 1.5rem;
@@ -1501,13 +1499,7 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-invoice-details{
-    width: 85%;
-    position: relative;
-    margin-right: auto;
-    padding: 2rem 3rem 2rem;
-    min-height: 100vh;
-}
+
 .ph-idp-w-heading .ph-idp-w-title{
     margin: 1rem 0;
     padding: 1rem 1.5rem;
@@ -1554,13 +1546,6 @@ a.ph-preview-placeholder:after {
         SELLER PANEL   MAIN .ph-orders
 =============================================================
 */
-.ph-orders{
-    width: 85%;
-    position: relative;
-    margin-right: auto;
-    padding: 2rem 3rem 2rem;
-    min-height: 100vh;
-}
 
 .ph-op-fb-heading{
     margin: 1rem 0;
@@ -1601,13 +1586,6 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-seller-profile{
-    width: 85%;
-    position: relative;
-    margin-right: auto;
-    padding: 2rem 3rem 2rem;
-    min-height: 100vh;
-}
 .ph-spp-tab-navs{
   overflow: hidden;
   margin: 1rem 0;
