@@ -475,84 +475,6 @@ input.invalid {
 /*=======================================================================================================================
 /*=======================================================================================================================
 
-                                            BUYER PANEL REGISTRATION
-
-=========================================================================================================================
-=========================================================================================================================
-=======================================================================================================================*/
-
-.ph-new-login.buyer-register aside.ph-registration-panel-sidebar {
-  background: #00A693;
-}
-
-.ph-new-login.buyer-register .ph-signup-submit-btn button {
-  background: #00A693;
-}
-
-.ph-new-login.buyer-register .ph-signup-submit-btn button:hover{
-  background: #fff;
-  color: #00A693;
-  border-color: #00A693;
-}
-
-.buyer-register .ph-new-login-seller-info-btn button {
-  background: #00A693;
-}
-
-.buyer-register .ph-new-login-seller-info-btn button:hover {
-  background: #fff;
-  color: #00A693;
-  border-color: #00A693;
-}
-
-.buyer-register .avatar-upload .avatar-preview {
-  box-shadow: 0px 2px 4px 0px #00A693;
-  border: 3px solid #00A693;
-}
-
-/*=======================================================================================================================
-/*=======================================================================================================================
-/*=======================================================================================================================
-
-                                            LOGISTIC PANEL REGISTRATION
-
-=========================================================================================================================
-=========================================================================================================================
-=======================================================================================================================*/
-
-.ph-new-login.logistic-register aside.ph-registration-panel-sidebar {
-  background: #F1BF7D;
-}
-
-.ph-new-login.logistic-register .ph-signup-submit-btn button {
-  background: #F1BF7D;
-}
-
-.ph-new-login.logistic-register .ph-signup-submit-btn button:hover{
-  background: #fff;
-  color: #F1BF7D;
-  border-color: #F1BF7D;
-}
-
-.logistic-register .ph-new-login-seller-info-btn button {
-  background: #F1BF7D;
-}
-
-.logistic-register .ph-new-login-seller-info-btn button:hover {
-  background: #fff;
-  color: #F1BF7D;
-  border-color: #F1BF7D;
-}
-
-.logistic-register .avatar-upload .avatar-preview {
-  box-shadow: 0px 2px 4px 0px #F1BF7D;
-  border: 3px solid #F1BF7D;
-}
-
-/*=======================================================================================================================
-/*=======================================================================================================================
-/*=======================================================================================================================
-
                                             SELLER PANEL
 
 =========================================================================================================================
@@ -996,8 +918,6 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-create-product-main .form-row {
   justify-content: space-between;
 }
-
-
 
 .ph-create-product-main .ph-cpp-btn {
   width: 100%;
@@ -1748,12 +1668,142 @@ a.ph-preview-placeholder:after {
 
 
 
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                            LOGISTIC PANEL
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+/*
+=============================================================
+        LOGISTIC REGISTRATION
+=============================================================
+*/
+
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar {
+  background: #F1BF7D;
+}
+
+.ph-new-login.logistic-register .ph-signup-submit-btn button {
+  background: #F1BF7D;
+}
+
+.ph-new-login.logistic-register .ph-signup-submit-btn button:hover{
+  background: #fff;
+  color: #F1BF7D;
+  border-color: #F1BF7D;
+}
+
+.logistic-register .ph-new-login-seller-info-btn button {
+  background: #F1BF7D;
+}
+
+.logistic-register .ph-new-login-seller-info-btn button:hover {
+  background: #fff;
+  color: #F1BF7D;
+  border-color: #F1BF7D;
+}
+
+.logistic-register .avatar-upload .avatar-preview {
+  box-shadow: 0px 2px 4px 0px #F1BF7D;
+  border: 3px solid #F1BF7D;
+}
+
+/*
+=============================================================
+        LOGISTIC AUCTION
+=============================================================
+*/
+
+.ph-logistic-panel .ph-admin-page-intro-text{
+  background: #F1BF7D;
+}
+
+.ph-logistic-panel .ph-admin-page-intro-text span{
+  color: #333;
+}
+
+.ph-auction-sorting{
+  display: flex;
+  align-items: center;
+  width: 15%;
+  justify-content: flex-end;
+  margin-right: auto;
+}
+
+.ph-auction-sorting label{
+  width: 50%;
+  min-width: 50%;
+  font-size: 13px;
+}
+
+.ph-auction-bid-btn{
+  width: 50px;
+  height: 28px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  border-radius: 0 10px 0 10px;
+  cursor: pointer;
+  color: #333;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
 
-                                            SELLER PANEL RESPONSIVE
+                                            BUYER PANEL
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+/*
+=============================================================
+         REGISTRATION
+=============================================================
+*/
+
+.ph-new-login.buyer-register aside.ph-registration-panel-sidebar {
+  background: #00A693;
+}
+
+.ph-new-login.buyer-register .ph-signup-submit-btn button {
+  background: #00A693;
+}
+
+.ph-new-login.buyer-register .ph-signup-submit-btn button:hover{
+  background: #fff;
+  color: #00A693;
+  border-color: #00A693;
+}
+
+.buyer-register .ph-new-login-seller-info-btn button {
+  background: #00A693;
+}
+
+.buyer-register .ph-new-login-seller-info-btn button:hover {
+  background: #fff;
+  color: #00A693;
+  border-color: #00A693;
+}
+
+.buyer-register .avatar-upload .avatar-preview {
+  box-shadow: 0px 2px 4px 0px #00A693;
+  border: 3px solid #00A693;
+}
+
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                  ALL RESPONSIVE
 
 =========================================================================================================================
 =========================================================================================================================
@@ -1774,6 +1824,4 @@ a.ph-preview-placeholder:after {
 
 
 }
-
-
 

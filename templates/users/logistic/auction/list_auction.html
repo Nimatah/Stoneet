@@ -2,21 +2,149 @@
 {% load static %}
 
 {% block admin_content %}
-<main class="ph-create-product-main">
+<main class="ph-dashboard-main ph-logistic-panel ph-list-auction">
     <div class="container">
-        <div class="ph-sd-title">
-            <h5>مناقصه های فعال</h5>
+        <div class="ph-admin-page-intro-text">
+            <span>مناقصه های فعال | </span>
+            در این قسمت می توانید تمامی سفارشات را مشاهده کنید و در صورت تمایل برای قبول باربری آن اقدام کنید.
         </div>
-        <div class="ph-sd-panel">
-            <input list="orders" name="order" id="order">
-            <datalist id="orders">
-                <option value="1">
-                <option value="2">
-                <option value="3">
-                <option value="4">
-            </datalist>
-        </div>
-    </div>
-</main>
+        <div class="ph-auction-container">
+            <div class="ph-auction-filter-wrapper my-3">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="ph-auction-filter-item filter-date">
+                             <div class="form-group d-flex">
+                                <span class="ml-2">از</span>
+                                <input type="text" class="form-control" placeholder="تاریخ">
+                                <span class="mx-2">تا</span>
+                                 <input type="text" class="form-control" placeholder="تاریخ">
+                             </div><!-- .form-group -->
+                        </div><!-- .ph-auction-filter-item -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="ph-auction-filter-item filter-city">
+                            <div class="form-group d-flex">
+                                <span class="ml-2">مبدا</span>
+                                <input list="origin_city" class="form-control" placeholder="نام شهر">
+                                <datalist id="origin_city">
+                                    <option value="تهران">
+                                    <option value="شیراز">
+                                    <option value="کرج">
+                                    <option value="کرمان">
+                                    <option value="مشهد">
+                                </datalist>
+                                <span class="mx-2">مقصد</span>
+                                <input list="destination_city" class="form-control" placeholder="نام شهر">
+                                <datalist id="destination_city">
+                                    <option value="تهران">
+                                    <option value="شیراز">
+                                    <option value="کرج">
+                                    <option value="کرمان">
+                                    <option value="مشهد">
+                                </datalist>
+                            </div><!-- .form-group -->
+                        </div><!-- .ph-auction-filter-item -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-12">
+                        <div class="ph-auction-filter-item filter-status d-flex">
+                            <label>وضعیت:</label>
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="has_price">
+                                <label class="custom-control-label" for="has_price">دارای قیمت</label>
+                            </div><!-- .custom-checkbox -->
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="expired">
+                                <label class="custom-control-label" for="expired">منقضی شده</label>
+                            </div><!-- .custom-checkbox -->
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="no_answer">
+                                <label class="custom-control-label" for="no_answer">بدون پاسخ</label>
+                            </div><!-- .custom-checkbox -->
+                        </div><!-- .ph-auction-filter-item -->
+                    </div><!-- .col-md-12 -->
+                </div><!-- .row -->
+            </div><!-- .ph-auction-filter-wrapper -->
+            <div class="ph-auction-table-wrapper my-4">
+                <div class="form-group ph-auction-sorting">
+                    <label for="ph_auction_no"
+                           class="col-form-label col-form-label-sm">تعداد نمایش</label>
+                    <select id="ph_auction_no" class="form-control custom-select">
+                        <option selected>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                    </select>
+                </div>
+                <div class="ph-auction-table table-responsive">
+                    <table class="table ph-table table-bordered text-center">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ردیف</th>
+                                <th>تاریخ</th>
+                                <th>شماره سفارش</th>
+                                <th>نوع بار</th>
+                                <th>بسته بندی</th>
+                                <th>میزان بار</th>
+                                <th>مبدا</th>
+                                <th>مقصد</th>
+                                <th>وضعیت</th>
+                                <th>آخرین قیمت</th>
+                                <th>ثبت درخواست</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>21/12/1399</td>
+                                <td>15678</td>
+                                <td>مواد معدنی</td>
+                                <td>کیسه 25 کیلویی</td>
+                                <td>30 تن</td>
+                                <td>تهران</td>
+                                <td>شیراز</td>
+                                <td>دارای قیمت</td>
+                                <td>140.000</td>
+                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>21/12/1399</td>
+                                <td>15678</td>
+                                <td>مواد معدنی</td>
+                                <td>کیسه 25 کیلویی</td>
+                                <td>30 تن</td>
+                                <td>تهران</td>
+                                <td>شیراز</td>
+                                <td>دارای قیمت</td>
+                                <td>140.000</td>
+                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div><!-- .ph-auction-table -->
+            </div><!-- .ph-auction-table-wrapper -->
+            <div class="ph-pagination">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div><!-- .ph-auction-pagination -->
+        </div><!-- .ph-auction-container -->
+    </div><!-- .container -->
+</main><!-- .ph-dashboard-main -->
 
 {% endblock %}
