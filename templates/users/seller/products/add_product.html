@@ -63,7 +63,77 @@
                             {% for attribute in attributes_field %}
                                 {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
                             {% endfor %}
+
+                            <div class="col-5 ph-add-product-cutie my-1">
+                                <label class="ph-label">عیار</label>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 d-flex">
+                                        <div class="row">
+                                            <span for="" class="ml-2 mr-3">از</span>
+                                            <input type="text" class="form-control col-10" id="">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 d-flex">
+                                        <div class="row">
+                                            <span for="" class="ml-1 mr-3">تا</span>
+                                            <input type="text" class="form-control col-10" id="">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5 my-1">
+                                <label class="ph-label">نوع دانه‌بندی</label>
+                                <div class="form-row align-items-center">
+                                    <div class="col-6 d-flex">
+                                        <div class="row">
+                                            <span for="" class="ml-2 mr-3">از</span>
+                                                <input type="text" class="form-control col-10" id="">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 d-flex">
+                                        <div class="row">
+                                            <span for="" class="ml-1 mr-3">تا</span>
+                                                <input type="text" class="form-control col-10" id="">
+                                            <small class="form-text text-danger"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5 my-1">
+                                <label>موقعیت</label>
+                                    <div class="ph-sd-panel form-group d-flex">
+                                        <label class="ml-2" for="state">استان</label>
+                                        <input list="states" class="form-control" id="state">
+                                        <datalist id="states">
+                                            <option value="تهران">
+                                            <option value="فارس">
+                                        </datalist>
+                                        <label class="mx-2" for="city">شهر</label>
+                                        <input list="cities" class="form-control" id="city">
+                                        <datalist id="cities">
+                                            <option value="تهران">
+                                            <option value="شیراز">
+                                        </datalist>
+                                    </div>
+                                    <small class="form-text text-danger"></small>
+
+
+                            </div>
+                            <div class="col-5 my-1">
+                                <label class="" for="">نوع تحویل</label>
+                                <select class="custom-select" id="">
+                                    <option selected>انتخاب کنید...</option>
+                                    <option value="1">بار فله</option>
+                                    <option value="2">کیسه‌ای</option>
+                                </select>
+                                <small class="form-text text-danger"></small>
+                            </div>
                         </div>
+
+
 
                         <div class="mb-3 mt-4">
                             <div class="ph-checkbox-form-group">
