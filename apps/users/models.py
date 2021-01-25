@@ -4,6 +4,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from apps.core.models import TimestampedModel, BaseMedia
 
 
+class MineManager(models.Manager):
+
+    pass
+
+
 class UserManager(BaseUserManager):
 
     @staticmethod
@@ -40,6 +45,18 @@ class MediaManager(models.Manager):
     pass
 
 
+class Mine(models.Model):
+    title = models.CharField(max_length=255)
+    region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
+    address = models.TextField()
+    user = models.ForeignKey('User', on_delete=models.CASCADE)
+
+    objects = MineManager()
+
+    def __str__(self):
+        return f'{self.user} -> {self.title}'
+
+
 class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     TYPE_SELLER = "seller"
     TYPE_LOGISTIC = "logistic"
@@ -63,16 +80,16 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         (LEGAL_LEGAL, "Legal",),
     )
 
-    STATE_DRAFT = "draft"
     STATE_PENDING = "pending"
     STATE_ACCEPTED = "accepted"
     STATE_REJECTED = "rejected"
+    STATE_BANNED = "banned"
 
     _STATE_CHOICES = (
-        (STATE_DRAFT, "Draft",),  # Can edit
         (STATE_PENDING, "Waiting For Confirm",),  # Can't edit
         (STATE_ACCEPTED, "Confirmed",),
         (STATE_REJECTED, "Rejected",),  # Rejection details box
+        (STATE_BANNED, "Banned",),
     )
 
     username = models.CharField(db_index=True, max_length=255, unique=True)

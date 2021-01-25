@@ -1,4 +1,4 @@
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import UserPassesTestMixin
 
@@ -6,7 +6,7 @@ from apps.products.forms import EditProductForm
 from apps.products.models import Product
 
 
-class EditProductView(UserPassesTestMixin, UpdateView):
+class EditProductView(TemplateView):
 
     template_name = 'users/seller/products/edit_product.html'
     form_class = EditProductForm

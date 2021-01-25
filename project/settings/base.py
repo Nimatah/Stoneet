@@ -23,6 +23,7 @@ PREREQUISITE_APPS = [
 
 PROJECT_APPS = [
     'apps.core.static_app.MadanStaticfilesConfig',
+    'apps.locations.apps.LocationsConfig',
     'apps.home.apps.HomeConfig',
     'apps.users.apps.UsersConfig',
     'apps.products.apps.ProductsConfig',
