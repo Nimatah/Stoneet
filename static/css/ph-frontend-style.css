@@ -223,6 +223,7 @@ body.home .ph-main-header.sticky{
 .ph-home-search-box form{
     width: 100%;
     display: flex;
+    align-items: center;
 }
 
 .ph-home-search-box form input.ph-search-location-field{
@@ -235,15 +236,15 @@ body.home .ph-main-header.sticky{
     width: 80%;
     padding: 15px 20px;
     border-radius: 0;
+    border: none;
 }
 
 .ph-home-search-box form button{
     width: 20%;
     padding: 15px 20px;
     background: #00A693;
-    border: 0;
+    border: none;
     color: #fff;
-    border-radius: 0 0 0 25px;
 }
 
 .ph-home-category-box-wrapper{
@@ -588,7 +589,7 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-list-product-loop-item-img a img{
-    height: 280px;
+    height: 250px;
     width: 100%;
 }
 
@@ -607,7 +608,8 @@ body.home .ph-main-header.sticky{
 
 .ph-list-product-loop-item-content{
     border: 1px solid #ccc;
-    border-top: 0;
+    border-top: none;
+    border-bottom: none;
     padding: 10px 0 0;
 }
 
@@ -634,12 +636,66 @@ body.home .ph-main-header.sticky{
     margin: 0 0 0 5px;
 }
 
+.ph-list-product-loop-item.list-view{
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-img{
+    width: 15%;
+    height: 110px;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-img a img {
+    height: 110px;
+    width: 100%;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-content{
+    width: 83%;
+    margin-right: 2%;
+    height: 110px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-title{
+    text-align: right;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-meta-wrapper {
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-item-price{
+    width: 210px;
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+}
+
+.ph-list-product-loop-item.list-view .ph-list-product-loop-item-city{
+    border-radius: 10px;
+    top: 10px;
+    left: 5px;
+}
+
 .ph-list-product-item-price{
     color: #fff;
     text-align: center;
     font-size: 14px;
     font-weight: 600;
     background: #00A693;
+    margin: -1px;
 }
 
 .ph-list-product-pagination{
@@ -669,6 +725,16 @@ body.home .ph-main-header.sticky{
 
 .ph-list-product-pagination .page-link{
     color: #618BB4;
+}
+
+.nav-pills .nav-link{
+    font-size: 13px;
+    padding: 3px 10px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #618BB4;
 }
 
 /*

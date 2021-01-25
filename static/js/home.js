@@ -81,7 +81,6 @@ class TextScramble {
 
 const phrases = [
 'STONEET',
-'BUY SELL TRANSIT',
 ];
 
 
