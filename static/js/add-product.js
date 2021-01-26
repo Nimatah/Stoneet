@@ -167,3 +167,16 @@ $('[id^="image-upload-wrap-"]').bind('dragover', function () {
 $('[id^="image-upload-wrap-"]').bind('dragleave', function () {
     $('[id^="image-upload-wrap-"]').removeClass('image-dropping');
 });
+
+
+
+
+////////////////////////////////ارسال نمونه
+
+
+function valueChanged() {
+  if($('.ph_ap_check').is(":checked"))
+    $(".ph-ap-checked").show();
+  else
+    $(".ph-ap-checked").hide();
+};
