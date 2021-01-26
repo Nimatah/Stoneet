@@ -57,14 +57,14 @@
                                 <div class="ph-home-register-box seller ph-border-radius">
                                     <h2>ثبت نام فروشندگان</h2>
                                     <p>اگر فروشنده مواد معدنی هستید می توانید با ثبت نام در استونت محصولات خود را به صورت آنلاین بفروشید.</p>
-                                    <a class="ph-border-radius" href="#">ثبت نام فروشندگان <i class="fas fa-angle-left pr-2"></i></a>
+                                    <a class="ph-border-radius-small bg-color-1" href="#">ثبت نام فروشندگان <i class="fas fa-angle-left pr-2"></i></a>
                                 </div><!-- .ph-home-register-box -->
                             </div><!-- .col-md-6 -->
                             <div class="col-12 col-md-6">
                                 <div class="ph-home-register-box logestic ph-border-radius">
                                     <h2>ثبت نام حمل بار</h2>
                                     <p>اگر در زمینه حمل و نقل بار فعال هستید می توانید با ثبت نام در استونت سفارش های کاری دریافت کنید.</p>
-                                    <a class="ph-border-radius" href="#">ثبت نام حمل و نقل <i class="fas fa-angle-left pr-2"></i></a>
+                                    <a class="ph-border-radius-small bg-color-1" href="#">ثبت نام حمل و نقل <i class="fas fa-angle-left pr-2"></i></a>
                                 </div><!-- .ph-home-register-box -->
                             </div><!-- .col-md-6 -->
                         </div><!-- .row -->
@@ -75,13 +75,13 @@
                     <div class="container">
                         <div class="ph-home-products-slider">
                             <div class="ph-home-heading">
-                                <h3 class="ph-border-radius">آخرین محصولات</h3>
+                                <h3 class="ph-border-radius-small">آخرین محصولات</h3>
                             </div><!-- .ph-home-heading -->
                             <div class="ph-default-products-slider owl-carousel owl-theme">
                                 {% for product in products %}
                                     <div class="ph-home-products-slide">
                                         <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-img">
-                                            <img class="ph-border-radius" src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="{{ product.title }}">
+                                            <img class="ph-border-radius-small" src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="{{ product.title }}">
                                         </a>
                                         <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-title">{{ product.title }}</a>
                                     </div><!-- .ph-home-products-slide -->
@@ -95,7 +95,7 @@
                     <div class="container">
                         <div class="ph-home-about-wrapper">
                             <div class="ph-home-heading">
-                                <h3 class="ph-border-radius">درباره استونیت</h3>
+                                <h3 class="ph-border-radius-small">درباره استونیت</h3>
                             </div><!-- .ph-home-heading -->
                             <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
                         </div><!-- .ph-home-about-wrapper -->

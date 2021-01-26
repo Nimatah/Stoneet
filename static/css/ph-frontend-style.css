@@ -235,16 +235,17 @@ body.home .ph-main-header.sticky{
 .ph-home-search-box form input.ph-search-query-field{
     width: 80%;
     padding: 15px 20px;
-    border-radius: 0;
+    border-radius: 0 10px 10px 0;
     border: none;
 }
 
 .ph-home-search-box form button{
     width: 20%;
     padding: 15px 20px;
-    background: #00A693;
+    background: #4CE0B3;
     border: none;
-    color: #fff;
+    color: #333;
+    border-radius:  10px 0 0 10px;
 }
 
 .ph-home-category-box-wrapper{
@@ -278,13 +279,13 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-home-register-box.seller{
-    border: 2px solid #91B8D6;
-    border-top: 10px solid #91B8D6;
+    border: 2px solid #D4A373;
+    border-top: 10px solid #D4A373;
 }
 
 .ph-home-register-box.logestic{
-    border: 2px solid #F8CC62;
-    border-top: 10px solid #F8CC62;
+    border: 2px solid #FFD100;
+    border-top: 10px solid #FFD100;
 }
 
 .ph-home-register-box p{
@@ -292,7 +293,6 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-home-register-box.seller a{
-    background: #91B8D6;
     padding: 10px 20px;
     color: #fff;
     display: flex;
@@ -300,7 +300,6 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-home-register-box.logestic a{
-    background: #F8CC62;
     padding: 10px 20px;
     color: #fff;
     display: flex;
@@ -744,7 +743,7 @@ body.home .ph-main-header.sticky{
 */
 
 .ph-top-footer-wrapper{
-    background: #618BB4;
+    background: #022C3B;
     padding: 40px 0;
 }
 

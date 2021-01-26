@@ -142,12 +142,11 @@
                                     <div class="ph-spp-t-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
                                             <span class="title">اطلاعات تماس و آدرس فروشنده</span>
-                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
                                         </div>
                                         <div class="form-row align-items-center">
                                             <div class="form-group col-4 my-1">
                                                 <label for="13">ایمیل</label>
-                                                <input type="email" readonly class="form-control" id="13"
+                                                <input type="email" readonly class="form-control text-left" id="13"
                                                        placeholder="nivashop.ir@gmail.com">
                                             </div>
                                             <div class="form-group col-4 my-1">
@@ -196,6 +195,8 @@
                                             </div>
                                         </div>
                                         <!-- form-row -->
+
+                                        <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
                                     </div>
                                     <!-- ph-spp-t-content -->
                                     <div class="ph-spp-t-content ph-border-radius bg-light ph-box-shadow mb-3">
@@ -206,8 +207,8 @@
                                             <div class="form-row align-items-center">
                                                 <div class="form-group col-4 my-1">
                                                     <label for="al_1">نام معدن</label>
-                                                    <input type="text" class="form-control text-left" id="al_1"
-                                                           placeholder="معدن مس میدوک کرمان">
+                                                    <input type="text" class="form-control" id="al_1"
+                                                           placeholder="نام معدن را وارد کنید...">
                                                 </div>
 
                                                 <div class="form-group col-4 my-1">
@@ -231,26 +232,39 @@
                                                 <div class="form-group col-12 my-1">
                                                     <label for="al_2">آدرس دقیق معدن</label>
                                                     <input type="text" class="form-control" id="al_2"
-                                                           placeholder="بلوار کاوه، خیابان روشنایی، خیابان بهار شمالی، بن بست حبیب الهی، پلاک ۱۲، واحد ۷">
+                                                           placeholder="آدرس دقیق معدن را وارد کنید...">
                                                 </div>
 
                                                 <div class="form-group col-4 my-1">
                                                     <label for="al_3">نام جاده اصلی</label>
-                                                    <input type="text" class="form-control text-left" id="al_3"
+                                                    <input type="text" class="form-control" id="al_3"
                                                            placeholder="جاده اصلی">
                                                 </div>
 
                                                 <div class="form-group col-4 my-1">
-                                                    <label for="al_4">فاصله تا جاده اصلی (کیلومتر)</label>
-                                                    <input type="number" class="form-control text-left" id="al_4"
-                                                           placeholder="۵۰">
+                                                    <label for="al_4">فاصله معدن تا جاده اصلی (کیلومتر)</label>
+                                                    <input type="number" class="form-control" id="al_4"
+                                                           placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
+                                                </div>
+
+                                                <div class="form-group col-12 my-1 mt-3">
+                                                    <div class="form-check form-check-inline ml-4">
+                                                        <input class="form-check-input" type="checkbox" id="4545" value="option1">
+                                                        <label class="form-check-label" for="4545">وجود جاده مناسب برای عبور و مرور وسایل نقلیه سواری</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline ml-4">
+                                                        <input class="form-check-input" type="checkbox" id="3232" value="option2">
+                                                        <label class="form-check-label" for="3232">وجود تجهیزات بارگیری در محل دپو</label>
+                                                    </div>
                                                 </div>
 
                                             </div>
                                             <!-- form-row -->
-                                            <a class="extra-fields-customer ph-btn" href="#">اضافه کردن معدن</a>
+                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i></a>
+                                            <a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>
                                         </div>
                                         <!-- customer_records -->
+                                            <a class="extra-fields-customer ph-btn" href="#"><i class="fas fa-plus"></i>اضافه کردن معدن</a>
                                         <div class="customer_records_dynamic"></div>
                                     </div>
                                     <!-- ph-spp-t-content -->
@@ -344,7 +358,7 @@
             $('.customer_records').clone().appendTo('.customer_records_dynamic');
             $('.customer_records_dynamic .customer_records').addClass('single remove');
             $('.single .extra-fields-customer').remove();
-            $('.single').append('<a href="#" class="remove-field btn-remove-customer">حذف معدن<i class="fas fa-times"></i></a>');
+            $('.single').append('<a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>');
             $('.customer_records_dynamic > .single').attr("class", "remove");
 
             $('.customer_records_dynamic input').each(function () {

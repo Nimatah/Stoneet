@@ -577,6 +577,16 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
   color: #FFFFFF;
 }
 
+.navbar-expand-lg .navbar-nav .nav-link,
+.bg-color-5 ul.ph-sp-navbar-nav>li>a.nav-link{
+  color: #333;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link.ph-btn,
+ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
+  color: #FFFFFF;
+}
+
 .ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level {
     background: #e0ad7a;
 }
@@ -1293,25 +1303,24 @@ a.ph-preview-placeholder:after {
 .ph-admin-page-intro-text{
     margin: 1rem 0;
     padding: 1rem 1.5rem;
-    background: #618BB4;
-    border-radius: 0 25px;
-    color: #fff;
+    background: #D4A373;
+    border-radius: 10px;
+    color: #022C3B;
+    font-size: .75rem;
 }
 
 .ph-admin-page-intro-text span{
     font-size: 1.01rem;
-    color: #F2D428;
+    color: #FFD100;
     padding-left: .5rem;
 }
 
 .ph-admin-page-search-wrapper{
-    background: #F0E2A8;
     overflow: hidden;
     padding: 1rem 1.5rem;
 }
 
 .ph-admin-page-list-container{
-    background: #F0E2A8;
     overflow: hidden;
     padding: 1rem 1.5rem;
 }
@@ -1330,20 +1339,27 @@ a.ph-preview-placeholder:after {
     border-radius: 0 25px;
 }
 
-.ph-admin-page-container button, .ph-admin-page-container a.btn{
+.ph-admin-page-container button,
+.ph-admin-page-container a.btn{
     font-size: .75rem;
+  background: #7e111a;
+  border: 0;
+    box-shadow: 1px 1px 3px 0px #777;
+    -webkit-box-shadow: 1px 1px 3px 0px #777;
+    -moz-box-shadow: 1px 1px 3px 0px #777;
+    -o-box-shadow: 1px 1px 3px 0px #777;
 }
 
 .ph-admin-page-alert{
     font-size: .75rem;
-    border-radius: 0 25px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
 .ph-admin-page-alert .alert-warning{
     color: #856404;
-    background-color: #F2D428;
-    border-color: #ffeeba;
+    background-color: #D1E9F0;
+    border-color: #D1E9F0;
     margin-bottom: 0;
 }
 
@@ -1438,18 +1454,19 @@ a.ph-preview-placeholder:after {
 .ph-ip-w-heading .ph-ip-w-title{
     margin: 1rem 0;
     padding: 1rem 1.5rem;
-    background: #618BB4;
-    border-radius: 0 25px;
-    color: #fff;
+    background: #D4A373;
+    border-radius: 10px;
+    color: #022C3B;
+    font-size: .75rem;
 }
 .ph-ip-w-heading .ph-ip-w-title span{
     font-size: 1.01rem;
-    color: #F2D428;
+    color: #FFD100;
     padding-left: .5rem;
 }
 
 .ph-ip-w-list{
-    background: #E8CA93;
+    background: #fff;
     overflow: hidden;
 }
 .ph-ip-w-list .ph-ip-wl-header{
@@ -1480,7 +1497,7 @@ a.ph-preview-placeholder:after {
 
 .ph-ip-w-list .ph-ip-wl-table{
     padding: 1.5rem;
-    background: #E8CA93;
+    background: #fff;
   border-radius: 10px ;
 }
 
@@ -1511,36 +1528,39 @@ a.ph-preview-placeholder:after {
 .ph-idp-w-heading .ph-idp-w-title{
     margin: 1rem 0;
     padding: 1rem 1.5rem;
-    background: #618BB4;
-    border-radius: 0px 25px;
-    color: #fff;
+    background: #D4A373;
+    border-radius: 10px;
+    color: #022C3B;
+    font-size: .75rem;
 }
 .ph-idp-w-heading .ph-idp-w-title span{
     font-size: 1.01rem;
-    color: #F2D428;
+    color: #FFD100;
     padding-left: .5rem;
 }
 
 .ph-idp-w-list {
-    background: #E8CA93;
     overflow: hidden;
 }
 .ph-idp-wlh-date{
-    display: flex;
-    padding: 1rem 1.5rem 0 1.5rem;
+    padding: 1rem 0 0 0;
+    margin: 0 1rem;
+  align-items: center;
 }
+
 .ph-idp-wlh-date .title{
     margin-left: 1rem;
 }
 .ph-idp-wlh-date .date{
     padding: 0 1.5rem;
     border-radius: 7px;
-    background: #f5f5f5;
     color: #3B5686;
+    display: inline-block;
+    margin: 0 1rem;
+    font-size: 1rem;
 }
 .ph-idp-wl-table{
     padding: 1.5rem;
-    background: #E8CA93;
     border-radius: 10px;
 }
 
@@ -1557,15 +1577,26 @@ a.ph-preview-placeholder:after {
 
 .ph-op-fb-heading{
     margin: 1rem 0;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
+    background: #D4A373;
+    border-radius: 10px;
+    color: #022C3B;
+    font-size: .75rem;
 }
 .ph-op-fb-heading .ph-op-fb-title{
-  color: #fff;
+    font-size: 1.01rem;
+    color: #022C3B;
+    padding-left: .5rem;
 }
 .ph-op-fb-heading .input-group-text{
     margin: 0 .5rem;
-    background: #F2D428;
-  cursor: pointer;
+    background: #7e111a;
+    cursor: pointer;
+    color: #fff;
+    box-shadow: 1px 1px 3px 0px #777;
+    -webkit-box-shadow: 1px 1px 3px 0px #777;
+    -moz-box-shadow: 1px 1px 3px 0px #777;
+    -o-box-shadow: 1px 1px 3px 0px #777;
 }
 
 .ph-op-fb-list {
@@ -1579,9 +1610,11 @@ a.ph-preview-placeholder:after {
 }
 .ph-op-fb-list .ph-op-fbl-btn-res .ph-op-fbl-btn a{
     padding: .5rem 1rem;
-    color: #fff;
-    box-shadow: 1px 1px 3px -1px #333;
     margin-left: 1rem;
+    box-shadow: 1px 1px 3px 0px #777;
+    -webkit-box-shadow: 1px 1px 3px 0px #777;
+    -moz-box-shadow: 1px 1px 3px 0px #777;
+    -o-box-shadow: 1px 1px 3px 0px #777;
 }
 .ph-op-fb-list .ph-op-fbl-table{
     margin: 1rem;
@@ -1632,12 +1665,14 @@ a.ph-preview-placeholder:after {
     color: #6c757d !important;
 }
 
-.customer_records, .remove{
+.customer_records,
+.remove{
     background: #f5f5f5;
     padding: .5rem;
     border-radius: 10px;
     border: 1px solid #D1E9F0;
     margin-bottom: 1rem;
+    position: relative;
 }
 
 .extra-fields-customer {
@@ -1646,19 +1681,60 @@ a.ph-preview-placeholder:after {
     left: 20px;
     margin-bottom: 0;
 }
-.remove-field.btn-remove-customer{
-    background: #7E111A;
-    margin: 2rem;
-    border-radius: 2em;
+
+.customer_records .edit-info,
+.remove.edit-info{
+    position: absolute;
+    bottom: 20px;
+    left:5%;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
     display: flex;
-    justify-content: center;
-    padding: .3rem 1rem!important;
-    color: #fff;
-    min-width: 125px;
     align-items: center;
-    cursor: pointer;
+    justify-content: center;
 }
 
+.customer_records .edit-info i,
+.remove.edit-info i{
+  margin:0;
+}
+
+.remove-field.btn-remove-customer,
+.customer_records .edit-info,
+.remove .edit-info  {
+    position: absolute;
+    bottom: 20px;
+    left: 12%;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: #7E111A;
+    border-radius: 2em;
+  margin: 0;
+}
+
+.customer_records .edit-info,
+.remove .edit-info  {
+  background: #4CE0B3;
+    left: 6.5%;
+}
+
+.remove .edit-info i{
+  margin: 0;
+}
+
+.customer_records input.form-check-input,
+.remove input.form-check-input{
+    margin-right: -.5rem;
+    margin-left: .5rem;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
