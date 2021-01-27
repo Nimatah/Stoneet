@@ -29,7 +29,7 @@
                                             {% for image in product.media.get_additional %}
                                                 <a href="{% get_media_prefix %}{{ image.file }}"
                                                    title="{{ product.title }}">
-                                                    <img class="ph-border-radius-small"
+                                                    <img class="ph-border-radius"
                                                          src="{% get_media_prefix %}{{ image.file }}">
                                                 </a>
                                             {% endfor %}
@@ -38,7 +38,8 @@
                                 </div><!-- .col-md-5 -->
                                 <div class="col-12 col-md-7">
                                     <div class="ph-single-product-details-wrapper">
-                                        <h1 class="ph-single-product-title">{{ product.title }}</h1>
+                                        <!-- <h1 class="ph-single-product-title">{{ product.title }}</h1> -->
+                                        <h1 class="ph-single-product-title"> <span>سنگ آهن هماتیت</span> <span>50-60</span> <span>%</span></h1>
                                         <hr>
                                         <div class="ph-single-product-base-price my-3">
                                             <label class="ph-single-product-label"
@@ -54,6 +55,10 @@
                                         <div class="ph-single-product-atts-summary">
                                             <ul>
                                                 <li>
+                                                    <label>خلوص عیار :</label>
+                                                    <span>%92-90</span>
+                                                </li>
+                                                <li>
                                                     <label>نوع:</label>
                                                     <span>{{ product.category.parent.title }}</span>
                                                 </li>
@@ -65,23 +70,28 @@
                                                     <label>استان :</label>
                                                     <a href="#">{{ product.user.region }}</a>
                                                 </li>
-                                                <li>
-                                                    <label>نوع بسته بندی :</label>
-                                                    <span>کیسه 25 کیلو گرمی</span>
-                                                </li>
-                                                <li>
-                                                    <label>خلوص عیار :</label>
-                                                    <span>%92-90</span>
-                                                </li>
                                             </ul>
                                         </div>
                                         <div class="ph-single-product-details-bottom">
                                             <div class="ph-single-product-calculator my-3">
                                                 <p>برای محاسبه قیمت نهایی، مقدار مورد نیاز را وارد نمایید:</p>
-                                                <div class="ph-single-product-quantity mb-3">
-                                                    <input type="number" value="1">
-                                                    <span>تن</span>
-                                                </div><!-- .ph-single-product-quantity -->
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <div class="ph-single-product-quantity">
+                                                            <input type="number" value="1">
+                                                            <span>تن</span>
+                                                        </div><!-- .ph-single-product-quantity -->
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group mb-0">
+                                                            <select class="form-control custom-select" id="payment_method">
+                                                                <option>انتخاب نوع پرداخت:</option>
+                                                                <option>نقدی</option>
+                                                                <option>اقساط</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="ph-single-product-final-price">
                                                     <label class="ph-single-product-label" for="product_final_price">قیمت
                                                         نهایی: </label>
@@ -90,9 +100,9 @@
                                                 </div><!-- .ph-single-product-final-price -->
                                             </div><!-- .ph-single-product-calculator -->
                                             <div class="ph-single-product-cta my-3">
-                                                <a href="#" class="ph-submit-order-btn ph-border-radius"><i
+                                                <a href="#" class="ph-submit-order-btn"><i
                                                         class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
-                                                <a href="#" class="ph-need-sample-btn ph-border-radius"><i
+                                                <a href="#" class="ph-need-sample-btn" data-toggle="modal" data-target="#sample_modal"><i
                                                         class="fas fa-vial ml-2"></i> درخواست نمونه </a>
                                             </div><!-- .ph-single-product-cta -->
                                         </div><!-- .ph-single-product-details-bottom -->
@@ -100,9 +110,9 @@
                                 </div><!-- .col-md-7 -->
                             </div><!-- .row -->
                         </div><!-- .ph-single-product-top-wrapper -->
-                        <div class="ph-single-product-specification ph-border-radius my-4">
+                        <div class="ph-single-product-specification my-4">
                             <div class="row">
-                                <div class="col-12 col-md-5">
+                                <div class="col-12 col-md-6">
                                     <div class="ph-single-product-specification-table">
                                         <h3>مشخصات محصول</h3>
                                         <ul>
@@ -123,11 +133,37 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-7">
+                                <div class="col-12 col-md-6">
+                                    <div class="ph-single-product-specification-table">
+                                        <h3>مشخصات معدن</h3>
+                                        <ul>
+                                            {% for product_attribute in product.attributes.get_ordinary %}
+                                                <li>
+                                                    {% with product_attribute.attribute as attribute_definition %}
+                                                        <label>{{ attribute_definition.title }}: </label>
+                                                        {% if attribute_definition.value_type == 'bool' %}
+                                                            <span>{{ product_attribute.value|yesno:'دارد,ندارد' }}</span>
+                                                        {% elif attribute_definition.value_type == 'int' %}
+                                                            <span>{{ product_attribute.value|intcomma }}</span>
+                                                        {% else %}
+                                                            <span>{{ product_attribute.value }} {{ attribute_definition.unit }}</span>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12">
                                     <div class="ph-single-product-analyze-image">
+                                        <!--
                                         <a class="image-popup-fit-width"
                                            href="{% get_media_prefix %}{{ product.get_analyze.value }}" title="{{ product.title }}">
                                             <img src="{% get_media_prefix %}{{ product.get_analyze.value }}" alt="">
+                                        </a>
+                                        -->
+                                        <a class="image-popup-fit-width" title="{{ product.title }}" href="{% get_media_prefix %}{{ product.get_analyze.value }}">
+                                            <i class="fas fa-eye pl-2"></i> مشاهده فایل آنالیز
                                         </a>
                                     </div>
                                 </div>
@@ -141,5 +177,33 @@
             </div><!-- .ph-content-entry -->
         </main><!-- .ph-main-content -->
     </div><!-- .ph-page-wrapper -->
+
+    <!-- ASKING FOR SAMPLE Modal -->
+    <div class="modal fade" id="sample_modal" tabindex="-1" aria-labelledby="sample_modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header align-items-center">
+                    <h5 class="modal-title" id="exampleModalLabel">درخواست نمونه</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        در صورتی که فروشنده این محصول امکان ارسال نمونه را فراهم کرده باشد می توانید با موافقت با گزینه زیر از فروشنده درخواست ارسال نمونه کنید:
+                    </p>
+                    <div class="custom-control custom-checkbox my-3">
+                        <input class="custom-control-input" type="checkbox" value="" id="sample_toc">
+                        <label class="custom-control-label" for="sample_toc">
+                            <a href="#" style="color: #007bff;">قوانین ارسال نمونه</a>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="ph-btn">ارسال درخواست</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

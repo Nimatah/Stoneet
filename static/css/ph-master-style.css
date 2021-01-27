@@ -299,7 +299,6 @@ input::placeholder { /* Most modern browsers support this now. */
 
 .ph-btn{
     background: #7E111A;
-    margin: 2rem;
     border-radius: 2em;
     display: flex;
     justify-content: center;
@@ -308,10 +307,10 @@ input::placeholder { /* Most modern browsers support this now. */
     min-width: 125px;
     align-items: center;
     cursor: pointer;
-  box-shadow: 1px 1px 3px 0px #777;
-  -webkit-box-shadow: 1px 1px 3px 0px #777;
-  -moz-box-shadow: 1px 1px 3px 0px #777;
-  -o-box-shadow: 1px 1px 3px 0px #777;
+    box-shadow: 1px 1px 3px 0px #777;
+    -webkit-box-shadow: 1px 1px 3px 0px #777;
+    -moz-box-shadow: 1px 1px 3px 0px #777;
+    -o-box-shadow: 1px 1px 3px 0px #777;
 }
 
 .custom-control-label{
@@ -425,4 +424,8 @@ input.form-control:focus{
     border-bottom-left-radius: 5px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+.modal-header .close {
+    margin: -1rem auto -1rem -1rem;
 }
