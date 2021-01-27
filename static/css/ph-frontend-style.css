@@ -389,6 +389,7 @@ body.home .ph-main-header.sticky{
 .ph-page-wrapper{
     padding: 100px 0 40px;
     position: relative;
+    background: #F5F5F5;
 }
 
 .ph-page-wrapper.ph-home-page{
@@ -403,6 +404,7 @@ body.home .ph-main-header.sticky{
     height: auto;
     margin: auto 0;
     position: relative;
+    border-radius: 1em;
 }
 
 .image-popup-vertical-fit,
@@ -411,6 +413,7 @@ body.home .ph-main-header.sticky{
     height: 100%;
     display: flex;
     position: relative;
+    border-radius: 1em;
 }
 
 .image-popup-vertical-fit::after,
@@ -428,7 +431,7 @@ body.home .ph-main-header.sticky{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgb(209 233 240 / .7);
+    background: rgba(209,233,240,.7);
     font-size: 50px;
     color: #333;
     transition: all 300ms ease-in-out;
@@ -436,6 +439,7 @@ body.home .ph-main-header.sticky{
     -moz-transition: all 300ms ease-in-out;
     opacity: 0;
     visibility: hidden;
+    border-radius: 10px;
 }
 
 .image-popup-vertical-fit:hover::after,
@@ -481,6 +485,7 @@ body.home .ph-main-header.sticky{
     border: 2px solid #ccc;
     padding: 20px;
     border-radius: 1em;
+    background: #fff;
 }
 
 .ph-single-product-details-bottom{
@@ -491,7 +496,6 @@ body.home .ph-main-header.sticky{
 .ph-single-product-label{
     font-size: 20px;
     margin-left: 10px;
-    color: #7E111A;
     font-weight: 600;
 }
 
@@ -554,11 +558,17 @@ body.home .ph-main-header.sticky{
     color: #fff;
 }
 
+.ph-sample-modal-title{
+    font-size: 15px;
+    font-weight: 600;
+}
+
 .ph-single-product-specification{
     width: 100%;
     padding: 20px;
     border: 2px solid #ccc;
     border-radius: 1em;
+    background: #fff;
 }
 
 .ph-single-product-specification-table label{
@@ -607,6 +617,7 @@ body.home .ph-main-header.sticky{
     margin-left: 3%;
     padding: 20px;
     border: 1px solid #ccc;
+    background: #fff;
 }
 
 .ph-list-product-content{
@@ -614,11 +625,15 @@ body.home .ph-main-header.sticky{
     min-width: 77%;
     padding: 20px;
     border: 1px solid #ccc;
+    background: #fff;
 }
 
 .ph-list-product-sidebar-widget{
     width: 100%;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
 }
 
 .ph-list-product-sidebar-filter-box h5{
@@ -655,12 +670,17 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-list-product-sort-item{
-    background: #618BB4;
-    color: #fff;
+    background: #D1E9F0;
+    color: #333;
     padding: 3px 20px;
     margin-left: 15px;
     font-size: 13px;
     cursor: pointer;
+}
+
+.ph-list-product-view-type{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .ph-list-product-loop-item{

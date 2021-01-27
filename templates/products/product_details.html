@@ -21,7 +21,7 @@
                                             <a class="image-popup-vertical-fit"
                                                href="{% get_media_prefix %}{{ product.media.get_primary.file }}"
                                                title="{{ product.title }}">
-                                                <img class="ph-border-radius"
+                                                <img
                                                      src="{% get_media_prefix %}{{ product.media.get_primary.file }}">
                                             </a>
                                         </div><!-- .ph-single-product-main-image -->
@@ -190,12 +190,12 @@
                 </div>
                 <div class="modal-body">
                     <p>
-                        در صورتی که فروشنده این محصول امکان ارسال نمونه را فراهم کرده باشد می توانید با موافقت با گزینه زیر از فروشنده درخواست ارسال نمونه کنید:
+                        برای درخواست ارسال نمونه  <span class="ph-sample-modal-title">نام محصول</span> با قبول قوانین و مقررات درخواستتان را ثبت نمایید
                     </p>
                     <div class="custom-control custom-checkbox my-3">
                         <input class="custom-control-input" type="checkbox" value="" id="sample_toc">
                         <label class="custom-control-label" for="sample_toc">
-                            <a href="#" style="color: #007bff;">قوانین ارسال نمونه</a>
+                            <a href="#" style="color: #007bff;">قوانین ارسال نمونه</a> را قبول میکنم.
                         </label>
                     </div>
                 </div>

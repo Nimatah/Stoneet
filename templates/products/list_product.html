@@ -51,6 +51,35 @@
                                 </div><!-- .form-check -->
                             </div><!-- .ph-list-product-sidebar-filter-box -->
                         </div><!-- .ph-list-product-sidebar-widget -->
+                        <div class="ph-list-product-sidebar-widget">
+                            <div class="ph-list-product-sidebar-filter-box">
+                                <h5>عیار</h5>
+                                <div class="form-check custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="product_ayar_1">
+                                    <label class="custom-control-label" for="product_ayar_1">
+                                       0-10
+                                    </label>
+                                </div><!-- .form-check -->
+                                <div class="form-check custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="product_ayar_2">
+                                    <label class="custom-control-label" for="product_ayar_2">
+                                        10-40
+                                    </label>
+                                </div><!-- .form-check -->
+                                <div class="form-check custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="product_ayar_3">
+                                    <label class="custom-control-label" for="product_ayar_3">
+                                        40-80
+                                    </label>
+                                </div><!-- .form-check -->
+                                <div class="form-check custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="product_ayar_4">
+                                    <label class="custom-control-label" for="product_ayar_4">
+                                        80-100
+                                    </label>
+                                </div><!-- .form-check -->
+                            </div><!-- .ph-list-product-sidebar-filter-box -->
+                        </div><!-- .ph-list-product-sidebar-widget -->
                     </div><!-- .ph-list-product-sidebar -->
                     <div class="ph-list-product-content ph-border-radius-small">
                         <div class="ph-list-product-header ph-border-radius-small">
@@ -73,38 +102,21 @@
                                         </div><!-- .ph-list-product-sort-wrapper -->
                                     </div><!-- .col-md-8 -->
                                     <div class="col-12 col-md-4">
-                                        <div class="ph-list-product-pagination">
-                                            <nav aria-label="Page navigation example">
-                                                <ul class="pagination m-0">
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Previous">
-                                                            <span aria-hidden="true">&laquo;</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Next">
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                    </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
+                                        <div class="ph-list-product-view-type">
+                                            <ul class="nav nav-pills mb-0" id="products_view" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link active" id="grid_view" data-toggle="pill" href="#grid_view_tab" role="tab" aria-controls="grid_view_tab" aria-selected="true"><i class="fas fa-th"></i> </a>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <a class="nav-link" id="list_view" data-toggle="pill" href="#list_view_tab" role="tab" aria-controls="list_view_tab" aria-selected="false"><i class="fas fa-bars"></i> </a>
+                                                </li>
+                                            </ul>
                                         </div><!-- .ph-list-product-pagination -->
                                     </div><!-- .col-md-4 -->
                                 </div><!-- .row -->
                             </div><!-- .row -->
                         </div><!-- .ph-list-product-header -->
                         <div class="ph-list-product-loop">
-                            <ul class="nav nav-pills mb-3" id="products_view" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="grid_view" data-toggle="pill" href="#grid_view_tab" role="tab" aria-controls="grid_view_tab" aria-selected="true"><i class="fas fa-th"></i> </a>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="list_view" data-toggle="pill" href="#list_view_tab" role="tab" aria-controls="list_view_tab" aria-selected="false"><i class="fas fa-bars"></i> </a>
-                                </li>
-                            </ul>
                             <div class="tab-content" id="products_viewContent">
                                 <div class="tab-pane fade show active" id="grid_view_tab" role="tabpanel" aria-labelledby="grid_view">
                                     <div class="row">
