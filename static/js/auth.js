@@ -98,5 +98,9 @@ function fixStepIndicator(n) {
  });
 
 
+//datepicker
+$('#ph_logistic_license_start_date').datepicker({
+});
 
-
+$('#ph_logistic_license_end_date').datepicker({
+});

@@ -295,18 +295,18 @@ input.invalid {
   margin-left: auto;
 }
 
-#ph_new_login_seller_info .ph-new-login-alert {
+.ph-new-login-alert {
   font-size: .8rem;
   display: flex;
   color: #666;
 }
 
-#ph_new_login_seller_info .ph-new-login-alert p {
+.ph-new-login-alert p {
   margin-bottom: 0;
   color: #d44952;
 }
 
-#ph_new_login_seller_info .ph-new-login-alert span {
+.ph-new-login-alert span {
   color: #d44952;
   margin-left: .5rem;
   font-weight: 600;
@@ -380,9 +380,10 @@ input.invalid {
   justify-content: center;
 }
 
-.ph-new-login-seller-info-btn button {
+#ph_new_login_form button {
   color: #fff;
   padding: .5rem 2rem;
+  background: #7e111a;
   transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -1753,7 +1754,12 @@ a.ph-preview-placeholder:after {
 */
 
 .ph-new-login.logistic-register aside.ph-registration-panel-sidebar {
-  background: #F1BF7D;
+  background: #FFD100;
+}
+
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar .progressbar-item,
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar .ph-nls-header .ph-nls-header-title{
+  color: #333333;
 }
 
 .ph-new-login.logistic-register .ph-signup-submit-btn button {
@@ -1779,6 +1785,25 @@ a.ph-preview-placeholder:after {
 .logistic-register .avatar-upload .avatar-preview {
   box-shadow: 0px 2px 4px 0px #F1BF7D;
   border: 3px solid #F1BF7D;
+}
+
+.logistic-business-license{}
+#ph_new_login_logistic_info select,
+#ph_new_login_logistic_info input,
+#ph_new_login_logistic_business_license input,
+#ph_new_login_logistic_business_license select {
+    vertical-align: middle;
+    color: #868686;
+    border: 1px solid #ced4da;
+    min-width: 100px;
+    margin-left: 1rem;
+    border-radius: 10px;
+}
+.ph-new-login.logistic-register #ph_new_login_form button{
+  background: #FFD100;
+  color: #333333;
+    margin: 0 auto;
+    display: flex;
 }
 
 /*
