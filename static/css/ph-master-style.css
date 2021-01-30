@@ -300,20 +300,21 @@ input::placeholder { /* Most modern browsers support this now. */
     background-color: #D1E9F0;
 }
 
+.ph-button{
+    display: flex;
+}
+
 .ph-btn{
     background: #7E111A;
     border-radius: 2em;
-    display: flex;
-    justify-content: center;
+    text-align: center;
     padding: .5rem 2rem!important;
     color: #fff;
     min-width: 125px;
     align-items: center;
     cursor: pointer;
-    box-shadow: 1px 1px 3px 0px #777;
-    -webkit-box-shadow: 1px 1px 3px 0px #777;
-    -moz-box-shadow: 1px 1px 3px 0px #777;
-    -o-box-shadow: 1px 1px 3px 0px #777;
+    border: 1px solid #7E111A;
+
 }
 
 .custom-control-label{

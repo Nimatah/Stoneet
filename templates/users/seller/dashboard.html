@@ -4,18 +4,48 @@
 
 
 {% block admin_content %}
-<main class="ph-dashboard-main">
+<main class="ph-dashboard-main seller-panel ph-seller-dashboard">
     <div class="container">
-        <div class="ph-sd-title">
-            <h5>داشبورد پنل فروشندگان</h5>
+        <div class="ph-dm-title">
+            <div class="title">داشبورد پنل فروشندگان</div>
         </div>
-        <div class="ph-sd-panel">
+        <div class="ph-dm-panel">
             <div class="row">
-                <div class="col-6">
-                    <div class="ph-border-radius" style="height: 300px;background: #3B5686; margin-bottom: 2rem"></div>
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-info">
+                        <div class="title">مشخصات کاربری</div>
+                        <ul>
+                            <li>کد فروشنده: <span>123456</span></li>
+                            <li>نام فروشنده: <span>مصطفی چراغی</span></li>
+                            <li>نام تجاری: <span>معدنکاران</span></li>
+                        </ul>
+                        <div class="ph-button">
+                            <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <div class="ph-border-radius" style="height: 300px;background: #00A693; margin-bottom: 2rem"></div>
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-product-info">
+                        <div class="title">مدیریت محصولات</div>
+                        <ul>
+                            <li>تعداد کالاهای درج‌شده: <span>۱۲</span></li>
+                            <li>تعداد کالاهای تاییدشده: <span>۴۵</span></li>
+                            <li>کالاهای درانتظار تایید: <span>۷۸</span></li>
+                            <li>بررسی مجدد: <span>۱</span></li>
+                            <li>کالاهای رد شده: <span>۰</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">سفارشات</div>
+                        <ul>
+                            <li>تعداد سفارش: <span>۱۲</span></li>
+                            <li>سفارش‌های انجام شده: <span>۷۸</span></li>
+                            <li>سفارش‌های درحال انجام: <span>۴۵</span></li>
+                            <li>سفارشات در انتظار بررسی: <span>۱</span></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="col-4">
                     <div class="ph-border-radius" style="height: 300px;background: #E8CA93; margin-bottom: 2rem"></div>

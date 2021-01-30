@@ -675,22 +675,53 @@ a.nav-link[aria-expanded="true"]:after {
     min-height: 100vh;
 }
 
-.ph-dashboard-main .ph-panel-title {
-    border-bottom: 1px solid #F2D428;
-    display: flex;
-    margin-bottom: 1rem;
+.ph-dashboard-main .ph-dm-title{
+    margin-bottom: 2rem;
 }
 
-.ph-dashboard-main .ph-panel-title span.title {
-    margin: 0;
-    font-size: 13px;
-    background: #F2D428;
-    display: inline-block;
-    padding: .5rem 1rem;
-    color: #7E111A;
-    font-family: IRANSans-Bd;
-    border-radius: 10px 10px 0 0;
+.ph-dashboard-main .ph-dm-panel{}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1{
+    background: #ffffff;
+    padding: 3rem 1rem 1rem;
+    border-radius: 10px;
+    position: relative;
+    border: 1px solid #ffd100;
+    border-top: 3px solid #ffd100;
+    height: 250px;
+    margin-bottom: 2rem;
 }
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .title{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: .5rem;
+    background: #ffd100;
+    border-radius: 0 10px;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 ul{}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 ul li{
+    display: flex;
+  justify-content: space-between;
+    padding: .2rem 1rem;
+}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 ul li span{
+    margin: 0 1rem;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .ph-button{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .ph-button a{
+    font-size: 12px;
+    padding: .3rem .5rem!important;
+  min-width: 100px;
+}
+
+
 
 
 /*
