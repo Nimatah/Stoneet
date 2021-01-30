@@ -1920,6 +1920,311 @@ a.ph-preview-placeholder:after {
   border: 3px solid #00A693;
 }
 
+/*
+=============================================================
+         view_order   ph-view-order
+=============================================================
+*/
+
+  #shell1,
+  #shell2,
+  #shell3,
+  #shell4,
+  #shell5,
+  #shell6,
+  #shell7 {
+    padding: .5rem;
+    padding-top: 3rem;
+    margin-top: -3rem;
+    z-index: 2;
+    display: block;
+    height: auto;
+    opacity: 1;
+  }
+
+  /* Hidden shells */
+  #shell2,
+  #shell3,
+  #shell4,
+  #shell5,
+  #shell6,
+  #shell7  {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Show level 2 & Hide level 1 */
+  #level2:checked ~ #shell2 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level2:checked ~ #shell1 {
+    opacity: 0;
+    height: 0;
+    display: none;
+  }
+
+  /* Show level 3  & Hide level 2 */
+  #level3:checked ~ #shell3 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level3:checked ~ #shell2 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  /* Show level 4  & Hide level 3 */
+  #level4:checked ~ #shell4 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level4:checked ~ #shell3 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  /* Show level 5  & Hide level 4 */
+  #level5:checked ~ #shell5 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level5:checked ~ #shell4 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  /* Show level 6  & Hide level 5 */
+  #level6:checked ~ #shell6 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level6:checked ~ #shell5 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  /* Show level 7  & Hide level 6 */
+  #level7:checked ~ #shell7 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level7:checked ~ #shell6 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  /* Show level 8  & Hide level 7 */
+  #level8:checked ~ #shell8 {
+    opacity: 1;
+    height: auto;
+  }
+
+  #level8:checked ~ #shell6 {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+
+.ph-view-order .ph-cp-header-parts {
+  display: flex;
+  justify-content: center;
+}
+
+.ph-view-order .ph-cp-header-parts ul {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.ph-view-order .ph-cp-header-parts ul:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 10px;
+    width: 95%;
+    background: #d4d4d4;
+    z-index: -1;
+    margin: auto;
+    left: 0;
+    top: 44%;
+}
+
+.ph-view-order .ph-cp-header-parts.shell-1 ul.ph-cp-level-1 li,
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li,
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li,
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li,
+.ph-view-order .ph-cp-header-parts.shell-8 ul.ph-cp-level-8 li{
+  position: relative;
+  padding: 1rem;
+  background: #d4d4d4;
+  border-radius: 50%;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.ph-view-order .ph-cp-header-parts ul li span {
+    position: absolute;
+    top: 120%;
+    width: 150%;
+    color: #D4A373;
+    min-width: 70px;
+    margin: auto;
+}
+
+.ph-view-order .ph-cp-header-parts ul li i {
+  z-index: 2;
+}
+
+.ph-view-order .ph-cp-header-parts.shell-1 ul.ph-cp-level-1 li:nth-child(1),
+
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2),
+
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(2),
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(3),
+
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(2),
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(3),
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(4),
+
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(2),
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(3),
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(4),
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(5),
+
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(2),
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(3),
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(4),
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(5),
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(6),
+
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(1),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(2),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(3),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(4),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(5),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(6),
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(7){
+  background: #D4A373;
+}
+
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2):before,
+
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(2):before,
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(3):before,
+
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(2):before,
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(3):before,
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(4):before,
+
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(2):before,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(3):before,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(4):before,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(5):before,
+
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(2):before,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(3):before,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(4):before,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(5):before,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(6):before,
+
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(2):before,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(3):before,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(4):before,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(5):before,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(6):before,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(7):before{
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    height: 10px;
+    width: 430%;
+    background: #D4A373;
+    margin: auto;
+    z-index: 0;
+}
+
+.ph-view-order .ph-cp-header-parts.shell-1 ul.ph-cp-level-1 li:nth-child(1):after,
+
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2):after,
+
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(2):after,
+.ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(3):after,
+
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(2):after,
+.ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(3):after,
+
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(2):after,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(3):after,
+.ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(4):after,
+
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(2):after,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(3):after,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(4):after,
+.ph-view-order .ph-cp-header-parts.shell-6 ul.ph-cp-level-6 li:nth-child(5):after,
+
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(1):after,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(2):after,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(3):after,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(4):after,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(5):after,
+.ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(6):after{
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 16px;
+    height: 10px;
+    width: 240%;
+    background: #D4A373;
+    margin: auto;
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
