@@ -2095,8 +2095,9 @@ a.ph-preview-placeholder:after {
     top: 120%;
     width: 150%;
     color: #D4A373;
-    min-width: 70px;
+    min-width: 125px;
     margin: auto;
+    font-size: 11px;
 }
 
 .ph-view-order .ph-cp-header-parts ul li i {
@@ -2218,12 +2219,47 @@ a.ph-preview-placeholder:after {
     z-index: 0;
 }
 
+.ph-view-order-block-item label{
+  font-size: 16px;
+  font-weight: 600;
+}
 
+.ph-view-order-qty{
+  margin: 15px 0;
+    border: 3px solid #ccc;
+    text-align: center;
+    padding: 10px;
+}
 
+.ph-view-order-checkpoints li{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
+.ph-view-order-checkpoints li p{
+  margin-bottom: 0;
+}
 
+.ph-view-order-checkpoints li i{
+  margin-left: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  min-width: 30px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
 
+.ph-view-order-checkpoints li i.fa-check{
+  color: green;
+}
 
+.ph-view-order-checkpoints li i.fa-times{
+  color: red;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
