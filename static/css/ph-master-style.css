@@ -302,7 +302,7 @@ input::placeholder { /* Most modern browsers support this now. */
     border-radius: 2em;
     display: flex;
     justify-content: center;
-    padding: .3rem 1rem!important;
+    padding: .5rem 2rem!important;
     color: #fff;
     min-width: 125px;
     align-items: center;

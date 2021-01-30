@@ -290,9 +290,19 @@ input.invalid {
   ===============================================
 */
 
-#ph_new_login_seller_info .ph-new-login-seller-info-wrapper {
+#ph_new_login_seller_info .ph-new-login-seller-info-wrapper{
   width: 85%;
   margin-left: auto;
+}
+
+.ph-new-login-seller-info-uploadimg-wrapper,
+.ph-new-login-seller-info-end-wrapper{
+  width: 85%;
+  margin: auto;
+}
+
+.ph-new-login-seller-info-uploadimg-wrapper .ph-conditional-wrapper-2{
+  display: flex;
 }
 
 .ph-new-login-alert {
@@ -382,7 +392,7 @@ input.invalid {
 
 #ph_new_login_form button {
   color: #fff;
-  padding: .5rem 2rem;
+  font-size: .95rem;
   background: #7e111a;
   transition: all .3s ease-in-out;
   -webkit-transition: all .3s ease-in-out;
@@ -448,10 +458,14 @@ input.invalid {
     justify-content: center;
     opacity: .8;
 }
-.avatar-upload .avatar-preview {
+
+.avatar-upload .avatar-preview{
   width: 200px;
   height: 200px;
   position: relative;
+}
+
+.ph-new-login-seller-info-uploadimg-wrapper .avatar-upload .avatar-preview {
   border: 3px solid #618BB4;
   box-shadow: 0px 2px 4px 0px #618BB4;
 }
@@ -466,10 +480,10 @@ input.invalid {
 
 .avatar-upload label.ph-image-label{
   font-weight: 600;
-    font-size: 18px;
+    font-size: 13px;
     text-align: center;
     width: 100%;
-    margin: 20px 0;
+    margin: 1rem 0;
 }
 
 /*=======================================================================================================================
@@ -1762,6 +1776,20 @@ a.ph-preview-placeholder:after {
   color: #333333;
 }
 
+.ph-new-login-logistic-business-license-wrapper,
+.ph-new-login-logistic-info-wrapper{
+  width: 85%;
+  margin-left: auto;
+}
+
+.ph-new-login-logistic-business-end-wrapper{
+  width: 85%;
+  margin: auto;
+}
+.ph-new-login.logistic-register .ph-new-login-2-title{
+  margin-top: 2rem;
+}
+
 .ph-new-login.logistic-register .ph-signup-submit-btn button {
   background: #F1BF7D;
 }
@@ -1783,8 +1811,8 @@ a.ph-preview-placeholder:after {
 }
 
 .logistic-register .avatar-upload .avatar-preview {
-  box-shadow: 0px 2px 4px 0px #F1BF7D;
-  border: 3px solid #F1BF7D;
+  box-shadow: 0px 2px 4px 0px #ffd100;
+  border: 3px solid #ffd100;
 }
 
 .logistic-business-license{}
