@@ -1,2 +1,71 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+
+{% block admin_content %}
+<main class="ph-dashboard-main buyer-panel ph-buyer-dashboard">
+    <div class="container">
+        <div class="ph-dm-title">
+            <div class="title">داشبورد پنل خریدار</div>
+        </div>
+        <div class="ph-dm-panel">
+            <div class="row">
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-info">
+                        <div class="title">مشخصات کاربری</div>
+                        <ul>
+                            <li>کد فروشنده: <span>123456</span></li>
+                            <li>نام فروشنده: <span>مصطفی چراغی</span></li>
+                            <li>نام تجاری: <span>معدنکاران</span></li>
+                        </ul>
+                        <div class="ph-button">
+                            <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
+                        </div><!-- ph-button -->
+                    </div><!-- ph-dmp-section-1 ph-user-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-last-invoices-list">
+                        <div class="title">آخرین صورتحساب‌ها</div>
+                        <ul>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-product-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">سفارشات</div>
+                        <ul>
+                            <li>تعداد سفارش: <span>۱۲</span></li>
+                            <li>سفارش‌های انجام شده: <span>۷۸</span></li>
+                            <li>سفارش‌های درحال انجام: <span>۴۵</span></li>
+                            <li>سفارشات در انتظار بررسی: <span>۱</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-2 ph-dmp-processing">
+                        <div class="number">۱۴</div>
+                        <div class="title">درحال پردازش</div>
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-2 ph-dmp-done">
+                        <div class="number">۶۵</div>
+                        <div class="title">انجام شده</div>
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-2 ph-dmp-pending">
+                        <div class="number">۲۳</div>
+                        <div class="title">در انتظار پرداخت</div>
+                    </div>
+                </div><!-- col-4 -->
+            </div><!-- row -->
+        </div><!-- ph-dm-panel -->
+    </div><!-- container -->
+</main><!-- ph-dashboard-main buyer-panel ph-buyer-dashboard -->
+{% endblock %}

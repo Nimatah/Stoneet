@@ -1,2 +1,60 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+
+{% block admin_content %}
+<main class="ph-dashboard-main logistic-panel ph-logistic-dashboard">
+    <div class="container">
+        <div class="ph-dm-title">
+            <div class="title">داشبورد پنل باربری</div>
+        </div>
+        <div class="ph-dm-panel">
+            <div class="row">
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-info">
+                        <div class="title">مشخصات کاربری</div>
+                        <ul>
+                            <li>کد فروشنده: <span>123456</span></li>
+                            <li>نام فروشنده: <span>مصطفی چراغی</span></li>
+                            <li>نام تجاری: <span>معدنکاران</span></li>
+                        </ul>
+                        <div class="ph-button">
+                            <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
+                        </div><!-- ph-button -->
+                    </div><!-- ph-dmp-section-1 ph-user-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-last-invoices-list">
+                        <div class="title">آخرین صورتحساب‌ها</div>
+                        <ul>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                            <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-product-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-2 ph-dmp-my-tender">
+                        <div class="number">۱۴</div>
+                        <div class="title">مناقصه‌های من</div>
+                    </div>
+                    <div class="ph-dmp-section-2 ph-dmp-tender-active">
+                        <div class="number">۶۵</div>
+                        <div class="title">مناقصه‌های فعال</div>
+                    </div>
+                    <div class="ph-dmp-section-2 ph-dmp-tender-win">
+                        <div class="number">۲۳</div>
+                        <div class="title">مناقصه‌های برنده شده</div>
+                    </div>
+                    <div class="ph-dmp-section-2 ph-dmp-tender-lose">
+                        <div class="number">۶۵</div>
+                        <div class="title">مناقصه‌های از دست رفته</div>
+                    </div>
+                </div><!-- col-4 -->
+            </div><!-- row -->
+        </div><!-- ph-dm-panel -->
+    </div><!-- container -->
+</main><!-- ph-dashboard-main logistic-panel ph-logistic-dashboard -->
+{% endblock %}

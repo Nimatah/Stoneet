@@ -317,6 +317,15 @@ input::placeholder { /* Most modern browsers support this now. */
 
 }
 
+.ph-btn:hover{
+    background: #fff;
+    color: #7E111A;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
 .custom-control-label{
     padding-right: 1.5rem;
 }
