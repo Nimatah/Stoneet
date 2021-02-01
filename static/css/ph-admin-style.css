@@ -603,6 +603,12 @@ ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
     margin: 1rem 3rem;
 }
 
+.navbar-expand-lg .navbar-nav .nav-link.ph-btn:hover,
+ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn:hover{
+  background: #fff;
+  color: #7e111a;
+}
+
 .ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level {
     background: #e0ad7a;
 }
@@ -1804,7 +1810,7 @@ a.ph-preview-placeholder:after {
     padding: 1.25rem 0;
 }
 .ph-spp-tab-navs .nav-pills .nav-link.active{
-  background: #F2D428;
+  background: #ffd100;
   color: #333;
   border-radius: 0;
 }
@@ -1839,8 +1845,8 @@ a.ph-preview-placeholder:after {
     padding: .5rem;
     border-radius: 10px;
     border: 1px solid #D1E9F0;
-    margin-bottom: 1rem;
     position: relative;
+    margin: 1rem 0;
 }
 
 .extra-fields-customer {

@@ -370,13 +370,17 @@ input::placeholder { /* Most modern browsers support this now. */
     text-align: right;
 }
 
-.ph-create-product-main .ph-panel-title{
+.ph-dashboard-main .ph-panel-title{
+    display: flex;
     margin-bottom: 0;
     border-bottom: 1px solid #F2D428;
 }
 
-.ph-create-product-main .ph-panel-title span{
 
+.ph-dashboard-main .ph-panel-title span{
+    background: #ffd100;
+    padding: .5rem;
+    border-radius: 10px 10px 0 0;
 }
 
 input.form-control:focus{
