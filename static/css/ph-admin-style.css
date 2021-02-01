@@ -599,7 +599,8 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
 
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
-  color: #FFFFFF;
+    color: #FFFFFF;
+    margin: 1rem 3rem;
 }
 
 .ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level {
@@ -1814,7 +1815,7 @@ a.ph-preview-placeholder:after {
 
 .ph-spp-t-content .edit-info{
     position: absolute;
-    bottom: 20px;
+    bottom: 14px;
     left: 20px;
     margin-bottom: 0;
 }
@@ -1848,6 +1849,9 @@ a.ph-preview-placeholder:after {
     left: 20px;
     margin-bottom: 0;
 }
+.extra-fields-customer i{
+  margin-left: .5rem;
+}
 
 .customer_records .edit-info,
 .remove.edit-info{
@@ -1873,7 +1877,7 @@ a.ph-preview-placeholder:after {
 .remove .edit-info  {
     position: absolute;
     bottom: 20px;
-    left: 12%;
+    left: 9%;
     width: 30px;
     height: 30px;
     min-width: 30px;
@@ -1884,13 +1888,15 @@ a.ph-preview-placeholder:after {
     color: #fff;
     background: #7E111A;
     border-radius: 2em;
-  margin: 0;
+    margin: 0;
+    padding: .2rem !important;
+    border: 0;
 }
 
 .customer_records .edit-info,
 .remove .edit-info  {
   background: #4CE0B3;
-    left: 6.5%;
+    left: 4.5%;
 }
 
 .remove .edit-info i{

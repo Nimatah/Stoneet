@@ -375,6 +375,10 @@ input::placeholder { /* Most modern browsers support this now. */
     border-bottom: 1px solid #F2D428;
 }
 
+.ph-create-product-main .ph-panel-title span{
+
+}
+
 input.form-control:focus{
     color: #495057;
     background-color: #fff;
