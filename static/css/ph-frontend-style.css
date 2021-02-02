@@ -293,17 +293,26 @@ body.home .ph-main-header.sticky{
 }
 
 .ph-home-register-box.seller a{
-    padding: 10px 20px;
-    color: #fff;
-    display: flex;
-    align-items: center;
+    background: #D4A373;
+    color: #333333;
+    border: 1px solid transparent;
 }
 
 .ph-home-register-box.logestic a{
-    padding: 10px 20px;
-    color: #fff;
-    display: flex;
-    align-items: center;
+    background: #FFD100;
+    color: #333333;
+    border: 1px solid transparent;
+}
+
+.ph-home-register-box.seller a:hover,
+.ph-home-register-box.logestic a:hover {
+    background: #fff;
+    border: 1px solid;
+}
+
+.ph-home-register-box.seller a i,
+.ph-home-register-box.logestic a i{
+    margin-right: .5rem;
 }
 
 .ph-home-heading{
@@ -314,27 +323,29 @@ body.home .ph-main-header.sticky{
 .ph-home-heading h3{
     display: inline-flex;
     position: relative;
-    background: #F2D428;
-    padding: 10px 30px;
+    background: #ffd100;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.25rem;
 }
 
 .ph-home-heading h3:before{
     content: '';
-    width: 50px;
+    width: 100px;
     height: 2px;
     background: #F2D428;
     position: absolute;
-    right: -60px;
+    right: -120px;
     top: 48%;
 }
 
 .ph-home-heading h3:after{
     content: '';
-    width: 50px;
+    width: 100px;
     height: 2px;
     background: #F2D428;
     position: absolute;
-    left: -60px;
+    left: -120px;
     top: 48%;
 }
 
