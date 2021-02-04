@@ -376,12 +376,12 @@ input::placeholder { /* Most modern browsers support this now. */
 .ph-dashboard-main .ph-panel-title{
     display: flex;
     margin-bottom: 0;
-    border-bottom: 1px solid #F2D428;
+    border-bottom: 1px solid #D1E9F0;
 }
 
 
 .ph-dashboard-main .ph-panel-title span{
-    background: #ffd100;
+    background: #D1E9F0;
     padding: .5rem;
     border-radius: 10px 10px 0 0;
 }
@@ -452,4 +452,40 @@ input.form-control:focus{
 
 .modal-header .close {
     margin: -1rem auto -1rem -1rem;
+}
+
+.ph-tabs{
+
+}
+
+.ph-tabs .ph-tab-navs{
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.ph-tabs .ph-tab-navs .nav-pills .nav-link{
+    color: #fff;
+    padding: 1.25rem 0;
+}
+.ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
+  border-radius: 0;
+}
+.ph-tcw-content{
+  position: relative;
+  padding: 1rem 1rem 4.5rem;
+}
+
+.ph-tcw-content .edit-info{
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+    margin-bottom: 0;
+}
+.ph-tcw-content .edit-info i{
+  margin-left: .5rem;
+}
+
+.ph-tcw-content .form-row>.col, .ph-tcw-content .form-row>[class*=col-]{
+    padding-right: 15px;
+    padding-left: 15px;
 }

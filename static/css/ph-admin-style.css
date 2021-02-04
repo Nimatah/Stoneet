@@ -525,10 +525,44 @@ aside.pos-rel{
 }
 
 .ph-sp-navbar {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 3rem 0;
   width: 100%;
+}
+
+.aside-design-by{
+    position: absolute;
+    bottom: 0;
+    padding: 1rem .1rem;
+    font-size: .69rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.aside-design-by a{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin-right: .2rem;
+    color: #0c5460;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.aside-design-by a:hover{
+  color: #ff253a;
+}
+
+.aside-design-by a img{
+    width: 25px;
+    height: 25px;
 }
 
 .ph-navbar-logo {
@@ -599,7 +633,8 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
     color: #FFFFFF;
-    margin: 1rem 3rem;
+    margin: 1rem auto;
+    max-width: 155px;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn:hover,
@@ -714,7 +749,7 @@ a.nav-link[aria-expanded="true"]:after {
     background: #ffffff;
     padding: 3rem 1rem 1rem;
     position: relative;
-    border-top: 3px solid #ffd100;
+    border-top: 3px solid #D1E9F0;
     height: 250px;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #CCCCCC;
@@ -725,7 +760,7 @@ a.nav-link[aria-expanded="true"]:after {
     top: -10px;
     right: -10px;
     padding: .5rem;
-    background: #ffd100;
+    background: #D1E9F0;
     border-radius: 0 10px;
 }
 
@@ -1766,38 +1801,13 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-spp-tab-navs{
-  overflow: hidden;
-  margin: 1rem 0;
-}
-.ph-spp-tab-navs .nav-pills .nav-link{
-    color: #fff;
-    padding: 1.25rem 0;
-}
 .ph-spp-tab-navs .nav-pills .nav-link.active{
   background: #ffd100;
   color: #333;
-  border-radius: 0;
 }
 .ph-spp-t-content{
-  position: relative;
-    padding: 1rem 1rem 4.5rem;
 }
 
-.ph-spp-t-content .edit-info{
-    position: absolute;
-    bottom: 14px;
-    left: 20px;
-    margin-bottom: 0;
-}
-.ph-spp-t-content .edit-info i{
-  margin-left: .5rem;
-}
-
-.ph-spp-t-content .form-row>.col, .ph-spp-t-content .form-row>[class*=col-]{
-    padding-right: 15px;
-    padding-left: 15px;
-}
 .ph-spp-tab-contents .custom-select,
 .ph-spp-tab-contents .form-control,
 .ph-spp-tab-contents input::placeholder{
@@ -1879,6 +1889,7 @@ a.ph-preview-placeholder:after {
     margin-right: -.5rem;
     margin-left: .5rem;
 }
+
 
 /*=======================================================================================================================
 /*=======================================================================================================================
@@ -2004,6 +2015,27 @@ a.ph-preview-placeholder:after {
   color: #333;
 }
 
+/*
+=============================================================
+        LOGISTIC .ph-logistic-profile
+=============================================================
+*/
+.ph-logistic-profile{}
+.bg-color-2 .navbar-nav .nav-link,
+.bg-color-2 ul.ph-sp-navbar-nav>li>a.nav-link{
+  color: #333333;
+}
+.ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link{
+  color: #333333;
+}
+.ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
+  background: #022C3B;
+  color: #FFFFFF;
+}
+
+
+
+
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
@@ -2014,6 +2046,14 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =======================================================================================================================*/
 
+.bg-color-3 .navbar-nav .nav-link,
+.bg-color-3 ul.ph-sp-navbar-nav>li>a.nav-link{
+  color: #fff;
+}
+.bg-color-3 .aside-design-by{
+  color: #CCCCCC;
+}
+
 /*
 =============================================================
          REGISTRATION
@@ -2021,32 +2061,32 @@ a.ph-preview-placeholder:after {
 */
 
 .ph-new-login.buyer-register aside.ph-registration-panel-sidebar {
-  background: #00A693;
+  background: #022C3B;
 }
 
 .ph-new-login.buyer-register .ph-signup-submit-btn button {
-  background: #00A693;
+  background: #022C3B;
 }
 
 .ph-new-login.buyer-register .ph-signup-submit-btn button:hover{
   background: #fff;
-  color: #00A693;
-  border-color: #00A693;
+  color: #022C3B;
+  border-color: #022C3B;
 }
 
 .buyer-register .ph-new-login-seller-info-btn button {
-  background: #00A693;
+  background: #022C3B;
 }
 
 .buyer-register .ph-new-login-seller-info-btn button:hover {
   background: #fff;
-  color: #00A693;
-  border-color: #00A693;
+  color: #022C3B;
+  border-color: #022C3B;
 }
 
 .buyer-register .avatar-upload .avatar-preview {
-  box-shadow: 0px 2px 4px 0px #00A693;
-  border: 3px solid #00A693;
+  box-shadow: 0px 2px 4px 0px #022C3B;
+  border: 3px solid #022C3B;
 }
 
 /*
@@ -2392,6 +2432,19 @@ a.ph-preview-placeholder:after {
 .ph-view-order-checkpoints li i.fa-times{
   color: red;
 }
+
+/*
+=============================================================
+        BUYER PANEL   MAIN .ph-buyer-profile
+=============================================================
+*/
+
+.ph-bpp-tab-navs .nav-pills .nav-link.active {
+    background: #ffd100;
+    color: #333;
+}
+
+
 
 /*=======================================================================================================================
 /*=======================================================================================================================
