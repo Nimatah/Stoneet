@@ -2,31 +2,13 @@
     <a class="nav-link" href="{% url 'users:logistic_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_list_order' %}">سفارش ها</a>
+    <a class="nav-link" href="{% url 'users:logistic_list_auction' %}">مناقصه های فعال</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_view_order' %}">جزئیات سفارش‌(تست)</a>
+    <a class="nav-link" href="{% url 'users:logistic_list_bid' %}">مناقصه های من</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link nav-link-collapse" href="#" id="logistic-auction" data-toggle="collapse"
-       data-target="#collapse-logistic-auction" aria-controls="collapseSubItems4" aria-expanded="false">مناقصه</a>
-    <ul class="nav-second-level collapse" id="collapse-logistic-auction" data-parent="#logistic-auction">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logistic_list_auction' %}">
-                <span class="nav-link-text">مناقصه های فعال</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logistic_list_bid' %}">
-                <span class="nav-link-text">مناقصه های من</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logistic_view_bid' %}">
-                <span class="nav-link-text">جزئیات مناقصه من (تست)</span>
-            </a>
-        </li>
-    </ul>
+    <a class="nav-link" href="{% url 'users:logistic_view_bid' %}">جزئیات مناقصه من (تست)</a>
 </li>
 <li class="nav-item">
     <a class="nav-link nav-link-collapse" href="#" id="logistic-invoice" data-toggle="collapse"

@@ -276,17 +276,19 @@ body.home .ph-main-header.sticky{
     justify-content: center;
     text-align: center;
     padding: 30px;
+    background: #ececec;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
 }
 
-.ph-home-register-box.seller{
-    border: 2px solid #D4A373;
-    border-top: 10px solid #D4A373;
+.ph-home-register-box:hover{
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgba(88,114,195,.2);
 }
 
-.ph-home-register-box.logestic{
-    border: 2px solid #FFD100;
-    border-top: 10px solid #FFD100;
-}
 
 .ph-home-register-box p{
     width: 70%;

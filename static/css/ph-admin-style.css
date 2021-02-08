@@ -1981,7 +1981,7 @@ a.ph-preview-placeholder:after {
 */
 
 .ph-logistic-panel .ph-admin-page-intro-text{
-  background: #F1BF7D;
+  background: #FFD100;
 }
 
 .ph-logistic-panel .ph-admin-page-intro-text span{
@@ -2010,9 +2010,10 @@ a.ph-preview-placeholder:after {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  border-radius: 0 10px 0 10px;
+  border-radius: 2rem;
   cursor: pointer;
-  color: #333;
+  color: #fff;
+  background: #7e111a;
 }
 
 /*
