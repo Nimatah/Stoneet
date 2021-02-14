@@ -4,11 +4,13 @@
     "pk": 1,
     "fields": {
       "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:38:25.917",
+      "updated_at": "2021-01-28T12:30:14.682",
       "title": "قیمت",
       "value_type": "int",
       "options": "",
       "unit": "تومان",
+      "range_type": null,
+      "order": 7,
       "is_required": true,
       "view_in_product_page": true,
       "is_special": false
@@ -24,6 +26,8 @@
       "value_type": "image",
       "options": "",
       "unit": "",
+      "range_type": null,
+      "order": 10,
       "is_required": true,
       "view_in_product_page": false,
       "is_special": true
@@ -31,29 +35,16 @@
   },
   {
     "model": "products.attribute",
-    "pk": 3,
-    "fields": {
-      "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2021-01-25T13:42:50.096",
-      "title": "عیار (از)",
-      "value_type": "int",
-      "options": "",
-      "unit": "",
-      "is_required": true,
-      "view_in_product_page": true,
-      "is_special": false
-    }
-  },
-  {
-    "model": "products.attribute",
     "pk": 4,
     "fields": {
       "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:38:11.842",
+      "updated_at": "2021-01-28T12:29:00.890",
       "title": "ظرفیت تامین ماهانه",
       "value_type": "int",
       "options": "",
       "unit": "کیلوگرم",
+      "range_type": null,
+      "order": 5,
       "is_required": true,
       "view_in_product_page": true,
       "is_special": false
@@ -64,44 +55,16 @@
     "pk": 5,
     "fields": {
       "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:38:07.050",
+      "updated_at": "2021-02-10T19:36:13.673",
       "title": "امکان ارسال نمونه",
-      "value_type": "bool",
+      "value_type": "int",
       "options": "",
-      "unit": "",
-      "is_required": true,
+      "unit": "کیلوگرم",
+      "range_type": null,
+      "order": 10,
+      "is_required": false,
       "view_in_product_page": true,
-      "is_special": false
-    }
-  },
-  {
-    "model": "products.attribute",
-    "pk": 6,
-    "fields": {
-      "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:38:03.054",
-      "title": "وجود جاده مناسب و قابل عبور جهت ماشین های باربری",
-      "value_type": "bool",
-      "options": "",
-      "unit": "",
-      "is_required": true,
-      "view_in_product_page": true,
-      "is_special": false
-    }
-  },
-  {
-    "model": "products.attribute",
-    "pk": 8,
-    "fields": {
-      "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:37:53.720",
-      "title": "گواهی ارزش افزوده",
-      "value_type": "image",
-      "options": "",
-      "unit": "",
-      "is_required": true,
-      "view_in_product_page": true,
-      "is_special": false
+      "is_special": true
     }
   },
   {
@@ -109,41 +72,13 @@
     "pk": 9,
     "fields": {
       "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:36:43.036",
+      "updated_at": "2021-01-28T16:47:17.887",
       "title": "شرایط پرداخت وجه",
-      "value_type": "dropdown",
+      "value_type": "multiple",
       "options": "نقدی|اقساطی",
       "unit": "",
-      "is_required": true,
-      "view_in_product_page": true,
-      "is_special": false
-    }
-  },
-  {
-    "model": "products.attribute",
-    "pk": 10,
-    "fields": {
-      "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:36:38.328",
-      "title": "وجود تجهیزات بارگیری در محل دپو",
-      "value_type": "bool",
-      "options": "",
-      "unit": "",
-      "is_required": true,
-      "view_in_product_page": true,
-      "is_special": false
-    }
-  },
-  {
-    "model": "products.attribute",
-    "pk": 11,
-    "fields": {
-      "created_at": "2020-12-16T00:00:00",
-      "updated_at": "2020-12-15T21:36:30.746",
-      "title": "قرارداد ضروری",
-      "value_type": "bool",
-      "options": "",
-      "unit": "",
+      "range_type": null,
+      "order": 8,
       "is_required": true,
       "view_in_product_page": true,
       "is_special": false
@@ -154,11 +89,81 @@
     "pk": 12,
     "fields": {
       "created_at": "2021-01-25T13:43:11.449",
-      "updated_at": "2021-01-25T13:43:11.450",
-      "title": "عیار (تا)",
-      "value_type": "int",
+      "updated_at": "2021-01-28T10:51:05.773",
+      "title": "عیار",
+      "value_type": "range",
       "options": "",
       "unit": "",
+      "range_type": "from",
+      "order": 1,
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 13,
+    "fields": {
+      "created_at": "2021-01-28T09:07:07.381",
+      "updated_at": "2021-01-28T11:32:29.633",
+      "title": "عیار",
+      "value_type": "range",
+      "options": "",
+      "unit": "",
+      "range_type": "to",
+      "order": 2,
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 14,
+    "fields": {
+      "created_at": "2021-01-28T09:10:27.722",
+      "updated_at": "2021-01-28T11:32:39.737",
+      "title": "نوع دانه بندی",
+      "value_type": "range",
+      "options": "",
+      "unit": "",
+      "range_type": "from",
+      "order": 3,
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 15,
+    "fields": {
+      "created_at": "2021-01-28T09:10:40.713",
+      "updated_at": "2021-01-28T11:32:49.265",
+      "title": "نوع دانه بندی",
+      "value_type": "range",
+      "options": "",
+      "unit": "",
+      "range_type": "to",
+      "order": 4,
+      "is_required": true,
+      "view_in_product_page": true,
+      "is_special": false
+    }
+  },
+  {
+    "model": "products.attribute",
+    "pk": 16,
+    "fields": {
+      "created_at": "2021-01-28T09:14:15.070",
+      "updated_at": "2021-01-28T12:30:07.574",
+      "title": "نوع تحویل",
+      "value_type": "dropdown",
+      "options": "بار فله‌ای|کیسه‌ای",
+      "unit": "",
+      "range_type": null,
+      "order": 6,
       "is_required": true,
       "view_in_product_page": true,
       "is_special": false
