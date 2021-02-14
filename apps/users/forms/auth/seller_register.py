@@ -3,18 +3,13 @@ import re
 from django import forms
 
 from apps.users.models import User
+from .base import BaseRegisterForm
 
 
-class UserRegisterForm(forms.ModelForm):
+class SellerRegisterForm(BaseRegisterForm):
     ERROR_MESSAGES = {
         'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
     }
-
-    TYPE_CHOICES = (
-        (User.TYPE_BUYER, 'خریدار',),
-        (User.TYPE_SELLER, 'فروشنده',),
-        (User.TYPE_LOGISTIC, 'باربری',),
-    )
 
     LEGAL_CHOICES = (
         (User.LEGAL_INDIVIDUAL, 'حقیقی',),
@@ -26,7 +21,6 @@ class UserRegisterForm(forms.ModelForm):
         ('not-tehran', 'شهرستان',),
     )
 
-    use_type = forms.ChoiceField(label="User Type", choices=TYPE_CHOICES, required=True)
     legal_type = forms.ChoiceField(label="Legal Type", choices=LEGAL_CHOICES, required=True)
     username = forms.CharField(min_length=4, max_length=255, required=False)
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput, required=True)

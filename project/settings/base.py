@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from django.utils.translation import ugettext_lazy as _
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = 'he1r&ba+b!+*vcav!63=s-6sz^3ge#9$t^4d7c141x$j_!#d*g'
@@ -15,6 +17,7 @@ PREREQUISITE_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.humanize',
+    'rest_framework',
     'mptt',
     'django_extensions',
     'widget_tweaks',
@@ -42,7 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.locale.LocaleMiddleware'
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -98,7 +101,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = False
+USE_I18N = True
 
 USE_L10N = False
 
@@ -123,3 +126,18 @@ NODE_MODULES_ROOT = BASE_DIR / 'node_modules'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = '/media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'apps.core.authentication.CsrfExemptSessionAuthentication',
+    ),
+}
+
+LOCALE_PATHS = (
+    BASE_DIR / 'locale',
+)
+
+LANGUAGES = (
+    ('en-US', _('english'),),
+    ('fa-IR', _('persian'),),
+)

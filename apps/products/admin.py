@@ -6,7 +6,7 @@ from apps.products.models import Attribute, Category, Product, ProductAttribute,
 
 @admin.register(Attribute)
 class AttributeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'value_type', 'options', 'unit')
+    list_display = ('title', 'value_type', 'options', 'unit', 'range_type', 'order')
     search_fields = ('title',)
 
 

@@ -1,8 +1,9 @@
-from typing import Union
+from typing import Union, List
 
 from django.db import models
 from mptt.models import MPTTModel, TreeManager, TreeForeignKey
 
+from apps.core import SPLIT
 from apps.core.models import TimestampedModel, BaseMedia
 from apps.users.models import User
 
@@ -10,7 +11,7 @@ from apps.users.models import User
 class AttributeManager(models.Manager):
 
     def get_by_input_field(self):
-        return self.filter(value_type__in=['int', 'dropdown', 'str', 'float'])
+        return self.filter(value_type__in=['int', 'dropdown', 'str', 'float', 'range', 'multiple'])
 
     def get_by_image_field(self):
         return self.filter(value_type='image')
@@ -59,6 +60,13 @@ class Attribute(TimestampedModel):
     ID_PRICE = 1
     ID_ANALYZE = 2
     ID_SKU = 4
+    ID_SAMPLE = 5
+    ID_PAYMENT_TYPE = 9
+    ID_CARAT_FROM = 12
+    ID_CARAT_TO = 13
+    ID_GRAIN_FROM = 14
+    ID_GRAIN_TO = 15
+    ID_DELIVERY_TYPE = 16
 
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -66,6 +74,11 @@ class Attribute(TimestampedModel):
     TYPE_FLOAT = 'float'
     TYPE_IMAGE = 'image'
     TYPE_DROPDOWN = 'dropdown'
+    TYPE_RANGE = 'range'
+    TYPE_MULTIPLE = 'multiple'
+
+    RANGE_FROM = 'from'
+    RANGE_TO = 'to'
 
     _TYPE_CHOICES = (
         (TYPE_BOOL, 'Boolean',),
@@ -74,12 +87,21 @@ class Attribute(TimestampedModel):
         (TYPE_FLOAT, 'Float',),
         (TYPE_IMAGE, 'Image',),
         (TYPE_DROPDOWN, 'Dropdown',),
+        (TYPE_RANGE, 'Range',),
+        (TYPE_MULTIPLE, 'Multiple Choice',),
+    )
+
+    _RANGE_CHOICES = (
+        (RANGE_FROM, 'کمترین',),
+        (RANGE_TO, 'بیشترین',),
     )
 
     title = models.CharField(max_length=255)
     value_type = models.CharField(max_length=255, choices=_TYPE_CHOICES)
     options = models.TextField(null=True, blank=True)
     unit = models.CharField(max_length=255, blank=True)
+    range_type = models.CharField(max_length=255, choices=_RANGE_CHOICES, null=True, blank=True)
+    order = models.IntegerField(default=10)
     is_required = models.BooleanField(default=False)
     view_in_product_page = models.BooleanField(default=False)
     is_special = models.BooleanField(default=False)
@@ -91,7 +113,11 @@ class Attribute(TimestampedModel):
 
     @property
     def dropdown(self):
-        return self.options.split("|")
+        return self.options.split(SPLIT)
+
+    @property
+    def choices(self):
+        return self.options.split(SPLIT)
 
     def is_valid(self, value) -> bool:
         if self.value_type == Attribute.TYPE_BOOL:
@@ -102,15 +128,19 @@ class Attribute(TimestampedModel):
             return self.__validate_float(value)
         elif self.value_type == Attribute.TYPE_DROPDOWN:
             return self.__validate_dropdown(value)
+        elif self.value_type == Attribute.TYPE_RANGE:
+            return self.__validate_range(value)
+        elif self.value_type == Attribute.TYPE_MULTIPLE:
+            return self.__validate_multiple(value)
         else:
             return True
 
     @staticmethod
-    def __validate_boolean(value) -> bool:
+    def __validate_boolean(value: str) -> bool:
         return value.lower() in ('true', 'false',)
 
     @staticmethod
-    def __validate_int(value) -> bool:
+    def __validate_int(value: int) -> bool:
         try:
             int(value)
             return True
@@ -118,15 +148,26 @@ class Attribute(TimestampedModel):
             return False
 
     @staticmethod
-    def __validate_float(value) -> bool:
+    def __validate_float(value: float) -> bool:
         try:
             float(value)
             return True
         except ValueError:
             return False
 
-    def __validate_dropdown(self, value) -> bool:
-        return value in self.options.split('|')
+    @staticmethod
+    def __validate_range(value: int) -> bool:
+        try:
+            int(value)
+            return True
+        except ValueError:
+            return False
+
+    def __validate_multiple(self, value: str) -> bool:
+        return all([i in self.options.split(SPLIT) for i in value.split(SPLIT)])
+
+    def __validate_dropdown(self, value: str) -> bool:
+        return value in self.options.split(SPLIT)
 
 
 class AttributeMedia(BaseMedia):
@@ -191,6 +232,10 @@ class ProductAttribute(models.Model):
             return self.value_float
         elif self.attribute.value_type == self.attribute.TYPE_DROPDOWN:
             return self.value_string
+        elif self.attribute.value_type == self.attribute.TYPE_RANGE:
+            return self.value_int
+        elif self.attribute.value_type == self.attribute.TYPE_MULTIPLE:
+            return self.value_string.split(SPLIT)
         elif self.attribute.value_type == self.attribute.TYPE_IMAGE:
             try:
                 return self.media.first().file
@@ -214,6 +259,10 @@ class ProductAttribute(models.Model):
                 self.value_float = value
             elif self.attribute.value_type == self.attribute.TYPE_DROPDOWN:
                 self.value_string = value
+            elif self.attribute.value_type == self.attribute.TYPE_RANGE:
+                self.value_int = value
+            elif self.attribute.value_type == self.attribute.TYPE_MULTIPLE:
+                self.value_string = value
             elif self.attribute.value_type == self.attribute.TYPE_IMAGE:
                 # Uses AttributeMedia file handler
                 pass
@@ -228,6 +277,7 @@ class Product(TimestampedModel):
     STATE_PENDING = 'pending'
     STATE_ACCEPTED = 'accepted'
     STATE_REJECTED = 'rejected'
+
     _STATE_CHOICES = (
         (STATE_PENDING, 'Pending',),
         (STATE_ACCEPTED, 'Accepted',),
@@ -262,6 +312,15 @@ class Product(TimestampedModel):
             return self.attributes.get(attribute_id=Attribute.ID_ANALYZE)
         except ProductAttribute.DoesNotExist:
             return None
+
+    def get_caret(self) -> str:
+        caret_from = self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
+        caret_to = self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
+        caret = f'{caret_from.value} - {caret_to.value} %' if caret_from.value != caret_to.value else f'{caret_to.value} %'
+        return caret
+
+    def get_payment_type(self) -> List[str]:
+        return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE).value
 
 
 class ProductMedia(BaseMedia):

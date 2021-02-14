@@ -3,11 +3,15 @@ from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.contrib.auth import login
 
-from apps.users.forms import UserRegisterForm
+from apps.users.forms import (
+    SellerRegisterForm,
+    BuyerRegisterForm,
+    LogisticRegisterForm
+)
 
 
 class SellerRegisterView(FormView):
-    form_class = UserRegisterForm
+    form_class = SellerRegisterForm
     template_name = 'users/auth/register/register_seller.html'
     success_url = reverse_lazy("home:index")
 

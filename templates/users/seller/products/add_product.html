@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block admin_content %}
+    {{ form.errros.as }}
     <main class="ph-create-product-main ph-dashboard-main">
         <div class="container">
             <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
@@ -67,7 +68,6 @@
                             </div>
                         </div>
 
-
                         <div class="clearfix"></div>
                         <div class="clearfix"></div>
 
@@ -80,102 +80,21 @@
                                 {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
                             {% endfor %}
 
-                            <div class="col-5 ph-add-product-cutie my-1">
-                                <label class="ph-label">عیار</label>
-                                <div class="form-row num-input align-items-center">
-                                    <div class="col-4 d-flex">
-                                        <div class="row">
-                                            <span for="" class="ml-2 mr-3">کمترین</span>
-                                            <input type="text" class="form-control" id="">
-                                            <small class="form-text text-danger"></small>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 d-flex">
-                                        <div class="row">
-                                            <span for="" class="ml-1 mr-3">بیشترین</span>
-                                            <input type="text" class="form-control" id="">
-                                            <small class="form-text text-danger"></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-5 my-1">
-                                <label class="ph-label">نوع دانه‌بندی</label>
-                                <div class="form-row num-input align-items-center">
-                                    <div class="col-4 d-flex">
-                                        <div class="row">
-                                            <span for="" class="ml-2 mr-3">کمترین</span>
-                                            <input type="text" class="form-control" id="">
-                                            <small class="form-text text-danger"></small>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 d-flex">
-                                        <div class="row">
-                                            <span for="" class="ml-1 mr-3">بیشترین</span>
-                                            <input type="text" class="form-control" id="">
-                                            <small class="form-text text-danger"></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-5 my-1">
-                                <label>موقعیت</label>
-                                    <div class="ph-sd-panel form-group d-flex">
-                                        <label class="ml-2" for="state">استان</label>
-                                        <input list="states" class="form-control" id="state">
-                                        <datalist id="states">
-                                            <option value="تهران">
-                                            <option value="فارس">
-                                        </datalist>
-                                        <label class="mx-2" for="city">شهر</label>
-                                        <input list="cities" class="form-control" id="city">
-                                        <datalist id="cities">
-                                            <option value="تهران">
-                                            <option value="شیراز">
-                                        </datalist>
-                                    </div>
-                                    <small class="form-text text-danger"></small>
-
-                            </div>
-                            <div class="col-5 my-1">
-                                <label class="" for="">نوع تحویل</label>
-                                <select class="custom-select" id="">
-                                    <option selected>انتخاب کنید...</option>
-                                    <option value="1">بار فله</option>
-                                    <option value="2">کیسه‌ای</option>
-                                </select>
-                                <small class="form-text text-danger"></small>
-                            </div>
-
-                            <div class="col-5 my-1">
-                                <label class="">شرایط پرداخت وجه</label>
-                                <div class="ph-check-box-ap">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="333" value="option1">
-                                        <label class="form-check-label" for="333">نقدی</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="444" value="option2">
-                                        <label class="form-check-label" for="444">اقساط</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
                             <div class="col-5 my-1 mb-4" style="min-height: 40px;">
                                 <div class="ph-ap-ch d-flex">
-                                   <div class="ph-ap-check">
-                                       <label for="ph_ap_check">امکان ارسال نمونه</label>
-                                       <input class="form-check-input ph_ap_check" id="ph_ap_check" type="checkbox" value="1" onchange="valueChanged()"/>
-                                   </div>
+                                    <div class="ph-ap-check">
+                                        <label for="ph_ap_check">امکان ارسال نمونه</label>
+                                        <input class="form-check-input ph_ap_check" id="ph_ap_check" type="checkbox"
+                                               value="1" onchange="sampleViewInputField()"/>
+                                    </div>
 
-                                   <div class="ph-ap-checked hide">
-                                       <input class="form-check-input form-control ph_ap_check" type="text" name="field" id="field"/>
-                                       <label for="field">کیلوگرم</label>
-                                   </div>
+                                    <div class="ph-ap-checked hide">
+                                        <input class="form-check-input form-control ph_ap_check" type="text"
+                                               name="attribute_{{ ID_SAMPLE }}" id="attribute-{{ ID_SAMPLE }}"/>
+                                        <label for="field">کیلوگرم</label>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="ph-panel-title">
@@ -187,11 +106,11 @@
                         </div>
                         <div class="clearfix"></div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
-                            <label for='step2' id="next-step2" class="ph-cpp-btn-n ph-btnext d-none" >
-                                <div class="ph-cpp-btn-n ph-btn" id="s-1-btn">بعدی</div>
+                            <label for='step2' id="next-step2" class="ph-cpp-btn-n ph-btnext d-none">
+                                <div class="ph-cpp-btn-n ph-btn">بعدی</div>
                             </label>
                             <label for='step2' id="next-step2" class="ph-cpp-btn-n ph-btnext">
-                                <div class="ph-cpp-btn-n ph-btn" id="s-1-btn">بعدی</div>
+                                <div class="ph-cpp-btn-n ph-btn" id="ph-btn-next1">بعدی</div>
                             </label>
 
                         </div>
@@ -217,23 +136,23 @@
                                 <div class="row">
                                     <div class="col-12 mx-auto">
                                         <div class="file-upload">
-                                            <div id="image-upload-wrap-attr-0" class="image-upload-wrap">
-                                                <input name="analyze" id="file-upload-input-attr-0"
+                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                <input name="analyze" id="file-upload-input-analyze"
                                                        class="file-upload-input" type='file'
-                                                       name="attribute-2" onchange="readURL(this, 'attr-0');"
+                                                       onchange="readURL(this, 'analyze');"
                                                        accept="image/*"/>
                                                 <div class="drag-text">
                                                     <h5>عکس مورد نظر خود را انتخاب کنید</h5>
                                                     <i class="fas fa-cloud-upload-alt"></i>
                                                 </div>
                                             </div>
-                                            <div id="file-upload-content-attr-0" class="file-upload-content">
-                                                <img id="file-upload-image-attr-0" class="file-upload-image" src="#"
+                                            <div id="file-upload-content-analyze" class="file-upload-content">
+                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
                                                      alt="your image"/>
-                                                <div id="image-title-wrap-attr-0" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image">
-                                                        <i
-                                                                class="fas fa-times"></i></button>
+                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                    <button type="button" onclick="removeUpload('analyze')"
+                                                            class="remove-image">
+                                                        <i class="fas fa-times"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -246,7 +165,7 @@
                                 <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                             </label>
                             <label for='step3' id="next-step3" class="ph-cpp-btn-n ph-btnext">
-                                <div class="ph-cpp-btn-n ph-btn" id="s-2-btn">بعدی</div>
+                                <div class="ph-cpp-btn-n ph-btn" id="ph-btn-next2">بعدی</div>
                             </label>
                         </div>
                     </div>
@@ -287,7 +206,8 @@
                                                 <img id="file-upload-image-0" class="file-upload-image" src="#"
                                                      alt="your image"/>
                                                 <div id="image-title-wrap-0" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload()" class="remove-image">
+                                                    <button type="button" onclick="removeUpload(0)"
+                                                            class="remove-image">
                                                         <i
                                                                 class="fas fa-times"></i></button>
                                                 </div>
@@ -312,7 +232,7 @@
                                                     <img id="file-upload-image-1" class="file-upload-image" src="#"
                                                          alt="your image"/>
                                                     <div id="image-title-wrap-1" class="image-title-wrap">
-                                                        <button type="button" onclick="removeUpload()"
+                                                        <button type="button" onclick="removeUpload(1)"
                                                                 class="remove-image"><i
                                                                 class="fas fa-times"></i></button>
                                                     </div>
@@ -333,7 +253,7 @@
                                                     <img id="file-upload-image-2" class="file-upload-image" src="#"
                                                          alt="your image"/>
                                                     <div id="image-title-wrap-2" class="image-title-wrap">
-                                                        <button type="button" onclick="removeUpload()"
+                                                        <button type="button" onclick="removeUpload(2)"
                                                                 class="remove-image"><i
                                                                 class="fas fa-times"></i></button>
                                                     </div>
@@ -354,7 +274,7 @@
                                                     <img id="file-upload-image-3" class="file-upload-image" src="#"
                                                          alt="your image"/>
                                                     <div id="image-title-wrap-3" class="image-title-wrap">
-                                                        <button type="button" onclick="removeUpload()"
+                                                        <button type="button" onclick="removeUpload(3)"
                                                                 class="remove-image"><i
                                                                 class="fas fa-times"></i></button>
                                                     </div>
@@ -375,7 +295,7 @@
                                                     <img id="file-upload-image-4" class="file-upload-image" src="#"
                                                          alt="your image"/>
                                                     <div id="image-title-wrap-4" class="image-title-wrap">
-                                                        <button type="button" onclick="removeUpload()"
+                                                        <button type="button" onclick="removeUpload(4)"
                                                                 class="remove-image"><i
                                                                 class="fas fa-times"></i></button>
                                                     </div>
@@ -391,7 +311,7 @@
                                     <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                                 </label>
                                 <label for='step4' id="next-step4" class="ph-cpp-btn-n ph-btnext">
-                                    <div id="s-3-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                    <div id="ph-btn-next3" class="ph-cpp-btn-n ph-btn">بعدی</div>
                                 </label>
                             </div>
                             <!-- ph-cpp-btn -->
@@ -421,11 +341,16 @@
                                         <div class="row">
                                             <div class="col-12 part-4-item-detail">
                                                 <span>نام محصول: </span>
+                                                <input type="hidden" name="title">
                                                 <span id="preview-product-title"></span>
                                             </div>
                                             {% for attribute in attributes_field %}
                                                 {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}
                                             {% endfor %}
+                                            <div class="col-6 part-4-item-detail">
+                                                <span>امکان ارسال نمونه</span>
+                                                <span id="preview-attribute-{{ ID_SAMPLE }}"></span>
+                                            </div>
                                             <div class="col-12 part-4-item-detail-check">
                                                 {% for attribute in attributes_bool %}
                                                     {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}
@@ -437,31 +362,21 @@
                                         <div class="row">
                                             <div class="col-6 p4idi-thumb">
                                                 <span>عکس محصول</span>
-                                                <a id="preview-image-0-link" class="image-popup-vertical-fit" href="" title="">
+                                                <a id="preview-image-0-link" class="image-popup-vertical-fit" href=""
+                                                   title="">
                                                     <img id="preview-image-0" src="" alt="">
                                                 </a>
                                             </div>
                                             <div class="col-6 p4idi-attr">
                                                 <span>عکس مشخصات محصول</span>
-                                                <a id="preview-image-analyze-link" class="image-popup-fit-width" href="" title="">
+                                                <a id="preview-image-analyze-link" class="image-popup-fit-width" href=""
+                                                   title="">
                                                     <img id="preview-image-analyze" src="" alt="">
                                                 </a>
                                             </div>
                                             <div class="col-12 p4idi-gallery">
                                                 <span>گالری عکس محصول</span>
-                                                <div class="p4idi-g-wrapper popup-gallery">
-                                                    <a id="preview-image-1-link" href="" title="">
-                                                       <img id="preview-image-1" src="" alt="">
-                                                    </a>
-                                                    <a id="preview-image-2-link" href="" title="">
-                                                       <img id="preview-image-2" src="" alt="">
-                                                    </a>
-                                                    <a id="preview-image-3-link" href="" title="">
-                                                       <img id="preview-image-3" src="" alt="">
-                                                    </a>
-                                                    <a id="preview-image-4-link" href="" title="">
-                                                       <img id="preview-image-4" src="" alt="">
-                                                    </a>
+                                                <div class="p4idi-g-wrapper popup-gallery" id="images-preview">
                                                 </div>
                                             </div>
                                         </div>
@@ -488,7 +403,10 @@
                             <label for='step4' id="back-step4" class="back">
                                 <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                             </label>
-                            <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت محصول</button>
+                            <button id="add-product-submit" type="submit"
+                                    class="ph-btn bg-color-4 ph-border-radius-small">
+                                ثبت محصول
+                            </button>
                         </div>
                     </div>
                     <!-- ph-cp-panel ph-border-radius ph-white-block -->
@@ -501,6 +419,22 @@
     </main>
     <!-- ph-seller-panel-main ph-dashboard-main-->
 
+    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">خطا</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer_static %}

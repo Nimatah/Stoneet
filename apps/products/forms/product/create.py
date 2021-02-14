@@ -39,16 +39,19 @@ class CreateProductForm(forms.ModelForm):
     def clean(self):
         attributes = []
         for k, v in self.data.items():
-            if k.startswith('attribute-'):
-                key = k.replace('attribute-', '')
+            if k.startswith('attribute_'):
+                key = k.replace('attribute_', '')
                 attr = Attribute.objects.get(pk=key)
                 if attr.is_valid(v):
                     value = v
                 else:
+                    if not attr.is_required:
+                        continue
                     raise forms.ValidationError(f"incorrect value {key} {v}")
                 attributes.append({'attr': attr, 'value': value})
 
         self.cleaned_data['attributes'] = attributes
+        print(attributes)
         return super().clean()
 
     def clean_category(self):
@@ -84,6 +87,8 @@ class CreateProductForm(forms.ModelForm):
         images: List[ProductMedia] = []
         for k, v in self.cleaned_data.items():
             if not k.startswith('image'):
+                continue
+            if not v:
                 continue
             image = ProductMedia()
             image.type = ProductMedia.TYPE_IMAGE

@@ -1,0 +1,13 @@
+<div class="col-5 my-1">
+    <label class="">{{ attribute.title }}</label>
+    <div class="ph-check-box-ap">
+        <input type="hidden" name="attribute_{{ attribute.id }}" id="attribute-{{ attribute.id }}">
+        {% for choice in attribute.choices %}
+        <div class="form-check form-check-inline">
+            <input data-choice class="form-check-input" type="checkbox"
+                   id="multiple-choice-{{ attribute.id }}-{{forloop.counter}}" data-attr-id="{{ attribute.id }}">
+            <label class="form-check-label" for="multiple-choice-{{ attribute.id }}-{{forloop.counter}}">{{ choice }}</label>
+        </div>
+        {% endfor %}
+    </div>
+</div>
