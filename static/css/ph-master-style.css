@@ -317,6 +317,7 @@ input::placeholder { /* Most modern browsers support this now. */
     min-width: 125px;
     cursor: pointer;
     border: 1px solid #7E111A;
+    margin: 0 auto;
 
 }
 
@@ -488,4 +489,45 @@ input.form-control:focus{
 .ph-tcw-content .form-row>.col, .ph-tcw-content .form-row>[class*=col-]{
     padding-right: 15px;
     padding-left: 15px;
+}
+
+.ph-modal .modal-content{
+    border-radius: 10px;
+}
+
+.ph-modal .modal-body{
+    padding: 1.5rem;
+}
+
+.ph-modal .modal-body .ph-modal-item{
+    margin-bottom: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ph-signup-modal{
+    display: flex;
+    margin: 2rem auto 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.ph-signup-modal a{
+    display: flex;
+    color: #7E111A;
+    margin-right: .5rem;
+    border-bottom: 1px dashed;
+    font-weight: 600;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-signup-modal a:hover{
+    color: #FFD100;
+}
+
+.modal-backdrop{
+    z-index: unset;
 }
