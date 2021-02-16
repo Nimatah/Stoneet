@@ -11,8 +11,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_admin' %}">
+                <span class="nav-link-text">ساخت ادمین(تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{% url 'users:admin_list_buyer' %}">
                 <span class="nav-link-text">مدیریت خریداران</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_buyer' %}">
+                <span class="nav-link-text">ساخت خریدار(تست)</span>
             </a>
         </li>
         <li class="nav-item">
@@ -21,8 +31,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_seller' %}">
+                <span class="nav-link-text">ساخت فروشندگان(تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{% url 'users:admin_list_logistic' %}">
                 <span class="nav-link-text">مدیریت حمل و نقل</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_logistic' %}">
+                <span class="nav-link-text">ساخت حمل و نقل(تست)</span>
             </a>
         </li>
     </ul>
@@ -32,8 +52,23 @@
        data-target="#collapse-manage-product" aria-controls="collapseSubItems4" aria-expanded="false">مدیریت محصولات</a>
     <ul class="nav-second-level collapse" id="collapse-manage-product" data-parent="#manage-product">
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="nav-link-text">محصولات</span>
+            <a class="nav-link" href="{% url 'users:admin_list_product' %}">
+                <span class="nav-link-text">لیست محصولات</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_product' %}">
+                <span class="nav-link-text">افزودن محصول جدید</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_qc_product' %}">
+                <span class="nav-link-text">محصولات در انظار تایید</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_qc_product_details' %}">
+                <span class="nav-link-text">بررسی محصول (تست)</span>
             </a>
         </li>
     </ul>

@@ -66,11 +66,16 @@
                                                         {% csrf_token %}
                                                         <div class="form-group">
                                                             <span class="ph-modal-item">
-                                                                <input type="text" name="username" class="form-control" id="" placeholder="نام کاربری خود را وارد کنید">
+                                                                <input type="text" name="username" class="form-control"
+                                                                       id="login-username"
+                                                                       placeholder="نام کاربری خود را وارد کنید">
                                                             </span>
                                                             <span class="ph-modal-item">
-                                                                <input type="password" name="password" class="form-control" id="" placeholder="رمز عبور خود را وارد کنید">
-                                                                <small id="passـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
+                                                                <input type="password" name="password"
+                                                                       class="form-control" id="login-password"
+                                                                       placeholder="رمز عبور خود را وارد کنید">
+                                                                <small id="login-error"
+                                                                       class="form-text text-muted"></small>
                                                             </span>
                                                             <div class="ph-login-modal">
                                                                 <button type="submit" id="ph_login_modal"
@@ -79,7 +84,8 @@
                                                             </div><!-- .ph-login-modal -->
                                                         </div><!-- .form-group -->
                                                         <div class="ph-signup-modal" id="ph_SignUp_Modal">
-                                                            <span>قبلا ثبت نام نکرده اید؟</span><a href="{% url "users:register_seller" %}">ثبت نام</a>
+                                                            <span>قبلا ثبت نام نکرده اید؟</span><a
+                                                                href="{% url "users:register_seller" %}">ثبت نام</a>
                                                         </div><!-- .ph-signup-modal -->
                                                     </form>
                                                 </div>
@@ -108,7 +114,8 @@
                         </div>
                         <div class="col-2">
                             <div class="ph-header-logo">
-                                <a class="navbar-brand" href="{% url 'home:index' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                                <a class="navbar-brand" href="{% url 'home:index' %}"><img
+                                        src="{% static 'images/logo.png' %}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -206,8 +213,20 @@
             </div><!-- .container -->
         </div><!-- .ph-bottom-footer-wrapper -->
     </div><!-- .ph-footer -->
+
 {% endblock %}
 {% block footer_static %}
     <script src="{% static 'owl.carousel/dist/owl.carousel.min.js' %}"></script>
     <script src="{% static 'js/frontend.js' %}"></script>
+{% endblock %}
+{% block extra %}
+    {% if error_message %}
+        <script>
+            $('small#login-error').empty().text("{{ error_message }}")
+            $('#ph_LogIn_Modal').modal('show')
+            $('#ph_LogIn_Modal').on('hidden.bs.modal', function () {
+                $('small#login-error').empty()
+            });
+        </script>
+    {% endif %}
 {% endblock %}
