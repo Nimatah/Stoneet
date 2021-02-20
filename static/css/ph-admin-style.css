@@ -566,8 +566,19 @@ aside.pos-rel{
 }
 
 .ph-navbar-logo {
-  padding: 0 2rem;
-  margin-bottom: 1rem;
+    padding: 0 2rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    max-width: 85%;
+}
+
+.ph-sp-username{
+    margin: auto;
+    margin-bottom: 2rem;
+    color: #D1E9F0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 .3rem;
 }
 
 .ph-sp-collapse {
@@ -790,6 +801,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-add {
     padding: .5rem 1rem;
+    margin-bottom: 1rem;
     background: #fff;
     border: 3px solid #D1E9F0;
     border-radius: 10px;
@@ -812,6 +824,17 @@ a.nav-link[aria-expanded="true"]:after {
     border-radius: 10px;
 }
 
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1.ph-dash-condition-panel{
+    padding-top: 1.85rem;
+    height: auto;
+}
+
+.ph-dmp-section-1.ph-dash-condition-panel span{
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+}
+
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-2{
     position: relative;
     display: flex;
@@ -819,7 +842,6 @@ a.nav-link[aria-expanded="true"]:after {
     padding: 1.85rem 1rem 1rem;
     border-top: 3px solid #022C3B;
     margin-bottom: 2.5rem;
-    margin-top: 1.5rem;
     border-bottom: 1px solid #cccccc;
 }
 
@@ -849,6 +871,58 @@ a.nav-link[aria-expanded="true"]:after {
     justify-content: center;
 }
 
+.ph-dashboard-main .ph-tcw-download{
+  display: flex;
+    align-items: center;
+  padding: 1rem;
+  color: red;
+}
+
+.ph-dashboard-main .ph-tcw-download p{
+  margin: 0;
+}
+
+.ph-dashboard-main .ph-tcw-download i.fa-download{
+  margin-left: .3rem;
+}
+
+.template_row:first-child{
+  display:none;
+  margin: 0 auto;
+}
+.template_row:first-child>td:nth-last-child(1){
+  opacity: 0;
+}
+.ph-dashboard-main .ph-tcw-upload .ph-list-add{
+    background: #4CE0B3;
+    color: #333333;
+    border: 1px solid #4CE0B3;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+.ph-dashboard-main .ph-tcw-upload .ph-list-add:hover{
+  background: #FFFFFF;
+}
+.ph-dashboard-main .ph-tcw-upload .ph-list-add i{
+  margin-left: .3rem;
+}
+.ph-dashboard-main .ph-tcw-upload .list_cancel{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7E111A;
+    color: #ffffff;
+    margin: auto;
+}
+.ph-dashboard-main .ph-tcw-upload .ph-upload-img-contract{
+  max-width: 40%;
+}
+.ph-dashboard-main .ph-tcw-upload .ph-upload-img-contract i{
+  margin-left: .3rem;
+}
 
 
 
@@ -2444,6 +2518,106 @@ a.ph-preview-placeholder:after {
     background: #ffd100;
     color: #333;
 }
+
+
+
+
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                            ADMIN PANEL
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+.ph-dm-add-user{
+    margin: 0;
+    background: #4CE0B3;
+    color: #333333;
+    border: 1px solid #4CE0B3;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-dm-add-user:hover{
+    color: #333333;
+}
+.ph-dm-add-user i{
+    margin-left: .5rem;
+}
+.ph-managements-sorting {
+    display: flex;
+    align-items: center;
+    width: 15%;
+    justify-content: flex-end;
+    margin-right: auto;
+}
+.ph-managements-sorting label {
+    width: 50%;
+    min-width: 50%;
+    font-size: 13px;
+}
+.ph-managements-filter-item label{
+    margin-bottom: 0;
+    font-size: .7rem;
+    display: flex;
+    line-height: 2;
+}
+.ph-managements-btn{
+    min-width: auto;
+    padding: .1rem .5rem !important;
+}
+
+.ph-managements-btn i{
+    margin-left: .2rem;
+    font-size: .65rem;
+}
+/*
+=============================================================
+        ADMIN PANEL   MAIN .buyer-management
+=============================================================
+*/
+.ph-dashboard-main.ph-buyer-list-management .ph-dm-title{
+    background: #022C3B;
+    color: #ffd100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+=============================================================
+        ADMIN PANEL   MAIN .seller-management
+=============================================================
+*/
+.ph-dashboard-main.ph-seller-list-management .ph-dm-title{
+    background: #D4A373;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+=============================================================
+        ADMIN PANEL   MAIN .logistic-management
+=============================================================
+*/
+.ph-dashboard-main.ph-logistic-list-management .ph-dm-title{
+    background: #ffd100;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
 
 
 

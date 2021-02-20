@@ -415,6 +415,17 @@ input.form-control:focus{
 .ph-table th {
     padding: .5rem;
     border-color: #343a40;
+    vertical-align: middle;
+}
+.ph-table td img,
+.ph-table th img{
+    width: 75%;
+    height: 100px;
+    background: #ced4da;
+    display: flex;
+    margin: auto;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .ph-pagination{
