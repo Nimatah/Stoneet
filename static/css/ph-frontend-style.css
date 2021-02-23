@@ -708,6 +708,8 @@ body.home .ph-main-header.sticky{
 .ph-list-product-loop-item-img a img{
     height: 250px;
     width: 100%;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .ph-list-product-loop-item-city{

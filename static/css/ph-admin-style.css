@@ -1,3 +1,9 @@
+
+.ph-dashboard-main label{
+  margin-bottom: 0;
+  font-size: .7rem;
+}
+
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
@@ -1804,50 +1810,6 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-op-fb-heading{
-    margin: 1rem 0;
-    padding: 1rem 1.5rem;
-    background: #D4A373;
-    border-radius: 10px;
-    color: #022C3B;
-    font-size: .75rem;
-}
-.ph-op-fb-heading .ph-op-fb-title{
-    font-size: 1.01rem;
-    color: #022C3B;
-    padding-left: .5rem;
-}
-.ph-op-fb-heading .input-group-text{
-    margin: 0 .5rem;
-    background: #7e111a;
-    cursor: pointer;
-    color: #fff;
-    box-shadow: 1px 1px 3px 0px #777;
-    -webkit-box-shadow: 1px 1px 3px 0px #777;
-    -moz-box-shadow: 1px 1px 3px 0px #777;
-    -o-box-shadow: 1px 1px 3px 0px #777;
-}
-
-.ph-op-fb-list {
-  padding: .5rem;
-}
-.ph-op-fb-list .ph-op-fbl-btn-res{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-}
-.ph-op-fb-list .ph-op-fbl-btn-res .ph-op-fbl-btn a{
-    padding: .5rem 1rem;
-    margin-left: 1rem;
-    box-shadow: 1px 1px 3px 0px #777;
-    -webkit-box-shadow: 1px 1px 3px 0px #777;
-    -moz-box-shadow: 1px 1px 3px 0px #777;
-    -o-box-shadow: 1px 1px 3px 0px #777;
-}
-.ph-op-fb-list .ph-op-fbl-table{
-    margin: 1rem;
-}
 
 
 /*
@@ -2152,7 +2114,10 @@ a.ph-preview-placeholder:after {
          view_order   ph-view-order
 =============================================================
 */
-
+.ph-list-order .ph-admin-page-intro-text{
+    background: #022C3B;
+    color: #fff;
+}
   #shell1,
   #shell2,
   #shell3,
