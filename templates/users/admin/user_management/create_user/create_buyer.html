@@ -1,2 +1,24 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+{% block admin_content %}
+    <main class="ph-create-buyer-main ph-dashboard-main management-create-buyer">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>ساخت خریدار جدید | </span>
+                خریدار جدیدی ایجاد کنید.
+            </div>
+            <form method="post" id="" role="form" enctype="">
+
+
+            </form><!--  -->
+        </div><!-- container -->
+    </main><!-- ph-create-buyer-main ph-dashboard-main management-create-buyer-->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+{% endblock %}

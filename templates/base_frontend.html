@@ -77,6 +77,10 @@
                                                                 <small id="login-error"
                                                                        class="form-text text-muted"></small>
                                                             </span>
+                                                            <div class="custom-control custom-checkbox mr-2">
+                                                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                                                <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر بسپار</label>
+                                                            </div>
                                                             <div class="ph-login-modal">
                                                                 <button type="submit" id="ph_login_modal"
                                                                         class="ph-btn ph-border-radius-small">ورود
@@ -85,7 +89,7 @@
                                                         </div><!-- .form-group -->
                                                         <div class="ph-signup-modal" id="ph_SignUp_Modal">
                                                             <span>قبلا ثبت نام نکرده اید؟</span><a
-                                                                href="{% url "users:register_seller" %}">ثبت نام</a>
+                                                                href="{% url "users:register_buyer" %}">ثبت نام</a>
                                                         </div><!-- .ph-signup-modal -->
                                                     </form>
                                                 </div>

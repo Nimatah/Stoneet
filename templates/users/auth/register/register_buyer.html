@@ -37,8 +37,8 @@
                 </div><!-- .ph-new-login-sign-up-alert-->
             </article><!-- .ph_new_login_sign_up -->
 
-            <article class="tab" id="ph_new_login_seller_info">
-                <div class="ph-new-login-seller-info-wrapper">
+            <article class="tab" id="ph_new_login_buyer_info">
+                <div class="ph-new-login-info-wrapper">
                     <div class="ph-new-login-alert">
                         <span>توجه:</span>
                         <p>پر کردن تمامی موارد الزامیست.</p>
@@ -47,12 +47,12 @@
                         <h4 class="ph-new-login-2-title">چه نوع فروشنده‌ای هستید؟</h4>
                         <div class="ph-private-business-check ph-conditional d-flex">
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" name="seller_type" id="haqiqi"
+                                <input class="custom-control-input" type="radio" name="buyer_type" id="haqiqi"
                                        value="ph-individual-wrapper">
                                 <label class="custom-control-label" for="haqiqi">شخص حقیقی</label>
                             </div><!-- .custom-radio -->
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" name="seller_type" id="hoquqi"
+                                <input class="custom-control-input" type="radio" name="buyer_type" id="hoquqi"
                                        value="ph-company-wrapper">
                                 <label class="custom-control-label" for="hoquqi">شخص حقوقی</label>
                             </div><!-- .custom-radio -->
@@ -233,7 +233,7 @@
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
                                         <input type="text" class="form-control" id="ph_business_info_sheba"
-                                               placeholder="IR __-____-____-____-____-____-__" value="" required
+                                               placeholder="IR _-__-__-__-__-__-_" value="" required
                                                style="direction: ltr;text-align: left;">
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
@@ -243,38 +243,8 @@
                             </div><!-- #ph_business_info_form -->
                         </section><!-- .ph-business-info -->
 
-                        <section class="ph-business-info" id="ph_business_info">
-                            <h4 class="ph-new-login-2-title">اسناد ثبت شرکت</h4>
-                            <div id="ph_business_info_form">
-                                <div class="row">
-                                    <div class="col-12 mb-3">
-                                        <label for="ph_business_info_brand">آخرین به روزرسانی روزنامه رسمی *</label>
-                                        <input type="text" class="form-control" id="ph_business_info_brand"
-                                               placeholder="تاریخ شمسی وارد کنید..." value="" required>
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
-                                    </div><!-- .col-12 -->
-                                    <div class="col-12 mb-3">
-                                        <label for="ph_business_info_sheba">گواهی مالیات بر ارزش افزوده *</label>
-                                        <input type="text" class="form-control" id="ph_business_info_sheba"
-                                               placeholder="گواهی مالیات بر ارزش افزوده *" value="" required>
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
-                                    </div><!-- .col-12 -->
-                                    <div class="col-12 mb-3">
-                                        <label for="ph_business_info_brand">شناسنامه ملی کپی رایت امضا *</label>
-                                        <input type="text" class="form-control" id="ph_business_info_brand"
-                                               placeholder="شناسنامه ملی کپی رایت امضا..." value="" required>
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
-                                    </div><!-- .col-12 -->
-                                </div><!-- .row -->
-                            </div><!-- #ph_business_info_form -->
-                        </section><!-- .ph-business-info -->
-                    </div><!-- .ph-conditional-wrapper -->
+                    </div>
+                        <!-- .ph-conditional-wrapper #ph-company-wrapper -->
                     <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
                         <section class="ph-real-account" id="ph_real_account">
                             <h4 class="ph-new-login-2-title">اطلاعات شخصی</h4>
@@ -437,7 +407,7 @@
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
                                         <input type="text" class="form-control" id="ph_business_info_sheba"
-                                               placeholder="IR __-____-____-____-____-____-__" value="" required
+                                               placeholder="IR __-___-___-____-___-___-_" value="" required
                                                style="direction: ltr;text-align: left;">
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
@@ -446,20 +416,48 @@
                                 </div><!-- .row -->
                             </div><!-- #ph_business_info_form -->
                         </section><!-- .ph-business-info -->
-                    </div><!-- .ph-conditional-wrapper -->
-                    <div class="ph-new-login-seller-info-btn my-2">
+                    </div>
+                        <!-- .ph-conditional-wrapper #ph-individual-wrapper -->
+                    <div class="ph-new-login-info-btn my-2">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
-                    </div><!-- .ph-new-login-seller-info-btn -->
-                </div><!-- .ph-new-login-seller-info-wrapper -->
-            </article><!-- ph_new_login_seller_info -->
+                    </div><!-- .ph-new-login-info-btn -->
+                </div><!-- .ph-new-login-info-wrapper -->
 
-            <article class="tab" id="ph_new_login_sign_up">
-                <div class="form-group">
+
+            </article><!-- ph_new_login_buyer_info -->
+
+            <article class="tab" id="ph_new_login_buyer_info_uploadimg">
+                <div class="form-group ph-new-login-info-uploadimg-wrapper">
                     <section class="ph-business-uploadimg" id="">
                         <h4 class="ph-new-login-2-title">اطلاعات مالی شخصی</h4>
                         <div class="container">
                             <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
-                                <div class="avatar-upload">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
+                                            <label for="imageUpload1"></label>
+                                        </div><!-- .avatar-edit -->
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                            </div><!-- #imagePreview -->
+                                        </div><!-- .avatar-preview -->
+                                        <label class="ph-image-label">گواهی ثبت شرکت</label>
+                                    </div><!-- .avatar-upload -->
+                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
+                                            <label for="imageUpload1"></label>
+                                        </div><!-- .avatar-edit -->
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                            </div><!-- #imagePreview -->
+                                        </div><!-- .avatar-preview -->
+                                        <label class="ph-image-label">گواهی ارزش افزوده</label>
+                                    </div><!-- .avatar-upload -->
+                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
                                     <div class="avatar-edit">
                                         <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
                                         <label for="imageUpload1"></label>
@@ -469,9 +467,23 @@
                                              style="background-image: url(http://i.pravatar.cc/500?img=7);">
                                         </div><!-- #imagePreview -->
                                     </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">گواهی ثبت شرکت</label>
+                                    <label class="ph-image-label">آخرین به روزرسانی روزنامه رسمی</label>
                                 </div><!-- .avatar-upload -->
-                                <div class="avatar-upload">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6 col-lg-offset-2 col-lg-4 avatar-upload">
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
+                                            <label for="imageUpload1"></label>
+                                        </div><!-- .avatar-edit -->
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                            </div><!-- #imagePreview -->
+                                        </div><!-- .avatar-preview -->
+                                        <label class="ph-image-label">گواهی مالیات بر ارزش افزوده</label>
+                                    </div><!-- .avatar-upload -->
+                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
                                     <div class="avatar-edit">
                                         <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
                                         <label for="imageUpload1"></label>
@@ -481,8 +493,9 @@
                                              style="background-image: url(http://i.pravatar.cc/500?img=7);">
                                         </div><!-- #imagePreview -->
                                     </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">گواهی ارزش افزوده</label>
+                                    <label class="ph-image-label">شناسنامه ملی کپی رایت امضا</label>
                                 </div><!-- .avatar-upload -->
+                                </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                             <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
                                 <div class="avatar-upload">
@@ -512,11 +525,11 @@
                             </div><!-- .ph-conditional-wrapper-2 -->
                         </div><!-- .container -->
                     </section><!-- .ph-business-uploadimg -->
-                    <div class="ph-new-login-seller-info-btn">
+                    <div class="ph-new-login-info-btn">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
-                    </div><!-- .ph-new-login-seller-info-btn -->
-                </div><!-- .form-group -->
-            </article><!-- .ph_new_login_sign_up -->
+                    </div><!-- .ph-new-login-info-btn -->
+                </div><!-- .form-group .ph-new-login-info-uploadimg-wrapper -->
+            </article><!-- .ph_new_login_buyer_info_uploadimg -->
 
             <article class="tab" id="ph_new_login_the_end">
                 <div class="ph-new-login-sign-up-alert">
@@ -537,9 +550,9 @@
                     <label class="custom-control-label" for="terms_conditions">کادر شرایط و شرایط را علامت بزنید و
                         روی دکمه تأیید کلیک کنید</label>
                 </div><!-- .custom-checkbox -->
-                <div class="ph-new-login-seller-info-btn mt-3">
+                <div class="ph-new-login-info-btn mt-3">
                     <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">نهایی کردن ثبت نام</button>
-                </div><!-- .ph-new-login-seller-info-btn -->
+                </div><!-- .ph-new-login-info-btn -->
             </article><!-- #ph_new_login_the_end -->
 
             <div style="overflow:auto;">

@@ -130,6 +130,10 @@ input.invalid {
 .ph-registration-panel-bottom-links{
   text-align: center;
   font-size: 12px;
+  color: #FFFFFF;
+}
+.ph-registration-panel-bottom-links a{
+  color: #FFFFFF;
 }
 
 .ph-registration-panel-bottom-links a:hover{
@@ -289,18 +293,19 @@ input.invalid {
   ===============================================
 */
 
-#ph_new_login_seller_info .ph-new-login-seller-info-wrapper{
+#ph_new_login_seller_info .ph-new-login-info-wrapper,
+#ph_new_login_buyer_info .ph-new-login-info-wrapper{
   width: 85%;
   margin-left: auto;
 }
 
-.ph-new-login-seller-info-uploadimg-wrapper,
-.ph-new-login-seller-info-end-wrapper{
+.ph-new-login-info-uploadimg-wrapper,
+.ph-new-login-info-end-wrapper{
   width: 85%;
   margin: auto;
 }
 
-.ph-new-login-seller-info-uploadimg-wrapper .ph-conditional-wrapper-2{
+#ph-individual-wrapper-2{
   display: flex;
 }
 
@@ -384,7 +389,7 @@ input.invalid {
   margin-left: 0;
 }
 
-.ph-new-login-seller-info-btn {
+.ph-new-login-info-btn {
   display: flex;
   justify-content: center;
 }
@@ -399,11 +404,11 @@ input.invalid {
   -o-transition: all .3s ease-in-out;
 }
 
-.seller-register .ph-new-login-seller-info-btn button {
+.seller-register .ph-new-login-info-btn button {
   background: #618BB4;
 }
 
-.seller-register .ph-new-login-seller-info-btn button:hover {
+.seller-register .ph-new-login-info-btn button:hover {
   background: #fff;
   color: #618BB4;
   border-color: #618BB4;
@@ -464,7 +469,7 @@ input.invalid {
   position: relative;
 }
 
-.ph-new-login-seller-info-uploadimg-wrapper .avatar-upload .avatar-preview {
+.ph-new-login-info-uploadimg-wrapper .avatar-upload .avatar-preview {
   border: 3px solid #618BB4;
   box-shadow: 0px 2px 4px 0px #618BB4;
 }
@@ -1668,30 +1673,6 @@ a.ph-preview-placeholder:after {
     justify-content: center;
 }
 
-.ph-admin-table-action-btn-edit{
-    background: #e4e4e4;
-    width: 30px;
-    display: inline-flex;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    margin: 0 3px;
-    color: #7b7b7b;
-}
-
-.ph-admin-table-action-btn-publish{
-    background:green;
-    width: 30px;
-    display: inline-flex;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    margin: 0 3px;
-    color: #fff;
-}
-
 
 /*
 =============================================================
@@ -1986,7 +1967,9 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-new-login.logistic-register aside.ph-registration-panel-sidebar .progressbar-item,
-.ph-new-login.logistic-register aside.ph-registration-panel-sidebar .ph-nls-header .ph-nls-header-title{
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar .ph-nls-header .ph-nls-header-title,
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar a,
+.ph-new-login.logistic-register aside.ph-registration-panel-sidebar span{
   color: #333333;
 }
 
@@ -2014,11 +1997,11 @@ a.ph-preview-placeholder:after {
   border-color: #F1BF7D;
 }
 
-.logistic-register .ph-new-login-seller-info-btn button {
+.logistic-register .ph-new-login-info-btn button {
   background: #F1BF7D;
 }
 
-.logistic-register .ph-new-login-seller-info-btn button:hover {
+.logistic-register .ph-new-login-info-btn button:hover {
   background: #fff;
   color: #F1BF7D;
   border-color: #F1BF7D;
@@ -2149,11 +2132,11 @@ a.ph-preview-placeholder:after {
   border-color: #022C3B;
 }
 
-.buyer-register .ph-new-login-seller-info-btn button {
+.buyer-register .ph-new-login-info-btn button {
   background: #022C3B;
 }
 
-.buyer-register .ph-new-login-seller-info-btn button:hover {
+.buyer-register .ph-new-login-info-btn button:hover {
   background: #fff;
   color: #022C3B;
   border-color: #022C3B;
@@ -2615,7 +2598,32 @@ a.ph-preview-placeholder:after {
     align-items: center;
 }
 
+/*
+=============================================================
+        ADMIN PANEL   MAIN .management-create-buyer
+=============================================================
+*/
+.management-create-buyer .ph-admin-page-intro-text{
+    background: #022C3B;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+.management-create-buyer .ph-admin-page-intro-text span{
+  color: #ffd100;
+}
 
+/*
+=============================================================
+        ADMIN PANEL   MAIN .management-create-seller
+=============================================================
+*/
+
+/*
+=============================================================
+        ADMIN PANEL   MAIN .management-create-logistic
+=============================================================
+*/
 
 
 

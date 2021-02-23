@@ -428,10 +428,61 @@ input.form-control:focus{
     border-radius: 10px;
 }
 
+.ph-admin-table-action-btns{
+    display: flex;
+}
+
+.ph-admin-table-action-btn-edit{
+    background: #ffc107;
+    color: #FFFFFF;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+}
+
+.ph-admin-table-action-btn-publish{
+    background:green;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #fff;
+}
+
+.ph-admin-table-action-btn-view{
+    background:#007bff;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #fff;
+}
+
+.ph-admin-table-action-btn-inactive{
+    background:#7e111a;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #fff;
+}
+
 .ph-pagination{
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 .ph-pagination ul {
     margin: 0;

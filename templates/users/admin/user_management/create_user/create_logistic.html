@@ -1,2 +1,24 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+{% block admin_content %}
+    <main class="ph-create-logistic-main ph-dashboard-main management-create-logistic">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>ساخت راننده جدید | </span>
+                راننده جدیدی ایجاد کنید.
+            </div>
+            <form method="post" id="" role="form" enctype="">
+
+
+            </form><!--  -->
+        </div><!-- container -->
+    </main><!-- ph-create-logistic-main ph-dashboard-main management-create-logistic-->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+{% endblock %}
