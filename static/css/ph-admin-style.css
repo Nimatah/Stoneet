@@ -1164,6 +1164,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .ph-cp-panel label{
   margin-bottom: 0;
+  font-size: .8rem;
 }
 
 .ph-dashboard-main .form-row {
@@ -1190,6 +1191,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .ph-ap-ch .ph-ap-check label{
     margin-right: 1.5rem;
+    font-size: .8rem;
 }
 
 .ph-dashboard-main .ph-ap-ch .ph-ap-checked{
@@ -1211,7 +1213,7 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-dashboard-main .ph-cpp-btn {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .ph-dashboard-main .ph-cpp-btn button{
@@ -1560,6 +1562,8 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-admin-page-intro-text{
+    display: flex;
+    align-items: center;
     margin: 1rem 0;
     padding: 1rem 1.5rem;
     background: #D4A373;
