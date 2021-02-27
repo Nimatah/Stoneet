@@ -344,6 +344,23 @@ input::placeholder { /* Most modern browsers support this now. */
     left: auto;
 }
 
+.custom-switch {
+    padding-left: 0;
+}
+
+.custom-switch .custom-control-label::after{
+    right: 1px;
+}
+
+.custom-switch .custom-control-label::before {
+    width: 2rem;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+    -webkit-transform: translateX(-1.1rem);
+    transform: translateX(-1.1rem);
+}
+
 .background-image {
     background-position: center center;
     background-size: cover;
@@ -446,6 +463,18 @@ input.form-control:focus{
 
 .ph-admin-table-action-btn-publish{
     background:green;
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 0 3px;
+    color: #fff;
+}
+
+.ph-admin-table-action-btn-remove{
+    background: #7e111a;
     width: 30px;
     display: inline-flex;
     height: 30px;
