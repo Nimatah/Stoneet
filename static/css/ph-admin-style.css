@@ -41,6 +41,11 @@
 .scroll-bar:first-child{
   margin-right:0px;
 }
+
+.ph-new-login .modal,
+ph-new-login-main .modal{
+  position: absolute;
+}
 /*
 =============================================================================
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
@@ -155,6 +160,7 @@ input.invalid {
 .ph-new-login main.ph-new-login-main {
   width: 69%;
   margin-right: auto;
+  position: relative;
 }
 
 #ph_new_login_form {
@@ -215,7 +221,6 @@ input.invalid {
   position: absolute;
   right: 0px;
   width: 45px;
-  z-index: 9999;
   font-weight: 600;
   height: 100%;
   font-size: 1.3rem;
@@ -276,6 +281,19 @@ input.invalid {
   border-bottom: 1px dashed;
   font-weight: 900;
   letter-spacing: 0.2rem;
+}
+
+#ph_sign_in_to_sign_up .ph-signup-modal a {
+  display: flex;
+  color: #7E111A;
+  margin-right: .5rem;
+  border-bottom: 1px dashed;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
 }
 
 .ph-new-login-sign-up-alert {
@@ -408,6 +426,12 @@ input.invalid {
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
+}
+
+#ph_new_login_form .modal button.close{
+    color: #333;
+    background: transparent;
+    font-size: 1.5rem;
 }
 
 .seller-register .ph-new-login-info-btn button {
@@ -1607,10 +1631,19 @@ a.ph-preview-placeholder:after {
     font-size: .75rem;
   background: #7e111a;
   border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    max-width: 150px;
     box-shadow: 1px 1px 3px 0px #777;
     -webkit-box-shadow: 1px 1px 3px 0px #777;
     -moz-box-shadow: 1px 1px 3px 0px #777;
     -o-box-shadow: 1px 1px 3px 0px #777;
+}
+
+.ph-admin-page-container button{
+  margin-right: auto;
+  min-width: 100px;
 }
 
 .ph-admin-page-alert{
@@ -1995,6 +2028,19 @@ a.ph-preview-placeholder:after {
   color: #333333;
     margin: 0 auto;
     display: flex;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button.close{
+    background: transparent;
+    margin: unset;
+    padding: 0;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button#ph_login_modal{
+  background: #7e111a;
+  color: #FFFFFF;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button#ph_login_modal:hover{
+  background: #FFFFFF;
+  color: #7e111a;
 }
 
 /*

@@ -17,7 +17,7 @@
                         <small id="passـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
                      </span>
                     <span class="ph-signup-inputs sign-up-number">
-                        <input type="tel" class="form-control" id="sign_up_number" placeholder="09** *******"
+                        <input type="tel" class="form-control text-left" id="sign_up_number" placeholder="09** *******"
                                pattern="^\d{4}-\d{3}-\d{4}$" required>
                         <small id="numـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
                      </span>
@@ -28,7 +28,56 @@
                     </div><!-- .ph-signup-submit-btn -->
                 </div><!-- .form-group -->
                 <div id="ph_sign_in_to_sign_up">
-                    <span>قبلا ثبت نام کرده اید؟</span><a href="#">ورود</a>
+                    <span>قبلا ثبت نام کرده اید؟</span>
+                    <a href="#" data-toggle="modal"
+                       data-target="#ph_LogIn_Modal">ورود</a>
+                    <!-- LogIn_Modal -->
+                    <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">ورود به پنل
+                                        کاربری</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'users:login' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                <span class="ph-modal-item">
+                                    <input type="text" name="username" class="form-control" id="login-username"
+                                           placeholder="نام کاربری خود را وارد کنید">
+                                </span>
+                                            <span class="ph-modal-item">
+                                    <input type="password" name="password" class="form-control" id="login-password"
+                                           placeholder="رمز عبور خود را وارد کنید">
+                                    <small id="login-error" class="form-text text-muted"></small>
+                                </span>
+                                            <div class="custom-control custom-checkbox mr-2">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="defaultUnchecked">
+                                                <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر
+                                                    بسپار</label>
+                                            </div>
+                                            <div class="ph-login-modal">
+                                                <button type="submit" id="ph_login_modal"
+                                                        class="ph-btn ph-border-radius-small">ورود
+                                                </button>
+                                            </div><!-- .ph-login-modal -->
+                                        </div><!-- .form-group -->
+                                        <div class="ph-signup-modal" id="ph_SignUp_Modal">
+                                            <span>قبلا ثبت نام نکرده اید؟</span><a
+                                                href="{% url "users:register_buyer" %}">ثبت نام</a>
+                                        </div><!-- .ph-signup-modal -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- #ph_sign_in_to_sign_up -->
                 <div class="ph-new-login-sign-up-alert">
                     <span>توجه:</span>
@@ -63,7 +112,7 @@
                             نام خانوادگی، تاریخ تولد، کد ملی، شماره شناسنامه و غیره می باشد.
                         </p>
                         <p class="ph-private-business-details">
-                        شخص حقوقی موسسات یا شرکت هایی هستند که پس از طی مراحل
+                            شخص حقوقی موسسات یا شرکت هایی هستند که پس از طی مراحل
                             قانونی
                             به ثبت می‌رسند و دارای مشخصاتی مانند نام شخص حقوقی، تاریخ ثبت، شماره ثبت، کد شناسایی، کد
                             اقتصادی، موضوع فعالیت و غیره می باشند.
@@ -244,7 +293,7 @@
                         </section><!-- .ph-business-info -->
 
                     </div>
-                        <!-- .ph-conditional-wrapper #ph-company-wrapper -->
+                    <!-- .ph-conditional-wrapper #ph-company-wrapper -->
                     <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
                         <section class="ph-real-account" id="ph_real_account">
                             <h4 class="ph-new-login-2-title">اطلاعات شخصی</h4>
@@ -417,7 +466,7 @@
                             </div><!-- #ph_business_info_form -->
                         </section><!-- .ph-business-info -->
                     </div>
-                        <!-- .ph-conditional-wrapper #ph-individual-wrapper -->
+                    <!-- .ph-conditional-wrapper #ph-individual-wrapper -->
                     <div class="ph-new-login-info-btn my-2">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
                     </div><!-- .ph-new-login-info-btn -->
@@ -458,17 +507,17 @@
                                         <label class="ph-image-label">گواهی ارزش افزوده</label>
                                     </div><!-- .avatar-upload -->
                                     <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
-                                        <label for="imageUpload1"></label>
-                                    </div><!-- .avatar-edit -->
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview"
-                                             style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div><!-- #imagePreview -->
-                                    </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">آخرین به روزرسانی روزنامه رسمی</label>
-                                </div><!-- .avatar-upload -->
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
+                                            <label for="imageUpload1"></label>
+                                        </div><!-- .avatar-edit -->
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                            </div><!-- #imagePreview -->
+                                        </div><!-- .avatar-preview -->
+                                        <label class="ph-image-label">آخرین به روزرسانی روزنامه رسمی</label>
+                                    </div><!-- .avatar-upload -->
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-6 col-lg-offset-2 col-lg-4 avatar-upload">
@@ -484,17 +533,17 @@
                                         <label class="ph-image-label">گواهی مالیات بر ارزش افزوده</label>
                                     </div><!-- .avatar-upload -->
                                     <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
-                                        <label for="imageUpload1"></label>
-                                    </div><!-- .avatar-edit -->
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview"
-                                             style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div><!-- #imagePreview -->
-                                    </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">شناسنامه ملی کپی رایت امضا</label>
-                                </div><!-- .avatar-upload -->
+                                        <div class="avatar-edit">
+                                            <input type='file' id="imageUpload1" accept=".png, .jpg, .jpeg"/>
+                                            <label for="imageUpload1"></label>
+                                        </div><!-- .avatar-edit -->
+                                        <div class="avatar-preview">
+                                            <div id="imagePreview"
+                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                                            </div><!-- #imagePreview -->
+                                        </div><!-- .avatar-preview -->
+                                        <label class="ph-image-label">شناسنامه ملی کپی رایت امضا</label>
+                                    </div><!-- .avatar-upload -->
                                 </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                             <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
