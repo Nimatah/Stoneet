@@ -66,6 +66,8 @@ admin_patterns = [
     path('panel/admin-list-product/', admin.ListProductView.as_view(), name='admin_list_product'),
     path('panel/admin-qc-product/', admin.QCProductView.as_view(), name='admin_qc_product'),
     path('panel/admin-qc-product-details/', admin.QCProductDetailsView.as_view(), name='admin_qc_product_details'),
+    path('panel/admin-add-category/', admin.AddCategoryView.as_view(), name='admin_add_category'),
+    path('panel/admin-list-category/', admin.ListCategoryView.as_view(), name='admin_list_category'),
 ]
 
 application_patterns = [

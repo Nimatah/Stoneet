@@ -101,10 +101,21 @@
                                                 </div><!-- .ph-single-product-final-price -->
                                             </div><!-- .ph-single-product-calculator -->
                                             <div class="ph-single-product-cta my-3">
+                                                {% if not user.is_authenticated %}
+                                                <a href="#" class="ph-submit-order-btn" data-toggle="modal" data-target="#ph_LogIn_Modal"><i
+                                                        class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
+                                                {% else %}
                                                 <a href="#" class="ph-submit-order-btn"><i
                                                         class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
+                                                {% endif %}
+
+                                                {% if not user.is_authenticated %}
+                                                <a href="#" class="ph-need-sample-btn" data-toggle="modal" data-target="#ph_LogIn_Modal"><i
+                                                        class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                {% else %}
                                                 <a href="#" class="ph-need-sample-btn" data-toggle="modal" data-target="#sample_modal"><i
                                                         class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                {% endif %}
                                             </div><!-- .ph-single-product-cta -->
                                         </div><!-- .ph-single-product-details-bottom -->
                                     </div><!-- .ph-single-product-details-wrapper -->
@@ -204,6 +215,55 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="ph-btn">ارسال درخواست</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LogIn_Modal -->
+    <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">ورود به پنل
+                        کاربری</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'users:login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <span class="ph-modal-item">
+                                <input type="text" name="username" class="form-control"
+                                       id="login-username"
+                                       placeholder="نام کاربری خود را وارد کنید">
+                            </span>
+                            <span class="ph-modal-item">
+                                <input type="password" name="password"
+                                       class="form-control" id="login-password"
+                                       placeholder="رمز عبور خود را وارد کنید">
+                                <small id="login-error"
+                                       class="form-text text-muted"></small>
+                            </span>
+                            <div class="custom-control custom-checkbox mr-2">
+                                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                                <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر بسپار</label>
+                            </div>
+                            <div class="ph-login-modal">
+                                <button type="submit" id="ph_login_modal"
+                                        class="ph-btn ph-border-radius-small">ورود
+                                </button>
+                            </div><!-- .ph-login-modal -->
+                        </div><!-- .form-group -->
+                        <div class="ph-signup-modal" id="ph_SignUp_Modal">
+                            <span>قبلا ثبت نام نکرده اید؟</span><a
+                                href="{% url "users:register_buyer" %}">ثبت نام</a>
+                        </div><!-- .ph-signup-modal -->
+                    </form>
                 </div>
             </div>
         </div>

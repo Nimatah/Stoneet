@@ -4,7 +4,7 @@
 
 
 {% block admin_content %}
-<main class="ph-dashboard-main seller-management ph-seller-list-management">
+<main class="ph-dashboard-main ph-admin-panel ph-list-seller">
     <div class="container">
         <div class="ph-dm-title">
             <div class="title">پنل مدیریت فروشندگان</div>
@@ -126,7 +126,7 @@
                                 <th>تلفن ثابت</th>
                                 <th>شهر</th>
                                 <th>وضعیت</th>
-                                <th></th>
+                                <th>عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -140,7 +140,15 @@
                                 <td>02122446688</td>
                                 <td>شیراز</td>
                                 <td>درانتظار تایید</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn qc"><i class="fas fas fa-sync-alt"></i>بررسی</a></td>
+                                <td>
+                                    <div class="custom-control custom-switch mb-1">
+                                        <small>غیرفعال / فعال</small>
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="seller_active_1">
+                                        <label class="custom-control-label" for="seller_active_1"></label>
+                                    </div>
+                                    <a href="{% url 'users:admin_qc_seller' %}" class="ph-btn ph-managements-btn qc"><i class="fas fas fa-sync-alt"></i>بررسی</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
@@ -152,7 +160,15 @@
                                 <td>02122446688</td>
                                 <td>شیراز</td>
                                 <td>تایید شده</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a></td>
+                                <td>
+                                    <div class="custom-control custom-switch mb-1">
+                                        <small>غیرفعال / فعال</small>
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="seller_active_2">
+                                        <label class="custom-control-label" for="seller_active_2"></label>
+                                    </div>
+                                    <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>3</td>
@@ -164,7 +180,15 @@
                                 <td>02122446688</td>
                                 <td>شیراز</td>
                                 <td>رد شده</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a></td>
+                                <td>
+                                    <div class="custom-control custom-switch mb-1">
+                                        <small>غیرفعال / فعال</small>
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="seller_active_3">
+                                        <label class="custom-control-label" for="seller_active_3"></label>
+                                    </div>
+                                    <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

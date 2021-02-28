@@ -41,6 +41,11 @@
 .scroll-bar:first-child{
   margin-right:0px;
 }
+
+.ph-new-login .modal,
+ph-new-login-main .modal{
+  position: absolute;
+}
 /*
 =============================================================================
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
@@ -155,6 +160,7 @@ input.invalid {
 .ph-new-login main.ph-new-login-main {
   width: 69%;
   margin-right: auto;
+  position: relative;
 }
 
 #ph_new_login_form {
@@ -215,7 +221,6 @@ input.invalid {
   position: absolute;
   right: 0px;
   width: 45px;
-  z-index: 9999;
   font-weight: 600;
   height: 100%;
   font-size: 1.3rem;
@@ -276,6 +281,19 @@ input.invalid {
   border-bottom: 1px dashed;
   font-weight: 900;
   letter-spacing: 0.2rem;
+}
+
+#ph_sign_in_to_sign_up .ph-signup-modal a {
+  display: flex;
+  color: #7E111A;
+  margin-right: .5rem;
+  border-bottom: 1px dashed;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
 }
 
 .ph-new-login-sign-up-alert {
@@ -408,6 +426,12 @@ input.invalid {
   -webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
   -o-transition: all .3s ease-in-out;
+}
+
+#ph_new_login_form .modal button.close{
+    color: #333;
+    background: transparent;
+    font-size: 1.5rem;
 }
 
 .seller-register .ph-new-login-info-btn button {
@@ -551,7 +575,8 @@ aside.pos-rel{
     right: 0;
     left: 0;
     margin: auto;
-    display: flex;
+    /*display: flex;*/
+    display: none;
     justify-content: center;
 }
 
@@ -1164,6 +1189,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .ph-cp-panel label{
   margin-bottom: 0;
+  font-size: .8rem;
 }
 
 .ph-dashboard-main .form-row {
@@ -1190,6 +1216,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .ph-ap-ch .ph-ap-check label{
     margin-right: 1.5rem;
+    font-size: .8rem;
 }
 
 .ph-dashboard-main .ph-ap-ch .ph-ap-checked{
@@ -1211,7 +1238,7 @@ a.nav-link[aria-expanded="true"]:after {
 .ph-dashboard-main .ph-cpp-btn {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .ph-dashboard-main .ph-cpp-btn button{
@@ -1560,6 +1587,8 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-admin-page-intro-text{
+    display: flex;
+    align-items: center;
     margin: 1rem 0;
     padding: 1rem 1.5rem;
     background: #D4A373;
@@ -1603,10 +1632,19 @@ a.ph-preview-placeholder:after {
     font-size: .75rem;
   background: #7e111a;
   border: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    max-width: 150px;
     box-shadow: 1px 1px 3px 0px #777;
     -webkit-box-shadow: 1px 1px 3px 0px #777;
     -moz-box-shadow: 1px 1px 3px 0px #777;
     -o-box-shadow: 1px 1px 3px 0px #777;
+}
+
+.ph-admin-page-container button{
+  margin-right: auto;
+  min-width: 100px;
 }
 
 .ph-admin-page-alert{
@@ -1991,6 +2029,19 @@ a.ph-preview-placeholder:after {
   color: #333333;
     margin: 0 auto;
     display: flex;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button.close{
+    background: transparent;
+    margin: unset;
+    padding: 0;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button#ph_login_modal{
+  background: #7e111a;
+  color: #FFFFFF;
+}
+.ph-new-login.logistic-register #ph_new_login_form .modal button#ph_login_modal:hover{
+  background: #FFFFFF;
+  color: #7e111a;
 }
 
 /*
@@ -2529,7 +2580,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .buyer-management
 =============================================================
 */
-.ph-dashboard-main.ph-buyer-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-admin .ph-dm-title{
     background: #022C3B;
     color: #ffd100;
     display: flex;
@@ -2542,7 +2593,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .seller-management
 =============================================================
 */
-.ph-dashboard-main.ph-seller-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-seller .ph-dm-title{
     background: #D4A373;
     color: #333333;
     display: flex;
@@ -2555,7 +2606,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .logistic-management
 =============================================================
 */
-.ph-dashboard-main.ph-logistic-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-logistic .ph-dm-title{
     background: #ffd100;
     color: #333333;
     display: flex;
@@ -2580,10 +2631,125 @@ a.ph-preview-placeholder:after {
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .management-create-seller
+        ADMIN PANEL   MAIN .ph-qc-product-details
 =============================================================
 */
+.ph-qc-product-details .ph-panel-title{
+  margin-bottom: 1rem;
+}
+.ph-product-detail-item{
+    margin-bottom: .85rem;
+    display: flex;
+    justify-content: space-between;
+}
+.ph-product-detail-item span:nth-last-child(1) {
+    padding: .2rem .4rem;
+    border-radius: 10px;
+    color: #555;
+    background: #f5f5f5;
+    border: 1px solid #4CE0B3;
+    min-width: 50px;
+    text-align: center;
+}
+.ph-product-image-item,
+.ph-gallery-product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.ph-product-image-item span,
+.ph-gallery-product span{
+  margin-bottom: .5rem;
+}
+.ph-product-image-item.full{
+  height: 250px;
+}
+.ph-product-image-item.thumb{
+    height: 105px;
+    padding: 0 .5rem;
+}
+.ph-product-image-item a,
+.ph-gallery-product a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.ph-product-image-item a img,
+.ph-gallery-product a img{
+    background: red;
+    object-fit: cover;
+    object-position: center center;
+}
+.ph-product-description span:nth-last-child(1) {
+    display: block;
+    padding: .2rem .4rem;
+    border-radius: 10px;
+    color: #555;
+    background: #f5f5f5;
+    border: 1px solid #4CE0B3;
+    min-height: 90px;
+}
 
+.ph-qc-product{
+    padding: 30px;
+    background: #ececec;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+.ph-qc-product:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
+}
+
+.ph-qc-product-alarm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.ph-qc-product-alarm p{
+  margin-bottom: 0;
+}
+.ph-qc-product-alarm span{
+  font-size: .7rem;
+  color: #7e111a;
+}
+
+.ph-qc-product-btns{
+  display: flex;
+  justify-content: space-evenly;
+}
+.ph-qc-product-btns a{
+    margin: 0;
+    font-weight: 600;
+}
+.ph-qc-product-btns a i{
+  margin-left: .5rem;
+  font-size: 1rem;
+}
+.ph-qc-product-btns a.ph-access-btn{
+    background: #4CE0B3;
+    border: 1px solid #4CE0B3;
+}
+.ph-qc-product-btns a.ph-access-btn:hover{
+    background: #FFFFFF;
+    color: #4CE0B3;
+}
+.ph-qc-product-description{
+    margin: 2rem auto;
+    width: 85%;
+}
+.ph-qc-product-description textarea{
+    background: #f9f9f9;
+}
 /*
 =============================================================
         ADMIN PANEL   MAIN .management-create-logistic

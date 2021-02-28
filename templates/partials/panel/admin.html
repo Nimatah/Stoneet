@@ -2,6 +2,9 @@
     <a class="nav-link" href="{% url 'users:admin_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item">
+    <a class="nav-link" href="{% url 'users:admin_dashboard' %}">تنظیمات سایت</a>
+</li>
+<li class="nav-item">
     <a class="nav-link nav-link-collapse" href="#" id="user-management" data-toggle="collapse"
        data-target="#collapse-user-management" aria-controls="collapseSubItems4" aria-expanded="false">کاربران</a>
     <ul class="nav-second-level collapse" id="collapse-user-management" data-parent="#user-management">
@@ -13,16 +16,6 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'users:admin_add_admin' %}">
                 <span class="nav-link-text">ساخت ادمین(تست)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:admin_list_buyer' %}">
-                <span class="nav-link-text">مدیریت خریداران</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:admin_add_buyer' %}">
-                <span class="nav-link-text">ساخت خریدار(تست)</span>
             </a>
         </li>
         <li class="nav-item">
@@ -43,6 +36,22 @@
         <li class="nav-item">
             <a class="nav-link" href="{% url 'users:admin_add_logistic' %}">
                 <span class="nav-link-text">ساخت حمل و نقل(تست)</span>
+            </a>
+        </li>
+    </ul>
+</li>
+<li class="nav-item">
+    <a class="nav-link nav-link-collapse" href="#" id="manage-categories" data-toggle="collapse"
+       data-target="#collapse-manage-categories" aria-controls="manage-categories" aria-expanded="false">مدیریت دسته بندی ها</a>
+    <ul class="nav-second-level collapse" id="collapse-manage-categories" data-parent="#manage-categories">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_list_category' %}">
+                <span class="nav-link-text">مشاهده دسته بندی ها</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_add_category' %}">
+                <span class="nav-link-text">افزودن دسته بندی</span>
             </a>
         </li>
     </ul>
