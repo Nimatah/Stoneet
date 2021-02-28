@@ -3,10 +3,10 @@ import re
 from django import forms
 
 from apps.users.models import User
-from .base import BaseRegisterForm
+from .base import BaseUserRegisterForm
 
 
-class SellerRegisterForm(BaseRegisterForm):
+class SellerRegisterForm(BaseUserRegisterForm):
     ERROR_MESSAGES = {
         'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
     }

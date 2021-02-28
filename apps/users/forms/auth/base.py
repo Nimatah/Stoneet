@@ -5,7 +5,7 @@ from django import forms
 from apps.users.models import User
 
 
-class BaseRegisterForm(forms.ModelForm):
+class BaseUserRegisterForm(forms.Form):
     ERROR_MESSAGES = {
         'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
     }
@@ -27,23 +27,6 @@ class BaseRegisterForm(forms.ModelForm):
             raise forms.ValidationError("لطفا ایمیل خود را با فرمت درست وارد نمایید")
         return email
 
-    def clean_full_name(self):
-        full_name = self.cleaned_data['full_name'].lower().strip()
-        return full_name
-
-    def clean_id_code(self):
-        id_code = self.cleaned_data['id_code'].lower().strip()
-        return id_code
-
-    def clean_phone_number(self):
-        phone_number = self.cleaned_data['phone_number']
-        phone_number.replace("-", "").replace(" ", "")
-        if not phone_number.isdigit():
-            raise forms.ValidationError("لطفا شماره تلفن خود را بصورت عددی وارد نمایید")
-        if not re.match(r"0\d{8,12}", phone_number):
-            raise forms.ValidationError("شماره تلفن باید بین ۹ تا ۱۳ رقم باشد و کد شهر وارد شود")
-        return phone_number
-
     def clean_mobile_number(self):
         mobile_number = self.cleaned_data['mobile_number']
         mobile_number.replace("-", "").replace(" ", "")
@@ -52,40 +35,3 @@ class BaseRegisterForm(forms.ModelForm):
         if not re.match(r"0\d{10}", mobile_number):
             raise forms.ValidationError("شماره موبایل باید ۱۱ رقم باشد و با 0 شروع شود")
         return mobile_number
-
-    def clean_fax_number(self):
-        fax_number = self.cleaned_data['fax_number']
-        fax_number.replace("-", "").replace(" ", "")
-        if not fax_number.isdigit():
-            raise ValueError("لطفا شماره فکس خود را بصورت عددی وارد نمایید")
-        if not re.match(r"0\d{8,12}", fax_number):
-            raise ValueError("شماره فکس باید بین ۹ تا ۱۳ رقم باشد و کد شهر وارد شود")
-        return fax_number
-
-    def clean_password2(self):
-        password1 = self.cleaned_data["password1"]
-        password2 = self.cleaned_data["password2"]
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError(
-                self.ERROR_MESSAGES['password_mismatch'],
-                code='password_mismatch',
-            )
-        return password2
-
-    def clean_address(self):
-        # TODO: Validate Address
-        address = self.cleaned_data['address'].lower().strip()
-        return address
-
-    def clean_postal_code(self):
-        # TODO: Validate Postal Code
-        postal_code = self.cleaned_data['postal_code'].lower().strip()
-        return postal_code
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.username = self.cleaned_data["email"]
-        user.set_password(self.cleaned_data["password1"])
-        if commit:
-            user.save()
-        return user

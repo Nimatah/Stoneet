@@ -1,11 +1,11 @@
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 from apps.core.models import TimestampedModel, BaseMedia
 
 
 class MineManager(models.Manager):
-
     pass
 
 
@@ -40,8 +40,15 @@ class UserManager(BaseUserManager):
         user.save()
         return user
 
+    def find_by_email_or_phone_number(self, email: str, mobile_number: str) -> 'User':
+        return self.filter(Q(email=email) | Q(mobile_number=mobile_number)).first()
+
 
 class MediaManager(models.Manager):
+    pass
+
+
+class ProfileManager(models.Manager):
     pass
 
 
@@ -50,6 +57,10 @@ class Mine(models.Model):
     region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
     address = models.TextField()
     user = models.ForeignKey('User', on_delete=models.CASCADE)
+    road_name = models.CharField(max_length=255, blank=True)
+    distance_to_road = models.IntegerField()
+    proper_road = models.BooleanField()
+    load_tools = models.BooleanField()
 
     objects = MineManager()
 
@@ -76,8 +87,8 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     LEGAL_LEGAL = "legal"
 
     _LEGAL_CHOICES = (
-        (LEGAL_INDIVIDUAL, "Individual",),
-        (LEGAL_LEGAL, "Legal",),
+        (LEGAL_INDIVIDUAL, "حقیقی",),
+        (LEGAL_LEGAL, "حقوقی",),
     )
 
     STATE_PENDING = "pending"
@@ -86,22 +97,15 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     STATE_BANNED = "banned"
 
     _STATE_CHOICES = (
-        (STATE_PENDING, "Waiting For Confirm",),  # Can't edit
-        (STATE_ACCEPTED, "Confirmed",),
-        (STATE_REJECTED, "Rejected",),  # Rejection details box
-        (STATE_BANNED, "Banned",),
+        (STATE_PENDING, "در حال بررسی",),  # Can't edit
+        (STATE_ACCEPTED, "تایید شده",),
+        (STATE_REJECTED, "رد شده",),  # Rejection details box
+        (STATE_BANNED, "مسدود شده",),
     )
 
     username = models.CharField(db_index=True, max_length=255, unique=True)
-    full_name = models.CharField(max_length=255, default="Admin")
-    phone_number = models.CharField(db_index=True, max_length=20, default="0999xxxxxxx")
-    mobile_number = models.CharField(db_index=True, max_length=20, default="021xxxxxxxx")
-    fax_number = models.CharField(max_length=20, null=True, blank=True)
     email = models.EmailField(db_index=True, max_length=255, unique=True, null=True, blank=True)
-    id_code = models.CharField(db_index=True, max_length=50, default="xxxxxxxxxx")
-    region = models.CharField(max_length=255, default="tehran")
-    address = models.TextField(default="tehran")
-    postal_code = models.CharField(max_length=15, default="1231231231")
+    mobile_number = models.CharField(db_index=True, max_length=20, default="021xxxxxxxx")
     use_type = models.CharField(max_length=20, choices=_TYPE_CHOICES, default="buyer")
     legal_type = models.CharField(max_length=20, choices=_LEGAL_CHOICES, default="individual")
     state = models.CharField(max_length=20, choices=_STATE_CHOICES, default=STATE_PENDING)
@@ -112,13 +116,13 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     objects = UserManager()
 
     def __str__(self) -> str:
-        return self.username
+        return self.email or self.mobile_number
 
     def get_full_name(self) -> str:
-        return self.full_name
+        return self.username
 
     def get_short_name(self) -> str:
-        return self.full_name
+        return self.username
 
     @property
     def is_buyer(self) -> bool:
@@ -158,8 +162,88 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
 
 
 class UserMedia(BaseMedia):
+    STATE_PENDING = "pending"
+    STATE_ACCEPTED = "accepted"
+    STATE_REJECTED = "rejected"
+
+    _STATE_CHOICES = (
+        (STATE_PENDING, "در حال بررسی",),  # Can't edit
+        (STATE_ACCEPTED, "تایید شده",),
+        (STATE_REJECTED, "رد شده",),
+    )
+
+    name_map = {
+        'image_id_card_front': 'روی کارت ملی',
+        'image_id_card_back': 'پشت کارت کلی',
+        'image_company_registration': 'گواهی ثبت شرکت',
+        'image_company_added_value_certificate': 'گواهی ارزش افزوده',
+        'image_company_public_certificate': 'آخرین به روز رسانی روزنامه رسمی',
+        'image_company_tax_on_added_value_certificate': 'گواهی مالیات بر ارزش افزوده',
+        'image_company_signature_copyright_certificate': 'شناسنامه ملی کپی رایت امضا',
+    }
+
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='media')
+    title = models.CharField(max_length=255, blank=True)
+    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
     file = models.FileField(upload_to='users')
 
     def __str__(self) -> str:
         return f'{self.user} -> {self.type} | {self.file}'
+
+
+class Profile(models.Model):
+    GENDER_MALE = 'male'
+    GENDER_FEMALE = 'female'
+
+    COMPANY_TYPE_AM = 'am'
+    COMPANY_TYPE_KHAS = 'khas'
+    COMPANY_TYPE_MASOULIAT_MAHDOOD = 'masouliat_mahdood'
+    COMPANY_TYPE_TAAVONI = 'taavoni'
+
+    _COMPANY_CHOICES = (
+        (COMPANY_TYPE_AM, 'عام'),
+        (COMPANY_TYPE_KHAS, 'خاص',),
+        (COMPANY_TYPE_MASOULIAT_MAHDOOD, 'مسئولیت محدود',),
+        (COMPANY_TYPE_TAAVONI, 'تعاونی',),
+    )
+
+    _GENDER_CHOICES = (
+        (GENDER_MALE, 'مرد',),
+        (GENDER_FEMALE, 'زن',),
+    )
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    birthday = models.DateField(null=True, blank=True)
+    gender = models.CharField(max_length=255, choices=_GENDER_CHOICES, blank=True)
+    id_code = models.CharField(max_length=255, blank=True)
+    national_code = models.CharField(max_length=255, blank=True)
+
+    address = models.TextField(blank=True)
+    postal_code = models.CharField(max_length=15, blank=True)
+    region = models.ForeignKey('locations.Region', on_delete=models.SET_NULL, null=True, blank=True)
+    phone_number = models.CharField(max_length=255, blank=True)
+    bank_account_name = models.CharField(max_length=255, blank=True)
+    bank_sheba_number = models.CharField(max_length=255, blank=True)
+
+    company_name = models.CharField(max_length=255, blank=True)
+    company_type = models.CharField(max_length=255, choices=_COMPANY_CHOICES, blank=True)
+    company_register_code = models.CharField(max_length=255, blank=True)
+    company_national_code = models.CharField(max_length=255, blank=True)
+    company_finance_code = models.CharField(max_length=255, blank=True)
+    company_print_signature_right = models.CharField(max_length=255, blank=True)
+
+    company_license_type = models.CharField(max_length=255, blank=True)
+    company_license_code = models.CharField(max_length=255, blank=True)
+    company_license_start = models.DateField(null=True, blank=True)
+    company_license_end = models.DateField(null=True, blank=True)
+    company_ceo_name = models.CharField(max_length=255, blank=True)
+    company_ceo_id_code = models.CharField(max_length=255, blank=True)
+    company_ceo_national_code = models.CharField(max_length=255, blank=True)
+
+    objects = ProfileManager()
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

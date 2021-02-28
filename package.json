@@ -13,8 +13,11 @@
     "bootstrap": "^4.5.3",
     "browserify": "^17.0.0",
     "glob": "^7.1.6",
+    "install": "^0.13.0",
     "jquery": "^3.5.1",
     "magnific-popup": "^1.1.0",
-    "owl.carousel": "^2.3.4"
+    "npm": "^7.6.0",
+    "owl.carousel": "^2.3.4",
+    "persian-datepicker": "^1.2.0"
   }
 }

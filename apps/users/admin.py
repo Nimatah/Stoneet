@@ -1,7 +1,17 @@
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
-from apps.users.models import User
+from apps.users.models import User, Profile, UserMedia
 from apps.users.forms import UserChangeForm, UserCreationForm
+
+
+class ProfileAdminInline(admin.StackedInline):
+    model = Profile
+    fk_name = 'user'
+
+
+class UserMediaAdminInline(admin.StackedInline):
+    model = UserMedia
+    fk_name = 'user'
 
 
 @admin.register(User)
@@ -26,3 +36,4 @@ class UserAdmin(auth_admin.UserAdmin):
     search_fields = ('username',)
     ordering = ('username',)
     readonly_fields = ('last_login', 'created_at',)
+    inlines = (ProfileAdminInline, UserMediaAdminInline,)

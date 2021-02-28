@@ -1,0 +1,2 @@
+from .seller import SellerAddProductPart1ValidationAPIView
+from .registration import RegistrationAuthValidationView

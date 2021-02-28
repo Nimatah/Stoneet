@@ -28,3 +28,10 @@ class Region(MPTTModel):
 
     def __str__(self) -> str:
         return self.title
+
+    def to_dict_hierarchy(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'children': [c.to_dict_hierarchy() for c in self.children.all()]
+        }
