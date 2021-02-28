@@ -575,7 +575,8 @@ aside.pos-rel{
     right: 0;
     left: 0;
     margin: auto;
-    display: flex;
+    /*display: flex;*/
+    display: none;
     justify-content: center;
 }
 

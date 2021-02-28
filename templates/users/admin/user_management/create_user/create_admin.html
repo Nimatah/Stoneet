@@ -1,2 +1,61 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+{% block admin_content %}
+    <main class="ph-create-admin-main ph-dashboard-main management-create-admin">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>ساخت ادمین جدید | </span>
+                ادمین جدیدی ایجاد کنید.
+            </div>
+            <div class="ph-add-admin-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                <form action="" method="" class="mb-4">
+                    <div class="form-row">
+                        <div class="col">
+                            <label>نام</label>
+                          <input type="text" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>نام خانوادگی</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>ایمیل</label>
+                          <input type="email" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>شماره موبایل</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>رمز عبور</label>
+                          <input type="text" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label>سطح دسترسی</label>
+                            <select class="form-control custom-select">
+                                <option>سطح یک</option>
+                                <option>سطح دو</option>
+                                <option>سطح سه</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="ph-new-login-info-btn my-2">
+                    <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ثبت</button>
+                </div>
+            </div>
+        </div><!-- container -->
+    </main><!-- ph-create-logistic-main ph-dashboard-main management-create-logistic-->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+{% endblock %}
