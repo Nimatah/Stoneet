@@ -2580,7 +2580,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .buyer-management
 =============================================================
 */
-.ph-dashboard-main.ph-buyer-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-admin .ph-dm-title{
     background: #022C3B;
     color: #ffd100;
     display: flex;
@@ -2593,7 +2593,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .seller-management
 =============================================================
 */
-.ph-dashboard-main.ph-seller-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-seller .ph-dm-title{
     background: #D4A373;
     color: #333333;
     display: flex;
@@ -2606,7 +2606,7 @@ a.ph-preview-placeholder:after {
         ADMIN PANEL   MAIN .logistic-management
 =============================================================
 */
-.ph-dashboard-main.ph-logistic-list-management .ph-dm-title{
+.ph-dashboard-main.ph-list-logistic .ph-dm-title{
     background: #ffd100;
     color: #333333;
     display: flex;
