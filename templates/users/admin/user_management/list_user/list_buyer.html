@@ -1,196 +1,203 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 
-
-
 {% block admin_content %}
-<main class="ph-dashboard-main ph-admin-panel ph-list-buyer">
-    <div class="container">
-        <div class="ph-dm-title">
-            <div class="title">پنل مدیریت خریداران</div>
-            <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن خریدار </a>
-        </div>
+    <main class="ph-dashboard-main ph-admin-panel ph-list-buyer">
+        <div class="container">
+            <div class="ph-dm-title">
+                <div class="title">پنل مدیریت خریداران</div>
+                <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن خریدار </a>
+            </div><!-- .ph-dm-title -->
+            <div class="ph-managements-container">
+                <div class="ph-managements-filter-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="form-row">
+                        <div class="col-12 col-md-6 col-lg-2 mb-3">
+                            <div class="ph-managements-filter-item filter-id">
+                                <label for="">ID</label>
+                                <input type="text" class="form-control" id="" placeholder="ID خریدار" value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-2 -->
+                        <div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="ph-managements-filter-item filter-name">
+                                <label for="">نام و نام‌خانوادگی</label>
+                                <input type="text" class="form-control" id="" placeholder="نام و نام‌خانوادگی خریدار"
+                                       value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-4 -->
+                        <div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="ph-managements-filter-item filter-email">
+                                <label for="">ایمیل</label>
+                                <input type="text" class="form-control text-left" id="" placeholder="sample@gmail.com"
+                                       value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-4 -->
+                        <div class="col-12 col-md-6 col-lg-2 mb-3">
+                            <div class="ph-managements-filter-item filter-city">
+                                <label for="">شهر</label>
+                                <input list="origin_city" class="form-control" placeholder="نام شهر">
+                                <datalist id="origin_city">
+                                    <option value="تهران">
+                                    <option value="شیراز">
+                                    <option value="کرج">
+                                    <option value="کرمان">
+                                    <option value="مشهد">
+                                </datalist>
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-2 -->
+                        <div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="ph-managements-filter-item filter-kodemelli">
+                                <label for="">کدملی</label>
+                                <input type="text" class="form-control text-left" id="" placeholder="1234567890"
+                                       value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-4 -->
+                        <div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="ph-managements-filter-item filter-mobile">
+                                <label for="">شماره موبایل</label>
+                                <input type="text" class="form-control text-left" id="" placeholder="*******09"
+                                       value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-4 -->
+                        <div class="col-12 col-md-6 col-lg-4 mb-3">
+                            <div class="ph-managements-filter-item filter-tel">
+                                <label for="">تلفن ثابت</label>
+                                <input type="text" class="form-control text-left" id="" placeholder="مثال:02122446688"
+                                       value="">
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div><!-- .valid-feedback -->
+                            </div><!-- ph-managements-filter-item -->
+                        </div><!-- col-12 col-md-6 col-lg-4 -->
+                    </div><!-- form-row -->
+                    <div class="col-12 col-md-12">
+                        <div class="ph-managements-filter-item filter-status d-flex">
+                            <label>وضعیت:</label>
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="has_price">
+                                <label class="custom-control-label" for="has_price">دارای قیمت</label>
+                            </div><!-- .custom-checkbox -->
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="expired">
+                                <label class="custom-control-label" for="expired">منقضی شده</label>
+                            </div><!-- .custom-checkbox -->
+                            <div class="custom-control custom-checkbox form-check-inline">
+                                <input class="custom-control-input" type="checkbox" id="no_answer">
+                                <label class="custom-control-label" for="no_answer">بدون پاسخ</label>
+                            </div><!-- .custom-checkbox -->
+                        </div><!-- .ph-managements-filter-item -->
+                    </div><!-- .col-md-12 -->
+                </div><!-- .ph-managements-filter-wrapper ph-admin-page-list-container -->
+                <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="form-group ph-managements-sorting">
+                        <label for="ph_managements_no"
+                               class="col-form-label col-form-label-sm">تعداد نمایش</label>
+                        <select id="ph_managements_no" class="form-control custom-select">
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                        </select>
+                    </div><!-- .form-group -->
+                    <div class="ph-managements-table table-responsive">
+                        <table class="table ph-table table-bordered text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>ID</th>
+                                    <th>نام و نام‌خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>کدملی</th>
+                                    <th>شماره موبایل</th>
+                                    <th>تلفن ثابت</th>
+                                    <th>شهر</th>
+                                    <th>وضعیت</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>gh-12r35tt</td>
+                                    <td>مصطفی چراغی</td>
+                                    <td>sample@gmail.com</td>
+                                    <td>1234567890</td>
+                                    <td>09123456789</td>
+                                    <td>02122446688</td>
+                                    <td>شیراز</td>
+                                    <td>درانتظار تایید</td>
+                                    <td>
+                                        <a href="#" class="ph-btn ph-managements-btn qc"><i class="fas fas fa-sync-alt"></i>بررسی</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>gh-12r35tt</td>
+                                    <td>مصطفی چراغی</td>
+                                    <td>sample@gmail.com</td>
+                                    <td>1234567890</td>
+                                    <td>09123456789</td>
+                                    <td>02122446688</td>
+                                    <td>شیراز</td>
+                                    <td>تایید شده</td>
+                                    <td>
+                                        <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>gh-12r35tt</td>
+                                    <td>مصطفی چراغی</td>
+                                    <td>sample@gmail.com</td>
+                                    <td>1234567890</td>
+                                    <td>09123456789</td>
+                                    <td>02122446688</td>
+                                    <td>شیراز</td>
+                                    <td>رد شده</td>
+                                    <td>
+                                        <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- .ph-managements-table -->
+                    <div class="ph-pagination">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- .ph-managements-pagination -->
+                </div><!-- .ph-managements-table-wrapper ph-admin-page-list-container -->
+            </div><!-- .ph-managements-container -->
+        </div><!-- .container -->
+    </main><!-- ph-dashboard-main buyer-panel ph-buyer-dashboard -->
 
-        <div class="ph-managements-container">
-            <div class="ph-managements-filter-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
-                <div class="form-row">
-                    <div class="col-12 col-md-6 col-lg-2 mb-3">
-                        <div class="ph-managements-filter-item filter-id">
-                            <label for="">ID</label>
-                            <input type="text" class="form-control" id="" placeholder="ID خریدار" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-2 -->
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="ph-managements-filter-item filter-name">
-                            <label for="">نام و نام‌خانوادگی</label>
-                            <input type="text" class="form-control" id="" placeholder="نام و نام‌خانوادگی خریدار" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-4 -->
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="ph-managements-filter-item filter-email">
-                            <label for="">ایمیل</label>
-                            <input type="text" class="form-control text-left" id="" placeholder="sample@gmail.com" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-4 -->
-                    <div class="col-12 col-md-6 col-lg-2 mb-3">
-                        <div class="ph-managements-filter-item filter-city">
-                            <label for="">شهر</label>
-                            <input list="origin_city" class="form-control" placeholder="نام شهر">
-                            <datalist id="origin_city">
-                                <option value="تهران">
-                                <option value="شیراز">
-                                <option value="کرج">
-                                <option value="کرمان">
-                                <option value="مشهد">
-                            </datalist>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-2 -->
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="ph-managements-filter-item filter-kodemelli">
-                            <label for="">کدملی</label>
-                            <input type="text" class="form-control text-left" id="" placeholder="1234567890" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-4 -->
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="ph-managements-filter-item filter-mobile">
-                            <label for="">شماره موبایل</label>
-                            <input type="text" class="form-control text-left" id="" placeholder="*******09" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-4 -->
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
-                        <div class="ph-managements-filter-item filter-tel">
-                            <label for="">تلفن ثابت</label>
-                            <input type="text" class="form-control text-left" id="" placeholder="مثال:02122446688" value="">
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        </div><!-- ph-managements-filter-item -->
-                    </div><!-- col-12 col-md-6 col-lg-4 -->
-                </div><!-- form-row -->
-                <div class="col-12 col-md-12">
-                    <div class="ph-managements-filter-item filter-status d-flex">
-                        <label>وضعیت:</label>
-                        <div class="custom-control custom-checkbox form-check-inline">
-                            <input class="custom-control-input" type="checkbox" id="has_price">
-                            <label class="custom-control-label" for="has_price">دارای قیمت</label>
-                        </div><!-- .custom-checkbox -->
-                        <div class="custom-control custom-checkbox form-check-inline">
-                            <input class="custom-control-input" type="checkbox" id="expired">
-                            <label class="custom-control-label" for="expired">منقضی شده</label>
-                        </div><!-- .custom-checkbox -->
-                        <div class="custom-control custom-checkbox form-check-inline">
-                            <input class="custom-control-input" type="checkbox" id="no_answer">
-                            <label class="custom-control-label" for="no_answer">بدون پاسخ</label>
-                        </div><!-- .custom-checkbox -->
-                    </div><!-- .ph-managements-filter-item -->
-                </div><!-- .col-md-12 -->
-            </div><!-- .ph-managements-filter-wrapper ph-admin-page-list-container -->
-
-            <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
-                <div class="form-group ph-managements-sorting">
-                    <label for="ph_managements_no"
-                           class="col-form-label col-form-label-sm">تعداد نمایش</label>
-                    <select id="ph_managements_no" class="form-control custom-select">
-                        <option selected>10</option>
-                        <option>20</option>
-                        <option>30</option>
-                        <option>40</option>
-                        <option>50</option>
-                    </select>
-                </div>
-                <div class="ph-managements-table table-responsive">
-                    <table class="table ph-table table-bordered text-center">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ردیف</th>
-                                <th>ID</th>
-                                <th>نام و نام‌خانوادگی</th>
-                                <th>ایمیل</th>
-                                <th>کدملی</th>
-                                <th>شماره موبایل</th>
-                                <th>تلفن ثابت</th>
-                                <th>شهر</th>
-                                <th>وضعیت</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>gh-12r35tt</td>
-                                <td>مصطفی چراغی</td>
-                                <td>sample@gmail.com</td>
-                                <td>1234567890</td>
-                                <td>09123456789</td>
-                                <td>02122446688</td>
-                                <td>شیراز</td>
-                                <td>درانتظار تایید</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn qc"><i class="fas fas fa-sync-alt"></i>بررسی</a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>gh-12r35tt</td>
-                                <td>مصطفی چراغی</td>
-                                <td>sample@gmail.com</td>
-                                <td>1234567890</td>
-                                <td>09123456789</td>
-                                <td>02122446688</td>
-                                <td>شیراز</td>
-                                <td>تایید شده</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>gh-12r35tt</td>
-                                <td>مصطفی چراغی</td>
-                                <td>sample@gmail.com</td>
-                                <td>1234567890</td>
-                                <td>09123456789</td>
-                                <td>02122446688</td>
-                                <td>شیراز</td>
-                                <td>رد شده</td>
-                                <td><a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div><!-- .ph-managements-table -->
-                <div class="ph-pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div><!-- .ph-managements-pagination -->
-            </div><!-- .ph-managements-table-wrapper ph-admin-page-list-container -->
-        </div><!-- .ph-managements-container -->
-        
-    </div><!-- container -->
-</main><!-- ph-dashboard-main buyer-panel ph-buyer-dashboard -->
 {% endblock %}

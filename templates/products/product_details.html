@@ -71,7 +71,7 @@
                                                     <a href="#">{{ product.user.region }}</a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div><!-- .ph-single-product-atts-summary -->
                                         <div class="ph-single-product-details-bottom">
                                             <div class="ph-single-product-calculator my-3">
                                                 <p>برای محاسبه قیمت نهایی، مقدار مورد نیاز را وارد نمایید:</p>
@@ -81,7 +81,7 @@
                                                             <input type="number" value="1">
                                                             <span>تن</span>
                                                         </div><!-- .ph-single-product-quantity -->
-                                                    </div>
+                                                    </div><!-- .col-6 -->
                                                     <div class="col-6">
                                                         <div class="form-group mb-0">
                                                             <select class="form-control custom-select" id="payment_method">
@@ -90,9 +90,9 @@
                                                                     <option value="{{ payment_type }}">{{ payment_type }}</option>
                                                                 {% endfor %}
                                                             </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                        </div><!-- .form-group -->
+                                                    </div><!-- .col-6 -->
+                                                </div><!-- .row -->
                                                 <div class="ph-single-product-final-price">
                                                     <label class="ph-single-product-label" for="product_final_price">قیمت
                                                         نهایی: </label>
@@ -113,7 +113,7 @@
                                                 <a href="#" class="ph-need-sample-btn" data-toggle="modal" data-target="#ph_LogIn_Modal"><i
                                                         class="fas fa-vial ml-2"></i> درخواست نمونه </a>
                                                 {% else %}
-                                                <a href="#" class="ph-need-sample-btn" data-toggle="modal" data-target="#sample_modal"><i
+                                                <a href="" class="ph-need-sample-btn" data-toggle="modal" data-target="#sample_modal"><i
                                                         class="fas fa-vial ml-2"></i> درخواست نمونه </a>
                                                 {% endif %}
                                             </div><!-- .ph-single-product-cta -->
@@ -145,8 +145,8 @@
                                                 </li>
                                             {% endfor %}
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div><!-- .ph-single-product-specification-table -->
+                                </div><!-- .col-12 -->
                                 <div class="col-12 col-md-6">
                                     <div class="ph-single-product-specification-table">
                                         <h3>مشخصات معدن</h3>
@@ -166,8 +166,8 @@
                                                 </li>
                                             {% endfor %}
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div><!-- .ph-single-product-specification-table -->
+                                </div><!-- .col-12 -->
                                 <div class="col-12">
                                     <div class="ph-single-product-analyze-image">
                                         <!--
@@ -179,13 +179,13 @@
                                         <a class="image-popup-fit-width" title="{{ product.title }}" href="{% get_media_prefix %}{{ product.get_analyze.value }}">
                                             <i class="fas fa-eye pl-2"></i> مشاهده فایل آنالیز
                                         </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    </div><!-- .ph-single-product-analyze-image -->
+                                </div><!-- .col-12 -->
+                            </div><!-- .row -->
+                        </div><!-- .ph-single-product-specification -->
                         <div class="ph-single-product-process-container my-4">
                             <img src="{% static 'images/process.jpg' %}" class="ph-border-radius" alt="">
-                        </div>
+                        </div><!-- .ph-single-product-process-container -->
                     </div><!-- .container -->
                 </div><!-- .ph-single-product-container -->
             </div><!-- .ph-content-entry -->
@@ -201,7 +201,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                </div><!-- .modal-header -->
                 <div class="modal-body">
                     <p>
                         برای درخواست ارسال نمونه  <span class="ph-sample-modal-title">نام محصول</span> با قبول قوانین و مقررات درخواستتان را ثبت نمایید
@@ -211,14 +211,14 @@
                         <label class="custom-control-label" for="sample_toc">
                             <a href="#" style="color: #007bff;">قوانین ارسال نمونه</a> را قبول میکنم.
                         </label>
-                    </div>
-                </div>
+                    </div><!-- .custom-checkbox -->
+                </div><!-- .modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="ph-btn">ارسال درخواست</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- .modal-footer -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal#sample_modal -->
 
     <!-- LogIn_Modal -->
     <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
@@ -232,7 +232,7 @@
                             aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                </div><!-- .modal-header -->
                 <div class="modal-body">
                     <form method="post" action="{% url 'users:login' %}">
                         {% csrf_token %}
@@ -252,7 +252,7 @@
                             <div class="custom-control custom-checkbox mr-2">
                                 <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
                                 <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر بسپار</label>
-                            </div>
+                            </div><!-- .custom-checkbox -->
                             <div class="ph-login-modal">
                                 <button type="submit" id="ph_login_modal"
                                         class="ph-btn ph-border-radius-small">ورود
@@ -264,9 +264,9 @@
                                 href="{% url "users:register_buyer" %}">ثبت نام</a>
                         </div><!-- .ph-signup-modal -->
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal#ph_LogIn_Modal -->
 {% endblock %}
 

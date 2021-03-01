@@ -4,86 +4,85 @@
 
 
 {% block admin_content %}
-<main class="ph-dashboard-main ph-admin-panel ph-list-admin">
-    <div class="container">
-        <div class="ph-dm-title">
-            <div class="title">پنل مدیریت ادمین ها</div>
-            <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن ادمین </a>
-        </div>
+    <main class="ph-dashboard-main ph-admin-panel ph-list-admin">
+        <div class="container">
+            <div class="ph-dm-title">
+                <div class="title">پنل مدیریت ادمین ها</div>
+                <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن ادمین </a>
+            </div><!-- .ph-dm-title -->
+            <div class="ph-managements-container">
+                <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="form-group ph-managements-sorting">
+                        <label for="ph_managements_no"
+                               class="col-form-label col-form-label-sm">تعداد نمایش</label>
+                        <select id="ph_managements_no" class="form-control custom-select">
+                            <option selected>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                        </select>
+                    </div><!-- .form-group -->
+                    <div class="ph-managements-table table-responsive">
+                        <table class="table ph-table table-bordered text-center">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>ID</th>
+                                    <th>نام و نام‌خانوادگی</th>
+                                    <th>ایمیل</th>
+                                    <th>شماره موبایل</th>
+                                    <th>سطح دسترسی</th>
+                                    <th>ویرایش</th>
+                                    <th>وضعیت</th>
+                                    <th>فعال / غیرفعال</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>gh-12r35tt</td>
+                                    <td>مصطفی چراغی</td>
+                                    <td>sample@gmail.com</td>
+                                    <td>09123456789</td>
+                                    <td>سطح یک</td>
+                                    <td>
+                                        <a href="#" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
+                                    </td>
+                                    <td>درانتظار تایید</td>
+                                    <td>
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input"
+                                                   id="customSwitch1">
+                                            <label class="custom-control-label" for="customSwitch1"></label>
+                                        </div><!-- .custom-switch -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- .ph-managements-table -->
+                    <div class="ph-pagination">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- .ph-managements-pagination -->
+                </div><!-- .ph-managements-table-wrapper ph-admin-page-list-container -->
+            </div><!-- .ph-managements-container -->
+        </div><!-- container -->
+    </main><!-- ph-dashboard-main seller-panel ph-seller-dashboard -->
 
-        <div class="ph-managements-container">
-            <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
-                <div class="form-group ph-managements-sorting">
-                    <label for="ph_managements_no"
-                           class="col-form-label col-form-label-sm">تعداد نمایش</label>
-                    <select id="ph_managements_no" class="form-control custom-select">
-                        <option selected>10</option>
-                        <option>20</option>
-                        <option>30</option>
-                        <option>40</option>
-                        <option>50</option>
-                    </select>
-                </div>
-                <div class="ph-managements-table table-responsive">
-                    <table class="table ph-table table-bordered text-center">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>ردیف</th>
-                                <th>ID</th>
-                                <th>نام و نام‌خانوادگی</th>
-                                <th>ایمیل</th>
-                                <th>شماره موبایل</th>
-                                <th>سطح دسترسی</th>
-                                <th>ویرایش</th>
-                                <th>وضعیت</th>
-                                <th>فعال / غیرفعال</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>gh-12r35tt</td>
-                                <td>مصطفی چراغی</td>
-                                <td>sample@gmail.com</td>
-                                <td>09123456789</td>
-                                <td>سطح یک</td>
-                                <td>
-                                    <a href="#" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
-                                </td>
-                                <td>درانتظار تایید</td>
-                                <td>
-                                    <div class="custom-control custom-switch">
-                                        <input type="checkbox" class="custom-control-input"
-                                               id="customSwitch1">
-                                        <label class="custom-control-label" for="customSwitch1"></label>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div><!-- .ph-managements-table -->
-                <div class="ph-pagination">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                              </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div><!-- .ph-managements-pagination -->
-            </div><!-- .ph-managements-table-wrapper ph-admin-page-list-container -->
-        </div><!-- .ph-managements-container -->
-
-    </div><!-- container -->
-</main><!-- ph-dashboard-main seller-panel ph-seller-dashboard -->
 {% endblock %}

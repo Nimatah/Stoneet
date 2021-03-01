@@ -8,12 +8,12 @@
                 <div class="ph-admin-page-intro-text">
                     <span>مدیریت دسته بندی ها | </span>
                     برای مدیریت، ویرایش یا افزودن دسته بندی های محصولات از این قسمت استفاده کنید.
-                </div>
+                </div><!-- .ph-admin-page-intro-text -->
                 <div class="ph-admin-list-category-search">
                     <div class="ph-admin-page-search-wrapper bg-light ph-border-radius ph-box-shadow my-4">
                         <div class="ph-admin-page-block-header ph-panel-title">
                             <span class="title">جستجو و فیلتر</span>
-                        </div>
+                        </div><!-- .ph-admin-page-block-header -->
                         <div class="ph-admin-page-block-content mt-3">
                             <div class="ph-admin-page-search-form">
                                 <form method="get">
@@ -22,22 +22,22 @@
                                             <label for="categories"> نام دسته:</label>
                                             <input type="text" class="form-control" name="q" id="ph_admin_category_text"
                                                    aria-describedby="Search_Text">
-                                        </div>
+                                        </div><!-- .col -->
                                         <div class="col">
                                             <label for="categories">گروه اصلی:</label>
                                             <select name="category" class="form-control custom-select"
                                                     id="ph-categories">
                                                 <option value="">انتخاب کنید</option>
                                             </select>
-                                        </div>
-                                    </div>
+                                        </div><!-- .col -->
+                                    </div><!-- .form-row -->
                                     <button type="submit" class="btn btn-primary ph-border-radius-small my-3">جستجو
                                     </button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            </div><!-- .ph-admin-page-search-form -->
+                        </div><!-- .ph-admin-page-block-content -->
+                    </div><!-- .ph-admin-page-search-wrapper -->
+                </div><!-- .ph-admin-list-category-search -->
                 <div class="ph-admin-list-category-table">
                     <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
                         <div class="ph-admin-page-list-header mb-3">
@@ -49,44 +49,54 @@
                                             ایجاد دسته بندی جدید
                                             <i class="fas fa-plus"></i>
                                         </a>
-                                    </div>
-                                </div>
+                                    </div><!-- .ph-admin-page-list-add-btn -->
+                                </div><!-- .col-6 -->
                                 <div class="col-6 col-md-6">
                                     <div class="ph-admin-page-list-sort">
                                         <p>تعداد نتایج : <span>{{ page_obj.paginator.count }} مورد</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                    </div><!-- .ph-admin-page-list-sort -->
+                                </div><!-- .col-6 -->
+                            </div><!-- .row -->
+                        </div><!-- .ph-admin-page-list-header -->
                         <div class="ph-admin-page-list-table">
                             <table class="ph-table table table-bordered text-center">
                                 <thead class="thead-dark">
-                                <tr>
-                                    <th>ردیف</th>
-                                    <th>نام دسته بندی</th>
-                                    <th>نام انگلیسی</th>
-                                    <th>دسته اصلی</th>
-                                    <th>درصد کمیسیون</th>
-                                    <th>ویرایش</th>
-                                    <th>وضعیت</th>
-                                </tr>
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>نام دسته بندی</th>
+                                        <th>نام انگلیسی</th>
+                                        <th>دسته اصلی</th>
+                                        <th>درصد کمیسیون</th>
+                                        <th>ویرایش</th>
+                                        <th>وضعیت</th>
+                                    </tr>
                                 </thead>
                                 <tobody>
                                     <tr>
                                         <td>
-                                            <div class="ph-admin-table-cell">1</div>
+                                            <div class="ph-admin-table-cell">
+                                                1
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">فلزات</div>
+                                            <div class="ph-admin-table-cell">
+                                                فلزات
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">Metals</div>
+                                            <div class="ph-admin-table-cell">
+                                                Metals
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">خام</div>
+                                            <div class="ph-admin-table-cell">
+                                                خام
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">10</div>
+                                            <div class="ph-admin-table-cell">
+                                                10
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
@@ -94,8 +104,8 @@
                                                     <a href="#"
                                                        class="ph-admin-table-action-btn-edit" data-toggle="modal"
                                                        data-target="#categoryedit"><i class="fas fa-pen"></i></a>
-                                                </div>
-                                            </div>
+                                                </div><!-- .custom-switch -->
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
@@ -103,13 +113,13 @@
                                                     <input type="checkbox" class="custom-control-input"
                                                            id="customSwitch1">
                                                     <label class="custom-control-label" for="customSwitch1"></label>
-                                                </div>
-                                            </div>
+                                                </div><!-- .custom-switch -->
+                                            </div><!-- .ph-admin-table-cell -->
                                         </td>
                                     </tr>
                                 </tobody>
                             </table>
-                        </div>
+                        </div><!-- .ph-admin-page-list-table -->
                         <div class="ph-admin-page-list-header">
                             <div class="row">
                                 <div class="col-6 col-md-6">
@@ -119,18 +129,18 @@
                                             ایجاد دسته بندی جدید
                                             <i class="fas fa-plus"></i>
                                         </a>
-                                    </div>
-                                </div>
+                                    </div><!-- .ph-admin-page-list-add-btn -->
+                                </div><!-- .col-6 -->
                                 <div class="col-6 col-md-6">
                                     <div class="ph-admin-page-list-sort">
                                         <p>تعداد نتایج : <span>{{ page_obj.paginator.count }} مورد</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    </div><!-- .ph-admin-page-list-sort -->
+                                </div><!-- .col-6 -->
+                            </div><!-- .row -->
+                        </div><!-- .ph-admin-page-list-header -->
+                    </div><!-- .ph-admin-page-list-container -->
+                </div><!-- .ph-admin-list-category-table -->
+            </div><!-- .ph-admin-page-container -->
         </div><!-- container -->
     </main><!-- ph-dashboard-main admin-panel admin-list-category -->
 
@@ -143,34 +153,34 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
+                </div><!-- .modal-header -->
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="modal_category_title">نام دسته بندی (فارسی)</label>
                         <input type="text" class="form-control" id="modal_category_title"
                                aria-describedby="category-title">
-                    </div>
+                    </div><!-- .form-group -->
                     <div class="form-group">
                         <label for="modal_category_title_en">نام دسته بندی (انگلیسی)</label>
                         <input type="text" class="form-control" id="modal_category_title_en"
                                aria-describedby="category-title-en">
-                    </div>
+                    </div><!-- .form-group -->
                     <div class="form-group">
                         <label for="modal_category_title_en">دسته مادر</label>
                         <select class="custom-select mr-sm-2" id="">
                             <option selected value="default">انتخاب...</option>
                         </select>
-                    </div>
+                    </div><!-- .form-group -->
                     <div class="form-group">
                         <label for="modal_category_commision">کمیسیون فروش دسته</label>
                         <input type="text" class="form-control" id="modal_category_commision"
                                aria-describedby="category-commision">
-                    </div>
-                </div>
+                    </div><!-- .form-group -->
+                </div><!-- .modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary">ذخیره</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- .modal-footer -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- .modal#categoryedit -->
 {% endblock %}

@@ -1,10 +1,10 @@
-from django.views.generic import ListView
+from django.views.generic import TemplateView
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.invoices.models import Receipt
 
 
-class ListReceiptView(UserPassesTestMixin, ListView):
+class ListReceiptView(UserPassesTestMixin, TemplateView):
 
     template_name = 'users/buyer/invoices/list_receipt.html'
     paginate_by = 10
