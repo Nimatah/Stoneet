@@ -3,6 +3,23 @@
   margin-bottom: 0;
   font-size: .7rem;
 }
+.terms-and-conditions-check{
+    padding: 1rem;
+    background: #ececec;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+.terms-and-conditions-check label{
+  font-size: .85rem;
+}
+.terms-and-conditions-check a{
+    color: #7E111A;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed;
+    padding-bottom: .2rem;
+    font-weight: 600;
+    margin: 0 .2rem;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
@@ -782,7 +799,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main.ph-logistic-dashboard .ph-dm-title{
     background: #ffd100;
-    color: #7e111a;
+    color: #022C3B;
 }
 
 .ph-dashboard-main .ph-dm-panel{
@@ -797,7 +814,7 @@ a.nav-link[aria-expanded="true"]:after {
     padding: 3rem 1rem 1rem;
     position: relative;
     border-top: 3px solid #D1E9F0;
-    height: 250px;
+    min-height: 250px;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #CCCCCC;
 }
@@ -808,7 +825,7 @@ a.nav-link[aria-expanded="true"]:after {
     right: -10px;
     padding: .5rem;
     background: #D1E9F0;
-    border-radius: 0 10px;
+    border-radius: 10px;
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 ul{}
@@ -1242,6 +1259,14 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main .ph-cpp-btn button{
+    margin: 0;
+    background: #4CE0B3;
+    border: 1px solid #4CE0B3;
+}
+
+.ph-dashboard-main .ph-cpp-btn button:hover{
+  background: #FFFFFF;
+  color: #4CE0B3;
 }
 
 .ph-dashboard-main button.btn {
@@ -1274,6 +1299,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .part-4-item-detail-desc{
     margin: 1rem;
+  padding: 0;
 }
 
 .ph-dashboard-main .part-4-item-detail-desc span:nth-last-child(1){
@@ -2165,7 +2191,7 @@ a.ph-preview-placeholder:after {
          view_order   ph-view-order
 =============================================================
 */
-.ph-list-order .ph-admin-page-intro-text{
+.ph-buyer-panel.ph-view-order .ph-admin-page-intro-text{
     background: #022C3B;
     color: #fff;
 }
@@ -2337,7 +2363,7 @@ a.ph-preview-placeholder:after {
     position: absolute;
     top: 120%;
     width: 150%;
-    color: #D4A373;
+    color: #022C3B;
     min-width: 125px;
     margin: auto;
     font-size: 11px;
@@ -2381,7 +2407,7 @@ a.ph-preview-placeholder:after {
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(5),
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(6),
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(7){
-  background: #D4A373;
+  background: #022C3B;
 }
 
 .ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2):before,
@@ -2416,7 +2442,7 @@ a.ph-preview-placeholder:after {
     top: 16px;
     height: 10px;
     width: 430%;
-    background: #D4A373;
+    background: #022C3B;
     margin: auto;
     z-index: 0;
 }
@@ -2460,7 +2486,7 @@ a.ph-preview-placeholder:after {
     top: 16px;
     height: 10px;
     width: 240%;
-    background: #D4A373;
+    background: #022C3B;
     margin: auto;
     z-index: 0;
 }
@@ -2575,12 +2601,25 @@ a.ph-preview-placeholder:after {
     margin-left: .2rem;
     font-size: .65rem;
 }
+
 /*
 =============================================================
-        ADMIN PANEL   MAIN .buyer-management
+        ADMIN PANEL   MAIN .ph-admin-dashboard
 =============================================================
 */
-.ph-dashboard-main.ph-list-admin .ph-dm-title{
+
+.ph-dashboard-main.ph-admin-dashboard .ph-dm-title {
+    background: #c1c1c1;
+    color: #FFffff;
+    color: #333;
+}
+
+/*
+=============================================================
+        ADMIN PANEL   MAIN .ph-list-admin
+=============================================================
+*/
+.ph-admin-panel.ph-list-admin .ph-dm-title{
     background: #022C3B;
     color: #ffd100;
     display: flex;
@@ -2590,10 +2629,11 @@ a.ph-preview-placeholder:after {
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .seller-management
+        ADMIN PANEL   MAIN .ph-create-seller
 =============================================================
 */
-.ph-dashboard-main.ph-list-seller .ph-dm-title{
+.ph-admin-panel.ph-create-seller .ph-dm-title,
+.ph-admin-panel.ph-list-seller .ph-dm-title{
     background: #D4A373;
     color: #333333;
     display: flex;
@@ -2603,12 +2643,19 @@ a.ph-preview-placeholder:after {
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .logistic-management
+        ADMIN PANEL   MAIN .ph-create-logistic
 =============================================================
 */
-.ph-dashboard-main.ph-list-logistic .ph-dm-title{
+.ph-admin-panel.ph-create-logistic .ph-dm-title{
     background: #ffd100;
     color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ph-admin-panel.ph-list-logistic .ph-dm-title{
+    background: #022C3B;
+    color: #ffd100;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2616,16 +2663,16 @@ a.ph-preview-placeholder:after {
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .management-create-buyer
+        ADMIN PANEL   MAIN .ph-create-buyer
 =============================================================
 */
-.management-create-buyer .ph-admin-page-intro-text{
+.ph-admin-panel.ph-create-buyer .ph-admin-page-intro-text{
     background: #022C3B;
     color: #FFFFFF;
     display: flex;
     align-items: center;
 }
-.management-create-buyer .ph-admin-page-intro-text span{
+.ph-admin-panel.ph-create-buyer .ph-admin-page-intro-text span{
   color: #ffd100;
 }
 
@@ -2693,7 +2740,7 @@ a.ph-preview-placeholder:after {
     min-height: 90px;
 }
 
-.ph-qc-product{
+.ph-qc-product-section{
     padding: 30px;
     background: #ececec;
     border-radius: 10px;
@@ -2702,7 +2749,7 @@ a.ph-preview-placeholder:after {
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-.ph-qc-product:hover {
+.ph-qc-product-section:hover {
     transform: translateY(-5px);
     background: #FFFFFF;
     box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
