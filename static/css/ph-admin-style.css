@@ -854,8 +854,10 @@ a.nav-link[aria-expanded="true"]:after {
     -o-transition: all .3s ease-in-out;
 }
 
-.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1:hover{
-  
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .title{
@@ -901,6 +903,15 @@ a.nav-link[aria-expanded="true"]:after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-add:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88 114 195 / 20%);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-add span{
@@ -935,6 +946,16 @@ a.nav-link[aria-expanded="true"]:after {
     border-top: 3px solid #022C3B;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #cccccc;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-2:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-2 .number{
