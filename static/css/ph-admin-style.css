@@ -2557,6 +2557,23 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =======================================================================================================================*/
 
+.ph-dashboard-main.ph-admin-panel .ph-dm-title {
+    background: #c1c1c1;
+    color: #FFffff;
+    color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text {
+    background: #c1c1c1;
+    color: #333;
+    color: #FFffff;
+}
+.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text span{
+    color: #FFffff;
+    color: #333;
+}
+
 .ph-dm-add-user{
     margin: 0;
     background: #4CE0B3;
@@ -2608,73 +2625,6 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-dashboard-main.ph-admin-dashboard .ph-dm-title {
-    background: #c1c1c1;
-    color: #FFffff;
-    color: #333;
-}
-
-/*
-=============================================================
-        ADMIN PANEL   MAIN .ph-list-admin
-=============================================================
-*/
-.ph-admin-panel.ph-list-admin .ph-dm-title{
-    background: #022C3B;
-    color: #ffd100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*
-=============================================================
-        ADMIN PANEL   MAIN .ph-create-seller
-=============================================================
-*/
-.ph-admin-panel.ph-create-seller .ph-dm-title,
-.ph-admin-panel.ph-list-seller .ph-dm-title{
-    background: #D4A373;
-    color: #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*
-=============================================================
-        ADMIN PANEL   MAIN .ph-create-logistic
-=============================================================
-*/
-.ph-admin-panel.ph-create-logistic .ph-dm-title{
-    background: #ffd100;
-    color: #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.ph-admin-panel.ph-list-logistic .ph-dm-title{
-    background: #022C3B;
-    color: #ffd100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*
-=============================================================
-        ADMIN PANEL   MAIN .ph-create-buyer
-=============================================================
-*/
-.ph-admin-panel.ph-create-buyer .ph-admin-page-intro-text{
-    background: #022C3B;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-}
-.ph-admin-panel.ph-create-buyer .ph-admin-page-intro-text span{
-  color: #ffd100;
-}
 
 /*
 =============================================================
