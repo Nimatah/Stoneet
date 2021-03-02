@@ -83,17 +83,17 @@
 .aside-scroll-bar{
   direction: ltr;
 }
-
 .ph-new-login .modal,
 ph-new-login-main .modal{
   position: absolute;
 }
+
+
 /*
 =============================================================================
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
 =============================================================================
 */
-
 .ph-new-login aside.ph-registration-panel-sidebar {
   width: 30%;
   background: #f5f5f5;
@@ -848,6 +848,14 @@ a.nav-link[aria-expanded="true"]:after {
     min-height: 250px;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #CCCCCC;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1:hover{
+  
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .title{
