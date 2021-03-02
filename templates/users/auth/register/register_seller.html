@@ -100,14 +100,14 @@
                         <h4 class="ph-new-login-2-title">چه نوع فروشنده‌ای هستید؟</h4>
                         <div class="ph-private-business-check ph-conditional d-flex">
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" name="seller_type" id="haqiqi"
-                                       value="ph-individual-wrapper">
-                                <label class="custom-control-label" for="haqiqi">شخص حقیقی</label>
+                                <input class="custom-control-input" type="radio" name="legal_type" id="legal-individual"
+                                       value="individual" data-tab="ph-individual-wrapper">
+                                <label class="custom-control-label" for="legal-individual">شخص حقیقی</label>
                             </div><!-- .custom-radio -->
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" name="seller_type" id="hoquqi"
-                                       value="ph-company-wrapper">
-                                <label class="custom-control-label" for="hoquqi">شخص حقوقی</label>
+                                <input class="custom-control-input" type="radio" name="legal_type" id="legal-legal"
+                                       value="legal" data-tab="ph-company-wrapper">
+                                <label class="custom-control-label" for="legal-legal">شخص حقوقی</label>
                             </div><!-- .custom-radio -->
                         </div><!-- .ph-private-business-check -->
                         <p class="ph-private-business-details">
@@ -321,25 +321,9 @@
                                 </div><!-- .form-row -->
                             </div><!-- #ph_real_account_name_lastname -->
                             <div class="ph-real-account-birthday">
-                                <label for="ph_real_account_birthday_date">تاریخ تولد</label>
-                                <select id="ph_real_account_birthday_date" class="mdb-select custom-select md-form">
-                                    <option value="" disabled selected>روز</option>
-                                    <option value="1">۱</option>
-                                    <option value="2">۲</option>
-                                    <option value="3">۳</option>
-                                </select>
-                                <select id="ph_real_account_birthday_month" class="mdb-select custom-select md-form">
-                                    <option value="" disabled selected>ماه</option>
-                                    <option value="1">فروردین</option>
-                                    <option value="2">اردیبهشت</option>
-                                    <option value="3">خرداد</option>
-                                </select>
-                                <select id="ph_real_account_birthday_year" class="mdb-select custom-select md-form">
-                                    <option value="" disabled selected>سال</option>
-                                    <option value="1">۱۳۶۴</option>
-                                    <option value="2">۱۳۶۵</option>
-                                    <option value="3">۱۳۶۶</option>
-                                </select>
+                                <label for="birthday">تاریخ تولد</label>
+                                <input data-type="individual" type="text" id="birthday" name="birthday"
+                                       class="form-control">
                             </div><!-- .ph-real-account-birthday -->
                             <div id="ph_real_account_gender" class="d-flex">
                                 <div class="custom-control custom-radio form-check-inline">
