@@ -9,12 +9,12 @@
 {% block content %}
     <div class="page-holder scroll-bar" id="ph_myscroll">
         <div class="ph-seller-panel">
-            <aside class="ph-seller-panel-sidebar
+            <aside id="ph_aside_myscroll" class="ph-seller-panel-sidebar aside-scroll-bar scroll-bar
                 {% if user.is_superuser %}pos-rel bg-color-5{% endif %}
                 {% if user.is_seller %}bg-color-5{% endif %}
                 {% if user.is_buyer %}bg-color-3{% endif %}
                 {% if user.is_logistic %}bg-color-2{% endif %}
-                {% if user.is_admin %}bg-color-4{% endif %}
+                {% if user.is_admin %}bg-color-7{% endif %}
             ">
                 <nav class="ph-sp-navbar navbar navbar-expand-lg">
                     <a class="ph-navbar-logo" href="{% url 'home:index' %}">
