@@ -263,18 +263,6 @@ input::placeholder { /* Most modern browsers support this now. */
 .bg-light{
     background-color: #fff !important;
 }
-.bg-color-green{
-    background-color: #00A693;
-}
-.bg-color-blue{
-    background-color: #618BB4;
-}
-.bg-color-crayola{
-    background-color: #F0E2A8;
-}
-.bg-color-yellow{
-    background-color: #F2D428;
-}
 
 .bg-color-1{
     background-color: #7E111A;
@@ -298,6 +286,10 @@ input::placeholder { /* Most modern browsers support this now. */
 
 .bg-color-6{
     background-color: #D1E9F0;
+}
+
+.bg-color-7{
+    background-color: #c1c1c1;
 }
 
 .ph-button{

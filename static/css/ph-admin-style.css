@@ -59,6 +59,31 @@
   margin-right:0px;
 }
 
+#ph_aside_myscroll::-webkit-scrollbar,
+#ph_myscroll::-webkit-scrollbar{
+  width:10px;
+}
+#ph_aside_myscroll::-webkit-scrollbar-track,
+#ph_myscroll::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0px 0px 6px rgba(2, 44, 59, 0.5);
+  background:rgba(2, 44, 59,.2);
+  border-radius:4px;
+}
+#ph_aside_myscroll::-webkit-scrollbar-thumb,
+#ph_myscroll::-webkit-scrollbar-thumb{
+  background:rgba(2, 44, 59,.6);
+  border:1px solid #999;
+  border-radius:4px;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(2, 44, 59, 0.5);
+}
+#ph_aside_myscroll::-webkit-scrollbar-thumb:hover,
+#ph_myscroll::-webkit-scrollbar-thumb:hover{
+  background:rgba(2, 44, 59, 1);
+}
+.aside-scroll-bar{
+  direction: ltr;
+}
+
 .ph-new-login .modal,
 ph-new-login-main .modal{
   position: absolute;
@@ -564,11 +589,13 @@ body{
   position: relative;
 }
 
-.ph-seller-panel aside.ph-seller-panel-sidebar {
+.ph-seller-panel aside {
   width: 15%;
   position: fixed;
   top: 0;
   min-height: 100vh;
+  overflow-y: scroll;
+  height: 100%;
   z-index: 999;
 }
 aside.pos-rel{
@@ -580,7 +607,7 @@ aside.pos-rel{
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
+  padding: 2rem 0 3rem;
   width: 100%;
 }
 
@@ -714,6 +741,10 @@ ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn:hover{
 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
   padding-right: 4rem;
   font-size: 14px;
+}
+
+ul.ph-sp-navbar-nav>li>.nav-second-level li a span{
+  font-size: .75rem;
 }
 
 .ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
@@ -2076,6 +2107,14 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
+.ph-seller-panel-sidebar.bg-color-2 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #ffdd43;
+}
+
+.ph-seller-panel-sidebar.bg-color-2 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
+
 .ph-logistic-panel .ph-admin-page-intro-text{
   background: #FFD100;
 }
@@ -2117,7 +2156,6 @@ a.ph-preview-placeholder:after {
         LOGISTIC .ph-logistic-profile
 =============================================================
 */
-.ph-logistic-profile{}
 .bg-color-2 .navbar-nav .nav-link,
 .bg-color-2 ul.ph-sp-navbar-nav>li>a.nav-link{
   color: #333333;
@@ -2142,6 +2180,14 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =========================================================================================================================
 =======================================================================================================================*/
+
+.ph-seller-panel-sidebar.bg-color-3 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #034258;
+}
+
+.ph-seller-panel-sidebar.bg-color-3 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
 
 .bg-color-3 .navbar-nav .nav-link,
 .bg-color-3 ul.ph-sp-navbar-nav>li>a.nav-link{
@@ -2556,6 +2602,14 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =========================================================================================================================
 =======================================================================================================================*/
+
+.ph-seller-panel-sidebar.bg-color-7 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #d8d8d8;
+}
+
+.ph-seller-panel-sidebar.bg-color-7 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
 
 .ph-dashboard-main.ph-admin-panel .ph-dm-title {
     background: #c1c1c1;
