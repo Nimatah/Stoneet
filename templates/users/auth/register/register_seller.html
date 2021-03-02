@@ -1,5 +1,9 @@
 {% extends 'base_auth_seller.html' %}
 
+{% block meta_content %}
+    {{ regions|json_script:"regions" }}
+{% endblock %}
+
 {% block auth_content %}
 
     <main class="ph-new-login-main">
