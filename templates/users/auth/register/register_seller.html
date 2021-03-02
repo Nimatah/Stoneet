@@ -35,19 +35,20 @@
                     <span>قبلا ثبت نام کرده اید؟</span>
                     <a href="#" data-toggle="modal"
                        data-target="#ph_LogIn_Modal">ورود</a>
+
                     <!-- LogIn_Modal -->
                     <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                         aria-labelledby="ph_LogIn_Modal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">ورود به پنل
+                                    <h5 class="modal-title" id="ph_LogIn_Title">ورود به پنل
                                         کاربری</h5>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                </div>
+                                </div><!-- .modal-header -->
                                 <div class="modal-body">
                                     <form method="post" action="{% url 'users:login' %}">
                                         {% csrf_token %}
@@ -66,7 +67,7 @@
                                                        id="defaultUnchecked">
                                                 <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر
                                                     بسپار</label>
-                                            </div>
+                                            </div><!-- .custom-checkbox -->
                                             <div class="ph-login-modal">
                                                 <button type="submit" id="ph_login_modal"
                                                         class="ph-btn ph-border-radius-small">ورود
@@ -78,10 +79,10 @@
                                                 href="{% url "users:register_buyer" %}">ثبت نام</a>
                                         </div><!-- .ph-signup-modal -->
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div><!-- .modal-body -->
+                            </div><!-- .modal-content -->
+                        </div><!-- .modal-dialog -->
+                    </div><!-- modal#ph_LogIn_Modal -->
                 </div><!-- #ph_sign_in_to_sign_up -->
                 <div class="ph-new-login-sign-up-alert">
                     <span>توجه:</span>
@@ -167,32 +168,32 @@
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-12 -->
                                     <div class="col-md-12 mb-3">
-                                        <label for="ph_company_account_name">شماره ثبت شرکت</label>
-                                        <input type="text" class="form-control" id="ph_company_account_name" value=""
+                                        <label for="ph_company_register_no">شماره ثبت شرکت</label>
+                                        <input type="text" class="form-control" id="ph_company_register_no" value=""
                                                required>
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-12 -->
                                     <div class="col-md-12 mb-3">
-                                        <label for="ph_company_account_name">شناسه ملی شرکت</label>
-                                        <input type="text" class="form-control" id="ph_company_account_name" value=""
+                                        <label for="ph_company_national_id">شناسه ملی شرکت</label>
+                                        <input type="text" class="form-control" id="ph_company_national_id" value=""
                                                required>
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-12 -->
                                     <div class="col-md-12 mb-3">
-                                        <label for="ph_company_account_name">شناسه مالی</label>
-                                        <input type="text" class="form-control" id="ph_company_account_name" value=""
+                                        <label for="ph_company_financial_no">شناسه مالی</label>
+                                        <input type="text" class="form-control" id="ph_company_financial_no" value=""
                                                required>
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-12 -->
                                     <div class="col-md-12 mb-3">
-                                        <label for="ph_company_account_name">حق چاپ امضا</label>
-                                        <input type="text" class="form-control" id="ph_company_account_name" value=""
+                                        <label for="ph_company_signature_right">حق چاپ امضا</label>
+                                        <input type="text" class="form-control" id="ph_company_signature_right" value=""
                                                required>
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
@@ -201,7 +202,6 @@
                                 </div><!-- .form-row -->
                             </div><!-- .needs-validation -->
                         </section><!-- .ph-company-account -->
-
                         <section class="ph-info-contacts" id="ph_info_contacts">
                             <h4 class="ph-new-login-2-title">اطلاعات تماس شرکت</h4>
                             <div id="ph_info_contact_form">
@@ -225,8 +225,8 @@
                                         </select>
                                     </div><!-- .col-md-6-->
                                     <div class="col-12 mb-3">
-                                        <label for="ph_info_contacts_address">آدرس</label>
-                                        <input type="text" class="form-control" id="ph_info_contacts_address"
+                                        <label for="ph_info_contacts_address_2">آدرس</label>
+                                        <input type="text" class="form-control" id="ph_info_contacts_address_2"
                                                placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
                                                value="" required>
                                         <div class="valid-feedback">
@@ -242,8 +242,8 @@
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
-                                        <label for="ph_info_contacts_location">موقعیت مکانی</label>
-                                        <input type="text" class="form-control" id="ph_info_contacts_location"
+                                        <label for="ph_info_contacts_location_2">موقعیت مکانی</label>
+                                        <input type="text" class="form-control" id="ph_info_contacts_location_2"
                                                placeholder="۱۲۳۴۵۶۷۸۹۰" value="" required>
                                         <div class="valid-feedback">
                                             لطفا از اعداد فارسی استفاده کنید
@@ -270,7 +270,6 @@
                                 </div><!-- .row -->
                             </div><!-- #ph_info_contact_form -->
                         </section><!-- .ph-info-contacts -->
-
                         <section class="ph-business-info" id="ph_business_info">
                             <h4 class="ph-new-login-2-title">اطلاعات مالی شرکت</h4>
                             <div id="ph_business_info_form">
@@ -295,7 +294,6 @@
                                 </div><!-- .row -->
                             </div><!-- #ph_business_info_form -->
                         </section><!-- .ph-business-info -->
-
                     </div><!-- .ph-conditional-wrapper -->
                     <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
                         <section class="ph-real-account" id="ph_real_account">
@@ -358,7 +356,6 @@
                                 </div><!-- .form-row -->
                             </div><!-- #ph_real_account_melli_shenasname -->
                         </section><!-- .ph-real-account -->
-
                         <section class="ph-info-contacts" id="ph_info_contacts">
                             <h4 class="ph-new-login-2-title">اطلاعات تماس شخصی</h4>
                             <div id="ph_info_contact_form">
@@ -391,8 +388,8 @@
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
-                                        <label for="ph_info_contacts_kodposti">کدپستی</label>
-                                        <input type="text" class="form-control" id="ph_info_contacts_kodposti"
+                                        <label for="ph_info_contacts_kodposti_2">کدپستی</label>
+                                        <input type="text" class="form-control" id="ph_info_contacts_kodposti_2"
                                                placeholder="۱۲۳۴۵-۶۷۸۹۰" value="" required>
                                         <div class="valid-feedback">
                                             لطفا از اعداد فارسی استفاده کنید
@@ -407,8 +404,8 @@
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
-                                        <label for="ph_info_contacts_tel">تلفن ثابت</label>
-                                        <input type="text" class="form-control" id="ph_info_contacts_tel"
+                                        <label for="ph_info_contacts_tel_2">تلفن ثابت</label>
+                                        <input type="text" class="form-control" id="ph_info_contacts_tel_2"
                                                placeholder="۰۲۱ "
                                                value="" required>
                                         <div class="valid-feedback">
@@ -416,8 +413,8 @@
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
-                                        <label for="ph_info_contacts_mobile">موبایل</label>
-                                        <input type="text" class="form-control" id="ph_info_contacts_mobile"
+                                        <label for="ph_info_contacts_mobile_2">موبایل</label>
+                                        <input type="text" class="form-control" id="ph_info_contacts_mobile_2"
                                                placeholder="۰۹ "
                                                value="" required>
                                         <div class="valid-feedback">
@@ -427,22 +424,21 @@
                                 </div><!-- .row -->
                             </div><!-- #ph_info_contact_form -->
                         </section><!-- .ph-info-contacts -->
-
                         <section class="ph-business-info" id="ph_business_info">
                             <h4 class="ph-new-login-2-title">اطلاعات مالی شخصی</h4>
                             <div id="ph_business_info_form">
                                 <div class="row">
                                     <div class="col-12 mb-3">
-                                        <label for="ph_business_info_brand">نام حساب بانکی شخصی</label>
-                                        <input type="text" class="form-control" id="ph_business_info_brand"
+                                        <label for="ph_business_bank_acc">نام حساب بانکی شخصی</label>
+                                        <input type="text" class="form-control" id="ph_business_bank_acc"
                                                placeholder="نام فروشگاه خود را تایپ کنید..." value="" required>
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-12 -->
                                     <div class="col-12 mb-3">
-                                        <label for="ph_business_info_sheba">شماره شبا</label>
-                                        <input type="text" class="form-control" id="ph_business_info_sheba"
+                                        <label for="ph_personal_info_sheba">شماره شبا</label>
+                                        <input type="text" class="form-control" id="ph_personal_info_sheba"
                                                placeholder="IR __-____-____-____-____-____-__" value="" required
                                                style="direction: ltr;text-align: left;">
                                         <div class="valid-feedback">
@@ -555,15 +551,13 @@
                                     </div><!-- .avatar-preview -->
                                     <label class="ph-image-label">تصویر پشت کارت ملی</label>
                                 </div><!-- .avatar-upload -->
-                            </div>
-                            <!-- .ph-conditional-wrapper-2 -->
+                            </div><!-- .ph-conditional-wrapper-2 -->
                         </div><!-- .container -->
                     </section><!-- .ph-business-uploadimg -->
                     <div class="ph-new-login-info-btn">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
                     </div><!-- .ph-new-login-info-btn -->
-                </div>
-                <!-- .form-group ph-new-login-info-uploadimg-wrapper -->
+                </div><!-- .form-group ph-new-login-info-uploadimg-wrapper -->
             </article><!-- .ph_new_login_seller_info_uploadimg -->
 
             <article class="tab" id="ph_new_login_the_end">
@@ -614,13 +608,15 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body"></div>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+
+                </div><!-- .modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- .modal-footer -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#error-modal -->
 
 {% endblock %}

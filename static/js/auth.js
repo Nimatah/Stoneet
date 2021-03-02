@@ -96,12 +96,6 @@ $(document).ready(function () {
 });
 
 
-//datepicker
-// $('#ph_logistic_license_start_date').datepicker({});
-//
-// $('#ph_logistic_license_end_date').datepicker({});
-//
-
 // Enter Tajious
 
 function pad(d) {
