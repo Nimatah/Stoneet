@@ -31,7 +31,56 @@
                     </div><!-- .ph-signup-submit-btn -->
                 </div><!-- .form-group -->
                 <div id="ph_sign_in_to_sign_up">
-                    <span>قبلا ثبت نام کرده اید؟</span><a href="#">ورود</a>
+                    <span>قبلا ثبت نام کرده اید؟</span>
+                    <a href="#" data-toggle="modal"
+                       data-target="#ph_LogIn_Modal">ورود</a>
+                    <!-- LogIn_Modal -->
+                    <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">ورود به پنل
+                                        کاربری</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="{% url 'users:login' %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                <span class="ph-modal-item">
+                                    <input type="text" name="username" class="form-control" id="login-username"
+                                           placeholder="نام کاربری خود را وارد کنید">
+                                </span>
+                                            <span class="ph-modal-item">
+                                    <input type="password" name="password" class="form-control" id="login-password"
+                                           placeholder="رمز عبور خود را وارد کنید">
+                                    <small id="login-error" class="form-text text-muted"></small>
+                                </span>
+                                            <div class="custom-control custom-checkbox mr-2">
+                                                <input type="checkbox" class="custom-control-input"
+                                                       id="defaultUnchecked">
+                                                <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر
+                                                    بسپار</label>
+                                            </div>
+                                            <div class="ph-login-modal">
+                                                <button type="submit" id="ph_login_modal"
+                                                        class="ph-btn ph-border-radius-small">ورود
+                                                </button>
+                                            </div><!-- .ph-login-modal -->
+                                        </div><!-- .form-group -->
+                                        <div class="ph-signup-modal" id="ph_SignUp_Modal">
+                                            <span>قبلا ثبت نام نکرده اید؟</span><a
+                                                href="{% url "users:register_buyer" %}">ثبت نام</a>
+                                        </div><!-- .ph-signup-modal -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- #ph_sign_in_to_sign_up -->
                 <div class="ph-new-login-sign-up-alert">
                     <span>توجه:</span>
