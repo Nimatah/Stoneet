@@ -377,9 +377,48 @@
                             <!-- ph-cp-header-parts shell-5 -->
                             <div class="ph-cp-panel ph-border-radius ph-white-block">
 
-                                555555555555555555555555555555555555555555555555555555555555555555555
 
-                                <div class="ph-cpp-btn" role="group" aria-label="...">
+                                        <div class="ph-panel-title">
+                                            <span class="title">اطلاعات قرارداد</span>
+                                        </div>
+                                        <div class="ph-tcw-download">
+                                            <p>متن قرارداد را دانلود نمایید و بعد از امضا در جدول زیر بارگذاری کنید</p>
+                                            <a href="#" class="ph-btn ph-download"><i class="fas fa-download"></i>دانلود
+                                                قرارداد</a>
+                                        </div>
+                                        <div class="form-row ph-tcw-upload align-items-center">
+
+                                            <table class="common_table ph-table table table-bordered text-center">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center" scope="col">ردیف</th>
+                                                    <th class="text-center" scope="col">شماره صفحه</th>
+                                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
+                                                    <th class="text-center" scope="col">پیش‌نمایش عکس</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="template_row">
+                                                    <td class="text-center" scope="row">۱</td>
+                                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
+                                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i class="fas fa-upload"></i> بارگذاری</a></td>
+                                                    <td class="text-center"><img src="" alt=""></td>
+                                                    <td class="text-center" class="controls">
+                                                        <a href="#" class="list_cancel" title="Delete Row">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <tr class="no_entries_row">
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه جدید</a>
+                                        </div>
+                                        <!-- form-row -->
+
+                                <div class="ph-cpp-btn mt-5" role="group" aria-label="...">
                                     <label for='level5' id="back-level5" class="back">
                                         <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                                     </label>
@@ -444,7 +483,7 @@
                                     <label for='level7' id="back-level7" class="back">
                                         <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                                     </label>
-                                    <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت محصول</button>
+                                    <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت سفارش</button>
                                 </div>
                             </div>
                             <!-- ph-cp-panel ph-border-radius ph-white-block -->
@@ -463,4 +502,55 @@
 
 {% block footer_static %}
         <script src="{% static 'js/list-product.js' %}"></script>
+    <script>
+        $('.extra-fields-customer').click(function () {
+            $('.customer_records').clone().appendTo('.customer_records_dynamic');
+            $('.customer_records_dynamic .customer_records').addClass('single remove');
+            $('.single .extra-fields-customer').remove();
+            $('.single').append('<a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>');
+            $('.customer_records_dynamic > .single').attr("class", "remove");
+
+            $('.customer_records_dynamic input').each(function () {
+                var count = 0;
+                var fieldname = $(this).attr("name");
+                $(this).attr('name', fieldname + count);
+                count++;
+            });
+
+        });
+
+        $(document).on('click', '.remove-field', function (e) {
+            $(this).parent('.remove').remove();
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        function addNewRow() {
+          var template = $('tr.template_row:first');
+          $('.no_entries_row').css('display','none');
+          var newRow = template.clone();
+          var lastRow = $('tr.template_row:last').after(newRow);
+
+        $('.list_cancel').on('click',function(event){
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          $(this).closest('tr').remove();
+          if($('.list_cancel').length ===1){
+            $('.no_entries_row').css('display','none');
+          }
+          console.log($('.list_cancel').length)
+        });
+         console.log($('.list_cancel').length)
+        $('select.label').on('change',function(event){
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+          $(this).css('background-color',$(this).val());
+
+        })
+
+        }
+
+        $('a.list_add').on('click',addNewRow);
+
+    </script>
 {% endblock %}

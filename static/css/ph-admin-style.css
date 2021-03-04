@@ -4,18 +4,6 @@
   font-size: .7rem;
 }
 
-/*=======================================================================================================================
-/*=======================================================================================================================
-/*=======================================================================================================================
-
-                                            SELLER PANEL REGISTRATION
-
-=========================================================================================================================
-=========================================================================================================================
-=======================================================================================================================*/
-
-@import "fonts.css";
-
 #ph_myscroll::-webkit-scrollbar{
   width:10px;
 }
@@ -42,16 +30,54 @@
   margin-right:0px;
 }
 
-.ph-new-login .modal,
-ph-new-login-main .modal{
+#ph_aside_myscroll::-webkit-scrollbar,
+#ph_myscroll::-webkit-scrollbar{
+  width:10px;
+}
+#ph_aside_myscroll::-webkit-scrollbar-track,
+#ph_myscroll::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0px 0px 6px rgba(2, 44, 59, 0.5);
+  background:rgba(2, 44, 59,.2);
+  border-radius:4px;
+}
+#ph_aside_myscroll::-webkit-scrollbar-thumb,
+#ph_myscroll::-webkit-scrollbar-thumb{
+  background:rgba(2, 44, 59,.6);
+  border:1px solid #999;
+  border-radius:4px;
+  -webkit-box-shadow: inset 0px 0px 10px rgba(2, 44, 59, 0.5);
+}
+#ph_aside_myscroll::-webkit-scrollbar-thumb:hover,
+#ph_myscroll::-webkit-scrollbar-thumb:hover{
+  background:rgba(2, 44, 59, 1);
+}
+.aside-scroll-bar{
+  direction: ltr;
+}
+.ph-new-login .modal{
   position: absolute;
 }
+
+
+
+/*=======================================================================================================================
+/*=======================================================================================================================
+/*=======================================================================================================================
+
+                                            SELLER PANEL REGISTRATION
+
+=========================================================================================================================
+=========================================================================================================================
+=======================================================================================================================*/
+
+@import "fonts.css";
+
+
 /*
 =============================================================================
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
 =============================================================================
 */
-
 .ph-new-login aside.ph-registration-panel-sidebar {
   width: 30%;
   background: #f5f5f5;
@@ -161,6 +187,10 @@ input.invalid {
   width: 69%;
   margin-right: auto;
   position: relative;
+}
+.ph-new-login #ph_new_login_the_end{
+    width: 75%;
+    margin: auto;
 }
 
 #ph_new_login_form {
@@ -318,15 +348,15 @@ input.invalid {
 */
 
 #ph_new_login_seller_info .ph-new-login-info-wrapper,
-#ph_new_login_buyer_info .ph-new-login-info-wrapper{
+#ph_new_login_buyer_info .ph-new-login-info-wrapper,
+.ph-new-login-info-uploadimg-wrapper,
+.ph-new-login-info-end-wrapper,
+.ph-new-login-logistic-info-wrapper,
+.ph-new-login-logistic-business-end-wrapper,
+.ph-new-login-logistic-business-license-wrapper{
   width: 85%;
   margin-left: auto;
-}
-
-.ph-new-login-info-uploadimg-wrapper,
-.ph-new-login-info-end-wrapper{
-  width: 85%;
-  margin: auto;
+  padding-right: 2rem;
 }
 
 #ph-individual-wrapper-2{
@@ -547,11 +577,13 @@ body{
   position: relative;
 }
 
-.ph-seller-panel aside.ph-seller-panel-sidebar {
+.ph-seller-panel aside {
   width: 15%;
   position: fixed;
   top: 0;
   min-height: 100vh;
+  overflow-y: scroll;
+  height: 100%;
   z-index: 999;
 }
 aside.pos-rel{
@@ -563,7 +595,7 @@ aside.pos-rel{
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 3rem 0;
+  padding: 2rem 0 3rem;
   width: 100%;
 }
 
@@ -699,6 +731,10 @@ ul.ph-sp-navbar-nav>li>.nav-second-level li a {
   font-size: 14px;
 }
 
+ul.ph-sp-navbar-nav>li>.nav-second-level li a span{
+  font-size: .75rem;
+}
+
 .ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
     padding: .3rem 1.2rem;
 }
@@ -782,7 +818,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main.ph-logistic-dashboard .ph-dm-title{
     background: #ffd100;
-    color: #7e111a;
+    color: #022C3B;
 }
 
 .ph-dashboard-main .ph-dm-panel{
@@ -797,9 +833,19 @@ a.nav-link[aria-expanded="true"]:after {
     padding: 3rem 1rem 1rem;
     position: relative;
     border-top: 3px solid #D1E9F0;
-    height: 250px;
+    min-height: 250px;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #CCCCCC;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-1:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 .title{
@@ -808,7 +854,7 @@ a.nav-link[aria-expanded="true"]:after {
     right: -10px;
     padding: .5rem;
     background: #D1E9F0;
-    border-radius: 0 10px;
+    border-radius: 10px;
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1 ul{}
@@ -845,6 +891,15 @@ a.nav-link[aria-expanded="true"]:after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-add:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88 114 195 / 20%);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-add span{
@@ -879,6 +934,16 @@ a.nav-link[aria-expanded="true"]:after {
     border-top: 3px solid #022C3B;
     margin-bottom: 2.5rem;
     border-bottom: 1px solid #cccccc;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.ph-dashboard-main .ph-dm-panel .ph-dmp-section-2:hover {
+    transform: translateY(-5px);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-2 .number{
@@ -1242,6 +1307,14 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main .ph-cpp-btn button{
+    margin: 0;
+    background: #4CE0B3;
+    border: 1px solid #4CE0B3;
+}
+
+.ph-dashboard-main .ph-cpp-btn button:hover{
+  background: #FFFFFF;
+  color: #4CE0B3;
 }
 
 .ph-dashboard-main button.btn {
@@ -1274,6 +1347,7 @@ a.nav-link[aria-expanded="true"]:after {
 
 .ph-dashboard-main .part-4-item-detail-desc{
     margin: 1rem;
+  padding: 0;
 }
 
 .ph-dashboard-main .part-4-item-detail-desc span:nth-last-child(1){
@@ -1972,9 +2046,7 @@ a.ph-preview-placeholder:after {
 .ph-new-login.logistic-register aside.ph-registration-panel-sidebar span{
   color: #333333;
 }
-
-.ph-new-login-logistic-business-license-wrapper,
-.ph-new-login-logistic-info-wrapper{
+{
   width: 85%;
   margin-left: auto;
 }
@@ -2050,6 +2122,14 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
+.ph-seller-panel-sidebar.bg-color-2 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #ffdd43;
+}
+
+.ph-seller-panel-sidebar.bg-color-2 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
+
 .ph-logistic-panel .ph-admin-page-intro-text{
   background: #FFD100;
 }
@@ -2091,7 +2171,6 @@ a.ph-preview-placeholder:after {
         LOGISTIC .ph-logistic-profile
 =============================================================
 */
-.ph-logistic-profile{}
 .bg-color-2 .navbar-nav .nav-link,
 .bg-color-2 ul.ph-sp-navbar-nav>li>a.nav-link{
   color: #333333;
@@ -2116,6 +2195,14 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =========================================================================================================================
 =======================================================================================================================*/
+
+.ph-seller-panel-sidebar.bg-color-3 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #034258;
+}
+
+.ph-seller-panel-sidebar.bg-color-3 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
 
 .bg-color-3 .navbar-nav .nav-link,
 .bg-color-3 ul.ph-sp-navbar-nav>li>a.nav-link{
@@ -2165,7 +2252,7 @@ a.ph-preview-placeholder:after {
          view_order   ph-view-order
 =============================================================
 */
-.ph-list-order .ph-admin-page-intro-text{
+.ph-buyer-panel.ph-view-order .ph-admin-page-intro-text{
     background: #022C3B;
     color: #fff;
 }
@@ -2337,7 +2424,7 @@ a.ph-preview-placeholder:after {
     position: absolute;
     top: 120%;
     width: 150%;
-    color: #D4A373;
+    color: #022C3B;
     min-width: 125px;
     margin: auto;
     font-size: 11px;
@@ -2381,7 +2468,7 @@ a.ph-preview-placeholder:after {
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(5),
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(6),
 .ph-view-order .ph-cp-header-parts.shell-7 ul.ph-cp-level-7 li:nth-child(7){
-  background: #D4A373;
+  background: #022C3B;
 }
 
 .ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2):before,
@@ -2416,7 +2503,7 @@ a.ph-preview-placeholder:after {
     top: 16px;
     height: 10px;
     width: 430%;
-    background: #D4A373;
+    background: #022C3B;
     margin: auto;
     z-index: 0;
 }
@@ -2460,7 +2547,7 @@ a.ph-preview-placeholder:after {
     top: 16px;
     height: 10px;
     width: 240%;
-    background: #D4A373;
+    background: #022C3B;
     margin: auto;
     z-index: 0;
 }
@@ -2531,6 +2618,31 @@ a.ph-preview-placeholder:after {
 =========================================================================================================================
 =======================================================================================================================*/
 
+.ph-seller-panel-sidebar.bg-color-7 ul.ph-sp-navbar-nav>li>.nav-second-level {
+    background: #d8d8d8;
+}
+
+.ph-seller-panel-sidebar.bg-color-7 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
+    padding: .3rem 1.2rem;
+}
+
+.ph-dashboard-main.ph-admin-panel .ph-dm-title {
+    background: #c1c1c1;
+    color: #FFffff;
+    color: #333;
+  display: flex;
+  justify-content: space-between;
+}
+.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text{
+    background: #c1c1c1;
+    color: #333;
+    color: #FFffff;
+}
+.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text span{
+    color: #FFffff;
+    color: #333;
+}
+
 .ph-dm-add-user{
     margin: 0;
     background: #4CE0B3;
@@ -2575,59 +2687,13 @@ a.ph-preview-placeholder:after {
     margin-left: .2rem;
     font-size: .65rem;
 }
-/*
-=============================================================
-        ADMIN PANEL   MAIN .buyer-management
-=============================================================
-*/
-.ph-dashboard-main.ph-list-admin .ph-dm-title{
-    background: #022C3B;
-    color: #ffd100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .seller-management
+        ADMIN PANEL   MAIN .ph-admin-dashboard
 =============================================================
 */
-.ph-dashboard-main.ph-list-seller .ph-dm-title{
-    background: #D4A373;
-    color: #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-/*
-=============================================================
-        ADMIN PANEL   MAIN .logistic-management
-=============================================================
-*/
-.ph-dashboard-main.ph-list-logistic .ph-dm-title{
-    background: #ffd100;
-    color: #333333;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*
-=============================================================
-        ADMIN PANEL   MAIN .management-create-buyer
-=============================================================
-*/
-.management-create-buyer .ph-admin-page-intro-text{
-    background: #022C3B;
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-}
-.management-create-buyer .ph-admin-page-intro-text span{
-  color: #ffd100;
-}
 
 /*
 =============================================================
@@ -2693,7 +2759,7 @@ a.ph-preview-placeholder:after {
     min-height: 90px;
 }
 
-.ph-qc-product{
+.ph-qc-product-section{
     padding: 30px;
     background: #ececec;
     border-radius: 10px;
@@ -2702,7 +2768,7 @@ a.ph-preview-placeholder:after {
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-.ph-qc-product:hover {
+.ph-qc-product-section:hover {
     transform: translateY(-5px);
     background: #FFFFFF;
     box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
@@ -2752,11 +2818,41 @@ a.ph-preview-placeholder:after {
 }
 /*
 =============================================================
-        ADMIN PANEL   MAIN .management-create-logistic
+        ADMIN PANEL   MAIN .ph-create-seller
 =============================================================
 */
-
-
+.ph-create-seller .ph-new-login-info-wrapper{
+  width: 85%;
+  margin: auto;
+}
+.ph-create-seller .ph-new-login-alert{
+  margin: 1rem 0;
+}
+.ph-create-seller section{
+  margin-bottom: 1rem;
+}
+.ph-dashboard-main.ph-create-seller  .ph-panel-title{
+  margin-bottom: .5rem;
+}
+.ph-create-seller .form-check-inline{
+  margin-right: 0;
+}
+.ph-create-seller p.ph-private-business-details{
+  margin: .5rem 0;
+  font-size: .75rem;
+}
+.ph-create-seller p.ph-private-business-details span{
+  font-weight: 600;
+}
+.ph-dashboard-main.ph-create-seller label {
+    font-size: .8rem;
+}
+.ph-dashboard-main.ph-create-seller .ph-real-account-birthday label{
+  width: 50%;
+}
+.ph-dashboard-main.ph-create-seller .ph-real-account-birthday select{
+  margin-right: 1rem;
+}
 
 
 

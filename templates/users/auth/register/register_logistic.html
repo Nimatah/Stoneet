@@ -35,6 +35,7 @@
                     <span>قبلا ثبت نام کرده اید؟</span>
                     <a href="#" data-toggle="modal"
                        data-target="#ph_LogIn_Modal">ورود</a>
+
                     <!-- LogIn_Modal -->
                     <div class="modal fade ph-modal" id="ph_LogIn_Modal" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -47,7 +48,7 @@
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                </div>
+                                </div><!-- .modal-header -->
                                 <div class="modal-body">
                                     <form method="post" action="{% url 'users:login' %}">
                                         {% csrf_token %}
@@ -66,7 +67,7 @@
                                                        id="defaultUnchecked">
                                                 <label class="custom-control-label" for="defaultUnchecked">مرا به خاطر
                                                     بسپار</label>
-                                            </div>
+                                            </div><!-- .custom-checkbox -->
                                             <div class="ph-login-modal">
                                                 <button type="submit" id="ph_login_modal"
                                                         class="ph-btn ph-border-radius-small">ورود
@@ -78,10 +79,10 @@
                                                 href="{% url "users:register_buyer" %}">ثبت نام</a>
                                         </div><!-- .ph-signup-modal -->
                                     </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div><!-- .modal-body -->
+                            </div><!-- .modal-content -->
+                        </div><!-- .modal-dialog -->
+                    </div><!-- modal#ph_LogIn_Modal -->
                 </div><!-- #ph_sign_in_to_sign_up -->
                 <div class="ph-new-login-sign-up-alert">
                     <span>توجه:</span>
@@ -119,18 +120,14 @@
                                             لطفا از اعداد فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
-
-
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_logistic_license_start_date">تاریخ شروع اعتبار</label>
                                         <input type="input" class="form-control" id="ph_logistic_license_start_date">
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
-
                                         <label for="ph_logistic_license_end_date">تاریخ پایان اعتبار</label>
                                         <input type="input" class="form-control" id="ph_logistic_license_end_date">
                                     </div><!-- .col-md-6 -->
-
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_logistic_license_record">شماره ثبت</label>
                                         <input type="text" class="form-control" id="ph_logistic_license_record" value=""
@@ -165,11 +162,9 @@
                                             لطفا از اعداد فارسی استفاده کنید
                                         </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
-
                                 </div><!-- .form-row -->
                             </div><!-- #ph_logistic_business_name_lastname .needs-validation -->
                         </section><!-- .ph-logistic-business-license -->
-
                         <section class="ph-logistic-business-uploadimg">
                             <h4 class="ph-new-login-2-title">آپلود فایل‌ها</h4>
                             <div class="container">
@@ -205,12 +200,8 @@
                             <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
                         </div><!-- .ph-new-login-logistic-info-btn -->
                     </div><!-- .form-group -->
-
-
-                </div>
-                <!-- ph-new-login-logistic-business-license-wrapper -->
-            </article>
-            <!-- ph_new_login_logistic_business_license -->
+                </div><!-- ph-new-login-logistic-business-license-wrapper -->
+            </article><!-- ph_new_login_logistic_business_license -->
 
             <article class="tab" id="ph_new_login_logistic_info">
                 <div class="ph-new-login-logistic-info-wrapper">
@@ -252,8 +243,6 @@
                                 </div><!-- .col-md-6 -->
                             </div><!-- .form-row -->
                         </div><!-- #ph_logistic_name_lastname -->
-
-
                         <div id="ph_logistic_melli_shenasname" class="needs-validation" novalidate>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
@@ -274,7 +263,6 @@
                                 </div><!-- .col-md-6 -->
                             </div><!-- .form-row -->
                         </div><!-- #ph_logistic_melli_shenasname -->
-
                         <div id="ph_logistic_contact_form">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
@@ -341,7 +329,6 @@
                             </div><!-- .row -->
                         </div><!-- #ph_logistic_contact_form -->
                     </section><!-- .ph-logistic-contacts -->
-
                     <section class="ph-logistic-info-uploadimg">
                         <h4 class="ph-new-login-2-title">آپلود فایل‌ها</h4>
                         <div class="container">
@@ -370,10 +357,9 @@
                                     </div><!-- .avatar-preview -->
                                     <label class="ph-image-label">آپلود پشت کارت ملی</label>
                                 </div><!-- .avatar-upload -->
-                            </div><!--  -->
+                            </div><!-- .d-flex -->
                         </div><!-- .container -->
                     </section><!-- .ph-logistic-info-uploadimg -->
-
                     <div class="ph-new-login-logistic-info-btn my-2">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ادامه</button>
                     </div><!-- .ph-new-login-logistic-info-btn -->
@@ -407,17 +393,15 @@
                     <div class="ph-new-login-logistic-info-btn mt-3">
                         <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">نهایی کردن ثبت نام</button>
                     </div><!-- .ph-new-login-logistic-info-btn -->
-                </div>
+                </div><!-- .ph-new-login-logistic-business-end-wrapper -->
                 <!-- ph-new-login-logistic-business-end-wrapper -->
             </article><!-- #ph_new_login_logistic_the_end -->
-
             <div style="overflow:auto;">
                 <div style="float:right;">
                     <button type="button" id="prevBtn" onclick="nextPrev(-1)">مرحله قبلی</button>
                     <button type="button" id="nextBtn" onclick="nextPrev(1)">مرحله بعدی</button>
                 </div>
             </div>
-
         </form><!-- #ph_new_login_form -->
     </main><!-- .ph-new-login-main -->
 
@@ -429,13 +413,15 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body"></div>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+
+                </div><!-- .modal-body -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!-- .modal-footer -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#error-modal -->
 
 {% endblock %}

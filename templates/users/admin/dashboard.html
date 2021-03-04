@@ -1,2 +1,126 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+
+
+
+{% block admin_content %}
+<main class="ph-dashboard-main ph-admin-panel ph-admin-dashboard">
+    <div class="container">
+        <div class="ph-dm-title">
+            <div class="title">داشبورد ادمین</div>
+        </div>
+        <div class="ph-dm-panel">
+            <div class="row">
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-info">
+                        <div class="title">مشخصات ادمین</div>
+                        <ul>
+                            <li>کد ادمین: <span>SR-345261</span></li>
+                            <li>نام ادمین: <span>مصطفی چراغی</span></li>
+                            <li>سطح دسترسی: <span>سطح یک</span></li>
+                        </ul>
+                        <div class="ph-button">
+                            <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
+                        </div><!-- ph-button -->
+                    </div><!-- ph-dmp-section-1 ph-user-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-product-info">
+                        <div class="title">تعداد فروشندگان</div>
+                        <ul>
+                            <li>آماده به کار: <span>۱۲</span></li>
+                            <li>تایید شده: <span>۳۲</span></li>
+                            <li>رد شده: <span>۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-product-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-product-info">
+                        <div class="title">تعداد حمل و نقل</div>
+                        <ul>
+                            <li>آماده به کار: <span>۱۲</span></li>
+                            <li>تایید شده: <span>۳۲</span></li>
+                            <li>رد شده: <span>۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-product-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">تعداد محصولات</div>
+                        <ul>
+                            <li>تایید شده: <span>۳۲</span></li>
+                            <li>آماده بررسی: <span>۱۲</span></li>
+                            <li>رد شده: <span>۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">مشاهده تعداد صورتحساب‌ها</div>
+                        <ul>
+                            <li>فروش محصول: <span>۳۲</span></li>
+                            <li>حمل ونقل: <span>۱۲</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">مشاهده تعداد قراردادها</div>
+                        <ul>
+                            <li>تایید شده: <span>۳۲</span></li>
+                            <li>آماده بررسی: <span>۱۲</span></li>
+                            <li>رد شده: <span>۷</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-order-info">
+                        <div class="title">سفارشات</div>
+                        <ul>
+                            <li>سفارشات ثبت شده آماده تایید مدارک: <span>۱۲</span></li>
+                            <li>در انتظار تایید فروشنده: <span>۷۸</span></li>
+                            <li>در انتظار تعیین هزینه حمل و نقل: <span>۴۵</span></li>
+                            <li>تایید شده توسط حمل و نقل: <span>۶۵</span></li>
+                            <li>قرارداد امضا شده: <span>۳۴</span></li>
+                            <li>مدارک مالی آپلود شده: <span>۸۳</span></li>
+                            <li>تایید نهایی شده: <span>۲۶</span></li>
+                            <li>انجام شده: <span>۱۹</span></li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <a href="#" class="ph-dmp-section-add ph-dash-add-product">
+                        <span>افزودن محصول جدید </span>
+                        <i class="fas fa-plus"></i>
+                    </a><!-- ph-dmp-section-add ph-dash-add-product -->
+                    <a href="#" class="ph-dmp-section-add ph-dash-list-product">
+                        <span>لیست محصولات </span>
+                        <i class="fas fa-th-list"></i>
+                    </a><!-- ph-dmp-section-add ph-dash-list-product -->
+                    <a href="#" class="ph-dmp-section-add ph-dash-view-orders">
+                        <span>مشاهده سفارشات </span>
+                        <i class="fas fa-list-ul"></i>
+                    </a><!-- ph-dmp-section-add ph-dash-view-orders -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-user-mine-address">
+                        <div class="title">اخرین معادن ثبت شده</div>
+                        <ul>
+                            <li>نام اولین معدن ثبت شده</li>
+                            <li>نام دومین معدن ثبت شده</li>
+                            <li>نام سومین معدن ثبت شده</li>
+                            <li>نام چهارمین معدن ثبت شده</li>
+                        </ul>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
+                    <div class="ph-dmp-section-1 ph-dash-condition-panel">
+                        <div class="title">وضعیت پنل</div>
+                        <span>در انتظار تایید</span>
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+            </div><!-- row -->
+        </div><!-- ph-dm-panel -->
+    </div><!-- container -->
+</main><!-- ph-dashboard-main seller-panel ph-seller-dashboard -->
+{% endblock %}

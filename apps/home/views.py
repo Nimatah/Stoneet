@@ -13,3 +13,19 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['products'] = Product.objects.filter()[:self.PRODUCTS_LIMIT]
         return context
+
+
+class ContactUsView(TemplateView):
+
+    template_name = 'home/contact_us.html'
+
+
+class TermsConditionsView(TemplateView):
+
+    template_name = 'home/terms_and_conditions.html'
+
+
+class FAQView(TemplateView):
+
+    template_name = 'home/faq.html'
+
