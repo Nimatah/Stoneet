@@ -2,3 +2,8 @@ from .dashboard import AdminDashboardView
 from .user_management import *
 from .product_management import *
 from .category_management import *
+from .auction_management import *
+from .order_management import *
+from .configurations import *
+from .sample_management import *
+from .invoice_management import *

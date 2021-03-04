@@ -68,6 +68,19 @@ admin_patterns = [
     path('panel/admin-qc-product-details/', admin.QCProductDetailsView.as_view(), name='admin_qc_product_details'),
     path('panel/admin-add-category/', admin.AddCategoryView.as_view(), name='admin_add_category'),
     path('panel/admin-list-category/', admin.ListCategoryView.as_view(), name='admin_list_category'),
+    path('panel/admin-list-auction/', admin.AdminAuctionView.as_view(), name='admin_list_auction'),
+    path('panel/admin-auction-details/1/', admin.AdminAuctionDetailsView.as_view(), name='admin_auction_details'),
+    path('panel/admin-list-samples', admin.AdminSampleView.as_view(), name='admin_list_samples'),
+    path('panel/admin-sample-details/1/', admin.AdminSampleDetailsView.as_view(), name='admin_sample_details'),
+    path('panel/admin-list-orders/', admin.AdminOrdersView.as_view(), name='admin_list_order'),
+    path('panel/admin-order-qc/1/', admin.AdminOrderQCView.as_view(), name='admin_order_qc'),
+    path('panel/admin-configurations/', admin.AdminConfigView.as_view(), name='admin_config'),
+    path('panel/admin-list-buyer-invoice/', admin.AdminBuyerInvoiceView.as_view(), name='admin_list_buyer_invoice'),
+    path('panel/admin-buyer-invoice-details/1/', admin.AdminBuyerInvoiceDetailsView.as_view(), name='admin_buyer_invoice_details'),
+    path('panel/admin-list-seller-invoice/', admin.AdminSellerInvoiceView.as_view(), name='admin_list_seller_invoice'),
+    path('panel/admin-seller-invoice-details/1/', admin.AdminSellerInvoiceDetailsView.as_view(), name='admin_seller_invoice_details'),
+    path('panel/admin-list-logistic-invoice/', admin.AdminLogisticInvoiceView.as_view(), name='admin_list_logistic_invoice'),
+    path('panel/admin-logistic-invoice-details/1/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
 ]
 
 application_patterns = [

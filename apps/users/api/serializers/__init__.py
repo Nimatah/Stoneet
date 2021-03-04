@@ -1,2 +1,3 @@
 from .seller import SellerAddProductPart1ValidationSerializer
 from .registration import RegistrationAuthValidationSerializer
+from .mine import MineSerializer
