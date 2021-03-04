@@ -141,7 +141,7 @@
     "fields": {
       "created_at": "2021-01-28T09:10:40.713",
       "updated_at": "2021-01-28T11:32:49.265",
-      "title": "نوع دانه بندی",
+      "title": "نوع سایز",
       "value_type": "range",
       "options": "",
       "unit": "",

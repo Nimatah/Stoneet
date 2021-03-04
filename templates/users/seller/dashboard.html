@@ -15,12 +15,12 @@
                     <div class="ph-dmp-section-1 ph-user-info">
                         <div class="title">مشخصات کاربری</div>
                         <ul>
-                            <li>کد فروشنده: <span>123456</span></li>
-                            <li>نام فروشنده: <span>مصطفی چراغی</span></li>
-                            <li>نام تجاری: <span>معدنکاران</span></li>
+                            <li>کد فروشنده: <span>{{ user.id }}</span></li>
+                            <li>نام فروشنده: <span>{{ user.profile.get_full_name }}</span></li>
+                            <li>نام تجاری: <span>{{ user.profile.get_full_name }}</span></li>
                         </ul>
                         <div class="ph-button">
-                            <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
+                            <a href="{% url 'users:profile_seller' %}" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
                         </div><!-- ph-button -->
                     </div><!-- ph-dmp-section-1 ph-user-info -->
                 </div><!-- col-4 -->
@@ -28,11 +28,10 @@
                     <div class="ph-dmp-section-1 ph-user-product-info">
                         <div class="title">مدیریت محصولات</div>
                         <ul>
-                            <li>تعداد کالاهای درج‌شده: <span>۱۲</span></li>
-                            <li>تعداد کالاهای تاییدشده: <span>۴۵</span></li>
-                            <li>کالاهای درانتظار تایید: <span>۷۸</span></li>
-                            <li>بررسی مجدد: <span>۱</span></li>
-                            <li>کالاهای رد شده: <span>۰</span></li>
+                            <li>تعداد کالاهای درج‌شده: <span>{{ product_queryset.count }}</span></li>
+                            <li>تعداد کالاهای تاییدشده: <span>{{ product_queryset.accepted.count }}</span></li>
+                            <li>کالاهای درانتظار تایید: <span>{{ product_queryset.pending.count }}</span></li>
+                            <li>کالاهای رد شده: <span>{{ product_queryset.rejected.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-product-info -->
                 </div><!-- col-4 -->
@@ -40,23 +39,23 @@
                     <div class="ph-dmp-section-1 ph-user-order-info">
                         <div class="title">سفارشات</div>
                         <ul>
-                            <li>تعداد سفارش: <span>۱۲</span></li>
-                            <li>سفارش‌های انجام شده: <span>۷۸</span></li>
-                            <li>سفارش‌های درحال انجام: <span>۴۵</span></li>
-                            <li>سفارشات در انتظار بررسی: <span>۱</span></li>
+                            <li>تعداد سفارش: <span>{{ order_queryset.count }}</span></li>
+                            <li>سفارش‌های انجام شده: <span>{{ order_queryset.accepted.count }}</span></li>
+                            <li>سفارش‌های درحال انجام: <span>{{ order_queryset.rejected.count }}</span></li>
+                            <li>سفارشات در انتظار بررسی: <span>{{ order_queryset.pending.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
                 <div class="col-4">
-                    <a href="#" class="ph-dmp-section-add ph-dash-add-product">
+                    <a href="{% url 'users:seller_add_product' %}" class="ph-dmp-section-add ph-dash-add-product">
                         <span>افزودن محصول جدید </span>
                         <i class="fas fa-plus"></i>
                     </a><!-- ph-dmp-section-add ph-dash-add-product -->
-                    <a href="#" class="ph-dmp-section-add ph-dash-list-product">
+                    <a href="{% url 'users:seller_list_product' %}" class="ph-dmp-section-add ph-dash-list-product">
                         <span>لیست محصولات </span>
                         <i class="fas fa-th-list"></i>
                     </a><!-- ph-dmp-section-add ph-dash-list-product -->
-                    <a href="#" class="ph-dmp-section-add ph-dash-view-orders">
+                    <a href="{% url 'users:seller_list_order' %}" class="ph-dmp-section-add ph-dash-view-orders">
                         <span>مشاهده سفارشات </span>
                         <i class="fas fa-list-ul"></i>
                     </a><!-- ph-dmp-section-add ph-dash-view-orders -->
@@ -75,7 +74,7 @@
                 <div class="col-4">
                     <div class="ph-dmp-section-1 ph-dash-condition-panel">
                         <div class="title">وضعیت پنل</div>
-                        <span>در انتظار تایید</span>
+                        <span>{{ user.get_state_display }}</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
             </div><!-- row -->

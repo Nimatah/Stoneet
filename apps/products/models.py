@@ -1,11 +1,11 @@
-from typing import Union, List
+from typing import Union, List, Dict, Any
 
 from django.db import models
 from mptt.models import MPTTModel, TreeManager, TreeForeignKey
 
 from apps.core import SPLIT
 from apps.core.models import TimestampedModel, BaseMedia
-from apps.users.models import User
+from apps.users.models import User, Mine
 
 
 class AttributeManager(models.Manager):
@@ -38,8 +38,25 @@ class ProductAttributeManager(models.Manager):
         return self.filter(attribute__is_special=True)
 
 
+class ProductQueryset(models.QuerySet):
+
+    def accepted(self) -> 'ProductQueryset':
+        return self.filter(state=Product.STATE_ACCEPTED)
+
+    def rejected(self) -> 'ProductQueryset':
+        return self.filter(state=Product.STATE_REJECTED)
+
+    def pending(self) -> 'ProductQueryset':
+        return self.filter(state=Product.STATE_PENDING)
+
+
 class ProductManager(models.Manager):
-    pass
+
+    def get_queryset(self) -> 'ProductQueryset':
+        return ProductQueryset(model=self.model, using=self.db)
+
+    def get_by_user(self, user: User) -> 'ProductQueryset':
+        return self.filter(user=user)
 
 
 class ProductMediaManager(models.Manager):
@@ -279,13 +296,15 @@ class Product(TimestampedModel):
     STATE_REJECTED = 'rejected'
 
     _STATE_CHOICES = (
-        (STATE_PENDING, 'Pending',),
-        (STATE_ACCEPTED, 'Accepted',),
-        (STATE_REJECTED, 'Rejected',),
+        (STATE_PENDING, 'در انتظار تایید',),
+        (STATE_ACCEPTED, 'تایید شده',),
+        (STATE_REJECTED, 'رد شده',),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
     title = models.CharField(max_length=255)
+    mine = models.ForeignKey(Mine, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField()
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
@@ -321,6 +340,18 @@ class Product(TimestampedModel):
 
     def get_payment_type(self) -> List[str]:
         return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE).value
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            'user_id': self.user_id,
+            'state': self.state,
+            'title': self.title,
+            'mine_id': self.mine_id,
+            'description': self.description,
+            'category': self.category_id,
+            'is_active': self.is_active,
+            'attributes': {i.attribute.title: i.value for i in self.attributes.prefetch_related('attribute').all()}
+        }
 
 
 class ProductMedia(BaseMedia):

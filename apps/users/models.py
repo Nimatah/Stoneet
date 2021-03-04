@@ -53,11 +53,25 @@ class ProfileManager(models.Manager):
 
 
 class Mine(models.Model):
+
+    REGION_NORTH = 'north'
+    REGION_SOUTH = 'south'
+    REGION_EAST = 'east'
+    REGION_WEST = 'west'
+
+    _REGION_CHOICES = (
+        (REGION_NORTH, 'شمال',),
+        (REGION_SOUTH, 'جنوب',),
+        (REGION_EAST, 'شرق',),
+        (REGION_WEST, 'غرب',),
+    )
+
     title = models.CharField(max_length=255)
     region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
     address = models.TextField()
     user = models.ForeignKey('User', on_delete=models.CASCADE)
     road_name = models.CharField(max_length=255, blank=True)
+    location_in_region = models.CharField(max_length=255, choices=_REGION_CHOICES)
     distance_to_road = models.IntegerField()
     proper_road = models.BooleanField()
     load_tools = models.BooleanField()
@@ -97,7 +111,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     STATE_BANNED = "banned"
 
     _STATE_CHOICES = (
-        (STATE_PENDING, "در حال بررسی",),  # Can't edit
+        (STATE_PENDING, "در انتظار تایید",),  # Can't edit
         (STATE_ACCEPTED, "تایید شده",),
         (STATE_REJECTED, "رد شده",),  # Rejection details box
         (STATE_BANNED, "مسدود شده",),
@@ -167,7 +181,7 @@ class UserMedia(BaseMedia):
     STATE_REJECTED = "rejected"
 
     _STATE_CHOICES = (
-        (STATE_PENDING, "در حال بررسی",),  # Can't edit
+        (STATE_PENDING, "در انتظار تایید",),  # Can't edit
         (STATE_ACCEPTED, "تایید شده",),
         (STATE_REJECTED, "رد شده",),
     )
@@ -247,3 +261,6 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    def get_full_name(self):
+        return self.company_name or f'{self.first_name} {self.last_name}'
