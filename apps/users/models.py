@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from persiantools.jdatetime import JalaliDate
 
 from apps.core.models import TimestampedModel, BaseMedia
 
@@ -243,7 +244,7 @@ class Profile(models.Model):
     bank_sheba_number = models.CharField(max_length=255, blank=True)
 
     company_name = models.CharField(max_length=255, blank=True)
-    company_type = models.CharField(max_length=255, choices=_COMPANY_CHOICES, blank=True)
+    company_type = models.CharField(max_length=255, choices=_COMPANY_CHOICES, null=True, blank=True)
     company_register_code = models.CharField(max_length=255, blank=True)
     company_national_code = models.CharField(max_length=255, blank=True)
     company_finance_code = models.CharField(max_length=255, blank=True)
@@ -264,3 +265,6 @@ class Profile(models.Model):
 
     def get_full_name(self):
         return self.company_name or f'{self.first_name} {self.last_name}'
+
+    def get_persian_birthday(self):
+        return JalaliDate.to_jalali(self.birthday)

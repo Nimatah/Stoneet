@@ -15,8 +15,7 @@
                         <div class="title">مشخصات کاربری</div>
                         <ul>
                             <li>کد فروشنده: <span>{{ user.id }}</span></li>
-                            <li>نام فروشنده: <span>{{ user.get_full_name }}</span></li>
-                            <li>نام تجاری: <span>{{ user.get_full_name }}</span></li>
+                            <li>نام فروشنده: <span>{{ user.profile.get_full_name }}</span></li>
                         </ul>
                         <div class="ph-button">
                             <a href="{% url 'users:profile_buyer' %}" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
@@ -51,7 +50,7 @@
                 <div class="col-4">
                     <div class="ph-dmp-section-1 ph-dash-condition-panel">
                         <div class="title">وضعیت پنل</div>
-                        <span>{{ user.state }}</span>
+                        <span>{{ user.get_state_display }}</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
                 <div class="col-4">

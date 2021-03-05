@@ -111,16 +111,6 @@ class BuyerRegisterForm(BaseUserRegisterForm):
     def clean_company_name(self) -> str:
         return self.cleaned_data['company_name'].strip().lower()
 
-    def clean_company_type(self) -> str:
-        if self.cleaned_data['company_type'] not in (
-                Profile.COMPANY_TYPE_AM,
-                Profile.COMPANY_TYPE_KHAS,
-                Profile.COMPANY_TYPE_MASOULIAT_MAHDOOD,
-                Profile.COMPANY_TYPE_TAAVONI,
-        ):
-            raise forms.ValidationError('نوع شرکت اشتباه است')
-        return self.cleaned_data['company_type'].strip().lower()
-
     def clean_company_register_code(self) -> str:
         return self.cleaned_data['company_register_code'].strip().lower()
 
@@ -145,15 +135,16 @@ class BuyerRegisterForm(BaseUserRegisterForm):
             images = self._handle_images(user)
             if commit:
                 user.save()
-                user.profile = self._update_individual_profile(user.profile) \
+                user.profile = self._create_individual_profile() \
                     if self.cleaned_data['legal_type'] == User.LEGAL_INDIVIDUAL \
-                    else self._update_legal_profile(user.profile)
+                    else self._create_legal_profile()
                 user.profile.save()
                 for i in images:
                     i.save()
             return user
 
-    def _update_individual_profile(self, profile: Profile) -> Profile:
+    def _create_individual_profile(self) -> Profile:
+        profile = Profile()
         profile.first_name = self.cleaned_data['first_name']
         profile.last_name = self.cleaned_data['last_name']
         profile.birthday = self.cleaned_data['birthday']
@@ -168,7 +159,8 @@ class BuyerRegisterForm(BaseUserRegisterForm):
         profile.bank_sheba_number = self.cleaned_data['bank_sheba_number']
         return profile
 
-    def _update_legal_profile(self, profile: Profile) -> Profile:
+    def _create_legal_profile(self) -> Profile:
+        profile = Profile()
         profile.address = self.cleaned_data['address']
         profile.postal_code = self.cleaned_data['postal_code']
         profile.region_id = self.cleaned_data['region']

@@ -20,7 +20,7 @@
                     <a class="ph-navbar-logo" href="{% url 'home:index' %}">
                         <img class="ph-sp-logo" src="{% static 'images/logo.png' %}" alt="header-Logo">
                     </a>
-                    <div class="ph-sp-username">مصطفی چراغی</div>
+                    <div class="ph-sp-username">{{ user.profile.get_full_name }}</div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-bars"></i>

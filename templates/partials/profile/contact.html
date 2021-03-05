@@ -1,0 +1,43 @@
+<div class="form-group col-4 my-1">
+    <label for="13">ایمیل</label>
+    <input type="email" readonly class="form-control text-left" id="13"
+           value="{{ user.email }}">
+</div>
+
+<div class="form-group col-4 my-1">
+    <label for="14">تلفن همراه</label>
+    <input type="text" readonly class="form-control text-left" id="14"
+           value="{{ user.mobile_number }}">
+</div>
+
+<div class="form-group col-4 my-1">
+    <label for="16">استان</label>
+    <select class="custom-select" disabled="disabled">
+        <option selected>{{ user.profile.region.parent.title }}</option>
+    </select>
+</div>
+
+<div class="form-group col-4 my-1">
+    <label for="17">شهر</label>
+    <select class="custom-select" disabled="disabled">
+        <option selected>{{ user.profile.region.title }}</option>
+    </select>
+</div>
+
+<div class="form-group col-12 my-1">
+    <label for="18">آدرس</label>
+    <input type="text" readonly class="form-control" id="18"
+           value="{{ user.profile.address }}">
+</div>
+
+<div class="form-group col-4 my-1">
+    <label for="19">کد پستی</label>
+    <input type="number" readonly class="form-control text-left" id="19"
+           value="{{ user.profile.postal_code }}">
+</div>
+
+<div class="form-group col-4 my-1">
+    <label for="20">تلفن ثابت</label>
+    <input type="number" readonly class="form-control text-left" id="20"
+           value="{{ user.profile.phone_number }}">
+</div>

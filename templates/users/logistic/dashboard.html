@@ -15,9 +15,8 @@
                     <div class="ph-dmp-section-1 ph-user-info">
                         <div class="title">مشخصات کاربری</div>
                         <ul>
-                            <li>کد فروشنده: <span>123456</span></li>
-                            <li>نام فروشنده: <span>مصطفی چراغی</span></li>
-                            <li>نام تجاری: <span>معدنکاران</span></li>
+                            <li>کد فروشنده: <span>{{ user.id }}</span></li>
+                            <li>نام فروشنده: <span>{{ user.profile.get_full_name}}</span></li>
                         </ul>
                         <div class="ph-button">
                             <a href="#" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
@@ -38,7 +37,7 @@
                 <div class="col-4">
                     <div class="ph-dmp-section-1 ph-dash-condition-panel">
                         <div class="title">وضعیت پنل</div>
-                        <span>در انتظار تایید</span>
+                        <span>{{ user.get_state_display }}</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                     <div class="ph-dmp-section-2 ph-dmp-my-tender">
                         <div class="number">۱۴</div>

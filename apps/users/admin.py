@@ -7,23 +7,26 @@ from apps.users.forms import UserChangeForm, UserCreationForm
 class ProfileAdminInline(admin.StackedInline):
     model = Profile
     fk_name = 'user'
+    extra = 0
 
 
 class UserMediaAdminInline(admin.StackedInline):
     model = UserMedia
     fk_name = 'user'
+    extra = 0
 
 
 class MineAdminInline(admin.StackedInline):
     model = Mine
     fk_name = 'user'
+    extra = 0
 
 
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        ('Info', {'fields': ('use_type', 'legal_type', 'state')}),
+        ('Info', {'fields': ('use_type', 'legal_type', 'state', 'email', 'mobile_number')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'created_at')}),
     )

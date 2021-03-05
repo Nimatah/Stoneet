@@ -55,57 +55,18 @@
                                             <div class="form-group col-4 my-1">
                                                 <label for="1">کد خریدار</label>
                                                 <input type="text" readonly class="form-control" id="1"
-                                                       placeholder="234345">
+                                                       value="{{ user.id }}">
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="2">نوع خریدار</label>
                                                 <input type="text" readonly class="form-control" id="2"
-                                                       placeholder="حقیقی">
+                                                       value="{{ user.get_legal_type_display }}">
                                             </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="3">نام تجاری</label>
-                                                <input type="text" readonly class="form-control" id="3"
-                                                       placeholder="پلن‌هاب">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="4">نام</label>
-                                                <input type="text" readonly class="form-control" id="4"
-                                                       placeholder="مصطفی">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="5">نام خانوادگی</label>
-                                                <input type="text" readonly class="form-control" id="5"
-                                                       placeholder="چراغی">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="6">جنسیت</label>
-                                                <select class="custom-select" disabled="disabled">
-                                                    <option selected>مرد</option>
-                                                    <option value="1">زن</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="7">تاریخ تولد:</label>
-                                                <input type="text" readonly class="form-control" id="7"
-                                                       placeholder="۱۳۹۹/۱۱/۱">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="8">کد ملی</label>
-                                                <input type="text" readonly class="form-control" id="8"
-                                                       placeholder="۰۰۸۱۸۰۳۴۸۶">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="9">شماره شناسنامه</label>
-                                                <input type="text" readonly class="form-control" id="9"
-                                                       placeholder="۱۲۸۰۸">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="10">مشمولیت مالیات بر ارزش افزوده</label>
-                                                <select class="custom-select" disabled="disabled">
-                                                    <option selected>خیر</option>
-                                                    <option value="1">بله</option>
-                                                </select>
-                                            </div>
+                                            {% if user.legal_type == user.LEGAL_INDIVIDUAL %}
+                                                {% include 'partials/profile/individual.html' %}
+                                            {% else %}
+                                                {% include 'partials/profile/legal.html' %}
+                                            {% endif %}
                                         </div>
                                         <!-- form-row -->
                                     </div>
@@ -123,16 +84,7 @@
                                             <span class="title">اطلاعات حساب بانکی</span>
                                         </div>
                                         <div class="form-row align-items-center">
-                                            <div class="form-group col-5 my-1">
-                                                <label for="11">شماره شبا</label>
-                                                <input type="text" readonly class="form-control text-left" id="11"
-                                                       placeholder="IR120570022210012813960001">
-                                            </div>
-                                            <div class="form-group col-5 my-1">
-                                                <label for="12">صاحب / صاحبان حساب</label>
-                                                <input type="text" readonly class="form-control" id="12"
-                                                       placeholder="مصطفی چراغی">
-                                            </div>
+                                            {% include 'partials/profile/bank_info.html' %}
                                         </div>
                                         <!-- form-row -->
                                         <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
@@ -151,55 +103,7 @@
                                             <span class="title">اطلاعات تماس و آدرس خریدار</span>
                                         </div>
                                         <div class="form-row align-items-center">
-                                            <div class="form-group col-4 my-1">
-                                                <label for="13">ایمیل</label>
-                                                <input type="email" readonly class="form-control text-left" id="13"
-                                                       placeholder="nivashop.ir@gmail.com">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="14">تلفن همراه</label>
-                                                <input type="number" readonly class="form-control text-left" id="14"
-                                                       placeholder="۰۹۱۹۲۷۱۷۰۳۵">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="15">وب سایت</label>
-                                                <input type="text" readonly class="form-control text-left" id="15"
-                                                       placeholder="planhub.ir">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="16">استان</label>
-                                                <select class="custom-select" disabled="disabled">
-                                                    <option selected>تهران</option>
-                                                    <option value="1">کهگیلویه و بویر احمد</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="17">شهر</label>
-                                                <select class="custom-select" disabled="disabled">
-                                                    <option selected>تهران</option>
-                                                    <option value="1">کهگیلویه و بویر احمد</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-12 my-1">
-                                                <label for="18">آدرس</label>
-                                                <input type="text" readonly class="form-control" id="18"
-                                                       placeholder="بلوار کاوه، خیابان روشنایی، خیابان بهار شمالی، بن بست حبیب الهی، پلاک ۱۲، واحد ۷">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="19">کد پستی</label>
-                                                <input type="number" readonly class="form-control text-left" id="19"
-                                                       placeholder="۱۹۳۱۸۸۳۱۵۸">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="20">تلفن ثابت</label>
-                                                <input type="number" readonly class="form-control text-left" id="20"
-                                                       placeholder="۰۲۱-۱۹۳۱۸۸۳۱">
-                                            </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="21">موقعیت مکانی</label>
-                                                <input type="text" readonly class="form-control text-left" id="21"
-                                                       placeholder=":::">
-                                            </div>
+                                            {% include 'partials/profile/contact.html' %}
                                         </div>
                                         <!-- form-row -->
 
@@ -315,7 +219,9 @@
                                                 <tr class="template_row">
                                                     <td class="text-center" scope="row">۱</td>
                                                     <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i class="fas fa-upload"></i> بارگذاری</a></td>
+                                                    <td class="text-center"><a href="#"
+                                                                               class="ph-btn ph-upload-img-contract"><i
+                                                            class="fas fa-upload"></i> بارگذاری</a></td>
                                                     <td class="text-center"><img src="" alt=""></td>
                                                     <td class="text-center" class="controls">
                                                         <a href="#" class="list_cancel" title="Delete Row">
@@ -327,7 +233,8 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه جدید</a>
+                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
+                                                صفحه جدید</a>
                                         </div>
                                         <!-- form-row -->
                                     </div>
@@ -354,18 +261,14 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th scope="row">۱</th>
-                                                <td><img src="" alt=""></td>
-                                                <td>کارت ملی</td>
-                                                <td>تایید شده</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">۲</th>
-                                                <td><img src="" alt=""></td>
-                                                <td>تصویر پشت کارت ملی</td>
-                                                <td>تایید شده</td>
-                                            </tr>
+                                            {% for media in user.medias.all %}
+                                                <tr>
+                                                    <th scope="row">{{ forloop.counter }}</th>
+                                                    <td><img src="{% get_media_prefix %}{{ media.file }}" alt=""></td>
+                                                    <td>{{ media.title}}</td>
+                                                    <td>{{ media.get_state_display }}</td>
+                                                </tr>
+                                            {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>
@@ -417,31 +320,31 @@
     </script>
     <script>
         function addNewRow() {
-          var template = $('tr.template_row:first');
-          $('.no_entries_row').css('display','none');
-          var newRow = template.clone();
-          var lastRow = $('tr.template_row:last').after(newRow);
+            var template = $('tr.template_row:first');
+            $('.no_entries_row').css('display', 'none');
+            var newRow = template.clone();
+            var lastRow = $('tr.template_row:last').after(newRow);
 
-        $('.list_cancel').on('click',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).closest('tr').remove();
-          if($('.list_cancel').length ===1){
-            $('.no_entries_row').css('display','none');
-          }
-          console.log($('.list_cancel').length)
-        });
-         console.log($('.list_cancel').length)
-        $('select.label').on('change',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).css('background-color',$(this).val());
+            $('.list_cancel').on('click', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).closest('tr').remove();
+                if ($('.list_cancel').length === 1) {
+                    $('.no_entries_row').css('display', 'none');
+                }
+                console.log($('.list_cancel').length)
+            });
+            console.log($('.list_cancel').length)
+            $('select.label').on('change', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).css('background-color', $(this).val());
 
-        })
+            })
 
         }
 
-        $('a.list_add').on('click',addNewRow);
+        $('a.list_add').on('click', addNewRow);
 
     </script>
 {% endblock %}

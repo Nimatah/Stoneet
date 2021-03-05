@@ -17,7 +17,6 @@
                         <ul>
                             <li>کد فروشنده: <span>{{ user.id }}</span></li>
                             <li>نام فروشنده: <span>{{ user.profile.get_full_name }}</span></li>
-                            <li>نام تجاری: <span>{{ user.profile.get_full_name }}</span></li>
                         </ul>
                         <div class="ph-button">
                             <a href="{% url 'users:profile_seller' %}" class="ph-btn">پروفایل<i class="fas fa-arrow-left"></i></a>
@@ -64,10 +63,10 @@
                     <div class="ph-dmp-section-1 ph-user-mine-address">
                         <div class="title">اخرین معادن ثبت شده</div>
                         <ul>
-                            <li>نام اولین معدن ثبت شده</li>
-                            <li>نام دومین معدن ثبت شده</li>
-                            <li>نام سومین معدن ثبت شده</li>
-                            <li>نام چهارمین معدن ثبت شده</li>
+                            {% for mine in user.mines.all %}
+                                <li>{{ mine.title }}</li>
+                            {% endfor %}
+
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->

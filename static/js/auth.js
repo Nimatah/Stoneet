@@ -178,7 +178,7 @@ function handleSubmitForm() {
         }
         const legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
 
-        const form = $(`<form method="post" action="${window.location}"/>`)
+        const form = $(`<form method="post" enctype="multipart/form-data" action="${window.location}"/>`)
             .append($('[name="csrfmiddlewaretoken"]'),
                 $('#sign_up_email'), $('#sign_up_password'), $('#sign_up_number'),
                 $('#legal-individual'), $('#legal-legal'), ...inputElements(legalType))
