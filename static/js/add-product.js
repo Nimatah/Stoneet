@@ -92,6 +92,7 @@ function handlePart1Form() {
             }
             return acc
         }, {});
+        body['mine'] = $('#product-mine').val()
         $.ajax("/api/validate/add-product/p1", {
             method: "POST",
             async: false,
@@ -149,10 +150,11 @@ function handlePart3Form() {
 
 function handlePart4Form() {
     $('#add-product-submit').on('click', function (e) {
-        if (!$('#rules_check').checked()) {
+        if (!$('#rules_check').prop('checked')) {
             $('#error-modal .modal-body').empty();
             $('#error-modal .modal-body').append(`<div>برای ثبت محصول قوانین و مقررات را مطالعه کرده و تیک آن را بزنید.</div>`);
             $('#error-modal').modal('show')
+            e.preventDefault();
         }
     })
 }
@@ -173,6 +175,11 @@ function _handleFormPreview() {
         const caret = _caretMin === _caretMax ? `${_caretMin}` : `${_caretMin} ${TO} ${_caretMax}`
         $('#preview-product-title').text(`${category} - ${CARET} ${caret} %`)
         $('input[name="title"]').val(`${category} - ${CARET} ${caret} %`)
+    }
+
+    const handleMine = function() {
+        let mine = $('#product-mine').text()
+        $('#preview-product-mine').text(mine);
     }
 
     const handleDescription = function () {
@@ -218,6 +225,7 @@ function _handleFormPreview() {
 
     handleTitle();
     handleDescription();
+    handleMine();
     handleAttributes();
     handleImages();
 }

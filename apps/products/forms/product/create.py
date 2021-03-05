@@ -11,6 +11,7 @@ from apps.products.models import (
     ProductAttribute,
     AttributeMedia,
 )
+from apps.users.models import Mine
 
 
 class CreateProductForm(forms.ModelForm):
@@ -23,6 +24,7 @@ class CreateProductForm(forms.ModelForm):
     description = forms.CharField(label="Description", required=False, widget=forms.Textarea)
     attributes = forms.Field(required=False)
     analyze = forms.ImageField(required=True)
+    mine = forms.CharField(required=True)
     image_primary = forms.ImageField(required=True)
     image1 = forms.ImageField(required=False)
     image2 = forms.ImageField(required=False)
@@ -33,7 +35,7 @@ class CreateProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('category', 'title', 'attributes', 'description', 'analyze',
-                  'image_primary', 'image1', 'image2', 'image3', 'image4',)
+                  'image_primary', 'image1', 'image2', 'image3', 'image4', 'mine')
         exclude = ('user', 'attributes',)
 
     def clean(self):
@@ -60,11 +62,18 @@ class CreateProductForm(forms.ModelForm):
         except Category.DoesNotExist:
             raise forms.ValidationError("گروه پیدا نشد")
 
+    def clean_mine(self):
+        try:
+            return Mine.objects.get(pk=self.cleaned_data['mine'])
+        except Mine.DoesNotExist:
+            raise forms.ValidationError("معدن پیدا نشد")
+
     def save(self, commit=True):
         product = Product()
         product.category = self.cleaned_data['category']
         product.title = self.cleaned_data['title']
         product.description = self.cleaned_data['description']
+        product.mine = self.cleaned_data['mine']
         product.user = self.user
 
         images = self.handle_product_images(product)

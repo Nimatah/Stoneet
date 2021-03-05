@@ -69,7 +69,7 @@ class Mine(models.Model):
     title = models.CharField(max_length=255)
     region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
     address = models.TextField()
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='mines')
     road_name = models.CharField(max_length=255, blank=True)
     location_in_region = models.CharField(max_length=255, choices=_REGION_CHOICES)
     distance_to_road = models.IntegerField()

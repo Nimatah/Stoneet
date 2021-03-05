@@ -64,10 +64,10 @@
                         <div class="form-row mb-4 align-items-center">
                             <div class="col-5 col-offset-2 my-1">
                                 <label class="mr-sm-2" for="t-1-c">انتخاب معدن</label>
-                                <select class="custom-select mr-sm-2" id="t-1-c">
-                                    <option selected value="default">انتخاب...</option>
-                                    <option value="default">معدن اول</option>
-                                    <option value="default">معدن دوم</option>
+                                <select class="custom-select mr-sm-2" name="mine" id="product-mine">
+                                    {% for mine in user.mines.all %}
+                                    <option selected value="{{ mine.id }}">{{ mine.title }}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -347,6 +347,11 @@
                                                 <span>نام محصول: </span>
                                                 <input type="hidden" name="title">
                                                 <span id="preview-product-title"></span>
+                                            </div>
+                                             <div class="col-12 part-4-item-detail">
+                                                <span>نام معدن: </span>
+                                                <input type="hidden" name="title">
+                                                <span id="preview-product-mine"></span>
                                             </div>
                                             {% for attribute in attributes_field %}
                                                 {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}

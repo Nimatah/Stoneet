@@ -1,7 +1,9 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 
-
+{% block meta_content %}
+    {{ regions|json_script:"regions" }}
+{% endblock %}
 
 {% block admin_content %}
     <main class="ph-dashboard-main ph-seller-panel ph-seller-profile">
@@ -43,7 +45,8 @@
 
                         <div id="nav-tabContent" class="ph-spp-tab-contents ph-tab-contents tab-content">
 
-                            <div class="tab-pane fade show active" id="nav-businessinfo" role="tabpanel" aria-labelledby="nav-businessinfo-tab">
+                            <div class="tab-pane fade show active" id="nav-businessinfo" role="tabpanel"
+                                 aria-labelledby="nav-businessinfo-tab">
                                 <div class="ph-tc-wrapper">
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
@@ -58,7 +61,8 @@
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="2">نوع فروشنده</label>
-                                                <input type="text" readonly class="form-control" id="2" placeholder="حقیقی">
+                                                <input type="text" readonly class="form-control" id="2"
+                                                       placeholder="حقیقی">
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="3">نام تجاری</label>
@@ -67,11 +71,13 @@
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="4">نام</label>
-                                                <input type="text" readonly class="form-control" id="4" placeholder="مصطفی">
+                                                <input type="text" readonly class="form-control" id="4"
+                                                       placeholder="مصطفی">
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="5">نام خانوادگی</label>
-                                                <input type="text" readonly class="form-control" id="5" placeholder="چراغی">
+                                                <input type="text" readonly class="form-control" id="5"
+                                                       placeholder="چراغی">
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="6">جنسیت</label>
@@ -92,7 +98,8 @@
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="9">شماره شناسنامه</label>
-                                                <input type="text" readonly class="form-control" id="9" placeholder="۱۲۸۰۸">
+                                                <input type="text" readonly class="form-control" id="9"
+                                                       placeholder="۱۲۸۰۸">
                                             </div>
                                             <div class="form-group col-4 my-1">
                                                 <label for="10">مشمولیت مالیات بر ارزش افزوده</label>
@@ -110,7 +117,8 @@
                             </div>
                             <!-- tab-pane fade #nav-businessinfo -->
 
-                            <div class="tab-pane fade" id="nav-bankinfo" role="tabpanel" aria-labelledby="nav-bankinfo-tab">
+                            <div class="tab-pane fade" id="nav-bankinfo" role="tabpanel"
+                                 aria-labelledby="nav-bankinfo-tab">
                                 <div class="ph-tc-wrapper">
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
@@ -137,7 +145,8 @@
                             </div>
                             <!-- tab-pane fade #nav-bankinfo -->
 
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                 aria-labelledby="nav-contact-tab">
                                 <div class="ph-tc-wrapper">
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
@@ -188,11 +197,6 @@
                                                 <input type="number" readonly class="form-control text-left" id="20"
                                                        placeholder="۰۲۱-۱۹۳۱۸۸۳۱">
                                             </div>
-                                            <div class="form-group col-4 my-1">
-                                                <label for="21">موقعیت مکانی</label>
-                                                <input type="text" readonly class="form-control text-left" id="21"
-                                                       placeholder=":::">
-                                            </div>
                                         </div>
                                         <!-- form-row -->
 
@@ -203,68 +207,99 @@
                                         <div class="ph-panel-title">
                                             <span class="title">آدرس معادن</span>
                                         </div>
-                                        <div class="customer_records">
-                                            <div class="form-row align-items-center">
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_1">نام معدن</label>
-                                                    <input type="text" class="form-control" id="al_1"
-                                                           placeholder="نام معدن را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label class="ml-2" for="state">استان</label>
-                                                    <input list="states" class="form-control" id="state">
-                                                    <datalist id="states">
-                                                        <option value="تهران">
-                                                        <option value="فارس">
-                                                    </datalist>
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label class="mx-2" for="city">شهر</label>
-                                                    <input list="cities" class="form-control" id="city">
-                                                    <datalist id="cities">
-                                                        <option value="تهران">
-                                                        <option value="شیراز">
-                                                    </datalist>
-                                                </div>
-
-                                                <div class="form-group col-12 my-1">
-                                                    <label for="al_2">آدرس دقیق معدن</label>
-                                                    <input type="text" class="form-control" id="al_2"
-                                                           placeholder="آدرس دقیق معدن را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_3">نام جاده اصلی</label>
-                                                    <input type="text" class="form-control" id="al_3"
-                                                           placeholder="جاده اصلی">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_4">فاصله معدن تا جاده اصلی (کیلومتر)</label>
-                                                    <input type="number" class="form-control" id="al_4"
-                                                           placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-12 my-1 mt-3">
-                                                    <div class="form-check form-check-inline ml-4">
-                                                        <input class="form-check-input" type="checkbox" id="4545" value="option1">
-                                                        <label class="form-check-label" for="4545">وجود جاده مناسب برای عبور و مرور وسایل نقلیه سواری</label>
+                                        {% for mine in user.mines.all %}
+                                            <div class="remove" data-count="{{ mine.id }}" id="mine">
+                                                <div class="form-row align-items-center">
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="mine-title-{{ mine.id }}">نام معدن</label>
+                                                        <input type="text" class="form-control"
+                                                               id="mine-title-{{ mine.id }}"
+                                                               value="{{ mine.title }}" disabled>
                                                     </div>
-                                                    <div class="form-check form-check-inline ml-4">
-                                                        <input class="form-check-input" type="checkbox" id="3232" value="option2">
-                                                        <label class="form-check-label" for="3232">وجود تجهیزات بارگیری در محل دپو</label>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label class="ml-2"
+                                                               for="mine-province-{{ mine.id }}">استان</label>
+                                                        <select class="form-control" id="mine-province-{{ mine.id }}"
+                                                                disabled>
+                                                            <option value="{{ mine.region.parent.id }}"
+                                                                    selected>{{ mine.region.parent.title }}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label class="mx-2" for="mine-city-{{ mine.id }}">شهر</label>
+                                                        <select class="form-control" id="mine-city-{{ mine.id }}"
+                                                                disabled>
+                                                            <option value="{{ mine.region.id }}">{{ mine.region.title }}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-12 my-1">
+                                                        <label for="mine-address-{{ mine.id }}">آدرس دقیق معدن</label>
+                                                        <input type="text" class="form-control"
+                                                               id="mine-address-{{ mine.id }}"
+                                                               value="{{ mine.address }}" disabled>
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="mine-road-{{ mine.id }}">نام جاده اصلی</label>
+                                                        <input type="text" class="form-control"
+                                                               id="mine-road-{{ mine.id }}"
+                                                               value="{{ mine.road_name }}" disabled>
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="mine-location-in-region-{{ mine.id }}">موقعیت
+                                                            مکانی</label>
+                                                        <select class="form-control"
+                                                                id="mine-location-in-region-{{ mine.id }}"
+                                                                disabled>
+                                                            <option value="{{ mine.location_in_region }}"
+                                                                    selected>{{ mine.get_location_in_region_display }}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="mine-distance-to-road-{{ mine.id }}">فاصله معدن تا
+                                                            جاده اصلی
+                                                            (کیلومتر)</label>
+                                                        <input type="number" class="form-control"
+                                                               id="mine-distance-to-road-{{ mine.id }}"
+                                                               value="{{ mine.distance_to_road }}" disabled>
+                                                    </div>
+
+                                                    <div class="form-group col-12 my-1 mt-3">
+                                                        <div class="form-check form-check-inline ml-4">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="mine-proper-road-{{ mine.id }}"
+                                                                   {% if mine.proper_road %}checked{% endif %} disabled>
+                                                            <label class="form-check-label"
+                                                                   for="mine-proper-road-{{ mine.id }}">وجود
+                                                                جاده
+                                                                مناسب برای عبور و مرور وسایل نقلیه
+                                                                سواری</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline ml-4">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="mine-load-tools-{{ mine.id }}"
+                                                                   {% if mine.load_tools %}checked{% endif %} disabled>
+                                                            <label class="form-check-label"
+                                                                   for="mine-load-tools-{{ mine.id }}">وجود
+                                                                تجهیزات بارگیری در محل دپو</label>
+                                                        </div>
                                                     </div>
                                                 </div>
-
+                                                <!-- form-row -->
+                                                <a href="#" data-count="{{ mine.id }}" onclick="removeMineHandler(this)"
+                                                   class="remove-field ph-btn btn-remove-customer">
+                                                    <i class="fas fa-times"></i>
+                                                </a>
                                             </div>
-                                            <!-- form-row -->
-                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>
-                                        </div>
+                                        {% endfor %}
                                         <!-- customer_records -->
-                                            <a class="extra-fields-customer ph-btn" href="#"><i class="fas fa-plus"></i>اضافه کردن معدن</a>
+                                        <a class="extra-fields-customer ph-btn" href="#"><i class="fas fa-plus"></i>اضافه
+                                            کردن معدن</a>
                                         <div class="customer_records_dynamic"></div>
                                     </div>
                                     <!-- ph-tcw-content -->
@@ -302,7 +337,9 @@
                                                 <tr class="template_row">
                                                     <td class="text-center" scope="row">۱</td>
                                                     <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i class="fas fa-upload"></i> بارگذاری</a></td>
+                                                    <td class="text-center"><a href="#"
+                                                                               class="ph-btn ph-upload-img-contract"><i
+                                                            class="fas fa-upload"></i> بارگذاری</a></td>
                                                     <td class="text-center"><img src="" alt=""></td>
                                                     <td class="text-center" class="controls">
                                                         <a href="#" class="list_cancel" title="Delete Row">
@@ -314,7 +351,8 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه جدید</a>
+                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
+                                                صفحه جدید</a>
                                         </div>
                                         <!-- form-row -->
                                     </div>
@@ -377,58 +415,128 @@
     </main>
     <!-- ph-seller-profile -->
 
+    <div style="display: none">
+        <div class="mine-record">
+            <div class="form-row align-items-center">
+                <div class="form-group col-4 my-1">
+                    <label form-label for="mine-title">نام معدن</label>
+                    <input form-field type="text" class="form-control" id="mine-title"
+                           name="title" placeholder="نام معدن را وارد کنید...">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label class="ml-2" for="province">استان</label>
+                    <select form-field class="form-control" id="province" onchange="regionChangeHandler(this)">
+                        <option value="default">انتخاب کنید</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label class="mx-2" for="city">شهر</label>
+                    <select form-field class="form-control" name="region_id" id="city">
+                        <option value="default">انتخاب کنید</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-12 my-1">
+                    <label form-label for="mine-address">آدرس دقیق معدن</label>
+                    <input form-field type="text" class="form-control" id="mine-address" name="address"
+                           placeholder="آدرس دقیق معدن را وارد کنید...">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label for="mine-road">نام جاده اصلی</label>
+                    <input form-field type="text" class="form-control" name="road" id="mine-road"
+                           placeholder="جاده اصلی">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label for="mine-location-in-region">موقعیت مکانی</label>
+                    <select form-field class="form-control" name="location_in_region" id="mine-location-in-region">
+                        <option value="north">شمال</option>
+                        <option value="south">جنوب</option>
+                        <option value="east">شرق</option>
+                        <option value="west">غرب</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label for="mine-distance-to-road">فاصله معدن تا جاده اصلی (کیلومتر)</label>
+                    <input form-field type="number" class="form-control" name="distance_to_road"
+                           id="mine-distance-to-road"
+                           placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
+                </div>
+
+                <div class="form-group col-12 my-1 mt-3">
+                    <div class="form-check form-check-inline ml-4">
+                        <input form-field class="form-check-input" type="checkbox" name="proper_road"
+                               id="mine-proper-road">
+                        <label form-label class="form-check-label" for="mine-proper-road">وجود جاده مناسب برای عبور و
+                            مرور وسایل
+                            نقلیه
+                            سواری</label>
+                    </div>
+                    <div class="form-check form-check-inline ml-4">
+                        <input form-field class="form-check-input" type="checkbox" name="load_tools"
+                               id="mine-load-tools">
+                        <label form-label class="form-check-label" for="mine-load-tools">وجود تجهیزات بارگیری در محل
+                            دپو</label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- form-row -->
+        </div>
+    </div>
+
+    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">خطا</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block footer_static %}
-<script>
-        $('.extra-fields-customer').click(function () {
-            $('.customer_records').clone().appendTo('.customer_records_dynamic');
-            $('.customer_records_dynamic .customer_records').addClass('single remove');
-            $('.single .extra-fields-customer').remove();
-            $('.single').append('<a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>');
-            $('.customer_records_dynamic > .single').attr("class", "remove");
-
-            $('.customer_records_dynamic input').each(function () {
-                var count = 0;
-                var fieldname = $(this).attr("name");
-                $(this).attr('name', fieldname + count);
-                count++;
-            });
-
-        });
-
-        $(document).on('click', '.remove-field', function (e) {
-            $(this).parent('.remove').remove();
-            e.preventDefault();
-        });
-    </script>
+    <script src="{% static 'js/profile.js' %}"></script>
     <script>
         function addNewRow() {
-          var template = $('tr.template_row:first');
-          $('.no_entries_row').css('display','none');
-          var newRow = template.clone();
-          var lastRow = $('tr.template_row:last').after(newRow);
+            var template = $('tr.template_row:first');
+            $('.no_entries_row').css('display', 'none');
+            var newRow = template.clone();
+            var lastRow = $('tr.template_row:last').after(newRow);
 
-        $('.list_cancel').on('click',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).closest('tr').remove();
-          if($('.list_cancel').length ===1){
-            $('.no_entries_row').css('display','none');
-          }
-          console.log($('.list_cancel').length)
-        });
-         console.log($('.list_cancel').length)
-        $('select.label').on('change',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).css('background-color',$(this).val());
+            $('.list_cancel').on('click', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).closest('tr').remove();
+                if ($('.list_cancel').length === 1) {
+                    $('.no_entries_row').css('display', 'none');
+                }
+                console.log($('.list_cancel').length)
+            });
+            console.log($('.list_cancel').length)
+            $('select.label').on('change', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).css('background-color', $(this).val());
 
-        })
+            })
 
         }
 
-        $('a.list_add').on('click',addNewRow);
+        $('a.list_add').on('click', addNewRow);
 
     </script>
 {% endblock %}

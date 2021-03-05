@@ -31,6 +31,7 @@ class SellerRegisterView(FormView):
         context['regions'] = [r.to_dict_hierarchy() for r in Region.objects.get_root().prefetch_related('children')]
         return context
 
+
 class BuyerRegisterView(FormView):
     template_name = 'users/auth/register/register_buyer.html'
     form_class = BuyerRegisterForm
