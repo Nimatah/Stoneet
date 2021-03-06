@@ -334,8 +334,8 @@ class Product(TimestampedModel):
 
     def get_caret(self) -> str:
         caret_from = self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
-        caret_to = self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
-        caret = f'{caret_from.value} - {caret_to.value} %' if caret_from.value != caret_to.value else f'{caret_to.value} %'
+        caret_to = self.attributes.get(attribute_id=Attribute.ID_CARAT_TO)
+        caret = f'{caret_from.value} تا {caret_to.value} %' if caret_from.value != caret_to.value else f'{caret_from.value} %'
         return caret
 
     def get_payment_type(self) -> List[str]:

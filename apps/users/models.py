@@ -10,6 +10,10 @@ class MineManager(models.Manager):
     pass
 
 
+class AddressManager(models.Manager):
+    pass
+
+
 class UserManager(BaseUserManager):
 
     @staticmethod
@@ -81,6 +85,22 @@ class Mine(models.Model):
 
     def __str__(self):
         return f'{self.user} -> {self.title}'
+
+
+class Address(models.Model):
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='addresses')
+    receiver_name = models.CharField(max_length=255)
+    region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
+    address = models.TextField()
+    road_name = models.CharField(max_length=255)
+    distance_to_road = models.IntegerField()
+    proper_road = models.BooleanField()
+    load_tools = models.BooleanField()
+
+    objects = AddressManager()
+
+    def __str__(self) -> str:
+        return f'{self.user} -> address: {self.receiver_name}'
 
 
 class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):

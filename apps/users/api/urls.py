@@ -4,7 +4,9 @@ from apps.users.api.views import (
     SellerAddProductPart1ValidationAPIView,
     RegistrationAuthValidationView,
     MineListCreateAPIView,
-    MineRetrieveUpdateDestroyView
+    MineRetrieveUpdateDestroyView,
+    AddressListCreateAPIView,
+    AddressRetrieveUpdateDestroyView,
 )
 
 app_name = 'users'
@@ -14,4 +16,6 @@ urlpatterns = [
     path('validate/registration/auth', RegistrationAuthValidationView.as_view(), name='validate_registration_auth'),
     path('mine/', MineListCreateAPIView.as_view(), name='mine_list_create'),
     path('mine/<int:pk>', MineRetrieveUpdateDestroyView.as_view(), name='mine_detail'),
+    path('address/', AddressListCreateAPIView.as_view(), name='address_list_create'),
+    path('address/<int:pk>', AddressRetrieveUpdateDestroyView.as_view(), name='address_detail'),
 ]

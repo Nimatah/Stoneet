@@ -1,7 +1,9 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 
-
+{% block meta_content %}
+    {{ regions|json_script:"regions" }}
+{% endblock %}
 
 {% block admin_content %}
     <main class="ph-dashboard-main ph-buyer-panel ph-buyer-profile">
@@ -114,71 +116,78 @@
                                         <div class="ph-panel-title">
                                             <span class="title">آدرس مقصد ۱</span>
                                         </div>
-                                        <div class="customer_records">
-                                            <div class="form-row align-items-center">
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_1">نام تحویل‌گیرنده</label>
-                                                    <input type="text" class="form-control" id="al_1"
-                                                           placeholder="نام را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label class="ml-2" for="state">استان</label>
-                                                    <input list="states" class="form-control" id="state">
-                                                    <datalist id="states">
-                                                        <option value="تهران">
-                                                        <option value="فارس">
-                                                    </datalist>
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label class="mx-2" for="city">شهر</label>
-                                                    <input list="cities" class="form-control" id="city">
-                                                    <datalist id="cities">
-                                                        <option value="تهران">
-                                                        <option value="شیراز">
-                                                    </datalist>
-                                                </div>
-
-                                                <div class="form-group col-12 my-1">
-                                                    <label for="al_2">آدرس دقیق</label>
-                                                    <input type="text" class="form-control" id="al_2"
-                                                           placeholder="آدرس دقیق را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_3">نام جاده اصلی</label>
-                                                    <input type="text" class="form-control" id="al_3"
-                                                           placeholder="جاده اصلی">
-                                                </div>
-
-                                                <div class="form-group col-4 my-1">
-                                                    <label for="al_4">فاصله معدن تا جاده اصلی (کیلومتر)</label>
-                                                    <input type="number" class="form-control" id="al_4"
-                                                           placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
-                                                </div>
-
-                                                <div class="form-group col-12 my-1 mt-3">
-                                                    <div class="form-check form-check-inline ml-4">
-                                                        <input class="form-check-input" type="checkbox" id="4545"
-                                                               value="option1">
-                                                        <label class="form-check-label" for="4545">وجود جاده مناسب برای
-                                                            عبور و مرور وسایل نقلیه سواری</label>
+                                        {% for address in user.addresses.all %}
+                                            <div class="remove" data-count="{{ address.id }}" id="address">
+                                                <div class="form-row align-items-center">
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="address-receiver-name">نام
+                                                            تحویل‌گیرنده</label>
+                                                        <input type="text" class="form-control"
+                                                               id="address-receiver-name" disabled
+                                                               name="receiver" value="{{ address.receiver_name }}">
                                                     </div>
-                                                    <div class="form-check form-check-inline ml-4">
-                                                        <input class="form-check-input" type="checkbox" id="3232"
-                                                               value="option2">
-                                                        <label class="form-check-label" for="3232">وجود تجهیزات بارگیری
-                                                            در محل دپو</label>
-                                                    </div>
-                                                </div>
 
+                                                    <div class="form-group col-4 my-1">
+                                                        <label class="ml-2" for="province">استان</label>
+                                                        <select class="form-control" id="province" disabled>
+                                                            <option value="{{ address.region.parent.id }}">{{ address.region.parent.title }}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label class="mx-2" for="city">شهر</label>
+                                                        <select name="region_id" class="form-control" disabled id="city">
+                                                            <option value="{{ address.region.id }}">{{ address.region.title }}</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group col-12 my-1">
+                                                        <label for="address-address">آدرس دقیق</label>
+                                                        <input type="text" class="form-control"
+                                                               id="address-address" disabled
+                                                               name="address" value="{{ address.address }}">
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="address-road-name">نام جاده اصلی</label>
+                                                        <input type="text" class="form-control"
+                                                               id="address-road-name" disabled
+                                                               name="road_name" value="{{ address.road_name }}">
+                                                    </div>
+
+                                                    <div class="form-group col-4 my-1">
+                                                        <label for="address-distance-to-road">فاصله معدن تا
+                                                            جاده اصلی (کیلومتر)</label>
+                                                        <input type="number" class="form-control"
+                                                               id="address-distance-to-road"
+                                                               name="distance_to_road" disabled value="{{ address.distance_to_road }}">
+                                                    </div>
+
+                                                    <div class="form-group col-12 my-1 mt-3">
+                                                        <div class="form-check form-check-inline ml-4">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="address-proper-road" disabled
+                                                                   {% if address.proper_road %}checked{% endif %}>
+                                                            <label class="form-check-label"
+                                                                   for="address-proper-road">وجود جاده مناسب برای
+                                                                عبور و مرور وسایل نقلیه سواری</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline ml-4">
+                                                            <input form-field class="form-check-input" type="checkbox"
+                                                                   id="address-load-tools" disabled
+                                                                   {% if address.load_tools %}checked{% endif %}>
+                                                            <label form-label class="form-check-label"
+                                                                   for="address-load-tools">وجود تجهیزات بارگیری
+                                                                در محل دپو</label>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <!-- form-row -->
+                                            <a href="#" class="edit-info ph-btn" onclick="addAddressHandler(this)" id="add-address"><i class="fas fa-check"></i></a>
+                                            <a href="#" onclick="removeAddressHandler(this)" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>
                                             </div>
-                                            <!-- form-row -->
-                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i></a>
-                                            <a href="#" class="remove-field ph-btn btn-remove-customer"><i
-                                                    class="fas fa-times"></i></a>
-                                        </div>
+                                        {% endfor %}
                                         <!-- customer_records -->
                                         <a class="extra-fields-customer ph-btn" href="#"><i class="fas fa-plus"></i>اضافه
                                             کردن آدرس</a>
@@ -265,7 +274,7 @@
                                                 <tr>
                                                     <th scope="row">{{ forloop.counter }}</th>
                                                     <td><img src="{% get_media_prefix %}{{ media.file }}" alt=""></td>
-                                                    <td>{{ media.title}}</td>
+                                                    <td>{{ media.title }}</td>
                                                     <td>{{ media.get_state_display }}</td>
                                                 </tr>
                                             {% endfor %}
@@ -290,34 +299,91 @@
         </div>
         <!-- container -->
 
+
     </main>
     <!-- ph-buyer-profile -->
 
+    <div class="d-none">
+        <div class="address-record">
+            <div class="form-row align-items-center">
+                <div class="form-group col-4 my-1">
+                    <label form-label for="address-receiver-name">نام تحویل‌گیرنده</label>
+                    <input form-field type="text" class="form-control" id="address-receiver-name"
+                           name="receiver_name" placeholder="نام را وارد کنید...">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label class="ml-2" for="province">استان</label>
+                    <select form-field class="form-control" id="province" onchange="regionChangeHandler(this, 'address')">
+                        <option value="default">انتخاب کنید</option>
+
+                    </select>
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label class="mx-2" for="city">شهر</label>
+                    <select form-field name="region_id" class="form-control" id="city">
+                        <option value="default">انتخاب کنید</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-12 my-1">
+                    <label form-label for="address-address">آدرس دقیق</label>
+                    <input form-field type="text" class="form-control" id="address-address"
+                           name="address" placeholder="آدرس دقیق را وارد کنید...">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label for="address-road-name">نام جاده اصلی</label>
+                    <input form-field type="text" class="form-control" id="address-road-name"
+                           name="road_name" placeholder="جاده اصلی">
+                </div>
+
+                <div class="form-group col-4 my-1">
+                    <label form-label for="address-distance-to-road">فاصله معدن تا جاده اصلی (کیلومتر)</label>
+                    <input form-field type="number" class="form-control" id="address-distance-to-road"
+                           name="distance_to_road" placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
+                </div>
+
+                <div class="form-group col-12 my-1 mt-3">
+                    <div class="form-check form-check-inline ml-4">
+                        <input form-field class="form-check-input" name="proper_road" type="checkbox" id="address-proper-road"
+                               value="option1">
+                        <label form-label class="form-check-label" for="address-proper-road">وجود جاده مناسب برای
+                            عبور و مرور وسایل نقلیه سواری</label>
+                    </div>
+                    <div class="form-check form-check-inline ml-4">
+                        <input form-field class="form-check-input" name="load_tools" type="checkbox" id="address-load-tools"
+                               value="option2">
+                        <label form-label class="form-check-label" for="address-load-tools">وجود تجهیزات بارگیری
+                            در محل دپو</label>
+                    </div>
+                </div>
+
+            </div>
+            <!-- form-row -->
+        </div>
+    </div>
+    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">خطا</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer_static %}
-    <script>
-        $('.extra-fields-customer').click(function () {
-            $('.customer_records').clone().appendTo('.customer_records_dynamic');
-            $('.customer_records_dynamic .customer_records').addClass('single remove');
-            $('.single .extra-fields-customer').remove();
-            $('.single').append('<a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>');
-            $('.customer_records_dynamic > .single').attr("class", "remove");
-
-            $('.customer_records_dynamic input').each(function () {
-                var count = 0;
-                var fieldname = $(this).attr("name");
-                $(this).attr('name', fieldname + count);
-                count++;
-            });
-
-        });
-
-        $(document).on('click', '.remove-field', function (e) {
-            $(this).parent('.remove').remove();
-            e.preventDefault();
-        });
-    </script>
+    <script src="{% static 'js/profile.js' %}"></script>
     <script>
         function addNewRow() {
             var template = $('tr.template_row:first');

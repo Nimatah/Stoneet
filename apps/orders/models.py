@@ -65,7 +65,6 @@ class Order(TimestampedModel):
     state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
     price = models.BigIntegerField()
     payment_type = models.CharField(max_length=255, choices=_PAYMENT_CHOICES, default=PAYMENT_CASH)
-    product_snapshot = models.JSONField()
     installment_months = models.IntegerField(default=0)
 
     objects = OrderManager()

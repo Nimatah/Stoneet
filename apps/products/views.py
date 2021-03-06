@@ -1,9 +1,9 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from apps.products.models import Product
 
 
-class ListProductView(ListView):
+class ListProductView(TemplateView):
     template_name = 'products/list_product.html'
     model = Product
     paginate_by = 12
@@ -11,7 +11,7 @@ class ListProductView(ListView):
     context_object_name = 'products'
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(TemplateView):
     template_name = 'products/product_details.html'
     model = Product
     pk_url_kwarg = 'pk'

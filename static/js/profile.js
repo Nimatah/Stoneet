@@ -1,4 +1,5 @@
 let mineCount = 0;
+let addressCount = 0;
 const regions = JSON.parse($('#regions').text());
 
 
@@ -82,8 +83,8 @@ function handleMine() {
     });
 }
 
-function regionChangeHandler(element) {
-    const parent = $(element).parents('#mine')
+function regionChangeHandler(element, id) {
+    const parent = $(element).parents(`#${id}`)
     $(element).find("[value='default']").remove();
     parent.find('[id^="city"]').empty();
     const provinceId = $(element).val();
@@ -100,8 +101,88 @@ function handleRegions() {
     regions.forEach(function (region) {
         $(`#province`).append(`<option value="${region.id}">${region.title}</option>`);
     });
-
 }
+
+function addAddressHandler(element) {
+    const parent = $(element).parents('#address')
+    let body = {
+        receiver_name: parent.find('[name="receiver_name"]').val(),
+        region_id: parent.find('[name="region_id"]').val(),
+        address: parent.find('[name="address"]').val(),
+        road_name: parent.find('[name="road_name"]').val(),
+        distance_to_road: parent.find('[name="distance_to_road"]').val(),
+        proper_road: parent.find('[name="proper_road"]').prop('checked'),
+        load_tools: parent.find('[name="load_tools"]').prop('checked')
+    }
+
+    $.ajax("/api/address/", {
+        method: "POST",
+        contentType: "application/json",
+        headers: {
+            'Accept-Language': 'fa',
+        },
+        data: JSON.stringify(body),
+        error: function (xhr, status, error) {
+            $('#error-modal .modal-body').empty()
+            let response = JSON.parse(xhr.responseText)
+            let errors = [];
+            for (let k in response) {
+                errors.push({
+                    title: k,
+                    value: response[k]
+                })
+            }
+            errors.forEach(function (v, i) {
+                $('#error-modal .modal-body').append(
+                    `<div><span class="font-weight-bold">${v.title}</span>: ${v.value}</div>`
+                )
+            })
+            $('#error-modal').modal('show');
+        },
+        success: function (response) {
+            parent.find('[form-field]').toArray().forEach(function (v) {
+                $(v).attr('disabled', 'true')
+            })
+        }
+    })
+}
+
+function removeAddressHandler(element) {
+    const parent = $(element).parents(`#address`)
+    $.ajax(`/api/address/${parent.data('count')}`, {
+        method: "DELETE",
+        async: false,
+        contentType: "application/json",
+        headers: {
+            'Accept-Language': 'fa',
+        },
+    })
+    parent.remove();
+}
+
+function handleAddress() {
+    $('.extra-fields-customer').click(function () {
+        const addressRecord = $('.address-record').clone();
+        addressRecord.appendTo('.customer_records_dynamic');
+        addressRecord.attr('class', 'single remove');
+        addressRecord.append(`<a href="#" class="edit-info ph-btn" data-count=${addressCount} onclick="addAddressHandler(this)" id="add-address"><i class="fas fa-check"></i></a>`);
+        addressRecord.append(`<a href="#" data-count="${addressCount}" onclick="removeAddressHandler(this)" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>`);
+        addressRecord.attr("id", "address").attr('data-count', addressCount);
+        addressRecord.find('[form-field]').toArray().forEach(function (v, i) {
+            let vId = $(v).attr('id')
+            vId = `${vId}-${addressCount}`
+            $(v).attr('id', vId)
+        })
+        addressRecord.find('[form-label]').toArray().forEach(function (v, i) {
+            let vFor = $(v).attr('for')
+            vFor = `${vFor}-${addressCount}`
+            $(v).attr('for', vFor)
+        })
+        addressCount--;
+    });
+}
+
 
 handleMine()
 handleRegions()
+handleAddress()

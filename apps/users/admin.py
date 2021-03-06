@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
-from apps.users.models import User, Profile, UserMedia, Mine
+from apps.users.models import User, Profile, UserMedia, Mine, Address
 from apps.users.forms import UserChangeForm, UserCreationForm
 
 
@@ -18,6 +18,12 @@ class UserMediaAdminInline(admin.StackedInline):
 
 class MineAdminInline(admin.StackedInline):
     model = Mine
+    fk_name = 'user'
+    extra = 0
+
+
+class AddressAdminInline(admin.StackedInline):
+    model = Address
     fk_name = 'user'
     extra = 0
 
@@ -44,4 +50,4 @@ class UserAdmin(auth_admin.UserAdmin):
     search_fields = ('username',)
     ordering = ('username',)
     readonly_fields = ('last_login', 'created_at',)
-    inlines = (ProfileAdminInline, MineAdminInline, UserMediaAdminInline,)
+    inlines = (ProfileAdminInline, MineAdminInline, AddressAdminInline, UserMediaAdminInline,)

@@ -1,28 +1,26 @@
 from rest_framework import serializers
-from rest_framework.fields import CurrentUserDefault
 
-from apps.users.models import User, Mine
+from apps.users.models import User, Address
 from apps.locations.models import Region
 
 
-class MineSerializer(serializers.ModelSerializer):
+class AddressSerializer(serializers.ModelSerializer):
 
-    title = serializers.CharField()
+    receiver_name = serializers.CharField()
     region_id = serializers.IntegerField()
     address = serializers.CharField()
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
     road_name = serializers.CharField()
-    location_in_region = serializers.CharField()
     distance_to_road = serializers.IntegerField()
     proper_road = serializers.BooleanField()
     load_tools = serializers.BooleanField()
 
     class Meta:
-        model = Mine
-        fields = ('title', 'region_id', 'user', 'address', 'road_name', 'location_in_region',
+        model = Address
+        fields = ('receiver_name', 'region_id', 'user', 'address', 'road_name',
                   'distance_to_road', 'proper_road', 'load_tools',)
 
-    def validate_title(self, value: str) -> str:
+    def validate_receiver_name(self, value: str) -> str:
         return value.strip().lower()
 
     def validate_region_id(self, value: int) -> int:
