@@ -90,13 +90,23 @@
        data-target="#collapse-manage-qc" aria-controls="collapse-manage-qc" aria-expanded="false">در انتظار تایید</a>
     <ul class="nav-second-level collapse" id="collapse-manage-qc" data-parent="#manage-qc">
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:admin_qc_seller' %}">
+            <a class="nav-link" href="#">
                 <span class="nav-link-text">فروشندگان</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:admin_qc_logistic' %}">
+            <a class="nav-link" href="{% url 'users:admin_qc_seller' %}">
+                <span class="nav-link-text">بررسی فروشنده (تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
                 <span class="nav-link-text">حمل و نقل</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_qc_logistic' %}">
+                <span class="nav-link-text">بررسی راننده (تست)</span>
             </a>
         </li>
     </ul>
