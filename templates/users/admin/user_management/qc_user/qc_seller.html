@@ -1,3 +1,321 @@
 {% extends 'base_admin.html' %}
 {% load static %}
 
+
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-admin-panel ph-qc-seller">
+        <div class="container">
+            <div class="ph-admin-page-container ">
+                <div class="ph-admin-page-intro-text">
+                    <span>بررسی فروشنده | </span>
+                    در اینجا میتوانید جزییات مشخصات فروشنده را بررسی و سپس تایید یا رد کنید.
+                </div><!-- ph-admin-page-intro-text -->
+                <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="ph-user-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شخصی
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>نام و نام خانوادگی</span>
+                                        <div class="ph-user-info-item-full-name">
+                                            <span>هانیه</span>
+                                            <span>توسلی</span>
+                                        </div>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>جنسیت</span>
+                                        <span>زن</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>تاریخ تولد</span>
+                                        <span>1358/03/14</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شماره شناسنامه</span>
+                                        <span>224455</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>کد ملی</span>
+                                        <span>0123456789</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>نام حساب بانکی شخصی</span>
+                                        <span>نام حساب بانکی شخصی...</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>شماره شبا</span>
+                                        <span>IR __-____-____-____-____-____-__</span>
+                                    </div><!-- .ph-user-info-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-6">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شخصی
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>استان</span>
+                                        <span>کهگیلویه و بویراحمد</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شهر</span>
+                                        <span>نقده</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>آدرس</span>
+                                        <span>ولنجک - بلوار شهید سید حاج آقا - ساختمان تابان - واحد ۲۰۳</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>کدپستی</span>
+                                        <span>12345-67890</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>موقعیت مکانی</span>
+                                        <span>12345/67890</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>تلفن ثابت</span>
+                                        <span>02122448866</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>موبایل</span>
+                                        <span>0123456789</span>
+                                    </div><!-- .ph-user-info-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-12">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        مدارک آپلود شده
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>تصویر روی کارت ملی</span>
+                                    </div><!-- .ph-user-image-item -->
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>تصویر پشت کارت ملی</span>
+                                    </div><!-- .ph-user-image-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- ph-user-info -->
+                </div>
+                <!-- ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4 -->
+                <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="ph-user-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شرکت
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>نام شرکت</span>
+                                        <span>معدنکاران مقیم مرکز</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>نوع شرکت</span>
+                                        <span>مسئولیت محدود</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شماره ثبت شرکت</span>
+                                        <span>۸۵۶۳۹۳۷۶۰۳</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شناسه ملی شرکت</span>
+                                        <span>۸۹۵۶۶۵۵۳۷۸۳۰</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شناسه مالی</span>
+                                        <span>۰۳۸۵۶۴۹۲۰</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>حق چاپ امضا</span>
+                                        <span>۰۳۸۵۶۴۹۲۰</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>نام حساب بانکی شخصی</span>
+                                        <span>نام حساب بانکی شخصی...</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>شماره شبا</span>
+                                        <span>IR __-____-____-____-____-____-__</span>
+                                    </div><!-- .ph-user-info-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-6">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شرکت
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>استان</span>
+                                        <span>کهگیلویه و بویراحمد</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>شهر</span>
+                                        <span>نقده</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-12 ph-user-info-item">
+                                        <span>آدرس</span>
+                                        <span>ولنجک - بلوار شهید سید حاج آقا - ساختمان تابان - واحد ۲۰۳</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>کدپستی</span>
+                                        <span>12345-67890</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>موقعیت مکانی</span>
+                                        <span>12345/67890</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>تلفن ثابت</span>
+                                        <span>02122448866</span>
+                                    </div><!-- .ph-user-info-item -->
+                                    <div class="col-6 ph-user-info-item">
+                                        <span>موبایل</span>
+                                        <span>0123456789</span>
+                                    </div><!-- .ph-user-info-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-12">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        مدارک آپلود شده
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div class="row">
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>گواهی ثبت شرکت</span>
+                                    </div><!-- .ph-user-image-item -->
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>گواهی ارزش افزوده</span>
+                                    </div><!-- .ph-user-image-item -->
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>آخرین به روزرسانی روزنامه رسمی</span>
+                                    </div><!-- .ph-user-image-item -->
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>گواهی مالیات بر ارزش افزوده</span>
+                                    </div><!-- .ph-user-image-item -->
+                                    <div class="col-4 ph-user-image-item">
+                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        </a>
+                                        <span>شناسنامه ملی کپی رایت امضا</span>
+                                    </div><!-- .ph-user-image-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- ph-user-info -->
+                </div>
+                <!-- ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4 -->
+                <div class="ph-qc-section">
+                    <div class="ph-qc-alarm">
+                        <p>با توجه به اطلاعات ثبت شده در بالا، این فروشنده را تایید یا رد کنید.</p>
+                        <span>*لطفا دلیل رد کردن را در کادر زیر بنویسید، تا برای فروشنده ارسال شود.</span>
+                    </div>
+                    <!-- ph-qc-alarm -->
+                    <div class="ph-qc-description">
+                        <textarea class="form-control" id="" rows="5" placeholder="دلایل رد شدن این فروشنده..."></textarea>
+                    </div>
+                    <!-- ph-qc-description -->
+                    <div class="ph-qc-info-btns">
+                        <a href="#" class="ph-btn ph-access-btn">
+                            <i class="fas fa-check"></i>
+                            <span>تایید فروشنده</span>
+                        </a>
+                        <a href="#" class="ph-btn ph-denied-btn">
+                            <i class="fas fa-times"></i>
+                            <span>رد فروشنده</span>
+                        </a>
+                    </div>
+                    <!-- ph-qc-info-btns -->
+                </div>
+                <!-- ph-qc-section -->
+            </div>
+            <!-- ph-admin-page-container -->
+        </div>
+        <!-- container -->
+    </main>
+    <!-- ph-dashboard-main admin-panel ph-qc-seller -->
+
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/list-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('.image-popup-vertical-fit').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                mainClass: 'mfp-img-mobile',
+                image: {
+                    verticalFit: true
+                }
+
+            });
+
+            $('.image-popup-fit-width').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                image: {
+                    verticalFit: false
+                }
+            });
+
+            $('.image-popup-no-margins').magnificPopup({
+                type: 'image',
+                closeOnContentClick: true,
+                closeBtnInside: false,
+                fixedContentPos: true,
+                mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+                image: {
+                    verticalFit: true
+                },
+                zoom: {
+                    enabled: true,
+                    duration: 300 // don't foget to change the duration also in CSS
+                }
+            });
+
+        });
+
+    </script>
+{% endblock %}

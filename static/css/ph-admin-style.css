@@ -24,12 +24,7 @@
 .scroll-bar{
   height:100vh;
   overflow:auto;
-  margin-right:50px;
 }
-.scroll-bar:first-child{
-  margin-right:0px;
-}
-
 #ph_aside_myscroll::-webkit-scrollbar,
 #ph_myscroll::-webkit-scrollbar{
   width:10px;
@@ -72,6 +67,7 @@
 
 @import "fonts.css";
 
+.ph-panel-title
 
 /*
 =============================================================================
@@ -529,7 +525,7 @@ input.invalid {
   position: relative;
 }
 
-.ph-new-login-info-uploadimg-wrapper .avatar-upload .avatar-preview {
+.avatar-upload .avatar-preview {
   border: 3px solid #618BB4;
   box-shadow: 0px 2px 4px 0px #618BB4;
 }
@@ -2691,10 +2687,64 @@ a.ph-preview-placeholder:after {
 
 /*
 =============================================================
-        ADMIN PANEL   MAIN .ph-admin-dashboard
+        ADMIN PANEL   MAIN .ph-qc-seller .ph-qc-logistic
 =============================================================
 */
-
+.ph-admin-panel.ph-qc-seller .ph-panel-title,
+.ph-admin-panel.ph-qc-logistic .ph-panel-title{
+  margin-bottom: 1rem;
+}
+.ph-user-info .row .row{
+  padding: 0 15px;
+}
+.ph-user-info-item{
+    margin-bottom: .85rem;
+    display: flex;
+    justify-content: space-between;
+}
+.ph-user-info-item span{
+  font-size: .8rem;
+}
+.ph-user-info-item span:nth-last-child(1),
+.ph-user-info-item-full-name{
+    padding: .2rem .4rem;
+    border-radius: 10px;
+    color: #555;
+    background: #f5f5f5;
+    border: 1px solid #4CE0B3;
+    min-width: 50px;
+    text-align: center;
+}
+.ph-user-info-item .ph-user-info-item-full-name span{
+  border: none;
+}
+.ph-user-image-item{
+    height: 225px;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.ph-user-image-item.thumb{
+  height: 170px;
+}
+.ph-user-image-item span{
+    margin-bottom: .5rem;
+    font-size: .75rem;
+}
+.ph-user-image-item a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.ph-user-image-item a img{
+    background: aliceblue;
+    object-fit: cover;
+    object-position: center center;
+}
 
 /*
 =============================================================
@@ -2760,7 +2810,7 @@ a.ph-preview-placeholder:after {
     min-height: 90px;
 }
 
-.ph-qc-product-section{
+.ph-qc-section{
     padding: 30px;
     background: #ececec;
     border-radius: 10px;
@@ -2769,52 +2819,53 @@ a.ph-preview-placeholder:after {
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-.ph-qc-product-section:hover {
+.ph-qc-section:hover {
     transform: translateY(-5px);
     background: #FFFFFF;
     box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
 }
 
-.ph-qc-product-alarm{
+.ph-qc-alarm{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
 }
-.ph-qc-product-alarm p{
+.ph-qc-alarm p{
   margin-bottom: 0;
 }
-.ph-qc-product-alarm span{
+.ph-qc-alarm span{
   font-size: .7rem;
   color: #7e111a;
 }
 
-.ph-qc-product-btns{
+.ph-qc-info-btns{
   display: flex;
   justify-content: space-evenly;
 }
-.ph-qc-product-btns a{
+.ph-qc-info-btns a{
     margin: 0;
     font-weight: 600;
+  letter-spacing: 1.5px;
 }
-.ph-qc-product-btns a i{
+.ph-qc-info-btns a i{
   margin-left: .5rem;
   font-size: 1rem;
 }
-.ph-qc-product-btns a.ph-access-btn{
+.ph-qc-info-btns a.ph-access-btn{
     background: #4CE0B3;
     border: 1px solid #4CE0B3;
 }
-.ph-qc-product-btns a.ph-access-btn:hover{
+.ph-qc-info-btns a.ph-access-btn:hover{
     background: #FFFFFF;
     color: #4CE0B3;
 }
-.ph-qc-product-description{
+.ph-qc-description{
     margin: 2rem auto;
     width: 85%;
 }
-.ph-qc-product-description textarea{
+.ph-qc-description textarea{
     background: #f9f9f9;
 }
 /*
