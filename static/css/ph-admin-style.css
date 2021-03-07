@@ -2627,11 +2627,12 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-dashboard-main.ph-admin-panel .ph-dm-title {
-    background: #c1c1c1;
-    color: #FFffff;
-    color: #333;
+  background: #c1c1c1;
+  color: #FFffff;
+  color: #333;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text{
     background: #c1c1c1;
