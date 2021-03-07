@@ -101,6 +101,7 @@
                             </div><!-- .custom-checkbox -->
                         </div><!-- .ph-managements-filter-item -->
                     </div><!-- .col-md-12 -->
+                    <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو</button>
                 </div><!-- .ph-managements-filter-wrapper ph-admin-page-list-container -->
                 <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
                     <div class="form-group ph-managements-sorting">
@@ -149,7 +150,10 @@
                                             <label class="custom-control-label" for="logistic_active_1"></label>
                                         </div><!-- .custom-switch -->
                                         <a href="{% url 'users:admin_qc_logistic' %}"
-                                           class="ph-btn ph-managements-btn qc"><i class="fas fas fa-sync-alt"></i>بررسی</a>
+                                           class="ph-btn">
+                                            <i class="fas fas fa-sync-alt"></i>
+                                            <span>بررسی</span>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -169,7 +173,10 @@
                                                    id="logistic_active_2">
                                             <label class="custom-control-label" for="logistic_active_2"></label>
                                         </div><!-- .custom-switch -->
-                                        <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                        <a href="#" class="ph-btn">
+                                            <i class="fas fa-eye"></i>
+                                            <span>جزییات</span>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -189,7 +196,10 @@
                                                    id="logistic_active_3">
                                             <label class="custom-control-label" for="logistic_active_3"></label>
                                         </div><!-- .custom-switch -->
-                                        <a href="#" class="ph-btn ph-managements-btn done"><i class="fas fa-eye"></i>جزییات</a>
+                                        <a href="#" class="ph-btn">
+                                            <i class="fas fa-eye"></i>
+                                            <span>جزییات</span>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

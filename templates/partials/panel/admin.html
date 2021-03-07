@@ -83,15 +83,26 @@
     </ul>
 </li>
 <li class="nav-item">
-    <a class="nav-link nav-link-collapse" href="#" id="manage-orders" data-toggle="collapse"
-       data-target="#collapse-manage-orders" aria-controls="collapse-manage-orders" aria-expanded="false">مدیریت سفارشات</a>
-    <ul class="nav-second-level collapse" id="collapse-manage-orders" data-parent="#manage-orders">
+    <a class="nav-link" href="{% url 'users:admin_list_auction' %}">بررسی مناقصه‌ها</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link nav-link-collapse" href="#" id="manage-qc" data-toggle="collapse"
+       data-target="#collapse-manage-qc" aria-controls="collapse-manage-qc" aria-expanded="false">در انتظار تایید</a>
+    <ul class="nav-second-level collapse" id="collapse-manage-qc" data-parent="#manage-qc">
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="nav-link-text">سفارشات</span>
+            <a class="nav-link" href="{% url 'users:admin_qc_seller' %}">
+                <span class="nav-link-text">فروشندگان</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_qc_logistic' %}">
+                <span class="nav-link-text">حمل و نقل</span>
             </a>
         </li>
     </ul>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:admin_list_order' %}">مدیریت سفارشات</a>
 </li>
 <li class="nav-item">
     <a class="nav-link nav-link-collapse" href="#" id="manage-invoices" data-toggle="collapse"

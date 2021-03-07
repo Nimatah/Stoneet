@@ -513,6 +513,7 @@ input.form-control:focus{
     color: #343a40;
     border: 1px solid rgb(52,58,64,.63);
     background-color: #f5f5f5;
+    cursor: pointer;
 }
 
 .ph-pagination ul li.active .page-link{

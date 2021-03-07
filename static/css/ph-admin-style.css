@@ -2678,12 +2678,12 @@ a.ph-preview-placeholder:after {
     display: flex;
     line-height: 2;
 }
-.ph-managements-btn{
+.ph-table .ph-btn{
     min-width: auto;
     padding: .1rem .5rem !important;
 }
 
-.ph-managements-btn i{
+.ph-table .ph-btn i{
     margin-left: .2rem;
     font-size: .65rem;
 }
