@@ -52,6 +52,17 @@
 .ph-new-login .modal{
   position: absolute;
 }
+a.ph-terms-conditions{
+    color: #7e111a;
+    font-weight: 600;
+    letter-spacing: .5px;
+    padding: 0 .3rem .2rem;
+    border-bottom: 1px dashed;
+}
+a.ph-terms-conditions:hover{
+  color: #ffd100;
+}
+
 
 
 
@@ -67,8 +78,159 @@
 
 @import "fonts.css";
 
-.ph-panel-title
+.ph-new-login-main .ph-panel-title{
+    display: flex;
+    border-bottom: 1px solid #D1E9F0;
+    margin: 1rem 0;
+}
+.ph-new-login-main .ph-panel-title span {
+    background: #D1E9F0;
+    padding: .5rem;
+    border-radius: 10px 10px 0 0;
+}
 
+/*.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: #1FB264;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #15824B;
+  transition: all .2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  background: #1AA059;
+  color: #ffffff;
+  transition: all .2s ease;
+  cursor: pointer;
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all .2s ease;
+}*/
+
+.ph-regi-upload-file{
+    width: 30%;
+    height: 220px;
+    margin: 2rem auto 3rem;
+    position: relative;
+}
+.flow-root .ph-regi-upload-file{
+    float: right;
+    margin: 2rem 10px;
+}
+.ph-regi-upload-file span.title{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -2rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.ph-regi-file-upload-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    border: 4px dashed #00A693;
+}
+
+.ph-regi-file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ph-regi-image-upload-wrap {
+    border: 4px dashed #7E111A;
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-dropping,
+.ph-regi-image-upload-wrap:hover {
+  background-color: #1FB264;
+  border: 4px dashed #ffffff;
+}
+
+.ph-regi-image-title-wrap {
+    position: absolute;
+    bottom: -5%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ph-regi-drag-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ph-regi-drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #7E111A;
+    font-size: .75rem;
+}
+.ph-regi-drag-text i {
+    color: #7E111A;
+    margin-top: 2rem;
+    font-size: 3rem;
+}
+
+.ph-regi-file-upload-image {
+    width: 90%;
+    height: 90%;
+    margin: 5% auto;
+    box-shadow: -1px 1px 6px 1px #333;
+    border-radius: 10px;
+}
+
+.ph-regi-remove-image {
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    background: #cd4535;
+    border: none;
+    border-radius: 50%;
+    transition: all .2s ease;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    box-shadow: 0 0 6px 1px #333;
+}
 /*
 =============================================================================
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
@@ -409,7 +571,8 @@ input.invalid {
   flex-direction: column;
 }
 
-#ph_new_login_seller_info input{
+.ph-new-login input,
+.ph-new-login .custom-select{
   text-align: right;
   border-radius: 10px;
   right: 0px;
@@ -523,11 +686,10 @@ input.invalid {
   width: 200px;
   height: 200px;
   position: relative;
-}
-
-.avatar-upload .avatar-preview {
+  border-radius: 10px;
+  overflow: hidden;
   border: 3px solid #618BB4;
-  box-shadow: 0px 2px 4px 0px #618BB4;
+  box-shadow: 0 2px 4px 0 #618BB4;
 }
 
 .avatar-upload .avatar-preview > div {

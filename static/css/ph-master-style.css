@@ -373,6 +373,10 @@ input::placeholder { /* Most modern browsers support this now. */
     -o-box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
 }
 
+.flow-root{
+    display: flow-root;
+}
+
 .ph-white-block{
     background: #fff;
     padding: 2rem;

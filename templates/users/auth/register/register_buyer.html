@@ -12,16 +12,16 @@
             <article class="tab" id="ph_new_login_sign_up">
                 <div class="form-group">
                      <span class="ph-signup-inputs sign-up-email">
-                        <input type="email" name="email" class="form-control" id="sign_up_email"
+                        <input type="email" name="email" class="form-control text-left" id="sign_up_email"
                                aria-describedby="emailHelp"
                                placeholder="ایمیل خود را وارد کنید">
                      </span>
                     <span class="ph-signup-inputs sign-up-password">
-                        <input type="password" name="password" class="form-control" id="sign_up_password"
+                        <input type="password" name="password" class="form-control text-left" id="sign_up_password"
                                placeholder="رمز عبور خود را انتخاب کنید">
                      </span>
                     <span class="ph-signup-inputs sign-up-number">
-                        <input type="tel" name="mobile_number" class="form-control"
+                        <input type="tel" name="mobile_number" class="form-control text-left"
                                id="sign_up_number" placeholder="09** *******" required>
                      </span>
                     <div class="ph-signup-submit-btn">
@@ -96,7 +96,11 @@
                         <p>پر کردن تمامی موارد الزامیست.</p>
                     </div><!-- .ph-new-login-alert -->
                     <section class="ph-private-business" id="ph_private_business">
-                        <h4 class="ph-new-login-2-title">چه نوع فروشنده‌ای هستید؟</h4>
+                        <div class="ph-panel-title">
+                            <span class="title ph-border-radius">
+                                چه نوع فروشنده‌ای هستید؟
+                            </span>
+                        </div><!-- ph-panel-title -->
                         <div class="ph-private-business-check ph-conditional d-flex">
                             <div class="custom-control custom-radio form-check-inline">
                                 <input class="custom-control-input" type="radio" name="legal_type" value="individual"
@@ -123,7 +127,11 @@
                     </section><!-- .ph-private-business -->
                     <div class="ph-conditional-wrapper" id="ph-company-wrapper">
                         <section class="ph-company-account" id="ph_company_account">
-                            <h4 class="ph-new-login-2-title">اطلاعات شرکت</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات شرکت
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_company_account_name_lastname" class="needs-validation" novalidate>
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
@@ -198,7 +206,11 @@
                             </div><!-- .needs-validation -->
                         </section><!-- .ph-company-account -->
                         <section class="ph-info-contacts" id="ph_info_contacts">
-                            <h4 class="ph-new-login-2-title">اطلاعات تماس شرکت</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات تماس شرکت
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_info_contact_form">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -227,7 +239,7 @@
                                     </div><!-- .col-12 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_info_contacts_kodposti">کدپستی</label>
-                                        <input data-type="company" type="text" class="form-control"
+                                        <input data-type="company" type="text" class="form-control text-left"
                                                id="ph_info_contacts_kodposti"
                                                placeholder="۱۲۳۴۵-۶۷۸۹۰" value="" required>
                                         <div class="valid-feedback">
@@ -236,9 +248,9 @@
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_info_contacts_tel">تلفن ثابت</label>
-                                        <input data-type="company" type="text" class="form-control"
+                                        <input data-type="company" type="text" class="form-control text-left"
                                                id="ph_info_contacts_tel"
-                                               placeholder="۰۲۱ "
+                                               placeholder="********۰۲۱ "
                                                value="" required>
                                         <div class="valid-feedback">
                                             لطفا از اعداد فارسی استفاده کنید
@@ -248,7 +260,11 @@
                             </div><!-- #ph_info_contact_form -->
                         </section><!-- .ph-info-contacts -->
                         <section class="ph-business-info" id="ph_business_info">
-                            <h4 class="ph-new-login-2-title">اطلاعات مالی شرکت</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات مالی شرکت
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_business_info_form">
                                 <div class="row">
                                     <div class="col-12 mb-3">
@@ -262,7 +278,7 @@
                                     </div><!-- .col-12 -->
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
-                                        <input data-type="company" type="text" class="form-control"
+                                        <input data-type="company" type="text" class="form-control text-left"
                                                id="ph_business_info_sheba"
                                                placeholder="IR _-__-__-__-__-__-_" value="" required
                                                style="direction: ltr;text-align: left;">
@@ -276,7 +292,11 @@
                     </div><!-- .ph-conditional-wrapper #ph-company-wrapper -->
                     <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
                         <section class="ph-real-account" id="ph_real_account">
-                            <h4 class="ph-new-login-2-title">اطلاعات شخصی</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات شخصی
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_real_account_name_lastname" class="needs-validation" novalidate>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
@@ -299,30 +319,32 @@
                                     </div><!-- .col-md-6 -->
                                 </div><!-- .form-row -->
                             </div><!-- #ph_real_account_name_lastname -->
-                            <div class="ph-real-account-birthday">
-                                <label for="birthday">تاریخ تولد</label>
-                                <input data-type="individual" type="text" id="birthday" name="birthday"
-                                       class="form-control">
-                            </div><!-- .ph-real-account-birthday -->
-                            <div id="ph_real_account_gender" class="d-flex">
-                                <div class="custom-control custom-radio form-check-inline">
-                                    <input data-type="individual" class="custom-control-input" type="radio"
-                                           name="gender"
-                                           id="ph_real_account_gender_man" value="male">
-                                    <label class="custom-control-label" for="ph_real_account_gender_man">مرد</label>
-                                </div><!-- .custom-radio -->
-                                <div class="custom-control custom-radio form-check-inline">
-                                    <input data-type="individual" class="custom-control-input" type="radio"
-                                           name="gender"
-                                           id="ph_real_account_gender_woman" value="female">
-                                    <label class="custom-control-label" for="ph_real_account_gender_woman">زن</label>
-                                </div><!-- .custom-radio -->
-                            </div><!-- #ph_real_account_gender -->
+                            <div class="form-row">
+                                <div id="ph_real_account_gender" class="col-md-6 d-flex">
+                                    <div class="custom-control custom-radio form-check-inline">
+                                        <input data-type="individual" class="custom-control-input" type="radio"
+                                               name="gender"
+                                               id="ph_real_account_gender_man" value="male">
+                                        <label class="custom-control-label" for="ph_real_account_gender_man">مرد</label>
+                                    </div><!-- .custom-radio -->
+                                    <div class="custom-control custom-radio form-check-inline">
+                                        <input data-type="individual" class="custom-control-input" type="radio"
+                                               name="gender"
+                                               id="ph_real_account_gender_woman" value="female">
+                                        <label class="custom-control-label" for="ph_real_account_gender_woman">زن</label>
+                                    </div><!-- .custom-radio -->
+                                </div><!-- #ph_real_account_gender -->
+                                <div class="col-md-6 ph-real-account-birthday">
+                                    <label for="birthday">تاریخ تولد</label>
+                                    <input data-type="individual" type="text" id="birthday" name="birthday"
+                                           class="form-control">
+                                </div><!-- .ph-real-account-birthday -->
+                            </div>
                             <div id="ph_real_account_melli_shenasname" class="needs-validation" novalidate>
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_real_account_shenasname">شماره شناسنامه</label>
-                                        <input data-type="individual" type="text" class="form-control"
+                                        <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_real_account_shenasname"
                                                placeholder="۱۲۳۴۵" name="id_code" required>
                                         <div class="valid-feedback">
@@ -331,7 +353,7 @@
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_real_account_melli">کد ملی</label>
-                                        <input data-type="individual" type="text" class="form-control"
+                                        <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_real_account_melli"
                                                placeholder="۰۰۱۴۸۲۷۴۸۵" name="national_code" required>
                                         <div class="valid-feedback">
@@ -342,7 +364,11 @@
                             </div><!-- #ph_real_account_melli_shenasname -->
                         </section><!-- .ph-real-account -->
                         <section class="ph-info-contacts" id="ph_info_contacts">
-                            <h4 class="ph-new-login-2-title">اطلاعات تماس شخصی</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات تماس شخصی
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_info_contact_form">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
@@ -371,7 +397,7 @@
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_info_contacts_kodposti">کدپستی</label>
-                                        <input data-type="individual" type="text" class="form-control"
+                                        <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_info_contacts_kodposti"
                                                placeholder="۱۲۳۴۵-۶۷۸۹۰" name="postal_code" required>
                                         <div class="valid-feedback">
@@ -380,7 +406,7 @@
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_info_contacts_tel">تلفن ثابت</label>
-                                        <input data-type="individual" type="text" class="form-control"
+                                        <input data-type="individual" type="text" class="form-control text-left"
                                                name="phone_number" id="ph_info_contacts_tel"
                                                placeholder="۰۲۱۸۸۲۳۹۴۸۷ " required>
                                         <div class="valid-feedback">
@@ -391,7 +417,11 @@
                             </div><!-- #ph_info_contact_form -->
                         </section><!-- .ph-info-contacts -->
                         <section class="ph-business-info" id="ph_business_info">
-                            <h4 class="ph-new-login-2-title">اطلاعات مالی شخصی</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات مالی شخصی
+                                </span>
+                            </div><!-- ph-panel-title -->
                             <div id="ph_business_info_form">
                                 <div class="row">
                                     <div class="col-12 mb-3">
@@ -406,7 +436,7 @@
                                     </div><!-- .col-12 -->
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
-                                        <input data-type="individual" type="text" class="form-control"
+                                        <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_business_info_sheba"
                                                placeholder="IR __-___-___-____-___-___-_" name="bank_sheba_number"
                                                required
@@ -428,113 +458,129 @@
             <article class="tab" id="ph_new_login_buyer_info_uploadimg">
                 <div class="form-group ph-new-login-info-uploadimg-wrapper">
                     <section class="ph-business-uploadimg" id="">
-                        <h4 class="ph-new-login-2-title">اطلاعات مالی شخصی</h4>
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات مالی شخصی
+                                </span>
+                            </div><!-- ph-panel-title -->
                         <div class="container">
                             <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
-                                <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input data-type="company" type='file' name="image_company_registration"
-                                                   id="image-company-registration" accept=".png, .jpg, .jpeg"/>
-                                            <label for="image-company-registration"></label>
-                                        </div><!-- .avatar-edit -->
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div><!-- #imagePreview -->
-                                        </div><!-- .avatar-preview -->
-                                        <label class="ph-image-label">گواهی ثبت شرکت</label>
-                                    </div><!-- .avatar-upload -->
-                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input data-type="company" type='file'
-                                                   name="image_company_added_value_certificate"
-                                                   id="image-company-added-value-certificate"
-                                                   accept=".png, .jpg, .jpeg"/>
-                                            <label for="image-company-added-value-certificate"></label>
-                                        </div><!-- .avatar-edit -->
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div><!-- #imagePreview -->
-                                        </div><!-- .avatar-preview -->
-                                        <label class="ph-image-label">گواهی ارزش افزوده</label>
-                                    </div><!-- .avatar-upload -->
-                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input data-type="company" type='file'
-                                                   name="image_company_public_certificate"
-                                                   id="image-company-public-certificate" accept=".png, .jpg, .jpeg"/>
-                                            <label for="image-company-public-certificate"></label>
-                                        </div><!-- .avatar-edit -->
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div><!-- #imagePreview -->
-                                        </div><!-- .avatar-preview -->
-                                        <label class="ph-image-label">آخرین به روزرسانی روزنامه رسمی</label>
-                                    </div><!-- .avatar-upload -->
-                                </div><!-- .row -->
-                                <div class="row">
-                                    <div class="col-12 col-md-6 col-lg-offset-2 col-lg-4 avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input data-type="company" type='file'
-                                                   name="image_company_tax_on_added_value_certificate"
-                                                   id="image-company-tax-on-added-value-certificate"
-                                                   accept=".png, .jpg, .jpeg"/>
-                                            <label for="image-company-tax-on-added-value-certificate"></label>
-                                        </div><!-- .avatar-edit -->
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div><!-- #imagePreview -->
-                                        </div><!-- .avatar-preview -->
-                                        <label class="ph-image-label">گواهی مالیات بر ارزش افزوده</label>
-                                    </div><!-- .avatar-upload -->
-                                    <div class="col-12 col-md-6 col-lg-4 avatar-upload">
-                                        <div class="avatar-edit">
-                                            <input data-type="company" type='file'
-                                                   name="image_company_signature_copyright_certificate"
-                                                   id="image-company-signature-copyright-certificate"
-                                                   accept=".png, .jpg, .jpeg"/>
-                                            <label for="image-company-signature-copyright-certificate"></label>
-                                        </div><!-- .avatar-edit -->
-                                        <div class="avatar-preview">
-                                            <div id="imagePreview"
-                                                 style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                            </div><!-- #imagePreview -->
-                                        </div><!-- .avatar-preview -->
-                                        <label class="ph-image-label">شناسنامه ملی کپی رایت امضا</label>
-                                    </div><!-- .avatar-upload -->
-                                </div><!-- .row -->
+                                <div class="flow-root">
+    <div class="ph-regi-upload-file">
+        <span class="title">گواهی ثبت شرکت</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+    <div class="ph-regi-upload-file">
+        <span class="title">گواهی ارزش افزوده</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+    <div class="ph-regi-upload-file">
+        <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+    <div class="ph-regi-upload-file">
+        <span class="title">گواهی مالیات بر ارزش افزوده</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+    <div class="ph-regi-upload-file">
+        <span class="title">شناسنامه ملی کپی رایت امضا</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+                                </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                             <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input data-type="individual" type='file' name="image_id_card_front"
-                                               id="image-id-card-front" accept=".png, .jpg, .jpeg"/>
-                                        <label for="image-id-card-front"></label>
-                                    </div><!-- .avatar-edit -->
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview"
-                                             style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div><!-- #imagePreview -->
-                                    </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">تصویر روی کارت ملی</label>
-                                </div><!-- .avatar-upload -->
-                                <div class="avatar-upload">
-                                    <div class="avatar-edit">
-                                        <input data-type="individual" type='file' name="image_id_card_back"
-                                               id="image-id-car-back" accept=".png, .jpg, .jpeg"/>
-                                        <label for="image-id-car-back"></label>
-                                    </div><!-- .avatar-edit -->
-                                    <div class="avatar-preview">
-                                        <div id="imagePreview"
-                                             style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                                        </div><!-- #imagePreview -->
-                                    </div><!-- .avatar-preview -->
-                                    <label class="ph-image-label">تصویر پشت کارت ملی</label>
-                                </div><!-- .avatar-upload -->
+    <div class="ph-regi-upload-file">
+        <span class="title">تصویر روی کارت ملی</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
+    <div class="ph-regi-upload-file">
+        <span class="title">تصویر پشت کارت ملی</span>
+		<div class="ph-regi-image-upload-wrap">
+			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+			<div class="ph-regi-drag-text">
+				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
+				<i class="fas fa-cloud-upload-alt"></i>
+			</div>
+		</div>
+		<div class="ph-regi-file-upload-content">
+			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
+			<div class="ph-regi-image-title-wrap">
+				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
+    </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                         </div><!-- .container -->
                     </section><!-- .ph-business-uploadimg -->
@@ -560,8 +606,11 @@
                 </div><!-- .ph-new-login-sign-up-alert -->
                 <div class="custom-control custom-checkbox mt-3">
                     <input type="checkbox" class="custom-control-input" id="terms_conditions">
-                    <label class="custom-control-label" for="terms_conditions">کادر شرایط و شرایط را علامت بزنید و
-                        روی دکمه تأیید کلیک کنید</label>
+                    <label class="custom-control-label" for="terms_conditions">
+                        با
+                        <a href="#" class="ph-terms-conditions">قوانین و مقررات</a>
+                        موافقم.
+                    </label>
                 </div><!-- .custom-checkbox -->
                 <div class="ph-new-login-info-btn mt-3">
                     <button id="register-btn" class="btn ph-btn">نهایی کردن ثبت نام</button>
@@ -595,4 +644,38 @@
         </div><!-- .modal-dialog -->
     </div><!-- .modal#error-modal -->
 
+    <script>
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.ph-regi-image-upload-wrap').hide();
+
+      $('.ph-regi-file-upload-image').attr('src', e.target.result);
+      $('.ph-regi-file-upload-content').show();
+
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.ph-regi-file-upload-input').replaceWith($('.ph-regi-file-upload-input').clone());
+  $('.ph-regi-file-upload-content').hide();
+  $('.ph-regi-image-upload-wrap').show();
+}
+$('.ph-regi-image-upload-wrap').bind('dragover', function () {
+		$('.ph-regi-image-upload-wrap').addClass('image-dropping');
+	});
+	$('.ph-regi-image-upload-wrap').bind('dragleave', function () {
+		$('.ph-regi-image-upload-wrap').removeClass('image-dropping');
+});
+    </script>
 {% endblock %}
