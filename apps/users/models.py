@@ -261,6 +261,7 @@ class Profile(models.Model):
     region = models.ForeignKey('locations.Region', on_delete=models.SET_NULL, null=True, blank=True)
     phone_number = models.CharField(max_length=255, blank=True)
     bank_account_name = models.CharField(max_length=255, blank=True)
+    bank_account_number = models.CharField(max_length=255, blank=True)
     bank_sheba_number = models.CharField(max_length=255, blank=True)
 
     company_name = models.CharField(max_length=255, blank=True)

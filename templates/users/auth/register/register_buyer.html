@@ -81,11 +81,6 @@
                         </div>
                     </div><!-- ph_LogIn_Modal -->
                 </div><!-- #ph_sign_in_to_sign_up -->
-                <div class="ph-new-login-sign-up-alert">
-                    <span>توجه:</span>
-                    <p>در صورتی که مراحل ثبت نام را نیمه تمام گذاشته اید، می توانید با همان ایمیل ثبت نام خود را ادامه
-                        دهید.</p>
-                </div><!-- .ph-new-login-sign-up-alert-->
             </article><!-- .ph_new_login_sign_up -->
 
             <article class="tab" id="ph_new_login_buyer_info">
@@ -271,15 +266,19 @@
                                         <input data-type="company" type="text" class="form-control"
                                                id="ph_person_account_name"
                                                placeholder="نام فروشگاه خود را تایپ کنید..." value="" required>
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
+                                    </div><!-- .col-12 -->
+                                    <div class="col-12 mb-3">
+                                        <label for="ph_bank_account_number">شماره حساب</label>
+                                        <input data-type="company" type="text" class="form-control text-left"
+                                               id="ph_bank_account_number"
+                                               name="bank_account_number"
+                                               style="direction: ltr;text-align: left;">
                                     </div><!-- .col-12 -->
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
                                         <input data-type="company" type="text" class="form-control text-left"
                                                id="ph_business_info_sheba"
-                                               placeholder="IR _-__-__-__-__-__-_" value="" required
+                                               placeholder="IR _-__-__-__-__-__-_" value=""
                                                style="direction: ltr;text-align: left;">
                                         <div class="valid-feedback">
                                             لطفا از حروف فارسی استفاده کنید
@@ -330,13 +329,14 @@
                                         <input data-type="individual" class="custom-control-input" type="radio"
                                                name="gender"
                                                id="ph_real_account_gender_woman" value="female">
-                                        <label class="custom-control-label" for="ph_real_account_gender_woman">زن</label>
+                                        <label class="custom-control-label"
+                                               for="ph_real_account_gender_woman">زن</label>
                                     </div><!-- .custom-radio -->
                                 </div><!-- #ph_real_account_gender -->
                                 <div class="col-md-6 ph-real-account-birthday">
                                     <label for="birthday">تاریخ تولد</label>
-                                    <input data-type="individual" type="text" id="birthday" name="birthday"
-                                           class="form-control">
+                                    <input readonly data-type="individual" type="text" id="birthday" name="birthday"
+                                           class="form-control" style="background: #ffffff !important">
                                 </div><!-- .ph-real-account-birthday -->
                             </div>
                             <div id="ph_real_account_melli_shenasname" class="needs-validation" novalidate>
@@ -399,18 +399,12 @@
                                         <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_info_contacts_kodposti"
                                                placeholder="۱۲۳۴۵-۶۷۸۹۰" name="postal_code" required>
-                                        <div class="valid-feedback">
-                                            لطفا از اعداد فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_info_contacts_tel">تلفن ثابت</label>
                                         <input data-type="individual" type="text" class="form-control text-left"
                                                name="phone_number" id="ph_info_contacts_tel"
                                                placeholder="۰۲۱۸۸۲۳۹۴۸۷ " required>
-                                        <div class="valid-feedback">
-                                            لطفا از اعداد فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
                                     </div><!-- .col-md-6 -->
                                 </div><!-- .row -->
                             </div><!-- #ph_info_contact_form -->
@@ -424,25 +418,24 @@
                             <div id="ph_business_info_form">
                                 <div class="row">
                                     <div class="col-12 mb-3">
-                                        <label for="ph_business_account_name">نام حساب بانکی شخصی</label>
+                                        <label for="ph_business_account_name">نام صاحب حساب</label>
                                         <input data-type="individual" type="text" class="form-control"
-                                               id="ph_business_account_name"
-                                               placeholder="نام فروشگاه خود را تایپ کنید..." name="bank_account_name"
-                                               required>
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
+                                               id="ph_business_account_name" name="bank_account_name"
+                                        >
+                                    </div><!-- .col-12 -->
+                                    <div class="col-12 mb-3">
+                                        <label for="ph_bank_account_number">شماره حساب</label>
+                                        <input data-type="individual" type="text" class="form-control text-left"
+                                               id="ph_bank_account_number"
+                                               name="bank_account_number"
+                                               style="direction: ltr;text-align: left;">
                                     </div><!-- .col-12 -->
                                     <div class="col-12 mb-3">
                                         <label for="ph_business_info_sheba">شماره شبا</label>
                                         <input data-type="individual" type="text" class="form-control text-left"
                                                id="ph_business_info_sheba"
                                                placeholder="IR __-___-___-____-___-___-_" name="bank_sheba_number"
-                                               required
                                                style="direction: ltr;text-align: left;">
-                                        <div class="valid-feedback">
-                                            لطفا از حروف فارسی استفاده کنید
-                                        </div><!-- .valid-feedback -->
                                     </div><!-- .col-12 -->
                                 </div><!-- .row -->
                             </div><!-- #ph_business_info_form -->
@@ -457,129 +450,148 @@
             <article class="tab" id="ph_new_login_buyer_info_uploadimg">
                 <div class="form-group ph-new-login-info-uploadimg-wrapper">
                     <section class="ph-business-uploadimg" id="">
-                            <div class="ph-panel-title">
+                        <div class="ph-panel-title">
                                 <span class="title ph-border-radius">
                                     اطلاعات مالی شخصی
                                 </span>
-                            </div><!-- ph-panel-title -->
+                        </div><!-- ph-panel-title -->
                         <div class="container">
                             <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
                                 <div class="flow-root">
-    <div class="ph-regi-upload-file">
-        <span class="title">گواهی ثبت شرکت</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
-    <div class="ph-regi-upload-file">
-        <span class="title">گواهی ارزش افزوده</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
-    <div class="ph-regi-upload-file">
-        <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
-    <div class="ph-regi-upload-file">
-        <span class="title">گواهی مالیات بر ارزش افزوده</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
-    <div class="ph-regi-upload-file">
-        <span class="title">شناسنامه ملی کپی رایت امضا</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
+                                    <div class="ph-regi-upload-file">
+                                        <span class="title">گواهی ثبت شرکت</span>
+                                        <div class="ph-regi-image-upload-wrap">
+                                            <input class="ph-regi-file-upload-input" type='file'
+                                                   onchange="readURL(this);" accept="image/*"/>
+                                            <div class="ph-regi-drag-text">
+                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-file-upload-content">
+                                            <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                            <div class="ph-regi-image-title-wrap">
+                                                <button type="button" onclick="removeUpload()"
+                                                        class="ph-regi-remove-image"><i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-upload-file">
+                                        <span class="title">گواهی ارزش افزوده</span>
+                                        <div class="ph-regi-image-upload-wrap">
+                                            <input class="ph-regi-file-upload-input" type='file'
+                                                   onchange="readURL(this);" accept="image/*"/>
+                                            <div class="ph-regi-drag-text">
+                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-file-upload-content">
+                                            <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                            <div class="ph-regi-image-title-wrap">
+                                                <button type="button" onclick="removeUpload()"
+                                                        class="ph-regi-remove-image"><i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-upload-file">
+                                        <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+                                        <div class="ph-regi-image-upload-wrap">
+                                            <input class="ph-regi-file-upload-input" type='file'
+                                                   onchange="readURL(this);" accept="image/*"/>
+                                            <div class="ph-regi-drag-text">
+                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-file-upload-content">
+                                            <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                            <div class="ph-regi-image-title-wrap">
+                                                <button type="button" onclick="removeUpload()"
+                                                        class="ph-regi-remove-image"><i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-upload-file">
+                                        <span class="title">گواهی مالیات بر ارزش افزوده</span>
+                                        <div class="ph-regi-image-upload-wrap">
+                                            <input class="ph-regi-file-upload-input" type='file'
+                                                   onchange="readURL(this);" accept="image/*"/>
+                                            <div class="ph-regi-drag-text">
+                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-file-upload-content">
+                                            <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                            <div class="ph-regi-image-title-wrap">
+                                                <button type="button" onclick="removeUpload()"
+                                                        class="ph-regi-remove-image"><i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-upload-file">
+                                        <span class="title">شناسنامه ملی کپی رایت امضا</span>
+                                        <div class="ph-regi-image-upload-wrap">
+                                            <input class="ph-regi-file-upload-input" type='file'
+                                                   onchange="readURL(this);" accept="image/*"/>
+                                            <div class="ph-regi-drag-text">
+                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-file-upload-content">
+                                            <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                            <div class="ph-regi-image-title-wrap">
+                                                <button type="button" onclick="removeUpload()"
+                                                        class="ph-regi-remove-image"><i class="fas fa-times"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                             <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
-    <div class="ph-regi-upload-file">
-        <span class="title">تصویر روی کارت ملی</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
-    <div class="ph-regi-upload-file">
-        <span class="title">تصویر پشت کارت ملی</span>
-		<div class="ph-regi-image-upload-wrap">
-			<input class="ph-regi-file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
-			<div class="ph-regi-drag-text">
-				<h3>عکس مورد نظر خود را انتخاب کنید</h3>
-				<i class="fas fa-cloud-upload-alt"></i>
-			</div>
-		</div>
-		<div class="ph-regi-file-upload-content">
-			<img class="ph-regi-file-upload-image" src="#" alt="your image" />
-			<div class="ph-regi-image-title-wrap">
-				<button type="button" onclick="removeUpload()" class="ph-regi-remove-image"><i class="fas fa-times"></i></button>
-			</div>
-		</div>
-    </div>
+                                <div class="ph-regi-upload-file">
+                                    <span class="title">تصویر روی کارت ملی</span>
+                                    <div class="ph-regi-image-upload-wrap">
+                                        <input class="ph-regi-file-upload-input" name="image_id_card_front" type='file' onchange="readURL(this);"
+                                               accept="image/*"/>
+                                        <div class="ph-regi-drag-text">
+                                            <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-file-upload-content">
+                                        <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                        <div class="ph-regi-image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="ph-regi-remove-image">
+                                                <i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ph-regi-upload-file">
+                                    <span class="title">تصویر پشت کارت ملی</span>
+                                    <div class="ph-regi-image-upload-wrap">
+                                        <input class="ph-regi-file-upload-input" name="image_id_card_back" type='file' onchange="readURL(this);"
+                                               accept="image/*"/>
+                                        <div class="ph-regi-drag-text">
+                                            <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                            <i class="fas fa-cloud-upload-alt"></i>
+                                        </div>
+                                    </div>
+                                    <div class="ph-regi-file-upload-content">
+                                        <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                        <div class="ph-regi-image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="ph-regi-remove-image">
+                                                <i class="fas fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div><!-- .ph-conditional-wrapper-2 -->
                         </div><!-- .container -->
                     </section><!-- .ph-business-uploadimg -->
@@ -645,36 +657,37 @@
 
     <script>
 
-function readURL(input) {
-  if (input.files && input.files[0]) {
+        function readURL(input) {
+            if (input.files && input.files[0]) {
 
-    var reader = new FileReader();
+                var reader = new FileReader();
 
-    reader.onload = function(e) {
-      $('.ph-regi-image-upload-wrap').hide();
+                reader.onload = function (e) {
+                    $('.ph-regi-image-upload-wrap').hide();
 
-      $('.ph-regi-file-upload-image').attr('src', e.target.result);
-      $('.ph-regi-file-upload-content').show();
+                    $('.ph-regi-file-upload-image').attr('src', e.target.result);
+                    $('.ph-regi-file-upload-content').show();
 
-    };
+                };
 
-    reader.readAsDataURL(input.files[0]);
+                reader.readAsDataURL(input.files[0]);
 
-  } else {
-    removeUpload();
-  }
-}
+            } else {
+                removeUpload();
+            }
+        }
 
-function removeUpload() {
-  $('.ph-regi-file-upload-input').replaceWith($('.ph-regi-file-upload-input').clone());
-  $('.ph-regi-file-upload-content').hide();
-  $('.ph-regi-image-upload-wrap').show();
-}
-$('.ph-regi-image-upload-wrap').bind('dragover', function () {
-		$('.ph-regi-image-upload-wrap').addClass('image-dropping');
-	});
-	$('.ph-regi-image-upload-wrap').bind('dragleave', function () {
-		$('.ph-regi-image-upload-wrap').removeClass('image-dropping');
-});
+        function removeUpload() {
+            $('.ph-regi-file-upload-input').replaceWith($('.ph-regi-file-upload-input').clone());
+            $('.ph-regi-file-upload-content').hide();
+            $('.ph-regi-image-upload-wrap').show();
+        }
+
+        $('.ph-regi-image-upload-wrap').bind('dragover', function () {
+            $('.ph-regi-image-upload-wrap').addClass('image-dropping');
+        });
+        $('.ph-regi-image-upload-wrap').bind('dragleave', function () {
+            $('.ph-regi-image-upload-wrap').removeClass('image-dropping');
+        });
     </script>
 {% endblock %}

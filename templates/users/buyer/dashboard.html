@@ -24,7 +24,7 @@
                 </div><!-- col-4 -->
                 <div class="col-4">
                     <div class="ph-dmp-section-1 ph-last-invoices-list">
-                        <div class="title">آخرین صورتحساب‌ها</div>
+                        <div class="title">سررسید صورتحساب</div>
                         <ul>
                             {% for invoice in invoice_queryset|slice:4 %}
                             <li>تاریخ صورتحساب:<span>۱۳۹۹/۰۷/۲۷</span></li>
@@ -45,12 +45,6 @@
                             <li>سفارش‌های درحال انجام: <span>{{ order.rejected.count }}</span></li>
                             <li>سفارشات در انتظار بررسی: <span>{{ order.pending.count }}</span></li>
                         </ul>
-                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
-                </div><!-- col-4 -->
-                <div class="col-4">
-                    <div class="ph-dmp-section-1 ph-dash-condition-panel">
-                        <div class="title">وضعیت پنل</div>
-                        <span>{{ user.get_state_display }}</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
                 <div class="col-4">

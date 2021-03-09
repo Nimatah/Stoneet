@@ -27,10 +27,11 @@
                     <div class="ph-dmp-section-1 ph-user-product-info">
                         <div class="title">مدیریت محصولات</div>
                         <ul>
-                            <li>تعداد کالاهای درج‌شده: <span>{{ product_queryset.count }}</span></li>
-                            <li>تعداد کالاهای تاییدشده: <span>{{ product_queryset.accepted.count }}</span></li>
+                            <li>کالاهای پیش نویس: <span>{{ product_queryset.draft.count }}</span></li>
                             <li>کالاهای درانتظار تایید: <span>{{ product_queryset.pending.count }}</span></li>
+                            <li>تعداد کالاهای تاییدشده: <span>{{ product_queryset.accepted.count }}</span></li>
                             <li>کالاهای رد شده: <span>{{ product_queryset.rejected.count }}</span></li>
+                            <li>تعداد کالاهای درج‌ شده: <span>{{ product_queryset.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-product-info -->
                 </div><!-- col-4 -->
@@ -39,9 +40,9 @@
                         <div class="title">سفارشات</div>
                         <ul>
                             <li>تعداد سفارش: <span>{{ order_queryset.count }}</span></li>
-                            <li>سفارش‌های انجام شده: <span>{{ order_queryset.accepted.count }}</span></li>
-                            <li>سفارش‌های درحال انجام: <span>{{ order_queryset.rejected.count }}</span></li>
+                            <li>سفارشات درحال انجام: <span>{{ order_queryset.rejected.count }}</span></li>
                             <li>سفارشات در انتظار بررسی: <span>{{ order_queryset.pending.count }}</span></li>
+                            <li>سفارشات انجام شده: <span>{{ order_queryset.accepted.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->

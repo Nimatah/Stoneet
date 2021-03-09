@@ -49,6 +49,9 @@ class ProductQueryset(models.QuerySet):
     def pending(self) -> 'ProductQueryset':
         return self.filter(state=Product.STATE_PENDING)
 
+    def draft(self) -> 'ProductQueryset':
+        return self.filter(state=Product.STATE_DRAFT)
+
 
 class ProductManager(models.Manager):
 
@@ -291,18 +294,20 @@ class ProductAttribute(models.Model):
 
 class Product(TimestampedModel):
 
+    STATE_DRAFT = 'draft'
     STATE_PENDING = 'pending'
     STATE_ACCEPTED = 'accepted'
     STATE_REJECTED = 'rejected'
 
     _STATE_CHOICES = (
+        (STATE_DRAFT, 'پیش نویس'),
         (STATE_PENDING, 'در انتظار تایید',),
         (STATE_ACCEPTED, 'تایید شده',),
         (STATE_REJECTED, 'رد شده',),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
+    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_DRAFT)
     title = models.CharField(max_length=255)
     mine = models.ForeignKey(Mine, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField()

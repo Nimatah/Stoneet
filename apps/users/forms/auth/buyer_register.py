@@ -29,6 +29,7 @@ class BuyerRegisterForm(BaseUserRegisterForm):
     region = forms.IntegerField(required=False)
     phone_number = forms.CharField(required=False)
     bank_account_name = forms.CharField(required=False)
+    bank_account_number = forms.CharField(required=False)
     bank_sheba_number = forms.CharField(required=False)
 
     company_name = forms.CharField(required=False)
@@ -156,6 +157,7 @@ class BuyerRegisterForm(BaseUserRegisterForm):
         profile.region_id = self.cleaned_data['region']
         profile.phone_number = self.cleaned_data['phone_number']
         profile.bank_account_name = self.cleaned_data['bank_account_name']
+        profile.bank_account_number = self.cleaned_data['bank_account_number']
         profile.bank_sheba_number = self.cleaned_data['bank_sheba_number']
         return profile
 
@@ -166,6 +168,7 @@ class BuyerRegisterForm(BaseUserRegisterForm):
         profile.region_id = self.cleaned_data['region']
         profile.phone_number = self.cleaned_data['phone_number']
         profile.bank_account_name = self.cleaned_data['bank_account_name']
+        profile.bank_account_number = self.cleaned_data['bank_account_number']
         profile.bank_sheba_number = self.cleaned_data['bank_sheba_number']
         profile.company_name = self.cleaned_data['company_name']
         profile.company_type = self.cleaned_data['company_type']

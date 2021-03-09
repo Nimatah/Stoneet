@@ -18,8 +18,8 @@ class RegistrationAuthValidationSerializer(serializers.Serializer):
         return value
 
     def validate_password(self, value: str) -> str:
-        if 6 > len(value) > 50:
-            raise serializers.ValidationError('رمز عبور باید بیشتر از ۶ کاراکتر باشد.')
+        if 8 > len(value) > 50:
+            raise serializers.ValidationError('رمز عبور باید بیشتر از ۸ کاراکتر باشد.')
         return value
 
     def validate_mobile_number(self, value: str) -> str:
