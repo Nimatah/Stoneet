@@ -377,6 +377,14 @@ input::placeholder { /* Most modern browsers support this now. */
     display: flow-root;
 }
 
+.direction-rtl{
+    direction: rtl;
+}
+
+.direction-ltr{
+    direction: ltr;
+}
+
 .ph-white-block{
     background: #fff;
     padding: 2rem;

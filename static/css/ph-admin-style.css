@@ -1845,6 +1845,11 @@ a.ph-preview-placeholder:after {
     padding: 1rem 1.5rem;
 }
 
+.ph-admin-page-list-container .ph-btn,
+.ph-managements-filter-wrapper .ph-btn{
+    margin-left: 0;
+}
+
 .ph-admin-page-block-header{
     border-bottom: 1px solid #F2D428;
     margin-bottom: 20px;
@@ -3068,8 +3073,48 @@ a.ph-preview-placeholder:after {
   margin-right: 1rem;
 }
 
+/*
+=============================================================
+        ADMIN PANEL   Modal .ph-add-product-modal
+=============================================================
+*/
+.ph-add-product-modal{
 
-
+}
+.ph-add-product-modal .modal-content {
+    border-radius: 10px;
+    background: #f5f5f5;
+    border-bottom: 2rem solid #f5f5f5;
+}
+.ph-add-product-modal .modal-header{
+    background: #c1c1c1;
+    color: #333;
+}
+.ph-add-product-modal .modal-header .close{
+    font-size: 2rem;
+}
+.ph-add-product-modal .modal-header h5{
+    font-size: 1.2rem;
+    font-family: 'IRANSANS';
+}
+.ph-add-product-modal .scroll-bar{
+    height: auto;
+}
+.ph-add-product-modal .modal-body{
+    overflow-y: scroll;
+    max-height: 70vh;
+    min-height: 35vh;
+}
+.ph-add-product-modal .modal-lg {
+    max-width: 1000px;
+    margin-left: 7%;
+}
+.ph-add-product-modal .ph-table{
+    background: #FFffff;
+}
+.ph-add-product-modal
+.ph-add-product-modal
+.ph-add-product-modal
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
