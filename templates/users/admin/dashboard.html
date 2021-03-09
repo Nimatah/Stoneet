@@ -89,10 +89,12 @@
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
                 <div class="col-4">
-                    <a href="#" class="ph-dmp-section-add ph-dash-add-product">
+                    <a href="#" class="ph-dmp-section-add ph-dash-add-product" data-toggle="modal"
+               data-target="#ph_dashboard_Add_Product_Modal">
                         <span>افزودن محصول جدید </span>
                         <i class="fas fa-plus"></i>
                     </a><!-- ph-dmp-section-add ph-dash-add-product -->
+
                     <a href="#" class="ph-dmp-section-add ph-dash-list-product">
                         <span>لیست محصولات </span>
                         <i class="fas fa-th-list"></i>
@@ -122,5 +124,247 @@
             </div><!-- row -->
         </div><!-- ph-dm-panel -->
     </div><!-- container -->
+            <div class="modal fade bd-example-modal-lg ph-add-product-modal ph-modal direction-rtl" id="ph_dashboard_Add_Product_Modal" tabindex="-1"
+                 role="dialog"
+                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">فروشنده مورد نظر را انتخاب کنید:</h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div id="ph_myscroll" class="modal-body scroll-bar">
+
+                            <div class="ph-managements-container">
+                                <div class="ph-managements-filter-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                                    <div class="form-row">
+                                        <div class="col mb-3">
+                                            <div class="ph-managements-filter-item filter-id">
+                                                <label for="">ID</label>
+                                                <input type="text" class="form-control" id="" placeholder="ID فروشنده"
+                                                       value="">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div><!-- .valid-feedback -->
+                                            </div><!-- ph-managements-filter-item -->
+                                        </div><!-- col -->
+                                        <div class="col mb-3">
+                                            <div class="ph-managements-filter-item filter-name">
+                                                <label for="">نام و نام‌خانوادگی</label>
+                                                <input type="text" class="form-control" id=""
+                                                       placeholder="نام و نام‌خانوادگی فروشنده"
+                                                       value="">
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div><!-- .valid-feedback -->
+                                            </div><!-- ph-managements-filter-item -->
+                                        </div><!-- col -->
+                                        <div class="col mb-3">
+                                            <div class="ph-managements-filter-item filter-city">
+                                                <label for="">شهر</label>
+                                                <input list="origin_city" class="form-control" placeholder="نام شهر">
+                                                <datalist id="origin_city">
+                                                    <option value="تهران">
+                                                    <option value="شیراز">
+                                                    <option value="کرج">
+                                                    <option value="کرمان">
+                                                    <option value="مشهد">
+                                                </datalist>
+                                            </div><!-- ph-managements-filter-item -->
+                                        </div><!-- col -->
+                                    </div><!-- form-row -->
+                                    <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو</button>
+                                </div><!-- .ph-managements-filter-wrapper ph-admin-page-list-container -->
+                                <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                                    <div class="ph-managements-table table-responsive">
+                                        <table class="table ph-table table-bordered text-center">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>ردیف</th>
+                                                    <th>ID</th>
+                                                    <th>نام و نام‌خانوادگی</th>
+                                                    <th>ایمیل</th>
+                                                    <th>کدملی</th>
+                                                    <th>شماره موبایل</th>
+                                                    <th>تلفن ثابت</th>
+                                                    <th>شهر</th>
+                                                    <th>وضعیت</th>
+                                                    <th>عملیات</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>gh-12r35tt</td>
+                                                    <td>مصطفی چراغی</td>
+                                                    <td>sample@gmail.com</td>
+                                                    <td>1234567890</td>
+                                                    <td>09123456789</td>
+                                                    <td>02122446688</td>
+                                                    <td>شیراز</td>
+                                                    <td>درانتظار تایید</td>
+                                                    <td>
+                                                        <a href="{% url 'users:admin_add_product' %}"
+                                                           class="ph-btn ph-managements-btn qc"><i
+                                                                class="fas fa-mouse-pointer"></i>انتخاب</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div><!-- .ph-managements-table -->
+                                </div><!-- .ph-managements-table-wrapper ph-admin-page-list-container -->
+                            </div><!-- .ph-managements-container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ph_Add_Product_Modal ph-modal -->
 </main><!-- ph-dashboard-main seller-panel ph-seller-dashboard -->
 {% endblock %}
