@@ -18,7 +18,7 @@ class SellerRegisterView(FormView):
 
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return HttpResponseRedirect(reverse_lazy('home:index'))
+            return HttpResponseRedirect(reverse_lazy('users:redirect'))
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -39,7 +39,7 @@ class BuyerRegisterView(FormView):
 
     def get(self, request, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return HttpResponseRedirect(reverse_lazy('home:index'))
+            return HttpResponseRedirect(reverse_lazy('users:redirect'))
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -60,6 +60,22 @@ class BuyerRegisterView(FormView):
 class LogisticRegisterView(TemplateView):
 
     template_name = 'users/auth/register/register_logistic.html'
+    form_class = LogisticRegisterForm
+    success_url = reverse_lazy('users:redirect')
+
+    def get(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return HttpResponseRedirect(reverse_lazy('users:redirect'))
+        return super().get(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

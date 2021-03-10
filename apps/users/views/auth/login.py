@@ -15,7 +15,7 @@ class LoginView(BaseLoginView):
         return reverse_lazy('users:redirect')
 
     def get(self, request, *args, **kwargs):
-        return HttpResponseRedirect(reverse_lazy('home:index'))
+        return HttpResponseRedirect(reverse_lazy('users:redirect'))
 
     def form_invalid(self, form):
         return render(
