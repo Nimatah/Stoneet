@@ -17,3 +17,6 @@ class ProductDetailView(DetailView):
     pk_url_kwarg = 'pk'
     context_object_name = 'product'
 
+
+class BuyProductView(TemplateView):
+    template_name = 'products/buy_product.html'
