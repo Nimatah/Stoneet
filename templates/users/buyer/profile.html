@@ -129,7 +129,7 @@
 
                                                     <div class="form-group col-4 my-1">
                                                         <label class="ml-2" for="province">استان</label>
-                                                        <select class="form-control" id="province" disabled>
+                                                        <select class="form-control" id="province-{{ address.id }}" disabled>
                                                             <option value="{{ address.region.parent.id }}">{{ address.region.parent.title }}</option>
                                                         </select>
                                                     </div>
@@ -157,7 +157,6 @@
 
                                                 </div>
                                                 <!-- form-row -->
-                                            <a href="#" class="edit-info ph-btn" onclick="addAddressHandler(this)" id="add-address"><i class="fas fa-check"></i></a>
                                             <a href="#" onclick="removeAddressHandler(this)" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>
                                             </div>
                                         {% endfor %}

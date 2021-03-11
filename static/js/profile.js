@@ -44,6 +44,7 @@ function addMineHandler(element) {
             parent.find('[form-field]').toArray().forEach(function (v) {
                 $(v).attr('disabled', 'true')
             })
+            parent.find('#add-mine').remove()
         }
     })
 }
@@ -67,7 +68,7 @@ function handleMine() {
         mineRecord.appendTo('.customer_records_dynamic');
         mineRecord.attr('class', 'single remove');
         mineRecord.append(`<a href="#" class="edit-info ph-btn" data-count=${mineCount} onclick="addMineHandler(this)" id="add-mine"><i class="fas fa-check"></i></a>`);
-        mineRecord.append(`<a href="#" data-count="${mineCount}" onclick="removeMineHandler(this)" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>`);
+        mineRecord.append(`<a href="#" data-count="${mineCount}" onclick="removeMineHandler(this)" class="remove-field ph-btn btn-remove-customer" id="remove-mine"><i class="fas fa-times"></i></a>`);
         mineRecord.attr("id", "mine").attr('data-count', mineCount);
         mineRecord.find('[form-field]').toArray().forEach(function (v, i) {
             let vId = $(v).attr('id')
@@ -99,6 +100,7 @@ function regionChangeHandler(element, id) {
 
 function handleRegions() {
     regions.forEach(function (region) {
+        console.log('#province')
         $(`#province`).append(`<option value="${region.id}">${region.title}</option>`);
     });
 }
@@ -139,9 +141,10 @@ function addAddressHandler(element) {
         success: function (response) {
             parent.find('[form-field]').toArray().forEach(function (v) {
                 $(v).attr('disabled', 'true')
-            })
+            });
+            parent.find('#add-address').remove()
         }
-    })
+    });
 }
 
 function removeAddressHandler(element) {
@@ -153,7 +156,7 @@ function removeAddressHandler(element) {
         headers: {
             'Accept-Language': 'fa',
         },
-    })
+    });
     parent.remove();
 }
 
@@ -163,7 +166,7 @@ function handleAddress() {
         addressRecord.appendTo('.customer_records_dynamic');
         addressRecord.attr('class', 'single remove');
         addressRecord.append(`<a href="#" class="edit-info ph-btn" data-count=${addressCount} onclick="addAddressHandler(this)" id="add-address"><i class="fas fa-check"></i></a>`);
-        addressRecord.append(`<a href="#" data-count="${addressCount}" onclick="removeAddressHandler(this)" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>`);
+        addressRecord.append(`<a href="#" data-count="${addressCount}" onclick="removeAddressHandler(this)" class="remove-field ph-btn btn-remove-customer" id="remove-address"><i class="fas fa-times"></i></a>`);
         addressRecord.attr("id", "address").attr('data-count', addressCount);
         addressRecord.find('[form-field]').toArray().forEach(function (v, i) {
             let vId = $(v).attr('id')
