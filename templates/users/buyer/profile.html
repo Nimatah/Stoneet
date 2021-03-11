@@ -149,37 +149,10 @@
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label for="address-road-name">نام جاده اصلی</label>
+                                                        <label for="address-road-name">کد پستی</label>
                                                         <input type="text" class="form-control"
                                                                id="address-road-name" disabled
-                                                               name="road_name" value="{{ address.road_name }}">
-                                                    </div>
-
-                                                    <div class="form-group col-4 my-1">
-                                                        <label for="address-distance-to-road">فاصله معدن تا
-                                                            جاده اصلی (کیلومتر)</label>
-                                                        <input type="number" class="form-control"
-                                                               id="address-distance-to-road"
-                                                               name="distance_to_road" disabled value="{{ address.distance_to_road }}">
-                                                    </div>
-
-                                                    <div class="form-group col-12 my-1 mt-3">
-                                                        <div class="form-check form-check-inline ml-4">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   id="address-proper-road" disabled
-                                                                   {% if address.proper_road %}checked{% endif %}>
-                                                            <label class="form-check-label"
-                                                                   for="address-proper-road">وجود جاده مناسب برای
-                                                                عبور و مرور وسایل نقلیه سواری</label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline ml-4">
-                                                            <input form-field class="form-check-input" type="checkbox"
-                                                                   id="address-load-tools" disabled
-                                                                   {% if address.load_tools %}checked{% endif %}>
-                                                            <label form-label class="form-check-label"
-                                                                   for="address-load-tools">وجود تجهیزات بارگیری
-                                                                در محل دپو</label>
-                                                        </div>
+                                                               name="road_name" value="{{ address.postal_code }}">
                                                     </div>
 
                                                 </div>
@@ -334,30 +307,9 @@
                 </div>
 
                 <div class="form-group col-4 my-1">
-                    <label form-label for="address-road-name">نام جاده اصلی</label>
-                    <input form-field type="text" class="form-control" id="address-road-name"
-                           name="road_name" placeholder="جاده اصلی">
-                </div>
-
-                <div class="form-group col-4 my-1">
-                    <label form-label for="address-distance-to-road">فاصله معدن تا جاده اصلی (کیلومتر)</label>
-                    <input form-field type="number" class="form-control" id="address-distance-to-road"
-                           name="distance_to_road" placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
-                </div>
-
-                <div class="form-group col-12 my-1 mt-3">
-                    <div class="form-check form-check-inline ml-4">
-                        <input form-field class="form-check-input" name="proper_road" type="checkbox" id="address-proper-road"
-                               value="option1">
-                        <label form-label class="form-check-label" for="address-proper-road">وجود جاده مناسب برای
-                            عبور و مرور وسایل نقلیه سواری</label>
-                    </div>
-                    <div class="form-check form-check-inline ml-4">
-                        <input form-field class="form-check-input" name="load_tools" type="checkbox" id="address-load-tools"
-                               value="option2">
-                        <label form-label class="form-check-label" for="address-load-tools">وجود تجهیزات بارگیری
-                            در محل دپو</label>
-                    </div>
+                    <label form-label for="addres-postal-code">کد پستی</label>
+                    <input form-field type="text" class="form-control" id="addres-postal-code"
+                           name="postal_code" placeholder="جاده اصلی">
                 </div>
 
             </div>

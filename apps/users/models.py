@@ -92,10 +92,7 @@ class Address(models.Model):
     receiver_name = models.CharField(max_length=255)
     region = models.ForeignKey('locations.Region', on_delete=models.CASCADE)
     address = models.TextField()
-    road_name = models.CharField(max_length=255)
-    distance_to_road = models.IntegerField()
-    proper_road = models.BooleanField()
-    load_tools = models.BooleanField()
+    postal_code = models.CharField(max_length=255)
 
     objects = AddressManager()
 

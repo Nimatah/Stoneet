@@ -6,19 +6,15 @@ from apps.locations.models import Region
 
 class AddressSerializer(serializers.ModelSerializer):
 
-    receiver_name = serializers.CharField()
-    region_id = serializers.IntegerField()
-    address = serializers.CharField()
+    receiver_name = serializers.CharField(label='نام تحویل گیرنده')
+    region_id = serializers.IntegerField(label='شهر')
+    address = serializers.CharField(label='آدرس')
+    postal_code = serializers.CharField(label='کد پستی')
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    road_name = serializers.CharField()
-    distance_to_road = serializers.IntegerField()
-    proper_road = serializers.BooleanField()
-    load_tools = serializers.BooleanField()
 
     class Meta:
         model = Address
-        fields = ('receiver_name', 'region_id', 'user', 'address', 'road_name',
-                  'distance_to_road', 'proper_road', 'load_tools',)
+        fields = ('receiver_name', 'region_id', 'user', 'address', 'postal_code',)
 
     def validate_receiver_name(self, value: str) -> str:
         return value.strip().lower()
@@ -27,7 +23,7 @@ class AddressSerializer(serializers.ModelSerializer):
         try:
             Region.objects.get(pk=value)
         except Region.DoesNotExist:
-            raise serializers.ValidationError('region not found')
+            raise serializers.ValidationError('شهر پیدا نشد')
         return value
 
     def validate_address(self, value: 'str') -> 'str':
@@ -35,3 +31,9 @@ class AddressSerializer(serializers.ModelSerializer):
 
     def validate_road_name(self, value: str) -> str:
         return value.strip().lower()
+
+    def validate_postal_code(self, value):
+        try:
+            return str(int(value))
+        except:
+            raise serializers.ValidationError('لطفا کد پستی را صحیح وارد نمایید')

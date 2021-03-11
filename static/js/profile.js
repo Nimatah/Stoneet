@@ -109,10 +109,7 @@ function addAddressHandler(element) {
         receiver_name: parent.find('[name="receiver_name"]').val(),
         region_id: parent.find('[name="region_id"]').val(),
         address: parent.find('[name="address"]').val(),
-        road_name: parent.find('[name="road_name"]').val(),
-        distance_to_road: parent.find('[name="distance_to_road"]').val(),
-        proper_road: parent.find('[name="proper_road"]').prop('checked'),
-        load_tools: parent.find('[name="load_tools"]').prop('checked')
+        postal_code: parent.find('[name="postal_code"]').val()
     }
 
     $.ajax("/api/address/", {
