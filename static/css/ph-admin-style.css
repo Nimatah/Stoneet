@@ -316,7 +316,7 @@ input.invalid {
 
 .ph-new-login main.ph-new-login-main {
   width: 100%;
-    padding-top: 3rem;
+    padding-top: 10rem;
   padding-bottom: 20vh;
   position: relative;
 }
@@ -482,6 +482,7 @@ input.invalid {
     padding-bottom: 0;
     padding-top: 0;
     background-color: #FFffff;
+    margin: 0;
 }
 
 #ph-individual-wrapper-2{
