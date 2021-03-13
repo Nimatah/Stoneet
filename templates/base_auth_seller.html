@@ -11,12 +11,6 @@
             <div class="ph-new-login seller-register">
                 <aside class="ph-registration-panel-sidebar">
                     <div class="ph-new-login-sidebar">
-                        <header class="ph-nls-header">
-                            <a href="" class="ph-nls-logo">
-                                <img src="{% static 'images/logo.png' %}" alt="header-Logo">
-                            </a>
-                            <h1 class="ph-nls-header-title">ثبت نام فروشندگان</h1>
-                        </header>
                         <ul id="progressbar">
                             <li class="progressbar-item step active" id="progressbar_item_info">
                                 <h6 class="ph-reg-steps-title">۱. ثبت نام</h6>
@@ -37,11 +31,15 @@
                                 <p class="ph-reg-steps-description">به جمع فروشندگان استونیت خوش آمدید.</p>
                             </li>
                         </ul>
-                        <div class="ph-registration-panel-bottom-links">
-                            <a href="{% url 'home:index' %}">صفحه اصلی</a>
-                            <span> | </span>
-                            <a href="{% url 'users:login' %}">ورود به پنل</a>
-                        </div><!-- .ph-registration-panel-bottom-links -->
+                        <div class="ph-registration-panel-footer">
+                            <div class="ph-registration-panel-bottom-links">
+                                <a href="{% url 'home:index' %}">صفحه اصلی</a>
+                                <span> | </span>
+                                <a href="{% url 'users:login' %}">ورود به پنل</a>
+                            </div><!-- .ph-registration-panel-bottom-links -->
+                                <div>تمامی حقوق مادی و معنوی این سایت برای استونیت محفوظ است.</div>
+                                <div>طراحی و توسعه :<a href="https://planhub.ir/">PlanHUB</a></div>
+                        </div><!-- .ph-registration-panel-footer -->
                     </div><!-- .ph-new-login-sidebar -->
                 </aside><!-- .ph-registration-panel-sidebar -->
 

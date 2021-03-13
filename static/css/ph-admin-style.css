@@ -52,6 +52,7 @@
 .ph-new-login .modal{
   position: absolute;
 }
+
 a.ph-terms-conditions{
     color: #7e111a;
     font-weight: 600;
@@ -70,7 +71,7 @@ a.ph-terms-conditions:hover{
 /*=======================================================================================================================
 /*=======================================================================================================================
 
-                                            SELLER PANEL REGISTRATION
+                                  PANEL REGISTRATION
 
 =========================================================================================================================
 =========================================================================================================================
@@ -78,6 +79,73 @@ a.ph-terms-conditions:hover{
 
 @import "fonts.css";
 
+.ph-new-login aside.ph-registration-panel-sidebar {
+    width: 100%;
+    background: #f5f5f5;
+    z-index: 10;
+    padding: 2rem 0;
+    height: 20vh;
+    position: fixed;
+    top: 80vh;
+    box-shadow: 0 -25px 30px 0 hsl(0deg 0% 57% / 20%);
+}
+
+.ph-new-login aside.ph-registration-panel-sidebar .ph-new-login-sidebar{
+    position: relative;
+}
+
+.ph-new-login aside.ph-registration-panel-sidebar #progressbar{
+    display: flex;
+    justify-content: center;
+}
+
+.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item {
+    position: relative;
+    opacity: .5;
+    width: 400px;
+    padding: 1rem;
+    padding-right: 4rem;
+    margin: 0 1rem 2rem;
+    min-height: 60px;
+    color: #D4A373;
+    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+    border-radius: 10px;
+}
+
+.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step.active{
+    opacity: 1;
+    transform: translate(0px, -10px);
+}
+.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step.active::before {
+  opacity: 1;
+  content: "\f2f1";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item p{
+    margin: 0;
+}
+
+
+.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step::before {
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 6.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 2px;
+  background-color: #5fb62d;
+  color: #f5f5f5;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+}
 .ph-new-login-main .ph-panel-title{
     display: flex;
     border-bottom: 1px solid #D1E9F0;
@@ -88,33 +156,6 @@ a.ph-terms-conditions:hover{
     padding: .5rem;
     border-radius: 10px 10px 0 0;
 }
-
-/*.file-upload-btn {
-  width: 100%;
-  margin: 0;
-  color: #fff;
-  background: #1FB264;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  border-bottom: 4px solid #15824B;
-  transition: all .2s ease;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.file-upload-btn:hover {
-  background: #1AA059;
-  color: #ffffff;
-  transition: all .2s ease;
-  cursor: pointer;
-}
-
-.file-upload-btn:active {
-  border: 0;
-  transition: all .2s ease;
-}*/
 
 .ph-regi-upload-file{
     width: 30%;
@@ -236,45 +277,6 @@ a.ph-terms-conditions:hover{
        SELLER PANEL REGISTRATION   SIDEBAR .ph-seller-panel-sidebar
 =============================================================================
 */
-.ph-new-login aside.ph-registration-panel-sidebar {
-  width: 30%;
-  background: #f5f5f5;
-  z-index: 10;
-  padding: 2rem;
-  height: 100vh;
-  position: fixed;
-}
-
-.ph-new-login.seller-register aside.ph-registration-panel-sidebar{
-  background: #618BB4;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .ph-new-login-sidebar .ph-nls-header .ph-nls-logo {
-  display: flex;
-  height: 65px;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .ph-new-login-sidebar .ph-nls-header .ph-nls-logo img {
-  width: auto;
-  height: 100%;
-  margin: auto;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .ph-new-login-sidebar .ph-nls-header .ph-nls-header-title {
-  text-align: center;
-    margin: 1rem 0 2rem;
-  color: #fff;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item {
-  position: relative;
-  opacity: .5;
-  padding-right: 4rem;
-  margin-bottom: 35px;
-  min-height: 60px;
-  color: #fff;
-}
-
 input.invalid {
   background-color: #ffdddd;
 }
@@ -283,34 +285,8 @@ input.invalid {
   display: none;
 }
 
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step::before {
-  content: "\f00d";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  position: absolute;
-  right: 6.5px;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35px;
-  height: 35px;
-  margin: 0 2px;
-  background-color: #5fb62d;
-  color: #f5f5f5;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step.active{
-  opacity: 1;
-}
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step.active::before {
-  opacity: 1;
-  content: "\f2f1";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
+.ph-new-login.seller-register aside.ph-registration-panel-sidebar .progressbar-item.step::before {
+    background-color: #D4A373;
 }
 
 /* Mark the steps that are finished and valid: */
@@ -322,41 +298,29 @@ input.invalid {
   font-weight: 900;
 }
 
+.ph-registration-panel-footer{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.ph-registration-panel-footer a:hover{
+    font-weight: 600;
+}
+
 .ph-registration-panel-bottom-links{
   text-align: center;
-  font-size: 12px;
-  color: #FFFFFF;
 }
-.ph-registration-panel-bottom-links a{
-  color: #FFFFFF;
-}
-
-.ph-registration-panel-bottom-links a:hover{
-  color: #fff;
-}
-
-/*
-============================================================================
-        SELLER PANEL REGISTRATION   MAIN .ph-new-login-main
-============================================================================
-*/
 
 .ph-new-login main.ph-new-login-main {
-  width: 69%;
-  margin-right: auto;
+  width: 100%;
+    padding-top: 3rem;
+  padding-bottom: 20vh;
   position: relative;
 }
-.ph-new-login #ph_new_login_the_end{
-    width: 75%;
-    margin: auto;
-}
 
-#ph_new_login_form {
-  font-family: IRANSans;
-  padding: 40px;
-  width: 100%;
-  min-width: 600px;
-}
 #ph_new_login_form  .form-check{
   padding-left:0;
   padding-right: 0;
@@ -375,8 +339,9 @@ input.invalid {
  */
 
 #ph_new_login_form #ph_new_login_sign_up {
-  width: 55%;
-  margin: auto;
+    width: 55%;
+    margin: auto;
+    padding: 3rem 0;
 }
 
 #ph_new_login_sign_up span.ph-signup-inputs {
@@ -391,8 +356,6 @@ input.invalid {
   position: absolute;
   top: 85%;
   margin-right: 1rem;
-  color: #00A693 !important;
-  font-size: .65rem;
 }
 
 #ph_new_login_sign_up span.ph-signup-inputs input {
@@ -484,21 +447,6 @@ input.invalid {
   -o-transition: all .3s ease-in-out;
 }
 
-.ph-new-login-sign-up-alert {
-  margin-top: 2rem;
-  background: #eaeaea;
-  padding: 15px 20px;
-  border-radius: 8px;
-  font-size: .85rem;
-  display: flex;
-  color: #666;
-}
-
-.ph-new-login-sign-up-alert span {
-  color: #d44952;
-  margin-left: .5rem;
-  font-weight: 600;
-}
 
 /* 
           #ph_new_login_seller_info
@@ -511,10 +459,29 @@ input.invalid {
 .ph-new-login-info-end-wrapper,
 .ph-new-login-logistic-info-wrapper,
 .ph-new-login-logistic-business-end-wrapper,
-.ph-new-login-logistic-business-license-wrapper{
-  width: 85%;
-  margin-left: auto;
-  padding-right: 2rem;
+.ph-new-login-logistic-business-license-wrapper,
+#ph_new_login_form{
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+    margin-bottom: 4rem;
+    background-color: #FFffff;
+}
+
+/*
+============================================================================
+        SELLER PANEL REGISTRATION   MAIN .ph-new-login-main
+============================================================================
+*/
+.ph-new-login.seller-register{
+    background-image: url('/static/images/seller-register-bg.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+#ph_new_login_form{
+    padding-bottom: 0;
+    padding-top: 0;
+    background-color: #FFffff;
 }
 
 #ph-individual-wrapper-2{
@@ -718,9 +685,6 @@ input.invalid {
 =========================================================================================================================
 =======================================================================================================================*/
 
-body{
-  background: #f5f5f5;
-}
 .custom-select, .form-control,input::placeholder{
     font-size: .75rem;
 }

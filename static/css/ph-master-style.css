@@ -587,12 +587,39 @@ input.form-control:focus{
     padding-left: 15px;
 }
 
+.ph-modal .modal-dialog{
+    max-width: 40%;
+}
+
 .ph-modal .modal-content{
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px 0 rgb(88,114,195,.2);
+}
+
+.ph-modal .modal-content .modal-header{
+    border-bottom: 0;
+}
+
+.ph-modal .modal-content .modal-header h5{
+    font-size: 1.8rem;
+}
+.ph-modal .custom-select,
+.ph-modal .form-control,
+.ph-modal input::placeholder{
+    font-size: 1.1rem;
 }
 
 .ph-modal .modal-body{
     padding: 1.5rem;
+    background-image: url("/static/images/login-modal-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.ph-modal .modal-body .form-group{
+    width: 50%;
+    padding-top: 1rem;
 }
 
 .ph-modal .modal-body .ph-modal-item{
@@ -600,10 +627,14 @@ input.form-control:focus{
     display: flex;
     flex-direction: column;
 }
+.ph-modal button{
+    margin-top: 2rem;
+}
 
 .ph-signup-modal{
     display: flex;
-    margin: 2rem auto 0;
+    width: 50%;
+    margin: 2rem 0 0 auto;
     justify-content: center;
     align-items: center;
 }

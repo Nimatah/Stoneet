@@ -7,6 +7,7 @@
 {% block auth_content %}
 
     <main class="ph-new-login-main">
+    <div class="container">
         <form id="ph_new_login_form" action="">
             <article class="tab" id="ph_new_login_sign_up">
                 <div class="form-group">
@@ -14,17 +15,14 @@
                         <input type="email" class="form-control text-left" id="sign_up_email"
                                aria-describedby="emailHelp"
                                placeholder="ایمیل خود را وارد کنید">
-                        <small id="emailـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
                      </span>
                     <span class="ph-signup-inputs sign-up-password">
                         <input type="password" class="form-control text-left" id="sign_up_password"
                                placeholder="رمز عبور خود را انتخاب کنید">
-                        <small id="passـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
                      </span>
                     <span class="ph-signup-inputs sign-up-number">
                         <input type="tel" class="form-control text-left" id="sign_up_number" placeholder="09** *******"
                                pattern="^\d{4}-\d{3}-\d{4}$" required>
-                        <small id="numـHelp" class="form-text text-muted">ایمیل شما به اشتراک گذاشته نمیشود.</small>
                     </span>
                     <div class="ph-signup-submit-btn">
                         <button type="submit" id="ph_signup_submit_btn"
@@ -85,11 +83,6 @@
                         </div><!-- .modal-dialog -->
                     </div><!-- modal#ph_LogIn_Modal -->
                 </div><!-- #ph_sign_in_to_sign_up -->
-                <div class="ph-new-login-sign-up-alert">
-                    <span>توجه:</span>
-                    <p>در صورتی که مراحل ثبت نام را نیمه تمام گذاشته اید، می توانید با همان ایمیل ثبت نام خود را ادامه
-                        دهید.</p>
-                </div><!-- .ph-new-login-sign-up-alert-->
             </article><!-- .ph_new_login_sign_up -->
 
             <article class="tab" id="ph_new_login_seller_info">
@@ -643,6 +636,7 @@
             </div>
 
         </form><!-- #ph_new_login_form -->
+    </div>
     </main><!-- .ph-new-login-main -->
 
     <div id="error-modal" class="modal" tabindex="-1" role="dialog">
