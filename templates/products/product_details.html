@@ -15,34 +15,6 @@
                     <div class="container">
                         <div class="ph-single-product-top-wrapper">
                             <div class="row">
-                                <div class="col-12 col-md-5">
-                                    <div class="ph-single-product-image-wrapper">
-                                        <div class="ph-single-product-main-image">
-                                            <a class="image-popup-vertical-fit"
-                                               href="{% get_media_prefix %}{{ product.media.get_primary.file }}"
-                                               title="{{ product.title }}">
-                                                <img
-                                                        src="
-
-
-
-
-
-
-                                                                {% get_media_prefix %}{{ product.media.get_primary.file }}">
-                                            </a>
-                                        </div><!-- .ph-single-product-main-image -->
-                                        <div class="ph-single-product-gallery popup-gallery">
-                                            {% for image in product.media.get_additional %}
-                                                <a href="{% get_media_prefix %}{{ image.file }}"
-                                                   title="{{ product.title }}">
-                                                    <img class="ph-border-radius"
-                                                         src="{% get_media_prefix %}{{ image.file }}">
-                                                </a>
-                                            {% endfor %}
-                                        </div><!-- .ph-single-product-gallery -->
-                                    </div><!-- .ph-single-product-image-wrapper -->
-                                </div><!-- .col-md-5 -->
                                 <div class="col-12 col-md-7">
                                     <div class="ph-single-product-details-wrapper">
                                         <!-- <h1 class="ph-single-product-title">{{ product.title }}</h1> -->
@@ -106,6 +78,26 @@
                                         </div><!-- .ph-single-product-details-bottom -->
                                     </div><!-- .ph-single-product-details-wrapper -->
                                 </div><!-- .col-md-7 -->
+                                <div class="col-12 col-md-5">
+                                    <div class="ph-single-product-image-wrapper">
+                                        <div class="ph-single-product-main-image">
+                                            <a class="image-popup-vertical-fit"
+                                               href="{% get_media_prefix %}{{ product.media.get_primary.file }}"
+                                               title="{{ product.title }}">
+                                                <img src="{% get_media_prefix %}{{ product.media.get_primary.file }}">
+                                            </a>
+                                        </div><!-- .ph-single-product-main-image -->
+                                        <div class="ph-single-product-gallery popup-gallery">
+                                            {% for image in product.media.get_additional %}
+                                                <a href="{% get_media_prefix %}{{ image.file }}"
+                                                   title="{{ product.title }}">
+                                                    <img class="ph-border-radius"
+                                                         src="{% get_media_prefix %}{{ image.file }}">
+                                                </a>
+                                            {% endfor %}
+                                        </div><!-- .ph-single-product-gallery -->
+                                    </div><!-- .ph-single-product-image-wrapper -->
+                                </div><!-- .col-md-5 -->
                             </div><!-- .row -->
                         </div><!-- .ph-single-product-top-wrapper -->
                         <div class="ph-single-product-specification my-4">

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/ph-frontend-style.css' %}">
 {% endblock %}
 {% block content %}
-    <header class="ph-main-header">
+    <header class="ph-main-header {% if not request.resolver_match.url_name == 'index' %}sticky-header{% endif %}">
         <div class="container">
             <div class="ph-main-menu">
                 <nav class="navbar navbar-expand-lg">
