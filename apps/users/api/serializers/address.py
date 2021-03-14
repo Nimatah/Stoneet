@@ -8,13 +8,15 @@ class AddressSerializer(serializers.ModelSerializer):
 
     receiver_name = serializers.CharField(label='نام تحویل گیرنده')
     region_id = serializers.IntegerField(label='شهر')
+    region = serializers.CharField(read_only=True, source='region.title')
+    province = serializers.CharField(read_only=True, source='region.parent.title')
     address = serializers.CharField(label='آدرس')
     postal_code = serializers.CharField(label='کد پستی')
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:
         model = Address
-        fields = ('receiver_name', 'region_id', 'user', 'address', 'postal_code',)
+        fields = ('receiver_name', 'region_id', 'user', 'address', 'postal_code', 'region', 'province')
 
     def validate_receiver_name(self, value: str) -> str:
         return value.strip().lower()

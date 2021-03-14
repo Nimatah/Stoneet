@@ -220,31 +220,30 @@
                                         <div class="ph-view-order-block-item">
                                             <label>مقصد:</label>
                                             <select class="custom-select mb-3" id="customer-address">
-                                                <option>خانه</option>
-                                                <option>شرکت اول</option>
-                                                <option>شرکت دوم</option>
+                                                {% for address in user.addresses.all %}
+                                                    <option value="{{ address.id }}">{{ address.receiver_name }}</option>
+                                                {% endfor %}
                                             </select>
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="ph-view-order-block-item">
                                                     <label>آدرس:</label>
-                                                    <p> خیابان شهید بهشتی، خیابان کاووسی فر، کوچه نکیسا، پلاک 35 ، واحد
-                                                        3</p>
+                                                    <p id="address-address">{{ address.address }}</p>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="ph-view-order-block-item d-flex">
                                                     <label class="ml-1">استان:</label>
-                                                    <p>تهران</p>
+                                                    <p id="address-province">{{ address.region.parent.title }}</p>
                                                 </div>
                                                 <div class="ph-view-order-block-item d-flex">
                                                     <label class="ml-1">شهر:</label>
-                                                    <p>تهران</p>
+                                                    <p id="address-region">{{ address.region.title }}</p>
                                                 </div>
                                                 <div class="ph-view-order-block-item d-flex">
                                                     <label class="ml-1">کد پستی:</label>
-                                                    <p>1567985469</p>
+                                                    <p id="address-postal-code"></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -347,24 +346,10 @@
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- .modal#ph_LogIn_Modal -->
-
-    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">خطا</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div><!-- .modal-header -->
-                <div class="modal-body">
-
-                </div><!-- .modal-body -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
-                </div><!-- .modal-footer -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div><!-- .modal#error-modal -->
 {% endblock %}
 
+{% block footer_static %}
+    <script src="{% static 'owl.carousel/dist/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/frontend.js' %}"></script>
+    <script src="{% static 'js/product_details.js' %}"></script>
+{% endblock %}

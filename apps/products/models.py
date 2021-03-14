@@ -121,6 +121,16 @@ class Attribute(TimestampedModel):
     WEIGHT_MM = 'mm'
     WEIGHT_CM = 'cm'
 
+    PAYMENT_CASH = 'cash'
+    PAYMENT_MONTHLY_BEFORE = 'monthly_before'
+    PAYMENT_MONTHLY_AFTER = 'monthly_after'
+
+    PAYMENT_MAP = {
+        PAYMENT_CASH: 'نقدی',
+        PAYMENT_MONTHLY_BEFORE: 'ماهیانه (پیش از تحویل)',
+        PAYMENT_MONTHLY_AFTER: 'ماهیانه (پس از تحویل)',
+    }
+
     title = models.CharField(max_length=255)
     value_type = models.CharField(max_length=255, choices=_TYPE_CHOICES)
     options = models.TextField(null=True, blank=True)

@@ -2,6 +2,7 @@ from django.db import models
 
 from apps.core.models import TimestampedModel
 from apps.users.models import User
+from apps.products.models import Attribute
 
 
 class OrderQuerySet(models.QuerySet):
@@ -51,21 +52,16 @@ class Order(TimestampedModel):
         (STATE_REJECTED, 'Rejected',),
     )
 
-    PAYMENT_CASH = 'cash'
-    PAYMENT_INSTALLMENT = 'installment'
-
-    _PAYMENT_CHOICES = (
-        (PAYMENT_CASH, 'Cash',),
-        (PAYMENT_INSTALLMENT, 'Installment',),
-    )
-
     timestamp = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='orders')
     buyer = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='orders')
+    commission = models.FloatField()
+    destination = models.ForeignKey('users.Address', on_delete=models.CASCADE, related_name='orders')
     state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
     price = models.BigIntegerField()
-    payment_type = models.CharField(max_length=255, choices=_PAYMENT_CHOICES, default=PAYMENT_CASH)
-    installment_months = models.IntegerField(default=0)
+    weight = models.IntegerField()
+    payment_type = models.CharField(max_length=255)
+    monthly_load = models.IntegerField(default=0)
 
     objects = OrderManager()
 
