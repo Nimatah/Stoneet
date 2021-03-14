@@ -606,6 +606,10 @@ input.form-control:focus{
     max-width: 40%;
 }
 
+.ph-war-modal.ph-modal .modal-dialog{
+    top: 10%;
+}
+
 .ph-modal .modal-content{
     border-radius: 10px;
     overflow: hidden;
@@ -625,7 +629,7 @@ input.form-control:focus{
     font-size: 1.1rem;
 }
 
-.ph-modal .modal-body{
+.ph-modal .modal-body.ph-modal-bg-login{
     padding: 1.5rem;
     background-image: url("/static/images/login-modal-bg.jpg");
     background-repeat: no-repeat;

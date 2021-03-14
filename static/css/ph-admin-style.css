@@ -171,6 +171,7 @@ a.ph-terms-conditions:hover{
 
 .ph-registration-panel-footer a:hover{
     font-weight: 600;
+    color: #FFD100;
 }
 
 .ph-registration-panel-bottom-links{
@@ -353,9 +354,16 @@ input.invalid {
  */
 
 #ph_new_login_form #ph_new_login_sign_up {
-    width: 55%;
+    background: #fff;
+    width: 85%;
     margin: auto;
-    padding: 3rem 0;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+}
+#ph_new_login_form #ph_new_login_sign_up .form-group{
+    width: 60%;
+    margin: auto;
 }
 
 #ph_new_login_sign_up span.ph-signup-inputs {
@@ -441,11 +449,19 @@ input.invalid {
 }
 
 #ph_sign_in_to_sign_up a {
-  color: #618BB4;
-  padding: 0 .3rem .25rem .3rem;
-  border-bottom: 1px dashed;
-  font-weight: 900;
-  letter-spacing: 0.2rem;
+    color: #618BB4;
+    padding: 0 .3rem .25rem .3rem;
+    border-bottom: 1px dashed;
+    font-weight: 900;
+    letter-spacing: 0.2rem;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+#ph_sign_in_to_sign_up a:hover{
+    color: #FFD100;
 }
 
 #ph_sign_in_to_sign_up .ph-signup-modal a {
@@ -473,8 +489,7 @@ input.invalid {
 .ph-new-login-info-end-wrapper,
 .ph-new-login-logistic-info-wrapper,
 .ph-new-login-logistic-business-end-wrapper,
-.ph-new-login-logistic-business-license-wrapper,
-#ph_new_login_form{
+.ph-new-login-logistic-business-license-wrapper{
     width: 85%;
     margin: auto;
     padding: 2rem;
@@ -498,7 +513,6 @@ input.invalid {
 #ph_new_login_form{
     padding-bottom: 0;
     padding-top: 0;
-    background-color: #FFffff;
 }
 
 #ph-individual-wrapper-2{
@@ -780,12 +794,14 @@ aside.pos-rel{
 }
 
 .ph-sp-username{
-    margin: auto;
-    margin-bottom: 2rem;
-    color: #D1E9F0;
+    margin: 0 .5rem 2rem;
+    background: #ffffff;
+    color: #333;
     display: flex;
-    flex-direction: column;
-    padding: 0 .3rem;
+    justify-content: center;
+    border-radius: 2rem;
+    padding: 0rem 2rem;
+    min-width: 150px;
 }
 
 .ph-sp-collapse {
@@ -1827,7 +1843,8 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-admin-page-list-container .ph-btn,
-.ph-managements-filter-wrapper .ph-btn{
+.ph-managements-filter-wrapper .ph-btn,
+.ph-admin-page-search-wrapper .ph-btn{
     margin-left: 0;
 }
 
