@@ -394,6 +394,25 @@ input::placeholder { /* Most modern browsers support this now. */
 .page-holder{
     text-align: right;
 }
+.ph-404-wrapper{
+    height: 100vh;
+}
+.ph-404-wrapper .image-404{
+    height: 80%;
+    display: flex;
+    justify-content: center;
+}
+.ph-404-wrapper img{
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+}
+.ph-404-wrapper .btn-404{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .ph-dashboard-main .ph-panel-title{
     display: flex;
@@ -551,10 +570,6 @@ input.form-control:focus{
     margin: -1rem auto -1rem -1rem;
 }
 
-.ph-tabs{
-
-}
-
 .ph-tabs .ph-tab-navs{
     overflow: hidden;
     margin: 1rem 0;
@@ -657,4 +672,24 @@ input.form-control:focus{
 
 .modal-backdrop{
     z-index: unset;
+}
+
+.ph-modal.ph-war-modal .modal-content img{
+    position: absolute;
+    left: 10%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 185px;
+    height: 185px;
+}
+
+.ph-modal.ph-war-modal .modal-body{
+    background-image: unset;
+    width: 60%;
+    margin-left: auto;
+    margin-right: 0;
+}
+.ph-modal.ph-war-modal .ph-login-modal{
+    margin-bottom: 1rem;
 }
