@@ -1,6 +1,6 @@
 
 // PRODUCTS CAROUSEL IN HOMEPAGE
-$('.ph-default-products-slider').owlCarousel({
+$('.ph-default-video-slider').owlCarousel({
     loop:true,
     rtl: true,
     margin:30,
@@ -11,13 +11,28 @@ $('.ph-default-products-slider').owlCarousel({
             items:1
         },
         600:{
-            items:3
+            items:2
         },
         1000:{
-            items:4
+            items:3
         }
     }
 })
+
+
+$(function() {
+    var header = $(".ph-main-header");
+    var vheight = $(window).height();
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
+        if (scroll >= vheight) {
+            header.addClass("sticky-header");
+        } else {
+            header.removeClass("sticky-header");
+        }
+    });
+
+});
 
 
 // TYPING EFFECT IN HOMEPAGE

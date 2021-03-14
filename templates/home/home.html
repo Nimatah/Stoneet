@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-به معدن خوش آمدید
+    به معدن خوش آمدید
 {% endblock %}
 
 {% block frontend_content %}
@@ -21,86 +21,258 @@
                             <input class="ph-search-query-field" type="text" placeholder="جستجوی محصول ...">
                             <button type="submit"><i class="fas fa-search"></i> جستجو</button>
                         </form>
-                        <div class="ph-home-category-box-wrapper">
-                            <div class="ph-home-category-box-item">
-                                <a href="#">
-                                    <img src="{% static 'images/icons/mine.png' %}" alt="">
-                                    <span>مواد معدنی</span>
-                                </a>
-                            </div><!-- .ph-home-category-box-item -->
-                            <div class="ph-home-category-box-item">
-                                <a href="#">
-                                    <img src="{% static 'images/icons/miner.png' %}" alt="">
-                                    <span>مواد معدنی</span>
-                                </a>
-                            </div><!-- .ph-home-category-box-item -->
-                            <div class="ph-home-category-box-item">
-                                <a href="#">
-                                    <img src="{% static 'images/icons/mining.png' %}" alt="">
-                                    <span>مواد معدنی</span>
-                                </a>
-                            </div><!-- .ph-home-category-box-item -->
-                            <div class="ph-home-category-box-item">
-                                <a href="#">
-                                    <img src="{% static 'images/icons/trolley.png' %}" alt="">
-                                    <span>مواد معدنی</span>
-                                </a>
-                            </div><!-- .ph-home-category-box-item -->
-                        </div><!-- .ph-home-category-box-wrapper -->
                     </div><!-- .ph-home-search-box -->
                 </section><!-- #slider -->
-
-                <section id="register" class="ph-home-register py-5">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="ph-home-register-box seller ph-border-radius">
-                                    <h2>ثبت نام فروشندگان</h2>
-                                    <p>اگر فروشنده مواد معدنی هستید می توانید با ثبت نام در استونت محصولات خود را به صورت آنلاین بفروشید.</p>
-                                    <a class="ph-btn" href="{% url 'users:register_seller' %}">ثبت نام فروشندگان <i class="fas fa-arrow-left"></i></a>
-                                </div><!-- .ph-home-register-box -->
-                            </div><!-- .col-md-6 -->
-                            <div class="col-12 col-md-6">
-                                <div class="ph-home-register-box logestic ph-border-radius">
-                                    <h2>ثبت نام حمل بار</h2>
-                                    <p>اگر در زمینه حمل و نقل بار فعال هستید می توانید با ثبت نام در استونت سفارش های کاری دریافت کنید.</p>
-                                    <a class="ph-btn" href="{% url 'users:register_logistic' %}">ثبت نام حمل و نقل <i class="fas fa-arrow-left"></i></a>
-                                </div><!-- .ph-home-register-box -->
-                            </div><!-- .col-md-6 -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </section><!-- #register -->
-
-                <section id="latest_slider" class="ph-home-latest-slider my-5">
-                    <div class="container">
-                        <div class="ph-home-products-slider">
-                            <div class="ph-home-heading">
-                                <h3 class="">آخرین محصولات</h3>
-                            </div><!-- .ph-home-heading -->
-                            <div class="ph-default-products-slider owl-carousel owl-theme">
-                                {% for product in products %}
-                                    <div class="ph-home-products-slide">
-                                        <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-img">
-                                            <img class="ph-border-radius-small" src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="{{ product.title }}">
-                                        </a>
-                                        <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-title">{{ product.title }}</a>
-                                    </div><!-- .ph-home-products-slide -->
-                                {% endfor %}
-                            </div><!-- .ph-default-products-slider -->
-                        </div><!-- .ph-home-products-slider -->
-                    </div><!-- .container -->
-                </section><!-- #latest_slider -->
 
                 <section id="about" class="ph-home-about my-5">
                     <div class="container">
                         <div class="ph-home-about-wrapper">
                             <div class="ph-home-heading">
                                 <h3 class="ph-border-radius-small">درباره استونیت</h3>
+                                <span>About Stoneet</span>
                             </div><!-- .ph-home-heading -->
-                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="ph-home-about-text">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
+                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
+                                            لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                            ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده
+                                            شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را
+                                            برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی
+                                            ایجاد کرد. </p>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="ph-home-about-images">
+                                        <div class="ph-home-about-images-wrapper">
+                                            <img class="ph-home-about-image-1" src="{% static 'images/about-stoneet-1.jpg' %}" alt="">
+                                            <img class="ph-home-about-image-2" src="{% static 'images/about-stoneet-2.jpg' %}" alt="">
+                                            <img class="ph-home-about-image-3" src="{% static 'images/about-stoneet-3.jpg' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- .row -->
                         </div><!-- .ph-home-about-wrapper -->
                     </div><!-- .container -->
                 </section><!-- #about -->
+
+                <section id="register" class="ph-home-register">
+                    <div class="container">
+                        <div class="ph-home-heading">
+                            <h3 class="">به استونیت بپیوندید</h3>
+                            <span>Join Us</span>
+                        </div><!-- .ph-home-heading -->
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <a class="" href="{% url 'users:register_seller' %}">
+                                    <div class="ph-home-register-box seller ph-border-radius">
+                                        <h2>ثبت نام فروشندگان</h2>
+                                        <p>اگر فروشنده مواد معدنی هستید می توانید با ثبت نام در استونت محصولات خود را به
+                                            صورت آنلاین بفروشید.</p>
+                                    </div><!-- .ph-home-register-box -->
+                                </a>
+                            </div><!-- .col-md-6 -->
+                            <div class="col-12 col-md-6">
+                                <a class="" href="{% url 'users:register_logistic' %}">
+                                    <div class="ph-home-register-box logestic ph-border-radius">
+                                        <h2>ثبت نام حمل بار</h2>
+                                        <p>اگر در زمینه حمل و نقل بار فعال هستید می توانید با ثبت نام در استونت سفارش های
+                                            کاری دریافت کنید.</p>
+                                    </div><!-- .ph-home-register-box -->
+                                </a>
+                            </div><!-- .col-md-6 -->
+                        </div><!-- .row -->
+                    </div><!-- .container -->
+                </section><!-- #register -->
+
+                <section id="services" class="ph-home-services">
+                    <div class="container">
+                        <div class="ph-home-heading">
+                            <h3 class="">خدمات ما</h3>
+                            <span>Our Services</span>
+                        </div><!-- .ph-home-heading -->
+                        <div class="ph-home-services-wrapper">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="ph-home-services-content">
+                                        <div class="ph-home-service-item">
+                                            <div class="ph-home-service-icon">
+                                                <img src="{% static 'images/icons/service-icon-1.png' %}" alt="">
+                                            </div><!-- .ph-home-service-icon -->
+                                            <div class="ph-home-service-text">
+                                                <h4>فروش مواد معدنی</h4>
+                                                <p>
+                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                                </p>
+                                            </div><!-- .ph-home-service-text -->
+                                        </div><!-- .ph-home-service-item -->
+                                        <div class="ph-home-service-item">
+                                            <div class="ph-home-service-icon">
+                                                <img src="{% static 'images/icons/service-icon-1.png' %}" alt="">
+                                            </div><!-- .ph-home-service-icon -->
+                                            <div class="ph-home-service-text">
+                                                <h4>فروش مواد معدنی</h4>
+                                                <p>
+                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                                </p>
+                                            </div><!-- .ph-home-service-text -->
+                                        </div><!-- .ph-home-service-item -->
+                                        <div class="ph-home-service-item">
+                                            <div class="ph-home-service-icon">
+                                                <img src="{% static 'images/icons/service-icon-1.png' %}" alt="">
+                                            </div><!-- .ph-home-service-icon -->
+                                            <div class="ph-home-service-text">
+                                                <h4>فروش مواد معدنی</h4>
+                                                <p>
+                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                                </p>
+                                            </div><!-- .ph-home-service-text -->
+                                        </div><!-- .ph-home-service-item -->
+                                    </div><!-- .ph-home-services-content -->
+                                </div><!-- .col-md-6 -->
+                                <div class="col-12 col-md-6">
+                                    <div class="ph-home-services-vector">
+                                        <img src="{% static 'images/services-vector.png' %}" alt="">
+                                    </div>
+                                </div><!-- .col-md-6 -->
+                            </div><!-- .row -->
+                        </div><!-- .ph-home-services-wrapper -->
+                    </div><!-- .container -->
+                </section><!-- #services -->
+
+                <section id="video_slider" class="ph-home-videos">
+                    <div class="container">
+                        <div class="ph-home-video-slider">
+                            <div class="ph-home-heading">
+                                <h3 class="">ویدیوهای آموزشی</h3>
+                                <span>Videos</span>
+                            </div><!-- .ph-home-heading -->
+                            <div class="ph-default-video-slider owl-carousel owl-theme">
+                                <div class="ph-home-video-slide">
+                                    <video width="350" height="197" controls>
+                                        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="ph-home-video-slide-title">
+                                        <h4>آموزش ثبت نام فروشندگان</h4>
+                                    </div>
+                                </div>
+                                <div class="ph-home-video-slide">
+                                    <video width="350" height="197" controls>
+                                        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="ph-home-video-slide-title">
+                                        <h4>آموزش ثبت نام لجستیک</h4>
+                                    </div>
+                                </div>
+                                <div class="ph-home-video-slide">
+                                    <video width="350" height="197" controls>
+                                        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="ph-home-video-slide-title">
+                                        <h4>آموزش ثبت نام کاربران</h4>
+                                    </div>
+                                </div>
+                                <div class="ph-home-video-slide">
+                                    <video width="350" height="197" controls>
+                                        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="ph-home-video-slide-title">
+                                        <h4>نحوه ثبت محصول</h4>
+                                    </div>
+                                </div>
+                                <div class="ph-home-video-slide">
+                                    <video width="350" height="197" controls>
+                                        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="ph-home-video-slide-title">
+                                        <h4>نحوه درخواست برای حمل و نقل</h4>
+                                    </div>
+                                </div>
+                            </div><!-- .ph-default-products-slider -->
+                        </div><!-- .ph-home-products-slider -->
+                    </div><!-- .container -->
+                </section><!-- #video_slider -->
+
+                <section id="products" class="ph-home-products">
+                    <div class="ph-home-heading">
+                        <h3 class="">جدیدترین محصولات</h3>
+                        <span>New Products</span>
+                    </div><!-- .ph-home-heading -->
+                    <div class="ph-home-products-wrapper">
+                        {% for product in products %}
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/2.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/3.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/4.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                            <div class="ph-home-product-item">
+                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
+                                <a href="{% url 'products:product_details' pk=product.id %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">فلزات</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div><!-- .ph-home-products-slider -->
+                </section><!-- #products -->
 
             </div><!-- .ph-content-entry -->
         </main><!-- .ph-main-content -->
