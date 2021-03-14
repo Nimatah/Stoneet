@@ -1,4 +1,11 @@
-<div class="col-6 part-4-item-detail">
-    <span>{{ attribute.title }}</span>
-    <span id="preview-attribute-{{ attribute.id }}"></span>
-</div>
+{% if not attribute.has_weight and not attribute.has_child_value %}
+    <div class="col-6 part-4-item-detail">
+        <span>{{ attribute.title }}</span>
+        <span id="preview-attribute-{{ attribute.id }}"></span>
+    </div>
+{% else %}
+    <div class="col-6 part-4-item-detail">
+        <span>{{ attribute.title }}</span>
+        <span id="preview-attribute-{{ attribute.id }}"></span>
+    </div>
+{% endif %}

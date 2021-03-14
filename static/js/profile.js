@@ -2,6 +2,12 @@ let mineCount = 0;
 let addressCount = 0;
 const regions = JSON.parse($('#regions').text());
 
+$(document).ready(function() {
+    if (window.location.hash !== '') {
+        $(window.location.hash).click()
+    }
+})
+
 
 function addMineHandler(element) {
     const parent = $(element).parent('#mine')

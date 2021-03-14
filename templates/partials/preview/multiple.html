@@ -1,4 +1,11 @@
-<div class="col-6 part-4-item-detail">
-    <span>{{ attribute.title }}</span>
-    <span id="preview-attribute-{{ attribute.id }}"></span>
-</div>
+{% if not attribute.id == 9 %}
+    <div class="col-6 part-4-item-detail">
+        <span>{{ attribute.title }}</span>
+        <span id="preview-attribute-{{ attribute.id }}"></span>
+    </div>
+{% else %}
+    <div class="col-12 part-4-item-detail">
+        <span>{{ attribute.title }}</span>
+        <span id="preview-attribute-{{ attribute.id }}"></span>
+    </div>
+{% endif %}

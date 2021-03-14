@@ -4,7 +4,7 @@
     {% define product_attribute.value as attribute_value %}
 {% endif %}
 
-
+{% if not attribute.has_weight and not attribute.has_child_value %}
 <div class="col-5 my-1">
     <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
     <div data-attr>
@@ -21,3 +21,28 @@
         <small class="form-text text-danger" style="display: none">لطفا مقدار را وارد نمایید</small>
     </div>
 </div>
+{% else %}
+<div class="col-5 my-1">
+    <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+    <div data-attr class="d-flex">
+        <select data-attr-value class="mdb-select md-form form-control mx-1" id="attribute-{{ attribute.id }}"
+                name="attribute_{{ attribute.id }}">
+            {% for dropdown in attribute.dropdown %}
+                {% if attribute_value == dropdown %}
+                    <option value="{{ attribute_value }}" selected>{{ attribute_value }}</option>
+                {% else %}
+                    <option value="{{ dropdown }}">{{ dropdown }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input placeholder="مقدار" type="text" name="child_attribute_{{ attribute.id }}" class="form-control mx-1" id="child-attribute-{{ attribute.id }}">
+        <select name="weight_attribute_{{ attribute.id }}" class="mdb-select md-form form-control mx-1" id="weight-attribute-{{ attribute.id }}">
+            <option value="default">---انتخاب واحد---</option>
+            <option value="kg">کیلوگرم</option>
+            <option value="ton">تن</option>
+        </select>
+    </div>
+</div>
+
+{% endif %}
+

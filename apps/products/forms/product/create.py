@@ -50,7 +50,12 @@ class CreateProductForm(forms.ModelForm):
                     if not attr.is_required:
                         continue
                     raise forms.ValidationError(f"incorrect value {key} {v}")
-                attributes.append({'attr': attr, 'value': value})
+                child = self.data.get(f'child_attribute_{key}', None)
+                weight = self.data.get(f'weight_attribute_{key}', None)
+                if child is not None or weight is not None:
+                    attributes.append({'attr': attr, 'value': value, 'child': child, 'weight': weight})
+                else:
+                    attributes.append({'attr': attr, 'value': value})
 
         self.cleaned_data['attributes'] = attributes
         print(attributes)
@@ -89,6 +94,10 @@ class CreateProductForm(forms.ModelForm):
                     product_attribute.product = product
                     product_attribute.attribute = i['attr']
                     product_attribute.value = i['value']
+                    if i.get('weight'):
+                        product_attribute.weight_unit = i.get('weight')
+                    if i.get('child'):
+                        product_attribute.child_value = i.get('child')
                     product_attribute.save()
         return product
 

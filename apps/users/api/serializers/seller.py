@@ -15,6 +15,8 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
     attribute_14 = serializers.IntegerField(required=True, label='دانه بندی کمترین')  # Grain From
     attribute_15 = serializers.IntegerField(required=True, label='دانه بندی بیشترین')  # Grain To
     attribute_16 = serializers.CharField(required=True, label='نحوه ارسال')  # Delivery Type
+    child_attribute_16 = serializers.IntegerField(required=True, label='مقدار نحوه ارسال')  # Delivery Type
+    weight_attribute_16 = serializers.CharField(required=True, label='واحد مقدار نحوه ارسال')  # Delivery Type
     mine = serializers.IntegerField(required=False, label='معدن', allow_null=True)
 
     def validate_attribute_1(self, value):
@@ -65,6 +67,16 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
     def validate_attribute_16(self, value):
         if value not in Attribute.objects.get(pk=Attribute.ID_DELIVERY_TYPE).choices:
             raise serializers.ValidationError("نوع تحویل غیر مجاز است")
+        return value
+
+    def validate_child_attribute_16(self, value):
+        if value <= 0:
+            raise serializers.ValidationError("مقدار نوع تحویل نمیتواند صفر یا کمتر باشد")
+        return value
+
+    def validate_weight_attribute_16(self, value):
+        if value not in (Attribute.WEIGHT_KG, Attribute.WEIGHT_TON):
+            raise serializers.ValidationError("واحد مقدار نوع تحویل باید کیلوگرم یا تن باشد")
         return value
 
     def validate_mine(self, value):

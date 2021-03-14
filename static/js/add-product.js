@@ -83,8 +83,20 @@ function handleCategories() {
 }
 
 function handlePart1Form() {
+    $('[id^="weight-attribute-"]').on('change', function () {
+        $(this).find('[value="default"]').remove()
+    })
+
     $('#ph-btn-next1').on('click', function (e) {
-        let attributes = $('div#part1 [id^="attribute-"]')
+        let category = $('#t-2-c').val()
+        if (category === '') {
+            e.preventDefault()
+            $('#error-modal .modal-body').empty().append(`<div><span class="font-weight-bold">گروه</span>: لطفا گروه را انتخاب کنید</div>`);
+            $('#error-modal').modal('show');
+            return
+        }
+
+        let attributes = $('div#part1 [id^="attribute-"], [id^="weight-attribute"], [id^="child-attribute"]')
         const body = attributes.toArray().reduce(function (acc, cur) {
             const element = $(cur)
             if (element.val() !== '') {
@@ -177,7 +189,7 @@ function _handleFormPreview() {
         $('input[name="title"]').val(`${category} - ${CARET} ${caret} %`)
     }
 
-    const handleMine = function() {
+    const handleMine = function () {
         let mine = $('#product-mine').text()
         $('#preview-product-mine').text(mine);
     }
@@ -192,8 +204,23 @@ function _handleFormPreview() {
         const attributes = $('[id^="attribute-"]')
         for (let i = 0; i < attributes.length; i++) {
             let attr = $(attributes[i])
-            $(`#preview-${attr.prop('id')}`).text(attr.val() || 'ندارد')
+            if (attr.parents(".num-input").length ) {
+                let text = attr.val() === attr.parents(".num-input").find('[data-max]').val() ? attr.val() : `${attr.val()} - ${attr.parents(".num-input").find('[data-max]').val()}`
+                if (attr.parents('.num-input').find('select')){
+                    text = text + ' ' + attr.parents('.num-input').find('select option:selected').text()
+                }
+                $(`#preview-${attr.prop('id')}`).text(text)
+            } else {
+                $(`#preview-${attr.prop('id')}`).text(attr.val().replaceAll("|", "، ") || 'ندارد')
+            }
+            let child = $(`#child-${attr.prop('id')}`)
+            let weight = $(`#weight-${attr.prop('id')}`)
+            if (child.val() && weight.val()) {
+                let previewText = $(`#preview-${attr.prop('id')}`).text()
+                $(`#preview-${attr.prop('id')}`).text(`${previewText} ${child.val()} ${weight.find('option:selected').text()}`)
+            }
         }
+
         const boolAttributes = $('[id^="attributebool-"]')
         for (let i = 0; i < boolAttributes.length; i++) {
             let attr = $(boolAttributes[i])

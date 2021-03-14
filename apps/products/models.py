@@ -116,12 +116,19 @@ class Attribute(TimestampedModel):
         (RANGE_TO, 'بیشترین',),
     )
 
+    WEIGHT_KG = 'kg'
+    WEIGHT_TON = 'ton'
+    WEIGHT_MM = 'mm'
+    WEIGHT_CM = 'cm'
+
     title = models.CharField(max_length=255)
     value_type = models.CharField(max_length=255, choices=_TYPE_CHOICES)
     options = models.TextField(null=True, blank=True)
     unit = models.CharField(max_length=255, blank=True)
     range_type = models.CharField(max_length=255, choices=_RANGE_CHOICES, null=True, blank=True)
     order = models.IntegerField(default=10)
+    has_weight = models.BooleanField(default=False)
+    has_child_value = models.BooleanField(default=False)
     is_required = models.BooleanField(default=False)
     view_in_product_page = models.BooleanField(default=False)
     is_special = models.BooleanField(default=False)
@@ -228,12 +235,22 @@ class Category(MPTTModel):
 
 
 class ProductAttribute(models.Model):
+
+    _WEIGHT_UNIT_CHOICES = (
+        (Attribute.WEIGHT_KG, 'کیلوگرم',),
+        (Attribute.WEIGHT_TON, 'تن',),
+        (Attribute.WEIGHT_MM, 'میلی‌متر',),
+        (Attribute.WEIGHT_CM, 'سانتی‌متر',),
+    )
+
     attribute = models.ForeignKey('Attribute', on_delete=models.CASCADE, related_name='product_attributes')
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='attributes')
     value_bool = models.BooleanField(null=True, blank=True)
     value_string = models.CharField(max_length=255, null=True, blank=True)
     value_int = models.IntegerField(null=True, blank=True)
     value_float = models.FloatField(null=True, blank=True)
+    weight_unit = models.CharField(max_length=255, choices=_WEIGHT_UNIT_CHOICES, blank=True)
+    child_value = models.IntegerField(null=True, blank=True)
 
     objects = ProductAttributeManager()
 
