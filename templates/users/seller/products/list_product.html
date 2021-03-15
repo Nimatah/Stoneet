@@ -59,7 +59,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary ph-border-radius-small my-3">جستجو
+                                    <button type="submit" class="btn ph-btn my-3">جستجو
                                     </button>
                                 </form>
                             </div>
@@ -77,9 +77,9 @@
                                 <div class="col-6 col-md-3">
                                     <div class="ph-admin-page-list-add-btn">
                                         <a href="{% url 'users:seller_add_product' %}"
-                                           class="btn btn-success ph-border-radius-small">
+                                           class="btn ph-btn">
                                             ایجاد کالای جدید
-                                            <i class="fas fa-plus"></i>
+                                            <i class="fas fa-plus mr-1"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
                                                     alt=""></div>
                                         </td>
                                         <td style="width: 30%">
-                                            <a>
+                                            <a href="{% url 'products:product_details' pk=product.pk %}">
                                                 <div class="ph-admin-table-cell">
                                                     {{ product.title }}
                                                     <span class="ph-amdin-table-product-id">{{ product.id }}</span>
@@ -226,13 +226,6 @@
                         <div class="ph-admin-page-list-header">
                             <div class="row">
                                 <div class="col-6 col-md-3">
-                                    <div class="ph-admin-page-list-add-btn">
-                                        <a href="{% url 'users:seller_add_product' %}"
-                                           class="btn btn-success ph-border-radius-small">
-                                            ایجاد کالای جدید
-                                            <i class="fas fa-plus"></i>
-                                        </a>
-                                    </div>
                                 </div>
                                 <div class="col-6 col-md-5">
                                     <div class="ph-admin-page-list-sort">

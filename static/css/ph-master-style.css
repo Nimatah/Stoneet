@@ -263,6 +263,7 @@ input::placeholder { /* Most modern browsers support this now. */
 .bg-light{
     background-color: #fff !important;
 }
+/*
 
 .bg-color-1{
     background-color: #7E111A;
@@ -291,13 +292,15 @@ input::placeholder { /* Most modern browsers support this now. */
 .bg-color-7{
     background-color: #c1c1c1;
 }
+*/
 
 .ph-button{
     display: flex;
 }
 
 .ph-btn{
-    background: #7E111A;
+    background: #fff;
+    color: #7E111A;
     border-radius: 2em;
     display: flex;
     justify-content: center;
@@ -305,7 +308,6 @@ input::placeholder { /* Most modern browsers support this now. */
     align-items: center;
     font-size: .75rem;
     padding: .3rem 1.5rem!important;
-    color: #fff;
     min-width: 125px;
     cursor: pointer;
     border: 1px solid #7E111A;
@@ -314,8 +316,8 @@ input::placeholder { /* Most modern browsers support this now. */
 }
 
 .ph-btn:hover{
-    background: #fff;
-    color: #7E111A;
+    background: #7E111A;
+    color: #fff;
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
