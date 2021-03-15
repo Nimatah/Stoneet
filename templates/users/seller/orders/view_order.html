@@ -1,20 +1,101 @@
 {% extends 'base_admin.html' %}
+{% load humanize %}
+{% load utils %}
 {% load static %}
 
 
 
-         <main class="ph-dashboard-main ph-seller-panel ph-orders-details">
-            <div class="container">
-               <form action="" id="ph_orders_details" role="form">
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-seller-panel ph-view-order">
 
-
-
-
-
-               </form>
-               <!-- ph_orders_details -->
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>مشاهده جزییات سفارش | </span>
+                جزییات سفارش را در اینجا مشاهده کنید.
             </div>
-            <!-- container -->
-         </main>
-         <!-- ph-orders-details ph-dashboard-main -->
+
+            <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-page-block-header ph-panel-title">
+                            <span class="title">مشخصات محصول</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="title">عیار</span>
+                                <span class="desc">12 - 24</span>
+                            </li>
+                            <li>
+                                <span class="title">سایز‌بندی</span>
+                                <span class="desc">23 - 34</span>
+                            </li>
+                            <li>
+                                <span class="title">ظرفیت تامین ماهانه</span>
+                                <span class="desc">12 تن</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع تحویل</span>
+                                <span class="desc">بار فله‌ای</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع تحویل</span>
+                                <span class="desc">بار فله‌ای</span>
+                            </li>
+                            <li>
+                                <span class="title">قیمت</span>
+                                <span class="desc">670.000.000</span>
+                            </li>
+                            <li>
+                                <span class="title">شرایط پرداخت وجه</span>
+                                <span class="desc">نقدی, ماهیانه (پیش از تحویل)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- .col-12 col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-page-block-header ph-panel-title">
+                            <span class="title">مشخصات محصول</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="title">عیار</span>
+                                <span class="desc">12 - 24</span>
+                            </li>
+                            <li>
+                                <span class="title">سایز‌بندی</span>
+                                <span class="desc">23 - 34</span>
+                            </li>
+                            <li>
+                                <span class="title">ظرفیت تامین ماهانه</span>
+                                <span class="desc">12 تن</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع تحویل</span>
+                                <span class="desc">بار فله‌ای</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع تحویل</span>
+                                <span class="desc">بار فله‌ای</span>
+                            </li>
+                            <li>
+                                <span class="title">قیمت</span>
+                                <span class="desc">670.000.000</span>
+                            </li>
+                            <li>
+                                <span class="title">شرایط پرداخت وجه</span>
+                                <span class="desc">نقدی, ماهیانه (پیش از تحویل)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- .col-12 col-md-6 -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- ph-ip-w-list -->
+
+        </div>
+        <!-- container -->
+
+    </main>
+    <!-- ph-dashboard-main ph-seller-panel ph-view-order -->
 {% endblock %}

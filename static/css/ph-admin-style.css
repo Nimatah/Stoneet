@@ -3092,6 +3092,15 @@ a.ph-preview-placeholder:after {
 .ph-admin-panel.ph-add-product .ph-spm-create-produc-img-up-yitle{
     margin-bottom: 0;
 }
+.ph-admin-panel.ph-add-product .ph-user-info ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 0 .5rem;
+}
+.ph-admin-panel.ph-add-product .ph-user-info ul li span{
+    margin: 0 .2rem;
+}
 .ph-admin-panel.ph-add-product .file-upload {
     width: auto;
     height: 285px;
