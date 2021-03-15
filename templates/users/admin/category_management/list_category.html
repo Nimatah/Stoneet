@@ -31,7 +31,7 @@
                                             </select>
                                         </div><!-- .col -->
                                     </div><!-- .form-row -->
-                                    <button type="submit" class="btn btn-primary ph-border-radius-small my-3">جستجو
+                                    <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو
                                     </button>
                                 </form>
                             </div><!-- .ph-admin-page-search-form -->
@@ -45,9 +45,9 @@
                                 <div class="col-6 col-md-6">
                                     <div class="ph-admin-page-list-add-btn">
                                         <a href="{% url 'users:admin_add_category' %}"
-                                           class="btn btn-success ph-border-radius-small">
-                                            ایجاد دسته بندی جدید
-                                            <i class="fas fa-plus"></i>
+                                           class="btn ph-btn ph-border-radius-small mr-0 ml-auto">
+                                            دسته بندی جدید
+                                            <i class="fas fa-plus mr-1"></i>
                                         </a>
                                     </div><!-- .ph-admin-page-list-add-btn -->
                                 </div><!-- .col-6 -->
@@ -120,24 +120,6 @@
                                 </tobody>
                             </table>
                         </div><!-- .ph-admin-page-list-table -->
-                        <div class="ph-admin-page-list-header">
-                            <div class="row">
-                                <div class="col-6 col-md-6">
-                                    <div class="ph-admin-page-list-add-btn">
-                                        <a href="{% url 'users:admin_add_category' %}"
-                                           class="btn btn-success ph-border-radius-small">
-                                            ایجاد دسته بندی جدید
-                                            <i class="fas fa-plus"></i>
-                                        </a>
-                                    </div><!-- .ph-admin-page-list-add-btn -->
-                                </div><!-- .col-6 -->
-                                <div class="col-6 col-md-6">
-                                    <div class="ph-admin-page-list-sort">
-                                        <p>تعداد نتایج : <span>{{ page_obj.paginator.count }} مورد</span></p>
-                                    </div><!-- .ph-admin-page-list-sort -->
-                                </div><!-- .col-6 -->
-                            </div><!-- .row -->
-                        </div><!-- .ph-admin-page-list-header -->
                     </div><!-- .ph-admin-page-list-container -->
                 </div><!-- .ph-admin-list-category-table -->
             </div><!-- .ph-admin-page-container -->
