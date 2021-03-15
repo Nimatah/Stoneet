@@ -355,6 +355,22 @@ input::placeholder { /* Most modern browsers support this now. */
     transform: translateX(-1.1rem);
 }
 
+.custom-file-label::after {
+    right: auto;
+    left: -1px;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: calc(1.5em + .75rem);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    content: "انتخاب فایل";
+    background-color: #e9ecef;
+    border-right: inherit;
+    border-radius: 0 0 0 0;
+}
+
 .background-image {
     background-position: center center;
     background-size: cover;
