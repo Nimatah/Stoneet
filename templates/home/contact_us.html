@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_frontend.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    تماس با استونیت
+{% endblock %}
+
+{% block frontend_content %}
+    <div class="ph-page-wrapper ph-contact-page">
+        <main class="ph-main-content">
+            <div class="ph-content-entry">
+                <div class="ph-contact-hero">
+                    <div class="container">
+                        <div class="ph-contact-page-content">
+                            <h1>تماس با استونیت</h1>
+                            <p>برای کسب آگاهی بیشتر درباره استونیت و یا در صورتی که سوالی دارید با ما در ارتباط باشید:</p>
+                            <div class="ph-contact-page-items-wrapper">
+                                <div class="ph-contact-page-item">
+                                    <a href="tel:02188653421">
+                                        <i class="fas fa-phone"></i>
+                                        021-88653421
+                                    </a>
+                                </div>
+                                <div class="ph-contact-page-item">
+                                    <a href="tel:09122613278">
+                                        <i class="fas fa-envelope"></i>
+                                        info@stoneet.ir
+                                    </a>
+                                </div>
+                                <div class="ph-contact-page-item">
+                                    <a href="tel:09122345678">
+                                        <i class="fab fa-whatsapp"></i>
+                                        09122345678
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ph-contact-page-form mt-5">
+                                <p>در صورت لزوم فرم زیر را تکمیل نمایید تا همکاران با شما تماس بگیرند:</p>
+                                <form action="">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="contact_name" placeholder="نام و نام خانوادگی" aria-describedby="FullName">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="contact_phone" placeholder="شماره تماس" aria-describedby="ContactNo">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="contact_msg" placeholder="متن پیام" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="ph-btn">ارسال</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .ph-content-entry -->
+        </main><!-- .ph-main-content -->
+    </div><!-- .ph-page-wrapper -->
+{% endblock %}
+
+{% block footer_static %}
+
+    <script src="{% static 'js/frontend.js' %}"></script>
+
+{% endblock %}
