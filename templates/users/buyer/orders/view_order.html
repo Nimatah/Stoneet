@@ -21,16 +21,10 @@
                         در این قسمت می توانید جزییات سفارش خود را مشاهده کنید.
                     </div>
 
-
-                    <form method="post" id="ph_create_product_form" role="form" enctype="multipart/form-data">
-
-                        {% csrf_token %}
                         <input class="ph-cp-input-check" id='level2' type='checkbox'>
                         <input class="ph-cp-input-check" id='level3' type='checkbox'>
                         <input class="ph-cp-input-check" id='level4' type='checkbox'>
                         <input class="ph-cp-input-check" id='level5' type='checkbox'>
-
-
 
                         <div id="shell1" class="ph-general-attributes form-group">
                             <div class="ph-cp-header-parts shell-1">
@@ -53,28 +47,20 @@
                                     </div>
                                     <ul class="ph-view-order-checkpoints">
                                         <li>
-                                            <i class="fas fa-check"></i>
+                                            <i class="fas {% if order|order_state_lt:order.STATE_SUBMITTED %}fa-times{% else %}fa-check{% endif %}"></i>
                                             <p>ثبت سفارش</p>
                                         </li>
                                         <li>
-                                            <i class="fas fa-times"></i>
-                                            <p>تایید مدارک</p>
+                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
+                                            <p>تایید سایت</p>
                                         </li>
                                         <li>
-                                            <i class="fas fa-check"></i>
-                                            <p>ارسال برای فروشنده</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-times"></i>
+                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
                                             <p>تایید از سوی فروشنده</p>
                                         </li>
                                         <li>
-                                            <i class="fas fa-times"></i>
+                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
                                             <p>تعیین هزینه حمل و نقل</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-times"></i>
-                                            <p>تایید هزینه حمل و نقل توسط خریدار</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -302,10 +288,6 @@
                             <!-- ph-cp-panel ph-border-radius ph-white-block -->
                         </div>
                         <!-- #shell7 ph-upload-detail-product -->
-
-                    </form>
-                    <!-- ph_seller_panel_form -->
-
                 </div>
             </div>
         </div>

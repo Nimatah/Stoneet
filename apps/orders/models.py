@@ -44,6 +44,7 @@ class LogisticOrderManager(models.Manager):
 class Order(TimestampedModel):
 
     STATE_SUBMITTED = 'submitted'
+    STATE_PENDING_ADMIN = 'pending_admin'
     STATE_PENDING_SELLER = 'pending_seller'
     STATE_PENDING_LOGISTIC = 'pending_logistic'
     STATE_PENDING_BUYER_LOGISTIC_PRICE = 'pending_buyer_logistic_price'
@@ -53,13 +54,25 @@ class Order(TimestampedModel):
 
     _STATE_CHOICES = (
         (STATE_SUBMITTED, 'ثبت سفارش',),
-        (STATE_PENDING_SELLER, 'تایید فروشنده',),
-        (STATE_PENDING_LOGISTIC, 'رد شده',),
-        (STATE_PENDING_BUYER_LOGISTIC_PRICE, 'رد شده',),
-        (STATE_PENDING_CONTRACT, 'رد شده',),
-        (STATE_PENDING_FINANCE_DOCUMENTS, 'رد شده',),
-        (STATE_ACCEPTED, 'رد شده',),
+        (STATE_PENDING_ADMIN, 'در انتظار تایید سایت'),
+        (STATE_PENDING_SELLER, 'در انتظار تایید فروشنده',),
+        (STATE_PENDING_LOGISTIC, 'در انتظار تایید حمل و نقل',),
+        (STATE_PENDING_BUYER_LOGISTIC_PRICE, 'در انتظار تایید قیمت حمل و نقل توسط خریدار',),
+        (STATE_PENDING_CONTRACT, 'در انتظار تایید قرارداد',),
+        (STATE_PENDING_FINANCE_DOCUMENTS, 'در انتظار تایید مدارک مالی',),
+        (STATE_ACCEPTED, 'تایید نهایی',),
     )
+
+    STATE_ORDER_MAP = {
+        STATE_SUBMITTED: 0,
+        STATE_PENDING_ADMIN: 1,
+        STATE_PENDING_SELLER: 2,
+        STATE_PENDING_LOGISTIC: 3,
+        STATE_PENDING_BUYER_LOGISTIC_PRICE: 4,
+        STATE_PENDING_CONTRACT: 5,
+        STATE_PENDING_FINANCE_DOCUMENTS: 6,
+        STATE_ACCEPTED: 7,
+    }
 
     timestamp = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
@@ -79,6 +92,9 @@ class Order(TimestampedModel):
 
     def get_persian_timestamp(self):
         return JalaliDate.to_jalali(self.timestamp)
+
+    def state_lt(self, state):
+        return self.STATE_ORDER_MAP[self.state] < self.STATE_ORDER_MAP[state]
 
 
 class LogisticOrder(models.Model):
