@@ -78,13 +78,16 @@ a.ph-terms-conditions:hover{
 =======================================================================================================================*/
 
 @import "fonts.css";
-
+.ph_LogIn_side_Modal{
+    top: -10%;
+    left: -10%;
+}
 .ph-new-login aside.ph-registration-panel-sidebar {
     width: 100%;
     background: #f5f5f5;
     z-index: 10;
     padding: 1rem 0 0;
-    height: 20vh;
+    height: 30vh;
     position: fixed;
     bottom: 0;
     box-shadow: 0 -25px 30px 0 hsl(0deg 0% 57% / 20%);
@@ -107,11 +110,13 @@ a.ph-terms-conditions:hover{
     width: 250px;
     padding: 1rem;
     padding-right: 4rem;
-    padding-bottom: .5rem;
+    display: flex;
+    align-items: center;
+    /* padding-bottom: .5rem; */
     margin: 0 1rem 2rem;
     min-height: 60px;
     color: #D4A373;
-    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+    box-shadow: 0 0 30px 0 hsl(0deg 0% 57% / 20%);
     border-radius: 10px;
 }
 
@@ -128,14 +133,8 @@ a.ph-terms-conditions:hover{
 
 .ph-new-login aside.ph-registration-panel-sidebar .progressbar-item h6{
     font-size: .85rem;
-}
-
-.ph-new-login aside.ph-registration-panel-sidebar .progressbar-item p{
     margin: 0;
-    font-size: .7rem;
-    line-height: 1.5;
 }
-
 
 .ph-new-login aside.ph-registration-panel-sidebar .progressbar-item.step::before {
   content: "\f00d";
@@ -354,16 +353,50 @@ input.invalid {
  */
 
 #ph_new_login_form #ph_new_login_sign_up {
-    background: #fff;
-    width: 85%;
-    margin: auto;
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+    padding: 2rem 0;
 }
 #ph_new_login_form #ph_new_login_sign_up .form-group{
-    width: 60%;
-    margin: auto;
+    margin-right: auto;
+    background: #fff;
+    padding: 4rem;
+    border-radius: 10px;
+    box-shadow: 0 30px 90px rgba(187,187,187,33%);
+}
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg{
+    padding: 4rem;
+    padding-right: 1rem;
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel a{
+    font-size: 2rem;
+    color: #022C3B;
+}
+
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email a{
+    font-size: 1.2rem;
+    border-bottom: 1px solid;
+    color: #007bff;
+}
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel a:hover,
+#ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email a:hover{
+    color: #FFD100;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+
 }
 
 #ph_new_login_sign_up span.ph-signup-inputs {
@@ -494,9 +527,12 @@ input.invalid {
     margin: auto;
     padding: 2rem;
     border-radius: 10px;
-    box-shadow: 0 0px 30px 0 hsl(0deg 0% 57% / 20%);
+    box-shadow: 0 30px 90px rgba(187,187,187,33%);
     margin-bottom: 4rem;
     background-color: #FFffff;
+}
+.ph-new-login-info-end-wrapper:target{
+    background: #0f6674;
 }
 
 /*
@@ -3159,8 +3195,8 @@ a.ph-preview-placeholder:after {
 }
 @media screen and (max-width:1366px) {
     .ph-new-login aside.ph-registration-panel-sidebar{
-        padding: 1rem 0 0;
-        height: 20vh;
+        padding: 1.5rem 0 0;
+        height: 18vh;
     }
 }
 @media screen and (max-width:1280px) {
