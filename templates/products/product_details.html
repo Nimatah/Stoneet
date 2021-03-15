@@ -26,7 +26,7 @@
                                                    for="product_base_price">قیمت: </label>
                                             {% with product.get_price as price %}
                                                 <h3 id="product_base_price" class="ph-single-product-price">
-                                                    <span>{{ price.value }}</span>
+                                                    <span>{{ price.value|intcomma }}</span>
                                                     <span>{{ price.attribute.unit }}</span> <span
                                                         class="ph-product-small-text">به ازای هر</span><span
                                                         class="ph-product-small-text">تن</span></h3>
@@ -216,6 +216,7 @@
                     <form action="{% url 'orders:create_order' %}" method="post">
                     {% csrf_token %}
                         <input type="hidden" name="product" value="{{ product.pk }}">
+                        <span class="d-none" id="base-product-price">{{ product.get_price.value }}</span>
                         <div class="ph-order-detail-modal-content">
                             <div class="row">
                                 <div class="col-12">
@@ -258,7 +259,7 @@
                                         <div class="row mb-3">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <input type="number" min="1" name="weight" id="order-weight" class="form-control"
+                                                    <input type="text" min="1" name="weight" id="order-weight" class="form-control"
                                                            placeholder="تناژ مورد نظر به عدد">
                                                 </div><!-- .ph-single-product-quantity -->
                                                 <div class="form-group">
@@ -284,7 +285,7 @@
                                                 <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
                                                     <label class="ph-single-product-label" for="product_final_price">قیمت
                                                         نهایی: </label>
-                                                    <h3 id="product_final_price"><span>760.000</span> <span>ریال</span>
+                                                    <h3 id="product_final_price"><span id="final-price">760.000</span> <span>ریال</span>
                                                     </h3>
                                                 </div><!-- .ph-single-product-final-price -->
                                             </div><!-- .col-6 -->
