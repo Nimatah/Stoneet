@@ -1,6 +1,7 @@
 {% extends 'base_frontend.html' %}
 {% load static %}
 {% load humanize %}
+{% load utils %}
 
 
 {% block title %}
@@ -212,14 +213,16 @@
                     </button>
                 </div><!-- .modal-header -->
                 <div class="modal-body">
-                    <form action="">
+                    <form action="{% url 'orders:create_order' %}" method="post">
+                    {% csrf_token %}
+                        <input type="hidden" name="product" value="{{ product.pk }}">
                         <div class="ph-order-detail-modal-content">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="ph-view-order-block">
                                         <div class="ph-view-order-block-item">
                                             <label>مقصد:</label>
-                                            <select class="custom-select mb-3" id="customer-address">
+                                            <select class="custom-select mb-3" name="destination" id="customer-address">
                                                 {% for address in user.addresses.all %}
                                                     <option value="{{ address.id }}">{{ address.receiver_name }}</option>
                                                 {% endfor %}
@@ -255,23 +258,24 @@
                                         <div class="row mb-3">
                                             <div class="col-6">
                                                 <div class="form-group">
-                                                    <input type="number" min="1" class="form-control"
+                                                    <input type="number" min="1" name="weight" id="order-weight" class="form-control"
                                                            placeholder="تناژ مورد نظر به عدد">
                                                 </div><!-- .ph-single-product-quantity -->
                                                 <div class="form-group">
                                                     <select class="form-control custom-select"
-                                                            id="month_no">
+                                                            id="month_no" name="monthly_load">
                                                         <option>نوبت دریافت:</option>
-                                                        <option>1 ماه</option>
-                                                        <option>2 ماه</option>
+                                                        {% for month in months %}
+                                                            <option value="{{ month }}">{{ month }} ماه</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <select class="form-control custom-select"
-                                                            id="payment_method">
+                                                            id="payment-type" name="payment_type">
                                                         <option>انتخاب نوع پرداخت:</option>
                                                         {% for payment_type in product.get_payment_type %}
-                                                            <option value="{{ payment_type }}">{{ payment_type }}</option>
+                                                            <option value="{{ payment_reverse_mapper|get_item:payment_type }}">{{ payment_type }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </div><!-- .form-group -->
@@ -288,7 +292,7 @@
                                     </div><!-- .ph-single-product-calculator -->
                                 </div>
                                 <div class="col-12">
-                                    <button type="button" class="ph-btn">ثبت درخواست</button>
+                                    <button type="submit" class="ph-btn">ثبت درخواست</button>
                                 </div>
                             </div>
                         </div>

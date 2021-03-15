@@ -13,7 +13,7 @@ class ListAuctionView(UserPassesTestMixin, ListView):
     page_kwarg = 'p'
 
     def get_queryset(self):
-        queryset = Auction.objects.filter(order__state=Order.STATE_PENDING)
+        queryset = Auction.objects.filter(order__state=Order.STATE_SUBMITTED)
         return queryset
 
     def get_context_data(self, **kwargs):

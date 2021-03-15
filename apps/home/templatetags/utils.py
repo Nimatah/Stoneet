@@ -1,4 +1,7 @@
 from django import template
+
+from apps.orders.models import Order
+
 register = template.Library()
 
 
@@ -13,3 +16,9 @@ def query_transform(context, **kwargs):
     for k, v in kwargs.items():
         query[k] = v
     return query.urlencode()
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
+

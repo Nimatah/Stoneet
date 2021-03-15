@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, TemplateView
 
-from apps.products.models import Product
+from apps.products.models import Product, Attribute
 
 
 class ListProductView(ListView):
@@ -16,6 +16,12 @@ class ProductDetailView(DetailView):
     model = Product
     pk_url_kwarg = 'pk'
     context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['months'] = range(1, 13)
+        context['payment_reverse_mapper'] = Attribute.PAYMENT_REVERSE_MAP
+        return context
 
 
 class BuyProductView(TemplateView):

@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from django.contrib.auth.mixins import UserPassesTestMixin
 
+from apps.products.models import Attribute
 from apps.orders.models import Order
 
 
@@ -12,11 +13,12 @@ class ListOrderView(UserPassesTestMixin, ListView):
     page_kwarg = 'p'
 
     def get_queryset(self):
-        queryset = Order.objects.filter(product__user=self.request.user)
+        queryset = Order.objects.filter(buyer=self.request.user)
         return queryset
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context['payment_map'] = Attribute.PAYMENT_MAP
         return context
 
     def test_func(self):

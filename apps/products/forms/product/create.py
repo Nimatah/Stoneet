@@ -58,7 +58,6 @@ class CreateProductForm(forms.ModelForm):
                     attributes.append({'attr': attr, 'value': value})
 
         self.cleaned_data['attributes'] = attributes
-        print(attributes)
         return super().clean()
 
     def clean_category(self):

@@ -131,6 +131,12 @@ class Attribute(TimestampedModel):
         PAYMENT_MONTHLY_AFTER: 'ماهیانه (پس از تحویل)',
     }
 
+    PAYMENT_REVERSE_MAP = {
+        'نقدی': PAYMENT_CASH,
+        'ماهیانه (پیش از تحویل)': PAYMENT_MONTHLY_BEFORE,
+        'ماهیانه (پس از تحویل)': PAYMENT_MONTHLY_AFTER,
+    }
+
     title = models.CharField(max_length=255)
     value_type = models.CharField(max_length=255, choices=_TYPE_CHOICES)
     options = models.TextField(null=True, blank=True)
@@ -372,6 +378,9 @@ class Product(TimestampedModel):
 
     def get_payment_type(self) -> List[str]:
         return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE).value
+
+    def get_commission(self) -> float:
+        return self.category.commission if self.category.parent is None else self.category.parent.commission
 
     def to_dict(self) -> Dict[str, Any]:
         return {
