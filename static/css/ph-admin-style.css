@@ -1009,10 +1009,6 @@ a.nav-link[aria-expanded="true"]:after {
     padding: 1rem 1rem;
     border-radius: 10px;
     font-size: 1.25rem;
-}
-
-.ph-dashboard-main.ph-seller-dashboard .ph-dm-title{
-    color: #333;
     box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
@@ -1919,7 +1915,7 @@ a.ph-preview-placeholder:after {
   display: flex;
   justify-content: center;
   align-items: center;
-    max-width: 150px;
+    max-width: 160px;
     border: 1px solid #7e111a;
 }
 .ph-admin-page-container a.ph-btn:hover {
@@ -2023,7 +2019,7 @@ a.ph-preview-placeholder:after {
 }
 .ph-ip-w-heading .ph-ip-w-title span{
     font-size: 1.01rem;
-    color: #FFD100;
+    color: #333;
     padding-left: .5rem;
 }
 
@@ -2343,14 +2339,6 @@ a.ph-preview-placeholder:after {
     padding: .3rem 1.2rem;
 }
 
-.ph-logistic-panel .ph-admin-page-intro-text{
-  background: #FFD100;
-}
-
-.ph-logistic-panel .ph-admin-page-intro-text span{
-  color: #333;
-}
-
 .ph-auction-sorting{
   display: flex;
   align-items: center;
@@ -2390,10 +2378,6 @@ a.ph-preview-placeholder:after {
 }
 .ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link{
   color: #333333;
-}
-.ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
-  background: #022C3B;
-  color: #FFFFFF;
 }
 
 
@@ -2804,21 +2788,9 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-dashboard-main.ph-admin-panel .ph-dm-title {
-  background: #c1c1c1;
-  color: #FFffff;
-  color: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text{
-    background: #c1c1c1;
-    color: #333;
-    color: #FFffff;
-}
-.ph-dashboard-main.ph-admin-panel .ph-admin-page-intro-text span{
-    color: #FFffff;
-    color: #333;
 }
 
 .ph-dm-add-user{
@@ -3028,7 +3000,6 @@ a.ph-preview-placeholder:after {
 .ph-qc-info-btns a{
     margin: 0;
     font-weight: 600;
-  letter-spacing: 1.5px;
 }
 .ph-qc-info-btns a i{
   margin-left: .5rem;
