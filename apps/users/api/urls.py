@@ -7,6 +7,7 @@ from apps.users.api.views import (
     MineRetrieveUpdateDestroyView,
     AddressListCreateAPIView,
     AddressRetrieveUpdateDestroyView,
+    UserListAPIView,
 )
 
 app_name = 'users'
@@ -18,4 +19,5 @@ urlpatterns = [
     path('mine/<int:pk>', MineRetrieveUpdateDestroyView.as_view(), name='mine_detail'),
     path('address/', AddressListCreateAPIView.as_view(), name='address_list_create'),
     path('address/<int:pk>', AddressRetrieveUpdateDestroyView.as_view(), name='address_detail'),
+    path('users/', UserListAPIView.as_view(), name='user_list')
 ]

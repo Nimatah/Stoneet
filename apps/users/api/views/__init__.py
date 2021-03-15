@@ -2,3 +2,4 @@ from .seller import SellerAddProductPart1ValidationAPIView
 from .registration import RegistrationAuthValidationView
 from .mine import MineListCreateAPIView, MineRetrieveUpdateDestroyView
 from .address import AddressListCreateAPIView, AddressRetrieveUpdateDestroyView
+from .users import UserListAPIView

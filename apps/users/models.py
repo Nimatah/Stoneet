@@ -302,6 +302,7 @@ class Profile(models.Model):
 
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
+    full_name = models.CharField(max_length=255, blank=True)
     birthday = models.DateField(null=True, blank=True)
     gender = models.CharField(max_length=255, choices=_GENDER_CHOICES, blank=True)
     id_code = models.CharField(max_length=255, blank=True)
@@ -340,3 +341,12 @@ class Profile(models.Model):
 
     def get_persian_birthday(self):
         return JalaliDate.to_jalali(self.birthday)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.full_name = self.get_full_name()
+        return super().save(
+            force_insert=force_insert,
+            force_update=force_update,
+            using=using,
+            update_fields=update_fields
+        )

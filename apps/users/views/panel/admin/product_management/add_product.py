@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 from django.http import HttpResponseBadRequest
 
 from apps.products.models import Attribute, Category
+from apps.users.models import User
 
 
 class AddProductView(TemplateView):
@@ -19,5 +20,5 @@ class AddProductView(TemplateView):
         context['attributes_image'] = Attribute.objects.get_by_image_field().filter(is_special=False).order_by('order')
         context['attributes_bool'] = Attribute.objects.get_by_bool_field().filter(is_special=False).order_by('order')
         context['ID_SAMPLE'] = Attribute.ID_SAMPLE
-        context['seller'] = self.request.GET.get('seller')
+        context['seller'] = User.objects.get(pk=self.request.GET.get('seller'))
         return context
