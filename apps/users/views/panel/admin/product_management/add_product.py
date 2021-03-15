@@ -8,7 +8,7 @@ class AddProductView(TemplateView):
     template_name = 'users/admin/product_management/add_product.html'
 
     def get(self, request, *args, **kwargs):
-        if not self.kwargs.get('seller'):
+        if not self.request.GET.get('seller'):
             return HttpResponseBadRequest()
         return super().get(request, *args, **kwargs)
 
@@ -19,5 +19,5 @@ class AddProductView(TemplateView):
         context['attributes_image'] = Attribute.objects.get_by_image_field().filter(is_special=False).order_by('order')
         context['attributes_bool'] = Attribute.objects.get_by_bool_field().filter(is_special=False).order_by('order')
         context['ID_SAMPLE'] = Attribute.ID_SAMPLE
-        context['seller'] = self.kwargs['seller']
+        context['seller'] = self.request.GET.get('seller')
         return context
