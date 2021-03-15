@@ -236,6 +236,12 @@ body.home .ph-main-header.sticky{
     align-items: center;
     justify-content: center;
     position: relative;
+    animation: animateBg forwards 6s ease-in;
+}
+
+@keyframes animateBg{
+    from { background-size: 115%; }
+    to { background-size: 100%; }
 }
 
 .ph-home-slide:before{

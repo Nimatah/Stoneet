@@ -904,8 +904,14 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
 .navbar-expand-lg .navbar-nav .nav-link{
   color: #333;
 }
-.ph-seller-panel .navbar-expand-lg .navbar-nav .nav-link:hover{
+
+.ph-seller-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
     background: #D4A373;
+}
+
+.ph-buyer-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #022C3B;
+    color: #fff;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
@@ -921,7 +927,7 @@ ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn:hover{
   color: #FFffff;
 }
 
-.ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level {
+.nav-second-level.collapse {
     background: #f8f8f8;
 }
 
@@ -1011,8 +1017,9 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main.ph-buyer-dashboard .ph-dm-title{
-    background: #022C3B;
-    color: #FFD100;
+    background: #fff;
+    color: #333;
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .ph-dashboard-main.ph-logistic-dashboard .ph-dm-title{
@@ -1021,10 +1028,11 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main .ph-dm-panel{
-    padding: 1rem;
+    padding: 2rem;
     background: #fff;
     border-radius: 10px;
     margin-bottom: 2rem;
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1{
@@ -1869,7 +1877,6 @@ a.ph-preview-placeholder:after {
 
 .ph-admin-page-intro-text span{
     font-size: 1.01rem;
-    color: #FFD100;
     padding-left: .5rem;
 }
 
@@ -2410,10 +2417,6 @@ a.ph-preview-placeholder:after {
     padding: .3rem 1.2rem;
 }
 
-.bg-color-3 .navbar-nav .nav-link,
-.bg-color-3 ul.ph-sp-navbar-nav>li>a.nav-link{
-  color: #fff;
-}
 .bg-color-3 .aside-design-by{
   color: #CCCCCC;
 }
@@ -2774,9 +2777,9 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-bpp-tab-navs .nav-pills .nav-link.active {
-    background: #ffd100;
-    color: #333;
+.ph-buyer-panel .nav-pills .nav-link.active {
+    background: #022C3B;
+    color: #fff;
 }
 
 
