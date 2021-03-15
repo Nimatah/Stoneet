@@ -23,29 +23,69 @@ function handleAddressDetails() {
 
 //Enter Arious
 
-function handleOrderWeight(){
-    $('#order-weight').on('change', function (e){
-        let persianNumbers = [/۰/g, /۱/g, /۲/g, /۳/g, /۴/g, /۵/g, /۶/g, /۷/g, /۸/g, /۹/g],
-            arabicNumbers = [/٠/g, /١/g, /٢/g, /٣/g, /٤/g, /٥/g, /٦/g, /٧/g, /٨/g, /٩/g],
-            fixNumbers = function (str) {
-                if (typeof str === 'string') {
-                    for (let i = 0; i < 10; i++) {
-                        str = str.replace(persianNumbers[i], i).replace(arabicNumbers[i], i);
-                    }
-                }
-                return str;
-            };
-    })
-    $(document).ready(function () {
-  $('#order-weight').keypress(function (e) {
-     //if the letter is not digit then display error and don't type anything
-     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-        //display error message
-        $("#errmsg").html("Digits Only").show().fadeOut("slow");
-               return false;
+function handleOrderWeightInput() {
+
+    const isPersianNumber = function (keyCode) {
+        return keyCode >= 1776 && keyCode <= 1785;
     }
-   });
-});
+
+    const isArabicNumber = function (keyCode) {
+        return keyCode >= 1632 && keyCode <= 1641;
+    }
+
+    const isEnglishNumber = function (keyCode) {
+        return keyCode >= 48 && keyCode <= 57;
+    }
+
+    $('#order-weight').keypress(function (e) {
+
+        if (e.which != 8 && e.which != 0 && !(isPersianNumber(e.which) || isArabicNumber(e.which) || isEnglishNumber(e.which))) {
+            return false;
+        }
+    });
+    $(function () {
+        $('#order-weight').keypress(function (e) {
+            var ctrlKey = 67, vKey = 86;
+            if (e.keyCode != ctrlKey && e.keyCode != vKey) {
+                $('#order-weight').val(persianToEnglish($(this).val()));
+            }
+        });
+    });
+
+    function persianToEnglish(input) {
+        var inputstring = input;
+        var persian = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
+        var english = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        var arabic = ["۰", "۱", "۲", "۳", "٤", "۵", "٦", "۷", "۸", "۹"]
+        for (var i = 0; i < 10; i++) {
+            var regex = new RegExp(`[${persian[i]}${arabic[i]}]`, 'g');
+            inputstring = inputstring.toString().replace(regex, english[i]);
+        }
+        return inputstring;
+    }
 }
 
+
+function addCommas(x) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(",");
+}
+
+function handleFinalPrice() {
+
+    $('#order-weight').keyup(function () {
+        var rate = parseFloat($('#order-weight').val()) || 0;
+        var box = parseFloat($('#base-product-price').text()) || 0;
+
+        $('#final-price').text(rate * box);
+        var x = $('#final-price').text();
+        $('#final-price').text(addCommas(x));
+    });
+}
+
+
+
+handleFinalPrice();
+handleOrderWeightInput();
 handleAddressDetails();
