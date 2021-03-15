@@ -29,3 +29,17 @@ class FAQView(TemplateView):
 
     template_name = 'home/faq.html'
 
+
+class SellerTermsConditionsView(TemplateView):
+
+    template_name = 'home/seller_terms_and_conditions.html'
+
+
+class LogesticTermsConditionsView(TemplateView):
+
+    template_name = 'home/logestic_terms_and_conditions.html'
+
+
+class PrivacyPolicyView(TemplateView):
+
+    template_name = 'home/privacy_policy.html'
