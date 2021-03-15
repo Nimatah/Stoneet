@@ -1,6 +1,15 @@
 from django.views.generic import TemplateView
 
+from apps.home.models import StaticContent
 from apps.products.models import Product
+
+
+class _BaseStaticContentView(TemplateView):
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['static_content'] = StaticContent.objects.first()
+        return context
 
 
 class HomeView(TemplateView):
@@ -20,7 +29,7 @@ class ContactUsView(TemplateView):
     template_name = 'home/contact_us.html'
 
 
-class TermsConditionsView(TemplateView):
+class TermsConditionsView(_BaseStaticContentView):
 
     template_name = 'home/terms_and_conditions.html'
 
@@ -30,16 +39,16 @@ class FAQView(TemplateView):
     template_name = 'home/faq.html'
 
 
-class SellerTermsConditionsView(TemplateView):
+class SellerTermsConditionsView(_BaseStaticContentView):
 
     template_name = 'home/seller_terms_and_conditions.html'
 
 
-class LogisticTermsConditionsView(TemplateView):
+class LogisticTermsConditionsView(_BaseStaticContentView):
 
     template_name = 'home/logistic_terms_and_conditions.html'
 
 
-class PrivacyPolicyView(TemplateView):
+class PrivacyPolicyView(_BaseStaticContentView):
 
     template_name = 'home/privacy_policy.html'

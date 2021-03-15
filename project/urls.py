@@ -10,7 +10,8 @@ urlpatterns = [
     path('products/', include('apps.products.urls', namespace='products')),
     path('orders/', include('apps.orders.urls', namespace='orders')),
     path('api/', include('apps.users.api.urls', namespace='users_api')),
-    path('api/', include('apps.products.api.urls', namespace='products_api'))
+    path('api/', include('apps.products.api.urls', namespace='products_api')),
+    path('api/', include('apps.home.api.urls', namespace='home_api')),
 ]
 
 if settings.DEBUG:

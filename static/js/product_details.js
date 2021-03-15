@@ -85,6 +85,34 @@ function handleFinalPrice() {
 }
 
 
+var $form = $("#details-form"),
+    $errorMsg = $("<span class='error'>پر کردن این گزینه اجباری است</span>");
+
+$("#submit").on("click", function () {
+
+    var toReturn = true;
+    $("input,select", $form).each(function () {
+
+        if ($(this).val() == "") {
+
+            if (!$(this).data("error")) {
+                $(this).data("error", $errorMsg.clone().insertAfter($(this)));
+            }
+            toReturn = false;
+        }
+
+        else {
+
+            if ($(this).data("error")) {
+                $(this).data("error").remove();
+                $(this).removeData("error");
+            }
+        }
+    });
+    return toReturn;
+});
+
+
 
 handleFinalPrice();
 handleOrderWeightInput();
