@@ -14,28 +14,23 @@
                         <ul id="progressbar">
                             <li class="progressbar-item step active" id="progressbar_item_info">
                                 <h6 class="ph-reg-steps-title">۱. ثبت نام</h6>
-                                <p class="ph-reg-steps-description">وارد کردن ایمیل و شماره تماس</p>
                             </li>
                             <li class="progressbar-item step" id="progressbar_item_info">
                                 <h6 class="ph-reg-steps-title">۲. اطلاعات خریدار</h6>
-                                <p class="ph-reg-steps-description">اطلاعات شخصی خریدار، اطلاعات تجاری، اطلاعات تماس</p>
                             </li>
                             <li class="progressbar-item step" id="progressbar_item_upload">
                                 <h6 class="ph-reg-steps-title">۳. بارگذاری مدارک</h6>
-                                <p class="ph-reg-steps-description">اطلاعات مربوط به مدارک، تصویر مدارک شخصی
-                                    و
-                                    تجاری</p>
                             </li>
                             <li class="progressbar-item step" id="progressbar_item_end">
                                 <h6 class="ph-reg-steps-title">۴. اتمام ثبت نام</h6>
-                                <p class="ph-reg-steps-description">به جمع کاربران استونیت خوش آمدید.</p>
                             </li>
                         </ul>
                         <div class="ph-registration-panel-footer">
                             <div class="ph-registration-panel-bottom-links">
                                 <a href="{% url 'home:index' %}">صفحه اصلی</a>
                                 <span> | </span>
-                                <a href="{% url 'users:login' %}">ورود به پنل</a>
+                                <a href="#" data-toggle="modal"
+                                       data-target="#ph_LogIn_Modal">ورود به پنل</a>
                             </div><!-- .ph-registration-panel-bottom-links -->
                                 <div>تمامی حقوق مادی و معنوی این سایت برای استونیت محفوظ است.</div>
                                 <div>طراحی و توسعه :<a href="https://planhub.ir/">PlanHUB</a></div>

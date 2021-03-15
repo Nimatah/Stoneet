@@ -10,32 +10,48 @@
         <div class="container">
             <form id="ph_new_login_form" action="">
                 <article class="tab" id="ph_new_login_sign_up">
-                    <div class="form-group">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="ph-contact-reg">
+                                <div class="email">
+                                    پست الکترونیک:
+                                    <a href="mailto:webmaster@example.com">webmaster@example.com</a>
+                                </div>
+                                <div class="tel">
+                                    شماره تماس:
+                                    <a href="tel:09120000000">09120000000</a>
+                                </div>
+                            </div><!-- .ph-contact-reg -->
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
                      <span class="ph-signup-inputs sign-up-email">
                         <input type="email" class="form-control text-left" id="sign_up_email"
                                aria-describedby="emailHelp"
                                placeholder="ایمیل خود را وارد کنید">
                      </span>
-                        <span class="ph-signup-inputs sign-up-password">
+                                <span class="ph-signup-inputs sign-up-password">
                         <input type="password" class="form-control text-left" id="sign_up_password"
                                placeholder="رمز عبور خود را انتخاب کنید">
                      </span>
-                        <span class="ph-signup-inputs sign-up-number">
+                                <span class="ph-signup-inputs sign-up-number">
                         <input type="tel" class="form-control text-left" id="sign_up_number" placeholder="09** *******"
                                pattern="^\d{4}-\d{3}-\d{4}$" required>
-                     </span>
-                        <div class="ph-signup-submit-btn">
-                            <button type="submit" id="ph_signup_submit_btn"
-                                    class="btn btn-outline-secondary ph-btn ph-border-radius-small">ثبت نام
-                            </button>
-                        </div><!-- .ph-signup-submit-btn -->
-                    </div><!-- .form-group -->
-                    <div id="ph_sign_in_to_sign_up">
-                        <span>قبلا ثبت نام کرده اید؟</span>
-                        <a href="#" data-toggle="modal"
-                           data-target="#ph_LogIn_Modal">ورود</a>
+                    </span>
+                                <div class="ph-signup-submit-btn">
+                                    <button type="submit" id="ph_signup_submit_btn"
+                                            class="btn btn-outline-secondary ph-btn ph-border-radius-small">ثبت نام
+                                    </button>
+                                </div><!-- .ph-signup-submit-btn -->
+                                <div id="ph_sign_in_to_sign_up">
+                                    <span>قبلا ثبت نام کرده اید؟</span>
+                                    <a href="#" data-toggle="modal"
+                                       data-target="#ph_LogIn_Modal">ورود</a>
 
-                    </div><!-- #ph_sign_in_to_sign_up -->
+                                </div><!-- #ph_sign_in_to_sign_up -->
+                            </div><!-- .form-group -->
+                        </div>
+                    </div>
                 </article><!-- .ph_new_login_sign_up -->
 
                 <article class="tab" id="ph_new_login_logistic_business_license">

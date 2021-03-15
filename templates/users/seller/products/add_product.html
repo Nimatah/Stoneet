@@ -62,14 +62,14 @@
                             <span class="title ph-border-radius">معدن را انتخاب کنید:</span>
                         </div>
                         <div class="form-row mb-4 align-items-center">
-                            <div class="col-6 my-1">
-                                <label class="mr-sm-2" for="t-1-c">انتخاب معدن</label>
-                                <select class="custom-select mr-sm-2" name="mine" id="product-mine">
+                            <div class="col-6 my-3 d-flex">
+                                <label class="mr-sm-2 col-3" for="t-1-c">انتخاب معدن</label>
+                                <select class="custom-select mr-sm-2 col-6" name="mine" id="product-mine">
                                     {% for mine in user.mines.all %}
                                     <option selected value="{{ mine.id }}">{{ mine.title }}</option>
                                     {% endfor %}
                                 </select>
-                            <a href="{% url 'users:profile_seller' %}#nav-contact-tab" class="btn ph-btn col-2 mt-2 ml-auto mr-0" data-target="nav-contact-tab">افزودن معدن</a>
+                            <a href="{% url 'users:profile_seller' %}#nav-contact-tab" class="btn ph-btn col-2 mr-3" data-target="nav-contact-tab">افزودن معدن</a>
                             </div>
                         </div>
 
@@ -429,22 +429,6 @@
     </main>
     <!-- ph-create-product-main ph-dashboard-main-->
 
-    <div id="error-modal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">خطا</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">متوجه شدم</button>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block footer_static %}
