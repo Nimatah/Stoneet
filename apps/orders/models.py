@@ -1,7 +1,7 @@
 from django.db import models
 from persiantools.jdatetime import JalaliDate
 
-from apps.core.models import TimestampedModel
+from apps.core.models import TimestampedModel, BaseMedia
 from apps.users.models import User
 from apps.products.models import Attribute
 
@@ -119,3 +119,18 @@ class LogisticOrder(models.Model):
 
     def __str__(self):
         return f'Logistic Order: {self.order}'
+
+
+class OrderMedia(BaseMedia):
+
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='media')
+    title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='orders')
+
+
+class LogisticOrderMedia(BaseMedia):
+
+    order = models.ForeignKey(LogisticOrder, on_delete=models.CASCADE, related_name='media')
+    title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='orders')
+

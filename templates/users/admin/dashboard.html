@@ -15,8 +15,8 @@
                     <div class="ph-dmp-section-1 ph-user-info">
                         <div class="title">مشخصات ادمین</div>
                         <ul>
-                            <li>کد ادمین: <span>SR-345261</span></li>
-                            <li>نام ادمین: <span>مصطفی چراغی</span></li>
+                            <li>کد ادمین: <span>{{ user.id }}</span></li>
+                            <li>نام ادمین: <span>{{ user.profile.get_full_name }}</span></li>
                             <li>سطح دسترسی: <span>سطح یک</span></li>
                         </ul>
                         <div class="ph-button">
@@ -28,7 +28,7 @@
                     <div class="ph-dmp-section-1 ph-user-product-info">
                         <div class="title">تعداد فروشندگان</div>
                         <ul>
-                            <li>آماده به کار: <span>۱۲</span></li>
+                            <li>در انتظار تایید: <span>۱۲</span></li>
                             <li>تایید شده: <span>۳۲</span></li>
                             <li>رد شده: <span>۷</span></li>
                         </ul>
