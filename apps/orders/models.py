@@ -8,14 +8,29 @@ from apps.products.models import Attribute
 
 class OrderQuerySet(models.QuerySet):
 
+    def submitted(self):
+        return self.filter(state=Order.STATE_SUBMITTED)
+
+    def pending_seller(self):
+        return self.filter(state=Order.STATE_PENDING_SELLER)
+
+    def pending_logistic(self):
+        return self.filter(state=Order.STATE_PENDING_LOGISTIC)
+
+    def pending_buyer_logistic_price(self):
+        return self.filter(state=Order.STATE_PENDING_BUYER_LOGISTIC_PRICE)
+
+    def pending_contract(self):
+        return self.filter(state=Order.STATE_PENDING_CONTRACT)
+
+    def pending_finance_documents(self):
+        return self.filter(state=Order.STATE_PENDING_FINANCE_DOCUMENTS)
+
     def accepted(self):
         return self.filter(state=Order.STATE_ACCEPTED)
 
-    def rejected(self):
-        return self.filter(state=Order.STATE_PENDING_SELLER)
-
-    def pending(self):
-        return self.filter(state=Order.STATE_PENDING_SELLER)
+    def finished(self):
+        return self.filter(state=Order.STATE_FINISHED)
 
 
 class OrderManager(models.Manager):
@@ -50,7 +65,8 @@ class Order(TimestampedModel):
     STATE_PENDING_BUYER_LOGISTIC_PRICE = 'pending_buyer_logistic_price'
     STATE_PENDING_CONTRACT = 'pending_contract'
     STATE_PENDING_FINANCE_DOCUMENTS = 'pending_finance_documents'
-    STATE_ACCEPTED = 'STATE_ACCEPTED'
+    STATE_ACCEPTED = 'accepted'
+    STATE_FINISHED = 'finished'
 
     _STATE_CHOICES = (
         (STATE_SUBMITTED, 'ثبت سفارش',),
@@ -61,6 +77,7 @@ class Order(TimestampedModel):
         (STATE_PENDING_CONTRACT, 'در انتظار تایید قرارداد',),
         (STATE_PENDING_FINANCE_DOCUMENTS, 'در انتظار تایید مدارک مالی',),
         (STATE_ACCEPTED, 'تایید نهایی',),
+        (STATE_FINISHED, 'انجام شده',),
     )
 
     STATE_ORDER_MAP = {
