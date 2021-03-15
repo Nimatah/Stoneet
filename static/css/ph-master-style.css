@@ -643,6 +643,11 @@ input.form-control:focus{
     padding-top: 1rem;
 }
 
+.ph-modal.ph-auction-modal .modal-body .form-group{
+    width: 100%;
+    padding-top: 0;
+}
+
 .ph-modal .modal-body .ph-modal-item{
     margin-bottom: .5rem;
     display: flex;

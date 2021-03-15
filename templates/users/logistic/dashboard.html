@@ -6,8 +6,8 @@
 {% block admin_content %}
 <main class="ph-dashboard-main ph-logistic-panel ph-logistic-dashboard">
     <div class="container">
-        <div class="ph-dm-title">
-            <div class="title">داشبورد پنل باربری</div>
+        <div class="ph-admin-page-intro-text">
+            <span>داشبورد پنل باربری</span>
         </div>
         <div class="ph-dm-panel">
             <div class="row">
@@ -39,23 +39,25 @@
                         <div class="title">وضعیت پنل</div>
                         <span>{{ user.get_state_display }}</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
+                </div><!-- col-4 -->
+                <div class="col-4">
                     <div class="ph-dmp-section-2 ph-dmp-my-tender">
                         <div class="number">۱۴</div>
                         <div class="title">مناقصه‌های من</div>
                     </div>
+                </div>
+                <div class="col-4">
                     <div class="ph-dmp-section-2 ph-dmp-tender-active">
                         <div class="number">۶۵</div>
                         <div class="title">مناقصه‌های فعال</div>
                     </div>
+                </div>
+                <div class="col-4">
                     <div class="ph-dmp-section-2 ph-dmp-tender-win">
                         <div class="number">۲۳</div>
                         <div class="title">مناقصه‌های برنده شده</div>
                     </div>
-                    <div class="ph-dmp-section-2 ph-dmp-tender-lose">
-                        <div class="number">۶۵</div>
-                        <div class="title">مناقصه‌های از دست رفته</div>
-                    </div>
-                </div><!-- col-4 -->
+                </div>
             </div><!-- row -->
         </div><!-- ph-dm-panel -->
     </div><!-- container -->

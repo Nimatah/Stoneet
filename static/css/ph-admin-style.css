@@ -914,6 +914,10 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
     color: #fff;
 }
 
+.ph-logistic-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #FFD100;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
     color: #7e111a;
@@ -2762,7 +2766,7 @@ a.ph-preview-placeholder:after {
 */
 
 .ph-buyer-panel .nav-pills .nav-link.active {
-    background: #022C3B;+
+    background: #022C3B;
     color: #fff;
 }
 
