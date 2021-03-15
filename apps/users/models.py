@@ -14,7 +14,61 @@ class AddressManager(models.Manager):
     pass
 
 
+class UserQuerySet(models.QuerySet):
+
+    def sellers(self) -> 'UserQuerySet':
+        return self.filter(use_type=User.TYPE_SELLER)
+
+    def buyers(self) -> 'UserQuerySet':
+        return self.filter(use_type=User.TYPE_BUYER)
+
+    def logistics(self) -> 'UserQuerySet':
+        return self.filter(use_type=User.TYPE_LOGISTIC)
+
+    def admins(self) -> 'UserQuerySet':
+        return self.filter(use_type=User.TYPE_ADMIN)
+
+    def sellers_pending(self) -> 'UserQuerySet':
+        return self.sellers().filter(state=User.STATE_PENDING)
+
+    def sellers_accepted(self) -> 'UserQuerySet':
+        return self.sellers().filter(state=User.STATE_ACCEPTED)
+
+    def sellers_rejected(self) -> 'UserQuerySet':
+        return self.sellers().filter(state=User.STATE_REJECTED)
+
+    def sellers_banned(self) -> 'UserQuerySet':
+        return self.sellers().filter(state=User.STATE_BANNED)
+
+    def buyers_pending(self) -> 'UserQuerySet':
+        return self.buyers().filter(state=User.STATE_PENDING)
+
+    def buyers_accepted(self) -> 'UserQuerySet':
+        return self.buyers().filter(state=User.STATE_ACCEPTED)
+
+    def buyers_rejected(self) -> 'UserQuerySet':
+        return self.buyers().filter(state=User.STATE_REJECTED)
+
+    def buyers_banned(self) -> 'UserQuerySet':
+        return self.buyers().filter(state=User.STATE_BANNED)
+
+    def logistics_pending(self) -> 'UserQuerySet':
+        return self.logistics().filter(state=User.STATE_PENDING)
+
+    def logistics_accepted(self) -> 'UserQuerySet':
+        return self.logistics().filter(state=User.STATE_ACCEPTED)
+
+    def logistics_rejected(self) -> 'UserQuerySet':
+        return self.logistics().filter(state=User.STATE_REJECTED)
+
+    def logistics_banned(self) -> 'UserQuerySet':
+        return self.logistics().filter(state=User.STATE_BANNED)
+
+
 class UserManager(BaseUserManager):
+
+    def get_queryset(self) -> 'UserQuerySet':
+        return UserQuerySet(model=self.model, using=self.db)
 
     @staticmethod
     def __validate_username(username: str):

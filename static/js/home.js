@@ -19,7 +19,7 @@ $('.ph-default-video-slider').owlCarousel({
     }
 })
 
-
+// Sticky Header On Scroll
 $(function() {
     var header = $(".ph-main-header");
     var vheight = $(window).height();

@@ -46,6 +46,9 @@
 #ph_myscroll::-webkit-scrollbar-thumb:hover{
   background:rgba(2, 44, 59, 1);
 }
+#ph_aside_myscroll{
+    box-shadow: 0 30px 90px rgb(187 187 187 / 33%);
+}
 .aside-scroll-bar{
   direction: ltr;
 }
@@ -372,22 +375,22 @@ input.invalid {
 }
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel{
     font-size: 1.5rem;
-    font-weight: 600;
     margin-bottom: 1.5rem;
 }
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel a{
     font-size: 2rem;
     color: #022C3B;
+    font-weight: 600;
 }
 
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email{
     font-size: 1.5rem;
-    font-weight: 600;
 }
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email a{
     font-size: 1.2rem;
-    border-bottom: 1px solid;
+    text-decoration: underline;
     color: #007bff;
+    font-weight: 600;
 }
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .tel a:hover,
 #ph_new_login_form #ph_new_login_sign_up .ph-contact-reg .email a:hover{
@@ -523,7 +526,6 @@ input.invalid {
 .ph-new-login-logistic-info-wrapper,
 .ph-new-login-logistic-business-end-wrapper,
 .ph-new-login-logistic-business-license-wrapper{
-    width: 85%;
     margin: auto;
     padding: 2rem;
     border-radius: 10px;
@@ -767,7 +769,7 @@ input.invalid {
 }
 
 .ph-seller-panel aside {
-  width: 15%;
+  width: 20%;
   position: fixed;
   top: 0;
   min-height: 100vh;
@@ -829,10 +831,14 @@ aside.pos-rel{
     max-width: 85%;
 }
 
+.ph-navbar-logo img{
+    filter: drop-shadow(2px 2px 6px black);
+}
+
 .ph-sp-username{
     margin: 0 .5rem 2rem;
-    background: #ffffff;
-    color: #333;
+    background: #333;
+    color: #FFffff;
     display: flex;
     justify-content: center;
     border-radius: 2rem;
@@ -895,26 +901,34 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
   color: #FFFFFF;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link,
-.bg-color-5 ul.ph-sp-navbar-nav>li>a.nav-link{
+.navbar-expand-lg .navbar-nav .nav-link{
   color: #333;
+}
+
+.ph-seller-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #D4A373;
+}
+
+.ph-buyer-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #022C3B;
+    color: #fff;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
-    color: #FFFFFF;
+    color: #7e111a;
     margin: 1rem auto;
     max-width: 155px;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn:hover,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn:hover{
-  background: #fff;
-  color: #7e111a;
+  background: #7e111a;
+  color: #FFffff;
 }
 
-.ph-seller-panel-sidebar.bg-color-5 ul.ph-sp-navbar-nav>li>.nav-second-level {
-    background: #e0ad7a;
+.nav-second-level.collapse {
+    background: #f8f8f8;
 }
 
 ul.ph-sp-navbar-nav>li>.nav-second-level li a {
@@ -983,7 +997,7 @@ a.nav-link[aria-expanded="true"]:after {
 */
 
 .ph-dashboard-main {
-    width: 85%;
+    width: 80%;
     position: relative;
     margin-right: auto;
     padding: 2rem 3rem 2rem;
@@ -998,13 +1012,14 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main.ph-seller-dashboard .ph-dm-title{
-    background: #D4A373;
-    color: #FFD100;
+    color: #333;
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .ph-dashboard-main.ph-buyer-dashboard .ph-dm-title{
-    background: #022C3B;
-    color: #FFD100;
+    background: #fff;
+    color: #333;
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .ph-dashboard-main.ph-logistic-dashboard .ph-dm-title{
@@ -1013,10 +1028,11 @@ a.nav-link[aria-expanded="true"]:after {
 }
 
 .ph-dashboard-main .ph-dm-panel{
-    padding: 1rem;
+    padding: 2rem;
     background: #fff;
     border-radius: 10px;
     margin-bottom: 2rem;
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .ph-dashboard-main .ph-dm-panel .ph-dmp-section-1{
@@ -1456,10 +1472,6 @@ a.nav-link[aria-expanded="true"]:after {
   justify-content: center;
 }
 
-.ph-dashboard-main .form-row.num-input .form-control{
-  width: 50%;
-}
-
 .ph-dashboard-main .hide{
   display: none;
 }
@@ -1856,15 +1868,15 @@ a.ph-preview-placeholder:after {
     align-items: center;
     margin: 1rem 0;
     padding: 1rem 1.5rem;
-    background: #D4A373;
+    background: #fff;
     border-radius: 10px;
     color: #022C3B;
     font-size: .75rem;
+    box-shadow: 0 30px 90px rgb(187 187 187 / 33%);
 }
 
 .ph-admin-page-intro-text span{
     font-size: 1.01rem;
-    color: #FFD100;
     padding-left: .5rem;
 }
 
@@ -1899,18 +1911,24 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-admin-page-container button,
-.ph-admin-page-container a.btn{
+.ph-admin-page-container a.ph-btn{
     font-size: .75rem;
-  background: #7e111a;
+    color: #7e111a;
+  background: #FFffff;
   border: 0;
   display: flex;
   justify-content: center;
   align-items: center;
     max-width: 150px;
-    box-shadow: 1px 1px 3px 0px #777;
-    -webkit-box-shadow: 1px 1px 3px 0px #777;
-    -moz-box-shadow: 1px 1px 3px 0px #777;
-    -o-box-shadow: 1px 1px 3px 0px #777;
+    border: 1px solid #7e111a;
+}
+.ph-admin-page-container a.ph-btn:hover {
+    background: #7E111A;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
 }
 
 .ph-admin-page-container button{
@@ -2399,10 +2417,6 @@ a.ph-preview-placeholder:after {
     padding: .3rem 1.2rem;
 }
 
-.bg-color-3 .navbar-nav .nav-link,
-.bg-color-3 ul.ph-sp-navbar-nav>li>a.nav-link{
-  color: #fff;
-}
 .bg-color-3 .aside-design-by{
   color: #CCCCCC;
 }
@@ -2763,9 +2777,9 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-bpp-tab-navs .nav-pills .nav-link.active {
-    background: #ffd100;
-    color: #333;
+.ph-buyer-panel .nav-pills .nav-link.active {
+    background: #022C3B;
+    color: #fff;
 }
 
 
@@ -3080,6 +3094,15 @@ a.ph-preview-placeholder:after {
 */
 .ph-admin-panel.ph-add-product .ph-spm-create-produc-img-up-yitle{
     margin-bottom: 0;
+}
+.ph-admin-panel.ph-add-product .ph-user-info ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 0 .5rem;
+}
+.ph-admin-panel.ph-add-product .ph-user-info ul li span{
+    margin: 0 .2rem;
 }
 .ph-admin-panel.ph-add-product .file-upload {
     width: auto;

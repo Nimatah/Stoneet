@@ -1,21 +1,36 @@
 from django.db import models
 from persiantools.jdatetime import JalaliDate
 
-from apps.core.models import TimestampedModel
+from apps.core.models import TimestampedModel, BaseMedia
 from apps.users.models import User
 from apps.products.models import Attribute
 
 
 class OrderQuerySet(models.QuerySet):
 
+    def submitted(self):
+        return self.filter(state=Order.STATE_SUBMITTED)
+
+    def pending_seller(self):
+        return self.filter(state=Order.STATE_PENDING_SELLER)
+
+    def pending_logistic(self):
+        return self.filter(state=Order.STATE_PENDING_LOGISTIC)
+
+    def pending_buyer_logistic_price(self):
+        return self.filter(state=Order.STATE_PENDING_BUYER_LOGISTIC_PRICE)
+
+    def pending_contract(self):
+        return self.filter(state=Order.STATE_PENDING_CONTRACT)
+
+    def pending_finance_documents(self):
+        return self.filter(state=Order.STATE_PENDING_FINANCE_DOCUMENTS)
+
     def accepted(self):
         return self.filter(state=Order.STATE_ACCEPTED)
 
-    def rejected(self):
-        return self.filter(state=Order.STATE_PENDING_SELLER)
-
-    def pending(self):
-        return self.filter(state=Order.STATE_PENDING_SELLER)
+    def finished(self):
+        return self.filter(state=Order.STATE_FINISHED)
 
 
 class OrderManager(models.Manager):
@@ -44,22 +59,37 @@ class LogisticOrderManager(models.Manager):
 class Order(TimestampedModel):
 
     STATE_SUBMITTED = 'submitted'
+    STATE_PENDING_ADMIN = 'pending_admin'
     STATE_PENDING_SELLER = 'pending_seller'
     STATE_PENDING_LOGISTIC = 'pending_logistic'
     STATE_PENDING_BUYER_LOGISTIC_PRICE = 'pending_buyer_logistic_price'
     STATE_PENDING_CONTRACT = 'pending_contract'
     STATE_PENDING_FINANCE_DOCUMENTS = 'pending_finance_documents'
-    STATE_ACCEPTED = 'STATE_ACCEPTED'
+    STATE_ACCEPTED = 'accepted'
+    STATE_FINISHED = 'finished'
 
     _STATE_CHOICES = (
         (STATE_SUBMITTED, 'ثبت سفارش',),
-        (STATE_PENDING_SELLER, 'تایید فروشنده',),
-        (STATE_PENDING_LOGISTIC, 'رد شده',),
-        (STATE_PENDING_BUYER_LOGISTIC_PRICE, 'رد شده',),
-        (STATE_PENDING_CONTRACT, 'رد شده',),
-        (STATE_PENDING_FINANCE_DOCUMENTS, 'رد شده',),
-        (STATE_ACCEPTED, 'رد شده',),
+        (STATE_PENDING_ADMIN, 'در انتظار تایید سایت'),
+        (STATE_PENDING_SELLER, 'در انتظار تایید فروشنده',),
+        (STATE_PENDING_LOGISTIC, 'در انتظار تایید حمل و نقل',),
+        (STATE_PENDING_BUYER_LOGISTIC_PRICE, 'در انتظار تایید قیمت حمل و نقل توسط خریدار',),
+        (STATE_PENDING_CONTRACT, 'در انتظار تایید قرارداد',),
+        (STATE_PENDING_FINANCE_DOCUMENTS, 'در انتظار تایید مدارک مالی',),
+        (STATE_ACCEPTED, 'تایید نهایی',),
+        (STATE_FINISHED, 'انجام شده',),
     )
+
+    STATE_ORDER_MAP = {
+        STATE_SUBMITTED: 0,
+        STATE_PENDING_ADMIN: 1,
+        STATE_PENDING_SELLER: 2,
+        STATE_PENDING_LOGISTIC: 3,
+        STATE_PENDING_BUYER_LOGISTIC_PRICE: 4,
+        STATE_PENDING_CONTRACT: 5,
+        STATE_PENDING_FINANCE_DOCUMENTS: 6,
+        STATE_ACCEPTED: 7,
+    }
 
     timestamp = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
@@ -79,6 +109,9 @@ class Order(TimestampedModel):
 
     def get_persian_timestamp(self):
         return JalaliDate.to_jalali(self.timestamp)
+
+    def state_lt(self, state):
+        return self.STATE_ORDER_MAP[self.state] < self.STATE_ORDER_MAP[state]
 
 
 class LogisticOrder(models.Model):
@@ -103,3 +136,18 @@ class LogisticOrder(models.Model):
 
     def __str__(self):
         return f'Logistic Order: {self.order}'
+
+
+class OrderMedia(BaseMedia):
+
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='media')
+    title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='orders')
+
+
+class LogisticOrderMedia(BaseMedia):
+
+    order = models.ForeignKey(LogisticOrder, on_delete=models.CASCADE, related_name='media')
+    title = models.CharField(max_length=255, blank=True)
+    file = models.FileField(upload_to='orders')
+

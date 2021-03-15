@@ -1,0 +1,64 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+
+{% block admin_content %}
+<main class="ph-dashboard-main ph-admin-panel ph-admin-config">
+    <div class="container">
+        <div class="ph-dm-title">
+            <div class="title">تنظیمات سایت</div>
+        </div>
+        <div class="ph-admin-config-container">
+            <div class="ph-admin-config-box bg-light ph-border-radius ph-box-shadow mb-4 p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">صفحه قوانین و مقررات</span>
+                </div>
+                <p>متن مورد نظر خود برای صفحه قوانین و مقررات را در فیلد زیر وارد نمایید.</p>
+                <div class="form-group">
+                    <textarea class="form-control" id="toc_editor" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="ph-admin-config-box bg-light ph-border-radius ph-box-shadow mb-4 p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">صفحه قوانین ثبت نام فروشندگان</span>
+                </div>
+                <p>متن مورد نظر خود برای صفحه قوانین ثبت نام فروشندگان را در فیلد زیر وارد نمایید.</p>
+                <div class="form-group">
+                    <textarea class="form-control" id="seller_toc_editor" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="ph-admin-config-box bg-light ph-border-radius ph-box-shadow mb-4 p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">صفحه قوانین ثبت نام حمل و نقل</span>
+                </div>
+                <p>متن مورد نظر خود برای صفحه قوانین ثبت نام حمل و نقل را در فیلد زیر وارد نمایید.</p>
+                <div class="form-group">
+                    <textarea class="form-control" id="logistic_toc_editor" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="ph-admin-config-box bg-light ph-border-radius ph-box-shadow mb-4 p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">صفحه حریم خصوصی</span>
+                </div>
+                <p>متن مورد نظر خود برای صفحه حریم خصوصی را در فیلد زیر وارد نمایید.</p>
+                <div class="form-group">
+                    <textarea class="form-control" id="privacy_editor" rows="10"></textarea>
+                </div>
+            </div>
+        </div><!-- ph-dm-panel -->
+    </div><!-- container -->
+</main><!-- ph-dashboard-main ph-admin-panel ph-admin-config -->
+{% endblock %}
+{% block footer_static %}
+    <script src="{% static 'tinymce\tinymce.min.js' %}"></script>
+    <script type="text/javascript">
+          tinymce.init({
+              selector: '#toc_editor,#seller_toc_editor,#logistic_toc_editor,#privacy_editor',
+              directionality : 'rtl',
+              language: 'fa_IR',
+              toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright alignjustify ',
+              plugins: 'quickbars hr pagebreak',
+              quickbars_insert_toolbar: 'quickimage quicktable | hr pagebreak'
+          });
+
+    </script>
+{% endblock %}

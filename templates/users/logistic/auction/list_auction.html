@@ -148,7 +148,11 @@
                                 <td>شیراز</td>
                                 <td>دارای قیمت</td>
                                 <td>140.000</td>
-                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                        <span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>1</td>
@@ -161,7 +165,11 @@
                                 <td>شیراز</td>
                                 <td>دارای قیمت</td>
                                 <td>140.000</td>
-                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                        <span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -230,5 +238,53 @@
             </div><!-- .ph-auction-container -->
         </div><!-- .container -->
     </main><!-- .ph-dashboard-main -->
+
+    <!-- LogIn_Modal -->
+    <div class="modal fade ph-modal" id="ph_auction" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">شرکت در مناقصه</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div><!-- .modal-header -->
+            <div class="modal-body">
+                <form method="post" action="{% url 'users:login' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                                <span class="ph-modal-item">
+                                    <input type="text" name="username" class="form-control" id="login-username"
+                                           placeholder="نام کاربری خود را وارد کنید">
+                                </span>
+                        <span class="ph-modal-item">
+                                    <input type="password" name="password" class="form-control" id="login-password"
+                                           placeholder="رمز عبور خود را وارد کنید">
+                                    <small id="login-error" class="form-text text-muted"></small>
+                                </span>
+                        <div class="custom-control custom-checkbox mr-2">
+                            <input type="checkbox" class="custom-control-input"
+                                   id="defaultUnchecked">
+                            <label class="custom-control-label" for="defaultUnchecked">مرا به
+                                خاطر
+                                بسپار</label>
+                        </div><!-- .custom-checkbox -->
+                        <div class="ph-login-modal">
+                            <button type="submit" id="ph_login_modal"
+                                    class="ph-btn ph-border-radius-small">ورود
+                            </button>
+                        </div><!-- .ph-login-modal -->
+                    </div><!-- .form-group -->
+                    <div class="ph-signup-modal" id="ph_SignUp_Modal">
+                        <span>قبلا ثبت نام نکرده اید؟</span><a
+                            href="{% url "users:register_buyer" %}">ثبت نام</a>
+                    </div><!-- .ph-signup-modal -->
+                </form>
+            </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+</div><!-- modal#ph_LogIn_Modal -->
 
 {% endblock %}

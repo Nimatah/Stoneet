@@ -130,9 +130,9 @@
                                 <div class="ph-footer-widget">
                                     <div class="ph-footer-menu">
                                         <ul>
-                                            <li><a href="#">قوانین و مقررات</a></li>
-                                            <li><a href="#">قوانین ثبت نام فروشنده</a></li>
-                                            <li><a href="#">قوانین ثبت نام حمل و نقل</a></li>
+                                            <li><a href="{% url 'home:terms' %}">قوانین و مقررات</a></li>
+                                            <li><a href="{% url 'home:seller_terms' %}">قوانین ثبت نام فروشنده</a></li>
+                                            <li><a href="{% url 'home:logistic_terms' %}">قوانین ثبت نام حمل و نقل</a></li>
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
                                 </div>
@@ -145,8 +145,8 @@
                                     <div class="ph-footer-menu">
                                         <ul>
                                             <li><a href="#">درباره ما</a></li>
-                                            <li><a href="#">تماس با ما</a></li>
-                                            <li><a href="#">حریم خصوصی</a></li>
+                                            <li><a href="{% url 'home:contact_us' %}">تماس با ما</a></li>
+                                            <li><a href="{% url 'home:privacy_policy' %}">حریم خصوصی</a></li>
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
                                 </div>

@@ -5,29 +5,27 @@
 
 
 {% block admin_content %}
-<main class="ph-dashboard-main ph-seller-panel ph-invoice-details">
-    <div class="container">
-        <form action="" id="ph_invoice_details_form" role="form">
-            <div id="invoice_details_page" class="ph-invoice-details-page form-group">
-                <div class="ph-invoice-details-panel">
-                    <div class="ph-idp-wrapper">
-                        <div class="ph-idp-w-heading">
-                            <div class="ph-idp-w-title">
-                                <span>صورتحساب‌ها |</span>
+    <main class="ph-dashboard-main ph-seller-panel ph-invoice-details">
+        <div class="container">
+            <form action="" id="ph_invoice_details_form" role="form">
+                <div id="invoice_details_page" class="ph-invoice-details-page form-group">
+                    <div class="ph-invoice-details-panel">
+                        <div class="ph-idp-wrapper">
+                            <div class="ph-admin-page-intro-text">
+                                <span>صورتحساب‌ها | </span>
                                 مشاهده جزییات صورتحساب
                             </div>
-                        </div>
-                        <div class="ph-idp-w-list bg-light ph-border-radius ph-box-shadow">
-                            <div class="ph-idp-wl-header">
-                                <div class="ph-idp-wlh-date ph-panel-title">
-                                    <span class="title">تاریخ صورتحساب</span>
-                                    <div class="date">۱۳۹۹/۱۱/۲۸</div>
+                            <div class="ph-idp-w-list bg-light ph-border-radius ph-box-shadow">
+                                <div class="ph-idp-wl-header">
+                                    <div class="ph-idp-wlh-date ph-panel-title">
+                                        <span class="title">تاریخ صورتحساب</span>
+                                        <div class="date">۱۳۹۹/۱۱/۲۸</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- ph-idp-wl-header -->
-                            <div class="ph-idp-wl-table">
-                                <table class="ph-table table table-bordered text-center">
-                                    <thead class="thead-dark">
+                                <!-- ph-idp-wl-header -->
+                                <div class="ph-idp-wl-table">
+                                    <table class="ph-table table table-bordered text-center">
+                                        <thead class="thead-dark">
                                         <tr>
                                             <th scope="col" rowspan="2">نوع</th>
                                             <th scope="col" rowspan="2">عنوان</th>
@@ -46,8 +44,8 @@
                                             <th scope="col">بدهکار (ریال)</th>
                                             <th scope="col">بستانکار (ریال)</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         <tr>
                                             <td>هزینه</td>
                                             <td>هزینه ماندگاری در انبار</td>
@@ -61,10 +59,10 @@
                                             <td>۳,۸۰۰,۰۹۸</td>
                                             <td>۳,۸۰۰</td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <table class="ph-table table table-bordered text-center factor">
-                                    <thead class="thead-dark">
+                                        </tbody>
+                                    </table>
+                                    <table class="ph-table table table-bordered text-center factor">
+                                        <thead class="thead-dark">
                                         <tr>
                                             <th scope="col" rowspan="2">نوع</th>
                                             <th scope="col" colspan="2">مبلغ نهایی</th>
@@ -73,8 +71,8 @@
                                             <th scope="col">بدهکار (ریال)</th>
                                             <th scope="col">بستانکار (ریال)</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         <tr>
                                             <td>هزینه</td>
                                             <td>۳,۸۰۰,۰۹۸</td>
@@ -90,22 +88,22 @@
                                             <td>۳,۸۰۰,۰۹۸</td>
                                             <td>۳,۸۰۰</td>
                                         </tr>
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-idp-wl-table -->
                             </div>
-                            <!-- ph-idp-wl-table -->
+                            <!-- ph-idp-w-list -->
                         </div>
-                        <!-- ph-idp-w-list -->
+                        <!-- ph-idp-wrapper -->
                     </div>
-                    <!-- ph-idp-wrapper -->
+                    <!-- ph-invoice-details-panel -->
                 </div>
-                <!-- ph-invoice-details-panel -->
-            </div>
-            <!-- ph-invoice-details-page -->
-        </form>
-        <!-- ph_invoice_details_form -->
-    </div>
-    <!-- container -->
-</main>
-<!-- ph-invoice-details -->
+                <!-- ph-invoice-details-page -->
+            </form>
+            <!-- ph_invoice_details_form -->
+        </div>
+        <!-- container -->
+    </main>
+    <!-- ph-invoice-details -->
 {% endblock %}

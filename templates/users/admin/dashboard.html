@@ -15,8 +15,8 @@
                     <div class="ph-dmp-section-1 ph-user-info">
                         <div class="title">مشخصات ادمین</div>
                         <ul>
-                            <li>کد ادمین: <span>SR-345261</span></li>
-                            <li>نام ادمین: <span>مصطفی چراغی</span></li>
+                            <li>کد ادمین: <span>{{ user.id }}</span></li>
+                            <li>نام ادمین: <span>{{ user.profile.get_full_name }}</span></li>
                             <li>سطح دسترسی: <span>سطح یک</span></li>
                         </ul>
                         <div class="ph-button">
@@ -28,9 +28,9 @@
                     <div class="ph-dmp-section-1 ph-user-product-info">
                         <div class="title">تعداد فروشندگان</div>
                         <ul>
-                            <li>آماده به کار: <span>۱۲</span></li>
-                            <li>تایید شده: <span>۳۲</span></li>
-                            <li>رد شده: <span>۷</span></li>
+                            <li>آماده بررسی: <span>{{ users_queryset.sellers_pending.count }}</span></li>
+                            <li>تایید شده: <span>{{ users_queryset.sellers_accepted.count }}</span></li>
+                            <li>رد شده: <span>{{ users_queryset.sellers_rejected.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-product-info -->
                 </div><!-- col-4 -->
@@ -38,9 +38,9 @@
                     <div class="ph-dmp-section-1 ph-user-product-info">
                         <div class="title">تعداد حمل و نقل</div>
                         <ul>
-                            <li>آماده به کار: <span>۱۲</span></li>
-                            <li>تایید شده: <span>۳۲</span></li>
-                            <li>رد شده: <span>۷</span></li>
+                            <li>آماده بررسی: <span>{{ users_queryset.logistics_pending.count }}</span></li>
+                            <li>تایید شده: <span>{{ users_queryset.logistics_accepted.count }}</span></li>
+                            <li>رد شده: <span>{{ users_queryset.logistics_rejected.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-product-info -->
                 </div><!-- col-4 -->
@@ -48,9 +48,9 @@
                     <div class="ph-dmp-section-1 ph-user-order-info">
                         <div class="title">تعداد محصولات</div>
                         <ul>
-                            <li>تایید شده: <span>۳۲</span></li>
-                            <li>آماده بررسی: <span>۱۲</span></li>
-                            <li>رد شده: <span>۷</span></li>
+                            <li>آماده بررسی: <span>{{ products_queryset.pending.count }}</span></li>
+                            <li>تایید شده: <span>{{ products_queryset.accepted.count }}</span></li>
+                            <li>رد شده: <span>{{ products_queryset.rejected.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
@@ -77,14 +77,14 @@
                     <div class="ph-dmp-section-1 ph-user-order-info">
                         <div class="title">سفارشات</div>
                         <ul>
-                            <li>سفارشات ثبت شده آماده تایید مدارک: <span>۱۲</span></li>
-                            <li>در انتظار تایید فروشنده: <span>۷۸</span></li>
-                            <li>در انتظار تعیین هزینه حمل و نقل: <span>۴۵</span></li>
-                            <li>تایید شده توسط حمل و نقل: <span>۶۵</span></li>
-                            <li>قرارداد امضا شده: <span>۳۴</span></li>
-                            <li>مدارک مالی آپلود شده: <span>۸۳</span></li>
-                            <li>تایید نهایی شده: <span>۲۶</span></li>
-                            <li>انجام شده: <span>۱۹</span></li>
+                            <li>در انتظار تایید سایت: <span>{{ orders_queryset.submitted.count }}</span></li>
+                            <li>در انتظار تایید فروشنده: <span>{{ orders_queryset.pending_seller.count }}</span></li>
+                            <li>در انتظار تایید حمل و نقل: <span>{{ orders_queryset.pending_logistic.count }}</span></li>
+                            <li>در انتظار تایید هزینه حمل و نقل: <span>{{ orders_queryset.pending_buyer_logistic_price.count }}</span></li>
+                            <li>در انتظار تایید قرارداد: <span>{{ orders_queryset.pending_contract.count }}</span></li>
+                            <li>در انتظار تایید مدارک مالی: <span>{{ orders_queryset.pending_finance_documents.count }}</span></li>
+                            <li>تایید نهایی شده: <span>{{ orders_queryset.accepted.count }}</span></li>
+                            <li>انجام شده: <span>{{ orders_queryset.finished.count }}</span></li>
                         </ul>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
@@ -108,17 +108,10 @@
                     <div class="ph-dmp-section-1 ph-user-mine-address">
                         <div class="title">اخرین معادن ثبت شده</div>
                         <ul>
-                            <li>نام اولین معدن ثبت شده</li>
-                            <li>نام دومین معدن ثبت شده</li>
-                            <li>نام سومین معدن ثبت شده</li>
-                            <li>نام چهارمین معدن ثبت شده</li>
+                            {% for mine in mines_queryset|slice:4 %}
+                            <li>{{ mine.title }}</li>
+                            {% endfor %}
                         </ul>
-                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
-                </div><!-- col-4 -->
-                <div class="col-4">
-                    <div class="ph-dmp-section-1 ph-dash-condition-panel">
-                        <div class="title">وضعیت پنل</div>
-                        <span>در انتظار تایید</span>
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
             </div><!-- row -->

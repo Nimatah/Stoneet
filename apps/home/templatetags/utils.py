@@ -22,3 +22,7 @@ def query_transform(context, **kwargs):
 def get_item(dictionary, key):
     return dictionary.get(key)
 
+
+@register.filter
+def order_state_lt(order, state):
+    return order.state_lt(state)
