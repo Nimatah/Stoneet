@@ -1,10 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-admin-panel ph-order-qc">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>جزییات سفارش</span>
+            </div>
+            <div class="ph-order-qc-wrapper bg-light ph-box-shadow ph-border-radius p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات سفارش</span>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>کد کالا:</label>
+                            <span>44</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>عنوان:</label>
+                            <span>سنگ آهک</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>قیمت واحد (تومان):</label>
+                            <span>567000</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>دانه بندی:</label>
+                            <span>درشت</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>عیار:</label>
+                            <span>23-87</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>نوع تحویل:</label>
+                            <span>کیسه 25 کیلویی</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>شماره سفارش:</label>
+                            <span>4534535</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>میزان سفارش:</label>
+                            <span>20 تن</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>تعداد ارسال:</label>
+                            <span>4</span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>تناژ کامل:</label>
+                            <span>4534535</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>تناژ هر ارسال:</label>
+                            <span>4534535</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>نوع پرداخت:</label>
+                            <span>نقدی</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات خریدار</span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="ph-order-qc-item">
+                            <label>نام خریدار:</label>
+                            <span>نیما طاهری</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شناسه خریدار:</label>
+                            <span>34</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شماره موبایل خریدار:</label>
+                            <span>091233446789</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ph-order-qc-item">
+                            <label>استان:</label>
+                            <span>تهران</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شهر:</label>
+                            <span>ساوجبلاغ</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>آدرس:</label>
+                            <span>خیابان سهروردی، کوچه نکیسا، پلاک 35، طبقه 3</span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <a href="#" class="ph-btn">صورتحساب</a>
+                    </div>
+                </div>
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات حمل و نقل</span>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="ph-order-qc-item">
+                            <label>نام حمل و نقل:</label>
+                            <span>آریا اسلامی</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شناسه حمل و نقل:</label>
+                            <span>78</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شماره موبایل حمل و نقل:</label>
+                            <span>091276340976</span>
+                        </div>
+                    </div>
+                    <div class="col-4">
+
+                    </div>
+                    <div class="col-2">
+                        <a href="#" class="ph-btn">صورتحساب</a>
+                    </div>
+                </div>
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات فروشنده</span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="ph-order-qc-item">
+                            <label>نام فروشنده:</label>
+                            <span>نیما طاهری</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شناسه فروشنده:</label>
+                            <span>34</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شماره موبایل فروشنده:</label>
+                            <span>091233446789</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ph-order-qc-item">
+                            <label>استان:</label>
+                            <span>تهران</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شهر:</label>
+                            <span>ساوجبلاغ</span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>آدرس:</label>
+                            <span>خیابان سهروردی، کوچه نکیسا، پلاک 35، طبقه 3</span>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <a href="#" class="ph-btn">صورتحساب</a>
+                    </div>
+                </div>
+                <div class="ph-order-qc-btn-container">
+                    <a href="#" data-toggle="modal" data-target="#admin_qc_modal" class="ph-btn">تایید سفارش</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

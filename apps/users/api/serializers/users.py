@@ -5,33 +5,16 @@ from apps.users.models import User
 
 class UserSerializer(serializers.ModelSerializer):
 
-    title = serializers.CharField()
-    region_id = serializers.IntegerField()
-    address = serializers.CharField()
-    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
-    road_name = serializers.CharField()
-    location_in_region = serializers.CharField()
-    distance_to_road = serializers.IntegerField()
-    proper_road = serializers.BooleanField()
-    load_tools = serializers.BooleanField()
+    id = serializers.IntegerField(read_only=True)
+    email = serializers.EmailField()
+    mobile_number = serializers.CharField()
+    use_type = serializers.CharField(read_only=True)
+    legal_type = serializers.CharField()
+    state = serializers.CharField(source='get_state_display')
+    full_name = serializers.CharField(source='profile.full_name', read_only=True)
+    region = serializers.CharField(source='profile.region.title')
 
     class Meta:
         model = User
-        fields = ('title', 'region_id', 'user', 'address', 'road_name', 'location_in_region',
-                  'distance_to_road', 'proper_road', 'load_tools',)
-
-    def validate_title(self, value: str) -> str:
-        return value.strip().lower()
-
-    def validate_region_id(self, value: int) -> int:
-        try:
-            Region.objects.get(pk=value)
-        except Region.DoesNotExist:
-            raise serializers.ValidationError('region not found')
-        return value
-
-    def validate_address(self, value: 'str') -> 'str':
-        return value.strip().lower()
-
-    def validate_road_name(self, value: str) -> str:
-        return value.strip().lower()
+        fields = ('id', 'email', 'mobile_number', 'use_type', 'legal_type', 'state', 'full_name', 'region',)
+        depth = 1

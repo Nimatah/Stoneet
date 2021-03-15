@@ -914,6 +914,15 @@ ul.ph-sp-navbar-nav>li>a.nav-link {
     color: #fff;
 }
 
+.ph-logistic-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #FFD100;
+}
+
+.ph-superadmin-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+    background: #b1b1b1;
+    color: #fff;
+}
+
 .navbar-expand-lg .navbar-nav .nav-link.ph-btn,
 ul.ph-sp-navbar-nav>li>a.nav-link.ph-btn{
     color: #7e111a;
@@ -2141,8 +2150,8 @@ a.ph-preview-placeholder:after {
 =============================================================
 */
 
-.ph-spp-tab-navs .nav-pills .nav-link.active{
-  background: #ffd100;
+.ph-seller-profile .ph-spp-tab-navs .nav-pills .nav-link.active{
+  background: #D4A373;
   color: #333;
 }
 .ph-spp-t-content{
@@ -2372,10 +2381,10 @@ a.ph-preview-placeholder:after {
         LOGISTIC .ph-logistic-profile
 =============================================================
 */
-.bg-color-2 .navbar-nav .nav-link,
-.bg-color-2 ul.ph-sp-navbar-nav>li>a.nav-link{
-  color: #333333;
-}
+.ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
+     background: #FFD100;
+     color: #333;
+ }
 .ph-logistic-profile .ph-tabs .ph-tab-navs .nav-pills .nav-link{
   color: #333333;
 }
@@ -2762,7 +2771,7 @@ a.ph-preview-placeholder:after {
 */
 
 .ph-buyer-panel .nav-pills .nav-link.active {
-    background: #022C3B;+
+    background: #022C3B;
     color: #fff;
 }
 
@@ -2796,7 +2805,7 @@ a.ph-preview-placeholder:after {
 .ph-dm-add-user{
     margin: 0;
     background: #4CE0B3;
-    color: #333333;
+    color: #FFffff;
     border: 1px solid #4CE0B3;
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -2805,7 +2814,8 @@ a.ph-preview-placeholder:after {
 }
 
 .ph-dm-add-user:hover{
-    color: #333333;
+    background: #FFffff;
+    color: #4CE0B3;
 }
 .ph-dm-add-user i{
     margin-left: .5rem;
@@ -2864,7 +2874,6 @@ a.ph-preview-placeholder:after {
     border-radius: 10px;
     color: #555;
     background: #f5f5f5;
-    border: 1px solid #4CE0B3;
     min-width: 50px;
     text-align: center;
 }
@@ -3136,6 +3145,39 @@ a.ph-preview-placeholder:after {
 .ph-add-product-modal .ph-table{
     background: #FFffff;
 }
+
+/*
+=============================================================
+        ADMIN PANEL   Order QC
+=============================================================
+*/
+
+.ph-order-qc-item{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.ph-order-qc-item label{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ph-order-qc-btn-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.ph-order-qc-btn-container a{
+    width: 180px;
+    font-size: 17px;
+}
+
+
 /*=======================================================================================================================
 /*=======================================================================================================================
 /*=======================================================================================================================
