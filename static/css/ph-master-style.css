@@ -534,6 +534,17 @@ input.form-control:focus{
     color: #fff;
 }
 
+.ph-bell{
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: #fff;
+    background: red;
+    padding: .2rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
 .ph-pagination{
     display: flex;
     align-items: center;
@@ -582,8 +593,8 @@ input.form-control:focus{
 }
 .ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
     border-radius: 0;
-    background: #ffd100;
 }
+
 .ph-tcw-content{
   position: relative;
   padding: 1rem 1rem 4.5rem;
