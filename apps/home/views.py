@@ -35,9 +35,9 @@ class SellerTermsConditionsView(TemplateView):
     template_name = 'home/seller_terms_and_conditions.html'
 
 
-class LogesticTermsConditionsView(TemplateView):
+class LogisticTermsConditionsView(TemplateView):
 
-    template_name = 'home/logestic_terms_and_conditions.html'
+    template_name = 'home/logistic_terms_and_conditions.html'
 
 
 class PrivacyPolicyView(TemplateView):
