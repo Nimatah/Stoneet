@@ -22,7 +22,26 @@
                 {% csrf_token %}
 
                 <div class="form-group">
-                    <div class="ph-cp-panel ph-border-radius ph-white-block">
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+                        <div class="ph-panel-title">
+                            <span class="title ph-border-radius">مشخصات فروشنده:</span>
+                        </div>
+                        <div class="mb-4 align-items-center ph-user-info">
+                            <ul>
+                                <li>
+                                    <span class="title">شناسه فروشنده:</span>
+                                    <span class="description">{{ seller.pk }}</span>
+                                </li>
+                                <li>
+                                    <span class="title">نام فروشنده:</span>
+                                    <span class="description">{{ seller.profile.get_full_name }}</span>
+                                </li>
+                                <li>
+                                    <span class="title">شماره تماس فروشنده:</span>
+                                    <span class="description">{{ seller.mobile_number }}</span>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="ph-panel-title">
                             <span class="title ph-border-radius">برای درج کالای جدید ابتدا گروه کالای خود را انتخاب کنید:</span>
                         </div>

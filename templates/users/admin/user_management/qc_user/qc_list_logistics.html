@@ -6,8 +6,8 @@
     <main class="ph-dashboard-main ph-admin-panel ph-list-qc-logistic">
         <div class="container">
             <div class="ph-dm-title">
-                <div class="title">مدیریت رانندگان در انتظار تایید</div>
-                <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن راننده </a>
+                <div class="title">مدیریت حمل و نقل در انتظار تایید</div>
+                <a href="{% url 'users:admin_add_logistic' %}" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن حمل و نقل </a>
             </div><!-- .ph-dm-title -->
             <div class="ph-managements-container">
                 <div class="ph-managements-filter-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
@@ -15,7 +15,7 @@
                         <div class="col-12 col-md-6 col-lg-2 mb-3">
                             <div class="ph-managements-filter-item filter-id">
                                 <label for="">ID</label>
-                                <input type="text" class="form-control" id="" placeholder="ID فروشنده" value="">
+                                <input type="text" class="form-control" id="" placeholder="ID حمل و نقل" value="">
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div><!-- .valid-feedback -->
@@ -24,7 +24,7 @@
                         <div class="col-12 col-md-6 col-lg-4 mb-3">
                             <div class="ph-managements-filter-item filter-name">
                                 <label for="">نام و نام‌خانوادگی</label>
-                                <input type="text" class="form-control" id="" placeholder="نام و نام‌خانوادگی فروشنده"
+                                <input type="text" class="form-control" id="" placeholder="نام و نام‌خانوادگی حمل و نقل"
                                        value="">
                                 <div class="valid-feedback">
                                     Looks good!

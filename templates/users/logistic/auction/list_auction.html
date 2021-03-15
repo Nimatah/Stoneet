@@ -9,99 +9,9 @@
                 در این قسمت می توانید تمامی سفارشات را مشاهده کنید و در صورت تمایل برای قبول باربری آن اقدام کنید.
             </div>
             <div class="ph-auction-container">
-                <div class="ph-admin-page-search-wrapper bg-light ph-border-radius ph-box-shadow my-4">
-                    <div class="ph-admin-page-block-header ph-panel-title">
-                        <span class="title">جستجو و فیلتر</span>
-                    </div>
-                    <div class="ph-admin-page-block-content">
-                        <div class="ph-admin-page-search-form">
-                            <form method="get">
-                                <div class="form-row">
-                                    <div class="col">
-                                        <label for="">تاریخ سفارش</label>
-                                        <input type="text" class="form-control" name="q" id=""
-                                               aria-describedby="Search_Text"
-                                               placeholder="تاریخ مورد نظرتان را وارد کنید">
-                                    </div>
-                                    <div class="col">
-                                        <span class="ml-2">مبدا</span>
-                                        <input list="origin_city" class="form-control" placeholder="نام شهر">
-                                        <datalist id="origin_city">
-                                            <option value="تهران">
-                                            <option value="شیراز">
-                                            <option value="کرج">
-                                            <option value="کرمان">
-                                            <option value="مشهد">
-                                        </datalist>
-                                    </div>
-                                    <div class="col">
-                                        <span class="mx-2">مقصد</span>
-                                        <input list="destination_city" class="form-control" placeholder="نام شهر">
-                                        <datalist id="destination_city">
-                                            <option value="تهران">
-                                            <option value="شیراز">
-                                            <option value="کرج">
-                                            <option value="کرمان">
-                                            <option value="مشهد">
-                                        </datalist>
-                                    </div>
-                                    <div class="col">
-                                        <label for="state"> وضعیت</label>
-                                        <select class="form-control custom-select" id="ph-state">
-                                            <option value="">انتخاب کنید</option>
-                                            <option value="pending">در انتظار تایید</option>
-                                            <option value="accepted">تایید شده</option>
-                                            <option value="rejected">رد شده</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
                 <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
                     <div class="ph-ip-wl-header top">
                         <div class="ph-ip-wl-right">
-                            <div class="ph-ip-wlr-pagination ph-pagination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination pagination-circle pg-blue">
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Previous">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-right"></i>
-                                                        </span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Next">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-left"></i>
-                                                        </span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- ph-ip-wlr-pagination -->
                             <div class="ph-ip-wlr-views">
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>۱۰</option>
@@ -148,7 +58,11 @@
                                 <td>شیراز</td>
                                 <td>دارای قیمت</td>
                                 <td>140.000</td>
-                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                        <span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <td>1</td>
@@ -161,7 +75,11 @@
                                 <td>شیراز</td>
                                 <td>دارای قیمت</td>
                                 <td>140.000</td>
-                                <td><span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span></td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                        <span class="ph-auction-bid-btn"><i class="fas fa-truck"></i></span>
+                                    </a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -169,45 +87,6 @@
                     <!-- ph-ip-wl-table -->
                     <div class="ph-ip-wl-header bottom">
                         <div class="ph-ip-wl-right">
-                            <div class="ph-ip-wlr-pagination ph-pagination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination pagination-circle pg-blue">
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Previous">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-right"></i>
-                                                        </span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Next">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-left"></i>
-                                                        </span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!-- ph-ip-wlr-pagination -->
                             <div class="ph-ip-wlr-views">
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                                     <option selected>۱۰</option>

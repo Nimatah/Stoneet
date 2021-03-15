@@ -355,6 +355,22 @@ input::placeholder { /* Most modern browsers support this now. */
     transform: translateX(-1.1rem);
 }
 
+.custom-file-label::after {
+    right: auto;
+    left: -1px;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: calc(1.5em + .75rem);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    content: "انتخاب فایل";
+    background-color: #e9ecef;
+    border-right: inherit;
+    border-radius: 0 0 0 0;
+}
+
 .background-image {
     background-position: center center;
     background-size: cover;
@@ -369,10 +385,10 @@ input::placeholder { /* Most modern browsers support this now. */
 }
 
 .ph-box-shadow{
-    box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
-    -webkit-box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
-    -moz-box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
-    -o-box-shadow: 1px 1px 1px 1px rgba(0,0,0,.1);
+    box-shadow: 0 30px 90px rgba(187,187,187,.33);
+    -webkit-box-shadow: 0 30px 90px rgba(187,187,187,.33);
+    -moz-box-shadow: 0 30px 90px rgba(187,187,187,.33);
+    -o-box-shadow: 0 30px 90px rgba(187,187,187,.33);
 }
 
 .flow-root{
@@ -534,6 +550,17 @@ input.form-control:focus{
     color: #fff;
 }
 
+.ph-bell{
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    color: #fff;
+    background: red;
+    padding: .2rem;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
 .ph-pagination{
     display: flex;
     align-items: center;
@@ -544,7 +571,7 @@ input.form-control:focus{
 
 .ph-pagination ul .page-item .page-link {
     color: #343a40;
-    border: 1px solid rgb(52,58,64,.63);
+    border: 1px solid rgba(52,58,64,.63);
     background-color: #f5f5f5;
     cursor: pointer;
 }
@@ -578,12 +605,12 @@ input.form-control:focus{
 }
 
 .ph-tabs .ph-tab-navs .nav-pills .nav-link{
-    color: #fff;
     padding: 1.25rem 0;
 }
 .ph-tabs .ph-tab-navs .nav-pills .nav-link.active{
-  border-radius: 0;
+    border-radius: 0;
 }
+
 .ph-tcw-content{
   position: relative;
   padding: 1rem 1rem 4.5rem;
@@ -641,6 +668,11 @@ input.form-control:focus{
 .ph-modal .modal-body .form-group{
     width: 50%;
     padding-top: 1rem;
+}
+
+.ph-modal.ph-auction-modal .modal-body .form-group{
+    width: 100%;
+    padding-top: 0;
 }
 
 .ph-modal .modal-body .ph-modal-item{
