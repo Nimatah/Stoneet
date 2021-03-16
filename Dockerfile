@@ -8,7 +8,7 @@ RUN echo "185.51.200.2" >> /etc/resolv.conf
 ENV TZ=Asia/Tehran
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt update && apt install -y supervisor
+RUN pip install supervisor
 
 WORKDIR /project
 
