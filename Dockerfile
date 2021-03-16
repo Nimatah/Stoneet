@@ -12,7 +12,7 @@ WORKDIR /project
 ADD ./requirements.txt requirements.txt
 ADD ./package.json package.json
 
-RUN pip install -r requirements.txt
+RUN pip install sudo pip install --default-timeout=100 -r requirements.txt
 
 ADD ./package-lock.json ./package-lock.json
 RUN npm install
