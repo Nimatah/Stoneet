@@ -5,15 +5,16 @@ ENV PYTHONBUFFERED 1
 ENV TZ=Asia/Tehran
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt update && apt install -y supervisor
+RUN pip install supervisor
 
 WORKDIR /project
 
 ADD ./requirements.txt requirements.txt
 ADD ./package.json package.json
-ADD ./package-lock.json ./package-lock.json
 
-RUN pip install -r requirements.txt
+RUN pip install --default-timeout=100 -r requirements.txt
+
+ADD ./package-lock.json ./package-lock.json
 RUN npm install
 
 ADD . .
