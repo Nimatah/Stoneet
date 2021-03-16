@@ -679,6 +679,16 @@ input.form-control:focus{
     padding-top: 0;
 }
 
+.ph-modal#ph_auction_admin_Modal .ph-auction-counter{
+    display: flex;
+    justify-content: space-evenly;
+    padding: .5rem;
+    font-size: 1rem;
+    background: #ececec;
+    border-radius: 10px;
+    margin: -1rem 0 1rem;
+}
+
 .ph-modal .modal-body .ph-modal-item{
     margin-bottom: .5rem;
     display: flex;
