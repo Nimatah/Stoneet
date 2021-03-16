@@ -12,7 +12,9 @@
                 <div class="container">
                     <div class="ph-inside-pages-content">
                         <h1>قوانین و مقررات</h1>
-                        <p1>{{ static_content.terms_conditions }}</p1>
+                        {% autoescape off %}
+                            {{ static_content.terms_conditions }}
+                        {% endautoescape %}
                     </div><!-- .ph-inside-pages-content -->
                 </div><!-- .container -->
             </div><!-- .ph-content-entry -->

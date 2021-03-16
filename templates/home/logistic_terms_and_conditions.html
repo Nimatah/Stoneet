@@ -12,7 +12,9 @@
                 <div class="container">
                     <div class="ph-inside-pages-content">
                         <h1>قوانین ثبت نام حمل و نقل</h1>
-                        <p>{{ static_content.terms_logistic }}</p>
+                        {% autoescape off %}
+                            {{ static_content.terms_logistic }}
+                        {% endautoescape %}
                     </div><!-- .ph-inside-pages-content -->
                 </div><!-- .container -->
             </div><!-- .ph-content-entry -->

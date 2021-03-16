@@ -26,7 +26,7 @@ $('#seller-submit').on('click', function (e) {
                 $('#seller-table').show()
                 $('#seller-table-body').empty()
                 response.forEach(function (seller) {
-                    $('#seller-table-body').empty().append(`
+                    $('#seller-table-body').append(`
                     <tr>
                         <td>${seller.id}</td>
                         <td>${seller.full_name}</td>

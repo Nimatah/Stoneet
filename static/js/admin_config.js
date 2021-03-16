@@ -14,7 +14,7 @@ $('#save-btn1').on('click', function (){
 
 $('#save-btn2').on('click', function (){
     const body = {
-        terms_conditions: tinyMCE.get('save-btn2').getContent()
+        terms_seller: tinyMCE.get('save-btn2').getContent()
     }
     $.ajax("/api/static-content/1", {
         method: "PATCH",
