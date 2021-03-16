@@ -112,8 +112,8 @@
 </div><!-- modal#ph_LogIn_Modal -->
 
 
- <!-- Auction_Modal -->
-    <div class="modal fade ph-modal ph-auction-modal" id="ph_auction" tabindex="-1" role="dialog"
+<!-- Auction_Modal -->
+<div class="modal fade ph-modal ph-auction-modal" id="ph_auction" tabindex="-1" role="dialog"
      aria-labelledby="auction_modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -222,7 +222,7 @@
 </div><!-- modal#bell-modal -->
 
 <!-- Won Auction_Modal -->
-    <div class="modal fade ph-modal ph-auction-modal" id="ph_won_auction" tabindex="-1" role="dialog"
+<div class="modal fade ph-modal ph-auction-modal" id="ph_won_auction" tabindex="-1" role="dialog"
      aria-labelledby="auction_modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -298,9 +298,9 @@
 </div><!-- modal#ph_Auction_Modal -->
 
 <!-- Admin QC MODAL -->
-    <div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
+<div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
      aria-labelledby="auction_modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">تایید سفارش</h5>
@@ -311,36 +311,143 @@
             </div><!-- .modal-header -->
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-control-label" for="admin_qc_check_1">ثبت سفارش</label>
                             <input type="checkbox" class="custom-control-input" id="admin_qc_check_1">
+                            <label class="custom-control-label" for="admin_qc_check_1">ثبت سفارش</label>
                         </div><!-- .form-group -->
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-control-label" for="admin_qc_check_2">تایید سایت</label>
                             <input type="checkbox" class="custom-control-input" id="admin_qc_check_2">
+                            <label class="custom-control-label" for="admin_qc_check_2">تایید سایت</label>
                         </div><!-- .form-group -->
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-control-label" for="admin_qc_check_3">تایید از سوی فروشنده</label>
                             <input type="checkbox" class="custom-control-input" id="admin_qc_check_3">
+                            <label class="custom-control-label" for="admin_qc_check_3">تایید از سوی فروشنده</label>
                         </div><!-- .form-group -->
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-control-label" for="admin_qc_check_4">تعیین هزینه حمل و نقل</label>
                             <input type="checkbox" class="custom-control-input" id="admin_qc_check_4">
+                            <label class="custom-control-label" for="admin_qc_check_4">تعیین هزینه حمل و نقل</label>
                         </div><!-- .form-group -->
+                    </div><!-- .col-6 -->
+                    <div class="col-6">
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-control-label" for="admin_qc_check_5">تعیین هزینه حمل و نقل</label>
                             <input type="checkbox" class="custom-control-input" id="admin_qc_check_5">
+                            <label class="custom-control-label" for="admin_qc_check_5">تایید هزینه حمل و نقل توسط
+                                مشتری</label>
                         </div><!-- .form-group -->
                         <div class="custom-control custom-checkbox">
-                            <label class="custom-file-label" for="admin_qc_check_6">آپلود قرارداد</label>
-                            <input type="file" class="custom-file-input" id="admin_qc_check_6">
+                            <input type="checkbox" class="custom-control-input" id="admin_qc_check_7">
+                            <label class="custom-control-label" for="admin_qc_check_7">تایید قرارداد</label>
                         </div><!-- .form-group -->
-                    </div><!-- .col-12 -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="admin_qc_check_8">
+                            <label class="custom-control-label" for="admin_qc_check_8">تایید مدارک مالی</label>
+                        </div><!-- .form-group -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="admin_qc_check_9">
+                            <label class="custom-control-label" for="admin_qc_check_9">نهایی کردن سفارش</label>
+                        </div><!-- .form-group -->
+                    </div>
+                    <div class="col-12">
+                        <div class="custom-control custom-checkbox mt-3">
+                            <input type="file" class="custom-file-input" id="admin_qc_check_6">
+                            <label class="custom-file-label" for="admin_qc_check_6">آپلود قرارداد</label>
+                        </div><!-- .form-group -->
+                    </div>
                 </div><!-- .row -->
+                <div class="row my-3">
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-qc-dl-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="width: 80%">قرارداد</th>
+                                    <th style="width: 80%">دانلود</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>صفحه اول قرارداد</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول قرارداد</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول قرارداد</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول قرارداد</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول قرارداد</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-qc-dl-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="width: 80%">مدارک مالی</th>
+                                    <th style="width: 80%">دانلود</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>صفحه اول مدارک مالی</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول مدارک مالی</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول مدارک مالی</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول مدارک مالی</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>صفحه اول مدارک مالی</td>
+                                    <td>
+                                        <a href="#" class="ph-btn">دانلود فایل</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div><!-- .modal-body -->
             <div class="modal-footer">
-
+                <a href="#" class="ph-btn">ذخیره</a>
             </div><!-- .modal-footer -->
         </div><!-- .modal-content -->
     </div><!-- .modal-dialog -->

@@ -635,6 +635,10 @@ input.form-control:focus{
     max-width: 40%;
 }
 
+.ph-modal .modal-dialog.modal-lg{
+    max-width: 800px;
+}
+
 .ph-war-modal.ph-modal .modal-dialog{
     top: 10%;
 }

@@ -8,17 +8,24 @@
 {% endblock %}
 {% block content %}
     <header class="ph-main-header {% if not request.resolver_match.url_name == 'index' %}sticky-header{% endif %}">
-        <div class="container">
+        <div class="container-fluid">
             <div class="ph-main-menu">
                 <nav class="navbar navbar-expand-lg">
-                    <div class="row w-100">
+                    <div class="row" style="flex-grow: 1;">
+                        <div class="col-2">
+                            <div class="ph-header-logo">
+                                <a class="navbar-brand" href="{% url 'home:index' %}">
+                                    <img src="{% static 'images/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
                         <div class="col-8">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                                     aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <div class="collapse navbar-collapse" id="main_nav">
-                                <ul class="navbar-nav">
+                            <div class="collapse navbar-collapse h-100" id="main_nav">
+                                <ul class="navbar-nav h-100">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="{% url 'home:index' %}">خانه</a>
                                     </li>
@@ -44,35 +51,37 @@
                         </div>
                         <div class="col-2">
                             <div class="ph-header-login">
-                                {% if not user.is_authenticated %}
-                                    <a href="#" class="ph-logestic-panel-btn" type="button" data-toggle="modal"
-                                       data-target="#ph_LogIn_Modal">ورود</a>
-
-                                {% else %}
-                                    <div class="ph-header-docs ml-3">
-                                        <a href="" data-toggle="tooltip" data-placement="bottom" title="قرارداهای فعال">
-                                            <span class="ph-user-docs-no">3</span>
-                                            <i class="far fa-file-alt"></i>
-                                        </a>
-                                    </div>
-                                    <div class="ph-header-user-logged-in">
-                                        <i class="fas fa-user"></i>
-                                        <span class="text-light mr-1">{{ user.username }}</span>
-                                        <div class="ph-header-user-drop-down-menu">
-                                            <ul>
-                                                <li><a href="{% url 'users:redirect' %}">پنل کاربری</a></li>
-                                                <li><a href="{% url 'users:logout' %}">خروج</a></li>
-                                            </ul>
+                                <ul class="navbar-nav left-nav">
+                                    {% if not user.is_authenticated %}
+                                        <li class="nav-item m-0">
+                                            <a href="#" class="ph-logestic-panel-btn nav-link" type="button"
+                                               data-toggle="modal"
+                                               data-target="#ph_LogIn_Modal">ورود</a>
+                                        </li>
+                                    {% else %}
+                                        <!--
+                                        <div class="ph-header-docs ml-3">
+                                            <a href="" data-toggle="tooltip" data-placement="bottom" title="قرارداهای فعال">
+                                                <span class="ph-user-docs-no">3</span>
+                                                <i class="far fa-file-alt"></i>
+                                            </a>
                                         </div>
-                                    </div>
-                                {% endif %}
+                                        -->
+                                        <li class="nav-item dropdown m-0">
+                                            <a class="nav-link dropdown-toggle" href="#" id="login_dropdown"
+                                               role="button"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                {{ user.username }}
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="login_dropdown">
+                                                <a class="dropdown-item" href="{% url 'users:redirect' %}">پنل
+                                                    کاربری</a>
+                                                <a class="dropdown-item" href="{% url 'users:logout' %}">خروج</a>
+                                            </div>
+                                        </li>
+                                    {% endif %}
+                                </ul>
                             </div><!-- .ph-header-login -->
-                        </div>
-                        <div class="col-2">
-                            <div class="ph-header-logo">
-                                <a class="navbar-brand" href="{% url 'home:index' %}"><img
-                                        src="{% static 'images/logo.png' %}" alt=""></a>
-                            </div>
                         </div>
                     </div>
                 </nav><!-- .navbar -->
@@ -93,7 +102,8 @@
                         <div class="ph-footer-widget">
                             <div class="ph-footer-contact">
                                 <ul>
-                                    <li><i class="fas fa-phone"></i> تلفن: <a href="tel:09123456789">09123456789</a></li>
+                                    <li><i class="fas fa-phone"></i> تلفن: <a href="tel:09123456789">09123456789</a>
+                                    </li>
                                     <li><i class="fas fa-envelope"></i> پست الکترونیک: <a href="mailto:info@stoneet.ir">info@stoneet.ir</a>
                                     </li>
                                     <li><i class="fab fa-whatsapp"></i> واتساپ: <a href="#">09124567899</a></li>
@@ -105,7 +115,8 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="ph-footer-widget footer-full-widget">
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
                                     </p>
                                 </div><!-- .ph-footer-widget -->
                             </div>
@@ -132,7 +143,8 @@
                                         <ul>
                                             <li><a href="{% url 'home:terms' %}">قوانین و مقررات</a></li>
                                             <li><a href="{% url 'home:seller_terms' %}">قوانین ثبت نام فروشنده</a></li>
-                                            <li><a href="{% url 'home:logistic_terms' %}">قوانین ثبت نام حمل و نقل</a></li>
+                                            <li><a href="{% url 'home:logistic_terms' %}">قوانین ثبت نام حمل و نقل</a>
+                                            </li>
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
                                 </div>
@@ -154,6 +166,7 @@
                         </div>
                     </div>
                 </div><!-- .row -->
+                <hr>
             </div><!-- .container -->
         </div><!-- .ph-top-footer-wrapper -->
         <div class="ph-bottom-footer-wrapper">
