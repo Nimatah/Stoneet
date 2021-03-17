@@ -59,17 +59,17 @@
                         <div class="clearfix"></div>
 
                         <div class="ph-panel-title">
-                            <span class="title ph-border-radius">معدن را انتخاب کنید:</span>
+                            <span class="title ph-border-radius">معدن/کارخانه را انتخاب کنید:</span>
                         </div>
                         <div class="form-row mb-4 align-items-center">
                             <div class="col-6 my-3 d-flex">
-                                <label class="mr-sm-2 col-3" for="t-1-c">انتخاب معدن</label>
+                                <label class="mr-sm-2 col-3" for="t-1-c">انتخاب معدن/کارخانه</label>
                                 <select class="custom-select mr-sm-2 col-6" name="mine" id="product-mine">
                                     {% for mine in user.mines.all %}
                                     <option selected value="{{ mine.id }}">{{ mine.title }}</option>
                                     {% endfor %}
                                 </select>
-                            <a href="{% url 'users:profile_seller' %}#nav-contact-tab" class="btn ph-btn col-2 mr-3" data-target="nav-contact-tab">افزودن معدن</a>
+                            <a href="{% url 'users:profile_seller' %}#nav-contact-tab" class="btn ph-btn col-2 mr-3" data-target="nav-contact-tab">افزودن معدن/کارخانه</a>
                             </div>
                         </div>
 
@@ -350,7 +350,7 @@
                                                 <span id="preview-product-title"></span>
                                             </div>
                                              <div class="col-12 part-4-item-detail">
-                                                <span>نام معدن: </span>
+                                                <span>نام معدن/کارخانه: </span>
                                                 <input type="hidden" name="title">
                                                 <span id="preview-product-mine"></span>
                                             </div>

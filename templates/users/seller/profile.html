@@ -114,13 +114,13 @@
                                     <!-- ph-tcw-content -->
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
-                                            <span class="title">آدرس معادن</span>
+                                            <span class="title">آدرس معادن/کارخانه‌ها</span>
                                         </div>
                                         {% for mine in user.mines.all %}
                                             <div class="remove" data-count="{{ mine.id }}" id="mine">
                                                 <div class="form-row align-items-center">
                                                     <div class="form-group col-4 my-1">
-                                                        <label for="mine-title-{{ mine.id }}">نام معدن</label>
+                                                        <label for="mine-title-{{ mine.id }}">نام معدن/کارخانه</label>
                                                         <input type="text" class="form-control"
                                                                id="mine-title-{{ mine.id }}"
                                                                value="{{ mine.title }}" disabled>
@@ -145,7 +145,7 @@
                                                     </div>
 
                                                     <div class="form-group col-12 my-1">
-                                                        <label for="mine-address-{{ mine.id }}">آدرس دقیق معدن</label>
+                                                        <label for="mine-address-{{ mine.id }}">آدرس دقیق معدن/کارخانه</label>
                                                         <input type="text" class="form-control"
                                                                id="mine-address-{{ mine.id }}"
                                                                value="{{ mine.address }}" disabled>
@@ -170,7 +170,7 @@
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label for="mine-distance-to-road-{{ mine.id }}">فاصله معدن تا
+                                                        <label for="mine-distance-to-road-{{ mine.id }}">فاصله معدن/کارخانه تا
                                                             جاده اصلی
                                                             (کیلومتر)</label>
                                                         <input type="number" class="form-control"
@@ -208,7 +208,7 @@
                                         {% endfor %}
                                         <!-- customer_records -->
                                         <a class="extra-fields-customer ph-btn" href="#"><i class="fas fa-plus"></i>اضافه
-                                            کردن معدن</a>
+                                            کردن معدن/کارخانه</a>
                                         <div class="customer_records_dynamic"></div>
                                     </div>
                                     <!-- ph-tcw-content -->
@@ -328,9 +328,9 @@
         <div class="mine-record">
             <div class="form-row align-items-center">
                 <div class="form-group col-4 my-1">
-                    <label form-label for="mine-title">نام معدن</label>
+                    <label form-label for="mine-title">نام معدن/کارخانه</label>
                     <input form-field type="text" class="form-control" id="mine-title"
-                           name="title" placeholder="نام معدن را وارد کنید...">
+                           name="title" placeholder="نام معدن/کارخانه را وارد کنید...">
                 </div>
 
                 <div class="form-group col-4 my-1">
@@ -348,9 +348,9 @@
                 </div>
 
                 <div class="form-group col-12 my-1">
-                    <label form-label for="mine-address">آدرس دقیق معدن</label>
+                    <label form-label for="mine-address">آدرس دقیق معدن/کارخانه</label>
                     <input form-field type="text" class="form-control" id="mine-address" name="address"
-                           placeholder="آدرس دقیق معدن را وارد کنید...">
+                           placeholder="آدرس دقیق معدن/کارخانه را وارد کنید...">
                 </div>
 
                 <div class="form-group col-4 my-1">
@@ -370,10 +370,10 @@
                 </div>
 
                 <div class="form-group col-4 my-1">
-                    <label form-label for="mine-distance-to-road">فاصله معدن تا جاده اصلی (کیلومتر)</label>
+                    <label form-label for="mine-distance-to-road">فاصله معدن/کارخانه تا جاده اصلی (کیلومتر)</label>
                     <input form-field type="number" class="form-control" name="distance_to_road"
                            id="mine-distance-to-road"
-                           placeholder="فاصله معدن تا جاده اصلی را وارد کنید...">
+                           placeholder="فاصله معدن/کارخانه تا جاده اصلی را وارد کنید...">
                 </div>
 
                 <div class="form-group col-12 my-1 mt-3">

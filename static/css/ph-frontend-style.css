@@ -68,7 +68,7 @@
 }
 
 .dropdown-toggle::after{
-    margin-left: .0;
+    margin-left: 0;
     margin-right: .255em;
 }
 
@@ -352,7 +352,7 @@
 .ph-home-about-images-wrapper img{
     border-radius: 50%;
     border: 7px solid #fff;
-    box-shadow: 0 7px 60px -15px rgb(0 0 0 / 50%);
+    box-shadow: 0 7px 60px -15px rgba(0,0,0,.5);
     width: 200px;
     height: 200px;
 }
@@ -420,21 +420,25 @@
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
-    box-shadow: 0 7px 60px -15px rgb(0 0 0 / 50%);
+    box-shadow: 0 7px 60px -15px rgba(0,0,0,.5);
     width: 80%;
     margin: 0 auto;
+}
+
+.ph-home-register-box p{
+    width: 85%;
+    color: #777777;
 }
 
 .ph-home-register-box:hover{
     transform: translateY(-5px);
     background: rgba(60,63,68,1);
     color: #fff;
-    box-shadow: 0 12px 24px 0 rgb(32 42 75 / 40%);
+    box-shadow: 0 12px 24px 0 rgba(32,42,75,.4);
 }
 
-.ph-home-register-box p{
-    width: 85%;
-    color: #777777;
+.ph-home-register-box:hover p{
+    color: #CCCCCC;
 }
 
 .ph-home-register-box h2{
@@ -466,7 +470,7 @@
 }
 
 .ph-home-services-vector img{
-    box-shadow: 0 7px 60px -15px rgb(0 0 0 / 50%);
+    box-shadow: 0 7px 60px -15px rgba(0,0,0,.5);
     width: 80%;
 }
 
@@ -508,7 +512,7 @@
 .ph-home-video-slide{
     background: #fff;
     padding-bottom: 10px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .ph-home-video-slide-title h4{
@@ -614,7 +618,7 @@ a.ph-home-product-overlay{
     margin: auto 0;
     position: relative;
     border-radius: 1em;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .image-popup-vertical-fit,
@@ -672,7 +676,7 @@ a.ph-home-product-overlay{
 }
 
 .ph-single-product-gallery a img{
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .ph-single-product-gallery a:first-child{
@@ -711,7 +715,7 @@ a.ph-home-product-overlay{
     font-size: 14px;
     padding: 10px 5px !important;
     margin: 0 !important;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .ph-single-product-label{
@@ -787,7 +791,7 @@ a.ph-home-product-overlay{
 .ph-single-product-specification{
     width: 100%;
     padding: 20px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
     border-radius: 1em;
     background: #fff;
 }
@@ -850,7 +854,7 @@ a.ph-home-product-overlay{
     margin-bottom: 20px;
     border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .ph-list-product-sidebar-filter-box h5{
@@ -879,7 +883,7 @@ a.ph-home-product-overlay{
     margin-bottom: 40px;
     padding: 10px 0;
     border-radius: 10px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
 }
 
 .ph-list-product-sort-wrapper{
@@ -905,7 +909,7 @@ a.ph-home-product-overlay{
 .ph-list-product-loop-item{
     overflow: hidden;
     margin-bottom: 40px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
@@ -914,7 +918,7 @@ a.ph-home-product-overlay{
 
 .ph-list-product-loop-item:hover{
     transform: translateY(-5px);
-    box-shadow: 0 12px 24px 0 rgb(32 42 75 / 40%);
+    box-shadow: 0 12px 24px 0 rgba(32,42,75,.4);
 }
 
 .ph-list-product-loop-item-img{
@@ -1082,7 +1086,7 @@ a.ph-home-product-overlay{
 
 .ph-inside-pages-content{
     padding: 30px;
-    box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+    box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
     border-radius: 10px;
 }
 
@@ -1137,7 +1141,6 @@ a.ph-home-product-overlay{
     border: 3px solid;
     padding: 15px;
     border-radius: 50%;
-    margin-bottom: 15px;
     display: flex;
     width: 80px;
     height: 80px;
@@ -1291,7 +1294,7 @@ a.ph-home-product-overlay{
 
 .ph-top-footer-wrapper hr{
     border-color: #313438;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     padding-bottom: 5px;
     margin-top: 10px;
 }
@@ -1510,7 +1513,7 @@ a.ph-home-product-overlay{
         width: 100%;
         margin-bottom: 15px !important;
         padding: 8px 5px !important;
-        box-shadow: 0 5px 14px 0 rgb(32 42 75 / 20%);
+        box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
         font-size: 16px;
     }
     .ph-modal .modal-dialog {
