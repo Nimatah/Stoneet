@@ -1212,9 +1212,11 @@ a.nav-link[aria-expanded="true"]:after {
     border: 1px solid #4CE0B3;
     margin-left: auto;
     margin-right: 1rem;
+    max-width: 200px;
 }
 .ph-dashboard-main .ph-tcw-upload .ph-list-add:hover{
   background: #FFFFFF;
+    color: #4CE0B3;
 }
 .ph-dashboard-main .ph-tcw-upload .ph-list-add i{
   margin-left: .3rem;
@@ -2009,6 +2011,20 @@ a.ph-preview-placeholder:after {
     line-height: 12px;
     align-items: center;
     justify-content: center;
+}
+
+
+/*
+=============================================================
+        SELLER PANEL   MAIN .ph-invoice
+=============================================================
+*/
+.ph-admin-config .ph-config-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.ph-admin-config .ph-config-btn a{
+    margin: 0;
 }
 
 

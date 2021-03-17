@@ -4,7 +4,7 @@
 {% load humanize %}
 
 {% block meta_content %}
-  {{ categories|json_script:"categories" }}
+    {{ categories|json_script:"categories" }}
 {% endblock %}
 
 {% block title %}
@@ -15,275 +15,307 @@
     <main class="ph-dashboard-main ph-buyer-panel ph-view-order">
         <div class="container">
             <div class="ph-admin-page-container ">
-                    <div class="ph-admin-page-intro-text">
-                        <span>جزییات سفارش | </span>
-                        در این قسمت می توانید جزییات سفارش خود را مشاهده کنید.
+                <div class="ph-admin-page-intro-text">
+                    <span>جزییات سفارش | </span>
+                    در این قسمت می توانید جزییات سفارش خود را مشاهده کنید.
+                </div>
+
+                <input class="ph-cp-input-check" id='level2' type='checkbox'>
+                <input class="ph-cp-input-check" id='level3' type='checkbox'>
+                <input class="ph-cp-input-check" id='level4' type='checkbox'>
+                <input class="ph-cp-input-check" id='level5' type='checkbox'>
+
+                <div id="shell1" class="ph-general-attributes form-group">
+                    <div class="ph-cp-header-parts shell-1">
+                        <ul class="ph-cp-level-1 ph-cp-progressbar">
+                            <li><span>تایید سفارش</span><i class="fas fa-sync-alt"></i></li>
+                            <li><span>پیش فاکتور</span><i class="fas fa-times"></i></li>
+                            <li><span>امضای قرارداد</span><i class="fas fa-times"></i></li>
+                            <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
+                            <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
+                        </ul>
                     </div>
-
-                        <input class="ph-cp-input-check" id='level2' type='checkbox'>
-                        <input class="ph-cp-input-check" id='level3' type='checkbox'>
-                        <input class="ph-cp-input-check" id='level4' type='checkbox'>
-                        <input class="ph-cp-input-check" id='level5' type='checkbox'>
-
-                        <div id="shell1" class="ph-general-attributes form-group">
-                            <div class="ph-cp-header-parts shell-1">
-                                <ul class="ph-cp-level-1 ph-cp-progressbar">
-                                    <li><span>تایید سفارش</span><i class="fas fa-sync-alt"></i></li>
-                                    <li><span>پیش فاکتور</span><i class="fas fa-times"></i></li>
-                                    <li><span>امضای قرارداد</span><i class="fas fa-times"></i></li>
-                                    <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
-                                    <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
-                                </ul>
-                            </div>
-                            <!-- ph-cp-header-parts shell-3 -->
-                            <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
-                                <div class="ph-view-order-block">
-                                    <div class="ph-admin-page-alert ph-box-shadow my-4">
-                                        <div class="alert alert-warning" role="alert">
-                                            <i class="fas fa-info-circle"></i>
-                                            لطفا تا تکمیل بررسی وضعیت سفارش تان منتظر بمانید. ادامه روند سفارش پس از تایید مدیر سایت در مراحل زیر امکانپذیر خواهد بود.
-                                        </div>
-                                    </div>
-                                    <ul class="ph-view-order-checkpoints">
-                                        <li>
-                                            <i class="fas {% if order|order_state_lt:order.STATE_SUBMITTED %}fa-times{% else %}fa-check{% endif %}"></i>
-                                            <p>ثبت سفارش</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
-                                            <p>تایید سایت</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
-                                            <p>تایید از سوی فروشنده</p>
-                                        </li>
-                                        <li>
-                                            <i class="fas {% if order|order_state_lt:order.STATE_PENDING_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
-                                            <p>تعیین هزینه حمل و نقل</p>
-                                        </li>
-                                    </ul>
+                    <!-- ph-cp-header-parts shell-3 -->
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+                        <div class="ph-view-order-block">
+                            <div class="ph-admin-page-alert ph-box-shadow my-4">
+                                <div class="alert alert-warning" role="alert">
+                                    <i class="fas fa-info-circle"></i>
+                                    لطفا تا تکمیل بررسی وضعیت سفارش تان منتظر بمانید. ادامه روند سفارش پس از تایید مدیر
+                                    سایت در مراحل زیر امکانپذیر خواهد بود.
                                 </div>
-                                <div class="ph-cpp-btn" role="group" aria-label="...">
-                                    <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
-                                        <div id="s-1-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
-                                    </label>
-                                </div>
-                                <!-- ph-cpp-btn -->
-
                             </div>
-                            <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                            <ul class="ph-view-order-checkpoints">
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_SUBMITTED %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>ثبت سفارش</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تایید سایت</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تایید از سوی فروشنده</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تعیین هزینه حمل و نقل</p>
+                                </li>
+                            </ul>
                         </div>
-                        <!-- shell1 -->
+                        <div class="ph-cpp-btn" role="group" aria-label="...">
+                            <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
+                                <div id="s-1-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                            </label>
+                        </div>
+                        <!-- ph-cpp-btn -->
 
-                        <div id="shell2" class="ph-upload-detail-product form-group">
-                            <div class="ph-cp-header-parts shell-2">
-                                <ul class="ph-cp-level-2 ph-cp-progressbar">
-                                    <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
-                                    <li><span>پیش فاکتور</span><i class="fas fa-sync-alt"></i></li>
-                                    <li><span>امضای قرارداد</span><i class="fas fa-times"></i></li>
-                                    <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
-                                    <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
-                                </ul>
-                            </div>
-                            <!-- ph-cp-header-parts shell-2 -->
-                            <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
-                                <div class="ph-view-order-block">
-                                    <div class="ph-view-order-table">
-                                        <table class="ph-table table table-bordered text-center">
+                    </div>
+                    <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                </div>
+                <!-- shell1 -->
+
+                <div id="shell2" class="ph-upload-detail-product form-group">
+                    <div class="ph-cp-header-parts shell-2">
+                        <ul class="ph-cp-level-2 ph-cp-progressbar">
+                            <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
+                            <li><span>پیش فاکتور</span><i class="fas fa-sync-alt"></i></li>
+                            <li><span>امضای قرارداد</span><i class="fas fa-times"></i></li>
+                            <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
+                            <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
+                        </ul>
+                    </div>
+                    <!-- ph-cp-header-parts shell-2 -->
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+                        <div class="ph-view-order-block">
+                            <div class="ph-view-order-table">
+                                <table class="ph-table table table-bordered text-center">
                                     <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col" rowspan="2">ردیف</th>
-                                            <th scope="col" rowspan="2">شماره سفارش</th>
-                                            <th scope="col" rowspan="2">عنوان</th>
-                                            <th scope="col" rowspan="2">مقدار</th>
-                                            <th scope="col" rowspan="2">واحد اندازه گیری</th>
-                                            <th scope="col" rowspan="2">مبلغ واحد</th>
-                                            <th scope="col" rowspan="2">مبلغ کل</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" rowspan="2">ردیف</th>
+                                        <th scope="col" rowspan="2">شماره سفارش</th>
+                                        <th scope="col" rowspan="2">عنوان</th>
+                                        <th scope="col" rowspan="2">مقدار</th>
+                                        <th scope="col" rowspan="2">واحد اندازه گیری</th>
+                                        <th scope="col" rowspan="2">مبلغ واحد</th>
+                                        <th scope="col" rowspan="2">مبلغ کل</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1242424</td>
-                                            <td>سنگ آهن 50 55%</td>
-                                            <td>20</td>
-                                            <td>تن</td>
-                                            <td>380.000</td>
-                                            <td>476.380.000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>45353525</td>
-                                            <td>هزینه ارسال کالا</td>
-                                            <td>1</td>
-                                            <td>-</td>
-                                            <td>80.000</td>
-                                            <td>80.000</td>
-                                        </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1242424</td>
+                                        <td>سنگ آهن 50 55%</td>
+                                        <td>20</td>
+                                        <td>تن</td>
+                                        <td>380.000</td>
+                                        <td>476.380.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>45353525</td>
+                                        <td>هزینه ارسال کالا</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>80.000</td>
+                                        <td>80.000</td>
+                                    </tr>
                                     </tbody>
                                 </table>
                                 <table class="ph-table table table-bordered text-center factor">
                                     <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col" rowspan="2">نوع</th>
-                                            <th scope="col" rowspan="2">مبلغ نهایی</th>
-                                        </tr>
+                                    <tr>
+                                        <th scope="col" rowspan="2">نوع</th>
+                                        <th scope="col" rowspan="2">مبلغ نهایی</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>هزینه</td>
-                                            <td>۳,۸۰۰,۰۹۸</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ارزش افزوده 9 %</td>
-                                            <td>۲۶,۴۶۰</td>
-                                        </tr>
-                                        <tr>
-                                            <td>مبلغ قابل پرداخت</td>
-                                            <td>۳,۸۰۰,۰۹۸</td>
-                                        </tr>
+                                    <tr>
+                                        <td>هزینه</td>
+                                        <td>۳,۸۰۰,۰۹۸</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ارزش افزوده 9 %</td>
+                                        <td>۲۶,۴۶۰</td>
+                                    </tr>
+                                    <tr>
+                                        <td>مبلغ قابل پرداخت</td>
+                                        <td>۳,۸۰۰,۰۹۸</td>
+                                    </tr>
                                     </tbody>
                                 </table>
-                                    </div>
-                                </div>
-                                <div class="ph-cpp-btn" role="group" aria-label="...">
-                                    <label for='level2' id="back-level2" class="back">
-                                        <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
-                                    </label>
-                                    <label for='level3' id="next-level3" class="ph-cpp-btn-n ph-btnext">
-                                        <div id="s-2-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
-                                    </label>
-                                </div>
                             </div>
-                            <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
                         </div>
-                        <!-- #shell2 ph-upload-detail-product -->
-
-                        <div id="shell3" class="ph-upload-detail-product form-group">
-                            <div class="ph-cp-header-parts shell-3">
-                                <ul class="ph-cp-level-3 ph-cp-progressbar">
-                                    <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
-                                    <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
-                                    <li><span>امضای قرارداد</span><i class="fas fa-sync-alt"></i></li>
-                                    <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
-                                    <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
-                                </ul>
-                            </div>
-                            <!-- ph-cp-header-parts shell-5 -->
-                            <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
-
-
-                                        <div class="ph-panel-title">
-                                            <span class="title">اطلاعات قرارداد</span>
-                                        </div>
-                                        <div class="ph-tcw-download">
-                                            <p>متن قرارداد را دانلود نمایید و بعد از امضا در جدول زیر بارگذاری کنید</p>
-                                            <a href="#" class="ph-btn ph-download"><i class="fas fa-download"></i>دانلود
-                                                قرارداد</a>
-                                        </div>
-                                        <div class="form-row ph-tcw-upload align-items-center">
-
-                                            <table class="common_table ph-table table table-bordered text-center">
-                                                <thead class="thead-dark">
-                                                <tr>
-                                                    <th class="text-center" scope="col">ردیف</th>
-                                                    <th class="text-center" scope="col">شماره صفحه</th>
-                                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
-                                                    <th class="text-center" scope="col">پیش‌نمایش عکس</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="template_row">
-                                                    <td class="text-center" scope="row">۱</td>
-                                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i class="fas fa-upload"></i> بارگذاری</a></td>
-                                                    <td class="text-center"><img src="" alt=""></td>
-                                                    <td class="text-center" class="controls">
-                                                        <a href="#" class="list_cancel" title="Delete Row">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="no_entries_row">
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه جدید</a>
-                                        </div>
-                                        <!-- form-row -->
-
-                                <div class="ph-cpp-btn mt-5" role="group" aria-label="...">
-                                    <label for='level3' id="back-level3" class="back">
-                                        <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
-                                    </label>
-                                    <label for='level4' id="next-level4" class="ph-cpp-btn-n ph-btnext">
-                                        <div id="s-3-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                        <div class="ph-cpp-btn" role="group" aria-label="...">
+                            <label for='level2' id="back-level2" class="back">
+                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                            </label>
+                            <label for='level3' id="next-level3" class="ph-cpp-btn-n ph-btnext">
+                                <div id="s-2-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                            </label>
                         </div>
-                        <!-- #shell3 ph-upload-detail-product -->
+                    </div>
+                    <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                </div>
+                <!-- #shell2 ph-upload-detail-product -->
 
-                        <div id="shell4" class="ph-upload-detail-product form-group">
-                            <div class="ph-cp-header-parts shell-4">
-                                <ul class="ph-cp-level-4 ph-cp-progressbar">
-                                    <!--
-                                    <li><span>مشخصات محصول</span><i class="fas fa-check"></i></li>
-                                    <li><span>بررسی مشخصات کاربر</span><i class="fas fa-check"></i></li>
-                                    -->
-                                    <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
-                                    <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
-                                    <li><span>امضای قرارداد</span><i class="fas fa-check"></i></li>
-                                    <li><span>مدارک مالی</span><i class="fas fa-sync-alt"></i></li>
-                                    <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
-                                </ul>
-                            </div>
-                            <!-- ph-cp-header-parts shell-6 -->
-                            <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+                <div id="shell3" class="ph-upload-detail-product form-group">
+                    <div class="ph-cp-header-parts shell-3">
+                        <ul class="ph-cp-level-3 ph-cp-progressbar">
+                            <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
+                            <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
+                            <li><span>امضای قرارداد</span><i class="fas fa-sync-alt"></i></li>
+                            <li><span>مدارک مالی</span><i class="fas fa-times"></i></li>
+                            <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
+                        </ul>
+                    </div>
+                    <!-- ph-cp-header-parts shell-5 -->
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
 
-                                6666666666666666666666666666666666666666666666666666666666666
 
-                                <div class="ph-cpp-btn" role="group" aria-label="...">
-                                    <label for='level4' id="back-level4" class="back">
-                                        <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
-                                    </label>
-                                    <label for='level5' id="next-level5" class="ph-cpp-btn-n ph-btnext">
-                                        <div id="s-4-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
-                                    </label>
-                                </div>
-                            </div>
-                            <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                        <div class="ph-panel-title">
+                            <span class="title">اطلاعات قرارداد</span>
                         </div>
-                        <!-- #shell4 ph-upload-detail-product -->
-
-                        <div id="shell5" class="ph-upload-detail-product form-group">
-                            <div class="ph-cp-header-parts shell-5">
-                                <ul class="ph-cp-level-5 ph-cp-progressbar">
-                                    <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
-                                    <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
-                                    <li><span>امضای قرارداد</span><i class="fas fa-check"></i></li>
-                                    <li><span>مدارک مالی</span><i class="fas fa-check"></i></li>
-                                    <li><span>تایید نهایی</span><i class="fas fa-sync-alt"></i></li>
-                                </ul>
-                            </div>
-                            <!-- ph-cp-header-parts shell-5 -->
-
-                            <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
-
-                                777777777777777777777777777777777777777777777777777
-
-                                <div class="ph-cpp-btn" role="group" aria-label="...">
-                                    <label for='level5' id="back-level5" class="back">
-                                        <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
-                                    </label>
-                                    <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت سفارش</button>
-                                </div>
-                            </div>
-                            <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                        <div class="ph-tcw-download">
+                            <p>متن قرارداد را دانلود نمایید و بعد از امضا در جدول زیر بارگذاری کنید</p>
+                            <a href="#" class="ph-btn ph-download"><i class="fas fa-download"></i>دانلود
+                                قرارداد</a>
                         </div>
-                        <!-- #shell7 ph-upload-detail-product -->
+                        <div class="form-row ph-tcw-upload align-items-center">
+
+                            <table class="common_table ph-table table table-bordered text-center">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center" scope="col">ردیف</th>
+                                    <th class="text-center" scope="col">شماره صفحه</th>
+                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
+                                    <th class="text-center" scope="col">پیش‌نمایش عکس</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="template_row">
+                                    <td class="text-center" scope="row">۱</td>
+                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
+                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
+                                            class="fas fa-upload"></i> بارگذاری</a></td>
+                                    <td class="text-center"><img src="" alt=""></td>
+                                    <td class="text-center" class="controls">
+                                        <a href="#" class="list_cancel" title="Delete Row">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="no_entries_row">
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه
+                                جدید</a>
+                        </div>
+                        <!-- form-row -->
+
+                        <div class="ph-cpp-btn mt-5" role="group" aria-label="...">
+                            <label for='level3' id="back-level3" class="back">
+                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                            </label>
+                            <label for='level4' id="next-level4" class="ph-cpp-btn-n ph-btnext">
+                                <div id="s-3-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                </div>
+                <!-- #shell3 ph-upload-detail-product -->
+
+                <div id="shell4" class="ph-upload-detail-product form-group">
+                    <div class="ph-cp-header-parts shell-4">
+                        <ul class="ph-cp-level-4 ph-cp-progressbar">
+                            <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
+                            <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
+                            <li><span>امضای قرارداد</span><i class="fas fa-check"></i></li>
+                            <li><span>مدارک مالی</span><i class="fas fa-sync-alt"></i></li>
+                            <li><span>تایید نهایی</span><i class="fas fa-times"></i></li>
+                        </ul>
+                    </div>
+                    <!-- ph-cp-header-parts shell-6 -->
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+                        <div class="ph-panel-title">
+                            <span class="title">بارگذاری مدارک مالی</span>
+                        </div>
+                        <div class="form-row ph-tcw-upload align-items-center">
+
+                            <table class="common_table ph-table table table-bordered text-center">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th class="text-center" scope="col">ردیف</th>
+                                    <th class="text-center" scope="col">شماره صفحه</th>
+                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
+                                    <th class="text-center" scope="col">پیش‌نمایش عکس</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="template_row">
+                                    <td class="text-center" scope="row">۱</td>
+                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
+                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
+                                            class="fas fa-upload"></i> بارگذاری</a></td>
+                                    <td class="text-center"><img src="" alt=""></td>
+                                    <td class="text-center" class="controls">
+                                        <a href="#" class="list_cancel" title="Delete Row">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="no_entries_row">
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه
+                                جدید</a>
+                        </div>
+                        <!-- form-row -->
+                        <div class="ph-cpp-btn" role="group" aria-label="...">
+                            <label for='level4' id="back-level4" class="back">
+                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                            </label>
+                            <label for='level5' id="next-level5" class="ph-cpp-btn-n ph-btnext">
+                                <div id="s-4-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                </div>
+                <!-- #shell4 ph-upload-detail-product -->
+
+                <div id="shell5" class="ph-upload-detail-product form-group">
+                    <div class="ph-cp-header-parts shell-5">
+                        <ul class="ph-cp-level-5 ph-cp-progressbar">
+                            <li><span>تایید سفارش</span><i class="fas fa-check"></i></li>
+                            <li><span>پیش فاکتور</span><i class="fas fa-check"></i></li>
+                            <li><span>امضای قرارداد</span><i class="fas fa-check"></i></li>
+                            <li><span>مدارک مالی</span><i class="fas fa-check"></i></li>
+                            <li><span>تایید نهایی</span><i class="fas fa-sync-alt"></i></li>
+                        </ul>
+                    </div>
+                    <!-- ph-cp-header-parts shell-5 -->
+
+                    <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
+
+                        777777777777777777777777777777777777777777777777777
+
+                        <div class="ph-cpp-btn" role="group" aria-label="...">
+                            <label for='level5' id="back-level5" class="back">
+                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                            </label>
+                            <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت سفارش</button>
+                        </div>
+                    </div>
+                    <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
+                </div>
+                <!-- #shell7 ph-upload-detail-product -->
             </div>
         </div>
     </main>
@@ -291,7 +323,7 @@
 {% endblock %}
 
 {% block footer_static %}
-        <script src="{% static 'js/list-product.js' %}"></script>
+    <script src="{% static 'js/list-product.js' %}"></script>
     <script>
         $('.extra-fields-customer').click(function () {
             $('.customer_records').clone().appendTo('.customer_records_dynamic');
@@ -316,31 +348,31 @@
     </script>
     <script>
         function addNewRow() {
-          var template = $('tr.template_row:first');
-          $('.no_entries_row').css('display','none');
-          var newRow = template.clone();
-          var lastRow = $('tr.template_row:last').after(newRow);
+            var template = $('tr.template_row:first');
+            $('.no_entries_row').css('display', 'none');
+            var newRow = template.clone();
+            var lastRow = $('tr.template_row:last').after(newRow);
 
-        $('.list_cancel').on('click',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).closest('tr').remove();
-          if($('.list_cancel').length ===1){
-            $('.no_entries_row').css('display','none');
-          }
-          console.log($('.list_cancel').length)
-        });
-         console.log($('.list_cancel').length)
-        $('select.label').on('change',function(event){
-          event.stopPropagation();
-          event.stopImmediatePropagation();
-          $(this).css('background-color',$(this).val());
+            $('.list_cancel').on('click', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).closest('tr').remove();
+                if ($('.list_cancel').length === 1) {
+                    $('.no_entries_row').css('display', 'none');
+                }
+                console.log($('.list_cancel').length)
+            });
+            console.log($('.list_cancel').length)
+            $('select.label').on('change', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).css('background-color', $(this).val());
 
-        })
+            })
 
         }
 
-        $('a.list_add').on('click',addNewRow);
+        $('a.list_add').on('click', addNewRow);
 
     </script>
 {% endblock %}

@@ -197,6 +197,97 @@
     </div><!-- .modal-dialog -->
 </div><!-- modal#ph_Auction_Modal -->
 
+ <!-- ph_auction_admin_Modal -->
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_auction_admin_Modal" tabindex="-1" role="dialog"
+     aria-labelledby="auction_modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">مشخصات سفارش</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div><!-- .modal-header -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="ph-auction-counter">
+                            <div class="title">زمان باقی مانده:</div>
+                            <div class="counter">
+                                <span>22 : 42 : 09</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="auction_date">تاریخ شروع مناقصه</label>
+                            <input type="text" class="form-control" value="02/11/1365" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">شماره سفارش</label>
+                            <input type="text" class="form-control" value="566784" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">نوع بار</label>
+                            <input type="text" class="form-control" value="مواد معدنی" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">بسته بندی</label>
+                            <input type="text" class="form-control" value="کیسه 25 کیلویی" readonly>
+                        </div><!-- .form-group -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="auction_date">تاریخ پایان مناقصه</label>
+                            <input type="text" class="form-control" value="03/11/1365" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">میزان بار</label>
+                            <input type="text" class="form-control" value="30 تن" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">تعداد ارسال</label>
+                            <input type="text" class="form-control" value="4" readonly>
+                        </div><!-- .form-group -->
+                        <div class="form-group">
+                            <label for="auction_date">میزان هر ارسال</label>
+                            <input type="text" class="form-control" value="10 تن" readonly>
+                        </div><!-- .form-group -->
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h4>مبدا</h4>
+                        <span>نام استان</span> - <span>نام شهر</span>
+                        <p>آدرس مبدا در این قسمت وارد می شود</p>
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <h4>مقصد</h4>
+                        <span>نام استان</span> - <span>نام شهر</span>
+                        <p>آدرس مقصد در این قسمت وارد می شود</p>
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="auction_date">آخرین قیمت</label>
+                            <input type="text" class="form-control" value="345.000" readonly>
+                        </div><!-- .form-group -->
+                    </div><!-- .col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="form-group d-flex">
+                            <a href="#" class="ph-btn" style="margin-top: 2.3rem">فعالسازی مجدد</a>
+                        </div><!-- .form-group -->
+                    </div><!-- .col-md-6 -->
+                </div><!-- .row -->
+            </div><!-- .modal-body -->
+            <div class="modal-footer">
+                <a href="#" class="ph-btn">ثبت</a>
+            </div><!-- .modal-footer -->
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+</div><!-- modal#ph_auction_admin_Modal -->
 
 <!-- modal#bell-modal --------------------------------------------->
 <div id="bell-modal" class="modal fade ph-modal ph-war-modal" tabindex="-1" role="dialog"
@@ -221,7 +312,7 @@
     </div><!-- .modal-dialog -->
 </div><!-- modal#bell-modal -->
 
-<!-- Won Auction_Modal -->
+<!-- Won ph_won_auction -->
 <div class="modal fade ph-modal ph-auction-modal" id="ph_won_auction" tabindex="-1" role="dialog"
      aria-labelledby="auction_modal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -295,7 +386,7 @@
             </div><!-- .modal-body -->
         </div><!-- .modal-content -->
     </div><!-- .modal-dialog -->
-</div><!-- modal#ph_Auction_Modal -->
+</div><!-- modal#ph_won_auction -->
 
 <!-- Admin QC MODAL -->
 <div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
@@ -451,7 +542,7 @@
             </div><!-- .modal-footer -->
         </div><!-- .modal-content -->
     </div><!-- .modal-dialog -->
-</div><!-- modal#ph_Auction_Modal -->
+</div><!-- modal#admin_qc_modal -->
 
 </body>
 </html>
