@@ -62,3 +62,4 @@ if (queryParams.state !== undefined && queryParams.state !== '') {
 if (queryParams.q !== undefined && queryParams.q !== '') {
     $('#ph_admin_search_text').text(queryParams.q).trigger('change');
 }
+

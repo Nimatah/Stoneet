@@ -9,20 +9,20 @@
 {% block content %}
     <header class="ph-main-header {% if not request.resolver_match.url_name == 'index' %}sticky-header{% endif %}">
         <div class="container-fluid">
-            <div class="ph-main-menu">
+            <div class="ph-main-menu d-none d-md-block">
                 <nav class="navbar navbar-expand-lg">
                     <div class="row" style="flex-grow: 1;">
-                        <div class="col-2">
+                        <div class="col-4 col-md-2 order-3 order-md-1">
                             <div class="ph-header-logo">
                                 <a class="navbar-brand" href="{% url 'home:index' %}">
                                     <img src="{% static 'images/logo.png' %}" alt="">
                                 </a>
-                            </div>
-                        </div>
-                        <div class="col-8">
+                            </div><!-- .ph-header-logo -->
+                        </div><!-- .col-md-2 -->
+                        <div class="col-4 col-md-8 order-1 order-md-2">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                                     aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
+                                <span class="fas fa-bars"></span>
                             </button>
                             <div class="collapse navbar-collapse h-100" id="main_nav">
                                 <ul class="navbar-nav h-100">
@@ -38,7 +38,7 @@
                                             <a class="dropdown-item" href="{% url 'products:list_products' %}">خام</a>
                                             <a class="dropdown-item" href="{% url 'products:list_products' %}">فراوری
                                                 شده</a>
-                                        </div>
+                                        </div><!-- .dropdown-menu -->
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">درباره ما</a>
@@ -48,8 +48,8 @@
                                     </li>
                                 </ul>
                             </div><!-- .collapse -->
-                        </div>
-                        <div class="col-2">
+                        </div><!-- .col-md-8 -->
+                        <div class="col-4 col-md-2 order-2 order-md-3">
                             <div class="ph-header-login">
                                 <ul class="navbar-nav left-nav">
                                     {% if not user.is_authenticated %}
@@ -77,15 +77,79 @@
                                                 <a class="dropdown-item" href="{% url 'users:redirect' %}">پنل
                                                     کاربری</a>
                                                 <a class="dropdown-item" href="{% url 'users:logout' %}">خروج</a>
-                                            </div>
+                                            </div><!-- .dropdown-menu -->
                                         </li>
                                     {% endif %}
                                 </ul>
                             </div><!-- .ph-header-login -->
-                        </div>
-                    </div>
+                        </div><!-- .col-md-2 -->
+                    </div><!-- .row -->
                 </nav><!-- .navbar -->
             </div><!-- .ph-main-menu -->
+            <div class="ph-mobile-main-menu d-block d-md-none">
+                <nav class="navbar navbar-expand-lg">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="fas fa-bars"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'home:index' %}">
+                        <img src="{% static 'images/logo.png' %}" alt="">
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav h-100">
+                            {% if not user.is_authenticated %}
+                                <li class="nav-item m-0">
+                                    <a href="#" class="ph-logestic-panel-btn nav-link" type="button"
+                                       data-toggle="modal"
+                                       data-target="#ph_LogIn_Modal">ورود</a>
+                                </li>
+                            {% else %}
+                                <!--
+                                <div class="ph-header-docs ml-3">
+                                    <a href="" data-toggle="tooltip" data-placement="bottom" title="قرارداهای فعال">
+                                        <span class="ph-user-docs-no">3</span>
+                                        <i class="far fa-file-alt"></i>
+                                    </a>
+                                </div>
+                                -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="login_dropdown"
+                                       role="button"
+                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ user.username }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="login_dropdown">
+                                        <a class="dropdown-item" href="{% url 'users:redirect' %}">پنل
+                                            کاربری</a>
+                                        <a class="dropdown-item" href="{% url 'users:logout' %}">خروج</a>
+                                    </div><!-- .dropdown-menu -->
+                                </li>
+                            {% endif %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{% url 'home:index' %}">خانه</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="products_nav" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    محصولات
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="products_nav">
+                                    <a class="dropdown-item" href="{% url 'products:list_products' %}">خام</a>
+                                    <a class="dropdown-item" href="{% url 'products:list_products' %}">فراوری
+                                        شده</a>
+                                </div><!-- .dropdown-menu -->
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">درباره ما</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home:contact_us' %}">تماس با ما</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
         </div><!-- .container -->
     </header>
     {% block frontend_content %}
@@ -119,7 +183,7 @@
                                         گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است.
                                     </p>
                                 </div><!-- .ph-footer-widget -->
-                            </div>
+                            </div><!-- .col-12 -->
                             <div class="col-md-4">
                                 <div class="ph-footer-widget-heading">
                                     <h5>پنل کاربران</h5>
@@ -133,7 +197,7 @@
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
                                 </div><!-- .ph-footer-widget -->
-                            </div>
+                            </div><!-- .col-md-4 -->
                             <div class="col-md-4">
                                 <div class="ph-footer-widget-heading">
                                     <h5>شرایط استفاده از سایت</h5>
@@ -147,8 +211,8 @@
                                             </li>
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
-                                </div>
-                            </div>
+                                </div><!-- .ph-footer-widget -->
+                            </div><!-- .col-md-4 -->
                             <div class="col-md-4">
                                 <div class="ph-footer-widget-heading">
                                     <h5>دسترسی سریع</h5>
@@ -161,10 +225,10 @@
                                             <li><a href="{% url 'home:privacy_policy' %}">حریم خصوصی</a></li>
                                         </ul>
                                     </div><!-- .ph-footer-menu -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div><!-- .ph-footer-widget -->
+                            </div><!-- .col-md-4 -->
+                        </div><!-- .row -->
+                    </div><!-- .col-md-9 -->
                 </div><!-- .row -->
                 <hr>
             </div><!-- .container -->
