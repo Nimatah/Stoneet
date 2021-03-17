@@ -333,6 +333,7 @@
 .ph-home-about-text p{
     text-align: justify;
     width: 85%;
+    color: #777777;
     line-height: 32px;
     margin-bottom: 0;
 }
@@ -433,6 +434,7 @@
 
 .ph-home-register-box p{
     width: 85%;
+    color: #777777;
 }
 
 .ph-home-register-box h2{
@@ -483,6 +485,10 @@
 
 .ph-home-service-text h4{
     font-size: 1.2em;
+}
+
+.ph-home-service-text p{
+    color: #777777;
 }
 
 .ph-home-videos{
@@ -1302,25 +1308,25 @@ a.ph-home-product-overlay{
  */
 
 @media screen and (min-width:1600px){
-    .ph-list-product-loop-item-img a{
+    #grid_view_tab .ph-list-product-loop-item-img a{
         display: flex;
         width: 307px;
         height: 307px;
         overflow: hidden;
     }
-    .ph-list-product-loop-item-img a img{
+    #grid_view_tab .ph-list-product-loop-item-img a img{
         object-fit: cover;
     }
 
 }
 @media screen and (max-width:1600px) {
-    .ph-list-product-loop-item-img a{
+    #grid_view_tab .ph-list-product-loop-item-img a{
         display: flex;
         width: 211px;
         height: 211px;
         overflow: hidden;
     }
-    .ph-list-product-loop-item-img a img{
+    #grid_view_tab .ph-list-product-loop-item-img a img{
         object-fit: cover;
     }
 }
