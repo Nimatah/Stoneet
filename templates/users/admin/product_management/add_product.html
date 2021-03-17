@@ -70,7 +70,7 @@
                             <div class="col-5 col-offset-2 my-1">
                                 <label class="mr-sm-2" for="t-1-c">انتخاب معدن</label>
                                 <select class="custom-select mr-sm-2" name="mine" id="product-mine">
-                                    {% for mine in user.mines.all %}
+                                    {% for mine in seller.mines.all %}
                                         <option selected value="{{ mine.id }}">{{ mine.title }}</option>
                                     {% endfor %}
                                 </select>

@@ -122,10 +122,10 @@
                         <table class="table ph-table table-bordered text-center">
                             <thead class="thead-dark">
                             <tr>
-                                <th>ردیف</th>
                                 <th>شماره سفارش</th>
                                 <th>نام فروشنده</th>
                                 <th>نام خریدار</th>
+                                <th>شناسه محصول</th>
                                 <th>نام محصول</th>
                                 <th>تاریخ</th>
                                 <th>وضعیت سفارش</th>
@@ -133,14 +133,15 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for order in orders %}
                             <tr>
-                                <td>1</td>
-                                <td>۲۳۳-۳۴۵۳۴۵</td>
-                                <td>اسفندیار باغبانچی</td>
-                                <td>ساره بیات</td>
-                                <td>سنگ دولومیت - عیار ۱۸ تا ۲۰ %</td>
-                                <td>1399/12/17</td>
-                                <td>تایید شده</td>
+                                <td>{{ order.id }}</td>
+                                <td>{{ order.product.user.profile.get_full_name }}</td>
+                                <td>{{ order.buyer.profile.get_full_name }}</td>
+                                <td>{{ order.product.id }}</td>
+                                <td>{{ order.product.title }}</td>
+                                <td>{{ order.get_persian_timestamp }}</td>
+                                <td>{{ order.get_state_display }}</td>
                                 <td>
                                     <a href="{% url 'users:admin_order_qc' %}" class="ph-btn">
                                         <i class="fas fa-sync"></i>
@@ -148,21 +149,7 @@
                                     </a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>۲۳۳-۳۴۵۳۴۵</td>
-                                <td>اسفندیار باغبانچی</td>
-                                <td>ساره بیات</td>
-                                <td>سنگ دولومیت - عیار ۱۸ تا ۲۰ %</td>
-                                <td>1399/12/17</td>
-                                <td>تایید شده</td>
-                                <td>
-                                    <a href="{% url 'users:admin_order_qc' %}" class="ph-btn">
-                                        <i class="fas fa-sync"></i>
-                                        <span>بررسی</span>
-                                    </a>
-                                </td>
-                            </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
