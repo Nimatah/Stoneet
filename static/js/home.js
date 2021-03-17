@@ -33,5 +33,10 @@ $(function() {
     });
 
 });
+function handleRefreshStoneetGif(){
+        let gifSource = $('#stoneet-gif').attr('src');
+    $('#stoneet-gif').attr('src', "");
+    $('#stoneet-gif').attr('src', gifSource+"?"+new Date().getTime());
+}
 
-
+handleRefreshStoneetGif();

@@ -112,7 +112,11 @@ $("#submit").on("click", function () {
     return toReturn;
 });
 
-
+var maxLength = 14;
+$('#order-weight').keyup(function() {
+  var textlen = maxLength - $(this).val().length;
+  $('#rchars').text(textlen);
+});
 
 handleFinalPrice();
 handleOrderWeightInput();
