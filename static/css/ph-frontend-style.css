@@ -228,7 +228,9 @@
     HomePage
 =======================================================
 */
-
+.ph-home-about{
+    padding: 80px 0 9rem;
+}
 .ph-home-heading{
     display: flex;
     flex-direction: column;
@@ -405,7 +407,7 @@
 
 .ph-home-register{
     background-color: #f8f8f8;
-    padding: 80px 0;
+    padding: 80px 0 8rem;
 }
 
 .ph-home-register-box{
@@ -446,7 +448,7 @@
 }
 
 .ph-home-services{
-    padding: 80px 0 0;
+    padding: 60px 0 0;
 }
 
 .ph-home-services-wrapper{
@@ -487,6 +489,13 @@
     margin-left: 15px;
 }
 
+.ph-home-service-icon img{
+    filter: drop-shadow(0px 0px 0px #83E8CD);
+    -webkit-filter: drop-shadow(0px 0px 0px #83E8CD);
+    -moz-filter: drop-shadow(0px 0px 0px #83E8CD);
+    -o-filter: drop-shadow(0px 0px 0px #83E8CD);
+}
+
 .ph-home-service-text h4{
     font-size: 1.2em;
 }
@@ -497,7 +506,7 @@
 
 .ph-home-videos{
     background-color: #f8f8f8;
-    padding: 80px 0;
+    padding: 80px 0 8rem;
     position: relative;
 }
 
@@ -513,6 +522,8 @@
     background: #fff;
     padding-bottom: 10px;
     box-shadow: 0 5px 14px 0 rgba(32,42,75,.2);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .ph-home-video-slide-title h4{
