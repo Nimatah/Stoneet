@@ -44,7 +44,7 @@
                                         <a class="nav-link" href="#">درباره ما</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">تماس با ما</a>
+                                        <a class="nav-link" href="{% url 'home:contact_us' %}">تماس با ما</a>
                                     </li>
                                 </ul>
                             </div><!-- .collapse -->
@@ -172,16 +172,21 @@
         <div class="ph-bottom-footer-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
+                        <div class="ph-footer-logo">
+                            <a href="{% url 'home:index' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                        </div><!-- .ph-footer-copyright -->
+                    </div><!-- .col-md-4 -->
+                    <div class="col-12 col-md-4">
                         <div class="ph-footer-copyright">
                             <p>تمامی حقوق مادی و معنوی این سایت برای استونیت محفوظ است.</p>
                         </div><!-- .ph-footer-copyright -->
-                    </div><!-- .col-md-6 -->
-                    <div class="col-12 col-md-6">
+                    </div><!-- .col-md-4 -->
+                    <div class="col-12 col-md-4">
                         <div class="ph-footer-design">
                             <p>طراحی و توسعه : <a href="https://planhub.ir">PlanHUB</a></p>
                         </div><!-- .ph-footer-design -->
-                    </div><!-- .col-md-6 -->
+                    </div><!-- .col-md-4 -->
                 </div><!-- .row -->
             </div><!-- .container -->
         </div><!-- .ph-bottom-footer-wrapper -->

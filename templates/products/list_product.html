@@ -107,10 +107,10 @@
                                         <div class="ph-list-product-view-type">
                                             <ul class="nav nav-pills mb-0" id="products_view" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <a class="nav-link active" id="grid_view" data-toggle="pill" href="#grid_view_tab" role="tab" aria-controls="grid_view_tab" aria-selected="true"><i class="fas fa-th"></i> </a>
+                                                    <a class="nav-link" id="grid_view" data-toggle="pill" href="#grid_view_tab" role="tab" aria-controls="grid_view_tab" aria-selected="true"><i class="fas fa-th"></i> </a>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <a class="nav-link" id="list_view" data-toggle="pill" href="#list_view_tab" role="tab" aria-controls="list_view_tab" aria-selected="false"><i class="fas fa-bars"></i> </a>
+                                                    <a class="nav-link active" id="list_view" data-toggle="pill" href="#list_view_tab" role="tab" aria-controls="list_view_tab" aria-selected="false"><i class="fas fa-bars"></i> </a>
                                                 </li>
                                             </ul>
                                         </div><!-- .ph-list-product-pagination -->
@@ -120,7 +120,7 @@
                         </div><!-- .ph-list-product-header -->
                         <div class="ph-list-product-loop">
                             <div class="tab-content" id="products_viewContent">
-                                <div class="tab-pane fade show active" id="grid_view_tab" role="tabpanel" aria-labelledby="grid_view">
+                                <div class="tab-pane fade" id="grid_view_tab" role="tabpanel" aria-labelledby="grid_view">
                                     <div class="row">
                                         {% for product in products %}
                                         <div class="col-12 col-md-3">
@@ -152,14 +152,11 @@
                                         {% endfor %}
                                     </div><!-- .row -->
                                 </div><!-- .tab-pane -->
-                                <div class="tab-pane fade" id="list_view_tab" role="tabpanel" aria-labelledby="list_view">
+                                <div class="tab-pane fade show active" id="list_view_tab" role="tabpanel" aria-labelledby="list_view">
                                     <div class="row">
                                         {% for product in products %}
                                         <div class="col-12 col-md-12">
                                             <div class="ph-list-product-loop-item list-view ph-border-radius">
-                                                <div class="ph-list-product-loop-item-img">
-                                                    <a href="{% url 'products:product_details' pk=product.id %}"><img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt=""></a>
-                                                </div><!-- .ph-list-product-loop-item-img -->
                                                 <div class="ph-list-product-loop-item-content">
                                                     <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
                                                     <div class="ph-list-product-loop-item-title">
@@ -185,6 +182,9 @@
                                                         {% endwith %}
                                                     </div><!-- .ph-list-product-item-price -->
                                                 </div><!-- .ph-list-product-loop-item-content -->
+                                                <div class="ph-list-product-loop-item-img">
+                                                    <a href="{% url 'products:product_details' pk=product.id %}"><img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt=""></a>
+                                                </div><!-- .ph-list-product-loop-item-img -->
                                             </div><!-- .ph-list-product-loop-item -->
                                         </div><!-- .col-md-3 -->
                                         {% endfor %}
