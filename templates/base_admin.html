@@ -29,29 +29,25 @@
 
                         <ul class="ph-sp-navbar-nav navbar-nav sidenav" id="navAccordion">
                             {% include 'partials/panel/'|add:user.use_type|add:".html" %}
-                            <li class="nav-item">
-                                <a class="nav-link ph-btn" href="{% url 'users:logout' %}">
-                                    <span class="nav-link-text">خروج</span>
-                                </a>
-                            </li>
                         </ul>
                         <!-- ph-sp-navbar-nav -->
                     </div>
                     <!-- ph-sp-collapse -->
                 </nav>
                 <!-- ph-sp-navbar -->
-                <div class="aside-design-by">
-                    طراحی و توسعه توسط
-                     <a href="https://planhub.ir/">
-                         PlanUHB
-                         <img src="{% static 'images/ph-thumb-logo.png' %}" alt="footer-logo" class="ph-adb-logo">
-                     </a>
-                </div>
-                    <!-- aside-design-by -->
             </aside>
         </div>
         {% block admin_content %}
         {% endblock %}
+                <div class="aside-design-by">
+                                <a class="ph-btn aside-design-by-btn" href="{% url 'users:logout' %}">خروج</a>
+                    <span>طراحی و توسعه توسط</span>
+                     <a class="ph-logo-link" href="https://planhub.ir/">
+                         PlanUHB
+                         <img src="{% static 'images/ph-thumb-logo.png' %}" alt="footer-logo" class="ph-adb-logo">
+                     </a>
+                </div>
+                <!-- aside-design-by -->
     </div>
 {% endblock %}
 

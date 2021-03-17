@@ -26,38 +26,38 @@
                     <div class="ph-managements-table table-responsive">
                         <table class="table ph-table table-bordered text-center">
                             <thead class="thead-dark">
-                                <tr>
-                                    <th>ردیف</th>
-                                    <th>ID</th>
-                                    <th>نام و نام‌خانوادگی</th>
-                                    <th>ایمیل</th>
-                                    <th>شماره موبایل</th>
-                                    <th>سطح دسترسی</th>
-                                    <th>ویرایش</th>
-                                    <th>وضعیت</th>
-                                    <th>فعال / غیرفعال</th>
-                                </tr>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>ID</th>
+                                <th>نام و نام‌خانوادگی</th>
+                                <th>ایمیل</th>
+                                <th>شماره موبایل</th>
+                                <th>سطح دسترسی</th>
+                                <th>ویرایش</th>
+                                <th>فعال / غیرفعال</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>gh-12r35tt</td>
-                                    <td>مصطفی چراغی</td>
-                                    <td>sample@gmail.com</td>
-                                    <td>09123456789</td>
-                                    <td>سطح یک</td>
-                                    <td>
-                                        <a href="#" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
-                                    </td>
-                                    <td>درانتظار تایید</td>
-                                    <td>
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input"
-                                                   id="customSwitch1">
-                                            <label class="custom-control-label" for="customSwitch1"></label>
-                                        </div><!-- .custom-switch -->
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>gh-12r35tt</td>
+                                <td>مصطفی چراغی</td>
+                                <td>sample@gmail.com</td>
+                                <td>09123456789</td>
+                                <td>سطح یک</td>
+                                <td>
+                                    <a href="#" class="ph-admin-table-action-btn-edit"
+                                       data-toggle="modal"
+                                       data-target="#ph_edit_admin_user"><i class="fas fa-pen"></i></a>
+                                </td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input"
+                                               id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div><!-- .custom-switch -->
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div><!-- .ph-managements-table -->
@@ -84,5 +84,64 @@
             </div><!-- .ph-managements-container -->
         </div><!-- container -->
     </main><!-- ph-dashboard-main seller-panel ph-seller-dashboard -->
+
+
+    <!-- modal#ph_edit_admin_user -------------------------------------------->
+    <div id="ph_edit_admin_user" class="modal fade ph-modal ph-edit-admin-user" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalC">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">ویرایش ادمین</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+
+                    <form action="" method="" class="mb-4">
+                        <div class="form-row">
+                            <div class="col">
+                                <label>نام</label>
+                                <input type="text" class="form-control">
+                            </div><!-- .col -->
+                            <div class="col">
+                                <label>نام خانوادگی</label>
+                                <input type="text" class="form-control">
+                            </div><!-- .col -->
+                        </div><!-- .form-row -->
+                        <div class="form-row">
+                            <div class="col">
+                                <label>ایمیل</label>
+                                <input type="email" class="form-control">
+                            </div><!-- .col -->
+                            <div class="col">
+                                <label>شماره موبایل</label>
+                                <input type="text" class="form-control">
+                            </div><!-- .col -->
+                        </div><!-- .form-row -->
+                        <div class="form-row">
+                            <div class="col">
+                                <label>رمز عبور</label>
+                                <input type="text" class="form-control">
+                            </div><!-- .col -->
+                            <div class="col">
+                                <label>سطح دسترسی</label>
+                                <select class="form-control custom-select">
+                                    <option>سطح یک</option>
+                                    <option>سطح دو</option>
+                                    <option>سطح سه</option>
+                                </select>
+                            </div><!-- .col -->
+                        </div><!-- .form-row -->
+                    </form>
+                </div><!-- .modal-body -->
+                    <div class="ph-new-login-info-btn my-2">
+                        <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn" style="margin: 0 auto 1rem">ثبت</button>
+                    </div><!-- .ph-new-login-info-btn -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_edit_admin_user -->
+
 
 {% endblock %}
