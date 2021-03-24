@@ -7,6 +7,7 @@ from apps.users.models import Mine
 class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
 
     attribute_1 = serializers.IntegerField(required=True, label='قیمت')  # Price
+    weight_attribute_1 = serializers.CharField(required=True, label='واحد قیمت')
     attribute_4 = serializers.IntegerField(required=True, label='ظرفیت تامین ماهانه')  # SKU
     attribute_5 = serializers.IntegerField(required=False, label='ارسال نمونه')  # Sample
     attribute_9 = serializers.CharField(required=True, label='شرایط پرداخت وجه')  # Payment
@@ -77,6 +78,11 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
     def validate_weight_attribute_16(self, value):
         if value not in (Attribute.WEIGHT_KG, Attribute.WEIGHT_TON):
             raise serializers.ValidationError("واحد مقدار نوع تحویل باید کیلوگرم یا تن باشد")
+        return value
+
+    def validate_weight_attribute_1(self, value):
+        if value not in (Attribute.WEIGHT_KG, Attribute.WEIGHT_TON):
+            raise serializers.ValidationError("واحد قیمت باید به ازای کیلوگرم یا تن باشد")
         return value
 
     def validate_mine(self, value):

@@ -4,14 +4,36 @@
     {% define product_attribute.value as attribute_value %}
 {% endif %}
 
-<div class="col-5 col-offset-2 my-1">
-    <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
-    {% if attribute.unit %}
-        <span> ({{ attribute.unit }})</span>
-    {% endif %}
-    <div data-attr>
-    <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
-           name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">
-        <small class="form-text text-danger" style="display: none">لطفا مقدار را وارد نمایید</small>
+{% if not attribute.has_weight %}
+
+    <div class="col-5 col-offset-2 my-1">
+        <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+        <div data-attr>
+            <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
+                   name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">
+        </div>
     </div>
-</div>
+
+{% else %}
+    <div class="col-5 col-offset-2 my-1 d-flex no-gutters">
+        <div class="col-7">
+            <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+            <div data-attr>
+                <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
+                       name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="attribute-{{ attribute.id }}">واحد</label>
+            <div data-attr>
+                <select data-attr-value class="form-control" name="weight_attribute_{{ attribute.id }}"
+                        id="weight-attribute-{{ attribute.id }}">
+                    <option value="default">---انتخاب واحد---</option>
+                    <option value="kg">کیلوگرم</option>
+                    <option value="ton">تن</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+{% endif %}

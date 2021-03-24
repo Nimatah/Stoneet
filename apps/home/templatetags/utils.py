@@ -15,7 +15,7 @@ def query_transform(context, **kwargs):
     query = context['request'].GET.copy()
     for k, v in kwargs.items():
         query[k] = v
-    return query.urlencode()
+    return f'?{query.urlencode()}'
 
 
 @register.filter

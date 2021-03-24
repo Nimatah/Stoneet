@@ -29,29 +29,29 @@
                                 <div class="form-row">
                                     <div class="col">
                                         <label for="">تاریخ سفارش</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="date" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="تاریخ مورد نظرتان را وارد کنید">
                                     </div><!-- .col -->
                                     <div class="col">
                                         <label for="">کد سفارش</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="id" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="کد سفارش را وارد کنید">
                                     </div><!-- .col -->
                                     <div class="col">
-                                        <label for="">کد کالا</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <label for="">کد محصول</label>
+                                        <input type="text" class="form-control" name="product_id" id=""
                                                aria-describedby="Search_Text"
-                                               placeholder="کد کالا را وارد کنید">
+                                               placeholder="کد محصول را وارد کنید">
                                     </div><!-- .col -->
                                     <div class="col">
-                                        <label for="state"> وضعیت تایید سفارش:</label>
-                                        <select class="form-control custom-select" id="ph-state">
+                                        <label for="ph-state"> وضعیت تایید سفارش:</label>
+                                        <select name="state" class="form-control custom-select" id="ph-state">
                                             <option value="">انتخاب کنید</option>
-                                            <option value="pending">در انتظار تایید</option>
-                                            <option value="accepted">تایید شده</option>
-                                            <option value="rejected">رد شده</option>
+                                            {% for state, state_display in order_model.STATE_CHOICES %}
+                                                <option value="{{ state }}">{{ state_display }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div><!-- .col -->
                                 </div><!-- .form-row -->
@@ -140,7 +140,8 @@
                         <table class="ph-table table table-bordered text-center">
                             <thead class="thead-dark">
                             <tr>
-                                <th>شماره سفارش</th>
+                                <th>کد سفارش</th>
+                                <th>کد محصول</th>
                                 <th>نام محصول</th>
                                 <th>نوع محصول</th>
                                 <th>مقدار</th>
@@ -154,57 +155,62 @@
                             <tbody>
                             {% for order in orders %}
                                 <tr>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.pk }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.product.title }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.product.category.parent.title }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.weight }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.price }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.get_persian_timestamp }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ payment_map|get_item:order.payment_type }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        {{ order.get_state_display }}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="ph-admin-table-cell">
-                                        <div class="ph-admin-table-action-btns">
-                                            <a href="{% url 'users:buyer_view_order' pk=order.pk %}"
-                                               class="ph-admin-table-action-btn-edit">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.pk }}
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.product.pk }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.product.title }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.product.category.parent.title }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.weight }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.price }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.get_persian_timestamp }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ payment_map|get_item:order.payment_type }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            {{ order.get_state_display }}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            <div class="ph-admin-table-action-btns">
+                                                <a href="{% url 'users:buyer_view_order' pk=order.pk %}"
+                                                   class="ph-admin-table-action-btn-edit">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
                             {% endfor %}
                             </tbody>
                         </table>

@@ -376,8 +376,18 @@ class Product(TimestampedModel):
         caret = f'{caret_from.value} تا {caret_to.value} %' if caret_from.value != caret_to.value else f'{caret_from.value} %'
         return caret
 
+    def get_size(self) -> str:
+        size_from = self.attributes.get(attribute_id=Attribute.ID_GRAIN_FROM)
+        size_to = self.attributes.get(attribute_id=Attribute.ID_GRAIN_TO)
+        size = f'{size_from.value} تا {size_to.value} {size_to.get_weight_unit_display()}' if size_from.value != size_to.value else f'{size_from.value} {size_to.get_weight_unit_display()}'
+        return size
+
     def get_payment_type(self) -> List[str]:
         return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE).value
+
+    def get_delivery_type(self):
+        attribute = self.attributes.get(attribute_id=Attribute.ID_DELIVERY_TYPE)
+        return f'{attribute.value} {attribute.child_value} {attribute.get_weight_unit_display()}'
 
     def get_commission(self) -> float:
         return self.category.commission if self.category.parent is None else self.category.parent.commission

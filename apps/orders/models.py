@@ -68,7 +68,7 @@ class Order(TimestampedModel):
     STATE_ACCEPTED = 'accepted'
     STATE_FINISHED = 'finished'
 
-    _STATE_CHOICES = (
+    STATE_CHOICES = (
         (STATE_SUBMITTED, 'ثبت سفارش',),
         (STATE_PENDING_ADMIN, 'در انتظار تایید سایت'),
         (STATE_PENDING_SELLER, 'در انتظار تایید فروشنده',),
@@ -94,13 +94,14 @@ class Order(TimestampedModel):
     timestamp = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
     buyer = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
+    logistic_order = models.ForeignKey('LogisticOrder', on_delete=models.CASCADE, related_name='product_orders', null=True, blank=True)
     commission = models.FloatField(null=True, blank=True)
     destination = models.ForeignKey('users.Address', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
-    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_SUBMITTED)
+    state = models.CharField(max_length=255, choices=STATE_CHOICES, default=STATE_SUBMITTED)
     price = models.BigIntegerField()
     weight = models.IntegerField(null=True, blank=True)
     payment_type = models.CharField(max_length=255, null=True, blank=True)
-    monthly_load = models.IntegerField(default=0, null=True, blank=True)
+    monthly_load = models.IntegerField(default=1, null=True, blank=True)
 
     objects = OrderManager()
 
@@ -112,6 +113,9 @@ class Order(TimestampedModel):
 
     def state_lt(self, state):
         return self.STATE_ORDER_MAP[self.state] < self.STATE_ORDER_MAP[state]
+
+    def get_monthly_weight(self):
+        return self.weight / self.monthly_load
 
 
 class LogisticOrder(models.Model):

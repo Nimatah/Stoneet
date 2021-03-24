@@ -1,5 +1,6 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+{% load utils %}
 
 {% block admin_content %}
     <main class="ph-dashboard-main ph-admin-panel ph-order-qc">
@@ -15,57 +16,57 @@
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
                             <label>کد کالا:</label>
-                            <span>44</span>
+                            <span>{{ order.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>عنوان:</label>
-                            <span>سنگ آهک</span>
+                            <span>{{ order.product.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>قیمت واحد (تومان):</label>
-                            <span>567000</span>
+                            <span>{{ order.price }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
-                            <label>دانه بندی:</label>
-                            <span>درشت</span>
+                            <label>سایز بندی:</label>
+                            <span>{{ order.product.get_size }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>عیار:</label>
-                            <span>23-87</span>
+                            <span>{{ order.product.get_caret }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>نوع تحویل:</label>
-                            <span>کیسه 25 کیلویی</span>
+                            <span>{{ order.product.get_delivery_type }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
                             <label>شماره سفارش:</label>
-                            <span>4534535</span>
+                            <span>{{ order.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>میزان سفارش:</label>
-                            <span>20 تن</span>
+                            <span>{{ order.weight }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>تعداد ارسال:</label>
-                            <span>4</span>
+                            <span>{{ order.monthly_load }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
                             <label>تناژ کامل:</label>
-                            <span>4534535</span>
+                            <span>{{ order.weight }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>تناژ هر ارسال:</label>
-                            <span>4534535</span>
+                            <span>{{ order.get_monthly_weight }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>نوع پرداخت:</label>
-                            <span>نقدی</span>
+                            <span>{{ payment_map|get_item:order.payment_type }}</span>
                         </div>
                     </div>
                 </div>
@@ -76,29 +77,29 @@
                     <div class="col-4">
                         <div class="ph-order-qc-item">
                             <label>نام خریدار:</label>
-                            <span>نیما طاهری</span>
+                            <span>{{ order.buyer.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شناسه خریدار:</label>
-                            <span>34</span>
+                            <span>{{ order.buyer.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شماره موبایل خریدار:</label>
-                            <span>091233446789</span>
+                            <span>{{ order.buyer.mobile_number }}</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>استان:</label>
-                            <span>تهران</span>
+                            <span>{{ order.buyer.profile.get_province.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شهر:</label>
-                            <span>ساوجبلاغ</span>
+                            <span>{{ order.buyer.profile.get_city.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>آدرس:</label>
-                            <span>خیابان سهروردی، کوچه نکیسا، پلاک 35، طبقه 3</span>
+                            <span>{{ order.buyer.profile.address }}</span>
                         </div>
                     </div>
                     <div class="col-2">
@@ -137,29 +138,29 @@
                     <div class="col-4">
                         <div class="ph-order-qc-item">
                             <label>نام فروشنده:</label>
-                            <span>نیما طاهری</span>
+                            <span>{{ order.product.user.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شناسه فروشنده:</label>
-                            <span>34</span>
+                            <span>{{ order.product.user.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شماره موبایل فروشنده:</label>
-                            <span>091233446789</span>
+                            <span>{{ order.product.user.mobile_number }}</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>استان:</label>
-                            <span>تهران</span>
+                            <span>{{ order.product.user.get_province.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شهر:</label>
-                            <span>ساوجبلاغ</span>
+                            <span>{{ order.product.user.get_city.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>آدرس:</label>
-                            <span>خیابان سهروردی، کوچه نکیسا، پلاک 35، طبقه 3</span>
+                            <span>{{ order.product.user.profile.address }}</span>
                         </div>
                     </div>
                     <div class="col-2">

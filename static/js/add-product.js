@@ -174,9 +174,9 @@ function handlePart4Form() {
 function _handleFormPreview() {
 
     const imagePreviewElement = function (src) {
-        return `<a href="${src}">` +
-            `<img src="${src}">` +
-            `</a>`;
+        return `<a href="${src}">
+            <img src="${src}">
+            </a>`;
     }
     const handleTitle = function () {
         const CARET = 'عیار';
@@ -204,9 +204,9 @@ function _handleFormPreview() {
         const attributes = $('[id^="attribute-"]')
         for (let i = 0; i < attributes.length; i++) {
             let attr = $(attributes[i])
-            if (attr.parents(".num-input").length ) {
+            if (attr.parents(".num-input").length) {
                 let text = attr.val() === attr.parents(".num-input").find('[data-max]').val() ? attr.val() : `${attr.val()} - ${attr.parents(".num-input").find('[data-max]').val()}`
-                if (attr.parents('.num-input').find('select')){
+                if (attr.parents('.num-input').find('select')) {
                     text = text + ' ' + attr.parents('.num-input').find('select option:selected').text()
                 }
                 $(`#preview-${attr.prop('id')}`).text(text)
@@ -215,9 +215,9 @@ function _handleFormPreview() {
             }
             let child = $(`#child-${attr.prop('id')}`)
             let weight = $(`#weight-${attr.prop('id')}`)
-            if (child.val() && weight.val()) {
+            if (child.val() || weight.val()) {
                 let previewText = $(`#preview-${attr.prop('id')}`).text()
-                $(`#preview-${attr.prop('id')}`).text(`${previewText} ${child.val()} ${weight.find('option:selected').text()}`)
+                $(`#preview-${attr.prop('id')}`).text(`${previewText} ${child.val() || ''} ${weight.find('option:selected').text() || ''}`)
             }
         }
 

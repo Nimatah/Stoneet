@@ -342,6 +342,12 @@ class Profile(models.Model):
     def get_persian_birthday(self):
         return JalaliDate.to_jalali(self.birthday)
 
+    def get_province(self):
+        return self.region.parent
+
+    def get_city(self):
+        return self.region
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.full_name = self.get_full_name()
         return super().save(

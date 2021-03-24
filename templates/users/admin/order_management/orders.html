@@ -1,5 +1,6 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+{% load utils %}
 
 {% block admin_content %}
     <main class="ph-dashboard-main ph-admin-panel ph-list-order">
@@ -19,39 +20,43 @@
                                 <div class="form-row">
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <label for="">شماره سفارش</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="id" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="شماره سفارش را وارد کنید">
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <label for="">نام فروشنده</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="seller" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="نام فروشنده را وارد کنید">
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <label for="">نام خریدار</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="buyer" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="نام خریدار را وارد کنید">
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4">
-                                        <label for="">نام محصول</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <label for="">کد محصول</label>
+                                        <input type="text" class="form-control" name="product_id" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="نام محصول را وارد کنید">
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <label for="">تاریخ</label>
-                                        <input type="text" class="form-control" name="q" id=""
+                                        <input type="text" class="form-control" name="date" id=""
                                                aria-describedby="Search_Text"
                                                placeholder="تاریخ را وارد کنید">
                                     </div>
                                     <div class="col-12 col-md-6 col-lg-4">
                                         <label for="">وضعیت سفارش</label>
-                                        <input type="text" class="form-control" name="q" id=""
-                                               aria-describedby="Search_Text"
-                                               placeholder="وضعیت سفارش را وارد کنید">
+                                        <select type="text" class="form-control" name="state" id=""
+                                                aria-describedby="Search_Text">
+                                            <option value="">انتخاب کنید</option>
+                                            {% for state, state_display in order_model.STATE_CHOICEs %}
+                                                <option value="{{ state }}">{{ state_display }}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو</button>
@@ -65,38 +70,52 @@
                             <div class="ph-ip-wlr-pagination ph-pagination">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination pagination-circle pg-blue">
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Previous">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-right"></i>
-                                                        </span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Next">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-left"></i>
-                                                        </span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
+                                        {% if page_obj.has_previous %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="{% query_transform p=page_obj.previous %}"
+                                                   aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for p in page_obj.paginator.page_range %}
+                                            {% if page_obj.number == p %}
+                                                <li class="page-item active"><a class="page-link"
+                                                                                href="{% query_transform p=p %}">{{ p }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="{% query_transform p=p %}">{{ p }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if page_obj.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="{% query_transform p=page_obj.next %}"
+                                                   aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     </ul>
                                 </nav>
                             </div>
@@ -114,7 +133,7 @@
                         <!-- ph-ip-wl-right -->
                         <div class="ph-ip-wl-res">
                             نتیجه:
-                            <span>۱۱۲ مورد</span>
+                            <span>{{ page_obj.paginator.count }} مورد</span>
                         </div>
                     </div>
                     <!-- ph-ip-wl-header -->
@@ -134,21 +153,21 @@
                             </thead>
                             <tbody>
                             {% for order in orders %}
-                            <tr>
-                                <td>{{ order.id }}</td>
-                                <td>{{ order.product.user.profile.get_full_name }}</td>
-                                <td>{{ order.buyer.profile.get_full_name }}</td>
-                                <td>{{ order.product.id }}</td>
-                                <td>{{ order.product.title }}</td>
-                                <td>{{ order.get_persian_timestamp }}</td>
-                                <td>{{ order.get_state_display }}</td>
-                                <td>
-                                    <a href="{% url 'users:admin_order_qc' %}" class="ph-btn">
-                                        <i class="fas fa-sync"></i>
-                                        <span>بررسی</span>
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.product.user.profile.get_full_name }}</td>
+                                    <td>{{ order.buyer.profile.get_full_name }}</td>
+                                    <td>{{ order.product.id }}</td>
+                                    <td>{{ order.product.title }}</td>
+                                    <td>{{ order.get_persian_timestamp }}</td>
+                                    <td>{{ order.get_state_display }}</td>
+                                    <td>
+                                        <a href="{% url 'users:admin_order_qc' pk=order.pk %}" class="ph-btn">
+                                            <i class="fas fa-sync"></i>
+                                            <span>بررسی</span>
+                                        </a>
+                                    </td>
+                                </tr>
                             {% endfor %}
                             </tbody>
                         </table>
@@ -159,38 +178,52 @@
                             <div class="ph-ip-wlr-pagination ph-pagination">
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination pagination-circle pg-blue">
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Previous">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-right"></i>
-                                                        </span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                        </li>
-                                        </li>
-                                        <li class="page-item active">
-                                            <a class="page-link">1</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">2</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">3</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">4</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link">5</a>
-                                        </li>
-                                        <li class="page-item">
-                                            <a class="page-link" aria-label="Next">
-                                                        <span aria-hidden="true">
-                                                            <i class="fas fa-chevron-left"></i>
-                                                        </span>
-                                                <span class="sr-only">Next</span>
-                                            </a>
-                                        </li>
+                                        {% if page_obj.has_previous %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="{% query_transform p=page_obj.previous %}"
+                                                   aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for p in page_obj.paginator.page_range %}
+                                            {% if page_obj.number == p %}
+                                                <li class="page-item active"><a class="page-link"
+                                                                                href="{% query_transform p=p %}">{{ p }}</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="{% query_transform p=p %}">{{ p }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if page_obj.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="{% query_transform p=page_obj.next %}"
+                                                   aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     </ul>
                                 </nav>
                             </div>
@@ -208,7 +241,7 @@
                         <!-- ph-ip-wl-right -->
                         <div class="ph-ip-wl-res">
                             نتیجه:
-                            <span>۱۱۲ مورد</span>
+                            <span>{{ page_obj.paginator.count }} مورد</span>
                         </div>
                     </div>
                     <!-- ph-ip-wl-header -->
