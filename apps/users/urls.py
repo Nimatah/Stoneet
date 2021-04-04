@@ -83,6 +83,8 @@ admin_patterns = [
     path('panel/admin-seller-invoice-details/1/', admin.AdminSellerInvoiceDetailsView.as_view(), name='admin_seller_invoice_details'),
     path('panel/admin-list-logistic-invoice/', admin.AdminLogisticInvoiceView.as_view(), name='admin_list_logistic_invoice'),
     path('panel/admin-logistic-invoice-details/1/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
+    path('panel/admin-logistic-orders/', admin.AdminLogisticOrdersView.as_view(), name='admin_logistic_orders'),
+    path('panel/admin-logistic-order-details/1', admin.AdminLogisticOrderQCView.as_view(), name='admin_logistic_order_qc'),
 ]
 
 application_patterns = [
