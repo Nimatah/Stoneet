@@ -947,7 +947,8 @@ background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(4,3,2,0) 15%,rgba(21
     -moz-transition: all .3s ease-in-out;
     -o-transition: all .3s ease-in-out;
 }
-.ph-buyer-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+.ph-buyer-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover,
+.ph-buyer-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link.active{
     color: #FFffff;
     background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,1,1,0) 15%,rgba(2,44,59,0.53) 75%,rgba(2,44,59,0.9) 97%);
 background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,1,1,0) 15%,rgba(2,44,59,0.53) 75%,rgba(2,44,59,0.9) 97%);
@@ -964,12 +965,14 @@ background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,1,1,0) 15%,rgb
     -o-transition: all .3s ease-in-out;
 }
 
-.ph-logistic-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+.ph-logistic-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover,
+.ph-logistic-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link.active{
     background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(5,4,0,0) 15%,rgba(255,209,0,0.55) 75%,rgba(255,209,0,0.9) 97%);
 background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(5,4,0,0) 15%,rgba(255,209,0,0.55) 75%,rgba(255,209,0,0.9) 97%);
 }
 
-.ph-superadmin-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover{
+.ph-superadmin-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link:hover,
+.ph-superadmin-panel-sidebar .navbar-expand-lg .navbar-nav .nav-link.active{
     color: #fff;
     background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(4,4,4,0) 15%,rgba(177,177,177,0.55) 75%,rgba(177,177,177,0.9) 97%);
 background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(4,4,4,0) 15%,rgba(177,177,177,0.55) 75%,rgba(177,177,177,0.9) 97%);
