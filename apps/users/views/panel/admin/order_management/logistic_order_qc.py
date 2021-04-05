@@ -1,10 +1,10 @@
-from django.views.generic import DetailView
+from django.views.generic import DetailView, TemplateView
 
 from apps.orders.models import LogisticOrder
 from apps.products.models import Attribute
 
 
-class AdminLogisticOrderQCView(DetailView):
+class AdminLogisticOrderQCView(TemplateView):
     template_name = 'users/admin/order_management/logistic_order_qc.html'
     pk_url_kwarg = 'pk'
     context_object_name = 'logistic_order'
