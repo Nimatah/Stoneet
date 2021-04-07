@@ -1,3 +1,15 @@
+function persianToEnglish(input) {
+    var inputstring = input;
+    var persian = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
+    var english = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var arabic = ["۰", "۱", "۲", "۳", "٤", "۵", "٦", "۷", "۸", "۹"]
+    for (var i = 0; i < 10; i++) {
+        var regex = new RegExp(`[${persian[i]}${arabic[i]}]`, 'g');
+        inputstring = inputstring.toString().replace(regex, english[i]);
+    }
+    return inputstring;
+}
+
 function handleAddressDetails() {
     $.ajax(`/api/address/${$('#customer-address option:selected').val()}`, {
         method: 'GET',
@@ -51,18 +63,6 @@ function handleOrderWeightInput() {
             }
         });
     });
-
-    function persianToEnglish(input) {
-        var inputstring = input;
-        var persian = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
-        var english = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-        var arabic = ["۰", "۱", "۲", "۳", "٤", "۵", "٦", "۷", "۸", "۹"]
-        for (var i = 0; i < 10; i++) {
-            var regex = new RegExp(`[${persian[i]}${arabic[i]}]`, 'g');
-            inputstring = inputstring.toString().replace(regex, english[i]);
-        }
-        return inputstring;
-    }
 }
 
 
@@ -74,14 +74,16 @@ function addCommas(x) {
 
 function handleFinalPrice() {
 
-    $('#order-weight').keyup(function () {
-        var rate = parseFloat($('#order-weight').val()) || 0;
-        var box = parseFloat($('#base-product-price').text()) || 0;
+    function handler(e) {
+        var rate = parseFloat(persianToEnglish($('#order-weight').val())) || 0;
+        var box = parseFloat(persianToEnglish($('#base-product-price').text())) || 0;
 
         $('#final-price').text(rate * box);
         var x = $('#final-price').text();
         $('#final-price').text(addCommas(x));
-    });
+    }
+
+    $('#order-weight').keyup(handler).keydown(handler);
 }
 
 

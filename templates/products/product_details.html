@@ -29,7 +29,7 @@
                                                     <span>{{ price.value|intcomma }}</span>
                                                     <span>{{ price.attribute.unit }}</span> <span
                                                         class="ph-product-small-text">به ازای هر</span><span
-                                                        class="ph-product-small-text">تن</span></h3>
+                                                        class="ph-product-small-text">{{ price.get_weight_unit_display }}</span></h3>
                                             {% endwith %}
                                         </div><!-- .ph-single-product-base-price -->
                                         <div class="ph-single-product-atts-summary">
@@ -48,47 +48,51 @@
                                                 </li>
                                                 <li>
                                                     <label>استان :</label>
+                                                    <a href="#">{{ product.mine.region.parent.title }}</a>
+                                                </li>
+                                                <li>
+                                                    <label>شهر :</label>
                                                     <a href="#">{{ product.mine.region.title }}</a>
                                                 </li>
                                             </ul>
                                             <div class="ph-single-product-specification-table">
                                                 <h3>مشخصات محصول</h3>
                                                 <ul>
-                                                    {% for product_attribute in product.attributes.get_ordinary %}
-                                                        <li>
-                                                            {% with product_attribute.attribute as attribute_definition %}
-                                                                <label>{{ attribute_definition.title }}: </label>
-                                                                {% if attribute_definition.value_type == 'bool' %}
-                                                                    <span>{{ product_attribute.value|yesno:'دارد,ندارد' }}</span>
-                                                                {% elif attribute_definition.value_type == 'int' %}
-                                                                    <span>{{ product_attribute.value|intcomma }}</span>
-                                                                {% elif attribute_definition.value_type == 'multiple' %}
-                                                                    <span>{{ product_attribute.value|join:", " }}</span>
-                                                                {% else %}
-                                                                    <span>{{ product_attribute.value }} {{ attribute_definition.unit }}</span>
-                                                                {% endif %}
-                                                            {% endwith %}
-                                                        </li>
-                                                    {% endfor %}
+                                                    <li>
+                                                        <label>سایز بندی: </label>
+                                                        <span>{{ product.get_size }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <label>شرایط پرداخت وجه: </label>
+                                                        <span>{{ product.get_payment_type|join:"، " }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <label>ظرفیت تامین: </label>
+                                                        <span>{{ product.get_sku.value }} تن</span>
+                                                    </li>
                                                 </ul>
                                             </div><!-- .ph-single-product-specification-table -->
                                             <div class="ph-single-product-specification-table">
                                                 <h3>مشخصات معدن</h3>
                                                 <ul>
-                                                    {% for product_attribute in product.attributes.get_ordinary %}
+                                                    {% with product.mine as mine %}
                                                         <li>
-                                                            {% with product_attribute.attribute as attribute_definition %}
-                                                                <label>{{ attribute_definition.title }}: </label>
-                                                                {% if attribute_definition.value_type == 'bool' %}
-                                                                    <span>{{ product_attribute.value|yesno:'دارد,ندارد' }}</span>
-                                                                {% elif attribute_definition.value_type == 'int' %}
-                                                                    <span>{{ product_attribute.value|intcomma }}</span>
-                                                                {% else %}
-                                                                    <span>{{ product_attribute.value }} {{ attribute_definition.unit }}</span>
-                                                                {% endif %}
-                                                            {% endwith %}
+                                                            <label>موقعیت مکانی در شهر: </label>
+                                                            <span>{{ mine.get_location_in_region_display }}</span>
                                                         </li>
-                                                    {% endfor %}
+                                                        <li>
+                                                            <label>فاصله تا جاده اصلی: </label>
+                                                            <span>{{ mine.distance_to_road }} کیلومتر</span>
+                                                        </li>
+                                                        <li>
+                                                            <label>وجود جاده مناسب برای عبور وسایل نقلیه سواری: </label>
+                                                            <span>{{ mine.proper_road|yesno:'دارد,ندارد' }}</span>
+                                                        </li>
+                                                        <li>
+                                                            <label>وجود تجهیزات بارگیری در محل دپو: </label>
+                                                            <span>{{ mine.load_tools|yesno:'دارد,ندارد' }}</span>
+                                                        </li>
+                                                    {% endwith %}
                                                 </ul>
                                             </div><!-- .ph-single-product-specification-table -->
                                         </div><!-- .ph-single-product-atts-summary -->

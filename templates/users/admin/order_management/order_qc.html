@@ -113,15 +113,15 @@
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>نام حمل و نقل:</label>
-                            <span>آریا اسلامی</span>
+                            <span>{{ order.logistic_order.user.profile.full_name}}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شناسه حمل و نقل:</label>
-                            <span>78</span>
+                            <span>{{ order.logistic_order.user.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شماره موبایل حمل و نقل:</label>
-                            <span>091276340976</span>
+                            <span>{{ order.logistic_order.user.mobile_number }}</span>
                         </div>
                     </div>
                     <div class="col-4">
