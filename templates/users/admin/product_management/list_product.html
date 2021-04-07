@@ -1,5 +1,6 @@
 {% extends 'base_admin.html' %}
 {% load static %}
+{% load humanize %}
 
 
 {% block admin_content %}
@@ -118,8 +119,7 @@
                         <table class="ph-table table table-bordered text-center">
                             <thead class="thead-dark">
                                 <tr>
-                                    <th>ردیف</th>
-                                    <th>id کالا</th>
+                                    <th>شناسه کالا</th>
                                     <th>عنوان کالا</th>
                                     <th>گروه کالا</th>
                                     <th>قیمت</th>
@@ -129,45 +129,41 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            {% for product in products %}
                                 <tr>
                                     <td>
                                         <div class="ph-admin-table-cell">
-                                            1
+                                            {{ product.pk }}
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
-                                            ir-123456
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            <a href="#">
+                                            <a href="{% url 'products:product_details' pk=product.pk %}">
                                                 <div class="ph-admin-table-cell">
-                                                    <span class="ph-amdin-table-product-id"> سنگ آهک هماتیت - عیار 11 %</span>
+                                                    <span class="ph-amdin-table-product-id">{{ product.title }}</span>
                                                 </div>
                                             </a>
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
-                                            سنگ آهک هماتیت
+                                            {{ product.category.title }}
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
-                                            ۶.۵۰۰.۰۰۰
+                                            {{ product.get_price.value|intcomma }}
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
-                                            مصطفی چراغی
+                                            {{ product.user.profile.get_full_name }}
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
                                             <div class="ph-admin-table-action-btns">
-                                                <span class="ph-admin-table-product-status">تایید شده</span>
+                                                <span class="ph-admin-table-product-status">{{ product.get_state_display }}</span>
                                             </div><!-- .ph-admin-table-action-btns -->
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
@@ -181,59 +177,7 @@
                                         </div><!-- .ph-admin-table-cell -->
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            1
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            ir-123456
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                            <a href="#">
-                                                <div class="ph-admin-table-cell">
-                                                    <span class="ph-amdin-table-product-id"> سنگ آهک هماتیت - عیار 11 %</span>
-                                                </div>
-                                            </a>
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            سنگ آهک هماتیت
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            ۶.۵۰۰.۰۰۰
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            مصطفی چراغی
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            <div class="ph-admin-table-action-btns">
-                                                <span class="ph-admin-table-product-status">رد شده</span>
-                                                <a href="#" class="ph-bell" data-toggle="modal" data-target="#bell-modal">
-                                                    <i class="far fa-bell"></i>
-                                                </a>
-                                            </div><!-- .ph-admin-table-action-btns -->
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                    <td>
-                                        <div class="ph-admin-table-cell">
-                                            <div class="ph-admin-table-action-btns">
-                                                <a href="" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
-                                                <a href="#" class="ph-admin-table-action-btn-inactive"><i
-                                                        class="fas fa-times"></i></a>
-                                            </div><!-- .ph-admin-table-action-btns -->
-                                        </div><!-- .ph-admin-table-cell -->
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div><!-- .ph-admin-page-list-table -->
