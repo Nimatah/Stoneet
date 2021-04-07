@@ -294,6 +294,42 @@ function sampleViewInputField() {
     }
 }
 
+var $form = $('#edit-admin-list'),
+    $errorMsg = $("<span class='error'>پر کردن این گزینه اجباری است</span>");
+
+$('#ph_signup_submit_btn').on("click", function () {
+
+    if (isEmailValid($('#email-field').val())) {
+        jQuery("#email-error-field").hide();
+    } else {
+        jQuery("#email-error-field").show();
+    }
+
+    var toReturn = true;
+    $("input,select", $form).each(function () {
+
+        if ($(this).val() == "") {
+
+            if (!$(this).data("error")) {
+                $(this).data("error", $errorMsg.clone().insertAfter($(this)));
+            }
+            toReturn = false;
+        } else {
+
+            if ($(this).data("error")) {
+                $(this).data("error").remove();
+                $(this).removeData("error");
+            }
+        }
+    });
+    return toReturn;
+});
+
+function isEmailValid(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email);
+}
+
 handleCategories();
 handlePart1Form();
 handlePart2Form();
