@@ -99,7 +99,7 @@
                 </div><!-- .modal-header -->
                 <div class="modal-body">
 
-                    <form action="" method="" class="mb-4">
+                    <form action="" method="" class="mb-4" id="edit-admin-list">
                         <div class="form-row">
                             <div class="col">
                                 <label>نام</label>
@@ -113,11 +113,14 @@
                         <div class="form-row">
                             <div class="col">
                                 <label>ایمیل</label>
-                                <input type="email" class="form-control">
+                                <input id="email-field" type="email" class="form-control" id="email-admin-list">
+                                <div id="email-error-field" class="messages error" style="display: none;">ایمیل نامعتبر
+                                    است
+                                </div>
                             </div><!-- .col -->
                             <div class="col">
                                 <label>شماره موبایل</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" id="mobile-number">
                             </div><!-- .col -->
                         </div><!-- .form-row -->
                         <div class="form-row">
@@ -136,9 +139,10 @@
                         </div><!-- .form-row -->
                     </form>
                 </div><!-- .modal-body -->
-                    <div class="ph-new-login-info-btn my-2">
-                        <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn" style="margin: 0 auto 1rem">ثبت</button>
-                    </div><!-- .ph-new-login-info-btn -->
+                <div class="ph-new-login-info-btn my-2">
+                    <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn" style="margin: 0 auto 1rem">ثبت
+                    </button>
+                </div><!-- .ph-new-login-info-btn -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- modal#ph_edit_admin_user -->

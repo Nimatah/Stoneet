@@ -10,7 +10,7 @@
                 ادمین جدیدی ایجاد کنید.
             </div><!-- .ph-admin-page-intro-text -->
             <div class="ph-add-admin-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
-                <form action="" method="" class="mb-4">
+                <form action="" method="" class="mb-4" id="create-admin-form">
                     <div class="form-row">
                         <div class="col">
                             <label>نام</label>
@@ -24,7 +24,10 @@
                     <div class="form-row">
                         <div class="col">
                             <label>ایمیل</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" id="email-field">
+                            <div id="email-error-field" class="messages error" style="display: none;">ایمیل نامعتبر
+                                    است
+                            </div>
                         </div><!-- .col -->
                         <div class="col">
                             <label>شماره موبایل</label>
