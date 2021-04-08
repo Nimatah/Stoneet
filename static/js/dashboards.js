@@ -1,3 +1,17 @@
+//Created by Arious
+
+function persianToEnglish(input) {
+    var inputstring = input;
+    var persian = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"]
+    var english = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    var arabic = ["۰", "۱", "۲", "۳", "٤", "۵", "٦", "۷", "۸", "۹"]
+    for (var i = 0; i < 10; i++) {
+        var regex = new RegExp(`[${persian[i]}${arabic[i]}]`, 'g');
+        inputstring = inputstring.toString().replace(regex, english[i]);
+    }
+    return inputstring;
+}
+
 jQuery(function ($) {
     var path = window.location.href;
     $('.nav-item a').each(function () {
@@ -55,88 +69,35 @@ function isEmailValid(email) {
     return re.test(email);
 }
 
-$(document).ready(function () {
-    $("#mobile-number").keypress(function (e) {
-        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-            return false;
-        }
-    });
-});
 
-$(document).ready(function () {
-    $("#your-suggest-price").keypress(function (e) {
-        if (e.which != 0 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-            return false;
-        }
-    });
-});
-
-/*$('#your-suggest-price').keyup(function(event) {
-
-  if(event.which >= 37 && event.which <= 40){
-   event.preventDefault();
-  }
-
-  $(this).val(function(index, value) {
-      value = value.replace(/,/g,'');
-      return numberWithCommas(value);
-  });
-});
-
-function numberWithCommas(x) {
-    var parts = x.toString().split(".");
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    let s = parts.join(".");
-}*/
-
-/*document.querySelectorAll('#your-suggest-price')[0].addEventListener('input', onInput_Arabic);
-document.querySelectorAll('#your-suggest-price')[1].addEventListener('input', onInput_normal);
-
-function onInput_normal(){
-   var v = +(this.value.replace(/[,|\.|\D]/g,''));
-   this.value =  this.value ? v.toLocaleString() : '';
-}
-
-function onInput_Arabic(){
-   var v = transformNumbers.toEnglish( this.value );
-   this.value =  this.value ? (+v).toLocaleString('ar-EG') : '';
-}
-
-var transformNumbers = (function(){
-    var numerals = {
-        persian : ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"],
-        arabic  : ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
-    };
-
-    function fromEnglish(str, lang){
-        var i, len = str.length, result = "";
-
-        for( i = 0; i < len; i++ )
-            result += numerals[lang][str[i]];
-
-        return result;
-    }
-
-    return {
-        toEnglish : function(str){
-            var num, i, len = str.length, result = "";
-
-            for( i = 0; i < len; i++ ){
-                num = numerals["persian"].indexOf(str[i]);
-                num = num != -1 ? num : numerals["arabic"].indexOf(str[i]);
-                if( num == -1 ) continue
-                result += num;
+    $(document).ready(function () {
+        $("#mobile-number").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                return false;
             }
-
-            return result;
-        },
-
-        toPersian : function(str, lang){
-            return fromEnglish(str, "persian");
-        },
-
-        toArabic : function(str){
-            return fromEnglish(str, "arabic");
+        });
+    });
+function handleYourSuggestPrice() {
+        const isPersianNumber = function (keyCode) {
+            return keyCode >= 1776 && keyCode <= 1785;
         }
+
+        const isArabicNumber = function (keyCode) {
+            return keyCode >= 1632 && keyCode <= 1641;
+        }
+
+        const isEnglishNumber = function (keyCode) {
+            return keyCode >= 48 && keyCode <= 57;
+        }
+
+        $('#your-suggest-price').keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && !(isPersianNumber(e.which) || isArabicNumber(e.which) || isEnglishNumber(e.which))) {
+                return false;
+            } else {
+                $('#your-suggest-price').val(persianToEnglish($(this).val()));
+            }
+        });
     }
-})();*/
+$(document).ready(function (){
+    handleYourSuggestPrice();
+});
