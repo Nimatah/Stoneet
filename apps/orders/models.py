@@ -89,6 +89,7 @@ class Order(TimestampedModel):
         STATE_PENDING_CONTRACT: 5,
         STATE_PENDING_FINANCE_DOCUMENTS: 6,
         STATE_ACCEPTED: 7,
+        STATE_FINISHED: 8,
     }
 
     timestamp = models.DateTimeField(auto_now_add=True)
