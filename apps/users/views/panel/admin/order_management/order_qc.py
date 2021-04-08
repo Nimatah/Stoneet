@@ -13,6 +13,7 @@ class AdminOrderQCView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['payment_map'] = Attribute.PAYMENT_MAP
+        context['states'] = dict(Order.STATE_CHOICES)
         return context
 
     def test_func(self):
