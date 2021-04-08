@@ -70,34 +70,68 @@ function isEmailValid(email) {
 }
 
 
-    $(document).ready(function () {
-        $("#mobile-number").keypress(function (e) {
-            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
-                return false;
-            }
+$(document).ready(function () {
+    $("#mobile-number").keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+            return false;
+        }
+    });
+});
+
+function handleYourSuggestPrice() {
+    const isPersianNumber = function (keyCode) {
+        return keyCode >= 1776 && keyCode <= 1785;
+    }
+
+    const isArabicNumber = function (keyCode) {
+        return keyCode >= 1632 && keyCode <= 1641;
+    }
+
+    const isEnglishNumber = function (keyCode) {
+        return keyCode >= 48 && keyCode <= 57;
+    }
+
+    $('#your-suggest-price').keypress(function (e) {
+        if (e.which != 8 && e.which != 0 && !(isPersianNumber(e.which) || isArabicNumber(e.which) || isEnglishNumber(e.which))) {
+            return false;
+        } else {
+            $('#your-suggest-price').val(persianToEnglish($(this).val()));
+        }
+    });
+}
+
+$(document).ready(function () {
+    $('#your-suggest-price').keyup(function (event) {
+
+        if (event.which >= 37 && event.which <= 40) return;
+
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
         });
     });
-function handleYourSuggestPrice() {
-        const isPersianNumber = function (keyCode) {
-            return keyCode >= 1776 && keyCode <= 1785;
-        }
+})
 
-        const isArabicNumber = function (keyCode) {
-            return keyCode >= 1632 && keyCode <= 1641;
-        }
+function handleDateField(elementId) {
+    $(elementId).pDatepicker({
+        initialValue: false,
+        viewMode: 'year',
+        formatter: function (unixDate) {
+            console.log('shit ')
+            const date = new persianDate(unixDate);
+            const year = pad(date.State.persian.year);
+            const month = pad(date.State.persian.month + 1);
+            const day = pad(date.State.persian.day);
+            return `${year}-${month}-${day}`;
+        },
+    })
+}
 
-        const isEnglishNumber = function (keyCode) {
-            return keyCode >= 48 && keyCode <= 57;
-        }
-
-        $('#your-suggest-price').keypress(function (e) {
-            if (e.which != 8 && e.which != 0 && !(isPersianNumber(e.which) || isArabicNumber(e.which) || isEnglishNumber(e.which))) {
-                return false;
-            } else {
-                $('#your-suggest-price').val(persianToEnglish($(this).val()));
-            }
-        });
-    }
-$(document).ready(function (){
+$(document).ready(function () {
     handleYourSuggestPrice();
+    handleDateField('#ph_logistic_license_start_date');
+    handleDateField('#ph_logistic_license_end_date');
 });
+

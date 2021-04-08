@@ -202,14 +202,14 @@ function handleBirthday() {
                 },
             })
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     });
 }
 
 
-handleValidateUser()
-handleRegions('company')
-handleRegions('individual')
-handleSubmitForm()
-handleBirthday()
+handleValidateUser();
+handleRegions('company');
+handleRegions('individual');
+handleSubmitForm();
+handleBirthday();

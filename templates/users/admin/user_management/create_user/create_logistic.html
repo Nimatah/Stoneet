@@ -41,11 +41,13 @@
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_logistic_license_start_date">تاریخ شروع اعتبار</label>
-                                        <input type="input" class="form-control" id="ph_logistic_license_start_date">
+                                        <input readonly type="text" class="form-control" id="ph_logistic_license_start_date"
+                                        style="background: #ffffff !important">
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_logistic_license_end_date">تاریخ پایان اعتبار</label>
-                                        <input type="input" class="form-control" id="ph_logistic_license_end_date">
+                                        <input readonly type="text" class="form-control" id="ph_logistic_license_end_date"
+                                        style="background: #ffffff !important">
                                     </div><!-- .col-md-6 -->
                                     <div class="col-md-6 mb-3">
                                         <label for="ph_logistic_license_record">شماره ثبت</label>
@@ -298,7 +300,6 @@
 {% endblock %}
 
 {% block footer_static %}
-    <script src="{% static 'js/add-product.js' %}"></script>
     <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
     <script>
 
