@@ -126,12 +126,28 @@ function handleDateField(elementId) {
             const day = pad(date.State.persian.day);
             return `${year}-${month}-${day}`;
         },
-    })
+    });
+}
+
+function handleOrderDate(elementId) {
+    $(elementId).pDatepicker({
+        initialValue: false,
+        viewMode: 'year',
+        formatter: function (unixDate) {
+            console.log('shit ')
+            const date = new persianDate(unixDate);
+            const year = pad(date.State.persian.year);
+            const month = pad(date.State.persian.month + 1);
+            const day = pad(date.State.persian.day);
+            return `${year}-${month}-${day}`;
+        },
+    });
 }
 
 $(document).ready(function () {
     handleYourSuggestPrice();
     handleDateField('#ph_logistic_license_start_date');
     handleDateField('#ph_logistic_license_end_date');
+    handleOrderDate('#order-date');
 });
 
