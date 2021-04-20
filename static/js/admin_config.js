@@ -4,7 +4,7 @@ $('#save-btn1').on('click', function (){
     }
     $.ajax("/api/static-content/1", {
         method: "PATCH",
-        content_type: "application/json",
+        contentType: "application/json",
         headers: {
             'Accept-Language': 'fa',
         },
@@ -18,7 +18,7 @@ $('#save-btn2').on('click', function (){
     }
     $.ajax("/api/static-content/1", {
         method: "PATCH",
-        content_type: "application/json",
+        contentType: "application/json",
         headers: {
             'Accept-Language': 'fa',
         },
@@ -32,7 +32,7 @@ $('#save-btn3').on('click', function (){
     }
     $.ajax("/api/static-content/1", {
         method: "PATCH",
-        content_type: "application/json",
+        contentType: "application/json",
         headers: {
             'Accept-Language': 'fa',
         },
@@ -46,7 +46,7 @@ $('#save-btn4').on('click', function (){
     }
     $.ajax("/api/static-content/1", {
         method: "PATCH",
-        content_type: "application/json",
+        contentType: "application/json",
         headers: {
             'Accept-Language': 'fa',
         },

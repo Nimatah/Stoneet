@@ -31,7 +31,7 @@ class ContactUsView(TemplateView):
 
 class TermsConditionsView(_BaseStaticContentView):
 
-    template_name = 'home/terms_and_conditions.html'
+    template_name = 'home/terms.html'
 
 
 class FAQView(TemplateView):
@@ -41,12 +41,12 @@ class FAQView(TemplateView):
 
 class SellerTermsConditionsView(_BaseStaticContentView):
 
-    template_name = 'home/seller_terms_and_conditions.html'
+    template_name = 'home/terms_seller.html'
 
 
 class LogisticTermsConditionsView(_BaseStaticContentView):
 
-    template_name = 'home/logistic_terms_and_conditions.html'
+    template_name = 'home/terms_logistic.html'
 
 
 class PrivacyPolicyView(_BaseStaticContentView):
