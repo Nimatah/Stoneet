@@ -4,6 +4,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from persiantools.jdatetime import JalaliDate
 
 from apps.core.models import TimestampedModel, BaseMedia
+from apps.core.utils import get_file_path
+
+
+def get_user_file_path(instance, filename):
+    return get_file_path('users/%Y/%m', filename)
 
 
 class MineManager(models.Manager):
@@ -271,7 +276,7 @@ class UserMedia(BaseMedia):
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='media')
     title = models.CharField(max_length=255, blank=True)
     state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
-    file = models.FileField(upload_to='users')
+    file = models.FileField(upload_to=get_user_file_path)
 
     def __str__(self) -> str:
         return f'{self.user} -> {self.type} | {self.file}'

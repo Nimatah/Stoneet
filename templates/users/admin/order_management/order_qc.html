@@ -113,7 +113,7 @@
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>نام حمل و نقل:</label>
-                            <span>{{ order.logistic_order.user.profile.full_name}}</span>
+                            <span>{{ order.logistic_order.user.profile.full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شناسه حمل و نقل:</label>
@@ -174,161 +174,214 @@
         </div>
     </main>
     <div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
-     aria-labelledby="auction_modal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">تایید سفارش</h5>
-                <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div><!-- .modal-header -->
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_SUBMITTED }}" type="checkbox" class="custom-control-input" id="admin_qc_check_1" disabled {% if not order|order_state_lt:order.STATE_SUBMITTED %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_1">{{ states|get_item:order.STATE_SUBMITTED }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_ADMIN }}" type="checkbox" class="custom-control-input" id="admin_qc_check_2" {% if not order|order_state_lt:order.STATE_PENDING_ADMIN %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_2">{{ states|get_item:order.STATE_PENDING_ADMIN }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_SELLER }}" type="checkbox" class="custom-control-input" id="admin_qc_check_3" disabled {% if not order|order_state_lt:order.STATE_PENDING_SELLER %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_3">{{ states|get_item:order.STATE_PENDING_SELLER }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_LOGISTIC }}" type="checkbox" class="custom-control-input" id="admin_qc_check_4" disabled {% if not order|order_state_lt:order.STATE_PENDING_LOGISTIC %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_4">{{ states|get_item:order.STATE_PENDING_LOGISTIC }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_BUYER_LOGISTIC_PRICE }}" type="checkbox" class="custom-control-input" id="admin_qc_check_5" disabled {% if not order|order_state_lt:order.STATE_PENDING_BUYER_LOGISTIC_PRICE %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_5">{{ states|get_item:order.STATE_PENDING_BUYER_LOGISTIC_PRICE }}</label>
-                        </div><!-- .form-group -->
-                    </div><!-- .col-6 -->
-                    <div class="col-6">
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_CONTRACT }}" type="checkbox" class="custom-control-input" id="admin_qc_check_7" {% if not order|order_state_lt:order.STATE_PENDING_CONTRACT %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_7">{{ states|get_item:order.STATE_PENDING_CONTRACT }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_PENDING_FINANCE_DOCUMENTS }}" type="checkbox" class="custom-control-input" id="admin_qc_check_8" {% if not order|order_state_lt:order.STATE_PENDING_FINANCE_DOCUMENTS %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_8">{{ states|get_item:order.STATE_PENDING_FINANCE_DOCUMENTS }}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_ACCEPTED }}" type="checkbox" class="custom-control-input" id="admin_qc_check_9" disabled {% if not order|order_state_lt:order.STATE_ACCEPTED %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_9">{{ states|get_item:order.STATE_ACCEPTED}}</label>
-                        </div><!-- .form-group -->
-                        <div class="custom-control custom-checkbox">
-                            <input data-state="{{ order.STATE_FINISHED }}" type="checkbox" class="custom-control-input" id="admin_qc_check_10" disabled {% if not order|order_state_lt:order.STATE_FINISHED %} checked {% endif %}>
-                            <label class="custom-control-label" for="admin_qc_check_10">{{ states|get_item:order.STATE_FINISHED}}</label>
-                        </div><!-- .form-group -->
-                    </div>
-                    <div class="col-12">
-                        <div class="custom-control custom-checkbox mt-3">
-                            <input type="file" class="custom-file-input" id="admin_qc_check_6">
-                            <label class="custom-file-label" for="admin_qc_check_6">آپلود قرارداد</label>
-                        </div><!-- .form-group -->
-                    </div>
-                </div><!-- .row -->
-                <div class="row my-3">
-                    <div class="col-12 col-md-6">
-                        <div class="ph-admin-qc-dl-table">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th style="width: 80%">قرارداد</th>
-                                    <th style="width: 80%">دانلود</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>صفحه اول قرارداد</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول قرارداد</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول قرارداد</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول قرارداد</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول قرارداد</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">تایید سفارش</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_SUBMITTED }}" name="state" value="{{ order.STATE_SUBMITTED }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_SUBMITTED }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_1" disabled
+                                        {% if not order|order_state_lt:order.STATE_SUBMITTED %} checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_1">{{ states|get_item:order.STATE_SUBMITTED }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_ADMIN }}" name="state" value="{{ order.STATE_ADMIN }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_ADMIN }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_2"
+                                        {% if not order|order_state_lt:order.STATE_ADMIN %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_2">{{ states|get_item:order.STATE_ADMIN }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_SELLER }}" name="state" value="{{ order.STATE_SELLER }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_SELLER }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_3" disabled
+                                        {% if not order|order_state_lt:order.STATE_SELLER %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_3">{{ states|get_item:order.STATE_SELLER }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_LOGISTIC }}" name="state" value="{{ order.STATE_LOGISTIC }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_LOGISTIC }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_4" disabled
+                                        {% if not order|order_state_lt:order.STATE_LOGISTIC %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_4">{{ states|get_item:order.STATE_LOGISTIC }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_BUYER_LOGISTIC_PRICE }}" name="state" value="{{ order.STATE_BUYER_LOGISTIC_PRICE }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_BUYER_LOGISTIC_PRICE }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_5" disabled
+                                        {% if not order|order_state_lt:order.STATE_BUYER_LOGISTIC_PRICE %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_5">{{ states|get_item:order.STATE_BUYER_LOGISTIC_PRICE }}</label>
+                            </div><!-- .form-group -->
+                        </div><!-- .col-6 -->
+                        <div class="col-6">
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_CONTRACT }}" name="state" value="{{ order.STATE_CONTRACT }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_CONTRACT }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_7"
+                                        {% if not order|order_state_lt:order.STATE_CONTRACT %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_7">{{ states|get_item:order.STATE_CONTRACT }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_FINANCE_DOCUMENTS }}" name="state" value="{{ order.STATE_FINANCE_DOCUMENTS }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_FINANCE_DOCUMENTS }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_8"
+                                        {% if not order|order_state_lt:order.STATE_FINANCE_DOCUMENTS %}
+                                       checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_8">{{ states|get_item:order.STATE_FINANCE_DOCUMENTS }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_ACCEPTED }}" name="state" value="{{ order.STATE_ACCEPTED }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_ACCEPTED }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_9" disabled
+                                        {% if not order|order_state_lt:order.STATE_ACCEPTED %} checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_9">{{ states|get_item:order.STATE_ACCEPTED }}</label>
+                            </div><!-- .form-group -->
+                            <div class="custom-control custom-checkbox">
+                                <input data-state="{{ order.STATE_FINISHED }}" name="state" value="{{ order.STATE_FINISHED }}"
+                                       data-score="{{ state_score_map|get_item:order.STATE_FINISHED }}"
+                                       type="checkbox" class="custom-control-input" id="admin_qc_check_10" disabled
+                                        {% if not order|order_state_lt:order.STATE_FINISHED %} checked {% endif %}>
+                                <label class="custom-control-label"
+                                       for="admin_qc_check_10">{{ states|get_item:order.STATE_FINISHED }}</label>
+                            </div><!-- .form-group -->
+                        </div>
+                        <div class="col-12">
+                            <div class="custom-control custom-checkbox mt-3">
+                                <input type="file" name="contract" class="custom-file-input" id="admin_qc_check_6" value="{{ contract.file }}">
+                                <label class="custom-file-label" for="admin_qc_check_6">{% if contract %} {{ contract.file }} {% else %}آپلود قرارداد{% endif %}</label>
+                            </div><!-- .form-group -->
+                        </div>
+                    </div><!-- .row -->
+                    <div class="row my-3">
+                        <div class="col-12 col-md-6">
+                            <div class="ph-admin-qc-dl-table">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 80%">قرارداد</th>
+                                        <th style="width: 80%">دانلود</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>صفحه اول قرارداد</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول قرارداد</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول قرارداد</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول قرارداد</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول قرارداد</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="ph-admin-qc-dl-table">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th style="width: 80%">مدارک مالی</th>
+                                        <th style="width: 80%">دانلود</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>
+                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="ph-admin-qc-dl-table">
-                            <table class="table table-bordered">
-                                <thead>
-                                <tr>
-                                    <th style="width: 80%">مدارک مالی</th>
-                                    <th style="width: 80%">دانلود</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>صفحه اول مدارک مالی</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول مدارک مالی</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول مدارک مالی</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول مدارک مالی</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>صفحه اول مدارک مالی</td>
-                                    <td>
-                                        <a href="#" class="ph-btn">دانلود فایل</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- .modal-body -->
-            <div class="modal-footer">
-                <a href="#" class="ph-btn">ذخیره</a>
-            </div><!-- .modal-footer -->
-        </div><!-- .modal-content -->
-    </div><!-- .modal-dialog -->
-</div><!-- modal#admin_qc_modal -->
+                </div><!-- .modal-body -->
+                <form action="{{ request.path }}" method="post" id="order-qc-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div id="qc-form-data">
 
+                    </div>
+                    <div class="modal-footer">
+                        <button id="order-qc-submit" type="submit" class="ph-btn">ذخیره</button>
+                    </div><!-- .modal-footer -->
+                </form>
+
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#admin_qc_modal -->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/admin_order_qc.js' %}"></script>
 {% endblock %}

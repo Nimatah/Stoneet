@@ -2,8 +2,13 @@ from django.db import models
 from persiantools.jdatetime import JalaliDate
 
 from apps.core.models import TimestampedModel, BaseMedia
+from apps.core.utils import get_file_path
 from apps.users.models import User
 from apps.products.models import Attribute
+
+
+def get_order_file_path(instance, filename):
+    return get_file_path('orders/%Y/%m', filename)
 
 
 class OrderQuerySet(models.QuerySet):
@@ -12,19 +17,19 @@ class OrderQuerySet(models.QuerySet):
         return self.filter(state=Order.STATE_SUBMITTED)
 
     def pending_seller(self):
-        return self.filter(state=Order.STATE_PENDING_SELLER)
+        return self.filter(state=Order.STATE_SELLER)
 
     def pending_logistic(self):
-        return self.filter(state=Order.STATE_PENDING_LOGISTIC)
+        return self.filter(state=Order.STATE_LOGISTIC)
 
     def pending_buyer_logistic_price(self):
-        return self.filter(state=Order.STATE_PENDING_BUYER_LOGISTIC_PRICE)
+        return self.filter(state=Order.STATE_BUYER_LOGISTIC_PRICE)
 
     def pending_contract(self):
-        return self.filter(state=Order.STATE_PENDING_CONTRACT)
+        return self.filter(state=Order.STATE_CONTRACT)
 
     def pending_finance_documents(self):
-        return self.filter(state=Order.STATE_PENDING_FINANCE_DOCUMENTS)
+        return self.filter(state=Order.STATE_FINANCE_DOCUMENTS)
 
     def accepted(self):
         return self.filter(state=Order.STATE_ACCEPTED)
@@ -59,35 +64,35 @@ class LogisticOrderManager(models.Manager):
 class Order(TimestampedModel):
 
     STATE_SUBMITTED = 'submitted'
-    STATE_PENDING_ADMIN = 'pending_admin'
-    STATE_PENDING_SELLER = 'pending_seller'
-    STATE_PENDING_LOGISTIC = 'pending_logistic'
-    STATE_PENDING_BUYER_LOGISTIC_PRICE = 'pending_buyer_logistic_price'
-    STATE_PENDING_CONTRACT = 'pending_contract'
-    STATE_PENDING_FINANCE_DOCUMENTS = 'pending_finance_documents'
+    STATE_ADMIN = 'pending_admin'
+    STATE_SELLER = 'pending_seller'
+    STATE_LOGISTIC = 'pending_logistic'
+    STATE_BUYER_LOGISTIC_PRICE = 'pending_buyer_logistic_price'
+    STATE_CONTRACT = 'pending_contract'
+    STATE_FINANCE_DOCUMENTS = 'pending_finance_documents'
     STATE_ACCEPTED = 'accepted'
     STATE_FINISHED = 'finished'
 
     STATE_CHOICES = (
         (STATE_SUBMITTED, 'ثبت سفارش',),
-        (STATE_PENDING_ADMIN, 'در انتظار تایید سایت'),
-        (STATE_PENDING_SELLER, 'در انتظار تایید فروشنده',),
-        (STATE_PENDING_LOGISTIC, 'در انتظار تایید حمل و نقل',),
-        (STATE_PENDING_BUYER_LOGISTIC_PRICE, 'در انتظار تایید قیمت حمل و نقل توسط خریدار',),
-        (STATE_PENDING_CONTRACT, 'در انتظار تایید قرارداد',),
-        (STATE_PENDING_FINANCE_DOCUMENTS, 'در انتظار تایید مدارک مالی',),
+        (STATE_ADMIN, 'تایید سایت'),
+        (STATE_SELLER, 'تایید فروشنده',),
+        (STATE_LOGISTIC, 'تایید حمل و نقل',),
+        (STATE_BUYER_LOGISTIC_PRICE, 'تایید قیمت حمل و نقل توسط خریدار',),
+        (STATE_CONTRACT, 'تایید قرارداد',),
+        (STATE_FINANCE_DOCUMENTS, 'تایید مدارک مالی',),
         (STATE_ACCEPTED, 'تایید نهایی',),
         (STATE_FINISHED, 'انجام شده',),
     )
 
     STATE_ORDER_MAP = {
         STATE_SUBMITTED: 0,
-        STATE_PENDING_ADMIN: 1,
-        STATE_PENDING_SELLER: 2,
-        STATE_PENDING_LOGISTIC: 3,
-        STATE_PENDING_BUYER_LOGISTIC_PRICE: 4,
-        STATE_PENDING_CONTRACT: 5,
-        STATE_PENDING_FINANCE_DOCUMENTS: 6,
+        STATE_ADMIN: 1,
+        STATE_SELLER: 2,
+        STATE_LOGISTIC: 3,
+        STATE_BUYER_LOGISTIC_PRICE: 4,
+        STATE_CONTRACT: 5,
+        STATE_FINANCE_DOCUMENTS: 6,
         STATE_ACCEPTED: 7,
         STATE_FINISHED: 8,
     }
@@ -116,7 +121,7 @@ class Order(TimestampedModel):
         return self.STATE_ORDER_MAP[self.state] < self.STATE_ORDER_MAP[state]
 
     def get_monthly_weight(self):
-        return self.weight / self.monthly_load
+        return f'{(self.weight / self.monthly_load):.2f}'
 
 
 class LogisticOrder(models.Model):
@@ -147,12 +152,12 @@ class OrderMedia(BaseMedia):
 
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='media')
     title = models.CharField(max_length=255, blank=True)
-    file = models.FileField(upload_to='orders')
+    file = models.FileField(upload_to=get_order_file_path)
 
 
 class LogisticOrderMedia(BaseMedia):
 
     order = models.ForeignKey(LogisticOrder, on_delete=models.CASCADE, related_name='media')
     title = models.CharField(max_length=255, blank=True)
-    file = models.FileField(upload_to='orders')
+    file = models.FileField(upload_to=get_order_file_path)
 

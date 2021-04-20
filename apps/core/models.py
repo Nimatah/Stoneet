@@ -23,6 +23,8 @@ class BaseMedia(models.Model):
         (TYPE_DOCUMENT, "Document",),
     )
 
+    NAME_CONTRACT = 'contract'
+
     type = models.CharField(max_length=20, choices=_TYPE_CHOICES)
     file = models.FileField()
 

@@ -5,7 +5,12 @@ from mptt.models import MPTTModel, TreeManager, TreeForeignKey
 
 from apps.core import SPLIT
 from apps.core.models import TimestampedModel, BaseMedia
+from apps.core.utils import get_file_path
 from apps.users.models import User, Mine
+
+
+def get_product_file_path(instance, filename):
+    return get_file_path('products/%Y/%m', filename)
 
 
 class AttributeManager(models.Manager):
@@ -215,7 +220,7 @@ class Attribute(TimestampedModel):
 
 class AttributeMedia(BaseMedia):
     product_attribute = models.ForeignKey('ProductAttribute', on_delete=models.CASCADE, related_name='media')
-    file = models.FileField(upload_to='attributes')
+    file = models.FileField(upload_to=get_product_file_path)
 
     def __str__(self) -> str:
         return f'{self.product_attribute} -> {self.type} | {self.file}'
@@ -407,7 +412,7 @@ class Product(TimestampedModel):
 
 class ProductMedia(BaseMedia):
     product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='media')
-    file = models.FileField(upload_to='products')
+    file = models.FileField(upload_to=get_product_file_path)
     is_primary = models.BooleanField(default=False)
 
     objects = ProductMediaManager()

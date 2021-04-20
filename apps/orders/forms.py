@@ -60,14 +60,13 @@ class CreateOrderForm(forms.ModelForm):
 
 class AdminApproveOrderForm(forms.Form):
 
-    id = forms.IntegerField()
+    id = forms.IntegerField(required=False)
     state = forms.CharField()
-    contract = forms.ImageField()
+    contract = forms.FileField(required=False)
 
-    def clean_id(self):
-        if not Order.objects.filter(pk=self.cleaned_data['id']).exists():
-            raise forms.ValidationError('کد سفارش پیدا نشد')
-        return self.cleaned_data['id']
+    class Meta:
+        fields = ('id', 'state', 'contract')
+        exclude = ('id',)
 
     def clean_state(self):
         if self.cleaned_data['state'] not in dict(Order.STATE_CHOICES).keys():
@@ -75,14 +74,17 @@ class AdminApproveOrderForm(forms.Form):
         return self.cleaned_data['state']
 
     def save(self, commit=True):
-        order = Order.objects.get(pk=self.cleaned_data['id'])
+        order = Order.objects.get(pk=self.id)
         order.state = self.cleaned_data['state']
-        order_media = OrderMedia(
-            order=order,
-            title='contract',
-            file=self.cleaned_data['contract'],
-            type=OrderMedia.TYPE_IMAGE,
-        )
+        if not order.media.filter(title=OrderMedia.NAME_CONTRACT).exists():
+            order_media = OrderMedia(
+                order=order,
+                title=OrderMedia.NAME_CONTRACT,
+                file=self.cleaned_data['contract'],
+                type=OrderMedia.TYPE_IMAGE,
+            )
+        else:
+            order_media = order.media.get(title=OrderMedia.NAME_CONTRACT)
         if commit:
             with transaction.atomic():
                 order.save()
