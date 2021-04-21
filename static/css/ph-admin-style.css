@@ -2035,6 +2035,30 @@ a.ph-preview-placeholder:after {
     font-size: 3rem;
 }
 
+/*
+=============================================================
+        SELLER PANEL   .ph-view-order
+=============================================================
+*/
+.ph-view-order .ph-admin-page-list-container ul li span:first-child{
+    margin-left: .3rem;
+}
+.ph-view-order .ph-qc-section{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ph-view-order .ph-qc-section .ph-qc-alarm{
+    font-size: .8rem;
+    line-height: 1;
+    margin-bottom: 0;
+}
+.ph-view-order .ph-qc-section .ph-qc-info-btns a{
+    padding: .2rem .5rem !important;
+    margin: 0 1rem;
+    min-width: 110px;
+}
 
 /*
 =======================================================
@@ -3004,6 +3028,14 @@ a.ph-preview-placeholder:after {
 .ph-view-order-checkpoints li i.fa-times {
     color: red;
 }
+
+.ph-confirmation-order .form-check{
+    display: flex;
+}
+.ph-confirmation-order .form-check .form-check-label{
+    margin-right: 1rem;
+}
+
 
 /*
 =============================================================
