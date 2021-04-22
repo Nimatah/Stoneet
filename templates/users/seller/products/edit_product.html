@@ -3,5 +3,332 @@
 {% load utils %}
 
 {% block admin_content %}
+    <main class="ph-dashboard-main ph-seller-panel ph-edit-product">
+        <div class="container">
+            <div class="ph-admin-page-container ">
+                <div class="ph-admin-page-intro-text">
+                    <span>ویرایش کالا | </span>
+                    در اینجا میتوانید جزییات کالا را ویرایش کنید.
+                </div><!-- ph-admin-page-intro-text -->
+                <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="ph-panel-title">
+                        <span class="title ph-border-radius">
+                            مشخصات کالا
+                        </span>
+                    </div><!-- ph-panel-title -->
+                    <div class="ph-product-info">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>گروه مادر:</span>
+                                        <div class="form-group">
+                                            <select class="custom-select" id="t-1-c">
+                                                <option selected>خام</option>
+                                                <option>فراوری شده</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>زیر گروه:</span>
+                                        <div class="form-group">
+                                            <select class="custom-select" id="t-1-c">
+                                                <option selected>سنگ آهک</option>
+                                                <option>سنگ دولومیت</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-12 ph-product-detail-item">
+                                        <span> انتخاب معدن:</span>
+                                        <div class="form-group">
+                                            <select class="custom-select" id="t-1-c">
+                                                <option selected>معدن سر پل ذهاب</option>
+                                                <option>معادن دیگر</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>عیار (کمترین)</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="13">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>عیار (بیشترین)</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="17">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>سایزبندی (کمترین)</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="12">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>سایزبندی (بیشترین)</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="22">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>انتخاب واحد</span>
+                                        <div class="form-group">
+                                            <select class="custom-select" id="t-1-c">
+                                                <option selected>میلیمتر</option>
+                                                <option>سانتیمتر</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-12 ph-product-detail-item">
+                                        <span>ظرفیت تامین ماهانه</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="178000">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>نوع تحویل</span>
+                                        <div class="form-group">
+                                            <select data-attr-value="" class="mdb-select md-form form-control" >
+                                                    <option selected>بار فله‌ای</option>
+                                                    <option>کیسه‌ای</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>مقدار</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="65000">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>نوع تحویل</span>
+                                        <div class="form-group">
+                                            <select data-attr-value="" class="mdb-select md-form form-control">
+                                                    <option selected>کیلوگرم</option>
+                                                    <option>تن</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>قیمت</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="240000">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>واحد</span>
+                                        <div class="form-group">
+                                            <select data-attr-value="" class="mdb-select md-form form-control">
+                                                    <option selected>کیلوگرم</option>
+                                                    <option>تن</option>
+                                            </select>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>ارسال نمونه</span>
+                                        <div class="form-group">
+                                            <div class="form-check form-check-inline mr-0">
+                                                <input data-choice="" class="form-check-input" type="checkbox" checked>
+                                                <label class="form-check-label" for="multiple-choice-9-1">امکان ارسال نمونه</label>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>مقدار</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" value="2600">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-12 ph-product-detail-item">
+                                        <span>شرایط پرداخت وجه</span>
+                                        <div class="form-group">
+                                            <div class="ph-check-box-ap">
+                                                <input type="hidden" name="attribute_9" id="attribute-9">
+                                                <div class="form-check form-check-inline mr-0">
+                                                    <input data-choice="" class="form-check-input" type="checkbox" checked>
+                                                    <label class="form-check-label" for="multiple-choice-9-1">نقدی</label>
+                                                </div>
+                                                <div class="form-check form-check-inline mr-0">
+                                                    <input data-choice="" class="form-check-input" type="checkbox">
+                                                    <label class="form-check-label" for="multiple-choice-9-2">ماهیانه (پیش از تحویل)</label>
+                                                </div>
+                                                <div class="form-check form-check-inline mr-0">
+                                                    <input data-choice="" class="form-check-input" type="checkbox">
+                                                    <label class="form-check-label" for="multiple-choice-9-3">ماهیانه (پس از تحویل)</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6 ph-product-image-item full">
+                                        <span>تصویر آنالیز محصول</span>
+                                        <div class="file-upload">
+                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                <input name="analyze" id="file-upload-input-analyze"
+                                                       class="file-upload-input" type='file'
+                                                       onchange="readURL(this, 'analyze');"
+                                                       accept="image/*"/>
+                                                <div class="drag-text">
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div id="file-upload-content-analyze" class="file-upload-content">
+                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                     alt="your image"/>
+                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                    <button type="button" onclick="removeUpload('analyze')"
+                                                            class="remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-product-image-item -->
+                                    <div class="col-6 ph-product-image-item full">
+                                        <span>تصویر شاخص محصول</span>
+                                        <div class="file-upload">
+                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                <input name="analyze" id="file-upload-input-feat"
+                                                       class="file-upload-input" type='file'
+                                                       onchange="readURL(this, 'analyze');"
+                                                       accept="image/*"/>
+                                                <div class="drag-text">
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div id="file-upload-content-analyze" class="file-upload-content">
+                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                     alt="your image"/>
+                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                    <button type="button" onclick="removeUpload('analyze')"
+                                                            class="remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-product-image-item -->
+                                    <div class="col-12 ph-gallery-product mt-3">
+                                        <span>گالری تصاویر محصول</span>
+                                        <div class="row">
+                                            <div class="col-3 ph-product-image-item thumb">
+                                                <div class="file-upload">
+                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                        <input name="analyze" id="file-upload-input-feat"
+                                                               class="file-upload-input" type='file'
+                                                               onchange="readURL(this, 'analyze');"
+                                                               accept="image/*"/>
+                                                        <div class="drag-text">
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div id="file-upload-content-analyze" class="file-upload-content">
+                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                             alt="your image"/>
+                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                            <button type="button" onclick="removeUpload('analyze')"
+                                                                    class="remove-image">
+                                                                <i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .ph-product-image-item -->
+                                            <div class="col-3 ph-product-image-item thumb">
+                                                <div class="file-upload">
+                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                        <input name="analyze" id="file-upload-input-feat"
+                                                               class="file-upload-input" type='file'
+                                                               onchange="readURL(this, 'analyze');"
+                                                               accept="image/*"/>
+                                                        <div class="drag-text">
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div id="file-upload-content-analyze" class="file-upload-content">
+                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                             alt="your image"/>
+                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                            <button type="button" onclick="removeUpload('analyze')"
+                                                                    class="remove-image">
+                                                                <i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .ph-product-image-item -->
+                                            <div class="col-3 ph-product-image-item thumb">
+                                                <div class="file-upload">
+                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                        <input name="analyze" id="file-upload-input-feat"
+                                                               class="file-upload-input" type='file'
+                                                               onchange="readURL(this, 'analyze');"
+                                                               accept="image/*"/>
+                                                        <div class="drag-text">
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div id="file-upload-content-analyze" class="file-upload-content">
+                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                             alt="your image"/>
+                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                            <button type="button" onclick="removeUpload('analyze')"
+                                                                    class="remove-image">
+                                                                <i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .ph-product-image-item -->
+                                            <div class="col-3 ph-product-image-item thumb">
+                                                <div class="file-upload">
+                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                        <input name="analyze" id="file-upload-input-feat"
+                                                               class="file-upload-input" type='file'
+                                                               onchange="readURL(this, 'analyze');"
+                                                               accept="image/*"/>
+                                                        <div class="drag-text">
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div id="file-upload-content-analyze" class="file-upload-content">
+                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                             alt="your image"/>
+                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                            <button type="button" onclick="removeUpload('analyze')"
+                                                                    class="remove-image">
+                                                                <i class="fas fa-times"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- .ph-product-image-item -->
+                                        </div><!-- .row -->
+                                    </div><!-- .ph-gallery-product -->
+                                </div><!-- .row -->
+                            </div><!-- .col-6 -->
+                            <div class="col-12 ph-product-description mb-3">
+                                <span>توضیحات</span>
+                                <span></span>
+                            </div>
+                            <div class="col-12 ph-product-update  mb-3">
+                                <a href="#" class="ph-btn ml-auto">به روز رسانی</a>
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </div>
+                    <!-- ph-product-info -->
+                </div>
+                <!-- ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4 -->
+            </div>
+            <!-- ph-admin-page-container -->
+        </div>
+        <!-- container -->
+    </main>
+    <!-- ph-dashboard-main admin-panel ph-qc-product-details -->
+{% endblock %}
 
+{% block footer_static %}
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 {% endblock %}
