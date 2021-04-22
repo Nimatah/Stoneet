@@ -65,14 +65,14 @@
                             </ul>
                         </div>
                         <div class="ph-confirmation-order">
-                          <div class="form-group">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="taeed">
-                              <label class="form-check-label" for="taeed">
-                                  مراحل را مشاهده کرده و تایید میکنم.
-                              </label>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="taeed">
+                                    <label class="form-check-label" for="taeed">
+                                        مراحل را مشاهده کرده و تایید میکنم.
+                                    </label>
+                                </div>
                             </div>
-                          </div>
                         </div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
@@ -158,14 +158,14 @@
                             </div>
                         </div>
                         <div class="ph-confirmation-order">
-                          <div class="form-group">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="pishfactor">
-                              <label class="form-check-label" for="pishfactor">
-                                فاکتور را مشاهده کرده و تایید میکنم.
-                              </label>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="pishfactor">
+                                    <label class="form-check-label" for="pishfactor">
+                                        فاکتور را مشاهده کرده و تایید میکنم.
+                                    </label>
+                                </div>
                             </div>
-                          </div>
                         </div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level2' id="back-level2" class="back">
@@ -215,36 +215,37 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="template_row">
+                                <tr id="template_row_1" class="template_row">
                                     <td class="text-center" scope="row">۱</td>
                                     <td class="text-center">صفحه <span>۱</span> قرارداد</td>
                                     <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
                                             class="fas fa-upload"></i> بارگذاری</a></td>
                                     <td class="text-center"><img src="" alt=""></td>
                                     <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel" title="Delete Row">
+                                        <a href="#" class="list_cancel list_cancel_1" title="Delete Row">
                                             <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr class="no_entries_row">
+                                <tr id="no_entries_row_1" class="no_entries_row">
                                 </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="list_add ph-list-add ph-btn" id="upload_documentation_btn"><i class="fas fa-plus"></i>بارگذاری صفحه
+                            <a href="#" id="list_add_1" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
+                                صفحه
                                 جدید</a>
                         </div>
                         <!-- form-row -->
 
                         <div class="ph-confirmation-order">
-                          <div class="form-group">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="signature">
-                              <label class="form-check-label" for="signature">
-                                تمامی فایل‌ها امضا شده و تایید میکنم.
-                              </label>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="signature">
+                                    <label class="form-check-label" for="signature">
+                                        تمامی فایل‌ها امضا شده و تایید میکنم.
+                                    </label>
+                                </div>
                             </div>
-                          </div>
                         </div>
                         <div class="ph-cpp-btn mt-5" role="group" aria-label="...">
                             <label for='level3' id="back-level3" class="back">
@@ -287,35 +288,54 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="template_row">
+                                <tr id="template_row_2" class="template_row">
                                     <td class="text-center" scope="row">۱</td>
                                     <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
+                                    <td class="text-center">
+                                        <a href="#" class="ph-btn ph-upload-img-contract"><i
                                             class="fas fa-upload"></i> بارگذاری</a></td>
-                                    <td class="text-center"><img src="" alt=""></td>
+                                    <td class="text-center">
+
+
+                                        <form id="myform">
+  <div class="yes">
+    <span class="btn_upload">
+      <input type="file" id="imag" title="" class="input-img"/>
+      Choose Image
+      </span>
+    <img id="ImgPreview" src="" class="preview1" />
+    <input type="button" id="removeImage1" value="x" class="btn-rmv1" />
+  </div>
+</form>
+
+
+
+
+                                    </td>
                                     <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel" title="Delete Row">
+                                        <a href="#" class="list_cancel list_cancel_2" title="Delete Row">
                                             <i class="fas fa-times"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr class="no_entries_row">
+                                <tr id="no_entries_row_2" class="no_entries_row">
                                 </tr>
                                 </tbody>
                             </table>
-                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری صفحه
+                            <a href="#" id="list_add_2" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
+                                صفحه
                                 جدید</a>
                         </div>
                         <!-- form-row -->
                         <div class="ph-confirmation-order">
-                          <div class="form-group">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" id="financial">
-                              <label class="form-check-label" for="financial">
-                                صحت تمامی مدارک را تایید میکنم.
-                              </label>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="financial">
+                                    <label class="form-check-label" for="financial">
+                                        صحت تمامی مدارک را تایید میکنم.
+                                    </label>
+                                </div>
                             </div>
-                          </div>
                         </div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level4' id="back-level4" class="back">
@@ -363,7 +383,6 @@
 {% endblock %}
 
 {% block footer_static %}
-    <script src="{% static 'js/list-product.js' %}"></script>
     <script>
         $('.extra-fields-customer').click(function () {
             $('.customer_records').clone().appendTo('.customer_records_dynamic');
@@ -388,31 +407,80 @@
     </script>
     <script>
         function addNewRow() {
-            var template = $('tr.template_row:first');
-            $('.no_entries_row').css('display', 'none');
+            var template = $('tr#template_row_1:first');
+            $('#no_entries_row_1').css('display', 'none');
             var newRow = template.clone();
-            var lastRow = $('tr.template_row:last').after(newRow);
-
-            $('.list_cancel').on('click', function (event) {
+            var lastRow = $('tr#template_row_1:last').after(newRow);
+            $('.list_cancel_1').on('click', function (event) {
                 event.stopPropagation();
                 event.stopImmediatePropagation();
                 $(this).closest('tr').remove();
-                if ($('.list_cancel').length === 1) {
-                    $('.no_entries_row').css('display', 'none');
+                if ($('.list_cancel_1').length === 1) {
+                    $('#no_entries_row_1').css('display', 'none');
                 }
-                console.log($('.list_cancel').length)
+                console.log($('.list_cancel_1').length)
             });
-            console.log($('.list_cancel').length)
+            console.log($('.list_cancel_1').length)
             $('select.label').on('change', function (event) {
                 event.stopPropagation();
                 event.stopImmediatePropagation();
                 $(this).css('background-color', $(this).val());
-
             })
-
         }
+        $('a#list_add_1').on('click', addNewRow);
+    </script>
+    <script>
+        function addNewRow2() {
+            var template = $('tr#template_row_2:first');
+            $('#no_entries_row_2').css('display', 'none');
+            var newRow = template.clone();
+            var lastRow = $('tr#template_row_2:last').after(newRow);
+            $('.list_cancel_2').on('click', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).closest('tr').remove();
+                if ($('.list_cancel_2').length === 1) {
+                    $('#no_entries_row_2').css('display', 'none');
+                }
+                console.log($('.list_cancel_2').length)
+            });
+            console.log($('.list_cancel_2').length)
+            $('select.label').on('change', function (event) {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+                $(this).css('background-color', $(this).val());
+            })
+        }
+        $('a#list_add_2').on('click', addNewRow2);
+    </script>
+    <script>
+    function readURL(input, imgControlName) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $(imgControlName).attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 
-        $('a.list_add').on('click', addNewRow);
+$("#imag").change(function() {
+  // add your logic to decide which image control you'll use
+  var imgControlName = "#ImgPreview";
+  readURL(this, imgControlName);
+  $('.preview1').addClass('it');
+  $('.btn-rmv1').addClass('rmv');
+});
+
+
+$("#removeImage1").click(function(e) {
+  e.preventDefault();
+  $("#imag").val("");
+  $("#ImgPreview").attr("src", "");
+  $('.preview1').removeClass('it');
+  $('.btn-rmv1').removeClass('rmv');
+});
+
 
     </script>
 {% endblock %}

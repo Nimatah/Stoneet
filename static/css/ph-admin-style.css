@@ -2981,7 +2981,7 @@ a.ph-preview-placeholder:after {
     right: 10px;
     top: 16px;
     height: 10px;
-    width: 240%;
+    width: 250%;
     background: #022C3B;
     margin: auto;
     z-index: 0;
@@ -3034,6 +3034,65 @@ a.ph-preview-placeholder:after {
 }
 .ph-confirmation-order .form-check .form-check-label{
     margin-right: 1rem;
+}
+
+
+.btn_upload {
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background-color: #2a72d4;
+  border: 1px solid #166b8a;
+  padding: 5px 10px;
+}
+
+.btn_upload:hover,
+.btn_upload:focus {
+  background-color: #7ca9e6;
+}
+
+.yes {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10px !important;
+}
+
+.btn_upload input {
+  cursor: pointer;
+  height: 100%;
+  position: absolute;
+  filter: alpha(opacity=1);
+  -moz-opacity: 0;
+  opacity: 0;
+}
+
+.it {
+  height: 100px;
+  margin-left: 10px;
+}
+
+.btn-rmv1,
+.btn-rmv2,
+.btn-rmv3,
+.btn-rmv4,
+.btn-rmv5 {
+  display: none;
+}
+
+.rmv {
+  cursor: pointer;
+  color: #fff;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  display: inline-block;
+  background: rgba(255, 0, 0, 1);
+  margin: -5px -10px;
+}
+
+.rmv:hover {
+  background: rgba(255, 0, 0, 0.5);
 }
 
 
@@ -3541,6 +3600,22 @@ a.ph-preview-placeholder:after {
     .ph-new-login aside.ph-registration-panel-sidebar {
         padding: 1.5rem 0 0;
         height: 15vh;
+    }
+    .ph-view-order .ph-cp-header-parts.shell-1 ul.ph-cp-level-1 li:nth-child(1):after,
+    .ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(1):after,
+    .ph-view-order .ph-cp-header-parts.shell-2 ul.ph-cp-level-2 li:nth-child(2):after,
+    .ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(1):after,
+    .ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(2):after,
+    .ph-view-order .ph-cp-header-parts.shell-3 ul.ph-cp-level-3 li:nth-child(3):after,
+    .ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(1):after,
+    .ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(2):after,
+    .ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(3):after,
+    .ph-view-order .ph-cp-header-parts.shell-4 ul.ph-cp-level-4 li:nth-child(4):after,
+    .ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(1):after,
+    .ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(2):after,
+    .ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(3):after,
+    .ph-view-order .ph-cp-header-parts.shell-5 ul.ph-cp-level-5 li:nth-child(4):after{
+        width: 350%;
     }
 }
 
