@@ -108,6 +108,8 @@ class Order(TimestampedModel):
     weight = models.IntegerField(null=True, blank=True)
     payment_type = models.CharField(max_length=255, null=True, blank=True)
     monthly_load = models.IntegerField(default=1, null=True, blank=True)
+    is_rejected = models.BooleanField(default=False)
+    reject_reason = models.TextField(blank=True)
 
     objects = OrderManager()
 

@@ -24,3 +24,8 @@ def get_item(dictionary, key):
 @register.filter
 def order_state_lt(order, state):
     return order.state_lt(state)
+
+
+@register.filter
+def user_participated_in_auction(auction, user):
+    return auction.has_user_participated(user)

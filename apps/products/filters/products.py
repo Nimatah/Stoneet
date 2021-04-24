@@ -18,3 +18,21 @@ class ProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = ['category', 'scategory', 'state', 'q', ]
+
+
+class AdminProductFilter(django_filters.FilterSet):
+
+    id = django_filters.CharFilter(field_name='pk')
+    seller_id = django_filters.CharFilter(field_name='user', lookup_expr='pk')
+    category = django_filters.CharFilter(method='category_filter')
+    state = django_filters.CharFilter(field_name='state')
+    q = django_filters.CharFilter(field_name='title', lookup_expr='icontains')
+
+    def category_filter(self, queryset, name, value):
+        category = Category.objects.get(pk=value)
+        category_list = category.get_descendants(include_self=True)
+        return queryset.filter(category_id__in=category_list)
+
+    class Meta:
+        model = Product
+        fields = ['id', 'category', 'state', 'q']

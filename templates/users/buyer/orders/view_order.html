@@ -51,34 +51,36 @@
                                     <p>ثبت سفارش</p>
                                 </li>
                                 <li>
-                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
                                     <p>تایید سایت</p>
                                 </li>
                                 <li>
-                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
                                     <p>تایید از سوی فروشنده</p>
                                 </li>
                                 <li>
-                                    <i class="fas {% if order|order_state_lt:order.STATE_PENDING_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
                                     <p>تعیین هزینه حمل و نقل</p>
                                 </li>
                             </ul>
                         </div>
-                        <div class="ph-confirmation-order">
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="taeed">
-                                    <label class="form-check-label" for="taeed">
-                                        مراحل را مشاهده کرده و تایید میکنم.
-                                    </label>
+                        {% if not order|order_state_lt:order.STATE_LOGISTIC %}
+                            <div class="ph-confirmation-order">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="taeed">
+                                        <label class="form-check-label" for="taeed">
+                                            مراحل را مشاهده کرده و تایید میکنم.
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="ph-cpp-btn" role="group" aria-label="...">
-                            <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
-                                <div id="s-1-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
-                            </label>
-                        </div>
+                            <div class="ph-cpp-btn" role="group" aria-label="...">
+                                <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
+                                    <div id="s-1-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                </label>
+                            </div>
+                        {% endif %}
                         <!-- ph-cpp-btn -->
 
                     </div>
@@ -293,22 +295,20 @@
                                     <td class="text-center">صفحه <span>۱</span> قرارداد</td>
                                     <td class="text-center">
                                         <a href="#" class="ph-btn ph-upload-img-contract"><i
-                                            class="fas fa-upload"></i> بارگذاری</a></td>
+                                                class="fas fa-upload"></i> بارگذاری</a></td>
                                     <td class="text-center">
 
 
                                         <form id="myform">
-  <div class="yes">
+                                            <div class="yes">
     <span class="btn_upload">
       <input type="file" id="imag" title="" class="input-img"/>
       Choose Image
       </span>
-    <img id="ImgPreview" src="" class="preview1" />
-    <input type="button" id="removeImage1" value="x" class="btn-rmv1" />
-  </div>
-</form>
-
-
+                                                <img id="ImgPreview" src="" class="preview1"/>
+                                                <input type="button" id="removeImage1" value="x" class="btn-rmv1"/>
+                                            </div>
+                                        </form>
 
 
                                     </td>
@@ -427,6 +427,7 @@
                 $(this).css('background-color', $(this).val());
             })
         }
+
         $('a#list_add_1').on('click', addNewRow);
     </script>
     <script>
@@ -451,35 +452,36 @@
                 $(this).css('background-color', $(this).val());
             })
         }
+
         $('a#list_add_2').on('click', addNewRow2);
     </script>
     <script>
-    function readURL(input, imgControlName) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      $(imgControlName).attr('src', e.target.result);
-    }
-    reader.readAsDataURL(input.files[0]);
-  }
-}
+        function readURL(input, imgControlName) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(imgControlName).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
-$("#imag").change(function() {
-  // add your logic to decide which image control you'll use
-  var imgControlName = "#ImgPreview";
-  readURL(this, imgControlName);
-  $('.preview1').addClass('it');
-  $('.btn-rmv1').addClass('rmv');
-});
+        $("#imag").change(function () {
+            // add your logic to decide which image control you'll use
+            var imgControlName = "#ImgPreview";
+            readURL(this, imgControlName);
+            $('.preview1').addClass('it');
+            $('.btn-rmv1').addClass('rmv');
+        });
 
 
-$("#removeImage1").click(function(e) {
-  e.preventDefault();
-  $("#imag").val("");
-  $("#ImgPreview").attr("src", "");
-  $('.preview1').removeClass('it');
-  $('.btn-rmv1').removeClass('rmv');
-});
+        $("#removeImage1").click(function (e) {
+            e.preventDefault();
+            $("#imag").val("");
+            $("#ImgPreview").attr("src", "");
+            $('.preview1').removeClass('it');
+            $('.btn-rmv1').removeClass('rmv');
+        });
 
 
     </script>

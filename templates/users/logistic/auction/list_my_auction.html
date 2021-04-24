@@ -1,0 +1,774 @@
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load humanize %}
+{% load utils %}
+
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-logistic-panel ph-list-auction">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>مناقصه های من | </span>
+                در این قسمت می توانید تمامی درخواست های خود را مشاهده کنید.
+            </div>
+            <div class="ph-auction-container">
+                <div class="ph-my-auction-tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="current-tab" data-toggle="tab" href="#current_auction"
+                               role="tab"
+                               aria-controls="current_auction" aria-selected="true">در حال انجام</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="won-tab" data-toggle="tab" href="#won_auction" role="tab"
+                               aria-controls="won_auction" aria-selected="false">برنده شده</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="lost-tab" data-toggle="tab" href="#lost_auction" role="tab"
+                               aria-controls="lost_auction" aria-selected="false">از دست رفته</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="expired-tab" data-toggle="tab" href="#expired_auction" role="tab"
+                               aria-controls="expired_auction" aria-selected="false">تمام شده</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+
+                        <div class="tab-pane fade show active" id="current_auction" role="tabpanel"
+                             aria-labelledby="current-tab">
+                            <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                                <div class="ph-ip-wl-header top">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ in_progress.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                                <div class="ph-ip-wl-table">
+                                    <table class="table ph-table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>ردیف</th>
+                                            <th>تاریخ</th>
+                                            <th>شماره سفارش</th>
+                                            <th>نوع بار</th>
+                                            <th>بسته بندی</th>
+                                            <th>میزان بار</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                            <th>وضعیت</th>
+                                            <th>آخرین قیمت</th>
+                                            <th>مشاهده جزییات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for auction in in_progress %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ auction.get_persian_start_date }}</td>
+                                                <td>{{ auction.order.id }}</td>
+                                                <td>{{ auction.order.product.category.title }}</td>
+                                                <td>{{ auction.order.product.get_delivery_type }}</td>
+                                                <td>{{ auction.order.weight }} تن</td>
+                                                <td>{{ auction.order.product.mine.region.parent.title }}</td>
+                                                <td>{{ auction.order.destination.region.parent.title }}</td>
+                                                <td>{{ auction.get_state_display }}</td>
+                                                <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                        <span class="ph-auction-bid-btn"><i
+                                                                class="fas fa-truck"></i></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-ip-wl-table -->
+                                <div class="ph-ip-wl-header bottom">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ in_progress.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="won_auction" role="tabpanel" aria-labelledby="won-tab">
+                            <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                                <div class="ph-ip-wl-header top">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ winner.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                                <div class="ph-ip-wl-table">
+                                    <table class="table ph-table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>ردیف</th>
+                                            <th>تاریخ</th>
+                                            <th>شماره سفارش</th>
+                                            <th>نوع بار</th>
+                                            <th>بسته بندی</th>
+                                            <th>میزان بار</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                            <th>وضعیت</th>
+                                            <th>آخرین قیمت</th>
+                                            <th>مشاهده جزییات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for auction in winner %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ auction.get_persian_start_date }}</td>
+                                                <td>{{ auction.order.id }}</td>
+                                                <td>{{ auction.order.product.category.title }}</td>
+                                                <td>{{ auction.order.product.get_delivery_type }}</td>
+                                                <td>{{ auction.order.weight }} تن</td>
+                                                <td>{{ auction.order.product.mine.region.parent.title }}</td>
+                                                <td>{{ auction.order.destination.region.parent.title }}</td>
+                                                <td>{{ auction.get_state_display }}</td>
+                                                <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                        <span class="ph-auction-bid-btn"><i
+                                                                class="fas fa-truck"></i></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-ip-wl-table -->
+                                <div class="ph-ip-wl-header bottom">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ winner.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="lost_auction" role="tabpanel" aria-labelledby="lost-tab">
+                            <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                                <div class="ph-ip-wl-header top">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ loser.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                                <div class="ph-ip-wl-table">
+                                    <table class="table ph-table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>ردیف</th>
+                                            <th>تاریخ</th>
+                                            <th>شماره سفارش</th>
+                                            <th>نوع بار</th>
+                                            <th>بسته بندی</th>
+                                            <th>میزان بار</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                            <th>وضعیت</th>
+                                            <th>آخرین قیمت</th>
+                                            <th>مشاهده جزییات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for auction in loser %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ auction.get_persian_start_date }}</td>
+                                                <td>{{ auction.order.id }}</td>
+                                                <td>{{ auction.order.product.category.title }}</td>
+                                                <td>{{ auction.order.product.get_delivery_type }}</td>
+                                                <td>{{ auction.order.weight }} تن</td>
+                                                <td>{{ auction.order.product.mine.region.parent.title }}</td>
+                                                <td>{{ auction.order.destination.region.parent.title }}</td>
+                                                <td>{{ auction.get_state_display }}</td>
+                                                <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                        <span class="ph-auction-bid-btn"><i
+                                                                class="fas fa-truck"></i></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-ip-wl-table -->
+                                <div class="ph-ip-wl-header bottom">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ loser.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="expired_auction" role="tabpanel" aria-labelledby="expired-tab">
+                            <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                                <div class="ph-ip-wl-header top">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                {#                                                <ul class="pagination pagination-circle pg-blue">#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Previous">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-right"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Previous</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item active">#}
+                                                {#                                                        <a class="page-link">1</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">2</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">3</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">4</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link">5</a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                    <li class="page-item">#}
+                                                {#                                                        <a class="page-link" aria-label="Next">#}
+                                                {#                                                        <span aria-hidden="true">#}
+                                                {#                                                            <i class="fas fa-chevron-left"></i>#}
+                                                {#                                                        </span>#}
+                                                {#                                                            <span class="sr-only">Next</span>#}
+                                                {#                                                        </a>#}
+                                                {#                                                    </li>#}
+                                                {#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            {#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+                                            {#                                                <option selected>۱۰</option>#}
+                                            {#                                                <option value="1">۲۰</option>#}
+                                            {#                                                <option value="2">۵۰</option>#}
+                                            {#                                                <option value="3">۱۰۰</option>#}
+                                            {#                                            </select>#}
+                                            {#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ finished.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                                <div class="ph-ip-wl-table">
+                                    <table class="table ph-table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>ردیف</th>
+                                            <th>تاریخ</th>
+                                            <th>شماره سفارش</th>
+                                            <th>نوع بار</th>
+                                            <th>بسته بندی</th>
+                                            <th>میزان بار</th>
+                                            <th>مبدا</th>
+                                            <th>مقصد</th>
+                                            <th>وضعیت</th>
+                                            <th>آخرین قیمت</th>
+                                            <th>مشاهده جزییات</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for auction in finished %}
+                                            <tr>
+                                                <td>{{ forloop.counter }}</td>
+                                                <td>{{ auction.get_persian_start_date }}</td>
+                                                <td>{{ auction.order.id }}</td>
+                                                <td>{{ auction.order.product.category.title }}</td>
+                                                <td>{{ auction.order.product.get_delivery_type }}</td>
+                                                <td>{{ auction.order.weight }} تن</td>
+                                                <td>{{ auction.order.product.mine.region.parent.title }}</td>
+                                                <td>{{ auction.order.destination.region.parent.title }}</td>
+                                                <td>{{ auction.get_state_display }}</td>
+                                                <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                        <span class="ph-auction-bid-btn"><i
+                                                                class="fas fa-truck"></i></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-ip-wl-table -->
+                                <div class="ph-ip-wl-header bottom">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+{#                                                <ul class="pagination pagination-circle pg-blue">#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link" aria-label="Previous">#}
+{#                                                        <span aria-hidden="true">#}
+{#                                                            <i class="fas fa-chevron-right"></i>#}
+{#                                                        </span>#}
+{#                                                            <span class="sr-only">Previous</span>#}
+{#                                                        </a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item active">#}
+{#                                                        <a class="page-link">1</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link">2</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link">3</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link">4</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link">5</a>#}
+{#                                                    </li>#}
+{#                                                    <li class="page-item">#}
+{#                                                        <a class="page-link" aria-label="Next">#}
+{#                                                        <span aria-hidden="true">#}
+{#                                                            <i class="fas fa-chevron-left"></i>#}
+{#                                                        </span>#}
+{#                                                            <span class="sr-only">Next</span>#}
+{#                                                        </a>#}
+{#                                                    </li>#}
+{#                                                </ul>#}
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+{#                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+{#                                                <option selected>۱۰</option>#}
+{#                                                <option value="1">۲۰</option>#}
+{#                                                <option value="2">۵۰</option>#}
+{#                                                <option value="3">۱۰۰</option>#}
+{#                                            </select>#}
+{#                                            <span>تعداد نمایش</span>#}
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>{{ finished.count }} مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- .ph-auction-container -->
+        </div><!-- .container -->
+    </main><!-- .ph-dashboard-main -->
+
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_auction" tabindex="-1" role="dialog"
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">مشخصات سفارش</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="auction-start">تاریخ شروع مناقصه</label>
+                                <input id="auction-start" type="text" class="form-control" value="02/11/1365" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="order-id">شماره سفارش</label>
+                                <input id="order-id" type="text" class="form-control" value="566784" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="category">نوع بار</label>
+                                <input id="category" type="text" class="form-control" value="مواد معدنی" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="delivery-type">بسته بندی</label>
+                                <input id="delivery-type" type="text" class="form-control" value="کیسه 25 کیلویی"
+                                       readonly>
+                            </div><!-- .form-group -->
+                        </div><!-- .col-md-6 -->
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="auction-finish">تاریخ پایان مناقصه</label>
+                                <input id="auction-finish" type="text" class="form-control" value="03/11/1365" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="weight">میزان بار</label>
+                                <input id="weight" type="text" class="form-control" value="30 تن" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="monthly-load">تعداد ارسال</label>
+                                <input id="monthly-load" type="text" class="form-control" value="4" readonly>
+                            </div><!-- .form-group -->
+                            <div class="form-group">
+                                <label for="monthly-load-weight">میزان هر ارسال</label>
+                                <input id="monthly-load-weight" type="text" class="form-control" value="10 تن" readonly>
+                            </div><!-- .form-group -->
+                        </div><!-- .col-md-6 -->
+                    </div><!-- .row -->
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h4>مبدا</h4>
+                            <span id="source-province">نام استان</span> - <span id="source-city">نام شهر</span>
+                            <p id="source-address">آدرس مبدا در این قسمت وارد می شود</p>
+                        </div><!-- .col-md-6 -->
+                        <div class="col-12 col-md-6">
+                            <h4>مقصد</h4>
+                            <span id="destination-province">نام استان</span> - <span
+                                id="destination-city">نام شهر</span>
+                            <p id="destination-address">آدرس مقصد در این قسمت وارد می شود</p>
+                        </div><!-- .col-md-6 -->
+                    </div><!-- .row -->
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="lowest-bid">آخرین قیمت</label>
+                                <input id="lowest-bid" type="text" class="form-control" value="345.000" readonly>
+                            </div><!-- .form-group -->
+                        </div><!-- .col-md-6 -->
+                        <div class="col-12 col-md-6">
+                            <div class="form-group">
+                                <label for="bid-price">قیمت پیشنهادی شما</label>
+                                <input type="text" class="form-control" id="bid-price">
+                            </div><!-- .form-group -->
+                        </div><!-- .col-md-6 -->
+                    </div><!-- .row -->
+                    <span id="auction-error" class="text-danger" style="display: none;"></span>
+                </div><!-- .modal-body -->
+                <div class="modal-footer">
+                    <a id="persist-bid" href="#" data-auction-id="" class="ph-btn">ثبت</a>
+                </div><!-- .modal-footer -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_Auction_Modal -->
+
+{% endblock %}

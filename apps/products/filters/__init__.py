@@ -1,1 +1,1 @@
-from .products import ProductFilter
+from .products import ProductFilter, AdminProductFilter

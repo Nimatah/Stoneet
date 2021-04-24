@@ -196,8 +196,17 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="ph-admin-table-cell">
+                                        <div class="d-flex justify-content-center">
+                                        <span class="ph-admin-table-cell">
                                             {{ order.get_state_display }}
+                                        </span>
+                                            {% if order.is_rejected %}
+                                                <a href="#" class="ph-bell" id="reject-{{ order.id }}"
+                                                   data-toggle="modal" data-reject-reason="{{ order.reject_reason }}"
+                                                   data-target="#bell-modal">
+                                                    <i class="far fa-bell"></i>
+                                                </a>
+                                            {% endif %}
                                         </div>
                                     </td>
                                     <td>
@@ -299,5 +308,5 @@
 {% endblock %}
 
 {% block footer_static %}
-    <script src="{% static 'js/list-product.js' %}"></script>
+    <script src="{% static 'js/list_order.js' %}"></script>
 {% endblock %}

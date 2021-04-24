@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.auction.models import Auction, Bid
+
+
+class BidInline(admin.StackedInline):
+
+    model = Bid
+
+
+@admin.register(Auction)
+class AuctionAdmin(admin.ModelAdmin):
+
+    inlines = [BidInline, ]

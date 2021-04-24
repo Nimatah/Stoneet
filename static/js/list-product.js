@@ -63,3 +63,11 @@ if (queryParams.q !== undefined && queryParams.q !== '') {
     $('#ph_admin_search_text').text(queryParams.q).trigger('change');
 }
 
+$('[id^=reject-]').on('click', function (e) {
+    e.preventDefault();
+
+    const rejectReason = $(this).data('reject-reason')
+
+    $('#bell-modal .modal-body').empty().append(`<span>${rejectReason}</span>`)
+    $('#bell-modal').modal.show()
+})

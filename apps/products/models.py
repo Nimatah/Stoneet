@@ -348,9 +348,10 @@ class Product(TimestampedModel):
     state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_DRAFT)
     title = models.CharField(max_length=255)
     mine = models.ForeignKey(Mine, on_delete=models.CASCADE, null=True, blank=True)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
+    reject_reason = models.TextField(blank=True)
 
     objects = ProductManager()
 

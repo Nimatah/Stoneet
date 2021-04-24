@@ -12,6 +12,8 @@ urlpatterns = [
     path('api/', include('apps.users.api.urls', namespace='users_api')),
     path('api/', include('apps.products.api.urls', namespace='products_api')),
     path('api/', include('apps.home.api.urls', namespace='home_api')),
+    path('api/', include('apps.orders.api.urls', namespace='order_api')),
+    path('api/', include('apps.auction.api.urls', namespace='auction_api')),
 ]
 
 if settings.DEBUG:
