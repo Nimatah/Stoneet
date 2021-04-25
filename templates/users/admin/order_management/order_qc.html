@@ -173,6 +173,8 @@
             </div>
         </div>
     </main>
+
+    <-- admin_qc_modal------------------------------ -->
     <div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
          aria-labelledby="auction_modal" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -268,12 +270,53 @@
                                        for="admin_qc_check_10">{{ states|get_item:order.STATE_FINISHED }}</label>
                             </div><!-- .form-group -->
                         </div>
-                        <div class="col-12">
+
+
+                        <div class="col-12 col-md-6">
+                            <div id="ph_disagree_admin_qc_modal">
+                                <form>
+                                    <select name="cars" class="custom-select">
+                                        <option selected>دلیل رد شدن</option>
+                                        <option value="volvo">دلیل اول</option>
+                                        <option value="fiat">دلیل دوم</option>
+                                        <option value="audi">دلیل سوم</option>
+                                    </select>
+                                    <textarea class="form-control" placeholder="جزییات رد سفارش را بنویسید" id="ph_disagree_text" rows="3"></textarea>
+                                    <a href="#" class="ph-btn">رد سفارش</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                                        <div class="file-upload">
+                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                <input name="analyze" id="file-upload-input-analyze"
+                                                       class="file-upload-input" type='file'
+                                                       onchange="readURL(this, 'analyze');"
+                                                       accept="image/*"/>
+                                                <div class="drag-text">
+                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div id="file-upload-content-analyze" class="file-upload-content">
+                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
+                                                     alt="your image"/>
+                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                    <button type="button" onclick="removeUpload('analyze')"
+                                                            class="remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                        </div>
+
+
+                       <!--  <div class="col-12">
                             <div class="custom-control custom-checkbox mt-3">
                                 <input type="file" name="contract" class="custom-file-input" id="admin_qc_check_6" value="{{ contract.file }}">
                                 <label class="custom-file-label" for="admin_qc_check_6">{% if contract %} {{ contract.file }} {% else %}آپلود قرارداد{% endif %}</label>
-                            </div><!-- .form-group -->
-                        </div>
+                            </div>.form-group
+                        </div>-->
                     </div><!-- .row -->
                     <div class="row my-3">
                         <div class="col-12 col-md-6">
@@ -384,4 +427,6 @@
 
 {% block footer_static %}
     <script src="{% static 'js/admin_order_qc.js' %}"></script>
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 {% endblock %}

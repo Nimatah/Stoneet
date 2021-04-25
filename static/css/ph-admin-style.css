@@ -3145,6 +3145,58 @@ a.ph-preview-placeholder:after {
   background: rgba(255, 0, 0, 0.5);
 }
 
+.ph-buyer-panel.ph-view-order .file-upload{
+    background-color: #f5f5f5;
+    width: 185px;
+    height: 185px;
+    margin: auto;
+    border-radius: 10px;
+}
+.ph-buyer-panel.ph-view-order .file-upload img,
+.ph-buyer-panel.ph-view-order .file-upload img{
+    width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.ph-buyer-panel.ph-view-order .file-upload .drag-text h5{
+    font-size: .85rem;
+    line-height: 1.5;
+}
+.ph-buyer-panel.ph-view-order .file-upload .drag-text i{
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+.ph-buyer-panel.ph-view-order .file-upload .image-title-wrap{
+    bottom: 10%;
+    top: auto;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+}
+.ph-buyer-panel.ph-view-order .file-upload .image-title-wrap button{
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+    background: #7e111a;
+    color: #fff;
+    box-shadow: 0 0 6px 1px #FFffff;
+}
+.ph-buyer-panel.ph-view-order .file-upload .image-title-wrap button:hover{
+    background: #FFffff;
+    color: #7e111a;
+}
+
+
 
 /*
 =============================================================
@@ -3613,6 +3665,76 @@ a.ph-preview-placeholder:after {
     font-size: 17px;
 }
 
+.ph-order-img-upload{
+    width: 100%;
+}
+
+.ph-order-img-upload .imagePreview {
+    width: 100%;
+    height: 130px;
+    background-position: center center;
+    background: url(images/upload-img.png);
+    background-color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    border: 6px solid #efefef;
+    margin: 1rem 0 0;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: inset 0 0 11px -1px #000000;
+}
+
+.ph-order-img-upload .ph-spm-create-product-img-up-btn {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
+    background: #62a3bb;
+    border-color: #62a3bb;
+    color: #fff;
+    margin-top: .69rem;
+}
+
+.ph-order-img-upload .imgUp {
+    margin-bottom: 15px;
+}
+
+.ph-order-img-upload .del {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 6px 0 20px;
+    background-color: #ef4b4b;
+    color: #fff;
+    box-shadow: inset 0 0 10px -1px #000000, -5px 6px 8px -5px #797979;
+    text-align: center;
+    margin-top: 0px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.ph-order-img-upload .imgAdd {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #28a745;
+    color: #fff;
+    margin: 2.5rem;
+    box-shadow: 0px 4px 6px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /*=======================================================================================================================
 /*=======================================================================================================================
