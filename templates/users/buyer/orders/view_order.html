@@ -216,21 +216,8 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr id="template_row_1" class="template_row">
-                                    <td class="text-center" scope="row">۱</td>
-                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
-                                            class="fas fa-upload"></i> بارگذاری</a></td>
-                                    <td class="text-center"><img src="" alt=""></td>
-                                    <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel list_cancel_1" title="Delete Row">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr id="no_entries_row_1" class="no_entries_row">
-                                </tr>
+                                <tbody id="list_add_1_tbody">
+
                                 </tbody>
                             </table>
                             <a href="#" id="list_add_1" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
@@ -289,37 +276,8 @@
                                     <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr id="template_row_2" class="template_row">
-                                    <td class="text-center" scope="row">۱</td>
-                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                    <td class="text-center">
-                                        <a href="#" class="ph-btn ph-upload-img-contract"><i
-                                                class="fas fa-upload"></i> بارگذاری</a></td>
-                                    <td class="text-center">
+                                <tbody id="list_add_2_tbody">
 
-
-                                        <form id="myform">
-                                            <div class="yes">
-    <span class="btn_upload">
-      <input type="file" id="imag" title="" class="input-img"/>
-      Choose Image
-      </span>
-                                                <img id="ImgPreview" src="" class="preview1"/>
-                                                <input type="button" id="removeImage1" value="x" class="btn-rmv1"/>
-                                            </div>
-                                        </form>
-
-
-                                    </td>
-                                    <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel list_cancel_2" title="Delete Row">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr id="no_entries_row_2" class="no_entries_row">
-                                </tr>
                                 </tbody>
                             </table>
                             <a href="#" id="list_add_2" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
@@ -383,6 +341,7 @@
 {% endblock %}
 
 {% block footer_static %}
+    <script src="{% static 'js/list-product.js' %}"></script>
     <script>
         $('.extra-fields-customer').click(function () {
             $('.customer_records').clone().appendTo('.customer_records_dynamic');
@@ -406,54 +365,54 @@
         });
     </script>
     <script>
-        function addNewRow() {
-            var template = $('tr#template_row_1:first');
-            $('#no_entries_row_1').css('display', 'none');
-            var newRow = template.clone();
-            var lastRow = $('tr#template_row_1:last').after(newRow);
-            $('.list_cancel_1').on('click', function (event) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                $(this).closest('tr').remove();
-                if ($('.list_cancel_1').length === 1) {
-                    $('#no_entries_row_1').css('display', 'none');
-                }
+        /*    function addNewRow() {
+                var template = $('tr#template_row_1:first');
+                $('#no_entries_row_1').css('display', 'none');
+                var newRow = template.clone();
+                var lastRow = $('tr#template_row_1:last').after(newRow);
+                $('.list_cancel_1').on('click', function (event) {
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    $(this).closest('tr').remove();
+                    if ($('.list_cancel_1').length === 1) {
+                        $('#no_entries_row_1').css('display', 'none');
+                    }
+                    console.log($('.list_cancel_1').length)
+                });
                 console.log($('.list_cancel_1').length)
-            });
-            console.log($('.list_cancel_1').length)
-            $('select.label').on('change', function (event) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                $(this).css('background-color', $(this).val());
-            })
-        }
+                $('select.label').on('change', function (event) {
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    $(this).css('background-color', $(this).val());
+                })
+            }*/
 
-        $('a#list_add_1').on('click', addNewRow);
+        /*     $('a#list_add_1').on('click', addNewRow);*/
     </script>
     <script>
-        function addNewRow2() {
-            var template = $('tr#template_row_2:first');
-            $('#no_entries_row_2').css('display', 'none');
-            var newRow = template.clone();
-            var lastRow = $('tr#template_row_2:last').after(newRow);
-            $('.list_cancel_2').on('click', function (event) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                $(this).closest('tr').remove();
-                if ($('.list_cancel_2').length === 1) {
-                    $('#no_entries_row_2').css('display', 'none');
-                }
+        /*    function addNewRow2() {
+                var template = $('tr#template_row_2:first');
+                $('#no_entries_row_2').css('display', 'none');
+                var newRow = template.clone();
+                var lastRow = $('tr#template_row_2:last').after(newRow);
+                $('.list_cancel_2').on('click', function (event) {
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    $(this).closest('tr').remove();
+                    if ($('.list_cancel_2').length === 1) {
+                        $('#no_entries_row_2').css('display', 'none');
+                    }
+                    console.log($('.list_cancel_2').length)
+                });
                 console.log($('.list_cancel_2').length)
-            });
-            console.log($('.list_cancel_2').length)
-            $('select.label').on('change', function (event) {
-                event.stopPropagation();
-                event.stopImmediatePropagation();
-                $(this).css('background-color', $(this).val());
-            })
-        }
+                $('select.label').on('change', function (event) {
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+                    $(this).css('background-color', $(this).val());
+                })
+            }
 
-        $('a#list_add_2').on('click', addNewRow2);
+            $('a#list_add_2').on('click', addNewRow2);*/
     </script>
     <script>
         function readURL(input, imgControlName) {
@@ -483,6 +442,88 @@
             $('.btn-rmv1').removeClass('rmv');
         });
 
+        $(document).ready(function () {
+            var rowIdx = 0;
+            $('#list_add_1').on('click', function () {
+                $('#list_add_1_tbody').append(`<tr id="R${++rowIdx}">
+                                  <tr id="template_row_1" class="template_row">
+                                    <td class="text-center" scope="row">${rowIdx}</td>
+                                    <td class="text-center">صفحه <span>${rowIdx}</span> قرارداد</td>
+                                    <td class="text-center"><a href="#" class="ph-btn ph-upload-img-contract"><i
+                                            class="fas fa-upload"></i> بارگذاری</a></td>
+                                    <td class="text-center"><img src="" alt=""></td>
+                                    <td class="text-center" class="controls">
+                                        <a href="#" class="list_cancel list_cancel_1" title="Delete Row">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr id="no_entries_row_1" class="no_entries_row">
+                                </tr>
+              </tr>`);
+            });
+            $('#list_add_1_tbody').on('click', '.list_cancel_1', function () {
+                var child = $(this).closest('tr').nextAll();
+                child.each(function () {
+                    var id = $(this).attr('id');
+                    var idx = $(this).children('#template_row_1').children('td');
+                    var dig = parseInt(id.substring(1));
+                    idx.html(`Row ${dig - 1}`);
+                    $(this).attr('id', `R${dig - 1}`);
+                });
+                $(this).closest('tr').remove();
+                rowIdx--;
+            });
+        });
+        $(document).ready(function () {
+            var rowIdx = 0;
+            $('#list_add_2').on('click', function () {
+                $('#list_add_2_tbody').append(`<tr id="R${++rowIdx}">
+                                            <tr id="template_row_2" class="template_row">
+                                    <td class="text-center" scope="row">${rowIdx}</td>
+                                    <td class="text-center">صفحه <span>${rowIdx}</span> قرارداد</td>
+                                    <td class="text-center">
+                                        <a href="#" class="ph-btn ph-upload-img-contract"><i
+                                                class="fas fa-upload"></i> بارگذاری</a></td>
+                                    <td class="text-center">
+
+
+                                        <form id="myform">
+                                            <div class="yes">
+    <span class="btn_upload">
+      <input type="file" id="imag" title="" class="input-img"/>
+      Choose Image
+      </span>
+                                                <img id="ImgPreview" src="" class="preview1"/>
+                                                <input type="button" id="removeImage1" value="x" class="btn-rmv1"/>
+                                            </div>
+                                        </form>
+
+
+                                    </td>
+                                    <td class="text-center" class="controls">
+                                        <a href="#" class="list_cancel list_cancel_2" title="Delete Row">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr id="no_entries_row_2" class="no_entries_row">
+                                </tr>
+              </tr>`);
+            });
+            $('#list_add_2_tbody').on('click', '.list_cancel_2', function () {
+                var child = $(this).closest('tr').nextAll();
+                child.each(function () {
+                    var id = $(this).attr('id');
+                    var idx = $(this).children('#template_row_2').children('td');
+                    var dig = parseInt(id.substring(1));
+                    idx.html(`Row ${dig - 1}`);
+                    $(this).attr('id', `R${dig - 1}`);
+                });
+                $(this).closest('tr').remove();
+                rowIdx--;
+            });
+        });
 
     </script>
 {% endblock %}
