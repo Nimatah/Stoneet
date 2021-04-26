@@ -212,9 +212,10 @@
                                     <div class="row">
                                         <div class="col-3 col-md-2 imgUp">
                                             <div class="imagePreview"></div>
-                                            <span>صفحه اول قرارداد</span>
+                                            <label><input class="image-name-3" type="text" readonly></label>
+
                                             <label class="btn ph-spm-create-product-img-up-btn">
-                                                آپلود<input type="file" class="uploadFile img" value="Upload Photo"
+                                                آپلود<input type="file" class="uploadFile img upload-btn-3" value="Upload Photo"
                                                             style="width: 0px;height: 0px;overflow: hidden;">
                                             </label>
                                         </div>
@@ -291,9 +292,9 @@
                                     <div class="row">
                                         <div class="col-3 col-md-2 imgUp">
                                             <div class="imagePreview"></div>
-                                            <span>صفحه اول قرارداد</span>
+                                            <label><input type="text" class="image-name-3" readonly></label>
                                             <label class="btn ph-spm-create-product-img-up-btn">
-                                                آپلود<input type="file" class="uploadFile img" value="Upload Photo"
+                                                آپلود<input type="file" class="uploadFile img upload-btn-3" value="Upload Photo"
                                                             style="width: 0px;height: 0px;overflow: hidden;">
                                             </label>
                                         </div>
@@ -411,188 +412,32 @@
 
 {% block footer_static %}
     <script src="{% static 'js/list-product.js' %}"></script>
-
-
-    {% comment %}<script>
-        $('.extra-fields-customer').click(function () {
-            $('.customer_records').clone().appendTo('.customer_records_dynamic');
-            $('.customer_records_dynamic .customer_records').addClass('single remove');
-            $('.single .extra-fields-customer').remove();
-            $('.single').append('<a href="#" class="remove-field ph-btn btn-remove-customer"><i class="fas fa-times"></i></a>');
-            $('.customer_records_dynamic > .single').attr("class", "remove");
-
-            $('.customer_records_dynamic input').each(function () {
-                var count = 0;
-                var fieldname = $(this).attr("name");
-                $(this).attr('name', fieldname + count);
-                count++;
-            });
-
+    <script>
+        $(".imgAdd").click(function () {
+            $(this).closest(".row").find('.imgAdd').before('<div class="col-3 col-md-2 imgUp"><div class="imagePreview"></div><label><input id="image-name-3" class="image-name-3" type="text" readonly></label><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img upload-btn-3" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;" id="upload-btn-3"></label><i class="fa fa-times del"></i></div>');
         });
+        $(document).on("click", "i.del", function () {
+            $(this).parent().remove();
+        });
+        $(function () {
+            $(document).on("change", ".uploadFile", function () {
+                var uploadFile = $(this);
+                var files = !!this.files ? this.files : [];
+                if (!files.length || !window.FileReader) return;
 
-        $(document).on('click', '.remove-field', function (e) {
-            $(this).parent('.remove').remove();
-            e.preventDefault();
+                if (/^image/.test(files[0].type)) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(files[0]);
+
+                    reader.onloadend = function () {
+                        uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
+                    }
+                }
+
+            });
+        });
+        $(document).on('change', '.upload-btn-3', function (){
+            $(this).parent().parent().find('.image-name-3').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
         });
     </script>
-    <script>
-        function readURL(input, imgControlName) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $(imgControlName).attr('src', e.target.result);
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        $("#imag").change(function () {
-            // add your logic to decide which image control you'll use
-            var imgControlName = "#ImgPreview";
-            readURL(this, imgControlName);
-            $('.preview1').addClass('it');
-            $('.btn-rmv1').addClass('rmv');
-        });
-
-
-        $("#removeImage1").click(function (e) {
-            e.preventDefault();
-            $("#imag").val("");
-            $("#ImgPreview").attr("src", "");
-            $('.preview1').removeClass('it');
-            $('.btn-rmv1').removeClass('rmv');
-        });
-
-        $(document).ready(function () {
-            var rowIdx = 0;
-            $('#list_add_1').on('click', function () {
-                $('#list_add_1_tbody').append(`<tr id="R${++rowIdx}">
-                                  <tr id="template_row_1" class="template_row">
-                                    <td class="text-center" scope="row">${rowIdx}</td>
-                                    <td class="text-center">صفحه اول قرارداد</td>
-                                    <td class="text-center">
-                                        <div class="file-upload">
-                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                <input name="analyze" id="file-upload-input-analyze"
-                                                       class="file-upload-input" type='file'
-                                                       onchange="readURL(this, 'analyze');"
-                                                       accept="image/*"/>
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
-                                                </div>
-                                            </div>
-                                            <div id="file-upload-content-analyze" class="file-upload-content">
-                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                     alt="your image"/>
-                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload('analyze')"
-                                                            class="remove-image">
-                                                        <i class="fas fa-times"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-</td>
-                                    <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel list_cancel_1" title="Delete Row">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr id="no_entries_row_1" class="no_entries_row">
-                                </tr>
-              </tr>`);
-            });
-            $('#list_add_1_tbody').on('click', '.list_cancel_1', function () {
-                var child = $(this).closest('tr').nextAll();
-                child.each(function () {
-                    var id = $(this).attr('id');
-                    var idx = $(this).children('#template_row_1').children('td');
-                    var dig = parseInt(id.substring(1));
-                    idx.html(`Row ${dig - 1}`);
-                    $(this).attr('id', `R${dig - 1}`);
-                });
-                $(this).closest('tr').remove();
-                rowIdx--;
-            });
-        });
-        $(document).ready(function () {
-            var rowIdx = 0;
-            $('#list_add_2').on('click', function () {
-                $('#list_add_2_tbody').append(`<tr id="R${++rowIdx}">
-                                            <tr id="template_row_2" class="template_row">
-                                    <td class="text-center" scope="row">${rowIdx}</td>
-                                    <td class="text-center">صفحه <span>${rowIdx}</span> قرارداد</td>
-                                    <td class="text-center">
-                                        <a href="#" class="ph-btn ph-upload-img-contract"><i
-                                                class="fas fa-upload"></i> بارگذاری</a></td>
-                                    <td class="text-center">
-
-
-                                        <form id="myform">
-                                            <div class="yes">
-    <span class="btn_upload">
-      <input type="file" id="imag" title="" class="input-img"/>
-      Choose Image
-      </span>
-                                                <img id="ImgPreview" src="" class="preview1"/>
-                                                <input type="button" id="removeImage1" value="x" class="btn-rmv1"/>
-                                            </div>
-                                        </form>
-
-
-                                    </td>
-                                    <td class="text-center" class="controls">
-                                        <a href="#" class="list_cancel list_cancel_2" title="Delete Row">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr id="no_entries_row_2" class="no_entries_row">
-                                </tr>
-              </tr>`);
-            });
-            $('#list_add_2_tbody').on('click', '.list_cancel_2', function () {
-                var child = $(this).closest('tr').nextAll();
-                child.each(function () {
-                    var id = $(this).attr('id');
-                    var idx = $(this).children('#template_row_2').children('td');
-                    var dig = parseInt(id.substring(1));
-                    idx.html(`Row ${dig - 1}`);
-                    $(this).attr('id', `R${dig - 1}`);
-                });
-                $(this).closest('tr').remove();
-                rowIdx--;
-            });
-        });
-
-
-
-    </script>{% endcomment %}
-   <script>
-      $(".imgAdd").click(function () {
-         $(this).closest(".row").find('.imgAdd').before('<div class="col-3 col-md-2 imgUp"><div class="imagePreview"></div><span>صفحه دوم قرارداد</span><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
-      });
-      $(document).on("click", "i.del", function () {
-         $(this).parent().remove();
-      });
-      $(function () {
-         $(document).on("change", ".uploadFile", function () {
-            var uploadFile = $(this);
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
-
-            if (/^image/.test(files[0].type)) { // only image file
-               var reader = new FileReader(); // instance of the FileReader
-               reader.readAsDataURL(files[0]); // read the local file
-
-               reader.onloadend = function () { // set image data as background of div
-                  //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
-                  uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-               }
-            }
-
-         });
-      });
-   </script>
 {% endblock %}
