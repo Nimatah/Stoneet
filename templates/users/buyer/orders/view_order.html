@@ -200,7 +200,7 @@
                             <span class="title">اطلاعات قرارداد</span>
                         </div>
                         <div class="ph-tcw-download">
-                            <p>متن قرارداد را دانلود نمایید و بعد از امضا در جدول زیر بارگذاری کنید</p>
+                            <p>متن قرارداد را دانلود نمایید و بعد از امضا در بخش زیر بارگذاری کنید</p>
                             <a href="#" class="ph-btn ph-download"><i class="fas fa-download"></i>دانلود
                                 قرارداد</a>
                         </div>
@@ -209,16 +209,16 @@
                             <div class="ph-order-img-upload">
 
                                 <div class="ph-spm-create-product-img-up">
-                                    <h3 class="ph-spm-create-product-img-up-title">عکس محصول</h3>
                                     <div class="row">
-                                        <div class="col-6 col-md-4 imgUp">
+                                        <div class="col-3 col-md-2 imgUp">
                                             <div class="imagePreview"></div>
+                                            <span>صفحه اول قرارداد</span>
                                             <label class="btn ph-spm-create-product-img-up-btn">
                                                 آپلود<input type="file" class="uploadFile img" value="Upload Photo"
                                                             style="width: 0px;height: 0px;overflow: hidden;">
                                             </label>
                                         </div>
-                                        <!-- col-6 col-md-4 -->
+                                        <!-- col-4 col-md-3 -->
                                         <i class="fa fa-plus imgAdd"></i>
                                     </div>
                                     <!-- row -->
@@ -285,6 +285,24 @@
                         </div>
                         <div class="form-row ph-tcw-upload align-items-center">
 
+                            <div class="ph-order-img-upload">
+
+                                <div class="ph-spm-create-product-img-up">
+                                    <div class="row">
+                                        <div class="col-3 col-md-2 imgUp">
+                                            <div class="imagePreview"></div>
+                                            <span>صفحه اول قرارداد</span>
+                                            <label class="btn ph-spm-create-product-img-up-btn">
+                                                آپلود<input type="file" class="uploadFile img" value="Upload Photo"
+                                                            style="width: 0px;height: 0px;overflow: hidden;">
+                                            </label>
+                                        </div>
+                                        <!-- col-4 col-md-3 -->
+                                        <i class="fa fa-plus imgAdd"></i>
+                                    </div>
+                                    <!-- row -->
+                                </div>
+                            </div>
                             <!-- <table class="common_table ph-table table table-bordered text-center">
                                 <thead class="thead-dark">
                                 <tr>
@@ -340,7 +358,40 @@
 
                     <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
 
-                        777777777777777777777777777777777777777777777777777
+
+                        <div class="ph-view-order-block">
+                            <ul class="ph-view-order-checkpoints">
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_SUBMITTED %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>ثبت سفارش</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_ADMIN %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تایید سایت</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_SELLER %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تایید از سوی فروشنده</p>
+                                </li>
+                                <li>
+                                    <i class="fas {% if order|order_state_lt:order.STATE_LOGISTIC %}fa-times{% else %}fa-check{% endif %}"></i>
+                                    <p>تعیین هزینه حمل و نقل</p>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    <p>فاکتور را مشاهده کرده و تایید میکنم</p>
+                                </li>
+                                <li>
+                                    <i class="fas fa-times"></i>
+                                    <p>تمامی فایل‌ها امضا شده و تایید میکنم</p>
+                                </li>
+                                <li>
+                                    <i class="fas fa-check"></i>
+                                    <p>صحت تمامی مدارک را تایید میکنم</p>
+                                </li>
+                            </ul>
+                        </div>
+
 
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level5' id="back-level5" class="back">
@@ -520,7 +571,7 @@
     </script>{% endcomment %}
    <script>
       $(".imgAdd").click(function () {
-         $(this).closest(".row").find('.imgAdd').before('<div class="col-6 col-md-4 imgUp"><div class="imagePreview"></div><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
+         $(this).closest(".row").find('.imgAdd').before('<div class="col-3 col-md-2 imgUp"><div class="imagePreview"></div><span>صفحه دوم قرارداد</span><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;"></label><i class="fa fa-times del"></i></div>');
       });
       $(document).on("click", "i.del", function () {
          $(this).parent().remove();
