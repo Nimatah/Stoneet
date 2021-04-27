@@ -120,7 +120,7 @@ function handleValidateUser() {
         const body = {
             email: $('#sign_up_email').val(),
             password: $('#sign_up_password').val(),
-            mobile_number: $('#sign_up_number').val()
+            mobile_number: $('#sign_up_number').val(),
         }
         $.ajax("/api/validate/registration/auth", {
             method: "POST",
@@ -130,6 +130,10 @@ function handleValidateUser() {
                 'Accept-Language': 'fa',
             },
             data: JSON.stringify(body),
+            success: function (){
+                //enter arious
+                nextPrev(1);
+            },
             error: function (xhr, status, error) {
                 e.preventDefault();
                 $('#error-modal .modal-body').empty()
