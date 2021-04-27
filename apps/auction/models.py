@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.db import models
 from persiantools.jdatetime import JalaliDateTime
 
@@ -21,6 +23,9 @@ class AuctionManager(models.Manager):
 
     def user_participated_auction(self, user):
         return self.filter(bids__user=user)
+
+    def find_ready_to_finish(self):
+        return self.filter(state=Auction.STATE_STARTED, finish_date__lt=datetime.now())
 
 
 class BidManager(models.Manager):
@@ -55,10 +60,38 @@ class Auction(models.Model):
     objects = AuctionManager()
 
     def winner_bid(self) -> 'Bid':
-        return self.bids.get(winner=True)
+        try:
+            return self.bids.get(winner=True)
+        except:
+            return None
 
     def is_completed(self) -> bool:
         return self.bids.filter(winner=True).exists()
+
+    def finish_and_set_winner(self):
+        winner_bid: 'Bid' = self.bids.get_lowest_price()
+        if not winner_bid:
+            self.set_state_expired()
+            return
+        winner_bid.set_winner()
+        self.set_state_in_progress(winner_bid)
+
+    def set_state_in_progress(self, winner_bid: 'Bid'):
+        self.state = self.STATE_IN_PROGRESS
+        self.winner = winner_bid.user
+        self.save()
+
+    def set_state_expired(self):
+        self.state = self.STATE_EXPIRED
+        self.save()
+
+    def set_state_started(self):
+        self.bids.all().delete()
+        self.state = self.STATE_STARTED
+        self.winner = None
+        self.start_date = datetime.now()
+        self.finish_date = datetime.now() + timedelta(days=1)
+        self.save()
 
     def get_persian_start_date(self):
         return JalaliDateTime(self.start_date)
@@ -79,3 +112,7 @@ class Bid(models.Model):
     winner = models.BooleanField(default=False)
 
     objects = BidManager()
+
+    def set_winner(self):
+        self.winner = True
+        self.save()

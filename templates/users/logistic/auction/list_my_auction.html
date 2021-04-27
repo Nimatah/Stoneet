@@ -124,7 +124,7 @@
                                                 <td>{{ auction.get_state_display }}</td>
                                                 <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
                                                 <td>
-                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                    <a href="#" id="bid-action" data-auction-id="{{ auction.id }}" data-toggle="modal" data-target="#ph_auction">
                                                         <span class="ph-auction-bid-btn"><i
                                                                 class="fas fa-truck"></i></span>
                                                     </a>
@@ -285,7 +285,7 @@
                                                 <td>{{ auction.get_state_display }}</td>
                                                 <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
                                                 <td>
-                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                    <a href="#" id="bid-action" data-auction-id="{{ auction.id }}" data-toggle="modal" data-target="#ph_auction">
                                                         <span class="ph-auction-bid-btn"><i
                                                                 class="fas fa-truck"></i></span>
                                                     </a>
@@ -446,7 +446,7 @@
                                                 <td>{{ auction.get_state_display }}</td>
                                                 <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
                                                 <td>
-                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                    <a href="#" id="bid-action" data-auction-id="{{ auction.id }}" data-toggle="modal" data-target="#ph_auction">
                                                         <span class="ph-auction-bid-btn"><i
                                                                 class="fas fa-truck"></i></span>
                                                     </a>
@@ -607,7 +607,7 @@
                                                 <td>{{ auction.get_state_display }}</td>
                                                 <td>{{ auction.bids.get_lowest_price.price|intcomma }}</td>
                                                 <td>
-                                                    <a href="#" data-toggle="modal" data-target="#ph_auction">
+                                                    <a href="#" id="bid-action" data-auction-id="{{ auction.id }}" data-toggle="modal" data-target="#ph_auction">
                                                         <span class="ph-auction-bid-btn"><i
                                                                 class="fas fa-truck"></i></span>
                                                     </a>
@@ -758,17 +758,20 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="bid-price">قیمت پیشنهادی شما</label>
-                                <input type="text" class="form-control" id="bid-price">
+                                <input type="text" class="form-control" id="bid-price" readonly>
                             </div><!-- .form-group -->
                         </div><!-- .col-md-6 -->
                     </div><!-- .row -->
                     <span id="auction-error" class="text-danger" style="display: none;"></span>
                 </div><!-- .modal-body -->
                 <div class="modal-footer">
-                    <a id="persist-bid" href="#" data-auction-id="" class="ph-btn">ثبت</a>
                 </div><!-- .modal-footer -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->
     </div><!-- modal#ph_Auction_Modal -->
 
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/list_my_auction.js' %}"></script>
 {% endblock %}

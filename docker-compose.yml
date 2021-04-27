@@ -27,3 +27,10 @@ services:
       - POSTGRES_USER=planhub
       - POSTGRES_PASSWORD=Planhub@123
       - POSTGRES_DB=madan
+
+  redis:
+    image: redis:alpine
+    container_name: "madan_redis"
+    restart: always
+    environment:
+      - TZ=Asia/Tehran

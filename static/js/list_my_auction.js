@@ -14,6 +14,7 @@ function clearAuctionModal() {
     $('#ph_auction .modal-body #destination-city').text("")
     $('#ph_auction .modal-body #destination-address').text("")
     $('#ph_auction .modal-body #lowest-bid').val("")
+    $('#ph_auction .modal-body #bid-price').val("")
     $('#ph_auction #persist-bid').removeAttr('data-auction-id')
 }
 
@@ -44,6 +45,8 @@ $('#bid-action').on('click', function(e) {
             $('#ph_auction .modal-body #destination-city').text(response.destination.city)
             $('#ph_auction .modal-body #destination-address').text(response.destination.address)
             $('#ph_auction .modal-body #lowest-bid').val(response.min_bid)
+            $('#ph_auction .modal-body #bid-price').val(response.min_bid)
+
             $('#ph_auction #persist-bid').attr('data-auction-id', response.id)
         }
     })

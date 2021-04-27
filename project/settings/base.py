@@ -22,6 +22,7 @@ PREREQUISITE_APPS = [
     'django_extensions',
     'widget_tweaks',
     'django_filters',
+    'huey.contrib.djhuey',
 ]
 
 PROJECT_APPS = [
@@ -99,7 +100,7 @@ LOGOUT_REDIRECT_URL = '/'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -141,3 +142,32 @@ LANGUAGES = (
     ('en-US', _('english'),),
     ('fa-IR', _('persian'),),
 )
+
+
+HUEY = {
+    'huey_class': 'huey.RedisHuey',
+    'name': "plantask",
+    'results': True,
+    'store_none': False,
+    'immediate': False,
+    'utc': False,
+    'blocking': True,
+    'connection': {
+        'host': 'localhost',
+        'port': 6379,
+        'db': 1,
+        'connection_pool': None,
+        'read_timeout': 1,
+    },
+    'consumer': {
+        'workers': 1,
+        'worker_type': 'thread',
+        'initial_delay': 0.1,
+        'backoff': 1.15,
+        'max_delay': 10.0,
+        'scheduler_interval': 1,
+        'periodic': True,
+        'check_worker_health': True,
+        'health_check_interval': 1,
+    },
+}
