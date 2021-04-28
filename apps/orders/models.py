@@ -8,7 +8,7 @@ from apps.products.models import Attribute
 
 
 def get_order_file_path(instance, filename):
-    return get_file_path('orders/%Y/%m', filename)
+    return get_file_path('orders', filename)
 
 
 class OrderQuerySet(models.QuerySet):

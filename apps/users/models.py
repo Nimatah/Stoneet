@@ -8,7 +8,7 @@ from apps.core.utils import get_file_path
 
 
 def get_user_file_path(instance, filename):
-    return get_file_path('users/%Y/%m', filename)
+    return get_file_path('users', filename)
 
 
 class MineManager(models.Manager):

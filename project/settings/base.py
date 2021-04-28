@@ -171,3 +171,9 @@ HUEY = {
         'health_check_interval': 1,
     },
 }
+
+EMAIL_HOST = 'mail.stoneet.com'
+EMAIL_HOST_USER = 'info@stoneet.com'
+EMAIL_HOST_PASSWORD = 'Stoneet@123'
+EMAIL_USE_TLS = True
+EMAIL_TIMEOUT = 60

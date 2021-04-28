@@ -10,7 +10,7 @@ from apps.users.models import User, Mine
 
 
 def get_product_file_path(instance, filename):
-    return get_file_path('products/%Y/%m', filename)
+    return get_file_path('products', filename)
 
 
 class AttributeManager(models.Manager):
