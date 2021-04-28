@@ -50,5 +50,5 @@ services:
     links:
       - web:web
     depends_on:
-      - stoneet
+      - web
     restart: always
