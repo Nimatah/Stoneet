@@ -8,7 +8,7 @@ WORKERS_COUNT=5
 DJANGO_WSGI_MODULE=project.wsgi
 
 python manage.py collectstatic --noinput
-cp static/* assets/
+cp -rf static/* assets/
 
 if [ "$DJANGO_DEBUG" == true]
 then
