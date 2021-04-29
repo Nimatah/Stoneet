@@ -19,6 +19,4 @@ RUN npm install
 
 ADD . .
 
-RUN python manage.py collectstatic --noinput
-
 ENTRYPOINT ["sh", "start_service.sh"]

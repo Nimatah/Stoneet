@@ -7,6 +7,8 @@ GROUP=$USER
 WORKERS_COUNT=5
 DJANGO_WSGI_MODULE=project.wsgi
 
+python manage.py collectstatic --noinput
+cp static/* assets/
 if [ "$DJANGO_DEBUG" == true]
 then
   exec python manage.py runserver ${BIND}:${PORT}
