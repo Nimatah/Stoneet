@@ -119,7 +119,6 @@ function handleDateField(elementId) {
         initialValue: false,
         viewMode: 'year',
         formatter: function (unixDate) {
-            console.log('shit ')
             const date = new persianDate(unixDate);
             const year = pad(date.State.persian.year);
             const month = pad(date.State.persian.month + 1);
@@ -134,7 +133,6 @@ function handleOrderDate(elementId) {
         initialValue: false,
         viewMode: 'year',
         formatter: function (unixDate) {
-            console.log('shit ')
             const date = new persianDate(unixDate);
             const year = pad(date.State.persian.year);
             const month = pad(date.State.persian.month + 1);

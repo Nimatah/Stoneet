@@ -11,7 +11,13 @@ function persianToEnglish(input) {
 }
 
 function handleAddressDetails() {
-    $.ajax(`/api/address/${$('#customer-address option:selected').val()}`, {
+
+    const addressId = $('#customer-address option:selected').val()
+    if (!addressId || addressId == "") {
+        return
+    }
+
+    $.ajax(`/api/address/${addressId}`, {
         method: 'GET',
         success: function (response) {
             $('#address-address').text(response.address)
@@ -96,15 +102,12 @@ $("#submit").on("click", function () {
     $("input,select", $form).each(function () {
 
         if ($(this).val() == "") {
-
             if (!$(this).data("error")) {
                 $(this).data("error", $errorMsg.clone().insertAfter($(this)));
             }
             toReturn = false;
         }
-
         else {
-
             if ($(this).data("error")) {
                 $(this).data("error").remove();
                 $(this).removeData("error");

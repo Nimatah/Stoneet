@@ -101,12 +101,10 @@ function regionChangeHandler(element, id) {
     province.children.forEach(function (child) {
         parent.find('[id^="city"]').append(`<option value="${child.id}">${child.title}</option>`);
     })
-    console.log()
 }
 
 function handleRegions() {
     regions.forEach(function (region) {
-        console.log('#province')
         $(`#province`).append(`<option value="${region.id}">${region.title}</option>`);
     });
 }

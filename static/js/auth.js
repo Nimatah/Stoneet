@@ -14,7 +14,6 @@ function persianToEnglish(input) {
 $('.btn').click(function (event) {
     event.preventDefault();
     var target = $(this).data('target');
-    // console.log('#'+target);
     $('#click-alert').html('data-target= ' + target).fadeIn(50).delay(3000).fadeOut(1000);
 
 });

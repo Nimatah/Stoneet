@@ -204,8 +204,17 @@
                                 <div class="col-12">
                                     <div class="ph-view-order-block">
                                         <div class="ph-view-order-block-item">
+                                        {% if not user.addresses.all %}
+                                            <div>
+                                                <span class='error'>
+                                                    <a href="{% url 'users:profile_buyer' %}" data-target="nav-contact-tab" style="color: red;">
+                                                        برای ثبت سفارش ابتدا آدرس خود را از اینجا ثبت نمایید.
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        {% endif %}
                                             <label>مقصد:</label>
-                                            <select class="custom-select mb-3" name="destination" id="customer-address">
+                                            <select required class="custom-select mb-3" name="destination" id="customer-address">
                                                 {% for address in user.addresses.all %}
                                                     <option value="{{ address.id }}">{{ address.receiver_name }}</option>
                                                 {% endfor %}
