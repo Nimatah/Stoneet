@@ -18,6 +18,4 @@ else
    --user ${USER}
    --group ${GROUP} \
    --log-level debug
-
-
-
+fi
