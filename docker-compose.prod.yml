@@ -8,10 +8,10 @@ services:
       - db
       - redis
     volumes:
-    - /opt/madan/logs:/project/logs
-    - /opt/madan/media:/project/media
-    - /opt/madan/static:/project/static
-    - /opt/madan/config/:/project/config
+    - ./logs:/project/logs
+    - ./media:/project/media
+    - ./static:/project/static
+    - ./config:/project/config
     ports:
     - 0.0.0.0:7000:8000
     environment:
@@ -43,8 +43,8 @@ services:
     container_name: "madan_nginx"
     volumes:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
-      - /opt/madan/static:/opt/static
-      - /opt/madan/media:/opt/media
+      - ./static:/opt/static
+      - ./media:/opt/media
     ports:
       - 127.0.0.1:8000:80
     links:
