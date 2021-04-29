@@ -42,9 +42,9 @@ services:
     image: nginx:alpine
     container_name: "madan_nginx"
     volumes:
-      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./assets:/opt/assets
-      - ./media:/opt/media
+      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./assets:/opt/assets:ro
+      - ./media:/opt/media:ro
     ports:
       - 127.0.0.1:8000:80
     links:
