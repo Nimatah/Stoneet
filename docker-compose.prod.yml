@@ -10,7 +10,7 @@ services:
     volumes:
     - ./logs:/project/logs
     - ./media:/project/media
-    - ./static:/project/static
+    - ./assets:/project/assets
     - ./config:/project/config
     ports:
     - 0.0.0.0:7000:8000
@@ -43,7 +43,7 @@ services:
     container_name: "madan_nginx"
     volumes:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./static:/opt/static
+      - ./assets:/opt/assets
       - ./media:/opt/media
     ports:
       - 127.0.0.1:8000:80
