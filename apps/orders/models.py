@@ -130,24 +130,44 @@ class LogisticOrder(models.Model):
 
     STATE_PENDING = 'pending'
     STATE_ACCEPTED = 'accepted'
+    STATE_CONTRACT = 'contract'
+    STATE_FINANCE_DOCUMENTS = 'finance'
     STATE_REJECTED = 'rejected'
 
-    _STATE_CHOICES = (
+    STATE_CHOICES = (
         (STATE_PENDING, 'در انتظار تایید',),
         (STATE_ACCEPTED, 'تایید شده',),
+        (STATE_CONTRACT, 'تایید مدارک',),
+        (STATE_FINANCE_DOCUMENTS, 'تایید مدارک مالی',),
         (STATE_REJECTED, 'رد شده',),
     )
 
     timestamp = models.DateTimeField(auto_now_add=True)
     order = models.ForeignKey('Order', on_delete=models.CASCADE)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    state = models.CharField(max_length=255, choices=_STATE_CHOICES)
+    state = models.CharField(max_length=255, choices=STATE_CHOICES)
     price = models.BigIntegerField()
+    source = models.ForeignKey('users.Mine', on_delete=models.CASCADE, null=True, blank=True)
+    destination = models.ForeignKey('users.Address', on_delete=models.CASCADE, null=True, blank=True)
+    monthly_load_count = models.IntegerField(default=1)
+    weight = models.BigIntegerField(default=0)
 
     objects = LogisticOrderManager()
 
     def __str__(self):
         return f'Logistic Order: {self.order}'
+
+    def get_monthly_weight(self):
+        try:
+            return f'{self.weight / self.monthly_load_count:.2f}'
+        except ZeroDivisionError:
+            return self.weight
+
+    def get_monthly_price(self):
+        try:
+            return f'{self.price / self.monthly_load_count:.2f}'
+        except ZeroDivisionError:
+            return self.price
 
 
 class OrderMedia(BaseMedia):
@@ -162,4 +182,3 @@ class LogisticOrderMedia(BaseMedia):
     order = models.ForeignKey(LogisticOrder, on_delete=models.CASCADE, related_name='media')
     title = models.CharField(max_length=255, blank=True)
     file = models.FileField(upload_to=get_order_file_path)
-

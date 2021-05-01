@@ -1,5 +1,6 @@
 from django.views.generic import ListView
 
+from apps.orders.filters import AdminLogisticOrderFilter
 from apps.orders.models import LogisticOrder
 
 
@@ -15,6 +16,11 @@ class AdminLogisticOrdersView(ListView):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context['logistic_order_model'] = LogisticOrder
         return context
+
+    def get_queryset(self):
+        queryset = LogisticOrder.objects.all()
+        queryset = AdminLogisticOrderFilter(self.request.GET, queryset=queryset).qs
+        return queryset
 
     def test_func(self):
         return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)

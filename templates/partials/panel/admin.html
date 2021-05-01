@@ -121,18 +121,41 @@
     <a class="nav-link" href="{% url 'users:admin_logistic_orders' %}">مدیریت سفارشات حمل و نقل</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:admin_logistic_order_qc' %}">مدیریت سفارشات حمل و نقل (سینگل تست)</a>
-</li>
-<li class="nav-item">
     <a class="nav-link nav-link-collapse" href="#" id="manage-invoices" data-toggle="collapse"
        data-target="#collapse-manage-invoices" aria-controls="collapse-manage-invoices" aria-expanded="false">مدیریت
         صورتحساب</a>
     <ul class="nav-second-level collapse" id="collapse-manage-invoices" data-parent="#manage-invoices">
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="nav-link-text">صورتحساب</span>
+            <a class="nav-link" href="{% url 'users:admin_list_seller_invoice' %}">
+                <span class="nav-link-text">صورتحساب فروشنده</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_seller_invoice_details' %}">
+                <span class="nav-link-text">صورتحساب فروشنده (سینگل تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_list_buyer_invoice' %}">
+                <span class="nav-link-text">صورتحساب خریدار</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_buyer_invoice_details' %}">
+                <span class="nav-link-text">صورتحساب خریدار (سینگل تست)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_list_logistic_invoice' %}">
+                <span class="nav-link-text">صورتحساب حمل و نقل</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:admin_logistic_invoice_details' %}">
+                <span class="nav-link-text">صورتحساب حمل و نقل (سینگل تست)</span>
+            </a>
+        </li>
+
     </ul>
 </li>
 <li class="nav-item">
