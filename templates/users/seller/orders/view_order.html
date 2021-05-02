@@ -87,11 +87,11 @@
                                 <span class="desc">{{ order.get_monthly_weight }} تن</span>
                             </li>
                             <li>
-                                <span class="title">قیمت</span>
+                                <span class="title">قیمت:</span>
                                 <span class="desc">{{ order.price }} ریال</span>
                             </li>
                             <li>
-                                <span class="title">نوع پرداخت</span>
+                                <span class="title">نوع پرداخت:</span>
                                 <span class="desc">{{ payment_map|get_item:order.payment_type }}</span>
                             </li>
                         </ul>
@@ -107,7 +107,7 @@
                                 <span class="desc">{{ order.product.mine.title }}</span>
                             </li>
                             <li>
-                                <span class="title">استان</span>
+                                <span class="title">استان:</span>
                                 <span class="desc">{{ order.product.mine.region.parent.title }}</span>
                             </li>
                             <li>

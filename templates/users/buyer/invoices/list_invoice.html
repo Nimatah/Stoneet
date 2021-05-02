@@ -9,18 +9,254 @@
     <main class="ph-dashboard-main ph-buyer-panel ph-list-invoice">
 
         <div class="container">
-            <div class="ph-admin-page-intro-text">
-                <span>مشاهده صورتحساب‌‌ها | </span>
-                لیست صورتحساب‌ها را در اینجا مشاهده کنید.
-            </div>
-
-                    <div class="ph-admin-page-alert ph-box-shadow my-4">
-                        <div class="alert alert-warning" role="alert">
-                            <i class="fas fa-info-circle"></i>
-                            "در انتظار پیام کارفرما"
+            <form action="" id="ph_invoice_form" role="form">
+                <div id="invoice_page" class="ph-invoice-page form-group">
+                    <div class="ph-invoice-panel">
+                        <div class="ph-ip-wrapper">
+                            <div class="ph-admin-page-intro-text">
+                                <span>صورتحساب‌ها | </span>
+                                گزارش کاملی از صورتحساب‌های خود را در این قسمت مشاهده و پیگیری کنید.
+                            </div>
+                            <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                                <div class="ph-ip-wl-header top">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination pagination-circle pg-blue">
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Previous">
+                                                        <span aria-hidden="true">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
+                                                    </li>
+                                                    <li class="page-item active">
+                                                        <a class="page-link">1</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">2</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">3</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">4</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">5</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Next">
+                                                        <span aria-hidden="true">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>۱۰</option>
+                                                <option value="1">۲۰</option>
+                                                <option value="2">۵۰</option>
+                                                <option value="3">۱۰۰</option>
+                                            </select>
+                                            <span>تعداد نمایش</span>
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>۱۱۲ مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                                <div class="ph-ip-wl-table">
+                                    <table class="ph-table table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">تازیخ ثبت</th>
+                                            <th scope="col">تاریخ پرداخت</th>
+                                            <th scope="col">ارزش افزوده (ریال)</th>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                            <th scope="col">مرحله</th>
+                                            <th scope="col">نتیجه</th>
+                                            <th scope="col">وضعیت پرداخت</th>
+                                            <th scope="col">مسدود</th>
+                                            <th scope="col">علت مسدودی</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">۱</th>
+                                            <td>۱۳۹۹/۱۰/۰۱</td>
+                                            <td>۱۳۹۹/۱۱/۰۱</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳۲۰,۴۶۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>کارشناس مالی</td>
+                                            <td>تایید شده</td>
+                                            <td>پرداخت نشده</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">۲</th>
+                                            <td>۱۳۹۹/۱۰/۰۱</td>
+                                            <td>۱۳۹۹/۱۱/۰۱</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳۲۰,۴۶۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>کارشناس مالی</td>
+                                            <td>تایید شده</td>
+                                            <td>پرداخت نشده</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">۳</th>
+                                            <td>۱۳۹۹/۱۰/۰۱</td>
+                                            <td>۱۳۹۹/۱۱/۰۱</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳۲۰,۴۶۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>کارشناس مالی</td>
+                                            <td>تایید شده</td>
+                                            <td>پرداخت نشده</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">۴</th>
+                                            <td>۱۳۹۹/۱۰/۰۱</td>
+                                            <td>۱۳۹۹/۱۱/۰۱</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳۲۰,۴۶۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>کارشناس مالی</td>
+                                            <td>تایید شده</td>
+                                            <td>پرداخت نشده</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">۵</th>
+                                            <td>۱۳۹۹/۱۰/۰۱</td>
+                                            <td>۱۳۹۹/۱۱/۰۱</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳۲۰,۴۶۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>کارشناس مالی</td>
+                                            <td>تایید شده</td>
+                                            <td>پرداخت نشده</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="#">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-ip-wl-table -->
+                                <div class="ph-ip-wl-header bottom">
+                                    <div class="ph-ip-wl-right">
+                                        <div class="ph-ip-wlr-pagination ph-pagination">
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination pagination-circle pg-blue">
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Previous">
+                                                        <span aria-hidden="true">
+                                                            <i class="fas fa-chevron-right"></i>
+                                                        </span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
+                                                    </li>
+                                                    <li class="page-item active">
+                                                        <a class="page-link">1</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">2</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">3</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">4</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link">5</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" aria-label="Next">
+                                                        <span aria-hidden="true">
+                                                            <i class="fas fa-chevron-left"></i>
+                                                        </span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <!-- ph-ip-wlr-pagination -->
+                                        <div class="ph-ip-wlr-views">
+                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                                <option selected>۱۰</option>
+                                                <option value="1">۲۰</option>
+                                                <option value="2">۵۰</option>
+                                                <option value="3">۱۰۰</option>
+                                            </select>
+                                            <span>تعداد نمایش</span>
+                                        </div>
+                                    </div>
+                                    <!-- ph-ip-wl-right -->
+                                    <div class="ph-ip-wl-res">
+                                        نتیجه:
+                                        <span>۱۱۲ مورد</span>
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-header -->
+                            </div>
+                            <!-- ph-ip-w-list -->
                         </div>
+                        <!-- ph-ip-wrapper -->
                     </div>
-
+                    <!-- ph-invoice-panel -->
+                </div>
+                <!-- ph-invoice-page -->
+            </form>
+            <!-- ph_invoice_form -->
         </div>
         <!-- container -->
 

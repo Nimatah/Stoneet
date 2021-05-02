@@ -9,18 +9,101 @@
     <main class="ph-dashboard-main ph-buyer-panel ph-view-invoice">
 
         <div class="container">
-            <div class="ph-admin-page-intro-text">
-                <span>جزییات صورتحساب‌ | </span>
-                جزییات صورتحساب‌ را در اینجا مشاهده کنید.
-            </div>
-
-                    <div class="ph-admin-page-alert ph-box-shadow my-4">
-                        <div class="alert alert-warning" role="alert">
-                            <i class="fas fa-info-circle"></i>
-                            "در انتظار پیام کارفرما"
+            <form action="" id="ph_invoice_details_form" role="form">
+                <div id="invoice_details_page" class="ph-invoice-details-page form-group">
+                    <div class="ph-invoice-details-panel">
+                        <div class="ph-idp-wrapper">
+                            <div class="ph-admin-page-intro-text">
+                                <span>صورتحساب‌ها | </span>
+                                مشاهده جزییات صورتحساب
+                            </div>
+                            <div class="ph-idp-w-list bg-light ph-border-radius ph-box-shadow">
+                                <div class="ph-idp-wl-header">
+                                    <div class="ph-idp-wlh-date ph-panel-title">
+                                        <span class="title">تاریخ صورتحساب</span>
+                                        <div class="date">۱۳۹۹/۱۱/۲۸</div>
+                                    </div>
+                                </div>
+                                <!-- ph-idp-wl-header -->
+                                <div class="ph-idp-wl-table">
+                                    <table class="ph-table table table-bordered text-center">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" rowspan="2">نوع</th>
+                                            <th scope="col" rowspan="2">عنوان</th>
+                                            <th scope="col" rowspan="2">توضیحات</th>
+                                            <th scope="col" rowspan="2">تعداد</th>
+                                            <th scope="col" colspan="2">مبلغ محاسبه شده</th>
+                                            <th scope="col" colspan="2">تخفیف محاسبه شده</th>
+                                            <th scope="col" rowspan="2">تخفیف درصدی</th>
+                                            <th scope="col" colspan="2">مبلغ نهایی</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>هزینه</td>
+                                            <td>هزینه ماندگاری در انبار</td>
+                                            <td>هزینه ماندگاری در انبار</td>
+                                            <td>۴۹</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="ph-table table table-bordered text-center factor">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col" rowspan="2">نوع</th>
+                                            <th scope="col" colspan="2">مبلغ نهایی</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">بدهکار (ریال)</th>
+                                            <th scope="col">بستانکار (ریال)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>هزینه</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ارزش افزوده 9 %</td>
+                                            <td>۲۶,۴۶۰</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        <tr>
+                                            <td>مبلغ قابل پرداخت</td>
+                                            <td>۳,۸۰۰,۰۹۸</td>
+                                            <td>۳,۸۰۰</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- ph-idp-wl-table -->
+                            </div>
+                            <!-- ph-idp-w-list -->
                         </div>
+                        <!-- ph-idp-wrapper -->
                     </div>
-
+                    <!-- ph-invoice-details-panel -->
+                </div>
+                <!-- ph-invoice-details-page -->
+            </form>
+            <!-- ph_invoice_details_form -->
         </div>
         <!-- container -->
 
