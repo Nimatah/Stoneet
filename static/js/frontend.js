@@ -73,3 +73,14 @@ function closeNav() {
   document.getElementById("product_archive_mobile").style.width = "0";
   document.getElementById("mobile_content").style.marginRight = "0";
 }
+
+$(document).ready(function (){
+    jQuery(function ($) {
+    var path = window.location.href;
+    $('.nav-link').each(function () {
+        if (this.href === path) {
+            $(this).addClass('active');
+        }
+    });
+});
+})

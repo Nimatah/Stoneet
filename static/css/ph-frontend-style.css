@@ -172,7 +172,8 @@
     align-items: center;
 }
 
-.ph-main-header .nav-item.active .nav-link{
+.ph-main-header .nav-item .nav-link.active,
+.ph-main-header .nav-link.dropdown-toggle.ph-nid{
     color: #4CE0B3;
     border-bottom: 3px solid;
 }
@@ -222,6 +223,12 @@
     height: 35px;
 }
 
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
 
 /*
 =======================================================
