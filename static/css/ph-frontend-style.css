@@ -328,6 +328,8 @@
     padding: 15px 20px;
     border-radius: 0 10px 10px 0;
     border: none;
+    background: rgba(255,255,255,.4);
+    color: #fff;
 }
 
 .ph-home-search-box form button{
@@ -441,17 +443,26 @@
 
 .ph-home-register-box:hover{
     transform: translateY(-5px);
-    background: rgba(60,63,68,1);
     color: #fff;
     box-shadow: 0 12px 24px 0 rgba(32,42,75,.4);
 }
+.ph-home-register-box.seller:hover{
+    background: #D4A373;
+}
+.ph-home-register-box.logistic:hover{
+    background: #FFD100;
+}
 
-.ph-home-register-box:hover p{
-    color: #CCCCCC;
+.ph-home-register-box.seller:hover p {
+    color: #333333;
+}
+.ph-home-register-box.logistic:hover p{
+    color: #333333;
 }
 
 .ph-home-register-box h2{
     font-size: 20px;
+    margin-bottom: 1.5rem;
 }
 
 .ph-home-services{
@@ -542,9 +553,13 @@
 .ph-default-video-slider .owl-nav{
     margin-top: 0;
     position: absolute;
-    top: -40px;
+    top: 45%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 110%;
+    right: -5%;
+    z-index: -2;
 }
 
 .ph-default-video-slider .owl-nav button{
@@ -556,6 +571,10 @@
     display: flex !important;
     align-items: center;
     justify-content: center;
+}
+
+.ph-default-video-slider .owl-nav button span{
+    font-size: 6rem;
 }
 
 .ph-default-video-slider .owl-nav [class*=owl-]:hover {

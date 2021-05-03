@@ -664,9 +664,10 @@ input.form-control:focus{
 
 .ph-modal .modal-body.ph-modal-bg-login{
     padding: 1.5rem;
-    background-image: url("/static/images/login-modal-bg.jpg");
+    background-image: url("/static/images/login-modal-bg.png");
     background-repeat: no-repeat;
     background-position: left center;
+    background-size: contain;
 }
 
 .ph-modal .modal-body .form-group{
