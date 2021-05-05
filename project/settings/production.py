@@ -1,4 +1,6 @@
 import os
+import sys
+
 from .base import *
 
 USE_X_FORWARDED_HOST = True
@@ -41,5 +43,22 @@ HUEY = {
         'periodic': True,
         'check_worker_health': True,
         'health_check_interval': 1,
+    },
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'stream': sys.stdout,
+        }
+    },
+    'loggers': {
+        'django': {
+            'level': 'ERROR',
+            'handlers': ['console'],
+        },
     },
 }
