@@ -13,8 +13,7 @@ services:
     ports:
     - 0.0.0.0:7000:8000
     environment:
-      - "DJANGO_DEBUG=true"
-      - "DJANGO_STAGING=true"
+      - "DJANGO_ENVIRONMENT=staging"
       - "DJANGO_DATABASE_PASSWORD=Planhub@123"
 
   db:
