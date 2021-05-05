@@ -29,7 +29,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{% url 'home:index' %}">خانه</a>
                                     </li>
-                                    <li class="nav-item dropdown">
+{% comment %}                                    <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle ph-nid" href="#" id="products_nav" role="button"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             محصولات
@@ -39,6 +39,9 @@
                                             <a class="dropdown-item" href="{% url 'products:list_products' %}">فراوری
                                                 شده</a>
                                         </div><!-- .dropdown-menu -->
+                                    </li>{% endcomment %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{% url 'products:list_products' %}">محصولات</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#">درباره ما</a>
