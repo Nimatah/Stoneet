@@ -1,15 +1,16 @@
 import os
 import sys
 
-_debug: bool = os.getenv("DJANGO_DEBUG", True)
-_staging: bool = os.getenv("DJANGO_STAGING", False)
+DJANGO_ENVIRONMENT = os.getenv("DJANGO_ENVIRONMENT", 'dev')
 
-if _staging:
-    from .staging import *
-elif _debug:
+if DJANGO_ENVIRONMENT == 'dev':
     from .base import *
-else:
+elif DJANGO_ENVIRONMENT == 'staging':
+    from .staging import *
+elif DJANGO_ENVIRONMENT == 'prod':
     from .production import *
+else:
+    from .base import *
 
 if sys.platform != 'linux':
     from .windows import *

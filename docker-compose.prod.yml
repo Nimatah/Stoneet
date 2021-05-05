@@ -16,7 +16,7 @@ services:
     - 0.0.0.0:7000:8000
     environment:
       - "DJANGO_DATABASE_PASSWORD=Planhub@123"
-      - "DJANGO_ENV=prod"
+      - "DJANGO_ENVIRONMENT=prod"
 
   db:
     image: postgres:alpine
