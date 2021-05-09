@@ -51,7 +51,9 @@
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
                                             <span class="title">اطلاعات فروشنده</span>
-                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                            <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                               class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
+
                                         </div>
                                         <div class="form-row align-items-center">
                                             <div class="form-group col-4 my-1">
@@ -86,10 +88,11 @@
                                             <span class="title">اطلاعات حساب بانکی</span>
                                         </div>
                                         <div class="form-row align-items-center">
-                                           {% include 'partials/profile/bank_info.html' %}
+                                            {% include 'partials/profile/bank_info.html' %}
                                         </div>
                                         <!-- form-row -->
-                                        <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                        <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                           class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
                                     </div>
                                     <!-- ph-tcw-content -->
                                 </div>
@@ -109,7 +112,8 @@
                                         </div>
                                         <!-- form-row -->
 
-                                        <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                        <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                           class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
                                     </div>
                                     <!-- ph-tcw-content -->
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
@@ -145,7 +149,8 @@
                                                     </div>
 
                                                     <div class="form-group col-12 my-1">
-                                                        <label for="mine-address-{{ mine.id }}">آدرس دقیق معدن/کارخانه</label>
+                                                        <label for="mine-address-{{ mine.id }}">آدرس دقیق
+                                                            معدن/کارخانه</label>
                                                         <input type="text" class="form-control"
                                                                id="mine-address-{{ mine.id }}"
                                                                value="{{ mine.address }}" disabled>
@@ -170,7 +175,8 @@
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label for="mine-distance-to-road-{{ mine.id }}">فاصله معدن/کارخانه تا
+                                                        <label for="mine-distance-to-road-{{ mine.id }}">فاصله
+                                                            معدن/کارخانه تا
                                                             جاده اصلی
                                                             (کیلومتر)</label>
                                                         <input type="number" class="form-control"
@@ -232,36 +238,29 @@
                                         </div>
                                         <div class="form-row ph-tcw-upload align-items-center">
 
-                                            <table class="common_table ph-table table table-bordered text-center">
-                                                <thead class="thead-dark">
-                                                <tr>
-                                                    <th class="text-center" scope="col">ردیف</th>
-                                                    <th class="text-center" scope="col">شماره صفحه</th>
-                                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
-                                                    <th class="text-center" scope="col">پیش‌نمایش عکس</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr class="template_row">
-                                                    <td class="text-center" scope="row">۱</td>
-                                                    <td class="text-center">صفحه <span>۱</span> قرارداد</td>
-                                                    <td class="text-center"><a href="#"
-                                                                               class="ph-btn ph-upload-img-contract"><i
-                                                            class="fas fa-upload"></i> بارگذاری</a></td>
-                                                    <td class="text-center"><img src="" alt=""></td>
-                                                    <td class="text-center" class="controls">
-                                                        <a href="#" class="list_cancel" title="Delete Row">
-                                                            <i class="fas fa-times"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="no_entries_row">
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <a href="#" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
-                                                صفحه جدید</a>
+                                            <div class="ph-order-img-upload">
+
+                                                <div class="ph-spm-create-product-img-up">
+                                                    <div class="row">
+                                                        <div class="col-3 col-md-2 imgUp">
+                                                            <div class="imagePreview"></div>
+                                                            <label><input class="image-name-3" type="text"
+                                                                          readonly></label>
+
+                                                            <label class="btn ph-spm-create-product-img-up-btn">
+                                                                آپلود<input type="file"
+                                                                            class="uploadFile img upload-btn-3"
+                                                                            value="Upload Photo"
+                                                                            style="width: 0px;height: 0px;overflow: hidden;">
+                                                            </label>
+                                                        </div>
+                                                        <!-- col-4 col-md-3 -->
+                                                        <i class="fa fa-plus imgAdd"></i>
+                                                    </div>
+                                                    <!-- row -->
+                                                </div>
+                                            </div>
+                                            <!-- ph-order-img-upload -->
                                         </div>
                                         <!-- form-row -->
                                     </div>
@@ -414,6 +413,45 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Edit ph_edit_profile_ ------------------------------------------->
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_edit_profile_" tabindex="-1" role="dialog"
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">درخواست ویرایش</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="ph-qc-section">
+                        <div class="ph-qc-alarm">
+                            <p>در اینجا متن درخواست خود را بنویسید.</p>
+                        </div>
+                        <!-- ph-qc-alarm -->
+                        <div class="ph-qc-description">
+                            <textarea class="form-control" id="" rows="5"
+                                      placeholder="تقاضای ویرایش..."></textarea>
+                        </div>
+                        <!-- ph-qc-description -->
+                        <div class="ph-qc-info-btns">
+                            <a href="#" class="ph-btn ph-denied-btn">
+                                <span>ارسال درخواست</span>
+                            </a>
+                        </div>
+                        <!-- ph-qc-info-btns -->
+                    </div>
+                    <!-- ph-qc-section -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_edit_profile_ -->
+
+
 
 {% endblock %}
 
