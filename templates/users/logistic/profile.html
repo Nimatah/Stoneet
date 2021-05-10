@@ -49,7 +49,8 @@
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
                                         <div class="ph-panel-title">
                                             <span class="title">اطلاعات فروشنده</span>
-                                            <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                            <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                               class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
                                         </div>
                                         <div class="form-row align-items-center">
                                             <div class="form-group col-4 my-1">
@@ -135,7 +136,8 @@
                                             </div>
                                         </div>
                                         <!-- form-row -->
-                                        <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                            <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                               class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
                                     </div>
                                     <!-- ph-tcw-content -->
                                 </div>
@@ -202,8 +204,8 @@
                                             </div>
                                         </div>
                                         <!-- form-row -->
-
-                                        <a href="#" class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>ویرایش</a>
+                                            <a href="#" data-toggle="modal" data-target="#ph_edit_profile_"
+                                               class="edit-info ph-btn"><i class="fas fa-pencil-alt"></i>درخواست ویرایش</a>
                                     </div>
                                     <!-- ph-tcw-content -->
                                     <div class="ph-tcw-content ph-border-radius bg-light ph-box-shadow mb-3">
@@ -387,6 +389,41 @@
 
     </main>
     <!-- ph-logistic-profile -->
+    <!-- Edit ph_edit_profile_ ------------------------------------------->
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_edit_profile_" tabindex="-1" role="dialog"
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">درخواست ویرایش</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="ph-qc-section">
+                        <div class="ph-qc-alarm">
+                            <p>در اینجا متن درخواست خود را بنویسید.</p>
+                        </div>
+                        <!-- ph-qc-alarm -->
+                        <div class="ph-qc-description">
+                            <textarea class="form-control" id="" rows="5"
+                                      placeholder="تقاضای ویرایش..."></textarea>
+                        </div>
+                        <!-- ph-qc-description -->
+                        <div class="ph-qc-info-btns">
+                            <a href="#" class="ph-btn ph-denied-btn">
+                                <span>ارسال درخواست</span>
+                            </a>
+                        </div>
+                        <!-- ph-qc-info-btns -->
+                    </div>
+                    <!-- ph-qc-section -->
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_edit_profile_ -->
 
 {% endblock %}
 
