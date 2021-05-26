@@ -96,7 +96,8 @@
                                             <td>شاهین شهر</td>
                                             <td>سراب</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
+                                                   data-target="#ph_buyer_invoice_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -110,7 +111,8 @@
                                             <td>شاهین شهر</td>
                                             <td>سراب</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
+                                                   data-target="#ph_buyer_invoice_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -124,7 +126,8 @@
                                             <td>شاهین شهر</td>
                                             <td>سراب</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
+                                                   data-target="#ph_buyer_invoice_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -207,4 +210,80 @@
     </main>
     <!-- .ph-dashboard-main ph-logistic-panel ph-list-invoice -->
 
+    <!-- description ph_buyer_invoice_modal ------------------------------------------->
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_buyer_invoice_modal" tabindex="-1" role="dialog"
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">جزییات صورتحساب باربری</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="">جزییات اول</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات اول">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات دوم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات دوم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات سوم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات سوم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات چهارم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات چهارم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات پنجم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات پنجم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات ششم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات ششم">
+                        </div>
+                    </div><!-- .form-row -->
+
+                    <div class="mx-auto">
+                        <h4 class="ph-spm-create-produc-img-up-yitle">آپلود عکس</h4>
+                        <div class="file-upload mt-0" style="width: 300px;height: 200px;">
+                            <div id="image-upload-wrap-0" class="image-upload-wrap">
+                                <input name="image_primary" id="file-upload-input-0"
+                                       class="file-upload-input" type='file'
+                                       onchange="readURL(this, 0);"
+                                       accept="image/*"/>
+                                <div class="drag-text">
+                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                            </div>
+                            <div id="file-upload-content-0" class="file-upload-content">
+                                <img id="file-upload-image-0" class="file-upload-image" src="#"
+                                     alt="your image"/>
+                                <div id="image-title-wrap-0" class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload(0)"
+                                            class="remove-image">
+                                        <i
+                                                class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <button id="" type="submit" class="ph-btn">ذخیره</button>
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_buyer_invoice_modal -->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 {% endblock %}

@@ -103,7 +103,7 @@
                                             <td>۱۳۹۹/۱۰/۰۱</td>
                                             <td>۱۳۹۹/۱۱/۰۱</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal" data-target="#ph_receipt_info_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -118,7 +118,7 @@
                                             <td>۱۳۹۹/۱۰/۰۱</td>
                                             <td>۱۳۹۹/۱۱/۰۱</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal" data-target="#ph_receipt_info_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -133,7 +133,7 @@
                                             <td>۱۳۹۹/۱۰/۰۱</td>
                                             <td>۱۳۹۹/۱۱/۰۱</td>
                                             <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#">
+                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal" data-target="#ph_receipt_info_modal">
                                                     <i class="far fa-eye"></i>
                                                 </a>
                                             </td>
@@ -213,6 +213,75 @@
 
         </div>
         <!-- container -->
+
+    <!-- description ph_receipt_info_modal ------------------------------------------->
+    <div class="modal fade ph-modal ph-auction-modal" id="ph_receipt_info_modal" tabindex="-1" role="dialog"
+         aria-labelledby="auction_modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">جزییات سررسید پرداخت</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div><!-- .modal-header -->
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col-6">
+                            <label for="">جزییات اول</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات اول">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات دوم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات دوم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات سوم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات سوم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات چهارم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات چهارم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات پنجم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات پنجم">
+                        </div>
+                        <div class="col-6">
+                            <label for="">جزییات ششم</label>
+                            <input type="text" class="form-control" readonly placeholder="جزییات ششم">
+                        </div>
+                    </div><!-- .form-row -->
+
+                    <table class="ph-table table table-bordered text-center">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ردیف</th>
+                            <th scope="col">ستون اول</th>
+                            <th scope="col">ستون دوم</th>
+                            <th scope="col">ستون سوم</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">۱</th>
+                            <td>۱۲۳۴</td>
+                            <td>بفلدفدذ</td>
+                            <td>قلدایغادب</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">۲</th>
+                            <td>۱۲۳۴</td>
+                            <td>بفلدفدذ</td>
+                            <td>قلدایغادب</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!-- .modal-body -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div><!-- modal#ph_receipt_info_modal -->
 
     </main>
     <!-- ph-dashboard-main ph-buyer-panel ph-list-invoice -->
