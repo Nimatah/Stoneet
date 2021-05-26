@@ -22,35 +22,35 @@
                                 <div class="row">
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام مدیرعامل</span>
-                                        <span>فریبرز لاچینی</span>
+                                        <span>{{ user.profile.company_ceo_name }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره شناسنامه مدیرعامل</span>
-                                        <span>654</span>
+                                        <span>{{ user.profile.company_ceo.id_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد ملی مدیرعامل</span>
-                                        <span>0123456789</span>
+                                        <span>{{ user.profile.company_ceo_national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>نوع پروانه</span>
-                                        <span>حمل و نقل بین‌المللی</span>
+                                        <span>{{ user.profile.company_license_type }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره پروانه</span>
-                                        <span>654984521</span>
+                                        <span>{{ user.profile.company_license_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تاریخ شروع اعتبار</span>
-                                        <span>1358/03/14</span>
+                                        <span>{{ user.profile.company_license_start }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تاریخ پایان اعتبار</span>
-                                        <span>1358/03/14</span>
+                                        <span>{{ user.profile.company_license_end }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره ثبت</span>
-                                        <span>954651321845</span>
+                                        <span>{{ user.profile.company_register_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -64,49 +64,45 @@
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام و نام خانوادگی</span>
                                         <div class="ph-user-info-item-full-name">
-                                            <span>هانیه</span>
-                                            <span>توسلی</span>
+                                            <span>{{ user.profile.firstname }}</span>
+                                            <span>{{ user.profile.last_name }}</span>
                                         </div>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
-                                        <span>نوع باربری</span>
-                                        <span>نماینده شرکت</span>
-                                    </div><!-- .ph-user-info-item -->
-                                    <div class="col-12 ph-user-info-item">
                                         <span>ایمیل</span>
-                                        <span>logistic@gmail.com</span>
+                                        <span>{{ user.get_email}}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره شناسنامه</span>
-                                        <span>224455</span>
+                                        <span>{{ user.profile.id_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد ملی</span>
-                                        <span>0123456789</span>
+                                        <span>{{ user.profile.national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>موبایل</span>
-                                        <span>0123456789</span>
+                                        <span>{{ user.mobile_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تلفن ثابت</span>
-                                        <span>02122448866</span>
+                                        <span>{{ user.profile.phone_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کدپستی</span>
-                                        <span>12345-67890</span>
+                                        <span>{{ user.profile.postal_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>استان</span>
-                                        <span>چهارمحال و بختیاری</span>
+                                        <span>{{ user.profile.region.parent.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شهر</span>
-                                        <span>نقده</span>
+                                        <span>{{ user.profile.region.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>آدرس</span>
-                                        <span>ولنجک - بلوار شهید سید حاج آقا - ساختمان تابان - واحد ۲۰۳</span>
+                                        <span>{{ user.profile.address }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->

@@ -13,15 +13,7 @@
             <div class="ph-managements-container">
                 <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
                     <div class="form-group ph-managements-sorting">
-                        <label for="ph_managements_no"
-                               class="col-form-label col-form-label-sm">تعداد نمایش</label>
-                        <select id="ph_managements_no" class="form-control custom-select">
-                            <option selected>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>40</option>
-                            <option>50</option>
-                        </select>
+
                     </div><!-- .form-group -->
                     <div class="ph-managements-table table-responsive">
                         <table class="table ph-table table-bordered text-center">
@@ -38,13 +30,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for user in users %}
                             <tr>
-                                <td>1</td>
-                                <td>gh-12r35tt</td>
-                                <td>مصطفی چراغی</td>
-                                <td>sample@gmail.com</td>
-                                <td>09123456789</td>
-                                <td>سطح یک</td>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ user.pk }}</td>
+                                <td>{{ user.profile.get_full_name }}</td>
+                                <td>{{ user.get_email }}</td>
+                                <td>{{ user.mobile_number }}</td>
+                                <td>{{ user.get_use_type_display}}</td>
                                 <td>
                                     <a href="#" class="ph-admin-table-action-btn-edit"
                                        data-toggle="modal"
@@ -58,6 +51,7 @@
                                     </div><!-- .custom-switch -->
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div><!-- .ph-managements-table -->

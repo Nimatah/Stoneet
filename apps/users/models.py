@@ -187,7 +187,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     STATE_REJECTED = "rejected"
     STATE_BANNED = "banned"
 
-    _STATE_CHOICES = (
+    STATE_CHOICES = (
         (STATE_PENDING, "در انتظار تایید",),  # Can't edit
         (STATE_ACCEPTED, "تایید شده",),
         (STATE_REJECTED, "رد شده",),  # Rejection details box
@@ -199,7 +199,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     mobile_number = models.CharField(db_index=True, max_length=20, default="021xxxxxxxx")
     use_type = models.CharField(max_length=20, choices=_TYPE_CHOICES, default="buyer")
     legal_type = models.CharField(max_length=20, choices=_LEGAL_CHOICES, default="individual")
-    state = models.CharField(max_length=20, choices=_STATE_CHOICES, default=STATE_PENDING)
+    state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -214,6 +214,9 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
 
     def get_short_name(self) -> str:
         return self.username
+
+    def get_email(self) -> str:
+        return self.email or ''
 
     @property
     def is_buyer(self) -> bool:
@@ -344,7 +347,12 @@ class Profile(models.Model):
     def get_full_name(self):
         return self.company_name or f'{self.first_name} {self.last_name}'
 
+    def get_national_code(self):
+        return self.national_code or self.company_finance_code
+
     def get_persian_birthday(self):
+        if not self.birthday:
+            return ''
         return JalaliDate.to_jalali(self.birthday)
 
     def get_province(self):

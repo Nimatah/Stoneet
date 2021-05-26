@@ -1,17 +1,27 @@
-from django.views.generic import TemplateView
+from django.views.generic import DetailView
+
+from apps.users.models import User
 
 
-class QCSellerView(TemplateView):
+class QCSellerDetailView(DetailView):
     template_name = 'users/admin/user_management/qc_user/qc_seller.html'
+    model = User
+    pk_url_kwarg = 'pk'
 
 
-class QCSellerDetailsView(TemplateView):
+class QCSellerListView(DetailView):
     template_name = 'users/admin/user_management/qc_user/qc_list_sellers.html'
+    model = User
+    pk_url_kwarg = 'pk'
 
 
-class QCLogisticView(TemplateView):
+class QCLogisticDetailView(DetailView):
     template_name = 'users/admin/user_management/qc_user/qc_logistic.html'
+    model = User
+    pk_url_kwarg = 'pk'
 
 
-class QCLogisticDetailsView(TemplateView):
+class QCLogisticListView(DetailView):
     template_name = 'users/admin/user_management/qc_user/qc_list_logistics.html'
+    model = User
+    pk_url_kwarg = 'pk'
