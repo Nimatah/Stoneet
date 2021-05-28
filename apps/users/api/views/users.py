@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView
+from rest_framework.decorators import api_view
 
 
 from ..serializers.users import UserSerializer
@@ -21,3 +22,18 @@ class UserListAPIView(ListAPIView):
         if name is not None:
             query.update({'profile__full_name__icontains': name})
         return User.objects.filter(**query)
+
+
+@api_view(['POST', ])
+def register_seller(request):
+    pass
+
+
+@api_view(['POST', ])
+def register_buyer(request):
+    pass
+
+
+@api_view(['POST', ])
+def register_logistic(request):
+    pass

@@ -79,6 +79,7 @@ class CreateProductForm(forms.ModelForm):
         product.description = self.cleaned_data['description']
         product.mine = self.cleaned_data['mine']
         product.user = self.user
+        product.state = product.STATE_PENDING
 
         images = self.handle_product_images(product)
 
