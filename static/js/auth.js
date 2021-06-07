@@ -129,7 +129,7 @@ function handleValidateUser() {
                 'Accept-Language': 'fa',
             },
             data: JSON.stringify(body),
-            success: function (){
+            success: function () {
                 //enter arious
                 nextPrev(1);
             },
@@ -176,7 +176,7 @@ function handleRegions(legal) {
 }
 
 function handleSubmitForm() {
-    $('#register-btn').on('click', function (e) {
+    $('#register_btn').on('click', function (e) {
         if (!$('#terms_conditions').prop('checked')) {
             $('#error-modal .modal-body').empty().append(`
                 <div>
@@ -253,3 +253,30 @@ handleBirthday();
 $(document).ready(function () {
     handleSignupNumber();
 })
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(input).parents('.ph-regi-upload-file').find('.ph-regi-image-upload-wrap').hide();
+            $(input).parents('.ph-regi-upload-file').find('.ph-regi-file-upload-image').attr('src', e.target.result);
+            $(input).parents('.ph-regi-upload-file').find('.ph-regi-file-upload-content').show();
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        removeUpload(input);
+    }
+}
+
+function removeUpload(input) {
+    $(input).parents('.ph-regi-upload-file').find('.ph-regi-file-upload-input').replaceWith($('.ph-regi-file-upload-input').clone());
+    $(input).parents('.ph-regi-upload-file').find('.ph-regi-file-upload-content').hide();
+    $(input).parents('.ph-regi-upload-file').find('.ph-regi-image-upload-wrap').show();
+}
+
+$('.ph-regi-image-upload-wrap').bind('dragover', function () {
+    $('.ph-regi-image-upload-wrap').addClass('image-dropping');
+});
+$('.ph-regi-image-upload-wrap').bind('dragleave', function () {
+    $('.ph-regi-image-upload-wrap').removeClass('image-dropping');
+});

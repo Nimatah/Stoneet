@@ -5,7 +5,7 @@ from apps.products.filters import AdminProductFilter
 
 
 class ListProductView(ListView):
-
+    # TODO: Add Seller ID
     template_name = 'users/admin/product_management/list_product.html'
     model = Product
     context_object_name = 'products'

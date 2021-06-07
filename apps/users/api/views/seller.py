@@ -16,6 +16,9 @@ class SellerAddProductPart1ValidationAPIView(APIView):
             return Response(status=status.HTTP_200_OK)
         response = {}
         for k, v in serializer.errors.items():
-            response[serializer.fields[f'{k}'].label] = v
+            try:
+                response[serializer.fields[f'{k}'].label] = v
+            except:
+                response['خطا'] = v
 
         return Response(data=response, status=status.HTTP_400_BAD_REQUEST)

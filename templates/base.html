@@ -23,25 +23,6 @@
 {% block content %}
 
 {% endblock %}
-
-<footer>
-    {% block footer %}
-    {% endblock %}
-
-    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
-    <script src="{% static 'persian-date/dist/persian-date.min.js' %}"></script>
-    <script src="{% static 'persian-datepicker/dist/js/persian-datepicker.min.js' %}"></script>
-    {% block footer_static %}
-    {% endblock %}
-    {% block base_admin_static %}
-    {% endblock %}
-    {% block extra %}
-    {% endblock %}
-</footer>
-
-
 <!-- modal#error-modal -------------------------------------------->
 <div id="error-modal" class="modal fade ph-modal ph-war-modal" tabindex="-1" role="dialog"
      aria-labelledby="exampleModalC">
@@ -217,5 +198,21 @@
 
 <!-- Admin QC MODAL ----------------------------------------------->
 
+<footer>
+    {% block footer %}
+    {% endblock %}
+
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'persian-date/dist/persian-date.min.js' %}"></script>
+    <script src="{% static 'persian-datepicker/dist/js/persian-datepicker.min.js' %}"></script>
+    {% block footer_static %}
+    {% endblock %}
+    {% block base_admin_static %}
+    {% endblock %}
+    {% block extra %}
+    {% endblock %}
+</footer>
 </body>
 </html>

@@ -56,13 +56,13 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
         return value
 
     def validate_attribute_14(self, value):
-        if value <= 0:
-            raise serializers.ValidationError("دانه بندی نمیتواند صفر یا کمتر باشد")
+        if value >= 100000:
+            raise serializers.ValidationError("دانه بندی نمیتواند از صد هزار بیشتر باشد")
         return value
 
     def validate_attribute_15(self, value):
-        if value <= 0:
-            raise serializers.ValidationError("دانه بندی نمیتواند صفر یا کمتر باشد")
+        if value >= 100000:
+            raise serializers.ValidationError("دانه بندی نمیتواند از صد هزار بیشتر باشد")
         return value
 
     def validate_attribute_16(self, value):

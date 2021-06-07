@@ -11,6 +11,17 @@ class AddProductView(UserPassesTestMixin, FormView):
     template_name = 'users/seller/products/add_product.html'
     success_url = reverse_lazy('users:seller_list_product')
 
+    # TODO: Change عیار and سایز بندی "from-to" order
+    # TODO: Change دانه بندی and نوع تحویل to float
+    # TODO: disable attribute options on فله
+    # TODO: Add میزان دپوی موجود and it's unit as float
+    # TODO: Add حداقل میزان سفارش
+
+    # -----
+
+    # TODO: Change عیار in title تا to - and remove existing dashes
+    # TODO: Change قیمت preview to {{ قیمت }} ریال به ازای هر {{ واحد }}
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = [c.to_dict_hierarchy() for c in Category.objects.get_root().prefetch_related('children')]

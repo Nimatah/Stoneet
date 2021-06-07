@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView as BaseLoginView
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from apps.users.forms import UserLoginForm
 
@@ -18,14 +18,7 @@ class LoginView(BaseLoginView):
         return HttpResponseRedirect(reverse_lazy('users:redirect'))
 
     def form_invalid(self, form):
-        return render(
-            self.request,
-            'home/home.html',
-            context={
-                'form': form,
-                'error_message': 'نام کاربری یا رمز عبور اشتباه است'
-            }
-        )
+        return redirect(reverse_lazy('home:index') + '?login=fail')
 
 
 class LoginRedirectView(View):

@@ -29,7 +29,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{% url 'home:index' %}">خانه</a>
                                     </li>
-{% comment %}                                    <li class="nav-item dropdown">
+                                    {% comment %}                                    <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle ph-nid" href="#" id="products_nav" role="button"
                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             محصولات
@@ -265,13 +265,13 @@
     <script src="{% static 'js/frontend.js' %}"></script>
 {% endblock %}
 {% block extra %}
-    {% if error_message %}
-        <script>
-            $('small#login-error').empty().text("{{ error_message }}")
+    <script>
+        if (window.location.href.includes("?login=fail")) {
+            $('small#login-error').empty().text("نام کاربری یا رمز عبور اشتباه است")
             $('#ph_LogIn_Modal').modal('show')
             $('#ph_LogIn_Modal').on('hidden.bs.modal', function () {
                 $('small#login-error').empty()
             });
-        </script>
-    {% endif %}
+        }
+    </script>
 {% endblock %}

@@ -26,6 +26,10 @@ class SellerRegisterView(FormView):
         login(self.request, user)
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        print(form.errors)
+        return super().form_invalid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['regions'] = [r.to_dict_hierarchy() for r in Region.objects.get_root().prefetch_related('children')]

@@ -43,10 +43,8 @@ class BuyerRegisterForm(BaseUserRegisterForm):
     image_id_card_back = forms.ImageField(required=False)
 
     image_company_registration = forms.ImageField(required=False)
-    image_company_added_value_certificate = forms.ImageField(required=False)
-    image_company_public_certificate = forms.ImageField(required=False)
+    image_company_latest_newspaper = forms.ImageField(required=False)
     image_company_tax_on_added_value_certificate = forms.ImageField(required=False)
-    image_company_signature_copyright_certificate = forms.ImageField(required=False)
 
     class Meta:
         fields = ('first_name', 'last_name', 'birthday', 'gender', 'id_code', 'national_code',
@@ -54,37 +52,50 @@ class BuyerRegisterForm(BaseUserRegisterForm):
                   'bank_sheba_number', 'company_name', 'company_type', 'company_register_code',
                   'company_national_code', 'company_finance_code', 'company_print_signature_right',
                   'image_id_card_front', 'image_id_card_back', 'image_company_registration',
-                  'image_company_added_value_certificate', 'image_company_public_certificate',
-                  'image_company_tax_on_added_value_certificate', 'image_company_signature_copyright_certificate')
+                  'image_company_latest_newspaper', 'image_company_tax_on_added_value_certificate')
 
     def clean_use_type(self) -> str:
         value = User.TYPE_BUYER
         return value
 
     def clean_first_name(self) -> str:
+        if not self.cleaned_data['first_name']:
+            return ''
         return self.cleaned_data['first_name'].strip().lower()
 
     def clean_last_name(self) -> str:
+        if not self.cleaned_data['last_name']:
+            return ''
         return self.cleaned_data['last_name'].strip().lower()
 
     def clean_birthday(self) -> date:
+        if not self.cleaned_data['birthday']:
+            return date.today()
         value = self.cleaned_data['birthday'].strip().lower()
         if not re.match(r'\d{4}-\d{2}-\d{2}', value):
             raise forms.ValidationError('فرمت تاریخ تولد غلط است')
         return jdatetime.JalaliDate(*map(lambda x: int(x), value.split('-'))).to_gregorian()
 
     def clean_gender(self) -> str:
+        if not self.cleaned_data['gender']:
+            return ''
         if self.cleaned_data['gender'] not in (Profile.GENDER_MALE, Profile.GENDER_FEMALE,):
             raise forms.ValidationError('جنسیت باید مرد یا زن باشد')
         return self.cleaned_data['gender']
 
     def clean_id_code(self) -> str:
+        if not self.cleaned_data['id_code']:
+            return ''
         return self.cleaned_data['id_code'].strip().lower()
 
     def clean_national_code(self) -> str:
+        if not self.cleaned_data['national_code']:
+            return ''
         return self.cleaned_data['national_code'].strip().lower()
 
     def clean_address(self) -> str:
+        if not self.cleaned_data['address']:
+            return ''
         return self.cleaned_data['address'].strip().lower()
 
     def clean_postal_code(self) -> str:
@@ -110,18 +121,28 @@ class BuyerRegisterForm(BaseUserRegisterForm):
         return self.cleaned_data['bank_sheba_number'].strip().lower()
 
     def clean_company_name(self) -> str:
+        if not self.cleaned_data['company_name']:
+            return ''
         return self.cleaned_data['company_name'].strip().lower()
 
     def clean_company_register_code(self) -> str:
+        if not self.cleaned_data['company_register_code']:
+            return ''
         return self.cleaned_data['company_register_code'].strip().lower()
 
     def clean_company_national_code(self) -> str:
+        if not self.cleaned_data['company_national_code']:
+            return ''
         return self.cleaned_data['company_national_code'].strip().lower()
 
     def clean_company_finance_code(self) -> str:
+        if not self.cleaned_data['company_finance_code']:
+            return ''
         return self.cleaned_data['company_finance_code'].strip().lower()
 
     def clean_company_print_signature_right(self) -> str:
+        if not self.cleaned_data['company_print_signature_right']:
+            return ''
         return self.cleaned_data['company_print_signature_right'].strip().lower()
 
     def save(self, commit: bool = True) -> User:

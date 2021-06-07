@@ -25,15 +25,15 @@ class UserListAPIView(ListAPIView):
 
 
 @api_view(['POST', ])
-def register_seller(request):
+def register_seller_validation(request):
     pass
 
 
 @api_view(['POST', ])
-def register_buyer(request):
+def register_buyer_validation(request):
     pass
 
 
 @api_view(['POST', ])
-def register_logistic(request):
+def register_logistic_validation(request):
     pass

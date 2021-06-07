@@ -82,6 +82,12 @@ class ProductHistoryManager(models.Manager):
 
 class Attribute(TimestampedModel):
 
+    # TODO: Add unit to ظرفیت تامین ماهیانه
+    # TODO: Remove سواری from Mine attributes
+    # TODO: Change موقعیت مکانی to موقعیت جغرافیایی در استان
+    # TODO: remove city from product details
+
+
     ID_PRICE = 1
     ID_ANALYZE = 2
     ID_SKU = 4

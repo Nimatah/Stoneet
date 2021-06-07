@@ -1,7 +1,6 @@
 from rest_framework import serializers
-from rest_framework.fields import CurrentUserDefault
 
-from apps.users.models import User, Mine
+from apps.users.models import Mine
 from apps.locations.models import Region
 
 

@@ -257,6 +257,7 @@
                                                 <div class="form-group">
                                                     <select class="form-control custom-select"
                                                             id="month_no" name="monthly_load">
+{#                                                    FIXME: Change title #}
                                                         <option value="">نوبت دریافت:</option>
                                                         {% for month in months %}
                                                             <option value="{{ month }}">{{ month }} ماه</option>
@@ -278,8 +279,7 @@
                                             </div><!-- .col-6 -->
                                             <div class="col-6">
                                                 <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
-                                                    <label class="ph-single-product-label" for="product_final_price">قیمت
-                                                        نهایی: </label>
+                                                    <label class="ph-single-product-label" for="product_final_price">جمع قیمت:</label>
                                                     <h3 id="product_final_price"><span id="final-price">0</span>
                                                         <span>ریال</span>
                                                     </h3>
