@@ -52,3 +52,8 @@ class LogisticTermsConditionsView(_BaseStaticContentView):
 class PrivacyPolicyView(_BaseStaticContentView):
 
     template_name = 'home/privacy_policy.html'
+
+
+class AboutUsView(_BaseStaticContentView):
+
+    template_name = 'home/about_us.html'

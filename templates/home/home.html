@@ -18,8 +18,8 @@
                         <h3>
                             خرید، فروش و حمل و نقل مواد معدنی با چند کلیک!
                         </h3>
-                        <form action="" method="">
-                            <input class="ph-search-query-field" type="text" placeholder="جستجوی محصول ...">
+                        <form action="{% url 'products:list_products' %}" method="get">
+                            <input class="ph-search-query-field" type="text" name="q" placeholder="جستجوی محصول ...">
                             <button type="submit"><i class="fas fa-search"></i> جستجو</button>
                         </form>
                     </div><!-- .ph-home-search-box -->
@@ -233,70 +233,16 @@
                         <span>New Products</span>
                     </div><!-- .ph-home-heading -->
                     <div class="ph-home-products-wrapper">
+                        {% for product in products %}
                             <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/1.jpg' %}" alt="">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
+                                <img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="">
+                                <a href="{% url 'products:product_details' pk=product.pk %}" class="ph-home-product-overlay">
+                                    <span class="ph-home-product-cat">{{ product.category.title }}</span>
+                                    <h4>{{ product.title }}</h4>
+                                    <p>قیمت هر تن: <span>{{ product.get_price.value }} ریال</span> </p>
                                 </a>
                             </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/2.jpg' %}" alt="">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/3.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/4.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
-                            <div class="ph-home-product-item">
-                                <img src="{% static 'images/products/1.jpg' %}" alt="{{ product.title }}">
-                                <a href="#" class="ph-home-product-overlay">
-                                    <span class="ph-home-product-cat">فلزات</span>
-                                    <h4>سنگ آهن</h4>
-                                    <p>قیمت هر تن: <span>250.000 تومان</span> </p>
-                                </a>
-                            </div>
+                        {% endfor %}
                     </div><!-- .ph-home-products-slider -->
                 </section><!-- #products -->
 

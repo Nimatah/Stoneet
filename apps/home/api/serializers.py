@@ -8,7 +8,8 @@ class StaticContentSerializer(serializers.ModelSerializer):
     terms_seller = serializers.CharField()
     terms_logistic = serializers.CharField()
     privacy_policy = serializers.CharField()
+    about_us = serializers.CharField()
 
     class Meta:
         model = StaticContent
-        fields = ('terms', 'terms_seller', 'terms_logistic', 'privacy_policy',)
+        fields = ('terms', 'terms_seller', 'terms_logistic', 'privacy_policy', 'about_us',)

@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
-
+from rest_framework.response import Response
 
 from ..serializers.users import UserSerializer
 from ...models import User
@@ -26,14 +26,134 @@ class UserListAPIView(ListAPIView):
 
 @api_view(['POST', ])
 def register_seller_validation(request):
-    pass
+    errors = {}
+    data = request.data
+    if not data.get('legal_type'):
+        errors['نوع کاربری'] = 'لطفا نوع کاربر حقیقی یا حقوقی را وارد نمایید'
+    if data.get('legal_type') == 'legal':
+        if not data.get('company_type'):
+            errors['نوع شرکت'] = 'لطفا نوع شرکت را انتخاب کنید'
+        if not data.get('company_name'):
+            errors['نام شرکت'] = 'لطفا نام شرکت را وارد نمایید'
+        if not data.get('address'):
+            errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+        if not data.get('company_register_code'):
+            errors['شماره ثبت'] = 'لطفا شماره ثبت را واید نمایید'
+        if not data.get('company_ceo_name'):
+            errors['نام مدیر عامل'] = 'لطفا نام مدیر عامل را وارد نمایید'
+        if not data.get('phone_number'):
+            errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+    elif data['legal_type'] == 'individual':
+        if not data.get('first_name'):
+            errors['نام'] = 'لطفا نام را وارد نمایید'
+        if not data.get('last_name'):
+            errors['نام خانوادگی'] = 'لطفا نام خانوادگی را وارد نمایید'
+        if not data.get('phone_number'):
+            errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+        if not data.get('national_code'):
+            errors['کد ملی'] = 'لطفا کد ملی را وارد نمایید'
+        if not data.get('address'):
+            errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+    if errors:
+        return Response(errors, status=400)
+    return Response(None, status=200)
 
 
 @api_view(['POST', ])
 def register_buyer_validation(request):
-    pass
+    errors = {}
+    data = request.data
+    if not data.get('legal_type'):
+        errors['نوع کاربری'] = 'لطفا نوع کاربر حقیقی یا حقوقی را وارد نمایید'
+    if data.get('legal_type') == 'legal':
+        if not data.get('company_type'):
+            errors['نوع شرکت'] = 'لطفا نوع شرکت را انتخاب کنید'
+        if not data.get('company_name'):
+            errors['نام شرکت'] = 'لطفا نام شرکت را وارد نمایید'
+        if not data.get('address'):
+            errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+        if not data.get('company_register_code'):
+            errors['شماره ثبت'] = 'لطفا شماره ثبت را واید نمایید'
+        if not data.get('company_ceo_name'):
+            errors['نام مدیر عامل'] = 'لطفا نام مدیر عامل را وارد نمایید'
+        if not data.get('phone_number'):
+            errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+    elif data['legal_type'] == 'individual':
+        if not data.get('first_name'):
+            errors['نام'] = 'لطفا نام را وارد نمایید'
+        if not data.get('last_name'):
+            errors['نام خانوادگی'] = 'لطفا نام خانوادگی را وارد نمایید'
+        if not data.get('phone_number'):
+            errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+        if not data.get('national_code'):
+            errors['کد ملی'] = 'لطفا کد ملی را وارد نمایید'
+        if not data.get('address'):
+            errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+    if errors:
+        return Response(errors, status=400)
+    return Response(None, status=200)
 
 
 @api_view(['POST', ])
 def register_logistic_validation(request):
-    pass
+    errors = {}
+    data = request.data
+
+    if not data.get('company_name'):
+        errors['نام شرکت'] = 'لطفا نام شرکت را وارد نمایید'
+    if not data.get('company_type'):
+        errors['نوع شرکت'] = 'لطفا نوع شرکت را انتخاب کنید'
+    if not data.get('company_license_type'):
+        errors['نوع پروانه شرکت'] = 'لطفا نوع پروانه شرکت را انتخاب نمایید'
+    if not data.get('company_license_number'):
+        errors['شماره پروانه شرکت'] = 'لطفا شماره پروانه شرکت را وارد نمایید'
+    if not data.get('company_ceo_name'):
+        errors['نام مدیر عامل شرکت'] = 'لطفا نام مدیر عامل شرکت را وارد نمایید'
+    if not data.get('first_name'):
+        errors['نام'] = 'لطفا نام را وارد نمایید'
+    if not data.get('last_name'):
+        errors['نام خانوادگی'] = 'لطفا نام خانوادگی را وارد نمایید'
+    if not data.get('phone_number'):
+        errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+    if not data.get('national_code'):
+        errors['کد ملی'] = 'لطفا کد ملی را وارد نمایید'
+    if not data.get('address'):
+        errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+
+    if errors:
+        return Response(errors, status=400)
+    return Response(None, status=200)
+
+
+@api_view(['GET', ])
+def user_accept(request, pk):
+    if not request.user.is_authenticated and not (request.user.is_admin or request.user.is_superuser):
+        return Response({'error': 'شما دسترسی ندارید'}, status=401)
+
+    try:
+        user = User.objects.get(pk=pk)
+    except User.DoesNotExist:
+        return Response({'error': 'کاربر پیدا نشد'}, status=404)
+
+    user.state = User.STATE_ACCEPTED
+    user.rejection_reason = ''
+    user.save()
+
+    return Response('', status=200)
+
+
+@api_view(['GET', ])
+def user_reject(request, pk):
+    if not request.user.is_authenticated and not (request.user.is_admin or request.user.is_superuser):
+        return Response({'error': 'شما دسترسی ندارید'}, status=401)
+
+    try:
+        user = User.objects.get(pk=pk)
+    except User.DoesNotExist:
+        return Response({'error': 'کاربر پیدا نشد'}, status=404)
+
+    user.state = User.STATE_REJECTED
+    user.rejection_reason = request.query_params.get('reason')
+    user.save()
+
+    return Response('', status=200)

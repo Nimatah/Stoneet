@@ -37,6 +37,7 @@ class SellerRegisterForm(BaseUserRegisterForm):
     company_register_code = forms.CharField(required=False)
     company_national_code = forms.CharField(required=False)
     company_finance_code = forms.CharField(required=False)
+    company_ceo_name = forms.CharField(required=False)
     company_print_signature_right = forms.CharField(required=False)
 
     image_id_card_front = forms.ImageField(required=False)
@@ -50,12 +51,13 @@ class SellerRegisterForm(BaseUserRegisterForm):
         fields = ('first_name', 'last_name', 'birthday', 'gender', 'id_code', 'national_code',
                   'address', 'postal_code', 'region', 'phone_number', 'bank_account_name',
                   'bank_sheba_number', 'company_name', 'company_type', 'company_register_code',
-                  'company_national_code', 'company_finance_code', 'company_print_signature_right',
-                  'image_id_card_front', 'image_id_card_back', 'image_company_registration',
-                  'image_company_latest_newspaper', 'image_company_tax_on_added_value_certificate')
+                  'company_national_code', 'company_finance_code', 'company_ceo_name',
+                  'company_print_signature_right', 'image_id_card_front', 'image_id_card_back',
+                  'image_company_registration', 'image_company_latest_newspaper',
+                  'image_company_tax_on_added_value_certificate')
 
     def clean_use_type(self) -> str:
-        value = User.TYPE_BUYER
+        value = User.TYPE_SELLER
         return value
 
     def clean_first_name(self) -> str:

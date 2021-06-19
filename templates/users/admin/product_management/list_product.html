@@ -69,13 +69,13 @@
                                         <label for="ph_admin_page_page_no"
                                                class="col-sm-6 col-form-label col-form-label-sm">تعداد نمایش</label>
                                         <div class="col-sm-6">
-                                            <select id="ph_admin_page_page_no" class="form-control" disabled>
-                                                <option selected>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>50</option>
-                                            </select>
+{#                                            <select id="ph_admin_page_page_no" class="form-control" disabled>#}
+{#                                                <option selected>10</option>#}
+{#                                                <option>20</option>#}
+{#                                                <option>30</option>#}
+{#                                                <option>40</option>#}
+{#                                                <option>50</option>#}
+{#                                            </select>#}
                                         </div><!-- .col-sm-6 -->
                                     </div><!-- .form-group -->
                                 </div><!-- .ph-admin-page-list-sort -->
@@ -145,6 +145,7 @@
                                 <th>گروه کالا</th>
                                 <th>قیمت</th>
                                 <th>نام فروشنده</th>
+                                <th>شناسه فروشنده</th>
                                 <th>وضعیت</th>
                                 <th>عملیات</th>
                             </tr>
@@ -183,6 +184,11 @@
                                     </td>
                                     <td>
                                         <div class="ph-admin-table-cell">
+                                            {{ product.user.pk }}
+                                        </div><!-- .ph-admin-table-cell -->
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
                                             <div class="ph-admin-table-action-btns">
                                                 <span class="ph-admin-table-product-status">{{ product.get_state_display }}</span>
                                             </div><!-- .ph-admin-table-action-btns -->
@@ -191,7 +197,7 @@
                                     <td>
                                         <div class="ph-admin-table-cell">
                                             <div class="ph-admin-table-action-btns">
-                                                <a href="" class="ph-admin-table-action-btn-edit"><i
+                                                <a href="{% url 'users:admin_qc_product_details' pk=product.pk %}" class="ph-admin-table-action-btn-edit"><i
                                                         class="fas fa-pen"></i></a>
                                                 <a href="#" class="ph-admin-table-action-btn-inactive"><i
                                                         class="fas fa-times"></i></a>
@@ -212,13 +218,13 @@
                                         <label for="ph_admin_page_page_no"
                                                class="col-sm-6 col-form-label col-form-label-sm">تعداد نمایش</label>
                                         <div class="col-sm-6">
-                                            <select id="ph_admin_page_page_no" class="form-control" disabled>
-                                                <option selected>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>50</option>
-                                            </select>
+{#                                            <select id="ph_admin_page_page_no" class="form-control" disabled>#}
+{#                                                <option selected>10</option>#}
+{#                                                <option>20</option>#}
+{#                                                <option>30</option>#}
+{#                                                <option>40</option>#}
+{#                                                <option>50</option>#}
+{#                                            </select>#}
                                         </div><!-- .col-sm-6 -->
                                     </div><!-- .form-group -->
                                 </div><!-- .ph-admin-page-list-sort -->

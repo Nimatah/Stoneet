@@ -3,13 +3,13 @@
 
 {% block admin_content %}
     <main class="ph-dashboard-main ph-admin-panel admin-add-category">
-        <form action="{% url 'users:admin_add_category' %}" method="post">
+        <form action="{% url 'users:admin_edit_category' pk=category.pk %}" method="post">
         {% csrf_token %}
             <div class="container">
                 <div class="ph-admin-page-container">
                     <div class="ph-admin-page-intro-text">
-                        <span>افزودن دسته بندی | </span>
-                        برای اضافه کردن دسته بندی جدید برای محصولات از این قسمت استفاده کنید.
+                        <span>ویرایش دسته بندی | </span>
+                        برای ویرایش دسته بندی برای محصولات از این قسمت استفاده کنید.
                     </div><!-- .ph-admin-page-intro-text -->
                     <div class="ph-admin-add-category-wrapper">
                         <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
@@ -19,7 +19,7 @@
                             <div class="form-row mb-4 align-items-center">
                                 <div class="col-6 my-1">
                                     <label class="mr-sm-2 d-block" for="title">نام</label>
-                                    <input name="title" id="title" type="text" class="form-control">
+                                    <input value="{{ category.title }}" name="title" id="title" type="text" class="form-control">
                                 </div><!-- .col-6 -->
                             </div><!-- .form-row -->
                             <div class="ph-panel-title">
@@ -30,8 +30,8 @@
                                     <label class="mr-sm-2 d-block" for="parent">دسته مادر را انتخاب کنید</label>
                                     <select name="parent" class="custom-select mr-sm-2" id="parent">
                                         <option value="">دسته بندی مادر</option>
-                                        {% for category in root_categories %}
-                                            <option value="{{ category.pk }}">{{ category.title }}</option>
+                                        {% for c in root_categories %}
+                                            <option {% if c == category.parent %}selected{% endif %} value="{{ c.pk }}">{{ c.title }}</option>
                                         {% endfor %}
                                     </select>
                                 </div><!-- .col-6 -->
@@ -43,7 +43,7 @@
                                 <div class="col-6 my-1">
                                     <label class="mr-sm-2 d-block" for="commission">مقدار کمیسیون این دسته را به عدد
                                         وارد کنید</label>
-                                    <input id="commission" name="commission" type="number" class="form-control">
+                                    <input value="{{ category.commission }}" id="commission" name="commission" type="number" class="form-control">
                                 </div><!-- .col-6 -->
                             </div><!-- .form-row -->
                             <div class="ph-cpp-btn">

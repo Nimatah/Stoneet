@@ -8,9 +8,9 @@
             <div class="ph-admin-page-container ">
                 <div class="ph-admin-page-intro-text">
                     <span>بررسی فروشنده | </span>
-                    در اینجا میتوانید جزییات مشخصات فروشنده را بررسی و سپس تایید یا رد کنید.
+                    در اینجا میتوانید جزییات مشخصات خریدار را بررسی و سپس تایید یا رد کنید.
                 </div><!-- ph-admin-page-intro-text -->
-                {% if seller.is_individual %}
+                {% if buyer.is_individual %}
                 <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
                     <div class="ph-user-info">
                         <div class="row">
@@ -24,37 +24,37 @@
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام و نام خانوادگی</span>
                                         <div class="ph-user-info-item-full-name">
-                                            <span>{{ seller.profile.first_name }}</span>
-                                            <span>{{ seller.profile.last_name }}</span>
+                                            <span>{{ buyer.profile.first_name }}</span>
+                                            <span>{{ buyer.profile.last_name }}</span>
                                         </div>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>جنسیت</span>
-                                        <span>{{ seller.profile.get_gender_display }}</span>
+                                        <span>{{ buyer.profile.get_gender_display }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تاریخ تولد</span>
-                                        <span>{{ seller.profile.get_persian_birthday }}</span>
+                                        <span>{{ buyer.profile.get_persian_birthday }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره شناسنامه</span>
-                                        <span>{{ seller.profile.id_code }}</span>
+                                        <span>{{ buyer.profile.id_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد ملی</span>
-                                        <span>{{ seller.profile.national_code }}</span>
+                                        <span>{{ buyer.profile.national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
-                                        <span>نام حساب بانکی شخصی</span>
-                                        <span>{{ seller.profile.bank_account_name }}</span>
+                                        <span>نام صاحب حساب بانکی</span>
+                                        <span>{{ buyer.profile.bank_account_name }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>شماره حساب بانکی</span>
-                                        <span>{{ seller.profile.bank_account_number }}</span>
+                                        <span>{{ buyer.profile.bank_account_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>شماره شبا</span>
-                                        <span style="direction: ltr">{{ seller.profile.bank_sheba_number }}</span>
+                                        <span style="direction: ltr">{{ buyer.profile.bank_sheba_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -67,27 +67,27 @@
                                 <div class="row">
                                     <div class="col-6 ph-user-info-item">
                                         <span>استان</span>
-                                        <span>{{ seller.profile.region.parent.title }}</span>
+                                        <span>{{ buyer.profile.region.parent.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شهر</span>
-                                        <span>{{ seller.profile.region.title  }}</span>
+                                        <span>{{ buyer.profile.region.title  }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>آدرس</span>
-                                        <span>{{ seller.profile.address }}</span>
+                                        <span>{{ buyer.profile.address }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کدپستی</span>
-                                        <span>{{ seller.profile.postal_code }}</span>
+                                        <span>{{ buyer.profile.postal_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تلفن ثابت</span>
-                                        <span>{{ seller.profile.phone_number }}</span>
+                                        <span>{{ buyer.profile.phone_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>موبایل</span>
-                                        <span>{{ seller.mobile_number }}</span>
+                                        <span>{{ buyer.mobile_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -99,9 +99,9 @@
                                 </div><!-- ph-panel-title -->
                                 <div class="row">
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_id_card_front %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_id_card_front.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_id_card_front.file }}" alt="">
+                                        {% if buyer.get_image_id_card_front %}
+                                        <a href="{% get_media_prefix %}{{ buyer.get_image_id_card_front.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ buyer.get_image_id_card_front.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -111,9 +111,9 @@
                                         <span>تصویر روی کارت ملی</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_id_card_back %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_id_card_back.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_id_card_back.file }}" alt="">
+                                        {% if buyer.get_image_id_card_back %}
+                                        <a href="{% get_media_prefix %}{{ buyer.get_image_id_card_back.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ buyer.get_image_id_card_back.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -143,39 +143,39 @@
                                 <div class="row">
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام شرکت</span>
-                                        <span>{{ seller.profile.company_name }}</span>
+                                        <span>{{ buyer.profile.company_name }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>نوع شرکت</span>
-                                        <span>{{ seller.profile.get_company_type_display }}</span>
+                                        <span>{{ buyer.profile.get_company_type_display }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره ثبت شرکت</span>
-                                        <span>{{ seller.profile.company_register_code }}</span>
+                                        <span>{{ buyer.profile.company_register_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شناسه ملی شرکت</span>
-                                        <span>{{ seller.profile.company_national_code }}</span>
+                                        <span>{{ buyer.profile.company_national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد اقتصادی</span>
-                                        <span>{{ seller.profile.company_finance_code}}</span>
+                                        <span>{{ buyer.profile.company_finance_code}}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>حق چاپ امضا</span>
-                                        <span>{{ seller.profile.company_print_signature_right }}</span>
+                                        <span>{{ buyer.profile.company_print_signature_right }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
-                                        <span>نام حساب بانکی شخصی</span>
-                                        <span>{{ seller.profile.bank_account_name }}</span>
+                                        <span>نام صاحب حساب بانکی</span>
+                                        <span>{{ buyer.profile.bank_account_name }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>شماره حساب بانکی</span>
-                                        <span>{{ seller.profile.bank_account_number }}</span>
+                                        <span>{{ buyer.profile.bank_account_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>شماره شبا</span>
-                                        <span style="direction: ltr">{{ seller.profile.bank_sheba_number }}</span>
+                                        <span style="direction: ltr">{{ buyer.profile.bank_sheba_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -188,27 +188,27 @@
                                 <div class="row">
                                     <div class="col-6 ph-user-info-item">
                                         <span>استان</span>
-                                        <span>{{ seller.profile.region.parent.title }}</span>
+                                        <span>{{ buyer.profile.region.parent.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شهر</span>
-                                        <span>{{ seller.profile.region.title }}</span>
+                                        <span>{{ buyer.profile.region.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>آدرس</span>
-                                        <span>{{ seller.profile.address }}</span>
+                                        <span>{{ buyer.profile.address }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کدپستی</span>
-                                        <span>{{ seller.profile.postal_code }}</span>
+                                        <span>{{ buyer.profile.postal_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تلفن ثابت</span>
-                                        <span>{{ seller.profile.phone_number }}</span>
+                                        <span>{{ buyer.profile.phone_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>موبایل</span>
-                                        <span>{{ seller.mobile_number }}</span>
+                                        <span>{{ buyer.mobile_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -220,9 +220,9 @@
                                 </div><!-- ph-panel-title -->
                                 <div class="row">
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_company_registration %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_registration.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_registration.file }}" alt="">
+                                        {% if buyer.get_image_company_registration %}
+                                        <a href="{% get_media_prefix %}{{ buyer.get_image_company_registration.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ buyer.get_image_company_registration.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -232,9 +232,9 @@
                                         <span>گواهی ثبت شرکت</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_company_registration %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_public_certificate.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_public_certificate.file }}" alt="">
+                                        {% if buyer.get_image_company_registration %}
+                                        <a href="{% get_media_prefix %}{{ buyer.get_image_company_public_certificate.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ buyer.get_image_company_public_certificate.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -244,9 +244,9 @@
                                         <span>آخرین به روزرسانی روزنامه رسمی</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_company_registration %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_tax_on_added_value_certificate.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_tax_on_added_value_certificate.file }}" alt="">
+                                        {% if buyer.get_image_company_registration %}
+                                        <a href="{% get_media_prefix %}{{ buyer.get_image_company_tax_on_added_value_certificate.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ buyer.get_image_company_tax_on_added_value_certificate.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -275,13 +275,13 @@
                     </div>
                     <!-- ph-qc-description -->
                     <div class="ph-qc-info-btns">
-                        <a href="{% url 'users_api:user_accept' pk=seller.pk %}" id="user-accept" redirect="{% url 'users:admin_list_seller' %}" class="ph-btn ph-access-btn">
+                        <a href="{% url 'users_api:user_accept' pk=buyer.pk %}" id="user-accept" redirect="{% url 'users:admin_qc_buyer' %}" class="ph-btn ph-access-btn">
                             <i class="fas fa-check"></i>
-                            <span>تایید فروشنده</span>
+                            <span>تایید خریدار</span>
                         </a>
-                        <a href="{% url 'users_api:user_reject' pk=seller.pk %}" redirect="{% url 'users:admin_list_seller' %}" id="user-reject" class="ph-btn ph-denied-btn">
+                        <a href="{% url 'users_api:user_reject' pk=buyer.pk %}" redirect="{% url 'users:admin_qc_buyer' %}" id="user-reject" class="ph-btn ph-denied-btn">
                             <i class="fas fa-times"></i>
-                            <span>رد فروشنده</span>
+                            <span>رد خریدار</span>
                         </a>
                     </div>
                     <!-- ph-qc-info-btns -->

@@ -32,7 +32,7 @@ class SellerRegisterView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['regions'] = [r.to_dict_hierarchy() for r in Region.objects.get_root().prefetch_related('children')]
+        context['regions'] = Region.objects.to_context()
         return context
 
 
@@ -57,11 +57,11 @@ class BuyerRegisterView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['regions'] = [r.to_dict_hierarchy() for r in Region.objects.get_root().prefetch_related('children')]
+        context['regions'] = Region.objects.to_context()
         return context
 
 
-class LogisticRegisterView(TemplateView):
+class LogisticRegisterView(FormView):
 
     template_name = 'users/auth/register/register_logistic.html'
     form_class = LogisticRegisterForm
@@ -83,5 +83,5 @@ class LogisticRegisterView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['regions'] = [r.to_dict_hierarchy() for r in Region.objects.get_root().prefetch_related('children')]
+        context['regions'] = Region.objects.to_context()
         return context

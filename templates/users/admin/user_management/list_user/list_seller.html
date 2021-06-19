@@ -8,7 +8,7 @@
         <div class="container">
             <div class="ph-dm-title">
                 <div class="title">پنل مدیریت فروشندگان</div>
-                <a href="#" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن فروشنده </a>
+                <a href="{% url 'users:admin_list_seller' %}" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن فروشنده </a>
             </div><!-- .ph-dm-title -->
             <div class="ph-managements-container">
                 <form>
@@ -110,7 +110,7 @@
                                     <td>{{ user.profile.region.title }}</td>
                                     <td>{{ user.get_state_display }}</td>
                                     <td>
-                                        <a href="{% url 'users:admin_qc_seller' %}"
+                                        <a href="{% url 'users:admin_qc_seller_details' pk=user.pk %}"
                                            class="ph-btn ph-managements-btn qc"><i
                                                 class="fas fas fa-sync-alt"></i>بررسی</a>
                                     </td>

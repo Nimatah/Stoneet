@@ -107,7 +107,7 @@
                                     <td>{{ user.profile.region.title }}</td>
                                     <td>{{ user.get_state_display }}</td>
                                     <td>
-                                        <a href="#" class="ph-btn ph-managements-btn qc"><i
+                                        <a href="{% url 'users:admin_qc_buyer_details' pk=user.pk %}" class="ph-btn ph-managements-btn qc"><i
                                                 class="fas fas fa-sync-alt"></i>بررسی</a>
                                     </td>
                                 </tr>

@@ -22,35 +22,35 @@
                                 <div class="row">
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام مدیرعامل</span>
-                                        <span>{{ user.profile.company_ceo_name }}</span>
+                                        <span>{{ logistic.profile.company_ceo_name }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره شناسنامه مدیرعامل</span>
-                                        <span>{{ user.profile.company_ceo.id_code }}</span>
+                                        <span>{{ logistic.profile.company_ceo_id_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد ملی مدیرعامل</span>
-                                        <span>{{ user.profile.company_ceo_national_code }}</span>
+                                        <span>{{ logistic.profile.company_ceo_national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>نوع پروانه</span>
-                                        <span>{{ user.profile.company_license_type }}</span>
+                                        <span>{{ logistic.profile.get_company_license_type_display }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره پروانه</span>
-                                        <span>{{ user.profile.company_license_code }}</span>
+                                        <span>{{ logistic.profile.company_license_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تاریخ شروع اعتبار</span>
-                                        <span>{{ user.profile.company_license_start }}</span>
+                                        <span>{{ logistic.profile.get_persian_company_license_start }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تاریخ پایان اعتبار</span>
-                                        <span>{{ user.profile.company_license_end }}</span>
+                                        <span>{{ logistic.profile.get_persian_company_license_end }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره ثبت</span>
-                                        <span>{{ user.profile.company_register_code }}</span>
+                                        <span>{{ logistic.profile.company_register_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -64,45 +64,44 @@
                                     <div class="col-12 ph-user-info-item">
                                         <span>نام و نام خانوادگی</span>
                                         <div class="ph-user-info-item-full-name">
-                                            <span>{{ user.profile.firstname }}</span>
-                                            <span>{{ user.profile.last_name }}</span>
+                                            <span>{{ logistic.profile.full_name }}</span>
                                         </div>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>ایمیل</span>
-                                        <span>{{ user.get_email}}</span>
+                                        <span>{{ logistic.get_email}}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شماره شناسنامه</span>
-                                        <span>{{ user.profile.id_code }}</span>
+                                        <span>{{ logistic.profile.id_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کد ملی</span>
-                                        <span>{{ user.profile.national_code }}</span>
+                                        <span>{{ logistic.profile.national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>موبایل</span>
-                                        <span>{{ user.mobile_number }}</span>
+                                        <span>{{ logistic.mobile_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>تلفن ثابت</span>
-                                        <span>{{ user.profile.phone_number }}</span>
+                                        <span>{{ logistic.profile.phone_number }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>کدپستی</span>
-                                        <span>{{ user.profile.postal_code }}</span>
+                                        <span>{{ logistic.profile.postal_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>استان</span>
-                                        <span>{{ user.profile.region.parent.title }}</span>
+                                        <span>{{ logistic.profile.region.parent.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
                                         <span>شهر</span>
-                                        <span>{{ user.profile.region.title }}</span>
+                                        <span>{{ logistic.profile.region.title }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-12 ph-user-info-item">
                                         <span>آدرس</span>
-                                        <span>{{ user.profile.address }}</span>
+                                        <span>{{ logistic.profile.address }}</span>
                                     </div><!-- .ph-user-info-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -114,15 +113,15 @@
                                 </div><!-- ph-panel-title -->
                                 <div class="row">
                                     <div class="col-6 ph-user-image-item thumb">
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        {% if logistic.get_image_company_license %}
+                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_license.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_license.file }}" alt="">
                                         </a>
-                                        <span>تصویر روی کارت ملی مدیرعامل</span>
-                                    </div><!-- .ph-user-image-item -->
-                                    <div class="col-6 ph-user-image-item thumb">
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        {% else %}
+                                            <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/placeholder.jpg' %}" alt="">
                                         </a>
+                                        {% endif %}
                                         <span>تصویر پروانه فعالیت</span>
                                     </div><!-- .ph-user-image-item -->
                                 </div><!-- .row -->
@@ -135,15 +134,27 @@
                                 </div><!-- ph-panel-title -->
                                 <div class="row">
                                     <div class="col-6 ph-user-image-item thumb">
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        {% if logistic.get_image_id_card_front %}
+                                        <a href="{% get_media_prefix %}{{ logistic.get_image_id_card_front.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ logistic.get_image_id_card_front.file }}" alt="">
                                         </a>
+                                        {% else %}
+                                            <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/placeholder.jpg' %}" alt="">
+                                        </a>
+                                        {% endif %}
                                         <span>تصویر روی کارت ملی</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-6 ph-user-image-item thumb">
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        {% if logistic.get_image_id_card_back %}
+                                        <a href="{% get_media_prefix %}{{ logistic.get_image_id_card_back.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ logistic.get_image_id_card_back.file }}" alt="">
                                         </a>
+                                        {% else %}
+                                            <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
+                                            <img src="{% static 'images/placeholder.jpg' %}" alt="">
+                                        </a>
+                                        {% endif %}
                                         <span>تصویر پشت کارت ملی</span>
                                     </div><!-- .ph-user-image-item -->
                                 </div><!-- .row -->
@@ -155,21 +166,21 @@
                 </div>
                 <!-- ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4 -->
                 <div class="ph-qc-section">
-                    <div class="ph-qc-alarm">
-                        <p>با توجه به اطلاعات ثبت شده در بالا، این حمل و نقل را تایید یا رد کنید.</p>
-                        <span>*لطفا دلیل رد کردن را در کادر زیر بنویسید، تا برای حمل و نقل ارسال شود.</span>
+                     <div class="ph-qc-alarm">
+                        <p>با توجه به اطلاعات ثبت شده در بالا، این فروشنده را تایید یا رد کنید.</p>
+                        <span>*لطفا دلیل رد کردن را در کادر زیر بنویسید، تا برای فروشنده ارسال شود.</span>
                     </div>
                     <!-- ph-qc-alarm -->
                     <div class="ph-qc-description">
-                        <textarea class="form-control" id="" rows="5" placeholder="دلایل رد شدن این حمل و نقل..."></textarea>
+                        <textarea class="form-control" id="reject-reason" rows="5" placeholder="دلایل رد شدن این فروشنده..."></textarea>
                     </div>
                     <!-- ph-qc-description -->
                     <div class="ph-qc-info-btns">
-                        <a href="#" class="ph-btn ph-access-btn">
+                        <a href="{% url 'users_api:user_accept' pk=logistic.pk %}" id="user-accept" redirect="{% url 'users:admin_list_logistic' %}" class="ph-btn ph-access-btn">
                             <i class="fas fa-check"></i>
                             <span>تایید حمل و نقل</span>
                         </a>
-                        <a href="#" class="ph-btn ph-denied-btn">
+                        <a href="{% url 'users_api:user_reject' pk=logistic.pk %}" redirect="{% url 'users:admin_list_logistic' %}" id="user-reject" class="ph-btn ph-denied-btn">
                             <i class="fas fa-times"></i>
                             <span>رد حمل و نقل</span>
                         </a>
@@ -229,4 +240,5 @@
         });
 
     </script>
+    <script src="{% static 'js/qc_user.js' %}"></script>
 {% endblock %}

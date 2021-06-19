@@ -16,11 +16,10 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         'password_mismatch': "رمز عبور وارد شده با تکرار رمز عبور مغایرت دارد",
     }
 
-    use_type = forms.CharField(label="User Type", initial=User.TYPE_SELLER, required=False)
+    use_type = forms.CharField(label="User Type", initial=User.TYPE_LOGISTIC, required=False)
+    legal_type = forms.ChoiceField(label="Legal Type", initial=User.LEGAL_LEGAL, choices=BaseUserRegisterForm.LEGAL_CHOICES, required=False)
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
-    birthday = forms.CharField(required=False)
-    gender = forms.CharField(required=False)
     id_code = forms.CharField(required=False)
     national_code = forms.CharField(required=False)
 
@@ -34,28 +33,30 @@ class LogisticRegisterForm(BaseUserRegisterForm):
 
     company_name = forms.CharField(required=False)
     company_type = forms.CharField(required=False)
+    company_license_type = forms.CharField(required=False)
+    company_license_number = forms.CharField(required=False)
+    company_license_start = forms.CharField(required=False)
+    company_license_end = forms.CharField(required=False)
     company_register_code = forms.CharField(required=False)
-    company_national_code = forms.CharField(required=False)
-    company_finance_code = forms.CharField(required=False)
-    company_print_signature_right = forms.CharField(required=False)
+    company_ceo_name = forms.CharField(required=False)
+    company_ceo_national_code = forms.CharField(required=False)
+    company_ceo_id_code = forms.CharField(required=False)
+    company_branch_type = forms.CharField(required=False)
 
     image_id_card_front = forms.ImageField(required=False)
     image_id_card_back = forms.ImageField(required=False)
 
-    image_company_registration = forms.ImageField(required=False)
-    image_company_latest_newspaper = forms.ImageField(required=False)
-    image_company_tax_on_added_value_certificate = forms.ImageField(required=False)
+    image_company_license = forms.ImageField(required=False)
 
     class Meta:
-        fields = ('first_name', 'last_name', 'birthday', 'gender', 'id_code', 'national_code',
-                  'address', 'postal_code', 'region', 'phone_number', 'bank_account_name',
-                  'bank_sheba_number', 'company_name', 'company_type', 'company_register_code',
-                  'company_national_code', 'company_finance_code', 'company_print_signature_right',
-                  'image_id_card_front', 'image_id_card_back', 'image_company_registration',
-                  'image_company_latest_newspaper', 'image_company_tax_on_added_value_certificate')
+        fields = ('first_name', 'last_name', 'legal_type', 'id_code', 'national_code', 'address', 'postal_code',
+                  'region', 'phone_number', 'bank_account_name', 'bank_sheba_number',
+                  'company_name', 'company_type', 'company_register_code', 'company_license_type',
+                  'company_license_number', 'company_license_start', 'company_license_end',
+                  'image_id_card_front', 'image_id_card_back', 'image_company_license',)
 
     def clean_use_type(self) -> str:
-        value = User.TYPE_BUYER
+        value = User.TYPE_LOGISTIC
         return value
 
     def clean_first_name(self) -> str:
@@ -67,21 +68,6 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         if not self.cleaned_data['last_name']:
             return ''
         return self.cleaned_data['last_name'].strip().lower()
-
-    def clean_birthday(self) -> date:
-        if not self.cleaned_data['birthday']:
-            return date.today()
-        value = self.cleaned_data['birthday'].strip().lower()
-        if not re.match(r'\d{4}-\d{2}-\d{2}', value):
-            raise forms.ValidationError('فرمت تاریخ تولد غلط است')
-        return jdatetime.JalaliDate(*map(lambda x: int(x), value.split('-'))).to_gregorian()
-
-    def clean_gender(self) -> str:
-        if not self.cleaned_data['gender']:
-            return ''
-        if self.cleaned_data['gender'] not in (Profile.GENDER_MALE, Profile.GENDER_FEMALE,):
-            raise forms.ValidationError('جنسیت باید مرد یا زن باشد')
-        return self.cleaned_data['gender']
 
     def clean_id_code(self) -> str:
         if not self.cleaned_data['id_code']:
@@ -130,20 +116,21 @@ class LogisticRegisterForm(BaseUserRegisterForm):
             return ''
         return self.cleaned_data['company_register_code'].strip().lower()
 
-    def clean_company_national_code(self) -> str:
-        if not self.cleaned_data['company_national_code']:
-            return ''
-        return self.cleaned_data['company_national_code'].strip().lower()
+    def clean_company_license_start(self):
+        if not self.cleaned_data['company_license_start']:
+            return date.today()
+        value = self.cleaned_data['company_license_start'].strip().lower()
+        if not re.match(r'\d{4}-\d{2}-\d{2}', value):
+            raise forms.ValidationError('فرمت تاریخ تولد غلط است')
+        return jdatetime.JalaliDate(*map(lambda x: int(x), value.split('-'))).to_gregorian()
 
-    def clean_company_finance_code(self) -> str:
-        if not self.cleaned_data['company_finance_code']:
-            return ''
-        return self.cleaned_data['company_finance_code'].strip().lower()
-
-    def clean_company_print_signature_right(self) -> str:
-        if not self.cleaned_data['company_print_signature_right']:
-            return ''
-        return self.cleaned_data['company_print_signature_right'].strip().lower()
+    def clean_company_license_end(self):
+        if not self.cleaned_data['company_license_end']:
+            return date.today()
+        value = self.cleaned_data['company_license_end'].strip().lower()
+        if not re.match(r'\d{4}-\d{2}-\d{2}', value):
+            raise forms.ValidationError('فرمت تاریخ تولد غلط است')
+        return jdatetime.JalaliDate(*map(lambda x: int(x), value.split('-'))).to_gregorian()
 
     def save(self, commit: bool = True) -> User:
         with transaction.atomic():
@@ -152,38 +139,24 @@ class LogisticRegisterForm(BaseUserRegisterForm):
                 username=self.cleaned_data['email'],
                 mobile_number=self.cleaned_data['mobile_number'],
                 email=self.cleaned_data['email'],
+                legal_type=User.LEGAL_LEGAL,
             )
             user.set_password(self.cleaned_data['password'])
             images = self._handle_images(user)
             if commit:
                 user.save()
-                user.profile = self._create_individual_profile() \
-                    if self.cleaned_data['legal_type'] == User.LEGAL_INDIVIDUAL \
-                    else self._create_legal_profile()
+                user.profile = self._create_legal_profile()
                 user.profile.save()
                 for i in images:
                     i.save()
             return user
 
-    def _create_individual_profile(self) -> Profile:
+    def _create_legal_profile(self) -> Profile:
         profile = Profile()
         profile.first_name = self.cleaned_data['first_name']
         profile.last_name = self.cleaned_data['last_name']
-        profile.birthday = self.cleaned_data['birthday']
-        profile.gender = self.cleaned_data['gender']
         profile.id_code = self.cleaned_data['id_code']
         profile.national_code = self.cleaned_data['national_code']
-        profile.address = self.cleaned_data['address']
-        profile.postal_code = self.cleaned_data['postal_code']
-        profile.region_id = self.cleaned_data['region']
-        profile.phone_number = self.cleaned_data['phone_number']
-        profile.bank_account_name = self.cleaned_data['bank_account_name']
-        profile.bank_account_number = self.cleaned_data['bank_account_number']
-        profile.bank_sheba_number = self.cleaned_data['bank_sheba_number']
-        return profile
-
-    def _create_legal_profile(self) -> Profile:
-        profile = Profile()
         profile.address = self.cleaned_data['address']
         profile.postal_code = self.cleaned_data['postal_code']
         profile.region_id = self.cleaned_data['region']
@@ -194,9 +167,14 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         profile.company_name = self.cleaned_data['company_name']
         profile.company_type = self.cleaned_data['company_type']
         profile.company_register_code = self.cleaned_data['company_register_code']
-        profile.company_national_code = self.cleaned_data['company_national_code']
-        profile.company_finance_code = self.cleaned_data['company_finance_code']
-        profile.company_print_signature_right = self.cleaned_data['company_print_signature_right']
+        profile.company_license_type = self.cleaned_data['company_license_type']
+        profile.company_license_code = self.cleaned_data['company_license_number']
+        profile.company_license_start = self.cleaned_data['company_license_start']
+        profile.company_license_end = self.cleaned_data['company_license_end']
+        profile.company_ceo_name = self.cleaned_data['company_ceo_name']
+        profile.company_ceo_national_code = self.cleaned_data['company_ceo_national_code']
+        profile.company_ceo_id_code = self.cleaned_data['company_ceo_id_code']
+        profile.company_branch_type = self.cleaned_data['company_branch_type']
         return profile
 
     def _handle_images(self, user: User) -> List[UserMedia]:

@@ -55,4 +55,18 @@ $(document).ready(function () {
             data: JSON.stringify(body),
         })
     })
+
+    $('#save-btn5').on('click', function () {
+        const body = {
+            about_us: tinyMCE.get('about_us_editor').getContent()
+        }
+        $.ajax("/api/static-content/1", {
+            method: "PATCH",
+            contentType: "application/json",
+            headers: {
+                'Accept-Language': 'fa',
+            },
+            data: JSON.stringify(body),
+        })
+    })
 })

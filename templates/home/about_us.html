@@ -1,0 +1,29 @@
+{% extends 'base_frontend.html' %}
+{% load static %}
+
+{% block title %}
+    درباره ما
+{% endblock %}
+
+{% block frontend_content %}
+    <div class="ph-page-wrapper ph-toc-page">
+        <main class="ph-main-content">
+            <div class="ph-content-entry">
+                <div class="container">
+                    <div class="ph-inside-pages-content">
+                        <h1>درباره ما</h1>
+                        {% autoescape off %}
+                            {{ static_content.about_us }}
+                        {% endautoescape %}
+                    </div><!-- .ph-inside-pages-content -->
+                </div><!-- .container -->
+            </div><!-- .ph-content-entry -->
+        </main><!-- .ph-main-content -->
+    </div><!-- .ph-page-wrapper -->
+{% endblock %}
+
+{% block footer_static %}
+
+    <script src="{% static 'js/frontend.js' %}"></script>
+
+{% endblock %}

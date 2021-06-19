@@ -477,7 +477,7 @@ input.form-control:focus{
 }
 .ph-table td img,
 .ph-table th img{
-    width: 75%;
+    width: 100px;
     height: 100px;
     background: #ced4da;
     display: flex;

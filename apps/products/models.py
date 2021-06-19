@@ -83,10 +83,6 @@ class ProductHistoryManager(models.Manager):
 class Attribute(TimestampedModel):
 
     # TODO: Add unit to ظرفیت تامین ماهیانه
-    # TODO: Remove سواری from Mine attributes
-    # TODO: Change موقعیت مکانی to موقعیت جغرافیایی در استان
-    # TODO: remove city from product details
-
 
     ID_PRICE = 1
     ID_ANALYZE = 2
@@ -382,11 +378,23 @@ class Product(TimestampedModel):
         except ProductAttribute.DoesNotExist:
             return None
 
+    def get_min_caret(self):
+        return self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
+
+    def get_max_caret(self):
+        return self.attributes.get(attribute_id=Attribute.ID_CARAT_TO)
+
     def get_caret(self) -> str:
         caret_from = self.attributes.get(attribute_id=Attribute.ID_CARAT_FROM)
         caret_to = self.attributes.get(attribute_id=Attribute.ID_CARAT_TO)
         caret = f'{caret_from.value} تا {caret_to.value} %' if caret_from.value != caret_to.value else f'{caret_from.value} %'
         return caret
+
+    def get_min_grain(self):
+        return self.attributes.get(attribute_id=Attribute.ID_GRAIN_FROM)
+
+    def get_max_grain(self):
+        return self.attributes.get(attribute_id=Attribute.ID_GRAIN_TO)
 
     def get_size(self) -> str:
         size_from = self.attributes.get(attribute_id=Attribute.ID_GRAIN_FROM)
@@ -403,6 +411,15 @@ class Product(TimestampedModel):
 
     def get_commission(self) -> float:
         return self.category.commission if self.category.parent is None else self.category.parent.commission
+
+    def get_sample(self):
+        try:
+            sample = self.attributes.get(attribute_id=Attribute.ID_SAMPLE)
+            return f'{sample.value} کیلوگرم'
+        except:
+            return 'ندارد'
+
+
 
     def to_dict(self) -> Dict[str, Any]:
         return {

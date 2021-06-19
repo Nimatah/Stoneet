@@ -22,43 +22,43 @@
                                 <div class="row">
                                     <div class="col-12 ph-product-detail-item">
                                         <span>نام محصول:</span>
-                                        <span>آهک کلسینه - عیار 1 %</span>
+                                        <span>{{ product.title }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>عیار (کمترین)</span>
-                                        <span>13</span>
+                                        <span>{{ product.get_min_caret.value }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>عیار (بیشترین)</span>
-                                        <span>17</span>
+                                        <span>{{ product.get_max_caret.value }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>نوع دانه بندی (کمترین)</span>
-                                        <span>12</span>
+                                        <span>{{ product.get_min_grain.value }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>نوع دانه بندی (بیشترین)</span>
-                                        <span>22</span>
+                                        <span>{{ product.get_max_grain.value }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>ظرفیت تامین ماهانه</span>
-                                        <span>24</span>
+                                        <span>{{ product.get_sku.value }} تن</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>نوع تحویل</span>
-                                        <span>بار فله‌ای</span>
+                                        <span>{{ product.get_delivery_type }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>قیمت</span>
-                                        <span>23000000</span>
-                                    </div><!-- .ph-product-detail-item -->
-                                    <div class="col-6 ph-product-detail-item">
-                                        <span>شرایط پرداخت وجه</span>
-                                        <span>نقدی</span>
+                                        <span>{{ product.get_price.value }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>امکان ارسال نمونه</span>
-                                        <span>ندارد</span>
+                                        <span>{{ product.get_sample }}</span>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>شرایط پرداخت وجه</span>
+                                        <span>{{ product.get_payment_type|join:", " }}</span>
                                     </div><!-- .ph-product-detail-item -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
@@ -66,39 +66,26 @@
                                 <div class="row">
                                     <div class="col-6 ph-product-image-item full">
                                         <span>عکس محصول</span>
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        <a href="{% get_media_prefix %}{{ product.media.get_primary.file}}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ product.media.get_primary.file}}" alt="">
                                         </a>
                                     </div><!-- .ph-product-image-item -->
                                     <div class="col-6 ph-product-image-item full">
-                                        <span>عکس مشخصات محصول</span>
-                                        <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                            <img src="{% static 'images/wv.png' %}" alt="">
+                                        <span>عکس آنالیز محصول</span>
+                                        <a href="{% get_media_prefix %}{{ product.get_analyze.value }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ product.get_analyze.value }}" alt="">
                                         </a>
                                     </div><!-- .ph-product-image-item -->
                                     <div class="col-12 ph-gallery-product">
                                         <span>گالری عکس محصول</span>
                                         <div class="row">
+                                            {% for image in product.media.get_additional %}
                                             <div class="col-3 ph-product-image-item thumb">
-                                                <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                                    <img src="{% static 'images/wv.png' %}" alt="">
+                                                <a href="{% get_media_prefix %}{{ image.file }}" class="image-popup-vertical-fit">
+                                                    <img src="{% get_media_prefix %}{{ image.file }}" alt="">
                                                 </a>
                                             </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                                    <img src="{% static 'images/wv.png' %}" alt="">
-                                                </a>
-                                            </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                                    <img src="{% static 'images/wv.png' %}" alt="">
-                                                </a>
-                                            </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <a href="{% static 'images/wv.png' %}" class="image-popup-vertical-fit">
-                                                    <img src="{% static 'images/wv.png' %}" alt="">
-                                                </a>
-                                            </div><!-- .ph-product-image-item -->
+                                            {% endfor %}
                                         </div><!-- .row -->
                                     </div><!-- .ph-gallery-product -->
                                 </div><!-- .row -->
@@ -120,15 +107,15 @@
                     </div>
                     <!-- ph-qc-alarm -->
                     <div class="ph-qc-description">
-                        <textarea class="form-control" id="" rows="5" placeholder="دلایل رد شدن این محصول..."></textarea>
+                        <textarea class="form-control" id="reject-reason" rows="5" placeholder="دلایل رد شدن این محصول..."></textarea>
                     </div>
                     <!-- ph-qc-description -->
                     <div class="ph-qc-info-btns">
-                        <a href="#" class="ph-btn ph-access-btn">
+                        <a id="product_accept" href="{% url 'products_api:product_accept' pk=product.pk %}" redirect="{% url 'users:admin_list_product' %}" class="ph-btn ph-access-btn">
                             <i class="fas fa-check"></i>
                             <span>تایید محصول</span>
                         </a>
-                        <a href="#" class="ph-btn ph-denied-btn">
+                        <a id="product_reject" href="{% url 'products_api:product_reject' pk=product.pk %}" redirect="{% url 'users:admin_list_product' %}" class="ph-btn ph-denied-btn">
                             <i class="fas fa-times"></i>
                             <span>رد محصول</span>
                         </a>
@@ -188,4 +175,5 @@
         });
 
     </script>
+    <script src="{% static 'js/qc_product.js' %}"></script>
 {% endblock %}

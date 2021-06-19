@@ -60,6 +60,19 @@
                         <a href="#" class="ph-btn" id="save-btn4">ذخیره</a>
                     </div>
                 </div>
+                <div class="ph-admin-config-box bg-light ph-border-radius ph-box-shadow mb-4 p-4">
+                    <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                        <span class="title">صفحه درباره ما</span>
+                    </div>
+                    <p>متن مورد نظر خود برای صفحه درباره ما را در فیلد زیر وارد نمایید.</p>
+                    <div class="form-group">
+                        <textarea class="form-control" id="about_us_editor" rows="10"
+                                  data-content="{{ static_content.about_us }}"></textarea>
+                    </div>
+                    <div class="ph-config-btn">
+                        <a href="#" class="ph-btn" id="save-btn5">ذخیره</a>
+                    </div>
+                </div>
             </div><!-- ph-dm-panel -->
         </div><!-- container -->
     </main><!-- ph-dashboard-main ph-admin-panel ph-admin-config -->
@@ -68,7 +81,7 @@
     <script src="{% static 'tinymce\tinymce.min.js' %}"></script>
     <script type="text/javascript">
         tinymce.init({
-            selector: '#toc_editor,#seller_toc_editor,#logistic_toc_editor,#privacy_editor',
+            selector: '#toc_editor,#seller_toc_editor,#logistic_toc_editor,#privacy_editor,#about_us_editor',
             directionality: 'rtl',
             toolbar: 'undo redo | styleselect | bold italic | link image | alignleft aligncenter alignright alignjustify ',
             plugins: 'quickbars hr pagebreak',
@@ -76,7 +89,6 @@
             setup: function (ed) {
                 let content = $(`textarea#${$(ed).prop('id')}`).data('content');
                 ed.on('init', function (e) {
-                    {#console.log($(ed).prop('data-content'))#}
                     ed.setContent(content);
                 });
             }

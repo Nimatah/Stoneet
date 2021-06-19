@@ -7,4 +7,6 @@ from .users import (
     register_buyer_validation,
     register_logistic_validation,
     register_seller_validation,
+    user_accept,
+    user_reject,
 )

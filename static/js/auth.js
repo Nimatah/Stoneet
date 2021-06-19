@@ -93,6 +93,11 @@ function fixStepIndicator(n) {
     x[n].className += " active";
 }
 
+const inputElements = function (type) {
+    return $(`[data-type="${type}"]`).toArray().map(function (element) {
+        return $(element)
+    })
+}
 
 $(document).ready(function () {
     $(".ph-conditional").change(function () {
@@ -186,12 +191,6 @@ function handleSubmitForm() {
             $('#error-modal').modal('show')
             return
         }
-
-        const inputElements = function (type) {
-            return $(`[data-type="${type}"]`).toArray().map(function (element) {
-                return $(element)
-            })
-        }
         const legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
 
         const form = $(`<form method="post" enctype="multipart/form-data" action="${window.location}"/>`)
@@ -203,10 +202,10 @@ function handleSubmitForm() {
     })
 }
 
-function handleBirthday() {
+function handlePersianDatePicker(id) {
     $(document).ready(function () {
         try {
-            $('#birthday').pDatepicker({
+            $(id).pDatepicker({
                 initialValue: false,
                 viewMode: 'year',
                 formatter: function (unixDate) {
@@ -218,7 +217,7 @@ function handleBirthday() {
                 },
             })
         } catch (e) {
-            console.log(e);
+            console.log(e)
         }
     });
 }
@@ -245,13 +244,72 @@ function handleSignupNumber() {
     });
 }
 
+function handleValidateRegister(userType) {
+    $('button#ph_register_continue').on('click', function (e) {
+        e.preventDefault();
+        const legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
+        const inputs = [$('#sign_up_email'), $('#sign_up_password'), $('#sign_up_number'),
+            $('#legal-individual'), $('#legal-legal'), ...inputElements(legalType)]
+        const body = {}
+
+        inputs.forEach(function (v) {
+            body[$(v).prop('name')] = $(v).val()
+        })
+
+        body['legal_type'] = legalType
+
+        $.ajax("/api/validate/registration/" + userType, {
+            method: "POST",
+            async: false,
+            contentType: "application/json",
+            headers: {
+                'Accept-Language': 'fa',
+            },
+            data: JSON.stringify(body),
+            success: function () {
+                nextPrev(1);
+            },
+            error: function (xhr, status, error) {
+                e.preventDefault();
+                $('#error-modal .modal-body').empty()
+                let response = JSON.parse(xhr.responseText)
+                let errors = [];
+                for (let k in response) {
+                    errors.push({
+                        title: k,
+                        value: response[k]
+                    })
+                }
+                errors.forEach(function (v, i) {
+                    $('#error-modal .modal-body').append(
+                        `<div><span class="font-weight-bold">${v.title}</span>: ${v.value}</div>`
+                    )
+                })
+                $('#error-modal').modal('show');
+            }
+        })
+    })
+}
+
 handleValidateUser();
 handleRegions('company');
 handleRegions('individual');
 handleSubmitForm();
-handleBirthday();
+handlePersianDatePicker("#birthday");
+handlePersianDatePicker("#ph_logistic_license_start");
+handlePersianDatePicker("#ph_logistic_license_end");
 $(document).ready(function () {
     handleSignupNumber();
+    if (window.location.href.includes("buyer")) {
+        handleValidateRegister('buyer')
+    }
+    if (window.location.href.includes("seller")) {
+        handleValidateRegister('seller')
+    }
+    if (window.location.href.includes("logistic")) {
+        handleValidateRegister('logistic')
+    }
+
 })
 
 function readURL(input) {

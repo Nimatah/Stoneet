@@ -50,10 +50,6 @@
                                                     <label>استان :</label>
                                                     <a href="#">{{ product.mine.region.parent.title }}</a>
                                                 </li>
-                                                <li>
-                                                    <label>شهر :</label>
-                                                    <a href="#">{{ product.mine.region.title }}</a>
-                                                </li>
                                             </ul>
                                             <div class="ph-single-product-specification-table">
                                                 <h3>مشخصات محصول</h3>
@@ -77,7 +73,7 @@
                                                 <ul>
                                                     {% with product.mine as mine %}
                                                         <li>
-                                                            <label>موقعیت مکانی در شهر: </label>
+                                                            <label>موقعیت مکانی در استان: </label>
                                                             <span>{{ mine.get_location_in_region_display }}</span>
                                                         </li>
                                                         <li>
@@ -85,7 +81,7 @@
                                                             <span>{{ mine.distance_to_road }} کیلومتر</span>
                                                         </li>
                                                         <li>
-                                                            <label>وجود جاده مناسب برای عبور وسایل نقلیه سواری: </label>
+                                                            <label>وجود جاده مناسب برای عبور وسایل نقلیه: </label>
                                                             <span>{{ mine.proper_road|yesno:'دارد,ندارد' }}</span>
                                                         </li>
                                                         <li>

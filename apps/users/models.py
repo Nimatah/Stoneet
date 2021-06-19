@@ -200,6 +200,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     use_type = models.CharField(max_length=20, choices=_TYPE_CHOICES, default="buyer")
     legal_type = models.CharField(max_length=20, choices=_LEGAL_CHOICES, default="individual")
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
+    rejection_reason = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -254,6 +255,30 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     def is_rejected(self) -> bool:
         return self.state == self.STATE_REJECTED
 
+    def get_image_id_card_front(self):
+        return self.media.filter(title=UserMedia.name_map['image_id_card_front']).first()
+
+    def get_image_id_card_back(self):
+        return self.media.filter(title=UserMedia.name_map['image_id_card_back']).first()
+
+    def get_image_company_registration(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_registration']).first()
+
+    def get_image_company_added_value_certificate(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_added_value_certificate']).first()
+
+    def get_image_company_public_certificate(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_public_certificate']).first()
+
+    def get_image_company_tax_on_added_value_certificate(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_tax_on_added_value_certificate']).first()
+
+    def get_image_company_signature_copyright_certificate(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_signature_copyright_certificate']).first()
+
+    def get_image_company_license(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_license']).first()
+
 
 class UserMedia(BaseMedia):
     STATE_PENDING = "pending"
@@ -274,6 +299,7 @@ class UserMedia(BaseMedia):
         'image_company_public_certificate': 'آخرین به روز رسانی روزنامه رسمی',
         'image_company_tax_on_added_value_certificate': 'گواهی مالیات بر ارزش افزوده',
         'image_company_signature_copyright_certificate': 'شناسنامه ملی کپی رایت امضا',
+        'image_company_license': 'پروانه فعالیت'
     }
 
     user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='media')
@@ -306,6 +332,26 @@ class Profile(models.Model):
         (GENDER_FEMALE, 'زن',),
     )
 
+    COMPANY_LICENSE_TYPE_CITY = 'city'
+    COMPANY_LICENSE_TYPE_PROVINCE = 'province'
+    COMPANY_LICENSE_TYPE_COUNTRY = 'country'
+    COMPANY_LICENSE_TYPE_INTERNATIONAL = 'international'
+
+    COMPANY_LICENSE_TYPE_CHOICES = (
+        (COMPANY_LICENSE_TYPE_CITY, 'حمل و نقل شهری',),
+        (COMPANY_LICENSE_TYPE_PROVINCE, 'حمل و نقل استانی',),
+        (COMPANY_LICENSE_TYPE_COUNTRY, 'حمل و نقل سراسری',),
+        (COMPANY_LICENSE_TYPE_INTERNATIONAL, 'حمل و نقل بین‌المللی',)
+    )
+
+    COMPANY_BRANCH_TYPE_CENTRAL = 'central'
+    COMPANY_BRANCH_TYPE_BRANCH = 'branch'
+
+    COMPANY_BRANCH_TYPE_CHOICES = (
+        (COMPANY_BRANCH_TYPE_CENTRAL, 'شعبه اصلی',),
+        (COMPANY_BRANCH_TYPE_BRANCH, 'نماینده شرکت',),
+    )
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     first_name = models.CharField(max_length=255, blank=True)
@@ -331,13 +377,14 @@ class Profile(models.Model):
     company_finance_code = models.CharField(max_length=255, blank=True)
     company_print_signature_right = models.CharField(max_length=255, blank=True)
 
-    company_license_type = models.CharField(max_length=255, blank=True)
+    company_license_type = models.CharField(max_length=255, blank=True, choices=COMPANY_LICENSE_TYPE_CHOICES)
     company_license_code = models.CharField(max_length=255, blank=True)
     company_license_start = models.DateField(null=True, blank=True)
     company_license_end = models.DateField(null=True, blank=True)
     company_ceo_name = models.CharField(max_length=255, blank=True)
     company_ceo_id_code = models.CharField(max_length=255, blank=True)
     company_ceo_national_code = models.CharField(max_length=255, blank=True)
+    company_branch_type = models.CharField(max_length=255, blank=True, choices=COMPANY_BRANCH_TYPE_CHOICES)
 
     objects = ProfileManager()
 
@@ -354,6 +401,16 @@ class Profile(models.Model):
         if not self.birthday:
             return ''
         return JalaliDate.to_jalali(self.birthday)
+
+    def get_persian_company_license_start(self):
+        if not self.company_license_start:
+            return ''
+        return JalaliDate.to_jalali(self.company_license_start)
+
+    def get_persian_company_license_end(self):
+        if not self.company_license_end:
+            return ''
+        return JalaliDate.to_jalali(self.company_license_end)
 
     def get_province(self):
         return self.region.parent

@@ -64,60 +64,47 @@
                                     <tr>
                                         <th>ردیف</th>
                                         <th>نام دسته بندی</th>
-                                        <th>نام انگلیسی</th>
                                         <th>دسته اصلی</th>
                                         <th>درصد کمیسیون</th>
                                         <th>ویرایش</th>
-                                        <th>وضعیت</th>
                                     </tr>
                                 </thead>
-                                <tobody>
+                                <tbody>
+                                {% for category in categories %}
                                     <tr>
                                         <td>
                                             <div class="ph-admin-table-cell">
-                                                1
+                                                {{ category.pk }}
                                             </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
-                                                فلزات
+                                                {{ category.title }}
                                             </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
-                                                Metals
+                                                {{ category.parent.title }}
                                             </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
-                                                خام
-                                            </div><!-- .ph-admin-table-cell -->
-                                        </td>
-                                        <td>
-                                            <div class="ph-admin-table-cell">
-                                                10
+                                                {{ category.commission }}
                                             </div><!-- .ph-admin-table-cell -->
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">
                                                 <div class="ph-admin-table-action-btns">
-                                                    <a href="#"
-                                                       class="ph-admin-table-action-btn-edit" data-toggle="modal"
-                                                       data-target="#categoryedit"><i class="fas fa-pen"></i></a>
-                                                </div><!-- .custom-switch -->
-                                            </div><!-- .ph-admin-table-cell -->
-                                        </td>
-                                        <td>
-                                            <div class="ph-admin-table-cell">
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                           id="customSwitch1">
-                                                    <label class="custom-control-label" for="customSwitch1"></label>
+                                                    <a href="{% url 'users:admin_edit_category' pk=category.pk %}"
+                                                       class="ph-admin-table-action-btn-edit">
+                                                    <i class="fas fa-pen"></i>
+                                                    </a>
                                                 </div><!-- .custom-switch -->
                                             </div><!-- .ph-admin-table-cell -->
                                         </td>
                                     </tr>
-                                </tobody>
+                                {% endfor %}
+                                </tbody>
                             </table>
                         </div><!-- .ph-admin-page-list-table -->
                     </div><!-- .ph-admin-page-list-container -->
@@ -125,44 +112,4 @@
             </div><!-- .ph-admin-page-container -->
         </div><!-- container -->
     </main><!-- ph-dashboard-main admin-panel admin-list-category -->
-
-    <!-- Edit Category Modal -->
-    <div class="modal fade" id="categoryedit" tabindex="-1" aria-labelledby="categoryeditLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="categoryeditLabel">ویرایش دسته بندی</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div><!-- .modal-header -->
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="modal_category_title">نام دسته بندی (فارسی)</label>
-                        <input type="text" class="form-control" id="modal_category_title"
-                               aria-describedby="category-title">
-                    </div><!-- .form-group -->
-                    <div class="form-group">
-                        <label for="modal_category_title_en">نام دسته بندی (انگلیسی)</label>
-                        <input type="text" class="form-control" id="modal_category_title_en"
-                               aria-describedby="category-title-en">
-                    </div><!-- .form-group -->
-                    <div class="form-group">
-                        <label for="modal_category_title_en">دسته مادر</label>
-                        <select class="custom-select mr-sm-2" id="">
-                            <option selected value="default">انتخاب...</option>
-                        </select>
-                    </div><!-- .form-group -->
-                    <div class="form-group">
-                        <label for="modal_category_commision">کمیسیون فروش دسته</label>
-                        <input type="text" class="form-control" id="modal_category_commision"
-                               aria-describedby="category-commision">
-                    </div><!-- .form-group -->
-                </div><!-- .modal-body -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">ذخیره</button>
-                </div><!-- .modal-footer -->
-            </div><!-- .modal-content -->
-        </div><!-- .modal-dialog -->
-    </div><!-- .modal#categoryedit -->
 {% endblock %}
