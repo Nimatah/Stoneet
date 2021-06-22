@@ -27,7 +27,7 @@ seller_patterns = [
     path('panel/seller-orders/', seller.ListOrderView.as_view(), name='seller_list_order'),
     path('panel/seller-order/<int:pk>/', seller.ViewOrderView.as_view(), name='seller_view_order'),
     path('panel/seller-invoices/', seller.ListInvoiceView.as_view(), name='seller_list_invoice'),
-    path('panel/seller-invoice/1/', seller.ViewInvoiceView.as_view(), name='seller_view_invoice'),
+    path('panel/seller-invoice/<int:pk>/', seller.ViewInvoiceView.as_view(), name='seller_view_invoice'),
 ]
 
 buyer_patterns = [
@@ -35,8 +35,7 @@ buyer_patterns = [
     path('panel/buyer-orders/', buyer.ListOrderView.as_view(), name='buyer_list_order'),
     path('panel/buyer-order/<int:pk>/', buyer.ViewOrderView.as_view(), name='buyer_view_order'),
     path('panel/buyer-invoices/', buyer.ListInvoiceView.as_view(), name='buyer_list_invoice'),
-    path('panel/buyer-invoice/1/', buyer.ViewInvoiceView.as_view(), name='buyer_view_invoice'),
-    path('panel/buyer-receipts/', buyer.ListReceiptView.as_view(), name='buyer_list_receipt'),
+    path('panel/buyer-invoice/<int:pk>/', buyer.ViewInvoiceView.as_view(), name='buyer_view_invoice'),
 ]
 
 logistic_patterns = [
@@ -45,7 +44,7 @@ logistic_patterns = [
     path('panel/bids/', logistic.ListMyAuctionView.as_view(), name='logistic_list_bid'),
     path('panel/bids/1/', logistic.ViewBidView.as_view(), name='logistic_view_bid'),
     path('panel/logistic-invoices/', logistic.ListInvoiceView.as_view(), name='logistic_list_invoice'),
-    path('panel/logistic-invoice/1/', logistic.ViewInvoiceView.as_view(), name='logistic_view_invoice'),
+    path('panel/logistic-invoice/<int:pk>/', logistic.ViewInvoiceView.as_view(), name='logistic_view_invoice'),
     path('panel/logistic-orders/', logistic.ListLogisticOrderView.as_view(), name='logistic_list_order'),
     path('panel/logistic-order/1/', logistic.ViewLogisticOrderView.as_view(), name='logistic_view_order'),
 ]
@@ -77,11 +76,11 @@ admin_patterns = [
     path('panel/admin-order-qc/<int:pk>/', admin.AdminOrderQCView.as_view(), name='admin_order_qc'),
     path('panel/admin-configurations/', admin.AdminConfigView.as_view(), name='admin_config'),
     path('panel/admin-list-buyer-invoice/', admin.AdminBuyerInvoiceView.as_view(), name='admin_list_buyer_invoice'),
-    path('panel/admin-buyer-invoice-details/1/', admin.AdminBuyerInvoiceDetailsView.as_view(), name='admin_buyer_invoice_details'),
+    path('panel/admin-buyer-invoice-details/<int:pk>/', admin.AdminBuyerInvoiceDetailsView.as_view(), name='admin_buyer_invoice_details'),
     path('panel/admin-list-seller-invoice/', admin.AdminSellerInvoiceView.as_view(), name='admin_list_seller_invoice'),
-    path('panel/admin-seller-invoice-details/1/', admin.AdminSellerInvoiceDetailsView.as_view(), name='admin_seller_invoice_details'),
+    path('panel/admin-seller-invoice-details/<int:pk>/', admin.AdminSellerInvoiceDetailsView.as_view(), name='admin_seller_invoice_details'),
     path('panel/admin-list-logistic-invoice/', admin.AdminLogisticInvoiceView.as_view(), name='admin_list_logistic_invoice'),
-    path('panel/admin-logistic-invoice-details/1/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
+    path('panel/admin-logistic-invoice-details/<int:pk>/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
     path('panel/admin-logistic-orders/', admin.AdminLogisticOrdersView.as_view(), name='admin_logistic_orders'),
     path('panel/admin-logistic-order-details/<int:pk>', admin.AdminLogisticOrderQCView.as_view(), name='admin_logistic_order_qc'),
 ]

@@ -106,32 +106,27 @@
                                     <thead class="thead-dark">
                                     <tr>
                                         <th scope="col" rowspan="2">ردیف</th>
-                                        <th scope="col" rowspan="2">شماره سفارش</th>
                                         <th scope="col" rowspan="2">عنوان</th>
                                         <th scope="col" rowspan="2">مقدار</th>
-                                        <th scope="col" rowspan="2">واحد اندازه گیری</th>
                                         <th scope="col" rowspan="2">مبلغ واحد</th>
                                         <th scope="col" rowspan="2">مبلغ کل</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     <tr>
                                         <td>1</td>
-                                        <td>1242424</td>
-                                        <td>سنگ آهن 50 55%</td>
-                                        <td>20</td>
-                                        <td>تن</td>
-                                        <td>380.000</td>
-                                        <td>476.380.000</td>
+                                        <td>{{ seller_invoice.order.product.title }}%</td>
+                                        <td>{{ seller_invoice.order.weight }} {{ seller_invoice.order.product.get_price.get_wieght_unit_display }}</td>
+                                        <td>{{ seller_invoice.order.product.get_price.value|intcomma }} ریال</td>
+                                        <td>{{ seller_invoice.order.price|intcomma }} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>45353525</td>
                                         <td>هزینه ارسال کالا</td>
-                                        <td>1</td>
-                                        <td>-</td>
-                                        <td>80.000</td>
-                                        <td>80.000</td>
+                                        <td>{{ logistic_invoice.logistic_order.monthly_load_count }}</td>
+                                        <td>{{ logistic_invoice.logistic_order.get_monthly_price|intcomma }}</td>
+                                        <td>{{ logistic_invoice.logistic_order.price|intcomma }} ریال</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -145,15 +140,15 @@
                                     <tbody>
                                     <tr>
                                         <td>هزینه</td>
-                                        <td>۳,۸۰۰,۰۹۸</td>
+                                        <td>{{seller_invoice.order.price|add:logistic_invoice.logistic_order.price|intcomma}} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>ارزش افزوده 9 %</td>
-                                        <td>۲۶,۴۶۰</td>
+                                        <td>{{seller_invoice.get_vat|add:logistic_invoice.get_vat|intcomma}} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>مبلغ قابل پرداخت</td>
-                                        <td>۳,۸۰۰,۰۹۸</td>
+                                        <td>{{seller_invoice.get_final_price|add:logistic_invoice.get_final_price|intcomma}} ریال</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -201,25 +196,41 @@
                         </div>
                         <div class="ph-tcw-download">
                             <p>متن قرارداد را دانلود نمایید و بعد از امضا در بخش زیر بارگذاری کنید</p>
-                            <a href="#" class="ph-btn ph-download"><i class="fas fa-download"></i>دانلود
+                            <a href="{% get_media_prefix %}{{ order.get_contract.file }}" class="ph-btn ph-download" download><i class="fas fa-download"></i>دانلود
                                 قرارداد</a>
                         </div>
                         <div class="form-row ph-tcw-upload align-items-center">
-
                             <div class="ph-order-img-upload">
-
                                 <div class="ph-spm-create-product-img-up">
-                                    <div class="row">
+                                    <div class="row" id="contract_images">
+                                        {% if not order.get_signed_contract_pages %}
                                         <div class="col-3 col-md-2 imgUp">
                                             <div class="imagePreview"></div>
-                                            <label><input class="image-name-3" type="text" readonly></label>
-
+                                            <label>
+                                                <input class="image-name-3" type="text" readonly>
+                                            </label>
                                             <label class="btn ph-spm-create-product-img-up-btn">
-                                                آپلود<input type="file" class="uploadFile img upload-btn-3"
-                                                            value="Upload Photo"
+                                                آپلود<input data-new="new" type="file" class="uploadFile img upload-btn-3"
+                                                            value="Upload Photo" id="image_button_1"
                                                             style="width: 0px;height: 0px;overflow: hidden;">
                                             </label>
                                         </div>
+                                        {% else %}
+                                            {% for image in order.get_signed_contract_pages %}
+                                                <div class="col-3 col-md-2 imgUp">
+                                                    <div class="imagePreview" style="background-image: url('{% get_media_prefix %}{{ image.file }}')"></div>
+                                                    <label>
+                                                        <input class="image-name-3" type="text" readonly>
+                                                    </label>
+                                                    <label class="btn ph-spm-create-product-img-up-btn">
+                                                        آپلود<input type="file" class="uploadFile img upload-btn-3"
+                                                                    value="Upload Photo" id="image_button_{{ forloop.counter }}"
+                                                                    style="width: 0px;height: 0px;overflow: hidden;">
+                                                    </label>
+                                                    <i class="fa fa-times del del-backend" data-mediapk="{{ image.pk }}"></i>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                         <!-- col-4 col-md-3 -->
                                         <i class="fa fa-plus imgAdd"></i>
                                     </div>
@@ -227,26 +238,8 @@
                                 </div>
                             </div>
                             <!-- ph-order-img-upload -->
-
-                            <!-- <table class="common_table ph-table table table-bordered text-center">
-                                <thead class="thead-dark">
-                                <tr>
-                                    <th class="text-center" scope="col">ردیف</th>
-                                    <th class="text-center" scope="col">نام صفحه قرارداد</th>
-                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody id="list_add_1_tbody">
-
-                                </tbody>
-                            </table>
-                            <a href="#" id="list_add_1" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
-                                صفحه
-                                جدید</a> -->
                         </div>
                         <!-- form-row -->
-
                         <div class="ph-confirmation-order">
                             <div class="form-group">
                                 <div class="form-check">
@@ -290,38 +283,41 @@
                             <div class="ph-order-img-upload">
 
                                 <div class="ph-spm-create-product-img-up">
-                                    <div class="row">
+                                    <div class="row" id="finance_images">
+                                        {% if not order.get_finance_documents %}
                                         <div class="col-3 col-md-2 imgUp">
                                             <div class="imagePreview"></div>
-                                            <label><input type="text" class="image-name-3" readonly></label>
+                                            <label>
+                                                <input type="text" class="image-name-3" readonly>
+                                            </label>
                                             <label class="btn ph-spm-create-product-img-up-btn">
-                                                آپلود<input type="file" class="uploadFile img upload-btn-3"
-                                                            value="Upload Photo"
+                                                آپلود<input data-new="new" type="file" class="uploadFile img upload-btn-3"
+                                                            value="Upload Photo" id="image_button_1"
                                                             style="width: 0px;height: 0px;overflow: hidden;">
                                             </label>
                                         </div>
+                                        {% else %}
+                                        {% for image in order.get_finance_documents %}
+                                                <div class="col-3 col-md-2 imgUp">
+                                                    <div class="imagePreview" style="background-image: url('{% get_media_prefix %}{{ image.file }}')"></div>
+                                                    <label>
+                                                        <input class="image-name-3" type="text" readonly>
+                                                    </label>
+                                                    <label class="btn ph-spm-create-product-img-up-btn">
+                                                        آپلود<input type="file" class="uploadFile img upload-btn-3"
+                                                                    value="Upload Photo" id="image_button_{{ forloop.counter }}"
+                                                                    style="width: 0px;height: 0px;overflow: hidden;">
+                                                    </label>
+                                                    <i class="fa fa-times del del-backend" data-mediapk="{{ image.pk }}"></i>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
                                         <!-- col-4 col-md-3 -->
                                         <i class="fa fa-plus imgAdd"></i>
                                     </div>
                                     <!-- row -->
                                 </div>
                             </div>
-                            <!-- <table class="common_table ph-table table table-bordered text-center">
-                                <thead class="thead-dark">
-                                <tr>
-                                    <th class="text-center" scope="col">ردیف</th>
-                                    <th class="text-center" scope="col">نام صفحه قرارداد</th>
-                                    <th class="text-center" scope="col">بارگذاری صفحه</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody id="list_add_2_tbody">
-
-                                </tbody>
-                            </table>
-                            <a href="#" id="list_add_2" class="list_add ph-list-add ph-btn"><i class="fas fa-plus"></i>بارگذاری
-                                صفحه
-                                جدید</a> -->
                         </div>
                         <!-- form-row -->
                         <div class="ph-confirmation-order">
@@ -400,7 +396,7 @@
                             <label for='level5' id="back-level5" class="back">
                                 <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
                             </label>
-                            <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">ثبت سفارش</button>
+                            <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">تایید سفارش</button>
                         </div>
                     </div>
                     <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->
@@ -413,62 +409,8 @@
 {% endblock %}
 
 {% block footer_static %}
+    <script>var orderId = {{ order.pk }}</script>
 <script src="{% static 'js/list-product.js' %}"></script>
-<script>
-    $(".imgAdd").click(function () {
-        $(this).closest(".row").find('.imgAdd').before('<div class="col-3 col-md-2 imgUp"><div class="imagePreview"></div><label><input id="image-name-3" class="image-name-3" type="text" readonly></label><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img upload-btn-3" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;" id="upload-btn-3"></label><i class="fa fa-times del"></i></div>');
-    });
-    $(document).on("click", "i.del", function () {
-        $(this).parent().remove();
-    });
-    $(function () {
-        $(document).on("change", ".uploadFile", function () {
-            var uploadFile = $(this);
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return;
-
-            if (/^image/.test(files[0].type)) {
-                var reader = new FileReader();
-                reader.readAsDataURL(files[0]);
-
-                reader.onloadend = function () {
-                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                }
-            }
-
-        });
-    });
-    $(document).on('change', '.upload-btn-3', function () {
-        $(this).parent().parent().find('.image-name-3').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
-    });
-</script>
 <script src="{% static 'js/list-product.js' %}"></script>
-<script>
-    $(".imgAdd").click(function () {
-        $(this).closest(".row").find('.imgAdd').before('<div class="col-3 col-md-2 imgUp"><div class="imagePreview"></div><label><input id="image-name-3" class="image-name-3" type="text" readonly></label><label class="btn ph-spm-create-product-img-up-btn">آپلود<input type="file" class="uploadFile img upload-btn-3" value="Upload Photo" style="width:0px;height:0px;overflow:hidden;" id="upload-btn-3"></label><i class="fa fa-times del"></i></div>');
-    });
-    $(document).on("click", "i.del", function () {
-        $(this).parent().remove();
-    });
-    $(function () {
-        $(document).on("change", ".uploadFile", function () {
-            var uploadFile = $(this);
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return;
-
-            if (/^image/.test(files[0].type)) {
-                var reader = new FileReader();
-                reader.readAsDataURL(files[0]);
-
-                reader.onloadend = function () {
-                    uploadFile.closest(".imgUp").find('.imagePreview').css("background-image", "url(" + this.result + ")");
-                }
-            }
-
-        });
-    });
-    $(document).on('change', '.upload-btn-3', function () {
-        $(this).parent().parent().find('.image-name-3').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
-    });
-</script>
+<script src="{% static 'js/view_order.js' %}"><script>
 {% endblock %}

@@ -208,7 +208,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     objects = UserManager()
 
     def __str__(self) -> str:
-        return self.email or self.mobile_number
+        return self.email or self.username
 
     def get_full_name(self) -> str:
         return self.username

@@ -174,7 +174,7 @@
                                             <a href="{% url 'products:product_details' pk=product.pk %}">
                                                 <div class="ph-admin-table-cell">
                                                     {{ product.title }}
-                                                    <span class="ph-amdin-table-product-id">{{ product.id }}</span>
+                                                    <span class="ph-amdin-table-product-id">کد کالا: {{ product.id }}</span>
                                                 </div>
                                             </a>
                                         </td>
@@ -182,7 +182,7 @@
                                             <div class="ph-admin-table-cell">{{ product.category.title }}</div>
                                         </td>
                                         <td>
-                                            <div class="ph-admin-table-cell">{{ product.get_price.value|intcomma }}</div>
+                                            <div class="ph-admin-table-cell">{{ product.get_price.value|intcomma }} ریال</div>
                                         </td>
                                         <td>
                                             <div class="ph-admin-table-cell">{{ product.get_sku.value|intcomma }} تن در

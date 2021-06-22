@@ -3819,7 +3819,7 @@ a.ph-preview-placeholder:after {
     border-radius: 10px;
 }
 .ph-order-input-file label[for="et_pb_contact_brand_file_request_0"]:before {
-	content: "یک فایل انتخاب کنید";
+	content: "فایل قرارداد را انتخاب نمایید";
 	display: block;
 	position: absolute;
 	top: 50%;

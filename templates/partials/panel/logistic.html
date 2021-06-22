@@ -11,20 +11,7 @@
     <a class="nav-link" href="{% url 'users:logistic_view_bid' %}">جزئیات مناقصه من (تست)</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link nav-link-collapse" href="#" id="logistic-invoice" data-toggle="collapse"
-       data-target="#collapse-logistic-invoice" aria-controls="collapse-logistic-invoice" aria-expanded="false">فاکتور ها</a>
-    <ul class="nav-second-level collapse" id="collapse-logistic-invoice" data-parent="#logistic-invoice">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logistic_list_invoice' %}">
-                <span class="nav-link-text">صورتحساب</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logistic_view_invoice' %}">
-                <span class="nav-link-text">جزئیات صورتحساب (تست)</span>
-            </a>
-        </li>
-    </ul>
+    <a class="nav-link" href="{% url 'users:logistic_list_invoice' %}">صورتحساب</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:profile_logistic' %}">پروفایل</a>

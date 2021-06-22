@@ -97,6 +97,14 @@ class Order(TimestampedModel):
         STATE_FINISHED: 8,
     }
 
+    WEIGHT_TON = 'ton'
+    WEIGHT_KILO = 'kilo'
+
+    WEIGHT_CHOICES = (
+        (WEIGHT_TON, 'تن',),
+        (WEIGHT_KILO, 'کیلوگرم',),
+    )
+
     timestamp = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
     buyer = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='orders', null=True, blank=True)
@@ -124,6 +132,15 @@ class Order(TimestampedModel):
 
     def get_monthly_weight(self):
         return f'{(self.weight / self.monthly_load):.2f}'
+
+    def get_contract(self):
+        return self.media.filter(title='contract').first()
+
+    def get_signed_contract_pages(self):
+        return self.media.filter(title='signed_contract')
+
+    def get_finance_documents(self):
+        return self.media.filter(title='finance')
 
 
 class LogisticOrder(models.Model):

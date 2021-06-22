@@ -1,10 +1,10 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.invoices.models import Invoice
 
 
-class ListInvoiceView(UserPassesTestMixin, TemplateView):
+class ListInvoiceView(UserPassesTestMixin, ListView):
 
     template_name = 'users/buyer/invoices/list_invoice.html'
     paginate_by = 10
@@ -12,7 +12,7 @@ class ListInvoiceView(UserPassesTestMixin, TemplateView):
     page_kwarg = 'p'
 
     def get_queryset(self):
-        queryset = Invoice.objects.filter(product__user=self.request.user)
+        queryset = Invoice.objects.filter(user=self.request.user, type=Invoice.TYPE_BUYER)
         return queryset
 
     def get_context_data(self, **kwargs):

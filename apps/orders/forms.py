@@ -83,10 +83,20 @@ class AdminApproveOrderForm(forms.Form):
                 file=self.cleaned_data['contract'],
                 type=OrderMedia.TYPE_IMAGE,
             )
+        elif self.cleaned_data['contract']:
+            order_media, created = OrderMedia.objects.update_or_create(
+                order=order,
+                title=OrderMedia.NAME_CONTRACT,
+                type=OrderMedia.TYPE_IMAGE,
+                defaults={
+                    'file': self.cleaned_data['contract'],
+                }
+            )
         else:
             order_media = order.media.get(title=OrderMedia.NAME_CONTRACT)
         if commit:
             with transaction.atomic():
                 order.save()
-                order_media.save()
+                if self.cleaned_data['contract']:
+                    order_media.save()
         return order

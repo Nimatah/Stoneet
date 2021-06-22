@@ -124,15 +124,16 @@
                                                        data-target="#ph_order_detail_Modal"><i
                                                             class="far fa-check-circle ml-2"></i> ثبت سفارش </a>
                                                 {% endif %}
-
-                                                {% if not user.is_authenticated %}
-                                                    <a href="#" class="ph-btn" data-toggle="modal"
-                                                       data-target="#ph_LogIn_Modal"><i
-                                                            class="fas fa-vial ml-2"></i> درخواست نمونه </a>
-                                                {% else %}
-                                                    <a href="" class="ph-btn" data-toggle="modal"
-                                                       data-target="#sample_modal"><i
-                                                            class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                {% if product.has_sample %}
+                                                    {% if not user.is_authenticated %}
+                                                        <a href="#" class="ph-btn" data-toggle="modal"
+                                                           data-target="#ph_LogIn_Modal"><i
+                                                                class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                    {% else %}
+                                                        <a href="" class="ph-btn" data-toggle="modal"
+                                                           data-target="#sample_modal"><i
+                                                                class="fas fa-vial ml-2"></i> درخواست نمونه </a>
+                                                    {% endif %}
                                                 {% endif %}
                                                 <a class="image-popup-fit-width ph-btn" title="{{ product.title }}"
                                                    href="{% get_media_prefix %}{{ product.get_analyze.value }}">

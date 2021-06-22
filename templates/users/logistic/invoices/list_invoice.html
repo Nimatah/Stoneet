@@ -55,15 +55,7 @@
                                             </nav>
                                         </div>
                                         <!-- ph-ip-wlr-pagination -->
-                                        <div class="ph-ip-wlr-views">
-                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                <option selected>۱۰</option>
-                                                <option value="1">۲۰</option>
-                                                <option value="2">۵۰</option>
-                                                <option value="3">۱۰۰</option>
-                                            </select>
-                                            <span>تعداد نمایش</span>
-                                        </div>
+                                        <div class="ph-ip-wlr-views"></div>
                                     </div>
                                     <!-- ph-ip-wl-right -->
                                     <div class="ph-ip-wl-res">
@@ -76,62 +68,29 @@
                                     <table class="ph-table table table-bordered text-center">
                                         <thead class="thead-dark">
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">مبلغ</th>
+                                            <th scope="col">ردیف</th>
                                             <th scope="col">تاریخ ثبت</th>
-                                            <th scope="col">تاریخ پرداخت</th>
-                                            <th scope="col">شماره مناقصه</th>
-                                            <th scope="col">مبدا</th>
-                                            <th scope="col">مقصد</th>
-                                            <th scope="col">جزییات</th>
+                                            <th scope="col">تاریخ سر‌رسید</th>
+                                            <th scope="col">مبلغ</th>
+                                            <th scope="col">وضعیت پرداخت</th>
+                                            <th scope="col">جزئیات</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th scope="row">۱</th>
-                                            <td>۳,۸۰۰,۰۹۸</td>
-                                            <td>۱۳۹۹/۱۰/۰۱</td>
-                                            <td>۱۳۹۹/۱۱/۰۱</td>
-                                            <td>6546512</td>
-                                            <td>شاهین شهر</td>
-                                            <td>سراب</td>
-                                            <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
-                                                   data-target="#ph_buyer_invoice_modal">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">۱</th>
-                                            <td>۳,۸۰۰,۰۹۸</td>
-                                            <td>۱۳۹۹/۱۰/۰۱</td>
-                                            <td>۱۳۹۹/۱۱/۰۱</td>
-                                            <td>6546512</td>
-                                            <td>شاهین شهر</td>
-                                            <td>سراب</td>
-                                            <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
-                                                   data-target="#ph_buyer_invoice_modal">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">۱</th>
-                                            <td>۳,۸۰۰,۰۹۸</td>
-                                            <td>۱۳۹۹/۱۰/۰۱</td>
-                                            <td>۱۳۹۹/۱۱/۰۱</td>
-                                            <td>6546512</td>
-                                            <td>شاهین شهر</td>
-                                            <td>سراب</td>
-                                            <td>
-                                                <a class="ph-admin-table-action-btn-edit" href="#" data-toggle="modal"
-                                                   data-target="#ph_buyer_invoice_modal">
-                                                    <i class="far fa-eye"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        {% for invoice in invoices %}
+                                            <tr>
+                                                <th scope="row">{{ forloop.counter }}</th>
+                                                <td>{{ invoice.get_persian_timestamp }}</td>
+                                                <td>{% if invoice.due_at %}{{ invoice.get_persian_due_at }}{% else %}-{% endif %}</td>
+                                                <td>{{ invoice.logistic_order.price }} ریال</td>
+                                                <td>{{ invoice.get_state_display }}</td>
+                                                <td>
+                                                    <a href="{% url 'users:logistic_view_invoice' pk=invoice.pk %}">
+                                                        <i class="far fa-eye"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -177,15 +136,7 @@
                                             </nav>
                                         </div>
                                         <!-- ph-ip-wlr-pagination -->
-                                        <div class="ph-ip-wlr-views">
-                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                                <option selected>۱۰</option>
-                                                <option value="1">۲۰</option>
-                                                <option value="2">۵۰</option>
-                                                <option value="3">۱۰۰</option>
-                                            </select>
-                                            <span>تعداد نمایش</span>
-                                        </div>
+                                        <div class="ph-ip-wlr-views"></div>
                                     </div>
                                     <!-- ph-ip-wl-right -->
                                     <div class="ph-ip-wl-res">
@@ -275,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                        <button id="" type="submit" class="ph-btn">ذخیره</button>
+                    <button id="" type="submit" class="ph-btn">ذخیره</button>
                 </div><!-- .modal-body -->
             </div><!-- .modal-content -->
         </div><!-- .modal-dialog -->

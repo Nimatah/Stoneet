@@ -3,6 +3,7 @@ from huey.contrib.djhuey import db_periodic_task
 
 from .models import Auction
 from apps.orders.models import LogisticOrder
+from apps.invoices.models import Invoice
 
 
 @db_periodic_task(crontab(hour="1/*"))
@@ -14,7 +15,7 @@ def process_auction():
             auction.set_state_expired()
         else:
             auction.set_state_in_progress(winner_bid)
-            LogisticOrder.objects.create(
+            logistic_order = LogisticOrder.objects.create(
                 order=auction.order,
                 state=LogisticOrder.STATE_PENDING,
                 user=auction.winner,
@@ -23,4 +24,29 @@ def process_auction():
                 destination=auction.order.destination,
                 monthly_load_count=auction.order.monthly_load,
                 weight=auction.order.weight,
+            )
+            auction.order.logistic_order = logistic_order
+            auction.order.state = auction.order.STATE_LOGISTIC
+            auction.order.save()
+            Invoice.objects.create(
+                user=logistic_order.order.product.user,
+                order=logistic_order.order,
+                auction=auction,
+                state=Invoice.STATE_PRE,
+                type=Invoice.TYPE_SELLER,
+            )
+            Invoice.objects.create(
+                user=logistic_order.order.buyer,
+                order=logistic_order.order,
+                auction=auction,
+                state=Invoice.STATE_PRE,
+                type=Invoice.TYPE_BUYER,
+            )
+            Invoice.objects.create(
+                user=logistic_order.user,
+                order=auction.order,
+                logistic_order=logistic_order,
+                auction=auction,
+                state=Invoice.STATE_PRE,
+                type=Invoice.TYPE_LOGISTIC,
             )

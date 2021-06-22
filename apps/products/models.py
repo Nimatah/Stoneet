@@ -82,8 +82,6 @@ class ProductHistoryManager(models.Manager):
 
 class Attribute(TimestampedModel):
 
-    # TODO: Add unit to ظرفیت تامین ماهیانه
-
     ID_PRICE = 1
     ID_ANALYZE = 2
     ID_SKU = 4
@@ -419,6 +417,8 @@ class Product(TimestampedModel):
         except:
             return 'ندارد'
 
+    def has_sample(self):
+        return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE).exists()
 
 
     def to_dict(self) -> Dict[str, Any]:

@@ -12,7 +12,7 @@ class ListInvoiceView(UserPassesTestMixin, ListView):
     page_kwarg = 'p'
 
     def get_queryset(self):
-        queryset = Invoice.objects.filter(user=self.request.user)
+        queryset = Invoice.objects.filter(user=self.request.user, type=Invoice.TYPE_LOGISTIC)
         return queryset
 
     def get_context_data(self, **kwargs):

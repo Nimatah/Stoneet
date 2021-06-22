@@ -1,3 +1,5 @@
+import base64
+
 from django.db import models
 
 
@@ -33,3 +35,9 @@ class BaseMedia(models.Model):
 
     def __str__(self):
         return f'{self.type}'
+
+    def to_base64(self):
+        position = self.file.tell()
+        stream = self.file.read()
+        self.file.seek(position)
+        return base64.b64encode(stream).decode('utf-8')

@@ -5,26 +5,13 @@
     <a class="nav-link" href="{% url 'users:seller_add_product' %}">ساخت محصول</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_list_product' %}">مشاهده محصولات</a>
+    <a class="nav-link" href="{% url 'users:seller_list_product' %}">محصولات</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_list_order' %}">مشاهده سفارش ها</a>
+    <a class="nav-link" href="{% url 'users:seller_list_order' %}">سفارش ها</a>
 </li>
-<li class="nav-item" id="nav-item-id">
-    <a class="nav-link nav-link-collapse" href="#" id="seller-invoice" data-toggle="collapse"
-       data-target="#collapse-seller-invoice" aria-controls="collapse-seller-invoice" aria-expanded="false">صورتحساب ها</a>
-    <ul class="nav-second-level collapse" id="collapse-seller-invoice" data-parent="#seller-invoice">
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:seller_list_invoice' %}">
-                <span class="nav-link-text">لیست صورتحساب ها</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:seller_view_invoice' %}">
-                <span class="nav-link-text">مشاهده جزئیات صورتحساب(تست)</span>
-            </a>
-        </li>
-    </ul>
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'users:seller_list_invoice' %}">صورتحساب ‌ها</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:profile_seller' %}">پروفایل</a>

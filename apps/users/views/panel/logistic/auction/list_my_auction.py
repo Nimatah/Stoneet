@@ -11,10 +11,10 @@ class ListMyAuctionView(UserPassesTestMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['in_progress'] = Auction.objects.user_participated_auction(self.request.user).filter(state=Auction.STATE_STARTED)
-        context['winner'] = Auction.objects.filter(winner=self.request.user, state=Auction.STATE_IN_PROGRESS)
-        context['loser'] = Auction.objects.user_participated_auction(self.request.user).filter(~Q(state=Auction.STATE_STARTED), bids__winner=False)
-        context['finished'] = Auction.objects.user_participated_auction(self.request.user).filter(state=Auction.STATE_FINISHED)
+        context['in_progress'] = set(Auction.objects.user_participated_auction(self.request.user).filter(state=Auction.STATE_STARTED))
+        context['winner'] = set(Auction.objects.filter(winner=self.request.user, state=Auction.STATE_IN_PROGRESS))
+        context['loser'] = set(Auction.objects.user_participated_auction(self.request.user).filter(~Q(state=Auction.STATE_STARTED), bids__winner=False))
+        context['finished'] = set(Auction.objects.user_participated_auction(self.request.user).filter(state=Auction.STATE_FINISHED))
         return context
 
     def test_func(self):

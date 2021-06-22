@@ -3,7 +3,7 @@ from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
 
 from apps.orders.forms import AdminApproveOrderForm
-from apps.orders.models import Order
+from apps.orders.models import Order, OrderMedia
 from apps.products.models import Attribute
 
 
@@ -31,7 +31,7 @@ class AdminOrderQCView(FormMixin, DetailView):
         context['payment_map'] = Attribute.PAYMENT_MAP
         context['states'] = dict(Order.STATE_CHOICES)
         context['state_score_map'] = Order.STATE_ORDER_MAP
-        context['contract'] = self.object.media.filter(title='contract').first()
+        context['contract'] = self.object.media.filter(title=OrderMedia.NAME_CONTRACT).first()
         return context
 
     def form_valid(self, form):

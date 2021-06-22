@@ -22,7 +22,7 @@ class AuctionManager(models.Manager):
         return AuctionQuerySet(model=self.model, using=self.db)
 
     def user_participated_auction(self, user):
-        return self.filter(bids__user=user)
+        return self.prefetch_related('bids').filter(bids__user=user)
 
     def find_ready_to_finish(self):
         return self.filter(state=Auction.STATE_STARTED, finish_date__lt=datetime.now())
@@ -96,11 +96,17 @@ class Auction(models.Model):
     def get_persian_start_date(self):
         return JalaliDateTime(self.start_date)
 
+    def get_persian_start_date_view(self):
+        return self.get_persian_start_date().strftime('%Y-%m-%d')
+
     def get_persian_finish_date(self):
         return JalaliDateTime(self.finish_date)
 
     def has_user_participated(self, user):
         return self.bids.filter(user=user).exists()
+
+    def user_allowed_to_bid(self, user):
+        return self.has_user_participated(user) and self.bids.all().order_by('price').first().user == user
 
 
 class Bid(models.Model):

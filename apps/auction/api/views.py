@@ -29,11 +29,11 @@ def get_auction(request, pk):
         'finish_date': auction.get_persian_finish_date().strftime('%Y-%m-%d'),
         'order': {
             'id': auction.order.id,
-            'weight': auction.order.weight,
+            'weight': f'{auction.order.weight} {auction.order.product.get_price().get_weight_unit_display()}',
             'category': auction.order.product.category.title,
             'delivery_type': auction.order.product.get_delivery_type(),
-            'monthly_load': auction.order.monthly_load,
-            'monthly_load_weight': auction.order.get_monthly_weight(),
+            'monthly_load': f'{auction.order.monthly_load} ماه',
+            'monthly_load_weight': f'{auction.order.get_monthly_weight()} {auction.order.product.get_price().get_weight_unit_display()}',
         },
         'source': {
             'province': auction.order.product.mine.region.parent.title,
@@ -46,6 +46,7 @@ def get_auction(request, pk):
             'address': auction.order.destination.address,
         },
         'min_bid': price,
+        'my_bid': auction.bids.filter(user=request.user).order_by('price').first().price
     })
 
 
@@ -62,7 +63,8 @@ def create_bid(request, pk):
     if not (request.user.is_logistic or request.user.is_admin or request.user.is_superuser):
         return Response({'message': 'شما دسترسی ندارید'}, status=401)
 
-    if auction.bids.filter(user=request.user).exists():
+    if auction.bids.filter(user=request.user).exists() and \
+            auction.bids.filter().order_by('price').first() == request.user:
         return Response({'message': 'شما قبلا در این مناقصه شرکت کرده اید'}, status=400)
 
     price = request.data.get('price')

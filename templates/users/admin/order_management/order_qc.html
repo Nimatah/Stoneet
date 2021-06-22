@@ -174,9 +174,9 @@
         </div>
     </main>
 
-    <-- admin_qc_modal------------------------------ -->
+    <!-- admin_qc_modal------------------------------ -->
     <div class="modal fade ph-modal" id="admin_qc_modal" tabindex="-1" role="dialog"
-         aria-labelledby="auction_modal" aria-hidden="true">
+         aria-labelledby="auction_modal" aria-hidden="true" style="z-index: 1">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -282,7 +282,7 @@
                             <div class="ph-order-input-file">
                                 <div class="custom-file">
                                     <label for="et_pb_contact_brand_file_request_0" class="et_pb_contact_form_label">Enter</label>
-                                    <input type="file" id="et_pb_contact_brand_file_request_0" class="file-upload">
+                                    <input name="contract" {% if contract %}value="قرارداد"{% endif %} type="file" id="et_pb_contact_brand_file_request_0" class="file-upload">
                                 </div>
                             </div>
                             <!-- ph-order-input-file -->
@@ -303,14 +303,6 @@
                         </div>
                         <!-- col-12 col-md-6 -->
 
-
-                        <!--  <div class="col-12">
-                            <div class="custom-control custom-checkbox mt-3">
-                                <input type="file" name="contract" class="custom-file-input" id="admin_qc_check_6" value="{{ contract.file }}">
-                                <label class="custom-file-label" for="admin_qc_check_6">{% if contract %}
-                            {{ contract.file }} {% else %}آپلود قرارداد{% endif %}</label>
-                            </div>.form-group
-                        </div>-->
                     </div><!-- .row -->
                     <div class="row my-3">
                         <div class="col-12 col-md-6">
@@ -323,36 +315,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% for img in order.get_signed_contract_pages %}
                                     <tr>
-                                        <td>صفحه اول قرارداد</td>
+                                        <td>فایل قرارداد</td>
                                         <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                            <a href="{% get_media_prefix %}{{ img.file }}" class="ph-btn image-popup-vertical-fit">
+                                                <span>مشاهده فایل</span>
+                                            </a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>صفحه اول قرارداد</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول قرارداد</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول قرارداد</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول قرارداد</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -367,36 +339,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% for img in order.get_finance_documents %}
                                     <tr>
-                                        <td>صفحه اول مدارک مالی</td>
+                                        <td>فایل مدارک مالی</td>
                                         <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
+                                            <a href="{% get_media_prefix %}{{ img.file }}" class="ph-btn image-popup-vertical-fit">مشاهده فایل</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>صفحه اول مدارک مالی</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول مدارک مالی</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول مدارک مالی</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>صفحه اول مدارک مالی</td>
-                                        <td>
-                                            <a href="#" class="ph-btn">دانلود فایل</a>
-                                        </td>
-                                    </tr>
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>

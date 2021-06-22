@@ -52,7 +52,7 @@
                             {% for auction in auctions %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
-                                    <td>{{ auction.get_persian_start_date }}</td>
+                                    <td>{{ auction.get_persian_start_date_view }}</td>
                                     <td>{{ auction.order.id }}</td>
                                     <td>{{ auction.order.product.category.title }}</td>
                                     <td>{{ auction.order.product.get_delivery_type }}</td>
@@ -75,15 +75,7 @@
                     <!-- ph-ip-wl-table -->
                     <div class="ph-ip-wl-header bottom">
                         <div class="ph-ip-wl-right">
-                            <div class="ph-ip-wlr-views">
-                                {#                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
-                                {#                                    <option selected>۱۰</option>#}
-                                {#                                    <option value="1">۲۰</option>#}
-                                {#                                    <option value="2">۵۰</option>#}
-                                {#                                    <option value="3">۱۰۰</option>#}
-                                {#                                </select>#}
-                                {#                                <span>تعداد نمایش</span>#}
-                            </div>
+                            <div class="ph-ip-wlr-views"></div>
                         </div>
                         <!-- ph-ip-wl-right -->
                         <div class="ph-ip-wl-res">
@@ -173,8 +165,8 @@
                         </div><!-- .col-md-6 -->
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label for="bid-price">قیمت پیشنهادی شما</label>
-                                <input type="text" class="form-control" id="bid-price">
+                                <label for="bid-price">قیمت پیشنهادی شما به ازای هر تن</label>
+                                <input type="text" class="form-control" id="bid-price" placeholder="ریال">
                             </div><!-- .form-group -->
                         </div><!-- .col-md-6 -->
                     </div><!-- .row -->
