@@ -271,7 +271,7 @@ class ProductAttribute(models.Model):
     value_int = models.IntegerField(null=True, blank=True)
     value_float = models.FloatField(null=True, blank=True)
     weight_unit = models.CharField(max_length=255, choices=_WEIGHT_UNIT_CHOICES, blank=True)
-    child_value = models.IntegerField(null=True, blank=True)
+    child_value = models.FloatField(null=True, blank=True)
 
     objects = ProductAttributeManager()
 

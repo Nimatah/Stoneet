@@ -20,6 +20,7 @@ class ListProductView(UserPassesTestMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = [c.to_dict_hierarchy() for c in Category.objects.get_root().prefetch_related('children')]
+        context['nodes'] = Category.objects.all()
         return context
 
     def test_func(self):

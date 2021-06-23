@@ -1,4 +1,4 @@
-{% if attribute.range_type == 'from' %}
+{% if attribute.range_type == 'to' %}
 <div class="col-5 ph-add-product-cutie my-1">
     <label class="ph-label">{{ attribute.title }}</label>
     <div class="form-row num-input align-items-center">
@@ -8,7 +8,7 @@
                 <small class="form-text text-danger"></small>
             </div>
         </div>
-        {% elif attribute.range_type == 'to' and not attribute.has_weight %}
+        {% elif attribute.range_type == 'from' and not attribute.has_weight %}
         <div class="col-4 d-flex">
             <div class="row no-gutters">
                 <input data-max type="text" placeholder="{{ attribute.get_range_type_display }}" class="form-control" name="attribute_{{ attribute.id }}" id="attribute-{{ attribute.id }}">

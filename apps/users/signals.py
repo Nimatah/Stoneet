@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from apps.users.models import User, Profile
 
 
-# TODO: handle users without profile
 @receiver(post_save, sender=User)
 def initial_user_profile(sender: User, instance: User, created: bool, **kwargs):
     return

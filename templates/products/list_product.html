@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load utils %}
+{% load mptt_tags %}
 
 {% block title %}
     لیست محصولات
@@ -16,12 +17,16 @@
                     <div class="ph-list-product-sidebar d-none d-md-block">
                         <div class="ph-list-product-sidebar-widget">
                             <div class="ph-list-product-sidebar-search-box">
-                                <input type="text" class="ph-border-radius-small" placeholder="جستجو کنید ...">
+                                <form method="get" action="{% url 'products:list_products' %}">
+                                    <input name="q" type="text" class="ph-border-radius-small" placeholder="جستجو کنید ...">
+                                    <button class="d-none" type="submit"></button>
+                                </form>
                             </div>
                         </div>
                         <div class="ph-list-product-sidebar-widget">
                             <div class="ph-list-product-sidebar-filter-box">
-                                <h5>نوع ماده</h5>
+                                <h5>دسته بندی</h5>
+                                {% recursetree  %}
                                 <div class="form-check custom-control custom-checkbox">
                                     <input class="custom-control-input" type="checkbox" id="raw_material">
                                     <label class="custom-control-label" for="raw_material">
@@ -88,7 +93,10 @@
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <div class="ph-list-product-sidebar-widget">
                             <div class="ph-list-product-sidebar-search-box">
-                                <input type="text" class="ph-border-radius-small" placeholder="جستجو کنید ...">
+                                <form method="get" action="{% url 'products:list_products' %}">
+                                    <input name="q" type="text" class="ph-border-radius-small" placeholder="جستجو کنید ...">
+                                    <button class="ph-btn" type="submit">جستجو</button>
+                                </form>
                             </div>
                         </div>
                         <div class="ph-list-product-sidebar-widget">
@@ -161,18 +169,7 @@
                                 <div class="row">
                                     <div class="col-8 col-md-10">
                                         <div class="ph-list-product-sort-wrapper d-none d-md-flex">
-                                            <div class="ph-list-product-sort-item">
-                                                <span>بر اساس ارزان ترین</span>
-                                            </div><!-- .ph-list-product-sort-item -->
-                                            <div class="ph-list-product-sort-item">
-                                                <span>بر اساس گران ترین</span>
-                                            </div><!-- .ph-list-product-sort-item -->
-                                            <div class="ph-list-product-sort-item">
-                                                <span>بر اساس تازه ترین</span>
-                                            </div><!-- .ph-list-product-sort-item -->
-                                            <div class="ph-list-product-sort-item">
-                                                <span>بر اساس محبوب ترین</span>
-                                            </div><!-- .ph-list-product-sort-item -->
+
                                         </div><!-- .ph-list-product-sort-wrapper -->
                                         <div class="ph-mobile-archive-sort-wrapper d-inline-flex d-md-none">
                                             <select class="custom-select">
@@ -209,36 +206,33 @@
                                      aria-labelledby="grid_view">
                                     <div class="row">
                                         {% for product in products %}
-                                            <div class="col-12 col-md-3">
-                                                <div class="ph-list-product-loop-item ph-border-radius">
-                                                    <div class="ph-list-product-loop-item-img">
-                                                        <a href="{% url 'products:product_details' pk=product.id %}"><img
-                                                                src="
-                                                                        {% get_media_prefix %}{{ product.media.get_primary.file }}"
-                                                                alt=""></a>
-                                                        <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
-                                                    </div><!-- .ph-list-product-loop-item-img -->
-                                                    <div class="ph-list-product-loop-item-content">
-                                                        <div class="ph-list-product-loop-item-title">
-                                                            <a href="{% url 'products:product_details' pk=product.id %}">{{ product.title }}</a>
-                                                        </div><!-- .ph-list-product-loop-item-title -->
-                                                        <div class="ph-list-product-loop-item-meta-wrapper">
-                                                            <div class="ph-list-product-loop-item-meta">
-                                                                <label for="">ظرفیت تولید:</label>
-                                                                {% with product.get_sku as sku %}
-                                                                    <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                <div class="col-12 col-md-3">
+                                                    <div class="ph-list-product-loop-item ph-border-radius" onclick="location.href='{% url 'products:product_details' pk=product.id %}'" style="cursor: pointer">
+                                                        <div class="ph-list-product-loop-item-img">
+                                                            <img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="">
+                                                            <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
+                                                        </div><!-- .ph-list-product-loop-item-img -->
+                                                        <div class="ph-list-product-loop-item-content">
+                                                            <div class="ph-list-product-loop-item-title">
+                                                                {{ product.title }}
+                                                            </div><!-- .ph-list-product-loop-item-title -->
+                                                            <div class="ph-list-product-loop-item-meta-wrapper">
+                                                                <div class="ph-list-product-loop-item-meta">
+                                                                    <label for="">ظرفیت تولید:</label>
+                                                                    {% with product.get_sku as sku %}
+                                                                        <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                                    {% endwith %}
+                                                                </div><!-- .ph-list-product-loop-item-meta -->
+                                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
+                                                            <div class="ph-list-product-item-price">
+                                                                {% with product.get_price as price %}
+                                                                    <span>{{ price.value|intcomma }}</span>
+                                                                    {{ price.attribute.unit }} به ازای هر تن
                                                                 {% endwith %}
-                                                            </div><!-- .ph-list-product-loop-item-meta -->
-                                                        </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                                        <div class="ph-list-product-item-price">
-                                                            {% with product.get_price as price %}
-                                                                <span>{{ price.value|intcomma }}</span>
-                                                                {{ price.attribute.unit }} به ازای هر تن
-                                                            {% endwith %}
-                                                        </div><!-- .ph-list-product-item-price -->
-                                                    </div><!-- .ph-list-product-loop-item-content -->
-                                                </div><!-- .ph-list-product-loop-item -->
-                                            </div><!-- .col-md-3 -->
+                                                            </div><!-- .ph-list-product-item-price -->
+                                                        </div><!-- .ph-list-product-loop-item-content -->
+                                                    </div><!-- .ph-list-product-loop-item -->
+                                                </div><!-- .col-md-3 -->
                                         {% endfor %}
                                     </div><!-- .row -->
                                 </div><!-- .tab-pane -->
@@ -246,42 +240,40 @@
                                      aria-labelledby="list_view">
                                     <div class="row">
                                         {% for product in products %}
-                                            <div class="col-12 col-md-12">
-                                                <div class="ph-list-product-loop-item list-view ph-border-radius">
-                                                    <div class="ph-list-product-loop-item-content">
-                                                        <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
-                                                        <div class="ph-list-product-loop-item-title">
-                                                            <a href="{% url 'products:product_details' pk=product.id %}">{{ product.title }}</a>
-                                                        </div><!-- .ph-list-product-loop-item-title -->
-                                                        <div class="ph-list-product-loop-item-meta-wrapper">
-                                                            <div class="ph-list-product-loop-item-meta">
-                                                                <label for="">ظرفیت تولید:</label>
-                                                                {% with product.get_sku as sku %}
-                                                                    <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                <div class="col-12 col-md-12">
+                                                    <div class="ph-list-product-loop-item list-view ph-border-radius" onclick="location.href='{% url 'products:product_details' pk=product.id %}'" style="cursor: pointer">
+                                                        <div class="ph-list-product-loop-item-content">
+                                                            <span class="ph-list-product-loop-item-city">{{ product.user.region }}</span>
+                                                            <div class="ph-list-product-loop-item-title">
+                                                                <a>{{ product.title }}</a>
+                                                            </div><!-- .ph-list-product-loop-item-title -->
+                                                            <div class="ph-list-product-loop-item-meta-wrapper">
+                                                                <div class="ph-list-product-loop-item-meta">
+                                                                    <label for="">ظرفیت تولید:</label>
+                                                                    {% with product.get_sku as sku %}
+                                                                        <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                                    {% endwith %}
+                                                                </div><!-- .ph-list-product-loop-item-meta -->
+                                                                <div class="ph-list-product-loop-item-meta">
+                                                                    <label for="">دانه بندی:</label>
+                                                                    {% with product.get_sku as sku %}
+                                                                        <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
+                                                                    {% endwith %}
+                                                                </div><!-- .ph-list-product-loop-item-meta -->
+                                                            </div><!-- .ph-list-product-loop-item-meta-wrapper -->
+                                                            <div class="ph-list-product-item-price ph-border-radius-small" style="margin-left: 5px">
+                                                                {% with product.get_price as price %}
+                                                                    <span>{{ price.value|intcomma }} {{ price.attribute.unit }}</span>
+                                                                    ریال به ازای هر
+                                                                    {{ price.get_weight_unit_display }}
                                                                 {% endwith %}
-                                                            </div><!-- .ph-list-product-loop-item-meta -->
-                                                            <div class="ph-list-product-loop-item-meta">
-                                                                <label for="">دانه بندی:</label>
-                                                                {% with product.get_sku as sku %}
-                                                                    <span>{{ sku.value|intcomma }} {{ sku.attribute.unit }}</span>
-                                                                {% endwith %}
-                                                            </div><!-- .ph-list-product-loop-item-meta -->
-                                                        </div><!-- .ph-list-product-loop-item-meta-wrapper -->
-                                                        <div class="ph-list-product-item-price ph-border-radius-small">
-                                                            {% with product.get_price as price %}
-                                                                <span>{{ price.value|intcomma }} {{ price.attribute.unit }}</span>
-                                                                 به ازای هر تن
-                                                            {% endwith %}
-                                                        </div><!-- .ph-list-product-item-price -->
-                                                    </div><!-- .ph-list-product-loop-item-content -->
-                                                    <div class="ph-list-product-loop-item-img">
-                                                        <a href="{% url 'products:product_details' pk=product.id %}"><img
-                                                                src="
-                                                                        {% get_media_prefix %}{{ product.media.get_primary.file }}"
-                                                                alt=""></a>
-                                                    </div><!-- .ph-list-product-loop-item-img -->
-                                                </div><!-- .ph-list-product-loop-item -->
-                                            </div><!-- .col-md-3 -->
+                                                            </div><!-- .ph-list-product-item-price -->
+                                                        </div><!-- .ph-list-product-loop-item-content -->
+                                                        <div class="ph-list-product-loop-item-img">
+                                                            <a><img src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt=""></a>
+                                                        </div><!-- .ph-list-product-loop-item-img -->
+                                                    </div><!-- .ph-list-product-loop-item -->
+                                                </div><!-- .col-md-3 -->
                                         {% endfor %}
                                     </div><!-- .row -->
                                 </div><!-- .tab-pane -->
