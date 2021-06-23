@@ -13,6 +13,48 @@
                                 <span>صورتحساب‌ها | </span>
                                 لیست صورتحساب‌های خود را در اینجا مشاهده کنید.
                             </div>
+                                              <div class="ph-admin-page-search-wrapper bg-light ph-border-radius ph-box-shadow my-4">
+                            <div class="ph-admin-page-block-header ph-panel-title">
+                                <span class="title">جستجو و فیلتر</span>
+                            </div>
+                            <div class="ph-admin-page-block-content">
+                                <div class="ph-admin-page-search-form">
+                                    <form method="get">
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <label for="">تاریخ سفارش</label>
+                                                <input type="text" class="form-control" name="date" id="order-date"
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="تاریخ مورد نظرتان را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="">کد سفارش</label>
+                                                <input type="text" class="form-control" name="id" id=""
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="کد سفارش را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="">کد محصول</label>
+                                                <input type="text" class="form-control" name="product_id" id=""
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="کد کالا را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="ph-state"> وضعیت تایید سفارش:</label>
+                                                <select name="state" class="form-control custom-select" id="ph-state">
+                                                    <option value="">انتخاب کنید</option>
+                                                    {% for state, state_display in order_model.STATE_CHOICES %}
+                                                        <option value="{{ state }}">{{ state_display }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                             <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
                                 <div class="ph-ip-wl-header top">
                                     <div class="ph-ip-wl-right">
