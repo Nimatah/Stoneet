@@ -16,8 +16,10 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
     attribute_14 = serializers.IntegerField(required=True, label='دانه بندی کمترین')  # Grain From
     attribute_15 = serializers.IntegerField(required=True, label='دانه بندی بیشترین')  # Grain To
     attribute_16 = serializers.CharField(required=True, label='نحوه ارسال')  # Delivery Type
-    child_attribute_16 = serializers.IntegerField(required=True, label='مقدار نحوه ارسال')  # Delivery Type
-    weight_attribute_16 = serializers.CharField(required=True, label='واحد مقدار نحوه ارسال')  # Delivery Type
+    child_attribute_16 = serializers.IntegerField(required=False, label='مقدار نحوه ارسال')  # Delivery Type
+    weight_attribute_16 = serializers.CharField(required=False, label='واحد مقدار نحوه ارسال')  # Delivery Type
+    attribute_17 = serializers.FloatField(required=True, label='میزان دپوی موجود')
+    attribute_18 = serializers.IntegerField(required=True, label='حداقل میزان سفارش')
     mine = serializers.IntegerField(required=False, label='معدن', allow_null=True)
 
     def validate_attribute_1(self, value):
@@ -76,7 +78,7 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
         return value
 
     def validate_weight_attribute_16(self, value):
-        if value not in (Attribute.WEIGHT_KG, Attribute.WEIGHT_TON):
+        if value not in (Attribute.WEIGHT_KG, Attribute.WEIGHT_TON, 'default'):
             raise serializers.ValidationError("واحد مقدار نوع تحویل باید کیلوگرم یا تن باشد")
         return value
 

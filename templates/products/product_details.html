@@ -17,7 +17,7 @@
                         <div class="ph-single-product-top-wrapper">
                             <div class="row">
                                 <div class="col-12 col-md-7">
-                                    <div class="ph-single-product-details-wrapper">
+                                    <div class="ph-single-product-details-wrapper" style="border: 1px solid rgba(0, 0, 0, 0.08); padding: 20px; border-radius: 1em">
                                         <!-- <h1 class="ph-single-product-title">{{ product.title }}</h1> -->
                                         <h1 class="ph-single-product-title">{{ product.title }}</h1>
                                         <hr>
@@ -65,6 +65,14 @@
                                                     <li>
                                                         <label>ظرفیت تامین: </label>
                                                         <span>{{ product.get_sku.value }} تن</span>
+                                                    </li>
+                                                    <li>
+                                                        <label>میزان دپوی موجود: </label>
+                                                        <span>{{ product.get_available_depo.value }} تن</span>
+                                                    </li>
+                                                    <li>
+                                                        <label>حداقل سفارش: </label>
+                                                        <span>{{ product.get_min_order.value }} تن</span>
                                                     </li>
                                                 </ul>
                                             </div><!-- .ph-single-product-specification-table -->

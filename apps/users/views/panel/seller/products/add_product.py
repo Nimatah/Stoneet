@@ -12,8 +12,6 @@ class AddProductView(UserPassesTestMixin, FormView):
     success_url = reverse_lazy('users:seller_list_product')
 
     # TODO: disable attribute options on فله
-    # TODO: Add میزان دپوی موجود and it's unit as float
-    # TODO: Add حداقل میزان سفارش
 
     # -----
 

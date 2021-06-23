@@ -335,3 +335,21 @@ handlePart1Form();
 handlePart2Form();
 handlePart3Form();
 handlePart4Form();
+
+//
+// const $fale = $('select#attribute-16')
+//
+// if ($fale.val() == 'بار فله‌ای') {
+//     $('#weight-attribute-16').hide()
+//     $('#child-attribute-16').hide()
+// }
+//
+// $fale.on('change', function (e) {
+//     if ($fale.val() == 'بار فله‌ای') {
+//         $('#weight-attribute-16').hide()
+//         $('#child-attribute-16').hide()
+//     } else {
+//         $('#weight-attribute-16').show()
+//         $('#child-attribute-16').show()
+//     }
+// })

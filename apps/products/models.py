@@ -92,6 +92,8 @@ class Attribute(TimestampedModel):
     ID_GRAIN_FROM = 14
     ID_GRAIN_TO = 15
     ID_DELIVERY_TYPE = 16
+    ID_AVAILABLE_DEPO = 17
+    ID_MIN_ORDER = 18
 
     TYPE_BOOL = 'bool'
     TYPE_STR = 'str'
@@ -419,6 +421,12 @@ class Product(TimestampedModel):
 
     def has_sample(self):
         return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE).exists()
+
+    def get_available_depo(self):
+        return self.attributes.filter(attribute_id=Attribute.ID_AVAILABLE_DEPO).first()
+
+    def get_min_order(self):
+        return self.attributes.filter(attribute_id=Attribute.ID_MIN_ORDER).first()
 
 
     def to_dict(self) -> Dict[str, Any]:

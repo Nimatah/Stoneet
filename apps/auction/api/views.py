@@ -46,7 +46,7 @@ def get_auction(request, pk):
             'address': auction.order.destination.address,
         },
         'min_bid': price,
-        'my_bid': auction.bids.filter(user=request.user).order_by('price').first().price
+        'my_bid': getattr(auction.bids.filter(user=request.user).order_by('price').first(), 'price', '-')
     })
 
 
