@@ -101,6 +101,7 @@
                     <!-- ph-cp-header-parts shell-2 -->
                     <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
                         <div class="ph-view-order-block">
+                            {% if logistic_order %}
                             <div class="ph-view-order-table">
                                 <table class="ph-table table table-bordered text-center">
                                     <thead class="thead-dark">
@@ -153,6 +154,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="ph-confirmation-order">
                             <div class="form-group">

@@ -9,12 +9,153 @@
                 جزییات مناقصه خود را در اینجا مشاهده کنید.
             </div>
 
-                    <div class="ph-admin-page-alert ph-box-shadow my-4">
-                        <div class="alert alert-warning" role="alert">
-                            <i class="fas fa-info-circle"></i>
-                            "در انتظار پیام کارفرما"
+           <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-page-block-header ph-panel-title">
+                            <span class="title">مشخصات سفارش</span>
                         </div>
+                        <ul>
+                            <li>
+                                <span class="title">کد کالا:</span>
+                                <span class="desc">8585</span>
+                            </li>
+                            <li>
+                                <span class="title">عنوان:</span>
+                                <span class="desc">بلا بلا بلا</span>
+                            </li>
+                            <li>
+                                <span class="title">سایز‌بندی:</span>
+                                <span class="desc">85</span>
+                            </li>
+                            <li>
+                                <span class="title">عیار:</span>
+                                <span class="desc">85</span>
+                            </li>
+                            <li>
+                                <span class="title">شماره سفارش:</span>
+                                <span class="desc">858585</span>
+                            </li>
+                            <li>
+                                <span class="title">وضعیت سفارش:</span>
+                                <span class="desc">انلاین</span>
+                            </li>
+                            <li>
+                                <span class="title">میزان سفارش:</span>
+                                <span class="desc">85 تن</span>
+                            </li>
+                            <li>
+                                <span class="title">تعداد ارسال:</span>
+                                <span class="desc">85</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع تحویل:</span>
+                                <span class="desc">حضوری</span>
+                            </li>
+                            <li>
+                                <span class="title">تناژ کامل:</span>
+                                <span class="desc">85 تن</span>
+                            </li>
+                            <li>
+                                <span class="title">تناژ هر ارسال:</span>
+                                <span class="desc">85 تن</span>
+                            </li>
+                            <li>
+                                <span class="title">قیمت:</span>
+                                <span class="desc">85 ریال</span>
+                            </li>
+                            <li>
+                                <span class="title">نوع پرداخت:</span>
+                                <span class="desc">نقدی</span>
+                            </li>
+                        </ul>
                     </div>
+                    <!-- .col-12 col-md-6 -->
+                    <div class="col-12 col-md-6">
+                        <div class="ph-admin-page-block-header ph-panel-title">
+                            <span class="title">مشخصات معدن</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="title">نام معدن/کارخانه:</span>
+                                <span class="desc">معدن شماره 85</span>
+                            </li>
+                            <li>
+                                <span class="title">استان:</span>
+                                <span class="desc">تهران</span>
+                            </li>
+                            <li>
+                                <span class="title">شهر:</span>
+                                <span class="desc">تهران</span>
+                            </li>
+                            <li>
+                                <span class="title">نام جاده اصلی:</span>
+                                <span class="desc">جاده 85</span>
+                            </li>
+                            <li>
+                                <span class="title">موقعیت مکانی در استان:</span>
+                                <span class="desc">خیابان 85</span>
+                            </li>
+                            <li>
+                                <span class="title">فاصله معدن/کارخانه تا جاده اصلی (کیلومتر):</span>
+                                <span class="desc">85 کیلومتر</span>
+                            </li>
+                            <li>
+                                {% if order.product.mine.proper_road %}
+                                    <span><i class="fas fa-check-square"
+                                             style="color: green;vertical-align: middle;"></i></span>
+                                {% else %}
+                                    <span><i class="fas fa-times" style="color: red;vertical-align: middle;"></i></span>
+                                {% endif %}
+                                <span>وجود جاده مناسب برای عبور و مرور وسایل نقلیه</span>
+                            </li>
+                            <li>
+                                {% if order.product.mine.load_tools %}
+                                    <span><i class="fas fa-check-square"
+                                             style="color: green;vertical-align: middle;"></i></span>
+                                {% else %}
+                                    <span><i class="fas fa-times" style="color: red;vertical-align: middle;"></i></span>
+                                {% endif %}
+                                <span>وجود تجهیزات بارگیری در محل دپو</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- .col-12 col-md-6 -->
+                </div>
+                <!-- row -->
+            </div>
+            <!-- ph-ip-w-list -->
+
+            <div class="ph-managements-table-wrapper ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                <div class="ph-managements-table table-responsive">
+                    <table class="table ph-table table-bordered text-center">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>ردیف</th>
+                            <th>تاریخ</th>
+                            <th>نام و نام‌خانوادگی</th>
+                            <th>شماره کامیون</th>
+                            <th>شماره قبض</th>
+                            <th>وزن پُر (تن)</th>
+                            <th>وزن خالی (تن)</th>
+                            <th>وزن خالص (تن)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>25/12/1399</td>
+                            <td>مصطفی چراغی</td>
+                            <td>234ک22</td>
+                            <td>1808</td>
+                            <td>48100</td>
+                            <td>16030</td>
+                            <td>32070</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div><!-- .ph-managements-table -->
+            </div>
 
         </div>
         <!-- container -->
