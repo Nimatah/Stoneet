@@ -36,3 +36,16 @@ class AdminProductFilter(django_filters.FilterSet):
     class Meta:
         model = Product
         fields = ['id', 'category', 'state', 'q']
+
+
+class UserProductFilter(django_filters.FilterSet):
+
+    q = django_filters.CharFilter(field_name='title', lookup_expr='icontains')
+    category = django_filters.CharFilter(method='category_filter')
+
+    def category_filter(self, queryset, name, value):
+        return queryset.filter(category_id__in=self.request.GET.getlist('category'))
+
+    class Meta:
+        model = Product
+        fields = ['category', 'q', ]
