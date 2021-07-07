@@ -191,8 +191,10 @@ function handleSubmitForm() {
             $('#error-modal').modal('show')
             return
         }
-        const legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
-
+        let legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
+        if (isLogistic) {
+            legalType = 'legal'
+        }
         const form = $(`<form method="post" enctype="multipart/form-data" action="${window.location}"/>`)
             .append($('[name="csrfmiddlewaretoken"]'),
                 $('#sign_up_email'), $('#sign_up_password'), $('#sign_up_number'),
@@ -247,7 +249,10 @@ function handleSignupNumber() {
 function handleValidateRegister(userType) {
     $('button#ph_register_continue').on('click', function (e) {
         e.preventDefault();
-        const legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
+        let legalType = $('#legal-individual').prop('checked') ? 'individual' : 'legal'
+        if (isLogistic) {
+            legalType = 'legal'
+        }
         const inputs = [$('#sign_up_email'), $('#sign_up_password'), $('#sign_up_number'),
             $('#legal-individual'), $('#legal-legal'), ...inputElements(legalType)]
         const body = {}

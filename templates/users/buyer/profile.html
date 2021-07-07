@@ -120,46 +120,45 @@
                                                     <div class="form-group col-4 my-1">
                                                         <label for="address-receiver-name">نام
                                                             تحویل‌گیرنده</label>
-                                                        <input type="text" class="form-control"
-                                                               id="address-receiver-name" disabled
-                                                               name="receiver" value="{{ address.receiver_name }}">
+                                                        <input type="text" class="form-control" form-field
+                                                               id="address-receiver-name"
+                                                               name="receiver_name" value="{{ address.receiver_name }}">
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label class="ml-2" for="province">استان</label>
-                                                        <select class="form-control" id="province-{{ address.id }}"
-                                                                disabled>
-                                                            <option value="{{ address.region.parent.id }}">{{ address.region.parent.title }}</option>
+                                                        <label form-label class="ml-2" for="province">استان</label>
+                                                        <select data-value="{{ address.region.parent.id }}" mine-val form-field class="form-control" id="province"
+                                                                onchange="regionChangeHandler(this, 'address')">
+                                                            <option value="default">انتخاب کنید</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label class="mx-2" for="city">شهر</label>
-                                                        <select name="region_id" class="form-control" disabled
+                                                        <label form-label class="mx-2" for="city">شهر</label>
+                                                        <select data-value="{{ address.region.id }}" mine-val form-field class="form-control" name="region_id"
                                                                 id="city">
-                                                            <option value="{{ address.region.id }}">{{ address.region.title }}</option>
+                                                            <option value="default">انتخاب کنید</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-12 my-1">
                                                         <label for="address-address">آدرس دقیق</label>
                                                         <input type="text" class="form-control"
-                                                               id="address-address" disabled
+                                                               id="address-address" form-field
                                                                name="address" value="{{ address.address }}">
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
                                                         <label for="address-road-name">کد پستی</label>
                                                         <input type="text" class="form-control"
-                                                               id="address-road-name" disabled
-                                                               name="road_name" value="{{ address.postal_code }}">
+                                                               id="address-road-name" form-field
+                                                               name="postal_code" value="{{ address.postal_code }}">
                                                     </div>
 
                                                 </div>
                                                 <!-- form-row -->
-                                                <a href="#" onclick="removeAddressHandler(this)"
-                                                   class="remove-field ph-btn btn-remove-customer"><i
-                                                        class="fas fa-times"></i></a>
+                                                <a href="#" onclick="editAddressHandler(this)"
+                                                   class="remove-field ph-btn btn-remove-customer" style="width: 75px">ویرایش</a>
                                             </div>
                                         {% endfor %}
                                         <!-- customer_records -->
@@ -190,14 +189,43 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for media in user.medias.all %}
+                                            {% if user.is_individual %}
                                                 <tr>
-                                                    <th scope="row">{{ forloop.counter }}</th>
-                                                    <td><img src="{% get_media_prefix %}{{ media.file }}" alt=""></td>
-                                                    <td>{{ media.title }}</td>
-                                                    <td>{{ media.get_state_display }}</td>
+                                                    <th scope="row">۱</th>
+                                                    <td><img src="
+                                                            {% get_media_prefix %}{{ user.get_image_id_card_front.file }}"
+                                                             alt=""></td>
+                                                    <td>کارت ملی</td>
+                                                    <td>تایید شده</td>
                                                 </tr>
-                                            {% endfor %}
+                                                <tr>
+                                                    <th scope="row">۲</th>
+                                                    <td><img src="
+                                                            {% get_media_prefix %}{{ user.get_image_id_card_back.file }}"
+                                                             alt=""></td>
+                                                    <td>تصویر پشت کارت ملی</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <th scope="row">۱</th>
+                                                    <td><img src="{% get_media_prefix %}{{ user.get_image_company_registration.file }}" alt=""></td>
+                                                    <td>گواهی ثبت شرکت</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">۲</th>
+                                                    <td><img src="{% get_media_prefix %}{{ user.get_image_company_latest_newspaper.file }}" alt=""></td>
+                                                    <td>آخرین به روز رسانی روزنامه رسمی</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">۳</th>
+                                                    <td><img src="{% get_media_prefix %}{{ user.get_image_company_tax_on_added_value_certificate.file }}" alt=""></td>
+                                                    <td>گواهی مالیات بر ارزش افزوده</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                            {% endif %}
                                             </tbody>
                                         </table>
                                     </div>
@@ -227,7 +255,7 @@
         <div class="address-record">
             <div class="form-row align-items-center">
                 <div class="form-group col-4 my-1">
-                    <label form-label for="address-receiver-name">نام تحویل‌گیرنده</label>
+                    <label form-label for="address-receiver-name">شناسه مقصد</label>
                     <input form-field type="text" class="form-control" id="address-receiver-name"
                            name="receiver_name" placeholder="نام را وارد کنید...">
                 </div>

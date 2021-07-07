@@ -6,7 +6,7 @@ from apps.locations.models import Region
 
 class AddressSerializer(serializers.ModelSerializer):
 
-    receiver_name = serializers.CharField(label='نام تحویل گیرنده')
+    receiver_name = serializers.CharField(label='شناسه مقصد')
     region_id = serializers.IntegerField(label='شهر')
     region = serializers.CharField(read_only=True, source='region.title')
     province = serializers.CharField(read_only=True, source='region.parent.title')

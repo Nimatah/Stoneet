@@ -80,7 +80,7 @@
                             <span>{{ order.buyer.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>شناسه خریدار:</label>
+                            <label>کد خریدار:</label>
                             <span>{{ order.buyer.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
@@ -116,7 +116,7 @@
                             <span>{{ order.logistic_order.user.profile.full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>شناسه حمل و نقل:</label>
+                            <label>کد حمل و نقل:</label>
                             <span>{{ order.logistic_order.user.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
@@ -141,7 +141,7 @@
                             <span>{{ order.product.user.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>شناسه فروشنده:</label>
+                            <label>کد فروشنده:</label>
                             <span>{{ order.product.user.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
@@ -152,11 +152,11 @@
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>استان:</label>
-                            <span>{{ order.product.user.get_province.title }}</span>
+                            <span>{{ order.product.user.profile.get_province.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شهر:</label>
-                            <span>{{ order.product.user.get_city.title }}</span>
+                            <span>{{ order.product.user.profile.get_city.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>آدرس:</label>

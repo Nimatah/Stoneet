@@ -6,7 +6,7 @@
 
 {% if not attribute.has_weight and not attribute.has_child_value %}
 <div class="col-5 my-1">
-    <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+    <label class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
     <div data-attr>
         <select data-attr-value class="mdb-select md-form form-control" id="attribute-{{ attribute.id }}"
                 name="attribute_{{ attribute.id }}">
@@ -23,7 +23,7 @@
 </div>
 {% else %}
 <div class="col-5 my-1">
-    <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+    <label class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
     <div data-attr class="d-flex">
         <select data-attr-value class="mdb-select md-form form-control mx-1" id="attribute-{{ attribute.id }}"
                 name="attribute_{{ attribute.id }}">

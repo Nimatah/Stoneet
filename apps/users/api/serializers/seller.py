@@ -73,8 +73,8 @@ class SellerAddProductPart1ValidationSerializer(serializers.Serializer):
         return value
 
     def validate_child_attribute_16(self, value):
-        if value <= 0:
-            raise serializers.ValidationError("مقدار نوع تحویل نمیتواند صفر یا کمتر باشد")
+        if value < 0:
+            raise serializers.ValidationError("مقدار نوع تحویل نمیتواند کمتر از صفر باشد")
         return value
 
     def validate_weight_attribute_16(self, value):

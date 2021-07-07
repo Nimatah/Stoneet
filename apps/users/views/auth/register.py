@@ -47,6 +47,7 @@ class BuyerRegisterView(FormView):
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        print(self.request.POST)
         user = form.save()
         login(self.request, user)
         return super().form_valid(form)

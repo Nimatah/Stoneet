@@ -125,50 +125,44 @@
                                                 <div class="form-row align-items-center">
                                                     <div class="form-group col-4 my-1">
                                                         <label for="mine-title-{{ mine.id }}">نام معدن/کارخانه</label>
-                                                        <input type="text" class="form-control"
-                                                               id="mine-title-{{ mine.id }}"
-                                                               value="{{ mine.title }}" disabled>
+                                                        <input type="text" class="form-control" name="title" form-field
+                                                               id="mine-title-{{ mine.id }}" value="{{ mine.title }}">
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label class="ml-2"
-                                                               for="mine-province-{{ mine.id }}">استان</label>
-                                                        <select class="form-control" id="mine-province-{{ mine.id }}"
-                                                                disabled>
-                                                            <option value="{{ mine.region.parent.id }}"
-                                                                    selected>{{ mine.region.parent.title }}</option>
+                                                        <label form-label class="ml-2" for="province">استان</label>
+                                                        <select data-value="{{ mine.region.parent.id }}" mine-val form-field class="form-control" id="province"
+                                                                onchange="regionChangeHandler(this, 'mine')">
+                                                            <option value="default">انتخاب کنید</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
-                                                        <label class="mx-2" for="mine-city-{{ mine.id }}">شهر</label>
-                                                        <select class="form-control" id="mine-city-{{ mine.id }}"
-                                                                disabled>
-                                                            <option value="{{ mine.region.id }}">{{ mine.region.title }}</option>
+                                                        <label form-label class="mx-2" for="city">شهر</label>
+                                                        <select data-value="{{ mine.region.id }}" mine-val form-field class="form-control" name="region_id"
+                                                                id="city">
+                                                            <option value="default">انتخاب کنید</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="form-group col-12 my-1">
                                                         <label for="mine-address-{{ mine.id }}">آدرس دقیق
                                                             معدن/کارخانه</label>
-                                                        <input type="text" class="form-control"
-                                                               id="mine-address-{{ mine.id }}"
-                                                               value="{{ mine.address }}" disabled>
+                                                        <input type="text" class="form-control" name="address" form-field
+                                                               id="mine-address-{{ mine.id }}" value="{{ mine.address }}">
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
                                                         <label for="mine-road-{{ mine.id }}">نام جاده اصلی</label>
-                                                        <input type="text" class="form-control"
-                                                               id="mine-road-{{ mine.id }}"
-                                                               value="{{ mine.road_name }}" disabled>
+                                                        <input type="text" class="form-control" name="road" form-field
+                                                               id="mine-road-{{ mine.id }}" value="{{ mine.road_name }}">
                                                     </div>
 
                                                     <div class="form-group col-4 my-1">
                                                         <label for="mine-location-in-region-{{ mine.id }}">موقعیت
                                                             مکانی</label>
-                                                        <select class="form-control"
-                                                                id="mine-location-in-region-{{ mine.id }}"
-                                                                disabled>
+                                                        <select class="form-control" name="location_in_region" form-field
+                                                                id="mine-location-in-region-{{ mine.id }}">
                                                             <option value="{{ mine.location_in_region }}"
                                                                     selected>{{ mine.get_location_in_region_display }}</option>
                                                         </select>
@@ -179,26 +173,26 @@
                                                             معدن/کارخانه تا
                                                             جاده اصلی
                                                             (کیلومتر)</label>
-                                                        <input type="number" class="form-control"
-                                                               id="mine-distance-to-road-{{ mine.id }}"
-                                                               value="{{ mine.distance_to_road }}" disabled>
+                                                        <input type="number" class="form-control" name="distance_to_road"
+                                                               id="mine-distance-to-road-{{ mine.id }}" form-field
+                                                               value="{{ mine.distance_to_road }}">
                                                     </div>
 
                                                     <div class="form-group col-12 my-1 mt-3">
                                                         <div class="form-check form-check-inline ml-4">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   id="mine-proper-road-{{ mine.id }}"
-                                                                   {% if mine.proper_road %}checked{% endif %} disabled>
+                                                            <input class="form-check-input" type="checkbox" form-field
+                                                                   id="mine-proper-road-{{ mine.id }}" name="proper_road"
+                                                                   {% if mine.proper_road %}checked{% endif %}>
                                                             <label class="form-check-label"
                                                                    for="mine-proper-road-{{ mine.id }}">وجود
                                                                 جاده
                                                                 مناسب برای عبور و مرور وسایل نقلیه
-                                                                </label>
+                                                            </label>
                                                         </div>
                                                         <div class="form-check form-check-inline ml-4">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                   id="mine-load-tools-{{ mine.id }}"
-                                                                   {% if mine.load_tools %}checked{% endif %} disabled>
+                                                            <input class="form-check-input" type="checkbox" form-field
+                                                                   id="mine-load-tools-{{ mine.id }}" name="load_tools"
+                                                                   {% if mine.load_tools %}checked{% endif %}>
                                                             <label class="form-check-label"
                                                                    for="mine-load-tools-{{ mine.id }}">وجود
                                                                 تجهیزات بارگیری در محل دپو</label>
@@ -206,9 +200,10 @@
                                                     </div>
                                                 </div>
                                                 <!-- form-row -->
-                                                <a href="#" data-count="{{ mine.id }}" onclick="removeMineHandler(this)"
-                                                   class="remove-field ph-btn btn-remove-customer">
-                                                    <i class="fas fa-times"></i>
+                                                <a href="#" data-count="{{ mine.id }}" onclick="editMineHandler(this)"
+                                                   class="remove-field ph-btn btn-remove-customer"
+                                                   style="left: 15%; width: 75px">
+                                                    ویرایش
                                                 </a>
                                             </div>
                                         {% endfor %}
@@ -287,18 +282,51 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th scope="row">۱</th>
-                                                <td><img src="" alt=""></td>
-                                                <td>کارت ملی</td>
-                                                <td>تایید شده</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">۲</th>
-                                                <td><img src="" alt=""></td>
-                                                <td>تصویر پشت کارت ملی</td>
-                                                <td>تایید شده</td>
-                                            </tr>
+                                            {% if user.is_individual %}
+                                                <tr>
+                                                    <th scope="row">۱</th>
+                                                    <td><img src="
+
+                                                            {% get_media_prefix %}{{ user.get_image_id_card_front.file }}"
+                                                             alt=""></td>
+                                                    <td>کارت ملی</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">۲</th>
+                                                    <td><img src="
+
+                                                            {% get_media_prefix %}{{ user.get_image_id_card_back.file }}"
+                                                             alt=""></td>
+                                                    <td>تصویر پشت کارت ملی</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                            {% else %}
+                                                <tr>
+                                                    <th scope="row">۱</th>
+                                                    <td><img src="
+                                                            {% get_media_prefix %}{{ user.get_image_company_registration.file }}"
+                                                             alt=""></td>
+                                                    <td>گواهی ثبت شرکت</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">۲</th>
+                                                    <td><img src="
+                                                            {% get_media_prefix %}{{ user.get_image_company_latest_newspaper.file }}"
+                                                             alt=""></td>
+                                                    <td>آخرین به روز رسانی روزنامه رسمی</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">۳</th>
+                                                    <td><img src="
+                                                            {% get_media_prefix %}{{ user.get_image_company_tax_on_added_value_certificate.file }}"
+                                                             alt=""></td>
+                                                    <td>گواهی مالیات بر ارزش افزوده</td>
+                                                    <td>تایید شده</td>
+                                                </tr>
+                                            {% endif %}
                                             </tbody>
                                         </table>
                                     </div>
@@ -333,15 +361,15 @@
                 </div>
 
                 <div class="form-group col-4 my-1">
-                    <label form-label class="ml-2" for="province">استان</label>
-                    <select form-field class="form-control" id="province" onchange="regionChangeHandler(this, 'mine')">
+                    <label form-label class="ml-2 province" for="province">استان</label>
+                    <select form-field class="form-control province" id="province" onchange="regionChangeHandler(this, 'mine')">
                         <option value="default">انتخاب کنید</option>
                     </select>
                 </div>
 
                 <div class="form-group col-4 my-1">
-                    <label form-label class="mx-2" for="city">شهر</label>
-                    <select form-field class="form-control" name="region_id" id="city">
+                    <label form-label class="mx-2 city" for="city">شهر</label>
+                    <select form-field class="form-control city" name="region_id" id="city">
                         <option value="default">انتخاب کنید</option>
                     </select>
                 </div>
@@ -382,7 +410,7 @@
                         <label form-label class="form-check-label" for="mine-proper-road">وجود جاده مناسب برای عبور و
                             مرور وسایل
                             نقلیه
-                            </label>
+                        </label>
                     </div>
                     <div class="form-check form-check-inline ml-4">
                         <input form-field class="form-check-input" type="checkbox" name="load_tools"
@@ -391,7 +419,6 @@
                             دپو</label>
                     </div>
                 </div>
-
             </div>
             <!-- form-row -->
         </div>
@@ -511,7 +538,7 @@
 
             });
         });
-        $(document).on('change', '.upload-btn-3', function (){
+        $(document).on('change', '.upload-btn-3', function () {
             $(this).parent().parent().find('.image-name-3').val(this.files && this.files.length ? this.files[0].name.split('.')[0] : '');
         });
     </script>

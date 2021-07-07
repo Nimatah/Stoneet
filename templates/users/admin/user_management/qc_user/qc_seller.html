@@ -154,7 +154,7 @@
                                         <span>{{ seller.profile.company_register_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
-                                        <span>شناسه ملی شرکت</span>
+                                        <span>کد ملی شرکت</span>
                                         <span>{{ seller.profile.company_national_code }}</span>
                                     </div><!-- .ph-user-info-item -->
                                     <div class="col-6 ph-user-info-item">
@@ -232,9 +232,9 @@
                                         <span>گواهی ثبت شرکت</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_company_registration %}
-                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_public_certificate.file }}" class="image-popup-vertical-fit">
-                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_public_certificate.file }}" alt="">
+                                        {% if seller.get_image_company_latest_newspaper %}
+                                        <a href="{% get_media_prefix %}{{ seller.get_image_company_latest_newspaper.file }}" class="image-popup-vertical-fit">
+                                            <img src="{% get_media_prefix %}{{ seller.get_image_company_latest_newspaper.file }}" alt="">
                                         </a>
                                         {% else %}
                                             <a href="{% static 'images/placeholder.jpg' %}" class="image-popup-vertical-fit">
@@ -244,7 +244,7 @@
                                         <span>آخرین به روزرسانی روزنامه رسمی</span>
                                     </div><!-- .ph-user-image-item -->
                                     <div class="col-4 ph-user-image-item">
-                                        {% if seller.get_image_company_registration %}
+                                        {% if seller.get_image_company_tax_on_added_value_certificate %}
                                         <a href="{% get_media_prefix %}{{ seller.get_image_company_tax_on_added_value_certificate.file }}" class="image-popup-vertical-fit">
                                             <img src="{% get_media_prefix %}{{ seller.get_image_company_tax_on_added_value_certificate.file }}" alt="">
                                         </a>

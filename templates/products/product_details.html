@@ -218,6 +218,16 @@
                                                 </span>
                                             </div>
                                         {% endif %}
+
+                                        {% if not user.is_accepted%}
+                                            <div>
+                                                <span class='error'>
+                                                    <a href="{% url 'users:profile_buyer' %}" class="disallow" data-target="nav-contact-tab" style="color: red;">
+                                                        برای خرید حساب کاربری شما باید تایید شود
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        {% endif %}
                                             <label>مقصد:</label>
                                             <select required class="custom-select mb-3" name="destination" id="customer-address">
                                                 {% for address in user.addresses.all %}
@@ -263,7 +273,7 @@
                                                     <select class="form-control custom-select"
                                                             id="month_no" name="monthly_load">
 {#                                                    FIXME: Change title #}
-                                                        <option value="">نوبت دریافت:</option>
+                                                        <option value="">طول مدت تحویل سفارش:</option>
                                                         {% for month in months %}
                                                             <option value="{{ month }}">{{ month }} ماه</option>
                                                         {% endfor %}
@@ -294,7 +304,7 @@
                                     </div><!-- .ph-single-product-calculator -->
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="ph-btn" id="submit">ثبت درخواست</button>
+                                    <button type="submit" class="ph-btn {% if user.is_rejected %}disallow{% endif %}" id="submit">ثبت درخواست</button>
                                 </div>
                             </div>
                         </div>

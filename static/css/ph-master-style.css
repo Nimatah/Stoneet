@@ -746,3 +746,9 @@ input.form-control:focus{
 .ph-modal.ph-war-modal .ph-login-modal{
     margin-bottom: 1rem;
 }
+
+.disallow {
+    pointer-events: none !important;
+    cursor: default !important;
+    color: #6c757d !important;
+}

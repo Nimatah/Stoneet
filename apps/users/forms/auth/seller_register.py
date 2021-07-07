@@ -154,6 +154,7 @@ class SellerRegisterForm(BaseUserRegisterForm):
                 username=self.cleaned_data['email'],
                 mobile_number=self.cleaned_data['mobile_number'],
                 email=self.cleaned_data['email'],
+                legal_type=self.cleaned_data['legal_type']
             )
             user.set_password(self.cleaned_data['password'])
             images = self._handle_images(user)

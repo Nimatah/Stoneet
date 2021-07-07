@@ -2,16 +2,16 @@
     <a class="nav-link" href="{% url 'users:logistic_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_list_auction' %}">مناقصه های فعال</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:logistic_list_auction' %}">مناقصه های فعال</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_list_bid' %}">مناقصه های من</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:logistic_list_bid' %}">مناقصه های من</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_view_bid' %}">جزئیات مناقصه من (تست)</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:logistic_view_bid' %}">جزئیات مناقصه من (تست)</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:logistic_list_invoice' %}">صورتحساب</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:logistic_list_invoice' %}">صورتحساب</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:profile_logistic' %}">پروفایل</a>

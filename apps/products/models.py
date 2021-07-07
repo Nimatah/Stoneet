@@ -54,9 +54,6 @@ class ProductQueryset(models.QuerySet):
     def pending(self) -> 'ProductQueryset':
         return self.filter(state=Product.STATE_PENDING)
 
-    def draft(self) -> 'ProductQueryset':
-        return self.filter(state=Product.STATE_DRAFT)
-
 
 class ProductManager(models.Manager):
 
@@ -133,15 +130,15 @@ class Attribute(TimestampedModel):
     PAYMENT_MONTHLY_AFTER = 'monthly_after'
 
     PAYMENT_MAP = {
-        PAYMENT_CASH: 'نقدی',
-        PAYMENT_MONTHLY_BEFORE: 'ماهیانه (پیش از تحویل)',
-        PAYMENT_MONTHLY_AFTER: 'ماهیانه (پس از تحویل)',
+        PAYMENT_CASH: 'پرداخت وجه',
+        PAYMENT_MONTHLY_BEFORE: 'ضامن بانکی',
+        PAYMENT_MONTHLY_AFTER: 'اعتبار بانکی',
     }
 
     PAYMENT_REVERSE_MAP = {
-        'نقدی': PAYMENT_CASH,
-        'ماهیانه (پیش از تحویل)': PAYMENT_MONTHLY_BEFORE,
-        'ماهیانه (پس از تحویل)': PAYMENT_MONTHLY_AFTER,
+        'پرداخت وجه': PAYMENT_CASH,
+        'ضامن بانکی': PAYMENT_MONTHLY_BEFORE,
+        'اعتبار بانکی': PAYMENT_MONTHLY_AFTER,
     }
 
     title = models.CharField(max_length=255)
@@ -334,20 +331,18 @@ class ProductAttribute(models.Model):
 
 class Product(TimestampedModel):
 
-    STATE_DRAFT = 'draft'
     STATE_PENDING = 'pending'
     STATE_ACCEPTED = 'accepted'
     STATE_REJECTED = 'rejected'
 
     _STATE_CHOICES = (
-        (STATE_DRAFT, 'پیش نویس'),
         (STATE_PENDING, 'در انتظار تایید',),
         (STATE_ACCEPTED, 'تایید شده',),
         (STATE_REJECTED, 'رد شده',),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_DRAFT)
+    state = models.CharField(max_length=255, choices=_STATE_CHOICES, default=STATE_PENDING)
     title = models.CharField(max_length=255)
     mine = models.ForeignKey(Mine, on_delete=models.CASCADE, null=True, blank=True)
     description = models.TextField(blank=True)

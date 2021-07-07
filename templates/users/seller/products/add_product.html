@@ -40,13 +40,13 @@
                         </div>
                         <div class="form-row mb-4 align-items-center">
                             <div class="col-5 col-offset-2 my-1">
-                                <label class="mr-sm-2" for="t-1-c">گروه مادر</label>
+                                <label class="mr-sm-2 font-weight-bold" for="t-1-c">گروه مادر</label>
                                 <select class="custom-select mr-sm-2" id="t-1-c">
                                     <option selected value="default">انتخاب...</option>
                                 </select>
                             </div>
                             <div class="col-5 my-1">
-                                <label class="mr-sm-2" for="t-2-c">زیر گروه‌ها</label>
+                                <label class="mr-sm-2 font-weight-bold" for="t-2-c">زیر گروه‌ها</label>
                                 <select name="category" class="form-control custom-select" id="t-2-c">
                                     <option selected value="">گروه مادر را انتخاب کنید...</option>
                                 </select>
@@ -59,11 +59,11 @@
                         <div class="clearfix"></div>
 
                         <div class="ph-panel-title">
-                            <span class="title ph-border-radius">معدن/کارخانه را انتخاب کنید:</span>
+                            <span class="title ph-border-radius font-weight-bold">معدن/کارخانه را انتخاب کنید:</span>
                         </div>
                         <div class="form-row mb-4 align-items-center">
                             <div class="col-6 my-3 d-flex">
-                                <label class="mr-sm-2 col-3" for="t-1-c">انتخاب معدن/کارخانه</label>
+                                <label class="mr-sm-2 col-3 font-weight-bold" for="t-1-c">انتخاب معدن/کارخانه</label>
                                 <select class="custom-select mr-sm-2 col-6" name="mine" id="product-mine">
                                     {% for mine in user.mines.all %}
                                     <option selected value="{{ mine.id }}">{{ mine.title }}</option>
@@ -85,10 +85,10 @@
                                 {% include 'partials/attributes/'|add:attribute.value_type|add:".html"|lower %}
                             {% endfor %}
 
-                            <div class="col-5 my-1 mb-4" style="min-height: 40px;">
+                            <div class="col-5 my-1" style="min-height: 40px;">
                                 <div class="ph-ap-ch d-flex">
                                     <div class="ph-ap-check">
-                                        <label for="ph_ap_check">امکان ارسال نمونه</label>
+                                        <label class="font-weight-bold" for="ph_ap_check">امکان ارسال نمونه (کیلوگرم)</label>
                                         <input class="form-check-input ph_ap_check" id="ph_ap_check" type="checkbox"
                                                value="1" onchange="sampleViewInputField()"/>
                                     </div>
@@ -101,7 +101,9 @@
                                 </div>
                             </div>
                         </div>
-
+                    <div class="mb-5" style="margin-top: -10px">
+                        <span>مقدار نمونه قابل تحویل را ثبت کنید</span>
+                    </div>
                         <div class="ph-panel-title">
                             <span class="title ph-border-radius">توضیحاتی مختصر در مورد محصول:</span>
                         </div>
@@ -345,12 +347,12 @@
                                     <div class="col-6">
                                         <div class="row">
                                             <div class="col-12 part-4-item-detail">
-                                                <span>نام محصول: </span>
+                                                <span class="font-weight-bold">نام محصول: </span>
                                                 <input type="hidden" name="title">
                                                 <span id="preview-product-title"></span>
                                             </div>
                                              <div class="col-12 part-4-item-detail">
-                                                <span>نام معدن/کارخانه: </span>
+                                                <span class="font-weight-bold">نام معدن/کارخانه: </span>
                                                 <input type="hidden" name="title">
                                                 <span id="preview-product-mine"></span>
                                             </div>
@@ -358,7 +360,7 @@
                                                 {% include 'partials/preview/'|add:attribute.value_type|add:".html"|lower %}
                                             {% endfor %}
                                             <div class="col-6 part-4-item-detail">
-                                                <span>امکان ارسال نمونه</span>
+                                                <span class="font-weight-bold">امکان ارسال نمونه</span>
                                                 <span id="preview-attribute-{{ ID_SAMPLE }}"></span>
                                             </div>
                                             <div class="col-12 part-4-item-detail-check">
@@ -371,34 +373,34 @@
                                     <div class="col-6 part-4-item-detail-images">
                                         <div class="row">
                                             <div class="col-6 p4idi-thumb">
-                                                <span>عکس محصول</span>
+                                                <span class="font-weight-bold">عکس محصول</span>
                                                 <a id="preview-image-0-link" class="image-popup-vertical-fit" href=""
                                                    title="">
                                                     <img id="preview-image-0" src="" alt="">
                                                 </a>
                                             </div>
                                             <div class="col-6 p4idi-attr">
-                                                <span>عکس آنالیز محصول</span>
+                                                <span class="font-weight-bold">عکس آنالیز محصول</span>
                                                 <a id="preview-image-analyze-link" class="image-popup-fit-width" href=""
                                                    title="">
                                                     <img id="preview-image-analyze" src="" alt="">
                                                 </a>
                                             </div>
                                             <div class="col-12 p4idi-gallery">
-                                                <span>گالری عکس محصول</span>
+                                                <span class="font-weight-bold">گالری عکس محصول</span>
                                                 <div class="p4idi-g-wrapper popup-gallery" id="images-preview">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 part-4-item-detail-desc">
-                                        <span>توضیحات: </span>
+                                        <span class="font-weight-bold">توضیحات: </span>
                                         <span id="preview-product-description"></span>
                                     </div>
                                     <div class="col-12 part-4-rules">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="rules_check">
-                                            <label class="form-check-label" style="margin-right: 1.5rem;"
+                                            <label class="form-check-label" style="margin-right: 1.5rem; font-size: 16px"
                                                    for="rules_check">با
                                                 <a class="rules-link" href="#">قوانین و مقررات</a> موافقم</label>
                                         </div>

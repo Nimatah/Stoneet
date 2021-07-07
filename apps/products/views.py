@@ -24,7 +24,7 @@ class ListProductView(ListView):
 
 class ProductDetailView(DetailView):
     template_name = 'products/product_details.html'
-    model = Product
+    queryset = Product.objects.filter(state=Product.STATE_ACCEPTED)
     pk_url_kwarg = 'pk'
     context_object_name = 'product'
 

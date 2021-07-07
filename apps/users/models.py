@@ -267,8 +267,8 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     def get_image_company_added_value_certificate(self):
         return self.media.filter(title=UserMedia.name_map['image_company_added_value_certificate']).first()
 
-    def get_image_company_public_certificate(self):
-        return self.media.filter(title=UserMedia.name_map['image_company_public_certificate']).first()
+    def get_image_company_latest_newspaper(self):
+        return self.media.filter(title=UserMedia.name_map['image_company_latest_newspaper']).first()
 
     def get_image_company_tax_on_added_value_certificate(self):
         return self.media.filter(title=UserMedia.name_map['image_company_tax_on_added_value_certificate']).first()
@@ -296,7 +296,7 @@ class UserMedia(BaseMedia):
         'image_id_card_back': 'پشت کارت کلی',
         'image_company_registration': 'گواهی ثبت شرکت',
         'image_company_added_value_certificate': 'گواهی ارزش افزوده',
-        'image_company_public_certificate': 'آخرین به روز رسانی روزنامه رسمی',
+        'image_company_latest_newspaper': 'آخرین به روز رسانی روزنامه رسمی',
         'image_company_tax_on_added_value_certificate': 'گواهی مالیات بر ارزش افزوده',
         'image_company_signature_copyright_certificate': 'شناسنامه ملی کپی رایت امضا',
         'image_company_license': 'پروانه فعالیت'

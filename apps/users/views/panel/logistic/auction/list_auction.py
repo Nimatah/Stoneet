@@ -8,8 +8,6 @@ class ListAuctionView(UserPassesTestMixin, ListView):
     template_name = 'users/logistic/auction/list_auction.html'
     context_object_name = 'auctions'
 
-    # TODO: Change logistic bid to price per tons
-
     def get_queryset(self):
         queryset = Auction.objects.filter(state=Auction.STATE_STARTED, order__is_rejected=False)
         return queryset

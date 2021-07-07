@@ -2,16 +2,16 @@
     <a class="nav-link" href="{% url 'users:seller_dashboard' %}">داشبورد<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_add_product' %}">ساخت محصول</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:seller_add_product' %}">ساخت محصول</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_list_product' %}">محصولات</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:seller_list_product' %}">محصولات</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_list_order' %}">سفارش ها</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:seller_list_order' %}">سفارش ها</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" href="{% url 'users:seller_list_invoice' %}">صورتحساب ‌ها</a>
+    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:seller_list_invoice' %}">صورتحساب ‌ها</a>
 </li>
 <li class="nav-item">
     <a class="nav-link" href="{% url 'users:profile_seller' %}">پروفایل</a>

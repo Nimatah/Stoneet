@@ -109,16 +109,17 @@ def register_logistic_validation(request):
         errors['شماره پروانه شرکت'] = 'لطفا شماره پروانه شرکت را وارد نمایید'
     if not data.get('company_ceo_name'):
         errors['نام مدیر عامل شرکت'] = 'لطفا نام مدیر عامل شرکت را وارد نمایید'
-    if not data.get('first_name'):
-        errors['نام'] = 'لطفا نام را وارد نمایید'
-    if not data.get('last_name'):
-        errors['نام خانوادگی'] = 'لطفا نام خانوادگی را وارد نمایید'
-    if not data.get('phone_number'):
-        errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
-    if not data.get('national_code'):
-        errors['کد ملی'] = 'لطفا کد ملی را وارد نمایید'
-    if not data.get('address'):
-        errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
+    if data.get('company_branch') == 'انتخاب کنید:':
+        if not data.get('first_name'):
+            errors['نام'] = 'لطفا نام را وارد نمایید'
+        if not data.get('last_name'):
+            errors['نام خانوادگی'] = 'لطفا نام خانوادگی را وارد نمایید'
+        if not data.get('phone_number'):
+            errors['تلفن ثابت'] = 'لطفا تلفن ثابت را وارد نمایید'
+        if not data.get('national_code'):
+            errors['کد ملی'] = 'لطفا کد ملی را وارد نمایید'
+        if not data.get('address'):
+            errors['آدرس'] = 'لطفا آدرس را وارد نمایید'
 
     if errors:
         return Response(errors, status=400)

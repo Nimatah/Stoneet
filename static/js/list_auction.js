@@ -17,10 +17,10 @@ function clearAuctionModal() {
     $('#ph_auction #persist-bid').removeAttr('data-auction-id')
 }
 
-$('#bid-action').on('click', function(e) {
+$('[id="bid-action"]').on('click', function(e) {
     e.preventDefault();
 
-    const auctionId = $('#bid-action').data('auction-id');
+    const auctionId = $(this).data('auction-id');
 
     $.ajax(`/api/auctions/${auctionId}`, {
         method: 'GET',
@@ -52,8 +52,8 @@ $('#bid-action').on('click', function(e) {
 $('#persist-bid').on('click', function (e) {
     e.preventDefault();
 
-    const auctionId = $('#persist-bid').data('auction-id');
-    const bidPrice = $('#bid-price').val();
+    const auctionId = $(this).data('auction-id');
+    const bidPrice = $('[id="bid-price"]').val();
 
     $.ajax(`/api/auctions/${auctionId}/bid`, {
         method: 'POST',

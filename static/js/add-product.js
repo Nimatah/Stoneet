@@ -180,17 +180,17 @@ function _handleFormPreview() {
     }
     const handleTitle = function () {
         const CARET = 'عیار';
-        const TO = 'تا';
+        const TO = '-';
         const category = $('select[name="category"] :selected').text();
         const _caretMin = $('#attribute-12').val();
         const _caretMax = $('#attribute-13').val();
         const caret = _caretMin === _caretMax ? `${_caretMin}` : `${_caretMin} ${TO} ${_caretMax}`
-        $('#preview-product-title').text(`${category} - ${CARET} ${caret} %`)
-        $('input[name="title"]').val(`${category} - ${CARET} ${caret} %`)
+        $('#preview-product-title').text(`${category} ${CARET} ${caret} %`)
+        $('input[name="title"]').val(`${category} ${CARET} ${caret} %`)
     }
 
     const handleMine = function () {
-        let mine = $('#product-mine').text()
+        let mine = $('#product-mine option:selected').text()
         $('#preview-product-mine').text(mine);
     }
 
@@ -211,13 +211,16 @@ function _handleFormPreview() {
                 }
                 $(`#preview-${attr.prop('id')}`).text(text)
             } else {
-                $(`#preview-${attr.prop('id')}`).text(attr.val().replaceAll("|", "، ") || 'ندارد')
+                ` `
+                let val = attr.val().replaceAll("|", "، ")
+                val = val ? `${val} ${attr.prop('id') == 'attribute-17' ? 'تن' : attr.prop('id') == 'attribute-5' ? "کیلوگرم" : ""}` : 'ندارد'
+                $(`#preview-${attr.prop('id')}`).text(val)
             }
             let child = $(`#child-${attr.prop('id')}`)
             let weight = $(`#weight-${attr.prop('id')}`)
             if (child.val() || weight.val()) {
                 let previewText = $(`#preview-${attr.prop('id')}`).text()
-                $(`#preview-${attr.prop('id')}`).text(`${previewText} ${child.val() || ''} ${weight.find('option:selected').text() || ''}`)
+                $(`#preview-${attr.prop('id')}`).text(`${previewText} ${child.val() || ''} ${attr.prop("id") == "attribute-1" ? "ریال به ازای هر" : ""} ${weight.find('option:selected').text() || ''}`)
             }
         }
 

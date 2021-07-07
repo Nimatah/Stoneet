@@ -48,22 +48,15 @@
                     </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
                 <div class="col-4">
-                     <div class="ph-dmp-section-2 ph-dmp-processing">
-                        <div class="number">{{ order.state.pending }}</div>
-                        <div class="title">درحال پردازش</div>
-                     </div>
-                </div><!-- col-4 -->
-                <div class="col-4">
-                    <div class="ph-dmp-section-2 ph-dmp-done">
-                        <div class="number">{{ order.state.accepted }}</div>
-                        <div class="title">انجام شده</div>
-                    </div>
-                </div><!-- col-4 -->
-                <div class="col-4">
-                    <div class="ph-dmp-section-2 ph-dmp-pending">
-                        <div class="number">{{ order.state.rejected }}</div>
-                        <div class="title">در انتظار پرداخت</div>
-                    </div>
+                    <div class="ph-dmp-section-1 ph-dash-condition-panel">
+                        <div class="title">وضعیت پنل</div>
+                        <span>{{ user.get_state_display }}</span>
+                        {% if user.is_rejected %}
+                            <div class="container">
+                                <p>{{ user.rejection_reason }}</p>
+                            </div>
+                        {% endif %}
+                    </div><!-- ph-dmp-section-1 ph-user-order-info -->
                 </div><!-- col-4 -->
             </div><!-- row -->
         </div><!-- ph-dm-panel -->

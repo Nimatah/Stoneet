@@ -275,11 +275,11 @@
                     </div>
                     <!-- ph-qc-description -->
                     <div class="ph-qc-info-btns">
-                        <a href="{% url 'users_api:user_accept' pk=buyer.pk %}" id="user-accept" redirect="{% url 'users:admin_qc_buyer' %}" class="ph-btn ph-access-btn">
+                        <a href="{% url 'users_api:user_accept' pk=buyer.pk %}" id="user-accept" redirect="{% url 'users:admin_list_buyer' %}" class="ph-btn ph-access-btn">
                             <i class="fas fa-check"></i>
                             <span>تایید خریدار</span>
                         </a>
-                        <a href="{% url 'users_api:user_reject' pk=buyer.pk %}" redirect="{% url 'users:admin_qc_buyer' %}" id="user-reject" class="ph-btn ph-denied-btn">
+                        <a href="{% url 'users_api:user_reject' pk=buyer.pk %}" redirect="{% url 'users:admin_list_buyer' %}" id="user-reject" class="ph-btn ph-denied-btn">
                             <i class="fas fa-times"></i>
                             <span>رد خریدار</span>
                         </a>

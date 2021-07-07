@@ -14,10 +14,6 @@ class AddProductView(UserPassesTestMixin, FormView):
     # TODO: disable attribute options on فله
 
     # -----
-
-    # TODO: Change عیار in title تا to - and remove existing dashes
-    # TODO: Change قیمت preview to {{ قیمت }} ریال به ازای هر {{ واحد }}
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['categories'] = [c.to_dict_hierarchy() for c in Category.objects.get_root().prefetch_related('children')]

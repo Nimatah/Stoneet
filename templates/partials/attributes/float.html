@@ -7,7 +7,7 @@
 {% if not attribute.has_weight %}
 
     <div class="col-5 col-offset-2 my-1">
-        <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+        <label  class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }} {% if attribute.id == attribute.ID_AVAILABLE_DEPO %} (تن) {% endif %}</label>
         <div data-attr>
             <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
                    name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">
@@ -17,7 +17,7 @@
 {% else %}
     <div class="col-5 col-offset-2 my-1 d-flex no-gutters">
         <div class="col-7">
-            <label for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+            <label class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
             <div data-attr>
                 <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
                        name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">

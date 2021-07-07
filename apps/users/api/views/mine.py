@@ -25,6 +25,7 @@ class MineListCreateAPIView(ListCreateAPIView):
             response[serializer.fields[f'{k}'].label] = v
         return Response(data=response, status=status.HTTP_400_BAD_REQUEST)
 
+
 class MineRetrieveUpdateDestroyView(RetrieveUpdateDestroyAPIView):
 
     serializer_class = MineSerializer
