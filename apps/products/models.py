@@ -430,7 +430,7 @@ class Product(TimestampedModel):
             return None
 
     def has_sample(self):
-        return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE, value_bool=True).exists()
+        return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE).exists()
 
     def get_available_depo(self):
         return self.attributes.filter(attribute_id=Attribute.ID_AVAILABLE_DEPO).first()
