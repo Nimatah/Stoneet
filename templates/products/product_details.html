@@ -191,7 +191,7 @@
     <!-- Order Detail Modal -->
     <div class="modal fade" id="ph_order_detail_Modal" tabindex="-1" aria-labelledby="ph_order_detail_ModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header align-items-center">
                     <h5 class="modal-title" id="exampleModalLabel">جزییات سفارش</h5>
@@ -205,6 +205,27 @@
                         <input type="hidden" name="product" value="{{ product.pk }}">
                         <span class="d-none" id="base-product-price">{{ product.get_price.value }}</span>
                         <div class="ph-order-detail-modal-content">
+                        <div class="row mb-3">
+                            <div class="col-12 d-flex justify-content-center">
+                                <h4>سنگ آهن هماتیت عیار 5 - 12 %</h4>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <div class="row w-100">
+                                    <div class="col-4 d-flex justify-content-center">
+                                        ظرفیت تامین ماهانه:
+                                        <span style="font-weight: bold;margin-right: .5rem;">۵ تن</span>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-center">
+                                        میزان دپوی موجود:
+                                        <span style="font-weight: bold;margin-right: .5rem;">۲۵۰ تن</span>
+                                    </div>
+                                    <div class="col-4 d-flex justify-content-center">
+                                        حداقل سفارش:
+                                        <span style="font-weight: bold;margin-right: .5rem;">۵۱۵ تن</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="ph-view-order-block">
@@ -293,20 +314,20 @@
                                                 </div><!-- .form-group -->
                                             </div><!-- .col-6 -->
                                         <div class="col-6">
-                                                <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
+                                                <div class="ph-single-product-final-price flex-column mb-4 justify-content-center">
                                                     <label class="ph-single-product-label" for="product_final_price">تناژ ارسالی هر ماه :</label>
                                                     <h3 id="total"><span id="total">0.00</span>
                                                         <span></span>
                                                     </h3>
                                                 </div><!-- .ph-single-product-final-price -->
-                                            </div><!-- .col-6 -->
-                                            <div class="col-6">
-                                                <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
+                                                <div class="ph-single-product-final-price flex-column justify-content-center">
                                                     <label class="ph-single-product-label" for="product_final_price">جمع قیمت:</label>
                                                     <h3 id="product_final_price"><span id="final-price">0</span>
                                                         <span>ریال</span>
                                                     </h3>
                                                 </div><!-- .ph-single-product-final-price -->
+                                            </div><!-- .col-6 -->
+                                            <div class="col-6">
                                             </div><!-- .col-6 -->
                                         </div><!-- .row -->
                                     </div><!-- .ph-single-product-calculator -->
