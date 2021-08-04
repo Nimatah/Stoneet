@@ -41,6 +41,8 @@ class Invoice(models.Model):
     )
 
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
+    number = models.IntegerField(default=1)
+    guaranty = models.BigIntegerField(default=0)
     order = models.ForeignKey('orders.Order', on_delete=models.CASCADE, null=True)
     logistic_order = models.ForeignKey('orders.LogisticOrder', on_delete=models.CASCADE, null=True)
     auction = models.ForeignKey('auction.Auction', on_delete=models.CASCADE, null=True)

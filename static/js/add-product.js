@@ -175,7 +175,7 @@ function _handleFormPreview() {
 
     const imagePreviewElement = function (src) {
         return `<a href="${src}">
-            <img src="${src}">
+            <img class="square-image" src="${src}">
             </a>`;
     }
     const handleTitle = function () {
@@ -265,7 +265,8 @@ function readURL(input, id) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $(`#image-upload-wrap-${id}`).hide();
-            $(`#file-upload-image-${id}`).attr('src', e.target.result);
+            $(`a[id="file-upload-image-${id}"]`).attr('href', e.target.result);
+            $(`img[id="file-upload-image-${id}"]`).attr('src', e.target.result);
             $(`#file-upload-content-${id}`).show();
         };
         reader.readAsDataURL(input.files[0]);

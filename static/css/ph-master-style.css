@@ -752,3 +752,12 @@ input.form-control:focus{
     cursor: default !important;
     color: #6c757d !important;
 }
+
+.square-image {
+    object-fit: cover;
+}
+
+.round-remove-button {
+    margin: auto !important;
+    min-width: auto !important;
+}

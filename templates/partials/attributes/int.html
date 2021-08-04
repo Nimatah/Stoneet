@@ -17,7 +17,11 @@
 {% else %}
     <div class="col-5 col-offset-2 my-1 d-flex no-gutters">
         <div class="col-7">
+            {% if attribute.id == attribute.ID_PRICE %}
+            <label class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }} به ازای هر واحد</label>
+            {% else %}
             <label class="font-weight-bold" for="attribute-{{ attribute.id }}">{{ attribute.title }}</label>
+            {% endif %}
             <div data-attr>
                 <input data-attr-value type="text" class="form-control" id="attribute-{{ attribute.id }}"
                        name="attribute_{{ attribute.id }}" value="{{ attribute_value }}">

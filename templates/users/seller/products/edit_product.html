@@ -2,6 +2,14 @@
 {% load static %}
 {% load utils %}
 
+{% block meta_content %}
+    {{ categories|json_script:"categories" }}
+{% endblock %}
+
+{% block title %}
+    ویرایش محصول
+{% endblock %}
+
 {% block admin_content %}
     <main class="ph-dashboard-main ph-seller-panel ph-edit-product">
         <div class="container">
@@ -17,111 +25,151 @@
                         </span>
                     </div><!-- ph-panel-title -->
                     <div class="ph-product-info">
+                    <form action="{% url 'users:seller_edit_product' pk=product.pk %}" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-6">
                                 <div class="row">
+                                    <div class="col-12 ph-product-detail-item">
+                                        <span>نام محصول</span>
+                                        <div class="form-group">
+                                            <input name="title" disabled type="text" class="form-control"
+                                                   value="{{ product.title }}">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>گروه مادر:</span>
+                                        <script>
+                                            const category = {{ product.category.parent.pk }}
+                                            const subCategory = {{ product.category.pk }}
+                                        </script>
                                         <div class="form-group">
                                             <select class="custom-select" id="t-1-c">
-                                                <option selected>خام</option>
-                                                <option>فراوری شده</option>
+
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>زیر گروه:</span>
                                         <div class="form-group">
-                                            <select class="custom-select" id="t-1-c">
-                                                <option selected>سنگ آهک</option>
-                                                <option>سنگ دولومیت</option>
+                                            <select name="category" class="custom-select" id="t-2-c">
+
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-12 ph-product-detail-item">
                                         <span> انتخاب معدن:</span>
                                         <div class="form-group">
-                                            <select class="custom-select" id="t-1-c">
-                                                <option selected>معدن سر پل ذهاب</option>
-                                                <option>معادن دیگر</option>
+                                            <select name="mine" class="custom-select" id="mine">
+                                                {% for mine in user.mines.all %}
+                                                    <option value="{{ mine.id }}"
+                                                            {% if product.mine == mine %}selected{% endif %}>{{ mine.title }}</option>
+                                                {% endfor %}
                                             </select>
-                                        </div>
-                                    </div><!-- .ph-product-detail-item -->
-                                    <div class="col-6 ph-product-detail-item">
-                                        <span>عیار (کمترین)</span>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" value="13">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>عیار (بیشترین)</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="17">
+                                            <input name="attribute_{{ Attribute.ID_CARAT_TO }}_to" type="text" class="form-control"
+                                                   value="{{ product.get_max_caret.value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
-                                    <div class="col-4 ph-product-detail-item">
-                                        <span>سایزبندی (کمترین)</span>
+                                    <div class="col-6 ph-product-detail-item">
+                                        <span>عیار (کمترین)</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="12">
+                                            <input name="attribute_{{ Attribute.ID_CARAT_FROM }}_from" type="text" class="form-control"
+                                                   value="{{ product.get_min_caret.value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-4 ph-product-detail-item">
                                         <span>سایزبندی (بیشترین)</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="22">
+                                            <input name="attribute_{{ Attribute.ID_GRAIN_TO }}_to" type="text" class="form-control"
+                                                   value="{{ product.get_max_grain.value }}">
+                                        </div>
+                                    </div><!-- .ph-product-detail-item -->
+                                    <div class="col-4 ph-product-detail-item">
+                                        <span>سایزبندی (کمترین)</span>
+                                        <div class="form-group">
+                                            <input name="attribute_{{ Attribute.ID_GRAIN_FROM }}_from" type="text" class="form-control"
+                                                   value="{{ product.get_min_grain.value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-4 ph-product-detail-item">
                                         <span>انتخاب واحد</span>
                                         <div class="form-group">
-                                            <select class="custom-select" id="t-1-c">
-                                                <option selected>میلیمتر</option>
-                                                <option>سانتیمتر</option>
+                                            <select name="attribute_weight_{{ Attribute.ID_GRAIN_FROM }}" class="custom-select">
+                                                <option value="{{ product.get_max_grain.attribute.WEIGHT_MM }}"
+                                                        {% if product.get_grain_weight == product.get_max_grain.attribute.WEIGHT_MM %}selected{% endif %}>
+                                                    میلیمتر
+                                                </option>
+                                                <option value="{{ product.get_max_grain.attribute.WEIGHT_CM }}"
+                                                        {% if product.get_grain_weight == product.get_max_grain.attribute.WEIGHT_CM %}selected{% endif %}>
+                                                    سانتی‌متر
+                                                </option>
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-12 ph-product-detail-item">
                                         <span>ظرفیت تامین ماهانه</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="178000">
+                                            <input name="attribute_{{ Attribute.ID_SKU }}" type="text" class="form-control" value="{{ product.get_sku.value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-4 ph-product-detail-item">
                                         <span>نوع تحویل</span>
                                         <div class="form-group">
-                                            <select data-attr-value="" class="mdb-select md-form form-control" >
-                                                    <option selected>بار فله‌ای</option>
-                                                    <option>کیسه‌ای</option>
+                                            <select name="attribute_{{ Attribute.ID_DELIVERY_TYPE }}" data-attr-value="" class="mdb-select md-form form-control">
+                                                <option {% if product.get_delivery_object.value == 'بار فله‌ای' %}selected{% endif %}>
+                                                    بار فله‌ای
+                                                </option>
+                                                <option {% if product.get_delivery_object.value == 'کیسه‌ای' %}selected{% endif %}>
+                                                    کیسه‌ای
+                                                </option>
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-4 ph-product-detail-item">
                                         <span>مقدار</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="65000">
+                                            <input name="attribute_child_{{ Attribute.ID_DELIVERY_TYPE }}" type="text" class="form-control"
+                                                   value="{{ product.get_delivery_object.child_value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-4 ph-product-detail-item">
                                         <span>نوع تحویل</span>
                                         <div class="form-group">
-                                            <select data-attr-value="" class="mdb-select md-form form-control">
-                                                    <option selected>کیلوگرم</option>
-                                                    <option>تن</option>
+                                            <select name="attribute_weight_{{ Attribute.ID_DELIVERY_TYPE }}" data-attr-value="" class="mdb-select md-form form-control">
+                                                <option value="{{ product.get_delivery_object.attribute.WEIGHT_KG }}"
+                                                        {% if product.get_delivery_object.attribute.WEIGHT_KG == product.get_delivery_object.weight_unit %}selected{% endif %}>
+                                                    کیلوگرم
+                                                </option>
+                                                <option value="{{ product.get_delivery_object.attribute.WEIGHT_TON }}"
+                                                        {% if product.get_delivery_object.attribute.WEIGHT_TON == product.get_delivery_object.weight_unit %}selected{% endif %}>
+                                                    تن
+                                                </option>
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
-                                        <span>قیمت</span>
+                                        <span>قیمت به ازای هر واحد</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="240000">
+                                            <input name="attribute_{{ Attribute.ID_PRICE }}" type="text" class="form-control"
+                                                   value="{{ product.get_price.value }}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>واحد</span>
                                         <div class="form-group">
-                                            <select data-attr-value="" class="mdb-select md-form form-control">
-                                                    <option selected>کیلوگرم</option>
-                                                    <option>تن</option>
+                                            <select name="attribute_weight_{{ Attribute.ID_PRICE }}" data-attr-value="" class="mdb-select md-form form-control">
+                                                <option value="{{ product.get_price.attribute.WEIGHT_KG }}"
+                                                        {% if product.get_price.attribute.WEIGHT_KG == product.get_price.weight_unit %}selected{% endif %}>
+                                                    کیلوگرم
+                                                </option>
+                                                <option value="{{ product.get_price.attribute.WEIGHT_TON }}"
+                                                        {% if product.get_price.attribute.WEIGHT_TON == product.get_price.weight_unit %}selected{% endif %}>
+                                                    تن
+                                                </option>
                                             </select>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
@@ -129,33 +177,41 @@
                                         <span>ارسال نمونه</span>
                                         <div class="form-group">
                                             <div class="form-check form-check-inline mr-0">
-                                                <input data-choice="" class="form-check-input" type="checkbox" checked>
-                                                <label class="form-check-label" for="multiple-choice-9-1">امکان ارسال نمونه</label>
+                                                <input name="attribute_{{ Attribute.ID_SAMPLE }}" data-choice="" class="form-check-input" type="checkbox"
+                                                       {% if product.has_sample %}checked{% endif %}>
+                                                <label class="form-check-label" for="multiple-choice-9-1">امکان ارسال
+                                                    نمونه</label>
                                             </div>
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-6 ph-product-detail-item">
                                         <span>مقدار</span>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="2600">
+                                            <input name="attribute_child_{{ Attribute.ID_SAMPLE }}" type="text" class="form-control" value="
+                                                    {% if product.has_sample %}{{ product.get_sample_object.child_value|default_if_none:'' }}{% endif %}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-12 ph-product-detail-item">
                                         <span>شرایط پرداخت وجه</span>
                                         <div class="form-group">
                                             <div class="ph-check-box-ap">
-                                                <input type="hidden" name="attribute_9" id="attribute-9">
+                                                <input type="hidden" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" id="attribute-9">
                                                 <div class="form-check form-check-inline mr-0">
-                                                    <input data-choice="" class="form-check-input" type="checkbox" checked>
-                                                    <label class="form-check-label" for="multiple-choice-9-1">نقدی</label>
+                                                    <input value="پرداخت وجه" data-choice="" class="form-check-input" type="checkbox"
+                                                           {% if 'پرداخت وجه' in product.get_payment_type %}checked{% endif %}>
+                                                    <label class="form-check-label" for="multiple-choice-9-1">پرداخت
+                                                        وجه</label>
                                                 </div>
                                                 <div class="form-check form-check-inline mr-0">
-                                                    <input data-choice="" class="form-check-input" type="checkbox">
-                                                    <label class="form-check-label" for="multiple-choice-9-2">ماهیانه (پیش از تحویل)</label>
+                                                    <input value="ضمانت نامه بانکی" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" data-choice="" class="form-check-input" type="checkbox"
+                                                           {% if 'ضمانت نامه بانکی' in product.get_payment_type %}checked{% endif %}>
+                                                    <label class="form-check-label" for="multiple-choice-9-2">ضمانت نامه
+                                                        بانکی</label>
                                                 </div>
                                                 <div class="form-check form-check-inline mr-0">
-                                                    <input data-choice="" class="form-check-input" type="checkbox">
-                                                    <label class="form-check-label" for="multiple-choice-9-3">ماهیانه (پس از تحویل)</label>
+                                                    <input value="اعتبار بانکی" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" data-choice="" class="form-check-input" type="checkbox"
+                                                           {% if 'اعتبار بانکی' in product.get_payment_type %}checked{% endif %}>
+                                                    <label class="form-check-label" for="multiple-choice-9-3">اعتبار بانکی</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,155 +223,183 @@
                                     <div class="col-6 ph-product-image-item full">
                                         <span>تصویر آنالیز محصول</span>
                                         <div class="file-upload">
-                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                <input name="analyze" id="file-upload-input-analyze"
-                                                       class="file-upload-input" type='file'
-                                                       onchange="readURL(this, 'analyze');"
-                                                       accept="image/*"/>
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                            {% if product.get_analyze %}
+                                                <div id="image-upload-wrap-analyze" class="image-upload-wrap"
+                                                     style="display: none">
+                                                    <input name="analyze" id="file-upload-input-analyze"
+                                                           class="file-upload-input" type='file'
+                                                           onchange="readURL(this, 'analyze');"
+                                                           accept="image/*" value="1"/>
+                                                    <div class="drag-text">
+                                                        <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div id="file-upload-content-analyze" class="file-upload-content">
-                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                     alt="your image"/>
-                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload('analyze')"
-                                                            class="remove-image">
-                                                        <i class="fas fa-times"></i></button>
+                                                <div id="file-upload-content-analyze" class="file-upload-content"
+                                                     style="display: block">
+                                                    <a id="file-upload-image-analyze" class="image-popup-vertical-fit square-image" href="{% get_media_prefix %}{{ product.get_analyze.value }}" title="">
+                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="{% get_media_prefix %}{{ product.get_analyze.value }}" alt="">
+                                                    </a>
+                                                    <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                        <button remove-analyze pk="{{ product.get_analyze.pk }}" type="button" onclick="removeUpload('analyze')"
+                                                                class="remove-image round-remove-button">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            {% else %}
+                                                <div id="image-upload-wrap-analyze" class="image-upload-wrap">
+                                                    <input name="analyze" id="file-upload-input-analyze"
+                                                           class="file-upload-input" type='file'
+                                                           onchange="readURL(this, 'analyze');"
+                                                           accept="image/*"/>
+                                                    <div class="drag-text">
+                                                        <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div id="file-upload-content-analyze" class="file-upload-content">
+                                                    <img id="file-upload-image-analyze" class="file-upload-image"
+                                                         src="#"
+                                                         alt="your image"/>
+                                                    <div id="image-title-wrap-analyze" class="image-title-wrap">
+                                                        <button type="button" onclick="removeUpload('analyze')"
+                                                                class="remove-image round-remove-button">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div><!-- .ph-product-image-item -->
                                     <div class="col-6 ph-product-image-item full">
                                         <span>تصویر شاخص محصول</span>
                                         <div class="file-upload">
-                                            <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                <input name="analyze" id="file-upload-input-feat"
-                                                       class="file-upload-input" type='file'
-                                                       onchange="readURL(this, 'analyze');"
-                                                       accept="image/*"/>
-                                                <div class="drag-text">
-                                                    <h5>عکس مورد نظر خود را انتخاب کنید</h5>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                            {% if product.media.get_primary %}
+                                                <div id="image-upload-wrap-0" class="image-upload-wrap"
+                                                     style="display: none">
+                                                    <input name="image_primary" id="file-upload-input-feat"
+                                                           class="file-upload-input" type='file'
+                                                           onchange="readURL(this, 0);" value="1"
+                                                           accept="image/*"/>
+                                                    <div class="drag-text">
+                                                        <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div id="file-upload-content-analyze" class="file-upload-content">
-                                                <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                     alt="your image"/>
-                                                <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                    <button type="button" onclick="removeUpload('analyze')"
-                                                            class="remove-image">
-                                                        <i class="fas fa-times"></i></button>
+                                                <div id="file-upload-content-0" class="file-upload-content"
+                                                     style="display: block">
+                                                    <a id="file-upload-image-0" class="image-popup-vertical-fit square-image" href="{% get_media_prefix %}{{ product.media.get_primary.file }}" title="">
+                                                        <img id="file-upload-image-0" class="file-upload-image" src="{% get_media_prefix %}{{ product.media.get_primary.file }}" alt="">
+                                                    </a>
+                                                    <div id="image-title-wrap-0" class="image-title-wrap">
+                                                        <button remove-image pk="{{ product.media.get_primary.pk }}" type="button" onclick="removeUpload(0)"
+                                                                class="remove-image round-remove-button">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            {% else %}
+                                                <div id="image-upload-wrap-0" class="image-upload-wrap">
+                                                    <input name="image_primary" id="file-upload-input-feat"
+                                                           class="file-upload-input" type='file'
+                                                           onchange="readURL(this, 0);"
+                                                           accept="image/*"/>
+                                                    <div class="drag-text">
+                                                        <h5>عکس مورد نظر خود را انتخاب کنید</h5>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div id="file-upload-content-0" class="file-upload-content">
+                                                    <img id="file-upload-image-0" class="file-upload-image" src="#"
+                                                         alt="your image"/>
+                                                    <div id="image-title-wrap-0" class="image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(0)"
+                                                                class="remove-image round-remove-button">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div><!-- .ph-product-image-item -->
                                     <div class="col-12 ph-gallery-product mt-3">
                                         <span>گالری تصاویر محصول</span>
                                         <div class="row">
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <div class="file-upload">
-                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                        <input name="analyze" id="file-upload-input-feat"
-                                                               class="file-upload-input" type='file'
-                                                               onchange="readURL(this, 'analyze');"
-                                                               accept="image/*"/>
-                                                        <div class="drag-text">
-                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                            {% with product.media.get_additional as additional_images %}
+                                                {% for i in '1234'|make_list %}
+                                                    {% if additional_images|get_by_index:forloop.counter0 %}
+                                                    <div class="col-3 ph-product-image-item thumb">
+                                                        <div class="file-upload">
+                                                            <div id="image-upload-wrap-{{ i }}"
+                                                                 class="image-upload-wrap" style="display: none">
+                                                                <input name="image_{{ i }}" id="file-upload-input-feat"
+                                                                       class="file-upload-input" type='file'
+                                                                       onchange="readURL(this, {{ i }});"
+                                                                       accept="image/*" value="1"/>
+                                                                <div class="drag-text">
+                                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div id="file-upload-content-{{ i }}"
+                                                                 class="file-upload-content" style="display: block">
+                                                                {% with additional_images|get_by_index:forloop.counter0 as img %}
+                                                                <a id="file-upload-image-{{ i }}" class="image-popup-vertical-fit square-image" href="{% get_media_prefix %}{{ img.file }}" title="">
+                                                                    <img id="file-upload-image-{{ i }}" class="file-upload-image" src="{% get_media_prefix %}{{ img.file }}" alt="">
+                                                                </a>
+                                                                {% endwith %}
+                                                                <div id="image-title-wrap-{{ i }}"
+                                                                     class="image-title-wrap">
+                                                                    <button type="button" remove-image pk="{{ i.pk }}"
+                                                                            onclick="removeUpload({{ i }})"
+                                                                            class="remove-image round-remove-button">
+                                                                        <i class="fas fa-times"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div id="file-upload-content-analyze" class="file-upload-content">
-                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                             alt="your image"/>
-                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                            <button type="button" onclick="removeUpload('analyze')"
-                                                                    class="remove-image">
-                                                                <i class="fas fa-times"></i></button>
+                                                    </div><!-- .ph-product-image-item -->
+                                                    {% else %}
+                                                        <div class="col-3 ph-product-image-item thumb">
+                                                        <div class="file-upload">
+                                                            <div id="image-upload-wrap-{{ i }}"
+                                                                 class="image-upload-wrap">
+                                                                <input name="image_{{ i }}" id="file-upload-input-feat"
+                                                                       class="file-upload-input" type='file'
+                                                                       onchange="readURL(this, {{ i }});"
+                                                                       accept="image/*"/>
+                                                                <div class="drag-text">
+                                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div id="file-upload-content-{{ i }}"
+                                                                 class="file-upload-content">
+                                                                <img id="file-upload-image-{{ i }}"
+                                                                     class="file-upload-image" src="{% get_media_prefix %}{{ i.file }}"
+                                                                     alt="your image"/>
+                                                                <div id="image-title-wrap-{{ i }}"
+                                                                     class="image-title-wrap">
+                                                                    <button type="button"
+                                                                            onclick="removeUpload({{ i }})"
+                                                                            class="remove-image round-remove-button">
+                                                                        <i class="fas fa-times"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <div class="file-upload">
-                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                        <input name="analyze" id="file-upload-input-feat"
-                                                               class="file-upload-input" type='file'
-                                                               onchange="readURL(this, 'analyze');"
-                                                               accept="image/*"/>
-                                                        <div class="drag-text">
-                                                            <i class="fas fa-cloud-upload-alt"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div id="file-upload-content-analyze" class="file-upload-content">
-                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                             alt="your image"/>
-                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                            <button type="button" onclick="removeUpload('analyze')"
-                                                                    class="remove-image">
-                                                                <i class="fas fa-times"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <div class="file-upload">
-                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                        <input name="analyze" id="file-upload-input-feat"
-                                                               class="file-upload-input" type='file'
-                                                               onchange="readURL(this, 'analyze');"
-                                                               accept="image/*"/>
-                                                        <div class="drag-text">
-                                                            <i class="fas fa-cloud-upload-alt"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div id="file-upload-content-analyze" class="file-upload-content">
-                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                             alt="your image"/>
-                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                            <button type="button" onclick="removeUpload('analyze')"
-                                                                    class="remove-image">
-                                                                <i class="fas fa-times"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .ph-product-image-item -->
-                                            <div class="col-3 ph-product-image-item thumb">
-                                                <div class="file-upload">
-                                                    <div id="image-upload-wrap-analyze" class="image-upload-wrap">
-                                                        <input name="analyze" id="file-upload-input-feat"
-                                                               class="file-upload-input" type='file'
-                                                               onchange="readURL(this, 'analyze');"
-                                                               accept="image/*"/>
-                                                        <div class="drag-text">
-                                                            <i class="fas fa-cloud-upload-alt"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div id="file-upload-content-analyze" class="file-upload-content">
-                                                        <img id="file-upload-image-analyze" class="file-upload-image" src="#"
-                                                             alt="your image"/>
-                                                        <div id="image-title-wrap-analyze" class="image-title-wrap">
-                                                            <button type="button" onclick="removeUpload('analyze')"
-                                                                    class="remove-image">
-                                                                <i class="fas fa-times"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div><!-- .ph-product-image-item -->
+                                                    </div><!-- .ph-product-image-item -->
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endwith %}
                                         </div><!-- .row -->
                                     </div><!-- .ph-gallery-product -->
                                 </div><!-- .row -->
                             </div><!-- .col-6 -->
                             <div class="col-12 ph-product-description mb-3">
                                 <span>توضیحات</span>
-                                <span></span>
+                                <textarea class="w-100" rows="7" >{{ product.description }}</textarea>
                             </div>
                             <div class="col-12 ph-product-update  mb-3">
-                                <a href="#" class="ph-btn ml-auto">به روز رسانی</a>
+                                <button class="ph-btn ml-auto">به روز رسانی</button>
                             </div>
+                        {% csrf_token %}
                         </div>
                         <!-- row -->
+                    </form>
                     </div>
                     <!-- ph-product-info -->
                 </div>
@@ -330,5 +414,6 @@
 
 {% block footer_static %}
     <script src="{% static 'js/add-product.js' %}"></script>
+    <script src="{% static 'js/remove_product.js' %}"></script>
     <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
 {% endblock %}

@@ -184,6 +184,8 @@ class LogisticRegisterForm(BaseUserRegisterForm):
                 continue
             if not v:
                 continue
+            if not self._file_size_valid(v):
+                continue
             image = UserMedia(
                 user=user,
                 title=UserMedia.name_map[k],

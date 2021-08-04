@@ -1,6 +1,7 @@
 import re
 
 from django import forms
+from django.conf import settings
 
 from apps.users.models import User
 
@@ -35,3 +36,7 @@ class BaseUserRegisterForm(forms.Form):
         if not re.match(r"0\d{10}", mobile_number):
             raise forms.ValidationError("شماره موبایل باید ۱۱ رقم باشد و با 0 شروع شود")
         return mobile_number
+
+    @staticmethod
+    def _file_size_valid(file):
+        return file._size <= settings.MAX_UPLOAD_SIZE

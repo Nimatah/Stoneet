@@ -228,7 +228,7 @@
                                                 </span>
                                             </div>
                                         {% endif %}
-                                            <label>مقصد:</label>
+                                            <label>مقصد خود را انتخاب کنید:</label>
                                             <select required class="custom-select mb-3" name="destination" id="customer-address">
                                                 {% for address in user.addresses.all %}
                                                     <option value="{{ address.id }}">{{ address.receiver_name }}</option>

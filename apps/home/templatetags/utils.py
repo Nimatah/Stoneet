@@ -17,6 +17,14 @@ def query_transform(context, **kwargs):
 
 
 @register.filter
+def get_by_index(array, index):
+    try:
+        return array[int(index)]
+    except IndexError:
+        return False
+
+
+@register.filter
 def get_item(dictionary, key):
     return dictionary.get(key)
 

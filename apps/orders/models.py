@@ -61,6 +61,11 @@ class LogisticOrderManager(models.Manager):
         return LogisticOrderQuerySet(model=self.model, using=self.db)
 
 
+class LogisticDrive(TimestampedModel):
+
+    pass
+
+
 class Order(TimestampedModel):
 
     STATE_SUBMITTED = 'submitted'

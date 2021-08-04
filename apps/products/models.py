@@ -131,13 +131,13 @@ class Attribute(TimestampedModel):
 
     PAYMENT_MAP = {
         PAYMENT_CASH: 'پرداخت وجه',
-        PAYMENT_MONTHLY_BEFORE: 'ضامن بانکی',
+        PAYMENT_MONTHLY_BEFORE: 'ضمانت نامه بانکی',
         PAYMENT_MONTHLY_AFTER: 'اعتبار بانکی',
     }
 
     PAYMENT_REVERSE_MAP = {
         'پرداخت وجه': PAYMENT_CASH,
-        'ضامن بانکی': PAYMENT_MONTHLY_BEFORE,
+        'ضمانت نامه بانکی': PAYMENT_MONTHLY_BEFORE,
         'اعتبار بانکی': PAYMENT_MONTHLY_AFTER,
     }
 
@@ -391,6 +391,9 @@ class Product(TimestampedModel):
     def get_max_grain(self):
         return self.attributes.get(attribute_id=Attribute.ID_GRAIN_TO)
 
+    def get_grain_weight(self):
+        return self.get_max_grain().weight_unit or self.get_min_grain().weight_unit
+
     def get_size(self) -> str:
         size_from = self.attributes.get(attribute_id=Attribute.ID_GRAIN_FROM)
         size_to = self.attributes.get(attribute_id=Attribute.ID_GRAIN_TO)
@@ -399,6 +402,12 @@ class Product(TimestampedModel):
 
     def get_payment_type(self) -> List[str]:
         return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE).value
+
+    def get_payment_type_object(self):
+        return self.attributes.get(attribute_id=Attribute.ID_PAYMENT_TYPE)
+
+    def get_delivery_object(self):
+        return self.attributes.get(attribute_id=Attribute.ID_DELIVERY_TYPE)
 
     def get_delivery_type(self):
         attribute = self.attributes.get(attribute_id=Attribute.ID_DELIVERY_TYPE)
@@ -414,15 +423,20 @@ class Product(TimestampedModel):
         except:
             return 'ندارد'
 
+    def get_sample_object(self):
+        try:
+            return self.attributes.get(attribute_id=Attribute.ID_SAMPLE)
+        except Attribute.DoesNotExist:
+            return None
+
     def has_sample(self):
-        return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE).exists()
+        return self.attributes.filter(attribute_id=Attribute.ID_SAMPLE, value_bool=True).exists()
 
     def get_available_depo(self):
         return self.attributes.filter(attribute_id=Attribute.ID_AVAILABLE_DEPO).first()
 
     def get_min_order(self):
         return self.attributes.filter(attribute_id=Attribute.ID_MIN_ORDER).first()
-
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -446,19 +460,3 @@ class ProductMedia(BaseMedia):
 
     def __str__(self) -> str:
         return f'{self.product} -> {self.type} | {self.file}'
-
-
-class ProductHistory(models.Model):
-
-    MESSAGE_CREATE = 'محصول با شماره %s توسط کاربر ایجاد شد.'
-    MESSAGE_UPDATE_STATE = 'وضعیت محصول از %s به %s تغییر پیدا کرد'
-    MESSAGE_UPDATE = 'ا %s از %s به %s تغییر پیدا کرد'
-
-    timestamp = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)
-    message = models.TextField()
-
-    objects = ProductHistoryManager()
-
-    def __str__(self) -> str:
-        return f'{self.product.title}'

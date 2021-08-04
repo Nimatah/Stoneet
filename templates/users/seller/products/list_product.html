@@ -151,6 +151,7 @@
                                     <th>قیمت</th>
                                     <th>ظرفیت تولید</th>
                                     <th>وضعیت</th>
+                                    <th>عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -165,7 +166,7 @@
                                                     alt=""></div>
                                         </td>
                                         <td style="width: 30%">
-                                            <a href="{% url 'products:product_details' pk=product.pk %}">
+                                            <a href="{% if product.state == product.STATE_ACCEPTED %}{% url 'products:product_details' pk=product.pk %}{% else %}#" class="disallow{% endif %}">
                                                 <div class="ph-admin-table-cell">
                                                     {{ product.title }}
                                                     <span class="ph-amdin-table-product-id">کد کالا: {{ product.id }}</span>
@@ -191,6 +192,17 @@
                                                 <a href="#" class="ph-bell" id="reject-{{ product.id }}" data-toggle="modal" data-reject-reason="{{ product.reject_reason }}" data-target="#bell-modal">
                                                     <i class="far fa-bell"></i>
                                                 </a>
+                                                {% endif %}
+                                            </div><!-- .ph-admin-table-action-btns -->
+                                        </div><!-- .ph-admin-table-cell -->
+                                    </td>
+                                    <td>
+                                        <div class="ph-admin-table-cell">
+                                            <div class="ph-admin-table-action-btns">
+                                                {% if product.state == product.STATE_REJECTED  %}
+                                                    <a class="ph-btn" href="{% url 'users:seller_edit_product' pk=product.id %}">ویرایش</a>
+                                                {% else %}
+                                                    <a class="ph-btn disallow" href="#">ویرایش</a>
                                                 {% endif %}
                                             </div><!-- .ph-admin-table-action-btns -->
                                         </div><!-- .ph-admin-table-cell -->
