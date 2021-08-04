@@ -1,8 +1,9 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
-from apps.users.views import auth
+from apps.users.views import auth, password
 from apps.users.views.panel import seller, buyer, logistic, admin
+
 
 app_name = 'users'
 
@@ -15,6 +16,8 @@ auth_patterns = [
     path('seller-profile', seller.SellerProfileView.as_view(), name='profile_seller'),
     path('buyer-profile', buyer.BuyerProfileView.as_view(), name='profile_buyer'),
     path('logistic-profile', logistic.LogisticProfileView.as_view(), name='profile_logistic'),
+    path('reset-password', password.ResetPasswordView.as_view(), name='reset_password'),
+    path('password-confirmation', password.PasswordConfirmationView.as_view(), name='password_confirmation'),
 ]
 
 seller_patterns = [
@@ -28,6 +31,8 @@ seller_patterns = [
     path('panel/seller-order/<int:pk>/', seller.ViewOrderView.as_view(), name='seller_view_order'),
     path('panel/seller-invoices/', seller.ListInvoiceView.as_view(), name='seller_list_invoice'),
     path('panel/seller-invoice/<int:pk>/', seller.ViewInvoiceView.as_view(), name='seller_view_invoice'),
+    path('panel/seller-sample-list/', seller.SellerSampleListView.as_view(), name='seller_sample_list'),
+    path('panel/seller-sample-detail/', seller.SellerSampleDetailView.as_view(), name='seller_sample_detail'),
 ]
 
 buyer_patterns = [
@@ -36,6 +41,8 @@ buyer_patterns = [
     path('panel/buyer-order/<int:pk>/', buyer.ViewOrderView.as_view(), name='buyer_view_order'),
     path('panel/buyer-invoices/', buyer.ListInvoiceView.as_view(), name='buyer_list_invoice'),
     path('panel/buyer-invoice/<int:pk>/', buyer.ViewInvoiceView.as_view(), name='buyer_view_invoice'),
+    path('panel/buyer-smaple-list/', buyer.BuyerSampleListView.as_view(), name='buyer_sample_list'),
+    path('panel/buyer-sample-detail/', buyer.BuyerSampleDetailView.as_view(), name='buyer_sample_detail'),
 ]
 
 logistic_patterns = [
@@ -83,6 +90,8 @@ admin_patterns = [
     path('panel/admin-logistic-invoice-details/<int:pk>/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
     path('panel/admin-logistic-orders/', admin.AdminLogisticOrdersView.as_view(), name='admin_logistic_orders'),
     path('panel/admin-logistic-order-details/<int:pk>', admin.AdminLogisticOrderQCView.as_view(), name='admin_logistic_order_qc'),
+    path('panel/admin-sample-list/', admin.AdminSampleListView.as_view(), name='admin_sample_list'),
+    path('panel/admin-sample-detail/', admin.AdminSampleDetailView.as_view(), name='admin_sample_detail'),
 ]
 
 application_patterns = [
