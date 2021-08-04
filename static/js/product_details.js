@@ -123,6 +123,20 @@ $('#order-weight').keyup(function() {
   $('#rchars').text(textlen);
 });
 
+
+ $(document).ready(function () {
+       $(".col-12 input, select").keyup(multInputs);
+       function multInputs() {
+           $('#month_no').change(function () {
+               var $val1 = parseFloat(persianToEnglish($('#order-weight').val())) || 0;
+               var $val2 = parseFloat($('#month_no').val()) || 0;
+               var $total = ($val1) / ($val2)
+               var $totalLim = $total.toFixed(2);
+               $('#total').text($totalLim);
+               })
+       }
+  });
+
 handleFinalPrice();
 handleOrderWeightInput();
 handleAddressDetails();

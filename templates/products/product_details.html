@@ -228,7 +228,7 @@
                                                 </span>
                                             </div>
                                         {% endif %}
-                                            <label>مقصد:</label>
+                                            <label>مقصد خود را انتخاب کنید:</label>
                                             <select required class="custom-select mb-3" name="destination" id="customer-address">
                                                 {% for address in user.addresses.all %}
                                                     <option value="{{ address.id }}">{{ address.receiver_name }}</option>
@@ -291,6 +291,14 @@
                                                         {% endfor %}
                                                     </select>
                                                 </div><!-- .form-group -->
+                                            </div><!-- .col-6 -->
+                                        <div class="col-6">
+                                                <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
+                                                    <label class="ph-single-product-label" for="product_final_price">تناژ ارسالی هر ماه :</label>
+                                                    <h3 id="total"><span id="total">0.00</span>
+                                                        <span></span>
+                                                    </h3>
+                                                </div><!-- .ph-single-product-final-price -->
                                             </div><!-- .col-6 -->
                                             <div class="col-6">
                                                 <div class="ph-single-product-final-price flex-column h-100 justify-content-center">
