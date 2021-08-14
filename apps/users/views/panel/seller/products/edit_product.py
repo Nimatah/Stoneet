@@ -35,13 +35,14 @@ class EditProductView(UserPassesTestMixin, DetailView):
         product = Product.objects.get(pk=kwargs['pk'])
         product.category_id = data.get('category')
         product.mine_id = data.get('mine')
+        product.description = data.get('description')
         with transaction.atomic():
-            product.attributes.all().delete()
-            attributes = {''.join(filter(str.isdigit, k)): {} for k in data.keys() if k.startswith('attribute') and k != 'attribute_9'}
+            product.attributes.all().exclude(attribute_id=Attribute.ID_ANALYZE).delete()
+            attributes = {''.join(filter(str.isdigit, k)): {} for k in data.keys() if k.startswith('attribute') and k != 'attribute_9[]'}
             for k, v in data.items():
                 if k.startswith('attribute_'):
                     key = k.replace('attribute_', '')
-                    if key == '9':
+                    if key == '9[]':
                         continue
                     if key.isdigit():
                         attributes[key]['value'] = data.get(k)
@@ -60,34 +61,39 @@ class EditProductView(UserPassesTestMixin, DetailView):
 
             analyze = product.get_analyze()
             if analyze:
-                analyze.file = files.get('analyze')
-                analyze.save()
+                if files.get('analyze'):
+                    analyze.media.all().first().file = files.get('analyze')
+                    analyze.save()
             else:
-                product_attribute = product.attributes.create(attribute_id=Attribute.ID_ANALYZE)
+                product_attribute = ProductAttribute.objects.create(attribute_id=Attribute.ID_ANALYZE, product=product)
                 AttributeMedia.objects.create(
                     product_attribute=product_attribute,
                     type=AttributeMedia.TYPE_IMAGE,
-                    file=data.get('analyze'),
+                    file=files.get('analyze'),
                 )
 
             try:
-                primary_image = product.media.get(is_primary=True)
-                primary_image.file = files.get('primary_image')
-                primary_image.save()
+                if files.get('image_primary'):
+                    primary_image = product.media.get(is_primary=True)
+                    primary_image.file = files.get('image_primary')
+                    primary_image.save()
             except ProductMedia.DoesNotExist:
                 product.media.create(
                     type=ProductMedia.TYPE_IMAGE,
-                    file=files.get('primary_image')
+                    file=files.get('image_primary'),
+                    is_primary=True
                 )
-
+            attributes.pop('5')
             for k, v in attributes.items():
+                if 'value' not in v:
+                    continue
                 if v['value'] == 'on':
                     v['value'] = True
                 elif v['value'] == 'off':
                     v['value'] = False
                 if isinstance(v['value'], str):
-                    fa_to_en(ar_to_fa(v['value'].strip()))
-                    fa_to_en(ar_to_fa(v['value'].strip()))
+                    v['value'] = fa_to_en(ar_to_fa(v['value'].strip()))
+                    v['value'] = fa_to_en(ar_to_fa(v['value'].strip()))
 
                 attr = ProductAttribute()
                 attr.attribute_id = int(k)
@@ -99,12 +105,39 @@ class EditProductView(UserPassesTestMixin, DetailView):
                     attr.weight_unit = v['weight']
                 attr.save()
 
-            payment_type = data.getlist('attribute_9')
+            payment_type = data.getlist('attribute_9[]')
+            attr = ProductAttribute()
+            attr.attribute_id = 9
+            attr.value = '|'.join(payment_type)
+            attr.product = product
+            attr.save()
+
+            sample = data.get('attribute_child_5')
+            if sample and data.get('attribute_5'):
+                attr = ProductAttribute()
+                attr.attribute_id = 5
+                attr.value = int(sample)
+                attr.product = product
+                attr.save()
 
             additional_images = product.media.filter(is_primary=False)
-            additional_files = filter(str.startswith, files.keys())
+            additional_files = list(filter(lambda x: x.replace('image_', '').isdigit() and x != 'image_primary', list(files.keys())))
             for i, v in enumerate(additional_files):
-                additional_images[i].file = v
-                additional_images[i].save()
+                try:
+                    additional_images[i].file = files.get(v)
+                    additional_images[i].save()
+                except IndexError:
+                    ProductMedia.objects.create(
+                        product=product,
+                        type=ProductMedia.TYPE_IMAGE,
+                        file=files.get(v),
+                        is_primary=False,
+                    )
+            ayar = 'عیار'
+            if product.get_min_caret().value == product.get_max_caret().value:
+                product.title = f'{product.category.title} {ayar} {product.get_min_caret().value} %'
+            else:
+                product.title = f'{product.category.title} {ayar} {product.get_max_caret().value} - {product.get_min_caret().value} %'
+            product.save()
 
         return redirect(reverse_lazy('users:seller_edit_product', kwargs={'pk': kwargs['pk']}))

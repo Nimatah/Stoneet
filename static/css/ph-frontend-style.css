@@ -633,6 +633,10 @@ a.ph-home-product-overlay{
 =======================================================
 */
 
+.ph-main-content{
+    min-height: 350px;
+}
+
 .ph-page-wrapper{
     padding: 100px 0 40px;
     position: relative;
@@ -1203,6 +1207,39 @@ a.ph-home-product-overlay{
     width: 40%;
 }
 
+/*
+=======================================================
+    Reset Password
+=======================================================
+*/
+
+.ph-reset-password-container{
+    width: 100%;
+    margin: 20px 0;
+}
+
+.ph-reset-password-container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.ph-reset-password-container form input{
+    width: 100%;
+    max-width: 300px;
+}
+
+.ph-reset-password-container form button{
+    background: #fff;
+    color: #7E111A;
+    border-radius: 2em;
+    text-align: center;
+    font-size: .75rem;
+    padding: .3rem 1.5rem!important;
+    min-width: 125px;
+    cursor: pointer;
+    border: 1px solid #7E111A;
+    margin: 0 auto;
+}
 
 /*
 =======================================================

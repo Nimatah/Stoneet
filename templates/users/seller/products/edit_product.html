@@ -178,8 +178,8 @@
                                         <div class="form-group">
                                             <div class="form-check form-check-inline mr-0">
                                                 <input name="attribute_{{ Attribute.ID_SAMPLE }}" data-choice="" class="form-check-input" type="checkbox"
-                                                       {% if product.has_sample %}checked{% endif %}>
-                                                <label class="form-check-label" for="multiple-choice-9-1">امکان ارسال
+                                                       {% if product.has_sample %}checked{% endif %} id="sample">
+                                                <label class="form-check-label" for="sample">امکان ارسال
                                                     نمونه</label>
                                             </div>
                                         </div>
@@ -187,31 +187,28 @@
                                     <div class="col-6 ph-product-detail-item">
                                         <span>مقدار</span>
                                         <div class="form-group">
-                                            <input name="attribute_child_{{ Attribute.ID_SAMPLE }}" type="text" class="form-control" value="
-                                                    {% if product.has_sample %}{{ product.get_sample_object.child_value|default_if_none:'' }}{% endif %}">
+                                            <input name="attribute_child_{{ Attribute.ID_SAMPLE }}" type="text" class="form-control" value="{% if product.has_sample %}{{ product.get_sample_object.value|default_if_none:'' }}{% endif %}">
                                         </div>
                                     </div><!-- .ph-product-detail-item -->
                                     <div class="col-12 ph-product-detail-item">
                                         <span>شرایط پرداخت وجه</span>
                                         <div class="form-group">
                                             <div class="ph-check-box-ap">
-                                                <input type="hidden" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" id="attribute-9">
                                                 <div class="form-check form-check-inline mr-0">
-                                                    <input value="پرداخت وجه" data-choice="" class="form-check-input" type="checkbox"
-                                                           {% if 'پرداخت وجه' in product.get_payment_type %}checked{% endif %}>
-                                                    <label class="form-check-label" for="multiple-choice-9-1">پرداخت
+                                                    <input name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" value="پرداخت وجه" data-choice="" class="form-check-input" type="checkbox"
+                                                           {% if 'پرداخت وجه' in product.get_payment_type %}checked{% endif %} id="payment_1">
+                                                    <label class="form-check-label" for="payment_1">پرداخت
                                                         وجه</label>
                                                 </div>
                                                 <div class="form-check form-check-inline mr-0">
                                                     <input value="ضمانت نامه بانکی" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" data-choice="" class="form-check-input" type="checkbox"
-                                                           {% if 'ضمانت نامه بانکی' in product.get_payment_type %}checked{% endif %}>
-                                                    <label class="form-check-label" for="multiple-choice-9-2">ضمانت نامه
-                                                        بانکی</label>
+                                                           {% if 'ضمانت نامه بانکی' in product.get_payment_type %}checked{% endif %} id="payment_2">
+                                                    <label class="form-check-label" for="payment_2">ضمانت نامه بانکی</label>
                                                 </div>
                                                 <div class="form-check form-check-inline mr-0">
                                                     <input value="اعتبار بانکی" name="attribute_{{ Attribute.ID_PAYMENT_TYPE }}[]" data-choice="" class="form-check-input" type="checkbox"
-                                                           {% if 'اعتبار بانکی' in product.get_payment_type %}checked{% endif %}>
-                                                    <label class="form-check-label" for="multiple-choice-9-3">اعتبار بانکی</label>
+                                                           {% if 'اعتبار بانکی' in product.get_payment_type %}checked{% endif %} id="payment_3">
+                                                    <label class="form-check-label" for="payment_3">اعتبار بانکی</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -343,14 +340,14 @@
                                                                 <a id="file-upload-image-{{ i }}" class="image-popup-vertical-fit square-image" href="{% get_media_prefix %}{{ img.file }}" title="">
                                                                     <img id="file-upload-image-{{ i }}" class="file-upload-image" src="{% get_media_prefix %}{{ img.file }}" alt="">
                                                                 </a>
-                                                                {% endwith %}
                                                                 <div id="image-title-wrap-{{ i }}"
                                                                      class="image-title-wrap">
-                                                                    <button type="button" remove-image pk="{{ i.pk }}"
+                                                                    <button type="button" remove-image pk="{{ img.pk }}"
                                                                             onclick="removeUpload({{ i }})"
                                                                             class="remove-image round-remove-button">
                                                                         <i class="fas fa-times"></i></button>
                                                                 </div>
+                                                                {% endwith %}
                                                             </div>
                                                         </div>
                                                     </div><!-- .ph-product-image-item -->
@@ -391,7 +388,7 @@
                             </div><!-- .col-6 -->
                             <div class="col-12 ph-product-description mb-3">
                                 <span>توضیحات</span>
-                                <textarea class="w-100" rows="7" >{{ product.description }}</textarea>
+                                <textarea name="description" class="w-100" rows="7" >{{ product.description }}</textarea>
                             </div>
                             <div class="col-12 ph-product-update  mb-3">
                                 <button class="ph-btn ml-auto">به روز رسانی</button>
