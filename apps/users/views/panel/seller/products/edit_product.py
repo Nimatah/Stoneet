@@ -2,7 +2,7 @@ from django.views.generic import DetailView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.db import transaction, models
+from django.db import transaction
 from persiantools.digits import ar_to_fa, fa_to_en
 
 from apps.products.models import Product, Attribute, Category, AttributeMedia, ProductMedia, ProductAttribute

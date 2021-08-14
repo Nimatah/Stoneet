@@ -1,3 +1,6 @@
+import uuid
+from datetime import datetime, timedelta
+
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
@@ -107,6 +110,12 @@ class UserManager(BaseUserManager):
     def find_by_email_or_phone_number(self, email: str, mobile_number: str) -> 'User':
         return self.filter(Q(email=email) | Q(mobile_number=mobile_number)).first()
 
+    def find_by_email(self, email: str) -> 'User':
+        try:
+            return self.get(email=email)
+        except User.DoesNotExist:
+            return None
+
 
 class MediaManager(models.Manager):
     pass
@@ -201,6 +210,8 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     legal_type = models.CharField(max_length=20, choices=_LEGAL_CHOICES, default="individual")
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default=STATE_PENDING)
     rejection_reason = models.TextField(blank=True)
+    password_reset_token = models.UUIDField(default=None, null=True, blank=True)
+    password_reset_expiration = models.DateTimeField(default=None, null=True, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -278,6 +289,16 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
 
     def get_image_company_license(self):
         return self.media.filter(title=UserMedia.name_map['image_company_license']).first()
+
+    def get_password_reset_token(self):
+        if not self.password_reset_token:
+            token = uuid.uuid4()
+            self.password_reset_token = token
+            self.password_reset_expiration = datetime.now() + timedelta(days=1)
+        else:
+            token = self.password_reset_token
+            self.password_reset_expiration = datetime.now() + timedelta(days=1)
+        return token
 
 
 class UserMedia(BaseMedia):

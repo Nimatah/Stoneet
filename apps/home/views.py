@@ -20,7 +20,7 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['products'] = Product.objects.filter()[:self.PRODUCTS_LIMIT]
+        context['products'] = Product.objects.filter(state=Product.STATE_ACCEPTED)[:self.PRODUCTS_LIMIT]
         return context
 
 
