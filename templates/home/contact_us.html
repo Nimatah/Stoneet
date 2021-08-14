@@ -37,6 +37,7 @@
                             <div class="ph-contact-page-form mt-5">
                                 <p>در صورت لزوم فرم زیر را تکمیل نمایید تا همکاران با شما تماس بگیرند:</p>
                                 <form action="">
+                                    {% csrf_token %}
                                     <div class="form-group">
                                         <input type="email" class="form-control" id="contact_name" placeholder="نام و نام خانوادگی" aria-describedby="FullName">
                                     </div>

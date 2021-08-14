@@ -13,7 +13,7 @@ def reset_password_view(request):
         user = User.objects.find_by_email(email=email)
         if user is None:
             return render(request, 'users/auth/reset_password.html', context={'error': 'ایمیل یافت نشد'})
-        send_reset_password_email(email=email)
+        send_reset_password_email(user)
         return redirect(reverse_lazy('users:password_message'))
     else:
         return render(request, "users/auth/reset_password.html")
