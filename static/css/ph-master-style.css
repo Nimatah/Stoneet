@@ -488,6 +488,7 @@ input.form-control:focus{
 
 .ph-admin-table-action-btns{
     display: flex;
+    justify-content: center;
 }
 
 .ph-admin-table-action-btn-edit{

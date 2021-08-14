@@ -2,8 +2,8 @@ from django.views.generic import TemplateView
 
 
 class AdminSampleListView(TemplateView):
-    template_name = 'users/admin/order_management/admin_sample_list.html'
+    template_name = 'users/admin/sample_management/samples.html'
 
 
 class AdminSampleDetailView(TemplateView):
-    template_name = 'users/admin/order_management/admin_sample_detail.html'
+    template_name = 'users/admin/sample_management/sample_details.html'

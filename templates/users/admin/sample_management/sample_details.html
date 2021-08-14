@@ -1,10 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load utils %}
 
-</body>
-</html>
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-admin-panel ph-order-qc">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>جزییات درخواست نمونه</span>
+            </div>
+            <div class="ph-order-qc-wrapper bg-light ph-box-shadow ph-border-radius p-4">
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات نمونه</span>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>کد کالا:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>عنوان:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>قیمت واحد (تومان):</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>سایز بندی:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>عیار:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>نوع تحویل:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>شماره سفارش:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>میزان سفارش:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>تعداد ارسال:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="ph-order-qc-item">
+                            <label>تناژ کامل:</label> {# تناژ ارسال شده از برگه باسکول #}
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>تناژ هر ارسال:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>نوع پرداخت:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات خریدار</span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="ph-order-qc-item">
+                            <label>نام خریدار:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>کد خریدار:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شماره موبایل خریدار:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ph-order-qc-item">
+                            <label>استان:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شهر:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>آدرس:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ph-admin-page-block-header ph-panel-title mb-2">
+                    <span class="title">مشخصات فروشنده</span>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="ph-order-qc-item">
+                            <label>نام فروشنده:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>کد فروشنده:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شماره موبایل فروشنده:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ph-order-qc-item">
+                            <label>استان:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>شهر:</label>
+                            <span></span>
+                        </div>
+                        <div class="ph-order-qc-item">
+                            <label>آدرس:</label>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ph-order-qc-btn-container">
+                    <a href="#" data-toggle="modal" data-target="#admin_qc_modal" class="ph-btn">تایید درخواست</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+{% endblock %}
+
+{% block footer_static %}
+
+{% endblock %}
