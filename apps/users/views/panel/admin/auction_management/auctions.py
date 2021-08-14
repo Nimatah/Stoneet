@@ -1,10 +1,11 @@
 from django.views.generic import ListView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.auction.models import Auction
 from apps.auction.filters import AdminAuctionFilter
 
 
-class AdminAuctionView(ListView):
+class AdminAuctionView(UserPassesTestMixin, ListView):
 
     template_name = 'users/admin/auction_management/auctions.html'
     model = Auction

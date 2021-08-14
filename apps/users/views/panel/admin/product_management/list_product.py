@@ -1,10 +1,11 @@
 from django.views.generic import ListView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.products.models import Product, Category
 from apps.products.filters import AdminProductFilter
 
 
-class ListProductView(ListView):
+class ListProductView(UserPassesTestMixin, ListView):
     template_name = 'users/admin/product_management/list_product.html'
     model = Product
     context_object_name = 'products'

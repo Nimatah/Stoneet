@@ -1,10 +1,11 @@
 from django.views.generic import ListView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.orders.filters import AdminLogisticOrderFilter
 from apps.orders.models import LogisticOrder
 
 
-class AdminLogisticOrdersView(ListView):
+class AdminLogisticOrdersView(UserPassesTestMixin, ListView):
 
     template_name = 'users/admin/order_management/logistic_orders.html'
     model = LogisticOrder

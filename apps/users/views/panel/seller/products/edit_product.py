@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.db import transaction
 from persiantools.digits import ar_to_fa, fa_to_en
+from django.http import HttpResponseForbidden
 
 from apps.products.models import Product, Attribute, Category, AttributeMedia, ProductMedia, ProductAttribute
 
@@ -29,6 +30,10 @@ class EditProductView(UserPassesTestMixin, DetailView):
         return self.request.user.is_authenticated and (self.request.user.is_seller or self.request.user.is_superuser)
 
     def post(self, request, *args, **kwargs):
+
+        if not self.request.user.is_authenticated and not (self.request.user.is_seller or self.request.user.is_superuser):
+            return HttpResponseForbidden()
+
         data = request.POST
         files = request.FILES
 

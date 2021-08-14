@@ -1,5 +1,6 @@
 from django.views.generic import FormView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.products.forms.category import CategoryAddForm
 from apps.products.models import Category
@@ -19,3 +20,5 @@ class AddCategoryView(FormView):
         form.save()
         return super().form_valid(form)
 
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)

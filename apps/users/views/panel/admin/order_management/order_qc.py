@@ -1,13 +1,14 @@
 from django.views.generic import DetailView
 from django.views.generic.edit import FormMixin
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.orders.forms import AdminApproveOrderForm
 from apps.orders.models import Order, OrderMedia
 from apps.products.models import Attribute
 
 
-class AdminOrderQCView(FormMixin, DetailView):
+class AdminOrderQCView(UserPassesTestMixin, FormMixin, DetailView):
 
     template_name = 'users/admin/order_management/order_qc.html'
     pk_url_kwarg = 'pk'

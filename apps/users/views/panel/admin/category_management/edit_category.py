@@ -1,11 +1,15 @@
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render, redirect
+from django.http import HttpResponseForbidden
 
 from apps.products.forms.category import CategoryEditForm
 from apps.products.models import Category
 
 
 def edit_category(request, pk):
+    if not request.user.is_authenticated and not (request.user.is_admin or request.user.is_superuser):
+        return HttpResponseForbidden()
+
     instance = get_object_or_404(Category, pk=pk)
     if request.method == 'GET':
         form = CategoryEditForm()

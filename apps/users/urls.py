@@ -76,8 +76,6 @@ admin_patterns = [
     path('panel/admin-list-category/', admin.ListCategoryView.as_view(), name='admin_list_category'),
     path('panel/admin-list-auction/', admin.AdminAuctionView.as_view(), name='admin_list_auction'),
     path('panel/admin-auction-details/1/', admin.AdminAuctionDetailsView.as_view(), name='admin_auction_details'),
-    path('panel/admin-list-samples', admin.AdminSampleView.as_view(), name='admin_list_samples'),
-    path('panel/admin-sample-details/1/', admin.AdminSampleDetailsView.as_view(), name='admin_sample_details'),
     path('panel/admin-list-orders/', admin.AdminOrdersView.as_view(), name='admin_list_order'),
     path('panel/admin-order-qc/<int:pk>/', admin.AdminOrderQCView.as_view(), name='admin_order_qc'),
     path('panel/admin-configurations/', admin.AdminConfigView.as_view(), name='admin_config'),
@@ -89,8 +87,8 @@ admin_patterns = [
     path('panel/admin-logistic-invoice-details/<int:pk>/', admin.AdminLogisticInvoiceDetailsView.as_view(), name='admin_logistic_invoice_details'),
     path('panel/admin-logistic-orders/', admin.AdminLogisticOrdersView.as_view(), name='admin_logistic_orders'),
     path('panel/admin-logistic-order-details/<int:pk>', admin.AdminLogisticOrderQCView.as_view(), name='admin_logistic_order_qc'),
-    path('panel/samples/', admin.AdminSampleListView.as_view(), name='admin_sample_list'),
-    path('panel/sample-details/', admin.AdminSampleDetailView.as_view(), name='admin_sample_detail'),
+    path('panel/samples/', admin.AdminSampleView.as_view(), name='admin_sample_list'),
+    path('panel/sample-details/', admin.AdminSampleDetailsView.as_view(), name='admin_sample_detail'),
 ]
 
 application_patterns = [

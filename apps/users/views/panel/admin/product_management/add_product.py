@@ -1,11 +1,12 @@
 from django.views.generic import TemplateView
 from django.http import HttpResponseBadRequest
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.products.models import Attribute, Category
 from apps.users.models import User
 
 
-class AddProductView(TemplateView):
+class AddProductView(UserPassesTestMixin, TemplateView):
     template_name = 'users/admin/product_management/add_product.html'
 
     def get(self, request, *args, **kwargs):
@@ -22,3 +23,6 @@ class AddProductView(TemplateView):
         context['ID_SAMPLE'] = Attribute.ID_SAMPLE
         context['seller'] = User.objects.get(pk=self.request.GET.get('seller'))
         return context
+
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)

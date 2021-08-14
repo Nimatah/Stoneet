@@ -3,6 +3,7 @@ from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.users.forms import UserLoginForm
 
@@ -21,7 +22,10 @@ class LoginView(BaseLoginView):
         return redirect(reverse_lazy('home:index') + '?login=fail')
 
 
-class LoginRedirectView(View):
+class LoginRedirectView(UserPassesTestMixin, View):
 
     def get(self, request, *args, **kwargs):
         return HttpResponseRedirect(f'{reverse_lazy("home:index")}users/panel/{self.request.user.use_type}-dashboard/')
+
+    def test_func(self):
+        return self.request.user.is_authenticated

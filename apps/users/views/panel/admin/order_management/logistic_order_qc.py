@@ -1,10 +1,11 @@
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.orders.models import LogisticOrder
 from apps.products.models import Attribute
 
 
-class AdminLogisticOrderQCView(TemplateView):
+class AdminLogisticOrderQCView(UserPassesTestMixin, TemplateView):
     template_name = 'users/admin/order_management/logistic_order_qc.html'
     pk_url_kwarg = 'pk'
     context_object_name = 'logistic_order'
