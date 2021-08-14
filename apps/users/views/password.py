@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-
+from django.urls import reverse_lazy
 from apps.users.models import User
 from apps.users.tasks import send_reset_password_email
 
@@ -14,7 +14,7 @@ def reset_password_view(request):
         if user is None:
             return render(request, 'users/auth/reset_password.html', context={'error': 'ایمیل یافت نشد'})
         send_reset_password_email(email=email)
-        redirect()
+        return redirect(reverse_lazy('users:password_message'))
     else:
         return render(request, "users/auth/reset_password.html")
 
