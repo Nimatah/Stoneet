@@ -32,7 +32,6 @@ seller_patterns = [
     path('panel/seller-invoices/', seller.ListInvoiceView.as_view(), name='seller_list_invoice'),
     path('panel/seller-invoice/<int:pk>/', seller.ViewInvoiceView.as_view(), name='seller_view_invoice'),
     path('panel/seller-sample-list/', seller.SellerSampleListView.as_view(), name='seller_sample_list'),
-    path('panel/seller-sample-detail/', seller.SellerSampleDetailView.as_view(), name='seller_sample_detail'),
 ]
 
 buyer_patterns = [
@@ -42,7 +41,6 @@ buyer_patterns = [
     path('panel/buyer-invoices/', buyer.ListInvoiceView.as_view(), name='buyer_list_invoice'),
     path('panel/buyer-invoice/<int:pk>/', buyer.ViewInvoiceView.as_view(), name='buyer_view_invoice'),
     path('panel/buyer-smaple-list/', buyer.BuyerSampleListView.as_view(), name='buyer_sample_list'),
-    path('panel/buyer-sample-detail/', buyer.BuyerSampleDetailView.as_view(), name='buyer_sample_detail'),
 ]
 
 logistic_patterns = [

@@ -11,8 +11,5 @@
     <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:buyer_sample_list' %}">درخواست های نمونه</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link {% if not user.is_accepted %}disallow{% endif %}" href="{% url 'users:buyer_sample_detail' %}">جزئیات درخواست های نمونه(تست)</a>
-</li>
-<li class="nav-item">
     <a class="nav-link" href="{% url 'users:profile_buyer' %}">پروفایل</a>
 </li>
