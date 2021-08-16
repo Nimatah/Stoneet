@@ -96,18 +96,17 @@ function handleFinalPrice() {
 var $form = $("#details-form"),
     $errorMsg = $("<span class='error'>پر کردن این گزینه اجباری است</span>");
 
+
 $("#submit").on("click", function () {
 
     var toReturn = true;
     $("input,select", $form).each(function () {
-
-        if ($(this).val() == "") {
+        if ($(this).val() === "") {
             if (!$(this).data("error")) {
                 $(this).data("error", $errorMsg.clone().insertAfter($(this)));
             }
             toReturn = false;
-        }
-        else {
+        } else {
             if ($(this).data("error")) {
                 $(this).data("error").remove();
                 $(this).removeData("error");
@@ -117,25 +116,48 @@ $("#submit").on("click", function () {
     return toReturn;
 });
 
+var $form = $("#details-form"),
+    $orderErrorMsg = $("<span class='error'>تناژ مورد نظر نباید کمتر از حداقل سفارش باشد</span>")
+
+$("#submit").on("click", function () {
+    var toReturn = true;
+    $("input,select", $form).each(function () {
+        var minimumOrder = parseInt(persianToEnglish($('#minimum-order').attr('value'))) || 0;
+        var orderWeight = $('#order-weight').val();
+        if (orderWeight < minimumOrder) {
+            if (!$(this).data("error")) {
+                $(this).data("error", $orderErrorMsg.clone().insertAfter($(this)));
+            }
+                toReturn = false;
+        } else {
+            if ($(this).data("error")) {
+                $(this).data("error").remove();
+                $(this).removeData("error");
+            }
+        }
+    });
+        return toReturn;
+});
 var maxLength = 14;
-$('#order-weight').keyup(function() {
-  var textlen = maxLength - $(this).val().length;
-  $('#rchars').text(textlen);
+$('#order-weight').keyup(function () {
+    var textlen = maxLength - $(this).val().length;
+    $('#rchars').text(textlen);
 });
 
 
- $(document).ready(function () {
-       $(".col-12 input, select").keyup(multInputs);
-       function multInputs() {
-           $('#month_no').change(function () {
-               var $val1 = parseFloat(persianToEnglish($('#order-weight').val())) || 0;
-               var $val2 = parseFloat($('#month_no').val()) || 0;
-               var $total = ($val1) / ($val2)
-               var $totalLim = $total.toFixed(2);
-               $('#total').text($totalLim);
-               })
-       }
-  });
+$(document).ready(function () {
+    $(".col-12 input, select").keyup(multInputs);
+
+    function multInputs() {
+        $('#month_no').change(function () {
+            var $val1 = parseFloat(persianToEnglish($('#order-weight').val())) || 0;
+            var $val2 = parseFloat($('#month_no').val()) || 0;
+            var $total = ($val1) / ($val2)
+            var $totalLim = $total.toFixed(2);
+            $('#total').text($totalLim);
+        })
+    }
+});
 
 handleFinalPrice();
 handleOrderWeightInput();
