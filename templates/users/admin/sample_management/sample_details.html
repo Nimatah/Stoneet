@@ -1,4 +1,5 @@
 {% extends 'base_admin.html' %}
+{% load humanize %}
 {% load static %}
 {% load utils %}
 
@@ -16,57 +17,43 @@
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
                             <label>کد کالا:</label>
-                            <span></span>
+                            <span>{{ sample.product.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>عنوان:</label>
-                            <span></span>
+                            <span>{{ sample.product.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>قیمت واحد (تومان):</label>
-                            <span></span>
+                            <label>قیمت:</label>
+                            <span>{{ sample.product.get_price.value|intcomma }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
                             <label>سایز بندی:</label>
-                            <span></span>
+                            <span>{{ sample.product.get_size }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>عیار:</label>
-                            <span></span>
+                            <span>{{ sample.product.get_caret }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>نوع تحویل:</label>
-                            <span></span>
+                            <span>{{ sample.product.delivery_type }}</span>
                         </div>
                     </div>
                     <div class="col-6 col-md-3">
                         <div class="ph-order-qc-item">
-                            <label>شماره سفارش:</label>
-                            <span></span>
+                            <label>شماره درخواست:</label>
+                            <span>{{ sample.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>میزان سفارش:</label>
-                            <span></span>
+                            <label>تاریخ درخواست:</label>
+                            <span>{{ sample.get_persian_timestamp }}</span>
                         </div>
                         <div class="ph-order-qc-item">
-                            <label>تعداد ارسال:</label>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-3">
-                        <div class="ph-order-qc-item">
-                            <label>تناژ کامل:</label> {# تناژ ارسال شده از برگه باسکول #}
-                            <span></span>
-                        </div>
-                        <div class="ph-order-qc-item">
-                            <label>تناژ هر ارسال:</label>
-                            <span></span>
-                        </div>
-                        <div class="ph-order-qc-item">
-                            <label>نوع پرداخت:</label>
-                            <span></span>
+                            <label>میزان درخواست:</label>
+                            <span>{{ sample.product.get_sample.child_value|intcomma }}</span>
                         </div>
                     </div>
                 </div>
@@ -77,29 +64,29 @@
                     <div class="col-4">
                         <div class="ph-order-qc-item">
                             <label>نام خریدار:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>کد خریدار:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شماره موبایل خریدار:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.mobile_number }}</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>استان:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.profile.region.parent.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شهر:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.profile.region.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>آدرس:</label>
-                            <span></span>
+                            <span>{{ sample.buyer.profile.address }}</span>
                         </div>
                     </div>
                 </div>
@@ -111,29 +98,29 @@
                     <div class="col-4">
                         <div class="ph-order-qc-item">
                             <label>نام فروشنده:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.profile.get_full_name }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>کد فروشنده:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.pk }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شماره موبایل فروشنده:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.mobile_number }}</span>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="ph-order-qc-item">
                             <label>استان:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.profile.region.parent.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>شهر:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.profile.region.title }}</span>
                         </div>
                         <div class="ph-order-qc-item">
                             <label>آدرس:</label>
-                            <span></span>
+                            <span>{{ sample.product.user.profile.address }}</span>
                         </div>
                     </div>
                 </div>

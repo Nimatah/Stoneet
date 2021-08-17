@@ -204,3 +204,27 @@ class LogisticOrderMedia(BaseMedia):
     order = models.ForeignKey(LogisticOrder, on_delete=models.CASCADE, related_name='media')
     title = models.CharField(max_length=255, blank=True)
     file = models.FileField(upload_to=get_order_file_path)
+
+
+class SampleOrder(TimestampedModel):
+
+    STATE_PENDING = 'pending'
+    STATE_ACCEPTED = 'accepted'
+    STATE_SENT = 'sent'
+    STATE_RECEIVED = 'received'
+    STATE_REJECTED = 'rejected'
+
+    STATE_CHOICES = (
+        (STATE_PENDING, 'در انتظار تایید'),
+        (STATE_ACCEPTED, 'تایید شده'),
+        (STATE_SENT, 'ارسال شده'),
+        (STATE_RECEIVED, 'دریافت شده'),
+        (STATE_REJECTED, 'رد شده'),
+    )
+
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='samples')
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='samples')
+    state = models.CharField(max_length=255, choices=STATE_CHOICES)
+
+    def get_persian_timestamp(self):
+        return JalaliDate.to_jalali(self.created_at)

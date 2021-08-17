@@ -119,13 +119,13 @@
                                     </div>
                                     <!-- ph-ip-wlr-pagination -->
                                     <div class="ph-ip-wlr-views">
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                            <option selected>۱۰</option>
-                                            <option value="1">۲۰</option>
-                                            <option value="2">۵۰</option>
-                                            <option value="3">۱۰۰</option>
-                                        </select>
-                                        <span>تعداد نمایش</span>
+{#                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+{#                                            <option selected>۱۰</option>#}
+{#                                            <option value="1">۲۰</option>#}
+{#                                            <option value="2">۵۰</option>#}
+{#                                            <option value="3">۱۰۰</option>#}
+{#                                        </select>#}
+{#                                        <span>تعداد نمایش</span>#}
                                     </div>
                                 </div>
                                 <!-- ph-ip-wl-right -->
@@ -139,63 +139,58 @@
                                 <table class="ph-table table table-bordered text-center">
                                     <thead class="thead-dark">
                                     <tr>
-                                        <th>کد سفارش</th>
+                                        <th>کد درخواست</th>
                                         <th>کد محصول</th>
                                         <th>نام محصول</th>
-                                        <th>نوع محصول</th>
                                         <th>مقدار</th>
-                                        <th>قیمت</th>
-                                        <th>تاریخ ثبت سفارش</th>
-                                        <th>نوع پرداخت</th>
+                                        <th>تاریخ ثبت درخواست</th>
+                                        <th>فروشنده</th>
+                                        <th>خریدار</th>
                                         <th>وضعیت</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {% for sample in samples %}
                                         <tr>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    1
+                                                    {{ sample.pk }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    2
+                                                    {{ sample.product.pk }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    3
+                                                    {{ sample.product.title }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    4
+                                                    {{ sample.product.get_sample.child_value|intcomma }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    5
+                                                    {{ sample.get_persian_timestamp }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    6
+                                                    {{ sample.product.user }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    7
+                                                    {{ sample.buyer }}
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="ph-admin-table-cell">
-                                                    8
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    9
+                                                    {{ sample.get_state_display }}
                                                 </div>
                                             </td>
                                             <td>
@@ -208,64 +203,6 @@
                                                         <a href=""
                                                            class="ph-btn" style="min-width: 40%">
                                                             بررسی
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    {% for order in orders %}
-                                        <tr>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.pk }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.product.pk }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.product.title }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.product.category.parent.title }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.weight }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.product.get_price.value|intcomma }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.get_persian_timestamp }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ payment_map|get_item:order.payment_type }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    {{ order.get_state_display }}
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="ph-admin-table-cell">
-                                                    <div class="ph-admin-table-action-btns">
-                                                        <a href="{% url 'users:seller_view_order' pk=order.pk %}"
-                                                           class="ph-admin-table-action-btn-edit">
-                                                            <i class="fas fa-eye"></i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -332,13 +269,13 @@
                                     </div>
                                     <!-- ph-ip-wlr-pagination -->
                                     <div class="ph-ip-wlr-views">
-                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                            <option selected>۱۰</option>
-                                            <option value="1">۲۰</option>
-                                            <option value="2">۵۰</option>
-                                            <option value="3">۱۰۰</option>
-                                        </select>
-                                        <span>تعداد نمایش</span>
+{#                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+{#                                            <option selected>۱۰</option>#}
+{#                                            <option value="1">۲۰</option>#}
+{#                                            <option value="2">۵۰</option>#}
+{#                                            <option value="3">۱۰۰</option>#}
+{#                                        </select>#}
+{#                                        <span>تعداد نمایش</span>#}
                                     </div>
                                 </div>
                                 <!-- ph-ip-wl-right -->

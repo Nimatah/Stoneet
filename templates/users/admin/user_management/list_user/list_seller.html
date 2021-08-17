@@ -8,7 +8,8 @@
         <div class="container">
             <div class="ph-dm-title">
                 <div class="title">پنل مدیریت فروشندگان</div>
-                <a href="{% url 'users:admin_list_seller' %}" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه کردن فروشنده </a>
+                <a href="{% url 'users:admin_add_seller' %}" class="ph-dm-add-user ph-btn"><i class="fas fa-plus"></i>اضافه
+                    کردن فروشنده </a>
             </div><!-- .ph-dm-title -->
             <div class="ph-managements-container">
                 <form>
@@ -94,6 +95,7 @@
                                 <th>تلفن ثابت</th>
                                 <th>شهر</th>
                                 <th>وضعیت</th>
+                                <th>ویرایش</th>
                                 <th>عملیات</th>
                             </tr>
                             </thead>
@@ -109,6 +111,12 @@
                                     <td>{{ user.profile.phone_number }}</td>
                                     <td>{{ user.profile.region.title }}</td>
                                     <td>{{ user.get_state_display }}</td>
+                                    <td>
+                                        <a href="{% url 'users:admin_edit_seller' %}"
+                                           class="ph-admin-table-action-btn-edit">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="{% url 'users:admin_qc_seller_details' pk=user.pk %}"
                                            class="ph-btn ph-managements-btn qc"><i

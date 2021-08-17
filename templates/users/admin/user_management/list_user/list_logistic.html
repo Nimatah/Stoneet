@@ -91,6 +91,7 @@
                                 <th>تلفن ثابت</th>
                                 <th>شهر</th>
                                 <th>وضعیت</th>
+                                <th>ویرایش</th>
                                 <th>عملیات</th>
                             </tr>
                             </thead>
@@ -106,6 +107,12 @@
                                     <td>{{ user.profile.phone_number }}</td>
                                     <td>{{ user.profile.region.title }}</td>
                                     <td>{{ user.get_state_display }}</td>
+                                    <td>
+                                        <a href="{% url 'users:admin_edit_logistic' %}"
+                                           class="ph-admin-table-action-btn-edit">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="{% url 'users:admin_qc_logistic_details' pk=user.pk%}"
                                            class="ph-btn">

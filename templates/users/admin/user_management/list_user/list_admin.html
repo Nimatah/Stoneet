@@ -39,9 +39,7 @@
                                 <td>{{ user.mobile_number }}</td>
                                 <td>{{ user.get_use_type_display}}</td>
                                 <td>
-                                    <a href="#" class="ph-admin-table-action-btn-edit"
-                                       data-toggle="modal"
-                                       data-target="#ph_edit_admin_user"><i class="fas fa-pen"></i></a>
+                                    <a href="{% url 'users:admin_edit_admin' %}" class="ph-admin-table-action-btn-edit"><i class="fas fa-pen"></i></a>
                                 </td>
                                 <td>
                                     <div class="custom-control custom-switch">
