@@ -3,22 +3,628 @@
 
 
 {% block admin_content %}
-    <main class="ph-dashboard-main ph-admin-panel ph-create-buyer">
+    <main class="ph-dashboard-main ph-admin-panel ph-create-seller">
         <div class="container">
             <div class="ph-admin-page-intro-text">
                 <span>ساخت خریدار جدید | </span>
                 خریدار جدیدی ایجاد کنید.
             </div><!-- .ph-admin-page-intro-text -->
             <form method="post" id="" role="form" enctype="">
+                <div class="ph-admin-page-list-container real-account bg-light ph-border-radius ph-box-shadow my-4">
+                    <div class="ph-new-login-info-wrapper">
+                        <div class="ph-new-login-alert">
+                            <span>توجه:</span>
+                            <p>پر کردن تمامی موارد الزامیست.</p>
+                        </div><!-- .ph-new-login-alert -->
+                        <section class="ph-private-business" id="ph_private_business">
+                            <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    چه نوع خریداری هستید؟
+                                </span>
+                            </div>
+                            <div class="ph-private-business-check ph-conditional d-flex">
+                                <div class="custom-control custom-radio form-check-inline">
+                                    <input class="custom-control-input" type="radio" name="legal_type"
+                                           value="ph-individual-wrapper" id="haqiqi">
+                                    <label class="custom-control-label" for="haqiqi" id="individual-person">شخص حقیقی</label>
+                                </div><!-- .custom-radio -->
+                                <div class="custom-control custom-radio form-check-inline">
+                                    <input class="custom-control-input" type="radio" name="legal_type" id="hoquqi"
+                                           value="ph-company-wrapper">
+                                    <label class="custom-control-label" for="hoquqi" id="legal-person">شخص حقوقی</label>
+                                </div><!-- .custom-radio -->
+                            </div><!-- .ph-private-business-check -->
+                            <p class="ph-private-business-details">
+                                <span>شخص حقیقی</span> فردی است که دارای خصوصیاتی مختص به خود مانند
+                                نام،
+                                نام خانوادگی، تاریخ تولد، کد ملی، شماره شناسنامه و غیره می باشد.
+                            </p>
+                            <p class="ph-private-business-details">
+                                <span>شخص حقوقی</span> موسسات یا شرکت هایی هستند که پس از طی مراحل
+                                قانونی
+                                به ثبت می‌رسند و دارای مشخصاتی مانند نام شخص حقوقی، تاریخ ثبت، شماره ثبت، کد شناسایی، کد
+                                اقتصادی، موضوع فعالیت و غیره می باشند.
+                            </p>
+                        </section><!-- .ph-private-business -->
+                        <div class="ph-conditional-wrapper" id="ph-company-wrapper">
+                            <section class="ph-company-account" id="ph_company_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_company_account_name_lastname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="ph_company_account_name" id="company-name">نام شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   value=""
+                                                   required name="company_name">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 mb-3">
+                                            <label for="ph_type_of_company" id="company-type">نوع شرکت</label>
+                                            <div class="ph-private-business-check d-flex">
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type"
+                                                           id="aam">
+                                                    <label class="custom-control-label" for="aam" id="aam">سهامی
+                                                        عام</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type"
+                                                           id="khas">
+                                                    <label class="custom-control-label" for="khas">سهامی
+                                                        خاص</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type"
+                                                           id="mahdud">
+                                                    <label class="custom-control-label" for="mahdud" id="mahdud">مسئولیت
+                                                        محدود</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type"
+                                                           id="taavoni">
+                                                    <label class="custom-control-label" for="taavoni" id="taavoni">تعاونی</label>
+                                                </div><!-- .custom-radio -->
+                                            </div><!-- .ph-private-business-check -->
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">شماره ثبت شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   value=""
+                                                   required name="company_register_code">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">کد ملی شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   value=""
+                                                   required name="company_national_code">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">کد مالی</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   value=""
+                                                   required name="company_finance_code">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">حق چاپ امضا</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   value=""
+                                                   required name="company_print_signature_right">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- .needs-validation -->
+                            </section><!-- .ph-company-account -->
+                            <section class="ph-info-contacts" id="ph_info_contacts">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_info_contact_form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_state">استان</label>
+                                            <select id="ph_info_contacts_state"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                                <option value="1">تهران</option>
+                                                <option value="2">چهارمحال و بختیاری</option>
+                                                <option value="3">کهگیلویه و بویراحمد</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_city">شهر</label>
+                                            <select id="ph_info_contacts_city" class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                                <option value="1">تهران</option>
+                                                <option value="2">نقده</option>
+                                                <option value="3">رباط کریم</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-12 mb-3">
+                                            <label for="ph_info_contacts_address">آدرس</label>
+                                            <input type="text" class="form-control" id="ph_info_contacts_address"
+                                                   placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
+                                                   value="" required name="address">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-12 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_kodposti">کدپستی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_kodposti"
+                                                   placeholder="مثال ۱۲۳۴۵-۶۷۸۹۰" value="" required name="postal_code">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_location">موقعیت مکانی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_location"
+                                                   placeholder="مثال ۱۲۳۴۵۶۷۸۹۰" value="" required name="region">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_tel">تلفن ثابت</label>
+                                            <input type="text" class="form-control text-left" id="ph_info_contacts_tel"
+                                                   placeholder="مثال ۰۲۱۲۲۳۳۴۴۵۵ "
+                                                   value="" required name="phone_number">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_mobile">موبایل</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_mobile"
+                                                   placeholder="مثال ۰۹۱۲۳۴۵۶۷۸۹ "
+                                                   value="" required name="mobile_number">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_info_contact_form -->
+                            </section><!-- .ph-info-contacts -->
+                            <section class="ph-business-info" id="ph_business_info">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات مالی شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_business_info_form">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="ph_business_info_brand">نام حساب بانکی شرکت</label>
+                                            <input type="text" class="form-control" id="ph_business_info_brand"
+                                                   placeholder="نام فروشگاه خود را تایپ کنید..." value="" required name="bank_account_name">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="ph_business_info_sheba">شماره شبا</label>
+                                            <input type="text" class="form-control" id="ph_business_info_sheba"
+                                                   placeholder="IR __-____-____-____-____-____-__" value="" required
+                                                   style="direction: ltr;text-align: left;" name="bank_sheba_number">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-12 col-lg-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_business_info_form -->
+                            </section><!-- .ph-business-info -->
+                            <section class="ph-business-uploadimg" id="">
+                                <div class="ph-panel-title">
+                                        <span class="title ph-border-radius">
+                                            بارگذاری مدارک
+                                        </span>
+                                </div>
+                                <div class="container">
+                                    <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
+                                        <div class="flow-root">
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">گواهی ثبت شرکت</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload()"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload()"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">گواهی مالیات بر ارزش افزوده</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload()"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-conditional-wrapper-2 -->
+                                </div><!-- .container -->
+                            </section><!-- .ph-business-uploadimg -->
 
 
+                        </div><!-- .ph-conditional-wrapper -->
+                        <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
+                            <section class="ph-real-account" id="ph_real_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_real_account_name_lastname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_name">نام</label>
+                                            <input type="text" class="form-control" id="ph_real_account_name" value=""
+                                                   required name="first_name">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_lastname">نام خانوادگی</label>
+                                            <input type="text" class="form-control" id="ph_real_account_lastname"
+                                                   value=""
+                                                   required name="last_name">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                <div class="row">
+                                    <div id="ph_real_account_gender" class="d-flex col-lg-3">
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input class="custom-control-input" type="radio"
+                                                   name="ph-real-account-gender"
+                                                   id="ph_real_account_gender_man" value="man">
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_man">مرد</label>
+                                        </div><!-- .custom-radio -->
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input class="custom-control-input" type="radio"
+                                                   name="gender"
+                                                   id="ph_real_account_gender_woman" value="woman">
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_woman">زن</label>
+                                        </div><!-- .custom-radio -->
+                                    </div><!-- #ph_real_account_gender -->
+                                    <div class="ph-real-account-birthday col-lg-9">
+                                        <label for="ph_real_account_birthday_date">تاریخ تولد</label>
+                                        <select id="ph_real_account_birthday_date"
+                                                class="mdb-select custom-select md-form" name="birthday">
+                                            <option value="" disabled selected>روز</option>
+                                            <option value="1">۱</option>
+                                            <option value="2">۲</option>
+                                            <option value="3">۳</option>
+                                        </select>
+                                        <select id="ph_real_account_birthday_month"
+                                                class="mdb-select custom-select md-form" name="birthday">
+                                            <option value="" disabled selected>ماه</option>
+                                            <option value="1">فروردین</option>
+                                            <option value="2">اردیبهشت</option>
+                                            <option value="3">خرداد</option>
+                                        </select>
+                                        <select id="ph_real_account_birthday_year"
+                                                class="mdb-select custom-select md-form" name="birthday">
+                                            <option value="" disabled selected>سال</option>
+                                            <option value="1">۱۳۶۴</option>
+                                            <option value="2">۱۳۶۵</option>
+                                            <option value="3">۱۳۶۶</option>
+                                        </select>
+                                    </div><!-- .ph-real-account-birthday -->
+                                </div>
+                                <div id="ph_real_account_melli_shenasname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_shenasname">شماره شناسنامه</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_real_account_shenasname"
+                                                   placeholder="مثال ۱۲۳۴۵" value="" required name="id_code">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_melli">کد ملی</label>
+                                            <input type="text" class="form-control text-left" id="ph_real_account_melli"
+                                                   placeholder="مثال ۱۲۳۴۵۶۷۸۹۰" value="" required name="national_code">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_melli_shenasname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-info-contacts" id="ph_info_contacts">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_info_contact_form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_state">استان</label>
+                                            <select id="ph_info_contacts_state"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                                <option value="1">تهران</option>
+                                                <option value="2">چهارمحال و بختیاری</option>
+                                                <option value="3">کهگیلویه و بویراحمد</option>
+                                            </select>
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_city">شهر</label>
+                                            <select id="ph_info_contacts_city" class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                                <option value="1">تهران</option>
+                                                <option value="2">نقده</option>
+                                                <option value="3">رباط کریم</option>
+                                            </select>
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-12 mb-3">
+                                            <label for="ph_info_contacts_address">آدرس</label>
+                                            <input type="text" class="form-control" id="ph_info_contacts_address"
+                                                   placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
+                                                   value="" required name="address">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_kodposti">کدپستی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_kodposti"
+                                                   placeholder="مثال ۱۲۳۴۵-۶۷۸۹۰" value="" required name="postal_code">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_location">موقعیت مکانی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_location"
+                                                   placeholder="مثال ۱۲۳۴۵۶۷۸۹۰" value="" required name="region">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_tel">تلفن ثابت</label>
+                                            <input type="text" class="form-control text-left" id="ph_info_contacts_tel"
+                                                   placeholder="مثال ۰۲۱۲۲۳۳۴۴۵۵ "
+                                                   value="" required name="phone_number">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_mobile">موبایل</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_mobile"
+                                                   placeholder="مثال۰۹۱۲۳۴۵۶۷۸۹ "
+                                                   value="" required name="mobile_number">
+                                            <div class="valid-feedback">
+                                                لطفا از اعداد فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_info_contact_form -->
+                            </section><!-- .ph-info-contacts -->
+                            <section class="ph-business-info" id="ph_business_info">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات مالی شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_business_info_form">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="ph_business_info_brand">نام حساب بانکی شخصی</label>
+                                            <input type="text" class="form-control" id="ph_business_info_brand"
+                                                   placeholder="نام حساب بانکی شخصی..." value="" required name="bank_account_name">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 col-lg-6 mb-3">
+                                            <label for="ph_business_info_sheba">شماره شبا</label>
+                                            <input type="text" class="form-control" id="ph_business_info_sheba"
+                                                   placeholder="IR __-____-____-____-____-____-__" value="" required
+                                                   style="direction: ltr;text-align: left;" name="bank_sheba_number">
+                                            <div class="valid-feedback">
+                                                لطفا از حروف فارسی استفاده کنید
+                                            </div><!-- .valid-feedback -->
+                                        </div><!-- .col-12 col-lg-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_business_info_form -->
+                            </section><!-- .ph-business-info -->
+                            <section class="ph-business-uploadimg" id="">
+                                <div class="ph-panel-title">
+                                        <span class="title ph-border-radius">
+                                            بارگذاری مدارک
+                                        </span>
+                                </div>
+                                <div class="container">
+                                    <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
+                                        <div class="ph-regi-upload-file">
+                                            <span class="title">تصویر روی کارت ملی</span>
+                                            <div class="ph-regi-image-upload-wrap">
+                                                <input class="ph-regi-file-upload-input" type='file'
+                                                       onchange="readURL(this);"
+                                                       accept="image/*"/>
+                                                <div class="ph-regi-drag-text">
+                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-file-upload-content">
+                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                <div class="ph-regi-image-title-wrap">
+                                                    <button type="button" onclick="removeUpload()"
+                                                            class="ph-regi-remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-upload-file">
+                                            <span class="title">تصویر پشت کارت ملی</span>
+                                            <div class="ph-regi-image-upload-wrap">
+                                                <input class="ph-regi-file-upload-input" type='file'
+                                                       onchange="readURL(this);"
+                                                       accept="image/*"/>
+                                                <div class="ph-regi-drag-text">
+                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-file-upload-content">
+                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                <div class="ph-regi-image-title-wrap">
+                                                    <button type="button" onclick="removeUpload()"
+                                                            class="ph-regi-remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-conditional-wrapper-2 -->
+                                    <!-- .ph-conditional-wrapper-2 -->
+                                </div>
+                            </section>
+
+                        </div><!-- .ph-conditional-wrapper -->
+                        <div class="ph-new-login-info-btn my-2">
+                            <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ثبت</button>
+                        </div><!-- .ph-new-login-info-btn -->
+                    </div><!-- .ph-new-login-info-wrapper -->
+                </div><!-- .ph-admin-page-list-container -->
             </form>
         </div><!-- .container -->
-    </main><!-- ph-create-buyer-main ph-dashboard-main management-create-buyer-->
+    </main><!-- ph-create-seller-main ph-dashboard-main management-create-seller-->
 
 {% endblock %}
 
 {% block footer_static %}
     <script src="{% static 'js/add-product.js' %}"></script>
     <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(".ph-conditional").change(function () {
+                var selected = $(".ph-conditional .custom-control-input:checked").val();
+                $('.ph-conditional-wrapper').hide();
+                $('#' + selected).show();
+                $('#' + selected + -2).show();
+
+            });
+            $('.ph-conditional-wrapper').hide();
+        });
+
+    </script>
+    <script>
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.ph-regi-image-upload-wrap').hide();
+
+                    $('.ph-regi-file-upload-image').attr('src', e.target.result);
+                    $('.ph-regi-file-upload-content').show();
+
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.ph-regi-file-upload-input').replaceWith($('.ph-regi-file-upload-input').clone());
+            $('.ph-regi-file-upload-content').hide();
+            $('.ph-regi-image-upload-wrap').show();
+        }
+
+        $('.ph-regi-image-upload-wrap').bind('dragover', function () {
+            $('.ph-regi-image-upload-wrap').addClass('image-dropping');
+        });
+        $('.ph-regi-image-upload-wrap').bind('dragleave', function () {
+            $('.ph-regi-image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
 {% endblock %}
