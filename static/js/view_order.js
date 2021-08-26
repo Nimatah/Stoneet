@@ -118,3 +118,29 @@ $('#s-4-btn').on('click', function (e) {
     })
 })
 
+$(document).ready(function () {
+    const hash = window.location.hash
+    if (hash !== '') {
+        $('[id^=shell]').css('opacity', 0);
+        $('[id^=shell]').css('height', 0);
+        $('[id^=shell]').css('width', 0);
+        $('[id^=shell]').hide();
+        $(hash).css('opacity', 1);
+        $(hash).css('height', 'auto');
+        $(hash).css('width', '100%');
+        $(hash).show();
+    }
+})
+
+$('div[role="button"]').on('click', function () {
+    window.location.hash = $(this).data('hash')
+    const hash = window.location.hash;
+    $('[id^=shell]').css('opacity', 0);
+    $('[id^=shell]').css('height', 0);
+    $('[id^=shell]').css('width', 0);
+    $('[id^=shell]').css('display', 'none');
+    $(hash).css('opacity', 1);
+    $(hash).css('height', 'auto');
+    $(hash).css('width', '100%')
+    $(hash).css('display', 'block')
+})

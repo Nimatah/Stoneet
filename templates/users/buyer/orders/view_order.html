@@ -77,7 +77,7 @@
                             </div>
                             <div class="ph-cpp-btn" role="group" aria-label="...">
                                 <label for='level2' id="next-level2" class="ph-cpp-btn-n ph-btnext">
-                                    <div id="s-1-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                    <div id="stage-1" role="button" class="ph-cpp-btn-n ph-btn" data-hash="shell2">بعدی</div>
                                 </label>
                             </div>
                         {% endif %}
@@ -168,10 +168,10 @@
                         </div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level2' id="back-level2" class="back">
-                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                                <div class="ph-cpp-btn-n ph-btn" role="button" data-hash="shell1">قبلی</div>
                             </label>
                             <label for='level3' id="next-level3" class="ph-cpp-btn-n ph-btnext">
-                                <div id="s-2-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                <div id="s-2-btn" role="button" class="ph-cpp-btn-n ph-btn" data-hash="shell3">بعدی</div>
                             </label>
                         </div>
                     </div>
@@ -254,10 +254,10 @@
                         </div>
                         <div class="ph-cpp-btn mt-5" role="group" aria-label="...">
                             <label for='level3' id="back-level3" class="back">
-                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                                <div class="ph-cpp-btn-n ph-btn" role="button" data-hash="shell2">قبلی</div>
                             </label>
                             <label for='level4' id="next-level4" class="ph-cpp-btn-n ph-btnext">
-                                <div id="s-3-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                <div id="s-3-btn" role="button" class="ph-cpp-btn-n ph-btn" data-hash="shell4">بعدی</div>
                             </label>
                         </div>
                     </div>
@@ -334,10 +334,10 @@
                         </div>
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level4' id="back-level4" class="back">
-                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                                <div class="ph-cpp-btn-n ph-btn" role="button" data-hash="shell3">قبلی</div>
                             </label>
                             <label for='level5' id="next-level5" class="ph-cpp-btn-n ph-btnext">
-                                <div id="s-4-btn" class="ph-cpp-btn-n ph-btn">بعدی</div>
+                                <div id="s-4-btn" role="button" class="ph-cpp-btn-n ph-btn" data-hash="shell5">بعدی</div>
                             </label>
                         </div>
                     </div>
@@ -396,7 +396,7 @@
 
                         <div class="ph-cpp-btn" role="group" aria-label="...">
                             <label for='level5' id="back-level5" class="back">
-                                <div class="ph-cpp-btn-n ph-btn" role="button">قبلی</div>
+                                <div class="ph-cpp-btn-n ph-btn" role="button" data-hash="shell4">قبلی</div>
                             </label>
                             <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">تایید سفارش</button>
                         </div>
@@ -412,7 +412,6 @@
 
 {% block footer_static %}
     <script>var orderId = {{ order.pk }}</script>
-<script src="{% static 'js/list-product.js' %}"></script>
-<script src="{% static 'js/list-product.js' %}"></script>
-<script src="{% static 'js/view_order.js' %}"><script>
+    <script src="{% static 'js/list-product.js' %}"></script>
+    <script src="{% static 'js/view_order.js' %}"></script>
 {% endblock %}
