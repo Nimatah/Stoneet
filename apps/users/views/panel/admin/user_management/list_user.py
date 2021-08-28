@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 
 from apps.users.models import User
 from apps.users.filters import AdminUserFilter
+from apps.moderation.models import ProfileChangeRequest
 
 
 class ListAdminView(UserPassesTestMixin, ListView):
@@ -73,6 +74,16 @@ class ListLogisticView(UserPassesTestMixin, ListView):
         queryset = User.objects.filter(use_type=User.TYPE_LOGISTIC)
         queryset = AdminUserFilter(self.request.GET, queryset=queryset).qs
         return queryset
+
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)
+
+
+class ProfileRequestListView(UserPassesTestMixin, ListView):
+
+    template_name = 'users/admin/user_management/list_user/list_request.html'
+    queryset = ProfileChangeRequest.objects.filter(state=ProfileChangeRequest.STATE_PENDING)
+    context_object_name = 'profile_requests'
 
     def test_func(self):
         return self.request.user.is_authenticated and (self.request.user.is_admin or self.request.user.is_superuser)

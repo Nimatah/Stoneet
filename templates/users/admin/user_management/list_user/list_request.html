@@ -1,0 +1,300 @@
+{% extends 'base_admin.html' %}
+{% load humanize %}
+{% load utils %}
+{% load static %}
+
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-seller-panel ph-orders">
+
+        <div class="container">
+
+            <form action="" id="ph_orders_form" role="form">
+
+                <div id="orders_page" class="ph-orders-page form-group">
+                    <div class="ph-orders-panel">
+                        <div class="ph-admin-page-intro-text">
+                            <span>مشاهده درخواست های تغییر پروفایل کاربر | </span>
+                            درخواست های کاربران را در اینجا مشاهده و مدیریت کنید
+                        </div>
+                        <div class="ph-admin-page-search-wrapper bg-light ph-border-radius ph-box-shadow my-4">
+                            <div class="ph-admin-page-block-header ph-panel-title">
+                                <span class="title">جستجو و فیلتر</span>
+                            </div>
+                            <div class="ph-admin-page-block-content">
+                                <div class="ph-admin-page-search-form">
+                                    <form method="get">
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <label for="">تاریخ سفارش</label>
+                                                <input type="text" class="form-control" name="date" id="order-date"
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="تاریخ مورد نظرتان را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="">کد سفارش</label>
+                                                <input type="text" class="form-control" name="id" id=""
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="کد سفارش را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="">کد محصول</label>
+                                                <input type="text" class="form-control" name="product_id" id=""
+                                                       aria-describedby="Search_Text"
+                                                       placeholder="کد کالا را وارد کنید">
+                                            </div>
+                                            <div class="col">
+                                                <label for="ph-state"> وضعیت تایید سفارش:</label>
+                                                <select name="state" class="form-control custom-select" id="ph-state">
+                                                    <option value="">انتخاب کنید</option>
+                                                    {% for state, state_display in order_model.STATE_CHOICES %}
+                                                        <option value="{{ state }}">{{ state_display }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn ph-btn ph-border-radius-small my-3">جستجو
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="ph-ip-w-list ph-border-radius ph-box-shadow">
+                            <div class="ph-ip-wl-header top">
+                                <div class="ph-ip-wl-right">
+                                    <div class="ph-ip-wlr-pagination ph-pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination pagination-circle pg-blue">
+                                                {% if page_obj.has_previous %}
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                           href="{% query_transform p=page_obj.previous %}"
+                                                           aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+
+                                                {% for p in page_obj.paginator.page_range %}
+                                                    {% if page_obj.number == p %}
+                                                        <li class="page-item active"><a class="page-link"
+                                                                                        href="{% query_transform p=p %}">{{ p }}</a>
+                                                        </li>
+                                                    {% else %}
+                                                        <li class="page-item"><a class="page-link"
+                                                                                 href="{% query_transform p=p %}">{{ p }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if page_obj.has_next %}
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                           href="{% query_transform p=page_obj.next %}"
+                                                           aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- ph-ip-wlr-pagination -->
+                                    <div class="ph-ip-wlr-views">
+{#                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+{#                                            <option selected>۱۰</option>#}
+{#                                            <option value="1">۲۰</option>#}
+{#                                            <option value="2">۵۰</option>#}
+{#                                            <option value="3">۱۰۰</option>#}
+{#                                        </select>#}
+{#                                        <span>تعداد نمایش</span>#}
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-right -->
+                                <div class="ph-ip-wl-res">
+                                    نتیجه:
+                                    <span>{{ page_obj.paginator.count }} مورد</span>
+                                </div>
+                            </div>
+                            <!-- ph-ip-wl-header -->
+                            <div class="ph-ip-wl-table">
+                                <table class="ph-table table table-bordered text-center">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>کد درخواست</th>
+                                        <th>کد محصول</th>
+                                        <th>نام محصول</th>
+                                        <th>مقدار</th>
+                                        <th>تاریخ ثبت درخواست</th>
+                                        <th>فروشنده</th>
+                                        <th>خریدار</th>
+                                        <th>وضعیت</th>
+                                        <th>عملیات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for profile_request in profile_requests %}
+                                        <tr>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ profile_request.pk }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.product.pk }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.product.title }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.product.get_sample.child_value|intcomma }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.get_persian_timestamp }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.product.user }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.buyer }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    {{ sample.get_state_display }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="ph-admin-table-cell">
+                                                    <div class="ph-admin-table-action-btns">
+                                                        <a href=""
+                                                           class="ph-btn" style="min-width: 40%">
+                                                            تایید
+                                                        </a>
+                                                        <a href=""
+                                                           class="ph-btn" style="min-width: 40%">
+                                                            بررسی
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- ph-ip-wl-table -->
+                            <div class="ph-ip-wl-header bottom">
+                                <div class="ph-ip-wl-right">
+                                    <div class="ph-ip-wlr-pagination ph-pagination">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination pagination-circle pg-blue">
+                                                {% if page_obj.has_previous %}
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                           href="{% query_transform p=page_obj.previous %}"
+                                                           aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Previous">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-right"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+
+                                                {% for p in page_obj.paginator.page_range %}
+                                                    {% if page_obj.number == p %}
+                                                        <li class="page-item active"><a class="page-link"
+                                                                                        href="{% query_transform p=p %}">{{ p }}</a>
+                                                        </li>
+                                                    {% else %}
+                                                        <li class="page-item"><a class="page-link"
+                                                                                 href="{% query_transform p=p %}">{{ p }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if page_obj.has_next %}
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                           href="{% query_transform p=page_obj.next %}"
+                                                           aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" href="#" aria-label="Next">
+                                                        <span aria-hidden="true"><i
+                                                                class="fas fa-angle-left"></i></span>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                    <!-- ph-ip-wlr-pagination -->
+                                    <div class="ph-ip-wlr-views">
+{#                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">#}
+{#                                            <option selected>۱۰</option>#}
+{#                                            <option value="1">۲۰</option>#}
+{#                                            <option value="2">۵۰</option>#}
+{#                                            <option value="3">۱۰۰</option>#}
+{#                                        </select>#}
+{#                                        <span>تعداد نمایش</span>#}
+                                    </div>
+                                </div>
+                                <!-- ph-ip-wl-right -->
+                                <div class="ph-ip-wl-res">
+                                    نتیجه:
+                                    <span>{{ page_obj.paginator.count }} مورد</span>
+                                </div>
+                            </div>
+                            <!-- ph-ip-wl-header -->
+                        </div>
+                        <!-- ph-ip-w-list -->
+
+                    </div>
+                    <!-- ph-orders-page -->
+                </div>
+            </form>
+            <!-- ph_orders_form -->
+
+        </div>
+        <!-- container -->
+
+    </main>
+    <!-- ph-orders ph-dashboard-main -->
+{% endblock %}
