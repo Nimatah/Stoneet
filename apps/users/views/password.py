@@ -1,6 +1,8 @@
-from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.db import models
+from django.contrib.auth import login
+
 from apps.users.models import User
 from apps.users.tasks import send_reset_password_email
 
@@ -23,5 +25,42 @@ def password_message(request):
     return render(request, "users/auth/password_message.html")
 
 
-class PasswordConfirmationView(TemplateView):
-    template_name = 'users/auth/password_confirmation.html'
+def password_confirmation(request):
+    token = request.GET.get('token', '')
+    try:
+        user = User.objects.get_by_token(token)
+    except models.fields.exceptions.ValidationError:
+        return render(request, "users/auth/password_confirmation.html", context={
+            'error': 'لینک مورد نظر منقضی شده'
+        })
+
+    if user is None:
+        return render(request, "users/auth/password_confirmation.html", context={
+            'error': 'لینک مورد نظر منقضی شده'
+        })
+
+    if request.method == 'GET':
+        return render(request, "users/auth/password_confirmation.html", context={
+            'user': user,
+        })
+    elif request.method == 'POST':
+        data = request.POST
+        password1 = data.get('password1')
+        password2 = data.get('password2')
+
+        if not password1 or not password2:
+            return render(request, "users/auth/password_confirmation.html", context={
+                'error': 'لطفا رمز عبور را وارد نمایید'
+            })
+
+        if password1 != password2:
+            return render(request, "users/auth/password_confirmation.html", context={
+                'error': 'رمز عبور و تکرار رمز عبور مطابقت ندارند'
+            })
+
+        user.set_password(password1)
+        user.save()
+
+        login(request, user)
+        return redirect(reverse_lazy('users:redirect'))
+

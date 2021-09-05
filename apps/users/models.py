@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime, timedelta
+from typing import Optional
 
 from django.db import models
 from django.db.models import Q
@@ -77,6 +78,12 @@ class UserManager(BaseUserManager):
 
     def get_queryset(self) -> 'UserQuerySet':
         return UserQuerySet(model=self.model, using=self.db)
+
+    def get_by_token(self, token) -> Optional['User']:
+        try:
+            return self.get(password_reset_token=token, password_reset_expiration__lte=datetime.now())
+        except User.DoesNotExist:
+            return None
 
     @staticmethod
     def __validate_username(username: str):

@@ -18,7 +18,7 @@ auth_patterns = [
     path('logistic-profile', logistic.LogisticProfileView.as_view(), name='profile_logistic'),
     path('reset-password', password.reset_password_view, name='reset_password'),
     path('password-message', password.password_message, name='password_message'),
-    path('password-confirmation', password.PasswordConfirmationView.as_view(), name='password_confirmation'),
+    path('password-confirmation', password.password_confirmation, name='password_confirmation'),
 ]
 
 seller_patterns = [
