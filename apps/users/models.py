@@ -273,6 +273,14 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     def is_rejected(self) -> bool:
         return self.state == self.STATE_REJECTED
 
+    @property
+    def is_male(self) -> bool:
+        return self.profile.gender == Profile.GENDER_MALE
+
+    @property
+    def is_female(self) -> bool:
+        return self.profile.gender == Profile.GENDER_FEMALE
+
     def get_image_id_card_front(self):
         return self.media.filter(title=UserMedia.name_map['image_id_card_front']).first()
 

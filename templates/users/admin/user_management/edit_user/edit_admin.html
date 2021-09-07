@@ -1,10 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
+{% load static %}
+{% load utils %}
 
-</body>
-</html>
+{% block meta_content %}
+    {{ regions|json_script:"regions" }}
+{% endblock %}
+
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-seller-panel ph-edit-product">
+        <div class="container">
+            <form action="{% url 'users:admin_edit_admin' pk=admin.id %}" method="post" id="create-user">
+                {% csrf_token %}
+                <div class="ph-admin-page-container ">
+                    <div class="ph-admin-page-intro-text">
+                        <span>ویرایش کاربر | </span>
+                        در اینجا میتوانید ادمین را ویرایش کنید
+                    </div><!-- ph-admin-page-intro-text -->
+                    <div class="ph-admin-page-list-container bg-light ph-border-radius ph-box-shadow my-4">
+                        <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
+                            <section class="ph-private-business" id="ph_private_business">
+                                <input class="custom-control-input" type="hidden" name="legal_type"
+                                       id="legal-individual" value="individual">
+                            </section><!-- .ph-private-business -->
+
+                            <section class="ph-real-account" id="ph_user_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        مشخصات کاربری
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email">ایمیل</label>
+                                            <input type="text" class="form-control"
+                                                   id="email" name="email" value="{{ admin.email }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                 <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="mobile_number">شماره موبایل</label>
+                                            <input type="text" class="form-control"
+                                                   id="mobile_number" name="mobile_number" value="{{ admin.mobile_number }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-real-account" id="ph_real_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شخصی
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_name">نام</label>
+                                            <input data-type="individual" type="text" class="form-control"
+                                                   id="ph_real_account_name" name="first_name" value="{{ admin.profile.first_name }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_lastname">نام خانوادگی</label>
+                                            <input data-type="individual" type="text" class="form-control"
+                                                   id="ph_real_account_lastname" name="last_name" value="{{ admin.profile.last_name }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                <div class="form-row">
+                                    <div id="ph_real_account_gender" class="col-md-6 d-flex">
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input data-type="individual" class="custom-control-input" type="radio"
+                                                   name="gender" id="ph_real_account_gender_man" value="male" {% if admin.is_male %}checked{% endif %}>
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_man">مرد</label>
+                                        </div><!-- .custom-radio -->
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input data-type="individual" class="custom-control-input" type="radio"
+                                                   name="gender" id="ph_real_account_gender_woman" value="female" {% if admin.is_female %}checked{% endif %}>
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_woman">زن</label>
+                                        </div><!-- .custom-radio -->
+                                    </div><!-- #ph_real_account_gender -->
+                                    <div class="col-md-6 ph-real-account-birthday">
+                                        <label for="birthday">تاریخ تولد</label>
+                                        <input readonly data-type="individual" type="text" id="birthday" name="birthday"
+                                               class="form-control" style="background: #ffffff !important" value="{{ admin.profile.get_persian_birthday }}">
+                                    </div><!-- .ph-real-account-birthday -->
+                                </div>
+                                <div id="ph_real_account_melli_shenasname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_shenasname">شماره شناسنامه</label>
+                                            <input data-type="individual" type="text" class="form-control text-left"
+                                                   id="ph_real_account_shenasname"
+                                                   placeholder="۱۲۳۴۵" name="id_code" value="{{ admin.profile.id_code }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_melli">کد ملی</label>
+                                            <input data-type="individual" type="text" class="form-control text-left"
+                                                   id="ph_real_account_melli"
+                                                   placeholder="۰۰۱۴۸۲۷۴۸۵" name="national_code" value="{{ admin.profile.national_code }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_melli_shenasname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-info-contacts" id="ph_info_contacts">
+                                <div class="ph-panel-title">
+                                <span class="title ph-border-radius">
+                                    اطلاعات تماس شخصی
+                                </span>
+                                </div><!-- ph-panel-title -->
+                                <div id="ph_info_contact_form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="individual-provinces">استان</label>
+                                            <select data-type="individual" id="individual-provinces"
+                                                    class="mdb-select custom-select md-form" data-value="{{ admin.profile.region.parent.id }}">
+                                                <option value="default" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="individual-cities">شهر</label>
+                                            <select data-type="individual" id="individual-cities" name="region"
+                                                    class="mdb-select custom-select md-form" data-value="{{ admin.profile.region.id }}">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-12 mb-3">
+                                            <label for="ph_info_contacts_address">آدرس</label>
+                                            <input data-type="individual" type="text" class="form-control"
+                                                   id="ph_info_contacts_address"
+                                                   placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
+                                                   name="address" value="{{ admin.profile.address }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_kodposti">کدپستی</label>
+                                            <input data-type="individual" type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_kodposti"
+                                                   placeholder="۱۲۳۴۵-۶۷۸۹۰" name="postal_code" value="{{ admin.profile.postal_code }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_tel">تلفن ثابت</label>
+                                            <input data-type="individual" type="text" class="form-control text-left"
+                                                   name="phone_number" id="ph_info_contacts_tel"
+                                                   placeholder="۰۲۱۸۸۲۳۹۴۸۷ " value="{{ admin.profile.phone_number }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_info_contact_form -->
+                            </section><!-- .ph-info-contacts -->
+                        </div><!-- .ph-conditional-wrapper #ph-individual-wrapper -->
+                        <div class="col-12 ph-product-update  mb-3">
+                            <a href="javascript:{}" onclick="document.getElementById('create-user').submit()"
+                               class="ph-btn ml-auto">ویرایش کاربر</a>
+                        </div>
+                    </div>
+                    <!-- row -->
+                </div>
+                <!-- ph-product-info -->
+            </form>
+        </div>
+    </main>
+    <!-- ph-dashboard-main admin-panel ph-qc-product-details -->
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/admin_edit_user.js' %}"></script>
+{% endblock %}
