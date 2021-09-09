@@ -39,4 +39,4 @@ class BaseUserRegisterForm(forms.Form):
 
     @staticmethod
     def _file_size_valid(file):
-        return file._size <= settings.MAX_UPLOAD_SIZE
+        return file.size <= settings.MAX_UPLOAD_SIZE

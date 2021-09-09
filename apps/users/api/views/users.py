@@ -1,9 +1,10 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.decorators import api_view
+from rest_framework.request import Request
 from rest_framework.response import Response
 
 from ..serializers.users import UserSerializer
-from ...models import User
+from ...models import User, UserMedia
 
 
 class UserListAPIView(ListAPIView):
@@ -105,7 +106,7 @@ def register_logistic_validation(request):
         errors['نوع شرکت'] = 'لطفا نوع شرکت را انتخاب کنید'
     if not data.get('company_license_type'):
         errors['نوع پروانه شرکت'] = 'لطفا نوع پروانه شرکت را انتخاب نمایید'
-    if not data.get('company_license_number'):
+    if not data.get('company_license_code'):
         errors['شماره پروانه شرکت'] = 'لطفا شماره پروانه شرکت را وارد نمایید'
     if not data.get('company_ceo_name'):
         errors['نام مدیر عامل شرکت'] = 'لطفا نام مدیر عامل شرکت را وارد نمایید'
@@ -158,3 +159,18 @@ def user_reject(request, pk):
     user.save()
 
     return Response('', status=200)
+
+
+@api_view(['DELETE', ])
+def remove_image(request: Request):
+    pk = request.query_params.get('pk', None)
+
+    if not request.user.is_authenticated or not (request.user.is_admin or request.user.is_superuser):
+        return Response({'error': 'شما دسترسی ندارید'}, status=400)
+
+    if pk is None:
+        return Response({'error': 'name or pk is required'}, status=400)
+    else:
+        media = UserMedia.objects.get(pk=pk)
+        media.delete()
+        return Response('', status=204)

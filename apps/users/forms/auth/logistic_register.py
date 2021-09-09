@@ -34,7 +34,7 @@ class LogisticRegisterForm(BaseUserRegisterForm):
     company_name = forms.CharField(required=False)
     company_type = forms.CharField(required=False)
     company_license_type = forms.CharField(required=False)
-    company_license_number = forms.CharField(required=False)
+    company_license_code = forms.CharField(required=False)
     company_license_start = forms.CharField(required=False)
     company_license_end = forms.CharField(required=False)
     company_register_code = forms.CharField(required=False)
@@ -52,7 +52,7 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         fields = ('first_name', 'last_name', 'legal_type', 'id_code', 'national_code', 'address', 'postal_code',
                   'region', 'phone_number', 'bank_account_name', 'bank_sheba_number',
                   'company_name', 'company_type', 'company_register_code', 'company_license_type',
-                  'company_license_number', 'company_license_start', 'company_license_end',
+                  'company_license_code', 'company_license_start', 'company_license_end',
                   'image_id_card_front', 'image_id_card_back', 'image_company_license',)
 
     def clean_use_type(self) -> str:
@@ -133,6 +133,7 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         return jdatetime.JalaliDate(*map(lambda x: int(x), value.split('-'))).to_gregorian()
 
     def save(self, commit: bool = True) -> User:
+        print(self.cleaned_data)
         with transaction.atomic():
             user = User.objects.create(
                 use_type=self.cleaned_data['use_type'],
@@ -168,7 +169,7 @@ class LogisticRegisterForm(BaseUserRegisterForm):
         profile.company_type = self.cleaned_data['company_type']
         profile.company_register_code = self.cleaned_data['company_register_code']
         profile.company_license_type = self.cleaned_data['company_license_type']
-        profile.company_license_code = self.cleaned_data['company_license_number']
+        profile.company_license_code = self.cleaned_data['company_license_code']
         profile.company_license_start = self.cleaned_data['company_license_start']
         profile.company_license_end = self.cleaned_data['company_license_end']
         profile.company_ceo_name = self.cleaned_data['company_ceo_name']

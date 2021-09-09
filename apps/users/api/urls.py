@@ -13,6 +13,7 @@ from apps.users.api.views import (
     register_logistic_validation,
     user_accept,
     user_reject,
+    remove_image,
 )
 
 app_name = 'users'
@@ -30,4 +31,5 @@ urlpatterns = [
     path('users/', UserListAPIView.as_view(), name='user_list'),
     path('users/<int:pk>/accept', user_accept, name='user_accept'),
     path('users/<int:pk>/reject', user_reject, name='user_reject'),
+    path('users/remove-image', remove_image, name='remove_image'),
 ]

@@ -103,24 +103,24 @@
                                             <div class="ph-private-business-check d-flex">
                                                 <div class="custom-control custom-radio form-check-inline">
                                                     <input class="custom-control-input" type="radio" name="company_type"
-                                                           id="aam">
+                                                           id="aam" value="am">
                                                     <label class="custom-control-label" for="aam" id="aam">سهامی
                                                         عام</label>
                                                 </div><!-- .custom-radio -->
                                                 <div class="custom-control custom-radio form-check-inline">
                                                     <input class="custom-control-input" type="radio" name="company_type"
-                                                           id="khas">
+                                                           id="khas" value="khas">
                                                     <label class="custom-control-label" for="khas">سهامی خاص</label>
                                                 </div><!-- .custom-radio -->
                                                 <div class="custom-control custom-radio form-check-inline">
                                                     <input class="custom-control-input" type="radio" name="company_type"
-                                                           id="mahdud">
+                                                           id="mahdud" value="masouliat_mahdood">
                                                     <label class="custom-control-label" for="mahdud" id="mahdud">مسئولیت
                                                         محدود</label>
                                                 </div><!-- .custom-radio -->
                                                 <div class="custom-control custom-radio form-check-inline">
                                                     <input class="custom-control-input" type="radio" name="company_type"
-                                                           id="taavoni">
+                                                           id="taavoni" value="taavoni">
                                                     <label class="custom-control-label" for="taavoni" id="taavoni">تعاونی</label>
                                                 </div><!-- .custom-radio -->
                                             </div><!-- .ph-private-business-check -->
@@ -131,12 +131,12 @@
                                                    required name="company_register_code">
                                         </div><!-- .col-md-12 -->
                                         <div class="col-md-12 col-lg-6 mb-3">
-                                            <label for="ph_company_account_name">کد ملی شرکت</label>
+                                            <label for="ph_company_account_name">شناسه ملی شرکت</label>
                                             <input type="text" class="form-control" id="ph_company_account_name"
                                                    required name="company_national_code">
                                         </div><!-- .col-md-12 col-lg-6 -->
                                         <div class="col-md-12 col-lg-6 mb-3">
-                                            <label for="ph_company_account_name">کد مالی</label>
+                                            <label for="ph_company_account_name">کد اقتصادی</label>
                                             <input type="text" class="form-control" id="ph_company_account_name"
                                                    required name="company_finance_code">
                                         </div><!-- .col-md-12 col-lg-6 -->
@@ -232,7 +232,7 @@
                                                 <span class="title">گواهی ثبت شرکت</span>
                                                 <div class="ph-regi-image-upload-wrap">
                                                     <input class="ph-regi-file-upload-input" type='file'
-                                                           onchange="readURL(this);" accept="image/*"/>
+                                                           onchange="readURL(this);" accept="image/*" name="image_company_registration"/>
                                                     <div class="ph-regi-drag-text">
                                                         <h3>عکس مورد نظر خود را انتخاب کنید</h3>
                                                         <i class="fas fa-cloud-upload-alt"></i>
@@ -251,7 +251,7 @@
                                             <div class="ph-regi-upload-file">
                                                 <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
                                                 <div class="ph-regi-image-upload-wrap">
-                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_latest_newspaper"
                                                            onchange="readURL(this);" accept="image/*"/>
                                                     <div class="ph-regi-drag-text">
                                                         <h3>عکس مورد نظر خود را انتخاب کنید</h3>
@@ -271,7 +271,7 @@
                                             <div class="ph-regi-upload-file">
                                                 <span class="title">گواهی مالیات بر ارزش افزوده</span>
                                                 <div class="ph-regi-image-upload-wrap">
-                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_tax_on_added_value_certificate"
                                                            onchange="readURL(this);" accept="image/*"/>
                                                     <div class="ph-regi-drag-text">
                                                         <h3>عکس مورد نظر خود را انتخاب کنید</h3>
@@ -481,7 +481,7 @@
                                             <span class="title">تصویر روی کارت ملی</span>
                                             <div class="ph-regi-image-upload-wrap">
                                                 <input class="ph-regi-file-upload-input" type='file'
-                                                       onchange="readURL(this);"
+                                                       onchange="readURL(this);" name="image_id_card_front"
                                                        accept="image/*"/>
                                                 <div class="ph-regi-drag-text">
                                                     <h3>عکس مورد نظر خود را انتخاب کنید</h3>
@@ -501,7 +501,7 @@
                                             <span class="title">تصویر پشت کارت ملی</span>
                                             <div class="ph-regi-image-upload-wrap">
                                                 <input class="ph-regi-file-upload-input" type='file'
-                                                       onchange="readURL(this);"
+                                                       onchange="readURL(this);" name="image_id_card_back"
                                                        accept="image/*"/>
                                                 <div class="ph-regi-drag-text">
                                                     <h3>عکس مورد نظر خود را انتخاب کنید</h3>

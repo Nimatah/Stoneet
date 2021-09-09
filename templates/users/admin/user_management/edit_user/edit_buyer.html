@@ -1,10 +1,493 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base_admin.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block meta_content %}
+    {{ regions|json_script:"regions" }}
+{% endblock %}
+
+
+{% block admin_content %}
+    <main class="ph-dashboard-main ph-admin-panel ph-create-seller">
+        <div class="container">
+            <div class="ph-admin-page-intro-text">
+                <span>ویرایش خریدار | </span>
+                حساب خریدار را ویرایش کنید.
+            </div><!-- .ph-admin-page-intro-text -->
+            <div class="ph-admin-page-list-container real-account bg-light ph-border-radius ph-box-shadow my-4">
+                <div class="ph-new-login-info-wrapper">
+                    {% if buyer.is_legal %}
+                    <form action="{% url 'users:admin_edit_buyer' pk=buyer.id %}" method="post" id="company-form" role="form"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="legal_type" value="legal">
+                        <div class="ph-conditional-wrapper" id="ph-company-wrapper">
+                            <section class="ph-real-account" id="ph_user_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        مشخصات کاربری
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email">ایمیل</label>
+                                            <input type="text" class="form-control"
+                                                   id="email" name="email" value="{{ buyer.email }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="mobile_number">شماره موبایل</label>
+                                            <input type="text" class="form-control"
+                                                   id="mobile_number" name="mobile_number" value="{{ buyer.mobile_number }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-company-account" id="ph_company_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_company_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <label for="ph_company_account_name" id="company-name">نام شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   name="company_name" value="{{ buyer.profile.company_name }}">
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 mb-3">
+                                            <label for="ph_type_of_company" id="company-type">نوع شرکت</label>
+                                            <div class="ph-private-business-check d-flex">
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type" value="am"
+                                                           id="aam" {% if buyer.profile.company_type == 'am' %}checked{% endif %}>
+                                                    <label class="custom-control-label" for="aam" id="aam">سهامی
+                                                        عام</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type" value="khas"
+                                                           id="khas" {% if buyer.profile.company_type == 'khas' %}checked{% endif %}>
+                                                    <label class="custom-control-label" for="khas">سهامی خاص</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type" value="masouliat_mahdood"
+                                                           id="mahdud" {% if buyer.profile.company_type == 'masouliat_mahdood' %}checked{% endif %}>
+                                                    <label class="custom-control-label" for="mahdud" id="mahdud">مسئولیت
+                                                        محدود</label>
+                                                </div><!-- .custom-radio -->
+                                                <div class="custom-control custom-radio form-check-inline">
+                                                    <input class="custom-control-input" type="radio" name="company_type" value="taavoni"
+                                                           id="taavoni" {% if buyer.profile.company_type == 'taavoni' %}checked{% endif %}>
+                                                    <label class="custom-control-label" for="taavoni" id="taavoni">تعاونی</label>
+                                                </div><!-- .custom-radio -->
+                                            </div><!-- .ph-private-business-check -->
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">شماره ثبت شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   name="company_register_code" value="{{ buyer.profile.company_register_code }}">
+                                        </div><!-- .col-md-12 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">شناسه ملی شرکت</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   required name="company_national_code" value="{{ buyer.profile.company_national_code }}">
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">کد اقتصادی</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   required name="company_finance_code" value="{{ buyer.profile.company_finance_code }}">
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                        <div class="col-md-12 col-lg-6 mb-3">
+                                            <label for="ph_company_account_name">حق چاپ امضا</label>
+                                            <input type="text" class="form-control" id="ph_company_account_name"
+                                                   required name="company_print_signature_right" value="{{ buyer.profile.company_print_signature_right }}">
+                                        </div><!-- .col-md-12 col-lg-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- .needs-validation -->
+                            </section><!-- .ph-company-account -->
+                            <section class="ph-info-contacts" id="ph_info_contacts">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_info_contact_form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="legal-provinces">استان</label>
+                                            <select id="legal-provinces" data-value="{{ buyer.profile.region.parent.id }}"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="default" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="legal-cities">شهر</label>
+                                            <select id="legal-cities" name="region" data-value="{{ buyer.profile.region.id }}"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-12 mb-3">
+                                            <label for="ph_info_contacts_address">آدرس</label>
+                                            <input type="text" class="form-control" id="ph_info_contacts_address"
+                                                   placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
+                                                   name="address" value="{{ buyer.profile.address }}">
+                                        </div><!-- .col-12 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_kodposti">کدپستی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_kodposti"
+                                                   name="postal_code" value="{{ buyer.profile.postal_code }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_tel">تلفن ثابت</label>
+                                            <input type="text" class="form-control text-left" id="ph_info_contacts_tel"
+                                                   name="phone_number" value="{{ buyer.profile.phone_number }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_info_contact_form -->
+                            </section><!-- .ph-info-contacts -->
+                            <section class="ph-business-info" id="ph_business_info">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات مالی شرکت
+                                    </span>
+                                </div>
+                                <div id="ph_business_info_form">
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <label for="ph_business_info_brand">نام حساب بانکی شخصی</label>
+                                            <input type="text" class="form-control" id="ph_business_info_brand"
+                                                   placeholder="نام حساب بانکی شخصی..." required
+                                                   name="bank_account_name" value="{{ buyer.profile.bank_account_name }}">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 mb-4">
+                                            <label for="bank_account_number">شماره حساب بانکی</label>
+                                            <input type="text" class="form-control" id="bank_account_number"
+                                                   placeholder="شماره حساب بانکی"
+                                                   name="bank_account_number" value="{{ buyer.profile.bank_account_number }}">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 mb-4">
+                                            <label for="ph_business_info_sheba">شماره شبا</label>
+                                            <input type="text" class="form-control" id="ph_business_info_sheba"
+                                                   placeholder="IR __-____-____-____-____-____-__" value="{{ buyer.profile.bank_sheba_number }}"
+                                                   style="direction: ltr;text-align: left;" name="bank_sheba_number">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_business_info_form -->
+                            </section><!-- .ph-business-info -->
+                            <section class="ph-business-uploadimg" id="">
+                                <div class="ph-panel-title">
+                                        <span class="title ph-border-radius">
+                                            بارگذاری مدارک
+                                        </span>
+                                </div>
+                                <div class="container">
+                                    <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
+                                        <div class="flow-root">
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">گواهی ثبت شرکت</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_registration"
+                                                           onchange="readURL(this);" accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_latest_newspaper"
+                                                           onchange="readURL(this);" accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">گواهی مالیات بر ارزش افزوده</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" accept="image/*" name="image_company_tax_on_added_value_certificate"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image"><i
+                                                                class="fas fa-times"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-conditional-wrapper-2 -->
+                                    <div class="ph-new-login-info-btn my-2">
+                                        <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ثبت</button>
+                                    </div><!-- .ph-new-login-info-btn -->
+                                </div><!-- .container -->
+                            </section><!-- .ph-business-uploadimg -->
+
+                        </div><!-- .ph-conditional-wrapper -->
+                    </form>
+                    {% else %}
+                    <form action="{% url 'users:admin_edit_buyer' pk=buyer.id %}" method="post" id="company-form" role="form"
+                          enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="legal_type" value="individual">
+                        <div class="ph-conditional-wrapper" id="ph-individual-wrapper">
+                            <section class="ph-real-account" id="ph_user_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        مشخصات کاربری
+                                    </span>
+                                </div><!-- ph-panel-title -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="email">ایمیل</label>
+                                            <input type="text" class="form-control"
+                                                   id="email" name="email" value="{{ buyer.email }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                <div id="ph_real_account_name_lastname" class="needs-validation">
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="mobile_number">شماره موبایل</label>
+                                            <input type="text" class="form-control"
+                                                   id="mobile_number" name="mobile_number" value="{{ buyer.mobile_number }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-real-account" id="ph_real_account">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_real_account_name_lastname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_name">نام</label>
+                                            <input type="text" class="form-control" id="ph_real_account_name"
+                                                   name="first_name" value="{{ buyer.profile.first_name }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_lastname">نام خانوادگی</label>
+                                            <input type="text" class="form-control" id="ph_real_account_lastname"
+                                                   required name="last_name" value="{{ buyer.profile.last_name }}">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_name_lastname -->
+                                <div class="row">
+                                    <div id="ph_real_account_gender" class="d-flex col-lg-6">
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input class="custom-control-input" type="radio" {% if buyer.is_male %}checked{% endif %}
+                                                   name="gender" id="ph_real_account_gender_man" value="male">
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_man">مرد</label>
+                                        </div><!-- .custom-radio -->
+                                        <div class="custom-control custom-radio form-check-inline">
+                                            <input class="custom-control-input" type="radio" {% if buyer.is_female %}checked{% endif %}
+                                                   name="gender" id="ph_real_account_gender_woman" value="female">
+                                            <label class="custom-control-label"
+                                                   for="ph_real_account_gender_woman">زن</label>
+                                        </div><!-- .custom-radio -->
+                                    </div><!-- #ph_real_account_gender -->
+                                    <div class="col-md-6 ph-real-account-birthday">
+                                        <label for="birthday">تاریخ تولد</label>
+                                        <input readonly data-type="individual" type="text" id="birthday" name="birthday"
+                                               class="form-control" style="background: #ffffff !important" value="{{ buyer.profile.get_persian_birthday }}">
+                                    </div><!-- .ph-real-account-birthday -->
+                                </div>
+                                <div id="ph_real_account_melli_shenasname" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_shenasname">شماره شناسنامه</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_real_account_shenasname" value="{{ buyer.profile.id_code }}"
+                                                   placeholder="مثال ۱۲۳۴۵" required name="id_code">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_real_account_melli">کد ملی</label>
+                                            <input type="text" class="form-control text-left" value="{{ buyer.profile.national_code }}" id="ph_real_account_melli"
+                                                   placeholder="مثال ۱۲۳۴۵۶۷۸۹۰" required name="national_code">
+                                        </div><!-- .col-md-6 -->
+                                    </div><!-- .form-row -->
+                                </div><!-- #ph_real_account_melli_shenasname -->
+                            </section><!-- .ph-real-account -->
+                            <section class="ph-info-contacts" id="ph_info_contacts">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات تماس شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_info_contact_form">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="individual-provinces">استان</label>
+                                            <select id="individual-provinces" data-value="{{ buyer.profile.region.parent.id }}"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="default" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="individual-cities">شهر</label>
+                                            <select id="individual-cities" name="region" data-value="{{ buyer.profile.region.id }}"
+                                                    class="mdb-select custom-select md-form">
+                                                <option value="" disabled selected>انتخاب کنید:</option>
+                                            </select>
+                                        </div><!-- .col-md-6-->
+                                        <div class="col-12 mb-3">
+                                            <label for="ph_info_contacts_address">آدرس</label>
+                                            <input type="text" class="form-control" id="ph_info_contacts_address"
+                                                   placeholder="آدرس خود را به صورت کامل (محله - خیابان اصلی - کوچه - پلاک – واحد ) وارد نمایید"
+                                                   required name="address" value="{{ buyer.profile.address }}">
+                                        </div><!-- .col-md-6 -->
+                                        <div class="col-md-6 mb-3">
+                                            <label for="ph_info_contacts_kodposti">کدپستی</label>
+                                            <input type="text" class="form-control text-left"
+                                                   id="ph_info_contacts_kodposti" value="{{ buyer.profile.postal_code }}"
+                                                   placeholder="مثال ۱۲۳۴۵-۶۷۸۹۰" required name="postal_code">
+                                            <div class="valid-feedback">
+                                            </div><!-- .col-md-6 -->
+                                            <div class="col-md-6 mb-3">
+                                                <label for="ph_info_contacts_tel">تلفن ثابت</label>
+                                                <input type="text" class="form-control text-left"
+                                                       id="ph_info_contacts_tel" value="{{ buyer.profile.phone_number }}"
+                                                       placeholder="مثال ۰۲۱۲۲۳۳۴۴۵۵ "
+                                                       required name="phone_number">
+                                            </div><!-- .col-md-6 -->
+                                        </div><!-- .row -->
+                                    </div><!-- #ph_info_contact_form -->
+                                </div>
+                            </section><!-- .ph-info-contacts -->
+                            <section class="ph-business-info" id="ph_business_info">
+                                <div class="ph-panel-title">
+                                    <span class="title ph-border-radius">
+                                        اطلاعات مالی شخصی
+                                    </span>
+                                </div>
+                                <div id="ph_business_info_form">
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <label for="ph_business_info_brand">نام حساب بانکی شخصی</label>
+                                            <input type="text" class="form-control" id="ph_business_info_brand"
+                                                   placeholder="نام حساب بانکی شخصی..." value="{{ buyer.profile.bank_account_name }}"
+                                                   name="bank_account_name">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 mb-4">
+                                            <label for="bank_account_number">شماره حساب بانکی</label>
+                                            <input type="text" class="form-control" id="bank_account_number"
+                                                   placeholder="شماره حساب بانکی" value="{{ buyer.profile.bank_account_number }}"
+                                                   name="bank_account_number">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                        <div class="col-12 mb-4">
+                                            <label for="ph_business_info_sheba">شماره شبا</label>
+                                            <input type="text" class="form-control" id="ph_business_info_sheba"
+                                                   placeholder="IR __-____-____-____-____-____-__" value="{{ buyer.profile.bank_sheba_number }}"
+                                                   style="direction: ltr;text-align: left;" name="bank_sheba_number">
+                                        </div><!-- .col-12 col-lg-6 -->
+                                    </div><!-- .row -->
+                                </div><!-- #ph_business_info_form -->
+                            </section><!-- .ph-business-info -->
+                            <section class="ph-business-uploadimg" id="">
+                                <div class="ph-panel-title">
+                                        <span class="title ph-border-radius">
+                                            بارگذاری مدارک
+                                        </span>
+                                </div>
+                                <div class="container">
+                                    <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
+                                        <div class="ph-regi-upload-file">
+                                            <span class="title">تصویر روی کارت ملی</span>
+                                            <div class="ph-regi-image-upload-wrap">
+                                                <input class="ph-regi-file-upload-input" type='file'
+                                                       onchange="readURL(this);" name="image_id_card_front"
+                                                       accept="image/*"/>
+                                                <div class="ph-regi-drag-text">
+                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-file-upload-content">
+                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                <div class="ph-regi-image-title-wrap">
+                                                    <button type="button" onclick="removeUpload(this)"
+                                                            class="ph-regi-remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ph-regi-upload-file">
+                                            <span class="title">تصویر پشت کارت ملی</span>
+                                            <div class="ph-regi-image-upload-wrap">
+                                                <input class="ph-regi-file-upload-input" type='file'
+                                                       onchange="readURL(this);" name="image_id_card_back"
+                                                       accept="image/*"/>
+                                                <div class="ph-regi-drag-text">
+                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ph-regi-file-upload-content">
+                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                <div class="ph-regi-image-title-wrap">
+                                                    <button type="button" onclick="removeUpload(this)"
+                                                            class="ph-regi-remove-image">
+                                                        <i class="fas fa-times"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .ph-conditional-wrapper-2 -->
+                                    <!-- .ph-conditional-wrapper-2 -->
+                                    <div class="ph-new-login-info-btn my-2">
+                                        <button type="submit" id="ph_signup_submit_btn" class="btn ph-btn">ثبت</button>
+                                    </div><!-- .ph-new-login-info-btn -->
+                                </div>
+                            </section>
+                        </div><!-- .ph-conditional-wrapper -->
+                    </form>
+                    {% endif %}
+                </div><!-- .ph-new-login-info-wrapper -->
+            </div><!-- .ph-admin-page-list-container -->
+        </div><!-- .container -->
+    </main><!-- ph-create-seller-main ph-dashboard-main management-create-seller-->
+
+{% endblock %}
+
+{% block footer_static %}
+    <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/admin_edit_user.js' %}"></script>
+{% endblock %}

@@ -9,4 +9,5 @@ from .users import (
     register_seller_validation,
     user_accept,
     user_reject,
+    remove_image,
 )

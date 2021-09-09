@@ -98,12 +98,12 @@ class AddSellerView(UserPassesTestMixin, TemplateView):
                 user.media.create(
                     title=UserMedia.name_map['image_id_card_front'],
                     file=files['image_id_card_front'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_id_card_back'],
                     file=files['image_id_card_back'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
 
         else:
@@ -138,17 +138,17 @@ class AddSellerView(UserPassesTestMixin, TemplateView):
                 user.media.create(
                     title=UserMedia.name_map['image_company_registration'],
                     file=files['image_company_registration'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_company_latest_newspaper'],
                     file=files['image_company_latest_newspaper'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_company_tax_on_added_value_certificate'],
                     file=files['image_company_tax_on_added_value_certificate'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
 
         return redirect(reverse_lazy('users:admin_list_seller'))
@@ -201,12 +201,12 @@ class AddBuyerView(UserPassesTestMixin,TemplateView):
                 user.media.create(
                     title=UserMedia.name_map['image_id_card_front'],
                     file=files['image_id_card_front'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_id_card_back'],
                     file=files['image_id_card_back'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
         else:
             with transaction.atomic():
@@ -240,17 +240,17 @@ class AddBuyerView(UserPassesTestMixin,TemplateView):
                 user.media.create(
                     title=UserMedia.name_map['image_company_registration'],
                     file=files['image_company_registration'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_company_latest_newspaper'],
                     file=files['image_company_latest_newspaper'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
                 user.media.create(
                     title=UserMedia.name_map['image_company_tax_on_added_value_certificate'],
                     file=files['image_company_tax_on_added_value_certificate'],
-                    type=UserMedia
+                    type=UserMedia.TYPE_IMAGE
                 )
             
         return redirect(reverse_lazy('users:admin_list_buyer'))
@@ -296,7 +296,7 @@ class AddLogisticView(UserPassesTestMixin, TemplateView):
             profile.company_type = data['company_type']
             profile.company_register_code = data['company_register_code']
             profile.company_license_type = data['company_license_type']
-            profile.company_license_code = data['company_license_number']
+            profile.company_license_code = data['company_license_code']
             profile.company_license_start = data['company_license_start']
             profile.company_license_end = data['company_license_end']
             profile.company_ceo_name = data['company_ceo_name']
@@ -311,19 +311,19 @@ class AddLogisticView(UserPassesTestMixin, TemplateView):
             user.media.create(
                 title=UserMedia.name_map['image_company_license'],
                 file=files['image_company_license'],
-                type=UserMedia
+                type=UserMedia.TYPE_IMAGE
             )
 
             user.media.create(
                 title=UserMedia.name_map['image_id_card_front'],
                 file=files['image_id_card_front'],
-                type=UserMedia
+                type=UserMedia.TYPE_IMAGE
             )
 
             user.media.create(
                 title=UserMedia.name_map['image_id_card_back'],
                 file=files['image_id_card_back'],
-                type=UserMedia
+                type=UserMedia.TYPE_IMAGE
             )
 
         return redirect(reverse_lazy('users:admin_list_logistic'))
