@@ -5,6 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.request import Request
 
+from apps.invoices.models import Invoice
 from apps.orders.models import Order, OrderMedia
 from apps.auction.models import Auction
 
@@ -113,3 +114,21 @@ def remove_order_image(request, pk, image_pk):
     OrderMedia.objects.get(pk=image_pk).delete()
 
     return Response("", status=200)
+
+
+@api_view(['GET', ])
+def accept_order(request: Request, pk):
+    try:
+        order = Order.objects.get(pk=pk)
+    except Order.DoesNotExist:
+        return Response({"message": "سفارش یافت نشد"}, status=404)
+
+    if order.buyer_id != request.user.id:
+        return Response({"message": "شما دسترسی ندارید"}, status=401)
+
+    order.state = Order.STATE_ACCEPTED
+    order.save()
+
+    order.invoice_set.update(state=Invoice.STATE_UNPAID)
+
+    return Response(None, status=200)

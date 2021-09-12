@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import seller_order_accept, seller_order_reject, \
-    save_order_contract_images, save_order_finance_images, remove_order_image
+    save_order_contract_images, save_order_finance_images, remove_order_image, accept_order
 
 app_name = 'orders'
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path("orders/<int:pk>/upload-signed", save_order_contract_images, name="upload_signed"),
     path("orders/<int:pk>/upload-finance", save_order_finance_images, name="upload_finance"),
     path("orders/<int:pk>/media/<int:image_pk>/", remove_order_image, name="remove_image"),
+    path("orders/<int:pk>/accept-order", accept_order, name="accept_order"),
 ]

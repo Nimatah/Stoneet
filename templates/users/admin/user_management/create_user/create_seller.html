@@ -22,13 +22,13 @@
                         </div>
                         <div class="ph-private-business-check ph-conditional d-flex">
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" id="haqiqi"
-                                       value="ph-individual-wrapper">
+                                <input class="custom-control-input" name="dummy" type="radio" id="haqiqi"
+                                       value="individual" data-tab="ph-individual-wrapper">
                                 <label class="custom-control-label" for="haqiqi">شخص حقیقی</label>
                             </div><!-- .custom-radio -->
                             <div class="custom-control custom-radio form-check-inline">
-                                <input class="custom-control-input" type="radio" id="hoquqi"
-                                       value="ph-company-wrapper">
+                                <input class="custom-control-input" name="dummy" type="radio" id="hoquqi"
+                                       value="legal" data-tab="ph-company-wrapper">
                                 <label class="custom-control-label" for="hoquqi">شخص حقوقی</label>
                             </div><!-- .custom-radio -->
                         </div><!-- .ph-private-business-check -->
@@ -45,6 +45,7 @@
                         </p>
                     </section><!-- .ph-private-business -->
                     <form method="post" action="{% url 'users:admin_add_seller' %}" role="form" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="ph-conditional-wrapper" id="ph-company-wrapper">
                             <section class="ph-company-account" id="ph_company_account">
                                 <div class="ph-panel-title">

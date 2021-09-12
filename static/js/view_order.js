@@ -144,3 +144,22 @@ $('div[role="button"]').on('click', function () {
     $(hash).css('width', '100%')
     $(hash).css('display', 'block')
 })
+
+$('#accept-order').on('click', function() {
+    $.ajax(`/api/orders/${orderId}/accept-order`, {
+            method: "GET",
+            success: function (resp) {
+                window.location.href = '/users/panel/dashboard'
+            },
+            error: function (xhr, status, error) {
+                e.preventDefault();
+                $('#error-modal .modal-body').empty()
+                let response = JSON.parse(xhr.responseText)
+                $('#error-modal .modal-body').append(
+                    `<div><span class="font-weight-bold">خطا</span>: ${response.error}</div>`
+                )
+                $('#error-modal').modal('show');
+            }
+        }
+    )
+})

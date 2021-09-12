@@ -101,7 +101,7 @@
                     <!-- ph-cp-header-parts shell-2 -->
                     <div class="ph-cp-panel ph-border-radius ph-white-block ph-box-shadow">
                         <div class="ph-view-order-block">
-                            {% if logistic_order %}
+                            {% if logistic_invoice %}
                             <div class="ph-view-order-table">
                                 <table class="ph-table table table-bordered text-center">
                                     <thead class="thead-dark">
@@ -120,14 +120,14 @@
                                         <td>{{ seller_invoice.order.product.title }}%</td>
                                         <td>{{ seller_invoice.order.weight }} {{ seller_invoice.order.product.get_price.get_wieght_unit_display }}</td>
                                         <td>{{ seller_invoice.order.product.get_price.value|intcomma }} ریال</td>
-                                        <td>{{ seller_invoice.order.price|intcomma }} ریال</td>
+                                        <td>{{ seller_invoice.price|intcomma }} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>هزینه ارسال کالا</td>
                                         <td>{{ logistic_invoice.logistic_order.monthly_load_count }}</td>
                                         <td>{{ logistic_invoice.logistic_order.get_monthly_price|intcomma }}</td>
-                                        <td>{{ logistic_invoice.logistic_order.price|intcomma }} ریال</td>
+                                        <td>{{ logistic_invoice.price|intcomma }} ریال</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -141,15 +141,15 @@
                                     <tbody>
                                     <tr>
                                         <td>هزینه</td>
-                                        <td>{{seller_invoice.order.price|add:logistic_invoice.logistic_order.price|intcomma}} ریال</td>
+                                        <td>{{seller_invoice.price|add:logistic_invoice.price|intcomma}} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>ارزش افزوده 9 %</td>
-                                        <td>{{seller_invoice.get_vat|add:logistic_invoice.get_vat|intcomma}} ریال</td>
+                                        <td>{{seller_invoice.vat_price|add:logistic_invoice.vat_price|intcomma}} ریال</td>
                                     </tr>
                                     <tr>
                                         <td>مبلغ قابل پرداخت</td>
-                                        <td>{{seller_invoice.get_final_price|add:logistic_invoice.get_final_price|intcomma}} ریال</td>
+                                        <td>{{seller_invoice.final_price|add:logistic_invoice.final_price|intcomma}} ریال</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -383,7 +383,7 @@
                                     <p>فاکتور را مشاهده کرده و تایید میکنم</p>
                                 </li>
                                 <li>
-                                    <i class="fas fa-times"></i>
+                                    <i class="fas fa-check"></i>
                                     <p>تمامی فایل‌ها امضا شده و تایید میکنم</p>
                                 </li>
                                 <li>
@@ -398,7 +398,7 @@
                             <label for='level5' id="back-level5" class="back">
                                 <div class="ph-cpp-btn-n ph-btn" role="button" data-hash="shell4">قبلی</div>
                             </label>
-                            <button type="submit" class="ph-btn bg-color-4 ph-border-radius-small">تایید سفارش</button>
+                            <button id="accept-order" type="submit" class="ph-btn bg-color-4 ph-border-radius-small">تایید سفارش</button>
                         </div>
                     </div>
                     <!-- ph-cp-panel ph-border-radius ph-white-block ph-box-shadow -->

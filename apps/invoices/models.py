@@ -20,6 +20,8 @@ class InvoiceManager(models.Manager):
 
 class Invoice(models.Model):
 
+    VAT = 9
+
     TYPE_SELLER = 'seller'
     TYPE_BUYER = 'buyer'
     TYPE_LOGISTIC = 'logistic'
@@ -41,8 +43,7 @@ class Invoice(models.Model):
     )
 
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
-    number = models.IntegerField(default=1)
-    guaranty = models.BigIntegerField(default=0)
+    serial = models.IntegerField(default=1)
     order = models.ForeignKey('orders.Order', on_delete=models.CASCADE, null=True)
     logistic_order = models.ForeignKey('orders.LogisticOrder', on_delete=models.CASCADE, null=True)
     auction = models.ForeignKey('auction.Auction', on_delete=models.CASCADE, null=True)
@@ -51,6 +52,9 @@ class Invoice(models.Model):
     due_at = models.DateField(null=True)
     state = models.CharField(max_length=255, choices=STATE_CHOICES)
     type = models.CharField(max_length=255, choices=TYPE_CHOICES, null=True, blank=True)
+    vat_price = models.BigIntegerField(default=0)
+    price = models.BigIntegerField(default=0)
+    final_price = models.BigIntegerField(default=0)
 
     def get_persian_timestamp(self):
         if not self.timestamp:
@@ -61,13 +65,3 @@ class Invoice(models.Model):
         if not self.due_at:
             return ''
         return JalaliDate.to_jalali(self.due_at)
-
-    def get_final_price(self):
-        if self.logistic_order:
-            return self.logistic_order.price + (self.logistic_order.price * (9 / 100))
-        return self.order.price + (self.order.price * (9 / 100))
-
-    def get_vat(self):
-        if self.logistic_order:
-            return self.logistic_order.price * (9 / 100)
-        return self.order.price * (9 / 100)

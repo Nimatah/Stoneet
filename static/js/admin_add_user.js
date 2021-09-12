@@ -22,6 +22,19 @@ function handleRegions(legal) {
     });
 }
 
+$(document).ready(function () {
+    $(".ph-conditional").change(function () {
+        let selected = $(".ph-conditional .custom-control-input:checked").data('tab');
+        $('.ph-conditional-wrapper').hide();
+        $('.ph-conditional-wrapper-2').hide();
+        $('#' + selected).show();
+        $('#' + selected + -2).show();
+
+    });
+    $('.ph-conditional-wrapper').hide();
+    $('.ph-conditional-wrapper-2').hide();
+});
+
 function handlePersianDatePicker(id) {
     $(document).ready(function () {
         try {

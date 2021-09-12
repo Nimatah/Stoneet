@@ -34,6 +34,9 @@ def process_auction():
                 auction=auction,
                 state=Invoice.STATE_PRE,
                 type=Invoice.TYPE_SELLER,
+                price=auction.order.price,
+                vat_price=auction.order.price * (Invoice.VAT / 100),
+                final_price=auction.order.price + (auction.order.price * (Invoice.VAT / 100)),
             )
             Invoice.objects.create(
                 user=logistic_order.order.buyer,
@@ -41,6 +44,9 @@ def process_auction():
                 auction=auction,
                 state=Invoice.STATE_PRE,
                 type=Invoice.TYPE_BUYER,
+                price=auction.order.price,
+                vat_price=auction.order.price * (Invoice.VAT / 100),
+                final_price=auction.order.price + (auction.order.price * (Invoice.VAT / 100)),
             )
             Invoice.objects.create(
                 user=logistic_order.user,
@@ -49,4 +55,7 @@ def process_auction():
                 auction=auction,
                 state=Invoice.STATE_PRE,
                 type=Invoice.TYPE_LOGISTIC,
+                price=logistic_order.price,
+                vat_price=logistic_order.price * (9 / 100),
+                final_price=logistic_order.price + (logistic_order.price * (Invoice.VAT / 100))
             )
