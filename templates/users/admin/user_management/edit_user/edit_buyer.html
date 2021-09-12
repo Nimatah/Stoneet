@@ -187,68 +187,166 @@
                                         </span>
                                 </div>
                                 <div class="container">
-                                    <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
-                                        <div class="flow-root">
-                                            <div class="ph-regi-upload-file">
-                                                <span class="title">گواهی ثبت شرکت</span>
-                                                <div class="ph-regi-image-upload-wrap">
-                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_registration"
-                                                           onchange="readURL(this);" accept="image/*"/>
-                                                    <div class="ph-regi-drag-text">
-                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
-                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                    {% if buyer.get_image_company_registration %}
+                                        <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
+                                            <div class="flow-root">
+                                                <div class="ph-regi-upload-file">
+                                                    <span class="title">گواهی ثبت شرکت</span>
+                                                    <div class="ph-regi-image-upload-wrap" style="display: none">
+                                                        <input class="ph-regi-file-upload-input" type='file'
+                                                               name="image_company_registration"
+                                                               onchange="readURL(this);" accept="image/*"/>
+                                                        <div class="ph-regi-drag-text">
+                                                            <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ph-regi-file-upload-content" style="display: block">
+                                                        <a id="file-upload-image-analyze"
+                                                               class="image-popup-vertical-fit square-image"
+                                                               href="{% get_media_prefix %}{{ buyer.get_image_company_registration.file }}"
+                                                               title="">
+                                                        <img class="ph-regi-file-upload-image" src="{% get_media_prefix %}{{ buyer.get_image_company_registration.file }}"
+                                                             alt="your image"/>
+                                                        </a>
+                                                        <div class="ph-regi-image-title-wrap">
+                                                            <button remove-image pk={{ buyer.get_image_company_registration.id }} type="button" onclick="removeUpload(this)"
+                                                                    class="ph-regi-remove-image"><i
+                                                                    class="fas fa-times"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="ph-regi-file-upload-content">
-                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
-                                                    <div class="ph-regi-image-title-wrap">
-                                                        <button type="button" onclick="removeUpload(this)"
-                                                                class="ph-regi-remove-image"><i
-                                                                class="fas fa-times"></i>
-                                                        </button>
+                                            {% else %}
+                                        <div class="ph-conditional-wrapper-2" id="ph-company-wrapper-2">
+                                            <div class="flow-root">
+                                                <div class="ph-regi-upload-file">
+                                                    <span class="title">گواهی ثبت شرکت</span>
+                                                    <div class="ph-regi-image-upload-wrap">
+                                                        <input class="ph-regi-file-upload-input" type='file'
+                                                               name="image_company_registration"
+                                                               onchange="readURL(this);" accept="image/*"/>
+                                                        <div class="ph-regi-drag-text">
+                                                            <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                            <i class="fas fa-cloud-upload-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ph-regi-file-upload-content">
+                                                        <img class="ph-regi-file-upload-image" src="#"
+                                                             alt="your image"/>
+                                                        <div class="ph-regi-image-title-wrap">
+                                                            <button type="button" onclick="removeUpload(this)"
+                                                                    class="ph-regi-remove-image"><i
+                                                                    class="fas fa-times"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="ph-regi-upload-file">
-                                                <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
-                                                <div class="ph-regi-image-upload-wrap">
-                                                    <input class="ph-regi-file-upload-input" type='file' name="image_company_latest_newspaper"
-                                                           onchange="readURL(this);" accept="image/*"/>
-                                                    <div class="ph-regi-drag-text">
-                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
-                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                            {% endif %}
+                                                {% if buyer.get_image_company_latest_newspaper %}
+                                                    <div class="ph-regi-upload-file">
+                                                        <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+                                                        <div class="ph-regi-image-upload-wrap" style="display: none">
+                                                            <input class="ph-regi-file-upload-input" type='file'
+                                                                   name="image_company_latest_newspaper"
+                                                                   onchange="readURL(this);" accept="image/*"/>
+                                                            <div class="ph-regi-drag-text">
+                                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ph-regi-file-upload-content" style="display: block">
+                                                            <a id="file-upload-image-analyze"
+                                                               class="image-popup-vertical-fit square-image"
+                                                               href="{% get_media_prefix %}{{ buyer.get_image_company_latest_newspaper.file }}"
+                                                               title="">
+                                                                <img class="ph-regi-file-upload-image" alt="your image"
+                                                                     src="{% get_media_prefix %}{{ buyer.get_image_company_latest_newspaper.file }}"/>
+                                                            </a>
+                                                            <div class="ph-regi-image-title-wrap">
+                                                                <button remove-image pk={{ buyer.get_image_company_latest_newspaper.id }} type="button" onclick="removeUpload(this)"
+                                                                        class="ph-regi-remove-image"><i
+                                                                        class="fas fa-times"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="ph-regi-file-upload-content">
-                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
-                                                    <div class="ph-regi-image-title-wrap">
-                                                        <button type="button" onclick="removeUpload(this)"
-                                                                class="ph-regi-remove-image"><i
-                                                                class="fas fa-times"></i>
-                                                        </button>
+                                                {% else %}
+                                                    <div class="ph-regi-upload-file">
+                                                        <span class="title">آخرین به روزرسانی روزنامه رسمی</span>
+                                                        <div class="ph-regi-image-upload-wrap">
+                                                            <input class="ph-regi-file-upload-input" type='file'
+                                                                   name="image_company_latest_newspaper"
+                                                                   onchange="readURL(this);" accept="image/*"/>
+                                                            <div class="ph-regi-drag-text">
+                                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ph-regi-file-upload-content">
+                                                            <img class="ph-regi-file-upload-image" src="#"
+                                                                 alt="your image"/>
+                                                            <div class="ph-regi-image-title-wrap">
+                                                                <button type="button" onclick="removeUpload(this)"
+                                                                        class="ph-regi-remove-image"><i
+                                                                        class="fas fa-times"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="ph-regi-upload-file">
-                                                <span class="title">گواهی مالیات بر ارزش افزوده</span>
-                                                <div class="ph-regi-image-upload-wrap">
-                                                    <input class="ph-regi-file-upload-input" type='file'
-                                                           onchange="readURL(this);" accept="image/*" name="image_company_tax_on_added_value_certificate"/>
-                                                    <div class="ph-regi-drag-text">
-                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
-                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                {% endif %}
+                                                {% if buyer.get_image_company_tax_on_added_value_certificate %}
+                                                    <div class="ph-regi-upload-file">
+                                                        <span class="title">گواهی مالیات بر ارزش افزوده</span>
+                                                        <div class="ph-regi-image-upload-wrap" style="display: none">
+                                                            <input class="ph-regi-file-upload-input" type='file'
+                                                                   onchange="readURL(this);" accept="image/*"
+                                                                   name="image_company_tax_on_added_value_certificate"/>
+                                                            <div class="ph-regi-drag-text">
+                                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ph-regi-file-upload-content" style="display: block">
+                                                            <a id="file-upload-image-analyze"
+                                                               class="image-popup-vertical-fit square-image"
+                                                               href="{% get_media_prefix %}{{ buyer.get_image_company_tax_on_added_value_certificate.file }}"
+                                                               title="">
+                                                            <img class="ph-regi-file-upload-image" src="{% get_media_prefix %}{{ buyer.get_image_company_tax_on_added_value_certificate.file }}"
+                                                                 alt="your image"/>
+                                                            </a>
+                                                            <div class="ph-regi-image-title-wrap">
+                                                                <button remove-image pk="{{ buyer.get_image_company_tax_on_added_value_certificate.id }}" type="button" onclick="removeUpload(this)"
+                                                                        class="ph-regi-remove-image"><i
+                                                                        class="fas fa-times"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="ph-regi-file-upload-content">
-                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
-                                                    <div class="ph-regi-image-title-wrap">
-                                                        <button type="button" onclick="removeUpload(this)"
-                                                                class="ph-regi-remove-image"><i
-                                                                class="fas fa-times"></i>
-                                                        </button>
+                                                {% else %}
+                                                    <div class="ph-regi-upload-file">
+                                                        <span class="title">گواهی مالیات بر ارزش افزوده</span>
+                                                        <div class="ph-regi-image-upload-wrap">
+                                                            <input class="ph-regi-file-upload-input" type='file'
+                                                                   onchange="readURL(this);" accept="image/*"
+                                                                   name="image_company_tax_on_added_value_certificate"/>
+                                                            <div class="ph-regi-drag-text">
+                                                                <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ph-regi-file-upload-content">
+                                                            <img class="ph-regi-file-upload-image" src="#"
+                                                                 alt="your image"/>
+                                                            <div class="ph-regi-image-title-wrap">
+                                                                <button type="button" onclick="removeUpload(this)"
+                                                                        class="ph-regi-remove-image"><i
+                                                                        class="fas fa-times"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                {% endif %}
                                         </div>
                                     </div><!-- .ph-conditional-wrapper-2 -->
                                     <div class="ph-new-login-info-btn my-2">
@@ -430,46 +528,103 @@
                                 </div>
                                 <div class="container">
                                     <div class="ph-conditional-wrapper-2" id="ph-individual-wrapper-2">
-                                        <div class="ph-regi-upload-file">
-                                            <span class="title">تصویر روی کارت ملی</span>
-                                            <div class="ph-regi-image-upload-wrap">
-                                                <input class="ph-regi-file-upload-input" type='file'
-                                                       onchange="readURL(this);" name="image_id_card_front"
-                                                       accept="image/*"/>
-                                                <div class="ph-regi-drag-text">
-                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
+
+                                            {% if buyer.get_image_id_card_front %}
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">تصویر روی کارت ملی</span>
+                                                <div class="ph-regi-image-upload-wrap" style="display: none">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" name="image_id_card_front"
+                                                           accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content" style="display: block">
+                                                    <a id="file-upload-image-analyze"
+                                                               class="image-popup-vertical-fit square-image"
+                                                               href="{% get_media_prefix %}{{ buyer.get_image_id_card_front.file }}"
+                                                               title="">
+                                                    <img class="ph-regi-file-upload-image" src="{% get_media_prefix %}{{ buyer.get_image_id_card_front.file }}" alt="your image"/>
+                                                    </a>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button remove-image pk={{ buyer.get_image_id_card_front.id }} type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="ph-regi-file-upload-content">
-                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
-                                                <div class="ph-regi-image-title-wrap">
-                                                    <button type="button" onclick="removeUpload(this)"
-                                                            class="ph-regi-remove-image">
-                                                        <i class="fas fa-times"></i></button>
+                                                {% else %}
+                                                <div class="ph-regi-upload-file">
+                                                <span class="title">تصویر روی کارت ملی</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" name="image_id_card_front"
+                                                           accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="ph-regi-upload-file">
-                                            <span class="title">تصویر پشت کارت ملی</span>
-                                            <div class="ph-regi-image-upload-wrap">
-                                                <input class="ph-regi-file-upload-input" type='file'
-                                                       onchange="readURL(this);" name="image_id_card_back"
-                                                       accept="image/*"/>
-                                                <div class="ph-regi-drag-text">
-                                                    <h3>عکس مورد نظر خود را انتخاب کنید</h3>
-                                                    <i class="fas fa-cloud-upload-alt"></i>
+                                                {% endif %}
+                                        {% if buyer.get_image_id_card_back %}
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">تصویر پشت کارت ملی</span>
+                                                <div class="ph-regi-image-upload-wrap" style="display: none">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" name="image_id_card_back"
+                                                           accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content" style="display: block">
+                                                    <a id="file-upload-image-analyze"
+                                                               class="image-popup-vertical-fit square-image"
+                                                               href="{% get_media_prefix %}{{ buyer.get_image_id_card_back.file }}"
+                                                               title="">
+                                                    <img class="ph-regi-file-upload-image" src="{% get_media_prefix %}{{ buyer.get_image_id_card_back.file }}" alt="your image"/>
+                                                    </a>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button remove-image pk={{ buyer.get_image_id_card_back.id }} type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="ph-regi-file-upload-content">
-                                                <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
-                                                <div class="ph-regi-image-title-wrap">
-                                                    <button type="button" onclick="removeUpload(this)"
-                                                            class="ph-regi-remove-image">
-                                                        <i class="fas fa-times"></i></button>
+                                            {% else %}
+                                            <div class="ph-regi-upload-file">
+                                                <span class="title">تصویر پشت کارت ملی</span>
+                                                <div class="ph-regi-image-upload-wrap">
+                                                    <input class="ph-regi-file-upload-input" type='file'
+                                                           onchange="readURL(this);" name="image_id_card_back"
+                                                           accept="image/*"/>
+                                                    <div class="ph-regi-drag-text">
+                                                        <h3>عکس مورد نظر خود را انتخاب کنید</h3>
+                                                        <i class="fas fa-cloud-upload-alt"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ph-regi-file-upload-content">
+                                                    <img class="ph-regi-file-upload-image" src="#" alt="your image"/>
+                                                    <div class="ph-regi-image-title-wrap">
+                                                        <button type="button" onclick="removeUpload(this)"
+                                                                class="ph-regi-remove-image">
+                                                            <i class="fas fa-times"></i></button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            {% endif %}
                                     </div><!-- .ph-conditional-wrapper-2 -->
                                     <!-- .ph-conditional-wrapper-2 -->
                                     <div class="ph-new-login-info-btn my-2">
@@ -490,4 +645,5 @@
 {% block footer_static %}
     <script src="{% static 'magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
     <script src="{% static 'js/admin_edit_user.js' %}"></script>
+    <script src="{% static 'js/remove_user_image.js' %}"></script>
 {% endblock %}
